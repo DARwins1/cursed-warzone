@@ -656,3 +656,31 @@ function __updateNeedlerLog(target)
 		__needlerLog = newNeedlerLog;
 	}
 }
+
+// Cause an explosion after an explosive drum is destroyed
+function __camDetonateDrum(boomBaitId)
+{
+	var bait = getObject(DROID, 10, boomBaitId);
+	if (!camDef(bait))
+	{
+		return;
+	}
+	else
+	{
+		fireWeaponAtObj("ExplosiveDrumBlast", bait);
+	}
+}
+
+// Cause an explosion after a nuclear drum is destroyed
+function __camDetonateNukeDrum(boomBaitId)
+{
+	var bait = getObject(DROID, 10, boomBaitId);
+	if (!camDef(bait))
+	{
+		return;
+	}
+	else
+	{
+		fireWeaponAtObj("NuclearDrumBlast", bait);
+	}
+}

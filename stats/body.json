@@ -164,8 +164,8 @@
         "designable": 1,
         "hitpoints": 200,
         "id": "Body11ABT",
-        "model": "drhbod11.pie",
-        "name": "Python",
+        "model": "drlbod11.pie",
+        "name": "Viper III",
         "powerOutput": 20000,
         "propulsionExtraModels": {
             "HalfTrack": {
@@ -209,6 +209,9 @@
             },
             "wheeled01": {
                 "left": "prhwhl1.pie"
+            },
+            "wheeledskiddy": {
+                "left": "prhskidwhl1.pie"
             },
             "wheeled02": {
                 "left": "prhwhl1.pie"
@@ -408,6 +411,9 @@
             "wheeled01": {
                 "left": "prlwhl1.pie"
             },
+            "wheeledskiddy": {
+                "left": "prlskidwhl1.pie"
+            },
             "wheeled02": {
                 "left": "prlwhl1.pie"
             },
@@ -418,6 +424,141 @@
         "size": "LIGHT",
         "weaponSlots": 1,
         "weight": 600
+    },
+    "Body2SUP": {
+        "armourHeat": 6,
+        "armourKinetic": 12,
+        "buildPoints": 220,
+        "buildPower": 41,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 107,
+        "id": "Body2SUP",
+        "model": "drlbod02.pie",
+        "name": "Leopard",
+        "powerOutput": 6500,
+        "propulsionExtraModels": {
+            "HalfTrack": {
+                "left": "prlhtr1.pie"
+            },
+            "HalfTrack02": {
+                "left": "prlhtr1.pie"
+            },
+            "HalfTrack03": {
+                "left": "prlhtr1.pie"
+            },
+            "V-Tol": {
+                "left": "prlvtl2.pie",
+                "moving": "fxvtl2and3.pie"
+            },
+            "V-Tol02": {
+                "left": "prlvtl2.pie",
+                "moving": "fxvtl2and3.pie"
+            },
+            "V-Tol03": {
+                "left": "prlvtl2.pie",
+                "moving": "fxvtl2and3.pie"
+            },
+            "hover01": {
+                "left": "prlhov1.pie"
+            },
+            "hover02": {
+                "left": "prlhov1.pie"
+            },
+            "hover03": {
+                "left": "prlhov1.pie"
+            },
+            "tracked01": {
+                "left": "prltrk1.pie"
+            },
+            "tracked02": {
+                "left": "prltrk1.pie"
+            },
+            "tracked03": {
+                "left": "prltrk1.pie"
+            },
+            "wheeled01": {
+                "left": "prlwhl1.pie"
+            },
+            "wheeled02": {
+                "left": "prlwhl1.pie"
+            },
+            "wheeled03": {
+                "left": "prlwhl1.pie"
+            }
+        },
+        "size": "LIGHT",
+        "weaponSlots": 1,
+        "weight": 750
+    },
+    "Body1RECTwin": {
+        "armourHeat": 4,
+        "armourKinetic": 10,
+        "buildPoints": 300,
+        "buildPower": 60,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 130,
+        "id": "Body1RECTwin",
+        "model": "drlbod01twin.pie",
+        "name": "Twin Viper",
+        "powerOutput": 10000,
+        "propulsionExtraModels": {
+            "HalfTrack": {
+                "left": "prlhtrtwin.pie"
+            },
+            "HalfTrack02": {
+                "left": "prlhtrtwin.pie"
+            },
+            "HalfTrack03": {
+                "left": "prlhtrtwin.pie"
+            },
+            "V-Tol": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "V-Tol02": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "V-Tol03": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "hover01": {
+                "left": "prlhovtwin.pie"
+            },
+            "hover02": {
+                "left": "prlhovtwin.pie"
+            },
+            "hover03": {
+                "left": "prlhovtwin.pie"
+            },
+            "tracked01": {
+                "left": "prltrktwin.pie"
+            },
+            "tracked02": {
+                "left": "prltrktwin.pie"
+            },
+            "tracked03": {
+                "left": "prltrktwin.pie"
+            },
+            "wheeled01": {
+                "left": "prlwhltwin.pie"
+            },
+            "wheeledskiddy": {
+                "left": "prlskidwhltwin.pie"
+            },
+            "wheeled02": {
+                "left": "prlwhltwin.pie"
+            },
+            "wheeled03": {
+                "left": "prlwhltwin.pie"
+            }
+        },
+        "size": "LIGHT",
+        "weaponSlots": 2,
+        "weight": 1200
     },
     "Body2SUP": {
         "armourHeat": 6,
@@ -551,6 +692,72 @@
         "weaponSlots": 1,
         "weight": 450
     },
+    "Body1BIG": {
+        "armourHeat": 40,
+        "armourKinetic": 100,
+        "buildPoints": 1500,
+        "buildPower": 300,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 650,
+        "id": "Body1BIG",
+        "model": "drlbod01big.pie",
+        "name": "Big Viper",
+        "powerOutput": 50000,
+        "propulsionExtraModels": {
+            "HalfTrack": {
+                "left": "prlhtr1.pie"
+            },
+            "HalfTrack02": {
+                "left": "prlhtr1.pie"
+            },
+            "HalfTrack03": {
+                "left": "prlhtr1.pie"
+            },
+            "V-Tol": {
+                "left": "prlvtl1.pie",
+                "moving": "fxvtl01.pie"
+            },
+            "V-Tol02": {
+                "left": "prlvtl1.pie",
+                "moving": "fxvtl01.pie"
+            },
+            "V-Tol03": {
+                "left": "prlvtl1.pie",
+                "moving": "fxvtl01.pie"
+            },
+            "hover01": {
+                "left": "prlhov1.pie"
+            },
+            "hover02": {
+                "left": "prlhov1.pie"
+            },
+            "hover03": {
+                "left": "prlhov1.pie"
+            },
+            "tracked01": {
+                "left": "prltrk1.pie"
+            },
+            "tracked02": {
+                "left": "prltrk1.pie"
+            },
+            "tracked03": {
+                "left": "prltrk1.pie"
+            },
+            "wheeled01": {
+                "left": "prlwhl1big.pie"
+            },
+            "wheeled02": {
+                "left": "prlwhl1big.pie"
+            },
+            "wheeled03": {
+                "left": "prlwhl1big.pie"
+            }
+        },
+        "size": "LIGHT",
+        "weaponSlots": 1,
+        "weight": 6000
+    },
     "Body4ABT": {
         "armourHeat": 8,
         "armourKinetic": 8,
@@ -626,8 +833,8 @@
         "designable": 1,
         "hitpoints": 130,
         "id": "Body5REC",
-        "model": "drmbod05.pie",
-        "name": "Cobra",
+        "model": "drlbod05.pie",
+        "name": "Viper II",
         "powerOutput": 15000,
         "propulsionExtraModels": {
             "HalfTrack": {
@@ -671,6 +878,9 @@
             },
             "wheeled01": {
                 "left": "prmwhl1.pie"
+            },
+            "wheeledskiddy": {
+                "left": "prmskidwhl1.pie"
             },
             "wheeled02": {
                 "left": "prmwhl1.pie"

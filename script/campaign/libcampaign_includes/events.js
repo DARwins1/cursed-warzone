@@ -162,6 +162,17 @@ function cam_eventDroidBuilt(droid, structure)
 	__camAddDroidToFactoryGroup(droid, structure);
 }
 
+function eventStructureBuilt(structure, droid)
+{
+	if (camDef(structure) && structure.name === _("Explosive Drum"))
+	{
+		// Swap out the structure for the feature object
+		var pos = {x: structure.x, y: structure.y};
+		camSafeRemoveObject(structure);
+		addFeature("ExplosiveDrum", pos.x, pos.y);
+	}
+}
+
 function cam_eventDestroyed(obj)
 {
 	__camCheckPlaceArtifact(obj);
@@ -184,6 +195,21 @@ function cam_eventDestroyed(obj)
 			{
 				delete __camPlayerTransports[obj.player];
 			}
+		}
+	}
+	else if (obj.type === FEATURE)
+	{
+		if (obj.name === _("Explosive Drum"))
+		{
+			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
+				"B4body-sml-trike01", "BaBaProp", "", "", "BabaTrikeMG").id; // Spawn a trike...
+			queue("__camDetonateDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow them up
+		}
+		else if (obj.name === _("Nuclear Drum"))
+		{
+			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
+				"B4body-sml-trike01", "BaBaProp", "", "", "BabaTrikeMG").id; // Spawn a trike...
+			queue("__camDetonateNukeDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow them up
 		}
 	}
 }
@@ -261,53 +287,63 @@ function cam_eventMissionTimeout()
 
 function cam_eventAttacked(victim, attacker)
 {
-	if (camDef(victim) && victim && victim.type === DROID)
+	if (camDef(victim) && victim)
 	{
-		if (victim.player !== CAM_HUMAN_PLAYER && !allianceExistsBetween(CAM_HUMAN_PLAYER, victim.player))
+		// Remove victim if hit by a Remover Tool
+		if (attacker.weapons[0].id === _("SpyTurret01"))
 		{
-			//Try dynamically creating a group of nearby droids not part
-			//of a group. Only supports those who can hit ground units.
-			if (victim.group === null)
+			camSafeRemoveObject(victim);
+			return;
+		}
+
+		if (victim.type === DROID)
+		{
+			// Needler schenanigans
+			if (attacker.weapons[0].id === _("RailGun1Mk1") || attacker.weapons[0].id === _("Cyb-Wpn-Rail1"))
 			{
-				const DEFAULT_RADIUS = 6;
-				var loc = {x: victim.x, y: victim.y};
-				var droids = enumRange(loc.x, loc.y, DEFAULT_RADIUS, victim.player, false).filter((obj) => (
-					obj.type === DROID &&
-					obj.group === null &&
-					(obj.canHitGround || obj.isSensor) &&
-					obj.droidType !== DROID_CONSTRUCT &&
-					!camIsTransporter(obj) &&
-					!camInNeverGroup(obj)
-				));
-				if (droids.length === 0)
-				{
-					return;
-				}
-				camManageGroup(camMakeGroup(droids), CAM_ORDER_ATTACK, {
-					count: -1,
-					regroup: false,
-					repair: 70
-				});
+				__updateNeedlerLog(victim);
 			}
-
-			if (camDef(__camGroupInfo[victim.group]))
+			if (victim.player !== CAM_HUMAN_PLAYER && !allianceExistsBetween(CAM_HUMAN_PLAYER, victim.player))
 			{
-				__camGroupInfo[victim.group].lastHit = gameTime;
-
-				//Increased Nexus intelligence if struck on cam3-4
-				if (__camNextLevel === CAM_GAMMA_OUT)
+				//Try dynamically creating a group of nearby droids not part
+				//of a group. Only supports those who can hit ground units.
+				if (victim.group === null)
 				{
-					if (__camGroupInfo[victim.group].order === CAM_ORDER_PATROL)
+					const DEFAULT_RADIUS = 6;
+					var loc = {x: victim.x, y: victim.y};
+					var droids = enumRange(loc.x, loc.y, DEFAULT_RADIUS, victim.player, false).filter((obj) => (
+						obj.type === DROID &&
+						obj.group === null &&
+						(obj.canHitGround || obj.isSensor) &&
+						obj.droidType !== DROID_CONSTRUCT &&
+						!camIsTransporter(obj) &&
+						!camInNeverGroup(obj)
+					));
+					if (droids.length === 0)
 					{
-						__camGroupInfo[victim.group].order = CAM_ORDER_ATTACK;
+						return;
+					}
+					camManageGroup(camMakeGroup(droids), CAM_ORDER_ATTACK, {
+						count: -1,
+						regroup: false,
+						repair: 70
+					});
+				}
+
+				if (camDef(__camGroupInfo[victim.group]))
+				{
+					__camGroupInfo[victim.group].lastHit = gameTime;
+
+					//Increased Nexus intelligence if struck on cam3-4
+					if (__camNextLevel === CAM_GAMMA_OUT)
+					{
+						if (__camGroupInfo[victim.group].order === CAM_ORDER_PATROL)
+						{
+							__camGroupInfo[victim.group].order = CAM_ORDER_ATTACK;
+						}
 					}
 				}
 			}
-		}
-		// Needler schenanigans
-		if (attacker.weapons[0].id === _("RailGun1Mk1") || attacker.weapons[0].id === _("Cyb-Wpn-Rail1"))
-		{
-			__updateNeedlerLog(victim);
 		}
 	}
 }

@@ -690,6 +690,17 @@
             "CyborgChaingun"
         ]
     },
+    "CyborgChain02Cool04School": {
+        "available": true,
+        "body": "CyborgLightBody",
+        "id": "CyborgChain02Cool04School",
+        "name": "Cooler Machinegunner Cyborg",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "NX-CyborgChaingun"
+        ]
+    },
     "CyborgFlamer01Grd": {
         "available": true,
         "body": "CyborgLightBody",
@@ -721,6 +732,17 @@
         "type": "CYBORG",
         "weapons": [
             "Cyb-Wpn-Bow"
+        ]
+    },
+    "Cyb-BB": {
+        "available": true,
+        "body": "CyborgLightBody",
+        "id": "Cyb-BB",
+        "name": "Bunker Buster Cyborg",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "CyborgBB"
         ]
     },
     "Cyb-Hvy-A-T": {
@@ -824,7 +846,7 @@
         "available": true,
         "body": "CyborgLightBody",
         "id": "Cyb-Rail1-GROUND",
-        "name": "\"Needle\" Gunner Cyborg",
+        "name": "Needler Gunner Cyborg",
         "propulsion": "CyborgLegs",
         "type": "CYBORG",
         "weapons": [
@@ -1611,7 +1633,6 @@
         ]
     },
     "ViperLtMGHalfTracks": {
-        "available": true,
         "body": "Body1REC",
         "id": "ViperLtMGHalfTracks",
         "name": "Machinegun Viper Half-tracks",
@@ -1622,7 +1643,6 @@
         ]
     },
     "ViperFlameHalfTracks": {
-        "available": true,
         "body": "Body1REC",
         "id": "ViperFlameHalfTracks",
         "name": "Flamer Viper Half-tracks",
@@ -1653,7 +1673,6 @@
         ]
     },
     "ViperLtCannonHTracks": {
-        "available": true,
         "body": "Body1REC",
         "id": "ViperLtCannonHTracks",
         "name": "Light Cannon Viper Half-tracks",
@@ -1684,6 +1703,7 @@
         ]
     },
     "ViperLtMGWheels": {
+        "available": true,
         "body": "Body1REC",
         "id": "ViperLtMGWheels",
         "name": "Machinegun Viper Wheels",
@@ -1754,7 +1774,6 @@
         ]
     },
     "ViperPODHalfTracks": {
-        "available": true,
         "body": "Body1REC",
         "id": "ViperPODHalfTracks",
         "name": "Mini-Rocket Viper Half-tracks",
@@ -1773,7 +1792,6 @@
         "type": "DROID"
     },
     "ViperRepairWheels": {
-        "available": true,
         "body": "Body1REC",
         "id": "ViperRepairWheels",
         "name": "Repair Turret Viper Wheels",
@@ -1782,7 +1800,6 @@
         "type": "DROID"
     },
     "ViperSensorWheels": {
-        "available": true,
         "body": "Body1REC",
         "id": "ViperSensorWheels",
         "name": "Sensor Turret Viper Wheels",
@@ -1791,7 +1808,6 @@
         "type": "DROID"
     },
     "ViperMortarWheels": {
-        "available": true,
         "body": "Body1REC",
         "id": "ViperMortarWheels",
         "name": "Mortar Viper Wheels",
