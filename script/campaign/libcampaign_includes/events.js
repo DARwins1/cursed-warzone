@@ -125,6 +125,7 @@ function cam_eventStartLevel()
 	__camNumTransporterExits = 0;
 	__camAllowVictoryMsgClear = true;
 	__needlerLog = [];
+	__camRandomizeFungibleCannons(); // Randomize all the Fungible Cannons on the map
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
 	__camAiPowerReset(); //grant power to the AI
 	setTimer("__camSpawnVtols", camSecondsToMilliseconds(0.5));
@@ -143,6 +144,14 @@ function cam_eventStartLevel()
 
 function cam_eventDroidBuilt(droid, structure)
 {
+	if ((camDef(droid.weapons[0]) && droid.weapons[0].name === "Cannon2A-TMk1") 
+		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Cannon2A-TMk1"))
+	{
+		// Swap the standard Fungible Cannon for a random varient
+		completeResearch(__camFungibleCanSwapList[camRand(__camFungibleCanSwapList.length)], droid.player, true);
+		makeComponentAvailable("Cannon2A-TMk1", droid.player); // Prevent the Fungible Cannon from being marked obsolete
+	}
+
 	if (!camDef(structure)) // "clone wars" cheat
 	{
 		return;
@@ -164,12 +173,37 @@ function cam_eventDroidBuilt(droid, structure)
 
 function eventStructureBuilt(structure, droid)
 {
-	if (camDef(structure) && structure.name === _("Explosive Drum"))
+	if (!camDef(structure))
+	{
+		return;
+	}
+	if (structure.name === _("Explosive Drum"))
 	{
 		// Swap out the structure for the feature object
 		var pos = {x: structure.x, y: structure.y};
 		camSafeRemoveObject(structure);
 		addFeature("ExplosiveDrum", pos.x, pos.y);
+	}
+	else if (structure.name === _("Fungible Cannon Hardpoint"))
+	{
+		// Check if this structure has a label and/or group assigned to it
+		// FIXME: O(n) lookup here
+		let label = (getLabel(structure));
+		let group = (structure.group);
+
+		// Replace the structure
+		let structInfo = {x: structure.x * 128, y: structure.y * 128, player: structure.player};
+		camSafeRemoveObject(structure, false);
+		let newStruct = addStructure(__camFungibleCanHardList[camRand(__camFungibleCanHardList.length)], structInfo.player, structInfo.x, structInfo.y);
+
+		if (camDef(label)) 
+		{
+			addLabel(newStruct, label);
+		}
+		if (group !== null)
+		{
+			groupAdd(group, newStruct);
+		}
 	}
 }
 
@@ -290,7 +324,7 @@ function cam_eventAttacked(victim, attacker)
 	if (camDef(victim) && victim)
 	{
 		// Remove victim if hit by a Remover Tool
-		if (attacker.weapons[0].id === _("SpyTurret01"))
+		if (attacker.weapons[0].id === "SpyTurret01")
 		{
 			camSafeRemoveObject(victim);
 			return;
@@ -299,7 +333,7 @@ function cam_eventAttacked(victim, attacker)
 		if (victim.type === DROID)
 		{
 			// Needler schenanigans
-			if (attacker.weapons[0].id === _("RailGun1Mk1") || attacker.weapons[0].id === _("Cyb-Wpn-Rail1"))
+			if (attacker.weapons[0].id === "RailGun1Mk1" || attacker.weapons[0].id === "Cyb-Wpn-Rail1")
 			{
 				__updateNeedlerLog(victim);
 			}

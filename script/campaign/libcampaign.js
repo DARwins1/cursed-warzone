@@ -130,6 +130,13 @@ var __camTracedOnce = {};
 
 //events
 var __camSaveLoading;
+var __camFungibleCanSwapList = [
+	"Script-FungibleCannon-Swap2", "Script-FungibleCannon-Swap3", "Script-FungibleCannon-Swap4",
+	"Script-FungibleCannon-Swap5", "Script-FungibleCannon-Swap6", "Script-FungibleCannon-Swap7",
+	"Script-FungibleCannon-Swap8", "Script-FungibleCannon-Swap9", "Script-FungibleCannon-Swap10",
+	"Script-FungibleCannon-Swap11", "Script-FungibleCannon-Swap12", "Script-FungibleCannon-Swap13",
+	"Script-FungibleCannon-Swap14", "Script-FungibleCannon-Swap15"
+];
 
 //group
 var __camNewGroupCounter;
@@ -162,6 +169,20 @@ var __camNexusActivated;
 var __camFactoryInfo;
 var __camFactoryQueue;
 var __camPropulsionTypeLimit;
+var __camFungibleCannonList = [
+	"Cannon2A-TMk2", "Cannon2A-TMk3", "Cannon2A-TMk4",
+	"Cannon2A-TMk5", "Cannon2A-TMk6", "Cannon2A-TMk7",
+	"Cannon2A-TMk8", "Cannon2A-TMk9", "Cannon2A-TMk10",
+	"Cannon2A-TMk11", "Cannon2A-TMk12", "Cannon2A-TMk13",
+	"Cannon2A-TMk14", "Cannon2A-TMk15"
+];
+var __camFungibleCanHardList = [
+	"WallTower03Mk2", "WallTower03Mk3", "WallTower03Mk4",
+	"WallTower03Mk5", "WallTower03Mk6", "WallTower03Mk7",
+	"WallTower03Mk8", "WallTower03Mk9", "WallTower03Mk10",
+	"WallTower03Mk11", "WallTower03Mk12", "WallTower03Mk13",
+	"WallTower03Mk14", "WallTower03Mk15"
+];
 
 //tactics
 const CAM_ORDER_ATTACK = 0;

@@ -684,3 +684,68 @@ function __camDetonateNukeDrum(boomBaitId)
 		fireWeaponAtObj("NuclearDrumBlast", bait);
 	}
 }
+
+// Called at the start of a mission
+function __camRandomizeFungibleCannons()
+{
+	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	{
+		// Replace units
+		let drList = enumDroid(i);
+		for (let j = 0; j < drList.length; j++)
+		{
+			let dr = drList[j];
+
+			// Check if the droid has a Fungible Cannon
+			if (camDef(dr.weapons[0]) && dr.weapons[0].name === "Cannon2A-TMk1")
+			{
+				// Check if this droid has a label and/or group assigned to it
+				// FIXME: O(n) lookup here
+				let label = (getLabel(dr));
+				let group = (dr.group);
+
+				// Replace the droid
+				var newWeapon = __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
+				let droidInfo = {x: dr.x, y: dr.y, name: dr.name, body: dr.body, prop: dr.propulsion};
+				camSafeRemoveObject(dr, false);
+				let newDroid = addDroid(i, droidInfo.x, droidInfo.y, droidInfo.name, droidInfo.body,
+					__camChangePropulsionOnDiff(droidInfo.prop), "", "", newWeapon);
+
+				if (camDef(label)) 
+				{
+					addLabel(newDroid, label);
+				}
+				if (group !== null)
+				{
+					groupAdd(group, newDroid);
+				}
+			}
+		}
+
+		// Replace structures
+		let strList = enumStruct(i, "WallTower03");
+		for (let j = 0; j < strList.length; j++)
+		{
+			let str = strList[j];
+
+			// Check if this structure has a label and/or group assigned to it
+			// FIXME: O(n) lookup here
+			let label = (getLabel(str));
+			let group = (str.group);
+
+			// Replace the structure
+			let structInfo = {x: str.x * 128, y: str.y * 128};
+			camSafeRemoveObject(str, false);
+			let newStruct = addStructure(__camFungibleCanHardList[camRand(__camFungibleCanHardList.length)], i, structInfo.x, structInfo.y);
+
+			if (camDef(label)) 
+			{
+				addLabel(newStruct, label);
+			}
+			if (group !== null)
+			{
+				groupAdd(group, newStruct);
+			}
+		}
+	}
+}

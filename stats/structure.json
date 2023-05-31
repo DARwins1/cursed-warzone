@@ -3164,7 +3164,7 @@
         "height": 2,
         "hitpoints": 800,
         "id": "WallTower03",
-        "name": "Medium Cannon Hardpoint",
+        "name": "Fungible Cannon Hardpoint",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "HARD",
@@ -3175,6 +3175,342 @@
         "type": "DEFENSE",
         "weapons": [
             "Cannon2A-TMk1"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk2": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk2",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk2"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk3": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk3",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk3"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk4": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk4",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk4"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk5": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk5",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk5"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk6": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk6",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk6"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk7": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk7",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk7"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk8": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk8",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk8"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk9": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk9",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk9"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk10": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk10",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk10"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk11": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk11",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk11"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk12": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk12",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk12"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk13": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk13",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk13"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk14": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk14",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk14"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk15": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk15",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk15"
         ],
         "width": 1
     },

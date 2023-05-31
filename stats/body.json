@@ -211,7 +211,8 @@
                 "left": "prhwhl1.pie"
             },
             "wheeledskiddy": {
-                "left": "prhskidwhl1.pie"
+                "left": "prhskidwhl1.pie",
+                "moving": "fxvtl11.pie"
             },
             "wheeled02": {
                 "left": "prhwhl1.pie"
@@ -412,7 +413,8 @@
                 "left": "prlwhl1.pie"
             },
             "wheeledskiddy": {
-                "left": "prlskidwhl1.pie"
+                "left": "prlskidwhl1.pie",
+                "moving": "fxvtl01.pie"
             },
             "wheeled02": {
                 "left": "prlwhl1.pie"
@@ -547,7 +549,8 @@
                 "left": "prlwhltwin.pie"
             },
             "wheeledskiddy": {
-                "left": "prlskidwhltwin.pie"
+                "left": "prlskidwhltwin.pie",
+                "moving": "fxvtltwin.pie"
             },
             "wheeled02": {
                 "left": "prlwhltwin.pie"
@@ -880,7 +883,8 @@
                 "left": "prmwhl1.pie"
             },
             "wheeledskiddy": {
-                "left": "prmskidwhl1.pie"
+                "left": "prmskidwhl1.pie",
+                "moving": "fxvtl5to8.pie"
             },
             "wheeled02": {
                 "left": "prmwhl1.pie"

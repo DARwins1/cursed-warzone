@@ -234,11 +234,100 @@ function camUpgradeOnMapTemplates(template1, template2, playerId, excluded)
 				}
 			}
 
+			//Check if this object has a label and/or group assigned to it
+			// FIXME: O(n) lookup here
+			let label = (getLabel(dr));
+			let group = (dr.group);
+
 			//Replace it
 			let droidInfo = {x: dr.x, y: dr.y, name: dr.name};
 			camSafeRemoveObject(dr, false);
-			addDroid(playerId, droidInfo.x, droidInfo.y, droidInfo.name, template2.body,
+			let newDroid = addDroid(playerId, droidInfo.x, droidInfo.y, droidInfo.name, template2.body,
 				__camChangePropulsionOnDiff(template2.prop), "", "", template2.weap);
+
+			if (camDef(label)) 
+			{
+				addLabel(newDroid, label);
+			}
+			if (group !== null)
+			{
+				groupAdd(group, newDroid);
+			}
+		}
+	}
+}
+
+//;; ## camUpgradeOnMapStructures(struct1, struct2, playerId[, excluded])
+//;;
+//;; Search for struct1, save its coordinates, remove it, and then replace with it
+//;; with struct2. A fourth parameter can be specified to ignore specific object
+//;; IDs. Useful if a structure is assigned to an object label. It can be either an array
+//;; or a single ID number. Unortunatly, structure rotation is not preserved.
+//;; If a structure has a label or group, it will be transferred to the replacement, but if the
+//;; structure has multiple labels, then only one label will be transferred.
+//;;
+//;; @param {Object} struct1
+//;; @param {Object} struct2
+//;; @param {number} playerId
+//;; @param {number|number[]} [excluded]
+//;; @returns {void}
+//;;
+function camUpgradeOnMapStructures(struct1, struct2, playerId, excluded)
+{
+	if (!camDef(struct1) || !camDef(struct2) || !camDef(playerId))
+	{
+		camDebug("Not enough parameters specified for upgrading on map structures");
+		return;
+	}
+
+	var structsOnMap = enumStruct(playerId, struct1);
+
+	for (var i = 0, l = structsOnMap.length; i < l; ++i)
+	{
+		var structure = structsOnMap[i];
+		var skip = false;
+		
+		//Check if this object should be excluded from the upgrades
+		if (camDef(excluded))
+		{
+			if (excluded instanceof Array)
+			{
+				for (var j = 0, c = excluded.length; j < c; ++j)
+				{
+					if (structure.id === excluded[j])
+					{
+						skip = true;
+						break;
+					}
+				}
+				if (skip === true)
+				{
+					continue;
+				}
+			}
+			else if (structure.id === excluded)
+			{
+				continue;
+			}
+		}
+
+		//Check if this object has a label and/or group assigned to it
+		// FIXME: O(n) lookup here
+		let label = (getLabel(structure));
+		let group = (structure.group);
+
+		//Replace it
+		let structInfo = {x: structure.x * 128, y: structure.y * 128};
+		camSafeRemoveObject(structure, false);
+		let newStruct = addStructure(struct2, playerId, structInfo.x, structInfo.y);
+
+		if (camDef(label)) 
+		{
+			addLabel(newStruct, label);
+		}
+		if (group !== null)
+		{
+			groupAdd(group, newStruct);
 		}
 	}
 }

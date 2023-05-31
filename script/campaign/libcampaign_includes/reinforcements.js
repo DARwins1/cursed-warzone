@@ -39,6 +39,14 @@ function camSendReinforcement(playerId, position, templates, kind, data)
 			order_data = data.data;
 		}
 	}
+	for (let i = 0, l = templates.length; i < l; ++i)
+	{
+		if (templates[i].weap === "Cannon2A-TMk1")
+		{
+			// Swap the Fungible Cannon for any of its varients
+			templates[i].weap = __camFungibleCannonList[camRand(__fungibleCannonList.length)];
+		}
+	}
 	switch (kind)
 	{
 		case CAM_REINFORCE_GROUND:

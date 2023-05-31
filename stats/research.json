@@ -14,6 +14,174 @@
 		"name": "CAM3 RESEARCH",
 		"techCode": 1
 	},
+	"Script-FungibleCannon-Swap2": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap2",
+		"name": "Fungible Swap 2",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk2"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk2"
+	},
+	"Script-FungibleCannon-Swap3": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap3",
+		"name": "Fungible Swap 3",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk3"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk3"
+	},
+	"Script-FungibleCannon-Swap4": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap4",
+		"name": "Fungible Swap 4",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk4"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk4"
+	},
+	"Script-FungibleCannon-Swap5": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap5",
+		"name": "Fungible Swap 5",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk5"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk5"
+	},
+	"Script-FungibleCannon-Swap6": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap6",
+		"name": "Fungible Swap 6",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk6"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk6"
+	},
+	"Script-FungibleCannon-Swap7": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap7",
+		"name": "Fungible Swap 7",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk7"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk7"
+	},
+	"Script-FungibleCannon-Swap8": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap8",
+		"name": "Fungible Swap 8",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk8"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk8"
+	},
+	"Script-FungibleCannon-Swap9": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap9",
+		"name": "Fungible Swap 9",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk9"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk9"
+	},
+	"Script-FungibleCannon-Swap10": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap10",
+		"name": "Fungible Swap 10",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk10"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk10"
+	},
+	"Script-FungibleCannon-Swap11": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap11",
+		"name": "Fungible Swap 11",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk11"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk11"
+	},
+	"Script-FungibleCannon-Swap12": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap12",
+		"name": "Fungible Swap 12",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk12"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk12"
+	},
+	"Script-FungibleCannon-Swap13": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap13",
+		"name": "Fungible Swap 13",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk13"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk13"
+	},
+	"Script-FungibleCannon-Swap14": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap14",
+		"name": "Fungible Swap 14",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk14"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk14"
+	},
+	"Script-FungibleCannon-Swap15": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-FungibleCannon-Swap15",
+		"name": "Fungible Swap 15",
+		"replacedComponents": [
+			"Cannon2A-TMk1:Cannon2A-TMk15"
+		],
+		"resultComponents": [
+			"Cannon2A-TMk1"
+		],
+		"statID": "Cannon2A-TMk15"
+	},
 	"R-Wpn-TUTMG": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
 		"id": "R-Wpn-TUTMG",
@@ -1520,9 +1688,6 @@
 		"id": "R-Defense-WallTower04",
 		"msgName": "RES_WT4_HC",
 		"name": "Heavy Cannon Hardpoint",
-		"redStructures": [
-			"WallTower03"
-		],
 		"requiredResearch": [
 			"R-Defense-WallTower03",
 			"R-Wpn-Cannon3Mk1"
@@ -2481,9 +2646,6 @@
 		"keyTopic": 1,
 		"msgName": "RES_CN2MK1",
 		"name": "Medium Cannon",
-		"redComponents": [
-			"Cannon1Mk1"
-		],
 		"requiredResearch": [
 			"R-Struc-Factory-Module",
 			"R-Wpn-Cannon-Damage01"
@@ -2501,9 +2663,6 @@
 		"keyTopic": 1,
 		"msgName": "RES_CN3MK1",
 		"name": "Heavy Cannon",
-		"redComponents": [
-			"Cannon2A-TMk1"
-		],
 		"requiredResearch": [
 			"R-Wpn-Cannon2Mk1",
 			"R-Vehicle-Body11",
