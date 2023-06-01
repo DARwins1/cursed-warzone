@@ -705,7 +705,7 @@
         "available": true,
         "body": "CyborgLightBody",
         "id": "Cyb-Flamer-GROUND",
-        "name": "Flamer Cyborg",
+        "name": "Pyro Cyborg",
         "propulsion": "CyborgLegs",
         "type": "CYBORG",
         "weapons": [
@@ -732,6 +732,72 @@
         "type": "CYBORG",
         "weapons": [
             "Cyb-Wpn-Bow"
+        ]
+    },
+    "Cyb-Sword": {
+        "available": true,
+        "body": "CyborgLightBody",
+        "id": "Cyb-Sword",
+        "name": "Sword Cyborg",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-Sword"
+        ]
+    },
+    "Cyb-Zmbie": {
+        "available": true,
+        "body": "ZombieBody",
+        "id": "Cyb-Zmbie",
+        "name": "Zombie",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-ZmbieMelee"
+        ]
+    },
+    "Cyb-BabyZmbie": {
+        "available": true,
+        "body": "BabyZombieBody",
+        "id": "Cyb-BabyZmbie",
+        "name": "Baby Zombie",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-BabyZmbieMelee"
+        ]
+    },
+    "Cyb-Creep": {
+        "available": true,
+        "body": "CreeperBody",
+        "id": "Cyb-Creep",
+        "name": "Creeper",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-CreeperDud"
+        ]
+    },
+    "Cyb-Skel": {
+        "available": true,
+        "body": "SkeletonBody",
+        "id": "Cyb-Skel",
+        "name": "Skeleton",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-SkelBow"
+        ]
+    },
+    "Cyb-Ender": {
+        "available": true,
+        "body": "EndermanBody",
+        "id": "Cyb-Ender",
+        "name": "Enderman",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-EnderMelee"
         ]
     },
     "Cyb-BB": {

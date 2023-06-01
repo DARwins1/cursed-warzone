@@ -147,7 +147,8 @@ var __camOriginalEvents = {};
 
 //misc
 var __camCalledOnce = {};
-var __needlerLog = [];
+var __camNeedlerLog = [];
+var __camPrimedCreepers = [];
 
 //nexus
 const DEFENSE_ABSORBED = "defabsrd.ogg";

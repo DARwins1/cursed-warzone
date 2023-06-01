@@ -187,7 +187,7 @@ function camPlayerMatchesFilter(playerId, playerFilter)
 		case ALL_PLAYERS:
 			return true;
 		case ALLIES:
-			return playerId === CAM_HUMAN_PLAYER;
+			return allianceExistsBetween(CAM_HUMAN_PLAYER, playerId);
 		case ENEMIES:
 			return playerId >= 0 && playerId < CAM_MAX_PLAYERS && playerId !== CAM_HUMAN_PLAYER;
 		default:
@@ -506,9 +506,64 @@ function camGenerateRandomMapCoordinate(reachPosition, distFromReach, scanObject
 		pos = randomPos;
 	} while (camDef(reachPosition) &&
 		reachPosition &&
-		!propulsionCanReach("wheeled01", reachPosition.x, reachPosition.y, pos.x, pos.y) &&
-		(camDist(pos, reachPosition) < distFromReach) &&
-		(enumRange(pos.x, pos.y, scanObjectRadius, ALL_PLAYERS, false).length > 0));
+		(!propulsionCanReach("wheeled01", reachPosition.x, reachPosition.y, pos.x, pos.y) ||
+		(camDist(pos, reachPosition) < distFromReach) ||
+		(enumRange(pos.x, pos.y, scanObjectRadius, ALL_PLAYERS, false).length > 0)));
+
+	return pos;
+}
+
+//;; ## camGenerateRandomMapCoordinateWithinRadius(center[, radius[, scanObjectRadius]])
+//;;
+//;; Returns a random coordinate anywhere on the map within a given radius
+//;;
+//;; @param {Object} center
+//;; @param {number} radius
+//;; @param {number} radius
+//;; @returns {Object}
+//;;
+function camGenerateRandomMapCoordinateWithinRadius(center, radius, scanObjectRadius)
+{
+	if (!camDef(radius))
+	{
+		radius = 10;
+	}
+	if (!camDef(scanObjectRadius))
+	{
+		scanObjectRadius = 2;
+	}
+
+	let limits = getScrollLimits();
+	let pos;
+
+	do
+	{
+		let randomPos = {x: camRand(limits.x2), y: camRand(limits.y2)};
+
+		if (randomPos.x < (limits.x + 2))
+		{
+			randomPos.x = limits.x + 2;
+		}
+		else if (randomPos.x > (limits.x2 - 2))
+		{
+			randomPos.x = limits.x2 - 2;
+		}
+
+		if (randomPos.y < (limits.y + 2))
+		{
+			randomPos.y = limits.y;
+		}
+		else if (randomPos.y > (limits.y2 - 2))
+		{
+			randomPos.y = limits.y2 - 2;
+		}
+
+		pos = randomPos;
+	} while (camDef(center) &&
+		center &&
+		(!propulsionCanReach("wheeled01", center.x, center.y, pos.x, pos.y) ||
+		(camDist(pos, center) > radius) ||
+		(enumRange(pos.x, pos.y, scanObjectRadius, ALL_PLAYERS, false).length > 0)));
 
 	return pos;
 }
@@ -623,37 +678,37 @@ function __updateNeedlerLog(target)
 	if (camDef(target))
 	{
 		// Find if the target is already in the log
-		for (var i = 0; i < __needlerLog.length; i++)
+		for (var i = 0; i < __camNeedlerLog.length; i++)
 		{
-			if (__needlerLog[i].droid.id === target.id)
+			if (__camNeedlerLog[i].droid.id === target.id)
 			{
 				// Found the unit already in the log
-				__needlerLog[i].needleCount++;
-				if (__needlerLog[i].needleCount >= 3)
+				__camNeedlerLog[i].needleCount++;
+				if (__camNeedlerLog[i].needleCount >= 3)
 				{
 					// Cause an explosion
 					fireWeaponAtObj("NeedlerSC", target);
-					__needlerLog[i].needleCount = 0;
+					__camNeedlerLog[i].needleCount = 0;
 				}
 				return; // All done
 			}
 		}
 		// Didn't find the target in the log; add it
-		__needlerLog.push({droid: target, needleCount: 1});
+		__camNeedlerLog.push({droid: target, needleCount: 1});
 	}
 	else
 	{
 		var newNeedlerLog = [];
-		for (var i = 0; i < __needlerLog.length; i++)
+		for (var i = 0; i < __camNeedlerLog.length; i++)
 		{
-			__needlerLog[i].needleCount--;
-			if (__needlerLog[i].needleCount > 0)
+			__camNeedlerLog[i].needleCount--;
+			if (__camNeedlerLog[i].needleCount > 0)
 			{
 				// Continue to track this unit
-				newNeedlerLog.push(__needlerLog[i]);
+				newNeedlerLog.push(__camNeedlerLog[i]);
 			}
 		}
-		__needlerLog = newNeedlerLog;
+		__camNeedlerLog = newNeedlerLog;
 	}
 }
 
@@ -682,6 +737,89 @@ function __camDetonateNukeDrum(boomBaitId)
 	else
 	{
 		fireWeaponAtObj("NuclearDrumBlast", bait);
+	}
+}
+
+// Play an Enderman's teleportation sound effect
+function __camPlayTeleportSfx(targetId)
+{
+	// Find our target
+	var target;
+	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	{
+		target = getObject(DROID, i, targetId);
+		if (camDef(target))
+		{
+			break;
+		}
+	}
+	
+	if (!camDef(target))
+	{
+		return;
+	}
+	else
+	{
+		fireWeaponAtObj("TeleportSFX", target);
+	}
+}
+
+// Detonate a Creeper, if it's still alive
+function __camDetonateCreeper(targetId)
+{
+	// Find our target
+	var target;
+	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	{
+		target = getObject(DROID, i, targetId);
+		if (camDef(target))
+		{
+			break;
+		}
+	}
+
+	// Remove the Creeper from the list of primed ones
+	__camPrimedCreepers.splice(__camPrimedCreepers.indexOf(targetId), 1);
+	
+	if (!camDef(target))
+	{
+		// Creeper is already dead
+		return;
+	}
+	else
+	{
+		// Kaboom
+		fireWeaponAtObj("CreeperBlast", target, target.player);
+	}
+}
+
+// Check if any Creepers should prime themselves
+function __camScanCreeperRadii()
+{
+	// Loop through every Creeper on the map
+	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	{
+		let creepList = enumDroid(i, DROID_CYBORG, false).filter((dr) => (dr.body === "CreeperBody"));
+		for (let j = 0; j < creepList.length; j++)
+		{
+			if (__camPrimedCreepers.indexOf(creepList[j].id) !== -1)
+			{
+				// Creeper is already primed!
+				continue;
+			}
+
+			let creepPos = camMakePos(creepList[j]);
+			// Check if any enemies are within 2 tiles
+			if (enumRange(creepPos.x, creepPos.y, 2, ALL_PLAYERS, false).filter((obj) => (
+				obj.type !== FEATURE && !allianceExistsBetween(creepList[j].player, obj.player)
+			)).length > 0)
+			{
+				// Enemy in range, prepare for detonation!
+				__camPrimedCreepers.push(creepList[j].id);
+				fireWeaponAtObj("CreeperHissSFX", creepList[j]); // Play a gamer's nightmare-fuel
+				queue("__camDetonateCreeper", camSecondsToMilliseconds(1.5), creepList[j].id + "");
+			}
+		}
 	}
 }
 

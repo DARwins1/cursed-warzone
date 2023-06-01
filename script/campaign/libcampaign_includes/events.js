@@ -124,7 +124,8 @@ function cam_eventStartLevel()
 	__camNeverGroupDroids = [];
 	__camNumTransporterExits = 0;
 	__camAllowVictoryMsgClear = true;
-	__needlerLog = [];
+	__camNeedlerLog = [];
+	__camPrimedCreepers = [];
 	__camRandomizeFungibleCannons(); // Randomize all the Fungible Cannons on the map
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
 	__camAiPowerReset(); //grant power to the AI
@@ -137,6 +138,7 @@ function cam_eventStartLevel()
 	setTimer("__camAiPowerReset", camMinutesToMilliseconds(3)); //reset AI power every so often
 	setTimer("__camShowVictoryConditions", camMinutesToMilliseconds(5));
 	setTimer("__camTacticsTick", camSecondsToMilliseconds(0.1));
+	setTimer("__camScanCreeperRadii", camSecondsToMilliseconds(0.2));
 	setTimer("__updateNeedlerLog", camSecondsToMilliseconds(8));
 	queue("__camShowBetaHintEarly", camSecondsToMilliseconds(4));
 	queue("__camGrantSpecialResearch", camSecondsToMilliseconds(6));
@@ -336,6 +338,35 @@ function cam_eventAttacked(victim, attacker)
 			if (attacker.weapons[0].id === "RailGun1Mk1" || attacker.weapons[0].id === "Cyb-Wpn-Rail1")
 			{
 				__updateNeedlerLog(victim);
+			}
+			// Teleport Enderman
+			if (victim.body === "EndermanBody" && camDef(attacker) && camRand(101) > 50)
+			{
+				// Store Enderman health and group
+				let endermanInfo = {health: victim.health, group: victim.group};
+				// Find a random point within 8 tiles of the attacker
+				let tpPos = camGenerateRandomMapCoordinateWithinRadius(camMakePos(attacker), 8);
+
+				// "Teleport" the Enderman there by making a copy at the position and then removing the original
+				let newMan = addDroid(victim.player, tpPos.x, tpPos.y, "Enderman",
+				"EndermanBody", "CyborgLegs", "", "", "Cyb-Wpn-EnderMelee");
+				camSafeRemoveObject(victim);
+
+				// Give the cloned Enderman the same health and group
+				setHealth(newMan, endermanInfo.health);
+				if (endermanInfo.group !== null)
+				{
+					groupAdd(endermanInfo.group, newMan);
+				}
+				else
+				{
+					// The Enderman didn't have a group, so make one for itself
+					let newGroup = camNewGroup();
+					groupAdd(newGroup, newMan);
+					camManageGroup(newGroup, CAM_ORDER_ATTACK);
+				}
+				queue("__camPlayTeleportSfx", CAM_TICKS_PER_FRAME, newMan.id + "");
+				return;
 			}
 			if (victim.player !== CAM_HUMAN_PLAYER && !allianceExistsBetween(CAM_HUMAN_PLAYER, victim.player))
 			{
