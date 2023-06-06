@@ -246,6 +246,7 @@
         "weight": 300
     },
     "wheeledskiddy": {
+        "acceleration": 500,
         "buildPoints": 50,
         "buildPower": 50,
         "designable": 1,

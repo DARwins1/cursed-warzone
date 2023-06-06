@@ -212,7 +212,7 @@
             },
             "wheeledskiddy": {
                 "left": "prhskidwhl1.pie",
-                "moving": "fxvtl11.pie"
+                "moving": "fxhskid.pie"
             },
             "wheeled02": {
                 "left": "prhwhl1.pie"
@@ -414,7 +414,7 @@
             },
             "wheeledskiddy": {
                 "left": "prlskidwhl1.pie",
-                "moving": "fxvtl01.pie"
+                "moving": "fxlskid.pie"
             },
             "wheeled02": {
                 "left": "prlwhl1.pie"
@@ -550,7 +550,7 @@
             },
             "wheeledskiddy": {
                 "left": "prlskidwhltwin.pie",
-                "moving": "fxvtltwin.pie"
+                "moving": "fxtwinskid.pie"
             },
             "wheeled02": {
                 "left": "prlwhltwin.pie"
@@ -562,6 +562,76 @@
         "size": "LIGHT",
         "weaponSlots": 2,
         "weight": 1200
+    },
+    "Body1RECTriple": {
+        "armourHeat": 4,
+        "armourKinetic": 10,
+        "buildPoints": 450,
+        "buildPower": 90,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 195,
+        "id": "Body1RECTriple",
+        "model": "drlbod01triple.pie",
+        "name": "Triple Viper",
+        "powerOutput": 15000,
+        "propulsionExtraModels": {
+            "HalfTrack": {
+                "left": "prlhtrtriple.pie"
+            },
+            "HalfTrack02": {
+                "left": "prlhtrtriple.pie"
+            },
+            "HalfTrack03": {
+                "left": "prlhtrtriple.pie"
+            },
+            "V-Tol": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "V-Tol02": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "V-Tol03": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "hover01": {
+                "left": "prlhovtwin.pie"
+            },
+            "hover02": {
+                "left": "prlhovtwin.pie"
+            },
+            "hover03": {
+                "left": "prlhovtwin.pie"
+            },
+            "tracked01": {
+                "left": "prltrktriple.pie"
+            },
+            "tracked02": {
+                "left": "prltrktriple.pie"
+            },
+            "tracked03": {
+                "left": "prltrktriple.pie"
+            },
+            "wheeled01": {
+                "left": "prlwhltriple.pie"
+            },
+            "wheeledskiddy": {
+                "left": "prlskidwhltriple.pie",
+                "moving": "fxtripleskid.pie"
+            },
+            "wheeled02": {
+                "left": "prlwhltriple.pie"
+            },
+            "wheeled03": {
+                "left": "prlwhltriple.pie"
+            }
+        },
+        "size": "LIGHT",
+        "weaponSlots": 3,
+        "weight": 1800
     },
     "Body2SUP": {
         "armourHeat": 6,
@@ -884,7 +954,7 @@
             },
             "wheeledskiddy": {
                 "left": "prmskidwhl1.pie",
-                "moving": "fxvtl5to8.pie"
+                "moving": "fxmskid.pie"
             },
             "wheeled02": {
                 "left": "prmwhl1.pie"
