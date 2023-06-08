@@ -214,6 +214,9 @@
                 "left": "prhskidwhl1.pie",
                 "moving": "fxhskid.pie"
             },
+            "wheelednormal": {
+                "left": "prhnormwhl1.pie"
+            },
             "wheeled02": {
                 "left": "prhwhl1.pie"
             },
@@ -416,6 +419,9 @@
                 "left": "prlskidwhl1.pie",
                 "moving": "fxlskid.pie"
             },
+            "wheelednormal": {
+                "left": "prlnormwhl1.pie"
+            },
             "wheeled02": {
                 "left": "prlwhl1.pie"
             },
@@ -552,6 +558,9 @@
                 "left": "prlskidwhltwin.pie",
                 "moving": "fxtwinskid.pie"
             },
+            "wheelednormal": {
+                "left": "prlnormwhltwin.pie"
+            },
             "wheeled02": {
                 "left": "prlwhltwin.pie"
             },
@@ -621,6 +630,9 @@
             "wheeledskiddy": {
                 "left": "prlskidwhltriple.pie",
                 "moving": "fxtripleskid.pie"
+            },
+            "wheelednormal": {
+                "left": "prlnormwhltriple.pie"
             },
             "wheeled02": {
                 "left": "prlwhltriple.pie"
@@ -955,6 +967,9 @@
             "wheeledskiddy": {
                 "left": "prmskidwhl1.pie",
                 "moving": "fxmskid.pie"
+            },
+            "wheelednormal": {
+                "left": "prmnormwhl1.pie"
             },
             "wheeled02": {
                 "left": "prmwhl1.pie"

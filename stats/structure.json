@@ -3784,5 +3784,65 @@
         "thermal": 5,
         "type": "WALL",
         "width": 1
+    },
+    "Spawner-Creeper": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "Spawner-Creeper",
+        "name": "Creeper Spawner",
+        "resistance": 150,
+        "sensorID": "CreeperSpawner",
+        "strength": "HARD",
+        "structureModel": [
+            "blspawner.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "width": 1
+    },
+    "Spawner-Skeleton": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "Spawner-Skeleton",
+        "name": "Skeleton Spawner",
+        "resistance": 150,
+        "sensorID": "SkeletonSpawner",
+        "strength": "HARD",
+        "structureModel": [
+            "blspawner.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "width": 1
+    },
+    "Spawner-Zombie": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "Spawner-Zombie",
+        "name": "Zombie Spawner",
+        "resistance": 150,
+        "sensorID": "ZombieSpawner",
+        "strength": "HARD",
+        "structureModel": [
+            "blspawner.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "width": 1
     }
 }

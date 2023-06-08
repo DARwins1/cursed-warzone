@@ -930,6 +930,17 @@
             "CyborgRocket"
         ]
     },
+    "Cyb-Rocket-MRP": {
+        "available": true,
+        "body": "CyborgLightBody",
+        "id": "Cyb-Rocket-MRP",
+        "name": "Many-Rocket Cyborg",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "CyborgMiniRocket"
+        ]
+    },
     "Cyb-Rocket-GROUND": {
         "available": false,
         "body": "CyborgLightBody",

@@ -100,6 +100,20 @@
         "type": "Half-Tracked",
         "weight": 300
     },
+    "wheelednormal": {
+        "buildPoints": 125,
+        "buildPower": 150,
+        "deceleration": 50,
+        "designable": 1,
+        "hitpointPctOfBody": 100,
+        "id": "wheelednormal",
+        "model": "prlnormwhl1.PIE",
+        "name": "Normal Wheels",
+        "skidDeceleration": 350,
+        "speed": 175,
+        "type": "Lift",
+        "weight": 300
+    },
     "V-Tol": {
         "acceleration": 200,
         "buildPoints": 125,

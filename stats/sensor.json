@@ -33,6 +33,36 @@
         "range": 1024,
         "type": "STANDARD"
     },
+    "CreeperSpawner": {
+        "id": "CreeperSpawner",
+        "location": "TURRET",
+        "name": "Creeper Spawner Sensor",
+        "power": 500,
+        "range": 1024,
+        "sensorModel": "creeperspawner.pie",
+        "type": "STANDARD",
+        "weight": 100
+    },
+    "SkeletonSpawner": {
+        "id": "SkeletonSpawner",
+        "location": "TURRET",
+        "name": "Skeleton Spawner Sensor",
+        "power": 500,
+        "range": 1024,
+        "sensorModel": "skeletonspawner.pie",
+        "type": "STANDARD",
+        "weight": 100
+    },
+    "ZombieSpawner": {
+        "id": "ZombieSpawner",
+        "location": "TURRET",
+        "name": "Zombie Spawner Sensor",
+        "power": 500,
+        "range": 1024,
+        "sensorModel": "zombiespawner.pie",
+        "type": "STANDARD",
+        "weight": 100
+    },
     "FortressSensor": {
         "id": "FortressSensor",
         "location": "DEFAULT",
