@@ -679,6 +679,17 @@
             "CyborgCannon"
         ]
     },
+    "Cyb-Bison": {
+        "available": true,
+        "body": "CyborgLightBody",
+        "id": "Cyb-Bison",
+        "name": "Bison Cyborg",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "CyborgBison"
+        ]
+    },
     "CyborgChain01Ground": {
         "available": true,
         "body": "CyborgLightBody",
@@ -1055,7 +1066,7 @@
         ]
     },
     "NP-L-Sensor-Wheels": {
-        "body": "Body4ABT",
+        "body": "Body1REC",
         "id": "NP-L-Sensor-Wheels",
         "name": "*NP-L-Sensor-Wheels*",
         "propulsion": "wheeled01",

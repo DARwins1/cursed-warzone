@@ -332,6 +332,75 @@ function camUpgradeOnMapStructures(struct1, struct2, playerId, excluded)
 	}
 }
 
+//;; ## camUpgradeOnMapFeatures(feat1, feat2[, excluded])
+//;;
+//;; Search for feat1, save its coordinates, remove it, and then replace with it
+//;; with feat2. A third parameter can be specified to ignore specific object
+//;; IDs. Useful if a feature is assigned to an object label. It can be either an array
+//;; or a single ID number. Unortunatly, feature rotation is not preserved.
+//;; If a feature has a label or group, it will be transferred to the replacement, but if the
+//;; feature has multiple labels, then only one label will be transferred.
+//;;
+//;; @param {Object} struct1
+//;; @param {Object} struct2
+//;; @param {number|number[]} [excluded]
+//;; @returns {void}
+//;;
+function camUpgradeOnMapFeatures(feat1, feat2, excluded)
+{
+	if (!camDef(feat1) || !camDef(feat2))
+	{
+		camDebug("Not enough parameters specified for upgrading on map features");
+		return;
+	}
+
+	var featsOnMap = enumFeature(ALL_PLAYERS, feat1);
+
+	for (var i = 0, l = featsOnMap.length; i < l; ++i)
+	{
+		var feature = featsOnMap[i];
+		var skip = false;
+		
+		//Check if this object should be excluded from the upgrades
+		if (camDef(excluded))
+		{
+			if (excluded instanceof Array)
+			{
+				for (var j = 0, c = excluded.length; j < c; ++j)
+				{
+					if (feature.id === excluded[j])
+					{
+						skip = true;
+						break;
+					}
+				}
+				if (skip === true)
+				{
+					continue;
+				}
+			}
+			else if (feature.id === excluded)
+			{
+				continue;
+			}
+		}
+
+		//Check if this object has a label assigned to it
+		// FIXME: O(n) lookup here
+		let label = (getLabel(feature));
+
+		//Replace it
+		let featInfo = {x: feature.x, y: feature.y};
+		camSafeRemoveObject(feature, false);
+		let newFeat = addFeature(feat2, featInfo.x, featInfo.y);
+
+		if (camDef(label)) 
+		{
+			addLabel(newFeat, label);
+		}
+	}
+}
+
 //////////// privates
 
 function __camFactoryUpdateTactics(flabel)

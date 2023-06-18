@@ -83,6 +83,11 @@ const NEXUS = 3;
 const SCAV_6 = 6;
 const SCAV_7 = 7;
 
+const CLIPPY = 1;
+const BONZI_BUDDY = 2;
+const SPAMTON = 3;
+const MOBS = 4;
+
 const CAM_MAX_PLAYERS = 8;
 const CAM_TICKS_PER_FRAME = 100;
 const AI_POWER = 999999;
