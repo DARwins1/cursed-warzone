@@ -1,0 +1,133 @@
+
+include("script/campaign/libcampaign.js");
+include("script/campaign/templates.js");
+
+const SCAVENGER_RES = [
+	"R-Wpn-Flamer-Damage01", "R-Wpn-MG-Damage02",
+];
+
+//Ambush player from scav base - triggered from middle path
+camAreaEvent("scavBaseTrigger", function()
+{
+	var ambushGroup = camMakeGroup(enumArea("eastScavsNorth", SCAV_7, false));
+	camManageGroup(ambushGroup, CAM_ORDER_ATTACK, {
+		count: -1,
+		regroup: false
+	});
+});
+
+//Moves west scavs units closer to the base - triggered from right path
+camAreaEvent("ambush1Trigger", function()
+{
+	camCallOnce("westScavAction");
+});
+
+//Sends some units towards player LZ - triggered from left path
+camAreaEvent("ambush2Trigger", function()
+{
+	camCallOnce("northwestScavAction");
+});
+
+function westScavAction()
+{
+	var ambushGroup = camMakeGroup(enumArea("westScavs", SCAV_7, false));
+	camManageGroup(ambushGroup, CAM_ORDER_DEFEND, {
+		pos: camMakePos("ambush1")
+	});
+}
+
+function northwestScavAction()
+{
+	var ambushGroup = camMakeGroup(enumArea("northWestScavs", SCAV_7, false));
+	camManageGroup(ambushGroup, CAM_ORDER_DEFEND, {
+		pos: camMakePos("ambush2")
+	});
+}
+
+function eventPickup(feature, droid)
+{
+	if (droid.player === CAM_HUMAN_PLAYER && feature.stattype === ARTIFACT)
+	{
+		hackRemoveMessage("C1-1_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER);
+	}
+}
+
+function eventAttacked(victim, attacker)
+{
+	if (victim.player === CAM_HUMAN_PLAYER)
+	{
+		return;
+	}
+	if (!victim)
+	{
+		return;
+	}
+
+	if (victim.type === STRUCTURE && victim.id === 146)
+	{
+		camCallOnce("westScavAction");
+	}
+}
+
+//Send the south-eastern scavs in the main base on an attack run when the front bunkers get destroyed.
+function checkFrontBunkers()
+{
+	if (getObject("frontBunkerLeft") === null && getObject("frontBunkerRight") === null)
+	{
+		var ambushGroup = camMakeGroup(enumArea("eastScavsSouth", SCAV_7, false));
+		camManageGroup(ambushGroup, CAM_ORDER_ATTACK, {
+			count: -1,
+			regroup: false
+		});
+	}
+	else
+	{
+		queue("checkFrontBunkers", camSecondsToMilliseconds(5));
+	}
+}
+
+//Mission setup stuff
+function eventStartLevel()
+{
+	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "SUB_1_2S", {
+		area: "RTLZ",
+		message: "C1-1_LZ",
+		reinforcements: -1, //No reinforcements
+		retlz: true
+	});
+
+	var startpos = getObject("startPosition");
+	var lz = getObject("landingZone"); //player lz
+	var tent = getObject("transporterEntry");
+	var text = getObject("transporterExit");
+	centreView(startpos.x, startpos.y);
+	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
+	startTransporterEntry(tent.x, tent.y, CAM_HUMAN_PLAYER);
+	setTransporterExit(text.x, text.y, CAM_HUMAN_PLAYER);
+
+	camCompleteRequiredResearch(SCAVENGER_RES, SCAV_7);
+	if (difficulty >= HARD)
+	{
+		completeResearch("R-Wpn-Flamer-Range01", SCAV_7);
+	}
+
+	camUpgradeOnMapTemplates(cTempl.bloke, cTempl.blokeheavy, SCAV_7);
+	camUpgradeOnMapTemplates(cTempl.trike, cTempl.triketwin, SCAV_7);
+	camUpgradeOnMapTemplates(cTempl.buggy, cTempl.buggytwin, SCAV_7);
+	camUpgradeOnMapTemplates(cTempl.bjeep, cTempl.bjeeptwin, SCAV_7);
+
+	//Get rid of the already existing crate and replace with another
+	camSafeRemoveObject("artifact1", false);
+	camSetArtifacts({
+		"drumCrate": { tech: "R-Wpn-MG3Mk1" }, //Heavy machine gun
+	});
+
+	camPlayVideos({video: "FLIGHT", type: CAMP_MSG});
+	hackAddMessage("C1-1_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER, false);
+
+	queue("checkFrontBunkers", camSecondsToMilliseconds(5));
+
+	// Replace all snowy trees with funny explosive barrels
+	camUpgradeOnMapFeatures("TreeSnow3", "ExplosiveDrum");
+	camUpgradeOnMapFeatures("TreeSnow1", "NuclearDrum");
+}
