@@ -4,8 +4,13 @@ var cTempl = {
 // Cursed Vehicles
 crlsens: { body: "Body1REC", prop: "wheeled01", weap: "SensorTurret1Mk1" }, // Sensor Viper Wheels
 crbigmg: { body: "Body1BIG", prop: "wheeled01", weap: "MG3Mk2" }, // Big Machinegun Viper Wheels
+crlmgw: { body: "Body1REC", prop: "wheeled01", weap: "Mg1Mk1" }, // Machinegun Viper Wheels
+crlscorchw: { body: "Body1REC", prop: "wheeled01", weap: "BabaFlame" }, // Scorch Shot Viper Wheels
+crlcanw: { body: "Body1REC", prop: "wheeled01", weap: "Cannon1Mk1" }, // "Light" Cannon Viper Wheels
+crlbbw: { body: "Body1REC", prop: "wheeled01", weap: "Rocket-BB" }, // Bunker Buster Viper Wheels
 
 // Cursed Cyborgs/Infantry
+crcybmg: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgChaingun" }, // Machinegunner Cyborg
 crcybcool: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "NX-CyborgChaingun" }, // Cooler Machinegunner Cyborg
 crcybbb: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgBB" }, // Bunker Buster Cyborg
 crcybsword: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "Cyb-Wpn-Sword" }, // Sword Cyborg

@@ -1,0 +1,213 @@
+{
+	"position_0": {
+		"label": "scavAssembly1",
+		"pos": [12856, 14149]
+	},
+	"position_1": {
+		"label": "clipAssembly1",
+		"pos": [9031, 9629]
+	},
+	"position_2": {
+		"label": "clipAssembly2",
+		"pos": [9300, 5558]
+	},
+	"position_3": {
+		"label": "clipCybAssembly1",
+		"pos": [12866, 4417]
+	},
+	"position_4": {
+		"label": "scavAssembly2",
+		"pos": [10552, 3382]
+	},
+	"position_5": {
+		"label": "clipCybAssembly2",
+		"pos": [8762, 689]
+	},
+	"position_6": {
+		"label": "PatrolPos1",
+		"pos": [13357, 9453]
+	},
+	"position_7": {
+		"label": "PatrolPos2",
+		"pos": [10136, 10234]
+	},
+	"position_8": {
+		"label": "PatrolPos3",
+		"pos": [13245, 7761]
+	},
+	"position_9": {
+		"label": "PatrolPos4",
+		"pos": [11502, 8001]
+	},
+	"position_10": {
+		"label": "PatrolPos5",
+		"pos": [12433, 5670]
+	},
+	"position_11": {
+		"label": "PatrolPos6",
+		"pos": [13222, 3693]
+	},
+	"position_12": {
+		"label": "PatrolPos7",
+		"pos": [11791, 2943]
+	},
+	"position_13": {
+		"label": "PatrolPos8",
+		"pos": [12543, 1410]
+	},
+	"position_14": {
+		"label": "PatrolPos9",
+		"pos": [10343, 4442]
+	},
+	"position_15": {
+		"label": "PatrolPos10",
+		"pos": [9667, 2856]
+	},
+	"position_16": {
+		"label": "PatrolPos11",
+		"pos": [8786, 3408]
+	},
+	"position_17": {
+		"label": "startPosition",
+		"pos": [1920, 6656]
+	},
+
+	"area_0": {
+        "pos1": [10112, 14976],
+        "pos2": [10880, 15872],
+        "label": "scavBaseGroup1"
+    },
+    "area_1": {
+        "pos1": [11264, 13184],
+        "pos2": [13312, 14848],
+        "label": "scavBaseGroup2"
+    },
+    "area_2": {
+        "pos1": [8192, 7808],
+        "pos2": [10624, 10624],
+        "label": "clipBaseGroup1"
+    },
+    "area_3": {
+        "pos1": [12416, 9088],
+        "pos2": [13568, 10752],
+        "label": "clipBaseGroup2"
+    },
+    "area_4": {
+        "pos1": [8192, 3840],
+        "pos2": [11776, 6272],
+        "label": "clipBaseGroup3"
+    },
+    "area_5": {
+        "pos1": [11904, 2816],
+        "pos2": [13440, 5120],
+        "label": "clipBaseGroup4"
+    },
+    "area_6": {
+        "pos1": [8960, 2560],
+        "pos2": [11136, 3968],
+        "label": "scavBaseGroup3"
+    },
+    "area_7": {
+        "pos1": [8192, 512],
+        "pos2": [9600, 1920],
+        "label": "clipBaseGroup5"
+    },
+    "area_8": {
+        "pos1": [11904, 11520],
+        "pos2": [13440, 13056],
+        "label": "patternZone1"
+    },
+    "area_9": {
+        "pos1": [10752, 7040],
+        "pos2": [12288, 8576],
+        "label": "patternZone2"
+    },
+    "area_10": {
+        "pos1": [11776, 640],
+        "pos2": [13312, 2176],
+        "label": "patternZone3"
+    },
+    "area_11": {
+        "pos1": [9984, 14208],
+        "pos2": [10496, 14720],
+        "label": "scavAttackGroup"
+    },
+    "area_10": {
+		"label": "landingZone",
+		"pos1": [1280, 6528],
+		"pos2": [1536, 6784]
+	},
+
+	"object_0": {
+        "id": 2521,
+        "type": 2,
+        "player": 7,
+        "label": "synapticCrate"
+    },
+    "object_1": {
+        "id": 2520,
+        "type": 1,
+        "player": 1,
+        "label": "clipFactory1"
+    },
+    "object_2": {
+        "id": 2600,
+        "type": 1,
+        "player": 7,
+        "label": "scavFactory2"
+    },
+    "object_3": {
+        "id": 2666,
+        "type": 1,
+        "player": 1,
+        "label": "clipCybFactory2"
+    },
+    "object_4": {
+        "id": 2702,
+        "type": 2,
+        "player": 7,
+        "label": "door3"
+    },
+    "object_5": {
+        "id": 2525,
+        "type": 1,
+        "player": 1,
+        "label": "clipResearch1"
+    },
+    "object_6": {
+        "id": 2707,
+        "type": 2,
+        "player": 7,
+        "label": "door2"
+    },
+    "object_7": {
+        "id": 2587,
+        "type": 1,
+        "player": 1,
+        "label": "clipFactory2"
+    },
+    "object_8": {
+        "id": 2415,
+        "type": 1,
+        "player": 7,
+        "label": "scavFactory1"
+    },
+    "object_9": {
+        "id": 2523,
+        "type": 1,
+        "player": 1,
+        "label": "clipCybFactory1"
+    },
+    "object_10": {
+        "id": 2381,
+        "type": 2,
+        "player": 7,
+        "label": "door1"
+    },
+    "object_11": {
+        "id": 2592,
+        "type": 1,
+        "player": 1,
+        "label": "clipResearch2"
+    }
+}

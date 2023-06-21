@@ -1487,12 +1487,12 @@
         "height": 1,
         "hitpoints": 300,
         "id": "Emplacement-MortarPit01",
-        "name": "Mortar Pit",
+        "name": "Catapult Emplacement",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "MEDIUM",
         "structureModel": [
-            "BLMRTPIT.PIE"
+            "BLHARDPT.PIE"
         ],
         "thermal": 10,
         "type": "DEFENSE",
@@ -3604,6 +3604,30 @@
         "type": "DEFENSE",
         "weapons": [
             "Rocket-LtA-T"
+        ],
+        "width": 1
+    },
+    "WallTowerMG": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTowerMG",
+        "name": "Machinegun Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "MG1Mk1"
         ],
         "width": 1
     },

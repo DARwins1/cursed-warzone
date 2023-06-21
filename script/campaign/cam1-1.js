@@ -89,7 +89,7 @@ function checkFrontBunkers()
 //Mission setup stuff
 function eventStartLevel()
 {
-	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "SUB_1_2S", {
+	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "CAM_1C", {
 		area: "RTLZ",
 		message: "C1-1_LZ",
 		reinforcements: -1, //No reinforcements
@@ -106,10 +106,6 @@ function eventStartLevel()
 	setTransporterExit(text.x, text.y, CAM_HUMAN_PLAYER);
 
 	camCompleteRequiredResearch(SCAVENGER_RES, SCAV_7);
-	if (difficulty >= HARD)
-	{
-		completeResearch("R-Wpn-Flamer-Range01", SCAV_7);
-	}
 
 	camUpgradeOnMapTemplates(cTempl.bloke, cTempl.blokeheavy, SCAV_7);
 	camUpgradeOnMapTemplates(cTempl.trike, cTempl.triketwin, SCAV_7);
@@ -119,7 +115,7 @@ function eventStartLevel()
 	//Get rid of the already existing crate and replace with another
 	camSafeRemoveObject("artifact1", false);
 	camSetArtifacts({
-		"drumCrate": { tech: "R-Wpn-MG3Mk1" }, //Heavy machine gun
+		"drumCrate": { tech: "R-Wpn-MG3Mk1" }, // TODO: Explosive Drum
 	});
 
 	camPlayVideos({video: "FLIGHT", type: CAMP_MSG});

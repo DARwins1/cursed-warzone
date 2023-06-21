@@ -103,10 +103,10 @@ function eventStartLevel()
 	}
 
 	camSetArtifacts({
-		"base1factory": { tech: "R-Wpn-Flamer-Damage02" },
-		"base2factory": { tech: "R-Wpn-MG2Mk1" },
-		"base3sensor": { tech: "R-Sys-Sensor-Turret01" },
-		"base4gen": { tech: "R-Struc-PowerModuleMk1" },
+		// "base1factory": { tech: "R-Wpn-Flamer-Damage02" },
+		"base2factory": { tech: "R-Wpn-MG2Mk1" }, // Twin nugenihcaM
+		"base3sensor": { tech: "R-Sys-Sensor-Turret01" }, // Sensor Turret
+		"base4gen": { tech: "R-Struc-PowerModuleMk1" }, // Power Module
 	});
 
 	camSetEnemyBases({

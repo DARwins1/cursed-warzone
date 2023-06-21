@@ -1707,7 +1707,7 @@
         "propulsion": "wheeled01",
         "type": "DROID",
         "weapons": [
-            "Flame1Mk1"
+            "BabaFlame"
         ]
     },
     "ViperHMGHalftrack": {

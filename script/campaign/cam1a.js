@@ -197,24 +197,12 @@ function eventStartLevel()
 		},
 	});
 
-	if (difficulty >= HARD)
-	{
-		camSetArtifacts({
-			"base1ArtifactPos": { tech: ["R-Wpn-MG-Damage01", "R-Sys-Engineering01"] },
-			"base2Factory": { tech: ["R-Wpn-Flamer01Mk1", "R-Sys-MobileRepairTurret01"] },
-			"base3Factory": { tech: "R-Wpn-MG-Damage02" },
-			"base4Factory": { tech: "R-Wpn-MG-ROF01" },
-		});
-	}
-	else
-	{
-		camSetArtifacts({
-			"base1ArtifactPos": { tech: ["R-Wpn-MG-Damage01", "R-Sys-Engineering01"] },
-			"base2Factory": { tech: "R-Wpn-Flamer01Mk1" },
-			"base3Factory": { tech: ["R-Wpn-MG-Damage02", "R-Sys-MobileRepairTurret01"] },
-			"base4Factory": { tech: "R-Wpn-MG-ROF01" },
-		});
-	}
+	camSetArtifacts({
+		"base1ArtifactPos": { tech: "R-Wpn-MG-Damage01" }, // Hardened MG Bullets
+		"base2Factory": { tech: "R-Sys-Engineering01" }, // Engineering
+		"base3Factory": { tech: "R-Defense-Tower01" }, // MG Guard Tower
+		"base4Factory": { tech: "R-Wpn-MG-ROF01" }, // TODO: Black Box
+	});
 
 	camSetFactories({
 		"base2Factory": {

@@ -762,6 +762,32 @@
 		"type": "BUILDING",
 		"width": 1
 	},
+	"GiantDoorHoriz": {
+		"armour": 5,
+		"breadth": 3,
+		"damageable": 0,
+		"hitpoints": 50,
+		"id": "GiantDoorHoriz",
+		"lineOfSight": 1,
+		"model": "mibldwat.PIE",
+		"name": "Inconvenient Door",
+		"tileDraw": 1,
+		"type": "SKYSCRAPER",
+		"width": 3
+	},
+	"GiantDoorVert": {
+		"armour": 5,
+		"breadth": 3,
+		"damageable": 0,
+		"hitpoints": 50,
+		"id": "GiantDoorVert",
+		"lineOfSight": 1,
+		"model": "mibldwat.PIE",
+		"name": "Inconvenient Door",
+		"tileDraw": 1,
+		"type": "SKYSCRAPER",
+		"width": 3
+	},
 	"WaterBuilding": {
 		"armour": 5,
 		"breadth": 2,
