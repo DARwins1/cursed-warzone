@@ -236,8 +236,8 @@ function camUpgradeOnMapTemplates(template1, template2, playerId, excluded)
 
 			//Check if this object has a label and/or group assigned to it
 			// FIXME: O(n) lookup here
-			let label = (getLabel(dr));
-			let group = (dr.group);
+			let label = getLabel(dr);
+			let group = dr.group;
 
 			//Replace it
 			let droidInfo = {x: dr.x, y: dr.y, name: dr.name};
@@ -313,8 +313,8 @@ function camUpgradeOnMapStructures(struct1, struct2, playerId, excluded)
 
 		//Check if this object has a label and/or group assigned to it
 		// FIXME: O(n) lookup here
-		let label = (getLabel(structure));
-		let group = (structure.group);
+		let label = getLabel(structure);
+		let group = structure.group;
 
 		//Replace it
 		let structInfo = {x: structure.x * 128, y: structure.y * 128};
@@ -387,7 +387,7 @@ function camUpgradeOnMapFeatures(feat1, feat2, excluded)
 
 		//Check if this object has a label assigned to it
 		// FIXME: O(n) lookup here
-		let label = (getLabel(feature));
+		let label = getLabel(feature);
 
 		//Replace it
 		let featInfo = {x: feature.x, y: feature.y};

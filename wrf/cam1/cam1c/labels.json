@@ -24,47 +24,47 @@
 		"pos": [8762, 689]
 	},
 	"position_6": {
-		"label": "PatrolPos1",
+		"label": "patrolPos1",
 		"pos": [13357, 9453]
 	},
 	"position_7": {
-		"label": "PatrolPos2",
+		"label": "patrolPos2",
 		"pos": [10136, 10234]
 	},
 	"position_8": {
-		"label": "PatrolPos3",
+		"label": "patrolPos3",
 		"pos": [13245, 7761]
 	},
 	"position_9": {
-		"label": "PatrolPos4",
+		"label": "patrolPos4",
 		"pos": [11502, 8001]
 	},
 	"position_10": {
-		"label": "PatrolPos5",
+		"label": "patrolPos5",
 		"pos": [12433, 5670]
 	},
 	"position_11": {
-		"label": "PatrolPos6",
+		"label": "patrolPos6",
 		"pos": [13222, 3693]
 	},
 	"position_12": {
-		"label": "PatrolPos7",
+		"label": "patrolPos7",
 		"pos": [11791, 2943]
 	},
 	"position_13": {
-		"label": "PatrolPos8",
+		"label": "patrolPos8",
 		"pos": [12543, 1410]
 	},
 	"position_14": {
-		"label": "PatrolPos9",
+		"label": "patrolPos9",
 		"pos": [10343, 4442]
 	},
 	"position_15": {
-		"label": "PatrolPos10",
+		"label": "patrolPos10",
 		"pos": [9667, 2856]
 	},
 	"position_16": {
-		"label": "PatrolPos11",
+		"label": "patrolPos11",
 		"pos": [8786, 3408]
 	},
 	"position_17": {
@@ -132,7 +132,7 @@
         "pos2": [10496, 14720],
         "label": "scavAttackGroup"
     },
-    "area_10": {
+    "area_12": {
 		"label": "landingZone",
 		"pos1": [1280, 6528],
 		"pos2": [1536, 6784]

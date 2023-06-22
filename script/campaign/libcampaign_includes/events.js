@@ -173,7 +173,7 @@ function cam_eventDroidBuilt(droid, structure)
 	__camAddDroidToFactoryGroup(droid, structure);
 }
 
-function eventStructureBuilt(structure, droid)
+function cam_eventStructureBuilt(structure, droid)
 {
 	if (!camDef(structure))
 	{
@@ -390,8 +390,8 @@ function cam_eventAttacked(victim, attacker)
 					}
 					camManageGroup(camMakeGroup(droids), CAM_ORDER_ATTACK, {
 						count: -1,
-						regroup: false,
-						repair: 70
+						regroup: false
+						// repair: 70
 					});
 				}
 

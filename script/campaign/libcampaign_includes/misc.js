@@ -538,7 +538,7 @@ function camGenerateRandomMapCoordinateWithinRadius(center, radius, scanObjectRa
 
 	do
 	{
-		let randomPos = {x: camRand(limits.x2), y: camRand(limits.y2)};
+		let randomPos = {x: center.x + camRand(radius * 2) - radius, y: center.y + camRand(radius * 2) - radius};
 
 		if (randomPos.x < (limits.x + 2))
 		{
