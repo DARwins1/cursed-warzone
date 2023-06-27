@@ -126,9 +126,14 @@ function cam_eventStartLevel()
 	__camAllowVictoryMsgClear = true;
 	__camNeedlerLog = [];
 	__camPrimedCreepers = [];
+	__camResearchLog = [];
+	__camBlackOut = false;
+	__camSunPosition = {x: 225.0, y: -600.0, z: 450.0};
+	__camSunIntensity = {ar: 0.5, ag: 0.5, ab: 0.5, dr: 1, dg: 1, db: 1, sr: 1, sg: 1, sb: 1};
 	__camRandomizeFungibleCannons(); // Randomize all the Fungible Cannons on the map
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
 	__camAiPowerReset(); //grant power to the AI
+	__camUpdateResearchLog(); // Initialize the research log with tech from previous missions
 	setTimer("__camSpawnVtols", camSecondsToMilliseconds(0.5));
 	setTimer("__camRetreatVtols", camSecondsToMilliseconds(0.9));
 	setTimer("__checkVtolSpawnObject", camSecondsToMilliseconds(5));
@@ -140,6 +145,7 @@ function cam_eventStartLevel()
 	setTimer("__camTacticsTick", camSecondsToMilliseconds(0.1));
 	setTimer("__camScanCreeperRadii", camSecondsToMilliseconds(0.2));
 	setTimer("__updateNeedlerLog", camSecondsToMilliseconds(8));
+	setTimer("__camMonsterSpawnerTick", camSecondsToMilliseconds(16));
 	queue("__camShowBetaHintEarly", camSecondsToMilliseconds(4));
 	queue("__camGrantSpecialResearch", camSecondsToMilliseconds(6));
 }
@@ -182,9 +188,16 @@ function cam_eventStructureBuilt(structure, droid)
 	if (structure.name === _("Explosive Drum"))
 	{
 		// Swap out the structure for the feature object
-		var pos = {x: structure.x, y: structure.y};
+		let pos = {x: structure.x, y: structure.y};
 		camSafeRemoveObject(structure);
 		addFeature("ExplosiveDrum", pos.x, pos.y);
+	}
+	if (structure.name === _("Nuclear Drum"))
+	{
+		// Swap out the structure for the feature object
+		let pos = {x: structure.x, y: structure.y};
+		camSafeRemoveObject(structure);
+		addFeature("NuclearDrum", pos.x, pos.y);
 	}
 	else if (structure.name === _("Fungible Cannon Hardpoint"))
 	{
@@ -206,6 +219,13 @@ function cam_eventStructureBuilt(structure, droid)
 		{
 			groupAdd(group, newStruct);
 		}
+	}
+	else if (structure.name === _("Mystery Box"))
+	{
+		// Destroy the box and cause a random effect at its location
+		let pos = {x: structure.x, y: structure.y};
+		camSafeRemoveObject(structure, true);
+		camRandomEffect(pos);
 	}
 }
 
@@ -239,13 +259,13 @@ function cam_eventDestroyed(obj)
 		{
 			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
 				"B4body-sml-trike01", "BaBaProp", "", "", "BabaTrikeMG").id; // Spawn a trike...
-			queue("__camDetonateDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow them up
+			queue("__camDetonateDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
 		}
 		else if (obj.name === _("Nuclear Drum"))
 		{
 			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
 				"B4body-sml-trike01", "BaBaProp", "", "", "BabaTrikeMG").id; // Spawn a trike...
-			queue("__camDetonateNukeDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow them up
+			queue("__camDetonateNukeDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
 		}
 	}
 }
@@ -444,6 +464,14 @@ function cam_eventGameLoaded()
 		}
 	}
 
+	// Set the sun correctly
+	setSunPosition(__camSunPosition.x, __camSunPosition.y, __camSunPosition.z);
+	setSunIntensity(
+		__camSunIntensity.ar, __camSunIntensity.ag, __camSunIntensity.ab, 
+		__camSunIntensity.dr, __camSunIntensity.dg, __camSunIntensity.db, 
+		__camSunIntensity.sr, __camSunIntensity.sg, __camSunIntensity.sb
+	);
+
 	//Subscribe to eventGroupSeen again.
 	camSetEnemyBases();
 
@@ -484,6 +512,14 @@ function cam_eventObjectTransfer(obj, from)
 			playSound(snd);
 		}
 		queue("camNexusLaugh", camSecondsToMilliseconds(1.5));
+	}
+}
+
+function cam_eventResearched(research, structure, player)
+{
+	if (player === CAM_HUMAN_PLAYER)
+	{
+		__camUpdateResearchLog(research);
 	}
 }
 

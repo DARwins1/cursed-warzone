@@ -103,10 +103,10 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_droid.ogg",
 		"text": [
-			"New Propulsion Available for Design",
-			"Vertical Take Off and Landing Propulsion",
-			"Speed: VTOL",
-			"Body Points: Low"
+			"Totally Normal Wheels",
+			"Absolutely nothing un-normal about these wheels",
+			"Yep.",
+			"Completely normal"
 		]
 	},
 	"RES_W_CNAC2": {
@@ -128,7 +128,7 @@
 			"New Rocket Available",
 			"High explosive shaped charge missile",
 			"Best Targets: Bunkers, defenses, base structures",
-			"Body Points: Very Low"
+			"... It's a Bunker Buster"
 		]
 	},
 	"RES_W_RK_LTAT1": {
@@ -137,9 +137,9 @@
 		"sequenceName": "res_weapons.ogg",
 		"text": [
 			"New Rocket Available",
-			"Anti-tank rocket",
+			"\"Improved\" anti-tank rocket launcher",
 			"Best Targets: Vehicles",
-			"Body Points: Very Low"
+			"You might need to get extra close to actually hit anything"
 		]
 	},
 	"RES_W_SRK_AC3": {
@@ -151,6 +151,176 @@
 			"Rocket detects and locks on to engine emissions",
 			"Increases Rocket accuracy",
 			"All rockets upgraded automatically"
+		]
+	},
+	"RES_PB_BB": {
+		"id": "RES_PB_BB",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Defensive Structure Available",
+			"Armored bunker with Bunker Buster rocket",
+			"Automatically targets enemies within sensor range",
+			"Defensive Strength: Bunker Buster"
+		]
+	},
+	"RES_PB_BB2": {
+		"id": "RES_PB_BB2",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Defensive Structure Available",
+			"Armored bunker with more Bunker Buster rockets",
+			"Defensive Strength: Bunker Buster"
+		]
+	},
+	"RES_PB_BB3": {
+		"id": "RES_PB_BB3",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"How much bunker could a bunker buster bunker bust",
+			"If a bunker buster bunker could bust bunkers?",
+			"Defensive Strength: Bunker Buster"
+		]
+	},
+	"RES_W_RK_HVAT2": {
+		"id": "RES_W_RK_HVAT2",
+		"imdName": "MICAPSUL.PIE",
+		"sequenceName": "res_weapons.ogg",
+		"text": [
+			"New Rocket Available",
+			"Dual high explosive shaped charge missiles",
+			"... Because one clearly wasn't enough I guess"
+		]
+	},
+	"RES_W_RK_HVAT3": {
+		"id": "RES_W_RK_HVAT3",
+		"imdName": "MICAPSUL.PIE",
+		"sequenceName": "res_weapons.ogg",
+		"text": [
+			"I can't take it anymore"
+		]
+	},
+	"RES_FLAME_E": {
+		"id": "RES_FLAME_E",
+		"imdName": "MICAPSUL.PIE",
+		"sequenceName": "res_power.ogg",
+		"text": [
+			"EVER FEEL [[Small and Insignificant]]???",
+			"WELL< DON'T WORRY [Kids], YOU'RE FAVORITE [[Number 1 Rated Salesman1997]] IS HERE TO [Help! Help me!]!!",
+			"WITH OUR [New And Improved] FLAMER [Please Enable Our Browser Extension]!",
+			"NOW YOU CAN [[Oh god it burns! IT BURNS!]] FROM THE [Warm, Loving Embrace] OF YOUR [Miserable Hole]!",
+			"IT EVEN COMES [Packaged] WITH AN [[Towering Pillar Of]]!!",
+			"THIS [Deal] IS SO GOOD, IT SHOULD BE [[Prohibited In North America, Australia, Europe And East Asia]]!!!"
+		]
+	},
+	"RES_V_P_DRIFTW": {
+		"id": "RES_V_P_DRIFTW",
+		"imdName": "MICAPSUL.PIE",
+		"sequenceName": "res_power.ogg",
+		"text": [
+			"WANNA [[Get away from me!]]???",
+			"WELL NOW YOU",
+			"WELL NOW YOU",
+			"WELL NOW YOU [can't]!",
+			"YOU TOO CAN [[Steal]][ A Ride around Town on Our Specil Cungadero]",
+			"JUST STRAP THIS [Funky] LITTLE [[Thingamabob]] ONTO YOUR [Unhinged Killing Machines]",
+			"AND WATCH AS THEY [[Rip And Tear]] THROUGH [Innocent Pedestrians]!",
+			"[Road Safety] HAS NEVER BEEN MORE [[violation of our Terms Of Service]]!!!"
+		]
+	},
+	"RES_W_RK_LTATDEF": {
+		"id": "RES_W_RK_LTATDEF",
+		"imdName": "MICAPSUL.PIE",
+		"sequenceName": "res_power.ogg",
+		"text": [
+			"CONGRULATIONS!!!!",
+			"YOU ARE NOW OFFICIALLY [Esteemed Customer]!",
+			"AS A [[Commemorative Ring]], TAKE THIS [piece of garbage] [By the Classics You've Come To Expect] FOR THE [Discounted] PRICE OF !!!",
+			"THIS [Beautiful Baby Boy]'S BEEN [Fined]-TUNED TO [[Miss]] EVERY SHOT, SO YOU CAN ALWAYS DEPEND ON IT IF YOU<RE IN A [[Pickle]]",
+			"[[2 Radishes]]",
+			"[[3 Endives]]",
+			"[[4oz. Olive Oil]]",
+			"[[3oz. Balsamic Vinegar]]",
+			"[[8 Tablespoons Salt]]",
+			"[[Mix Vigorously]]",
+			"[[Place in Oven at 425 Degrees for 12 Minutes]]",
+			"[[4 Deviled Eggs]]",
+			"[[2 1/2 Tomatoes]]",
+			"[[16 Tablespoons Salt]]",
+			"[[Mix Gently]]",
+			"[[Place Back into Oven for Another 6 Minutes]]",
+			"[[Serve With Ranch]]"
+		]
+	},
+	"RES_V_BTWIN": {
+		"id": "RES_V_BTWIN",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_power.ogg",
+		"text": [
+			"CAN?T GET ENOUGH OF YOUR>E FAVORITE  [[Number 1 Rated Chassis 1999]]??!",
+			"WELL TODAY'S YOUR LUCKY DAY, YOU LITTLE [%$*!]",
+			"NOW YOU CAN [[Have It All]]",
+			"WITH SPAMTON'S [Two] FOR [2] DEAL!!!",
+			"NOW YOU CAN START ASKING THE [Big] QUESTIONS",
+			"[[Who are you?]]",
+			"[[Has science gone too far?]]",
+			"[[Can I have my money back?]]",
+			"YES, [Absolutely], [Absolutely] NOT!!!"
+		]
+	},
+	"RES_V_BTRIPLE": {
+		"id": "RES_V_BTRIPLE",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_droid.ogg",
+		"text": [
+			"Science has definitely gone too far."
+		]
+	},
+	"RES_ST_EXPDRUM": {
+		"id": "RES_ST_EXPDRUM",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Structure Available",
+			"Oil drum filled with explosives",
+			"Once built, can be detonated with other weapons",
+			"For what is a video game without red explosive barrels?",
+			"WARNING: Cannot be demolished un-explosively once built!"
+		]
+	},
+	"RES_CYW_MGCOOL": {
+		"id": "RES_CYW_MGCOOL",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_droid.ogg",
+		"text": [
+			"New Cyborg Available",
+			"Armed with two Cyborg Machineguns",
+			"Also armed with a pair of cool shades",
+			"Requires Cyborg factory to produce"
+		]
+	},
+	"RES_ST_BOX": {
+		"id": "RES_ST_BOX",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Structure Available",
+			"Mysterious Box",
+			"Causes a random effect once built",
+			"What could be inside?"
+		]
+	},
+	"RES_ST_NUKEDRUM": {
+		"id": "RES_ST_NUKEDRUM",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Structure Available",
+			"Gigantic drum filled with supercritical nuclear materials",
+			"Don't build this",
+			"You'll probably die"
 		]
 	}
 }

@@ -115,7 +115,7 @@ function eventStartLevel()
 	//Get rid of the already existing crate and replace with another
 	camSafeRemoveObject("artifact1", false);
 	camSetArtifacts({
-		"drumCrate": { tech: "R-Wpn-MG3Mk1" }, // TODO: Explosive Drum
+		"drumCrate": { tech: "R-Struc-ExplosiveDrum" }, // Explosive Drum
 	});
 
 	camPlayVideos({video: "FLIGHT", type: CAMP_MSG});

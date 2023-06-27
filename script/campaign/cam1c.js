@@ -475,7 +475,7 @@ function openFirstDoor()
 		interval: camSecondsToMilliseconds(20)
 	});
 
-	camSetExtraObjectiveMessage("Open the second door");
+	camSetExtraObjectiveMessage("Open the second inconvenient door");
 }
 
 // Delayed effects for the first door
@@ -505,7 +505,7 @@ function openSecondDoor()
 		interval: camSecondsToMilliseconds(20)
 	});
 
-	camSetExtraObjectiveMessage("Open the final door");
+	camSetExtraObjectiveMessage("Open the final inconvenient door");
 }
 
 // Open the last door and allow the player to win
@@ -611,7 +611,7 @@ function eventStartLevel()
 		"clipFactory1": { tech: "R-Wpn-Rocket03-HvAT" }, // Bunker Buster
 		"clipResearch1": { tech: "R-Struc-Research-Module" }, // Research Module
 		"clipResearch2": { tech: "R-Defense-HardcreteWall" }, // Hardcrete
-		"clipCybFactory1": { tech: "R-Vehicle-Engine01" }, // TODO: Cooler Machinegunner Cyborg
+		"clipCybFactory1": { tech: "R-Cyborg-Wpn-MGCool" }, // Cooler Machinegunner Cyborg
 	});
 	
 	camSetFactories({

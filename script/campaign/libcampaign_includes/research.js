@@ -60,6 +60,18 @@ function camCompleteRequiredResearch(researchIds, playerId)
 	}
 }
 
+//;; ## camIsResearched(resName)
+//;;
+//;; Returns true if the player has finished researching the given item.
+//;;
+//;; @param {string} resName
+//;; @returns {boolean}
+//;;
+function camIsResearched(resName)
+{
+	return getResearch(resName, CAM_HUMAN_PLAYER).done;
+}
+
 //////////// privates
 
 //granted shortly after mission start to give enemy players instant droid production.
@@ -72,5 +84,25 @@ function __camGrantSpecialResearch()
 			//Boost AI production to produce all droids within a factory throttle
 			completeResearch("R-Struc-Factory-Upgrade-AI", i);
 		}
+	}
+}
+
+// Keep track of what the player has researched.
+function __camUpdateResearchLog(research)
+{
+	if (!camDef(research))
+	{
+		// Initialize the research log
+		for (let i = 0; i < FULL_RESEARCH_LIST.length; i++)
+		{
+			if (getResearch(FULL_RESEARCH_LIST[i], CAM_HUMAN_PLAYER).done)
+			{
+				__camResearchLog.push(FULL_RESEARCH_LIST[i]);
+			}
+		}
+	}
+	else if (!__camResearchLog.includes(research.name))
+	{
+		__camResearchLog.push(research.name);
 	}
 }

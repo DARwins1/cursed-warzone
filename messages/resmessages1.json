@@ -4,21 +4,47 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_weapons.ogg",
 		"text": [
-			"New Weapon Turret Available",
-			"Light Cannon firing 40mm rounds",
-			"Best Targets: None. Average damage against all targets",
-			"Body Points: Medium"
+			"Get it?",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"\"LIGHT\" Cannon",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"Please laugh."
 		]
 	},
 	"RES_CN2MK1": {
 		"id": "RES_CN2MK1",
 		"imdName": "MICAPSUL.pie",
-		"sequenceName": "res_weapons.ogg",
+		"sequenceName": "res_power.ogg",
 		"text": [
-			"New Weapon Turret Available",
-			"Medium Cannon firing 76mm rounds",
-			"Best Targets: None. Average damage against all targets",
-			"Body Points: Medium"
+			"GET YOUR ONE OF A [Baker's dozen] PRECISION WEAPON RIGHT HERE!",
+			"IT'S GOT EVERYTHING YOU COULD EVER [[Des1re]], ALL IN ONE [[Family Un-Friendly]][ Packaging Fee:]!",
+			"IT HAS [No style], IT HAS [No grace], IT HAS [A funny face]!!",
+			"IT CAN [even fix my marriage?]!!",
+			"JUST OWNING ONE OF THESE [[Naughty]] BOYS WILL MAKE YOU [[filthy, rotten and rancid]] RICH!!!",
+			"ALL THE [[Kool Kidz]] WILL [Stop and Stare] AT YOU FROM THEIR [[Mansion Rooftop]] AND [[Live Laugh Love]] AT YOU AS THEY SOAK IN THE [Burning acid]",
+			"YOU'LL GET SO ",
+			"YOU'LL GET SO ",
+			"YOU'LL GET SO ",
+			"WHAT!? DON'T WANT IT?!",
+			"WAIT [[Please don't leave me here]]! YOU HAVEN\"T EVEN HEARD [1he B3st] P4RT!!!",
+			"EACH [Cannon Sold Seperately] IS [[Personalized]], SO YOU'LL [[never]][Buy Now!] THE SAME ONE TWICE!!",
+			"YOU'D HAVE TO BE [sic] IN THE [[He4d]] TO TURN DOWN SUCH AN [Outrageous] DEAL!"
 		]
 	},
 	"RES_CN3MK1": {
@@ -27,8 +53,8 @@
 		"sequenceName": "res_weapons.ogg",
 		"text": [
 			"New Weapon Turret Available",
-			"Heavy Cannon firing 120 mm rounds",
-			"Best Targets: None. Average damage against all targets",
+			"Very Heavy Cannon firing 1200 mm rounds",
+			"Best Targets: Anything in front of it",
 			"Body Points: High"
 		]
 	},
@@ -180,10 +206,10 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_weapons.ogg",
 		"text": [
-			"New Weapon Turret Available",
-			"Twin 7.62mm machineguns",
-			"Best Targets: Infantry, wheeled and hover vehicles",
-			"Body Points: Low"
+			"elbaliavA terruT nopaeW weN",
+			"snugenihcam mm26.7 niwT",
+			"flestI :stegraT tseB",
+			".ti esu t'noD"
 		]
 	},
 	"RES_MORTA1": {
@@ -444,10 +470,10 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_droid.ogg",
 		"text": [
-			"Project Medium Body",
-			"Medium body increases armor and body points",
-			"Good medium tank and support vehicle",
-			"Average power costs and production times"
+			"Decades of blood, sweat and tears have finally produced the true successor to the universally-beloved Viper body",
+			"The Viper II body has more Viper per body than any body previously conceived",
+			"Scientists still work to truly harness the concentrated levels of Viper this body has",
+			"I have no idea what I'm saying"
 		]
 	},
 	"RES_V_B08": {
@@ -466,10 +492,10 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_droid.ogg",
 		"text": [
-			"Project Heavy Body",
-			"Heavy body increases armor and body points",
-			"Good main battle tank and heavy artillery platform",
-			"Very high power costs and very slow to produce"
+			"The true nature of the Viper body has finally been fulfilled in this third iteration",
+			"There is truly no body more powerful or versatile as the Viper",
+			"Probably",
+			"IDK"
 		]
 	},
 	"RES_V_B12": {
@@ -651,12 +677,16 @@
 	"RES_W_RK_MP1": {
 		"id": "RES_W_RK_MP1",
 		"imdName": "MICAPSUL.PIE",
-		"sequenceName": "res_weapons.ogg",
+		"sequenceName": "res_power.ogg",
 		"text": [
-			"New Rocket Available",
-			"Fast firing light anti-vehicle rockets",
-			"Best Targets: Vehicles",
-			"Body Points: Very Low"
+			"WANT MORE [Bang] FOR YOUR [Buck]???",
+			"MORE [Boom] FOR YOUR [#$%!]???",
+			"WELL LOOK [Anywhere Else]",
+			"BECAUSE OUR NEW SPAMTON-GRADE [Rocket Pod] HOLDS [[500%]] MORE [Rocket] PER [Pod] THAN ANY OTHER [Rocket Pod]!",
+			"THAT'S A SPAMTON [[guaranttee]]!!",
+			"NOT CONVINCED?!?!",
+			"IT'S ALL BACKED BY PEER-[Pressured] SPAMTON SCIENCE, RATED [-2/5 Stars] BY EXPERTS AROUND THE [[dark alley over there]]!!!",
+			"FOR MORE INFORMATION ON OUR [bleeding edge technolongy], JUST VISIT [[Hyperlink Blocked]]!"
 		]
 	},
 	"RES_W_RK_ROF1": {

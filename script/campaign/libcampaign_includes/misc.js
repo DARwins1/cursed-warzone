@@ -601,6 +601,227 @@ function camDiscoverCampaign()
 	return UNKNOWN_CAMPAIGN_NUMBER;
 }
 
+//;; ## camRandomEffect(pos)
+//;;
+//;; Cause a random effect at the given position.
+//;;
+//;; @param {Object} pos
+//;;
+function camRandomEffect(pos)
+{
+	// Set a default list of effects
+	let effects = [
+		"oilDrum", "oilDrum", "oilDrums",
+		"explosiveDrum", "twinHostile", "explode",
+		"miniVipers", "manyPodTower"
+	]
+
+	// Additional effects with conditions
+	if (camRand(101) < (30 * camDiscoverCampaign()))
+	{
+		// Reduce the chances of this event by omitting it from the list:
+		// 70% of the time in alpha
+		// 40% of the time in beta
+		// 10% of the time in gamma
+		effects.push("bigViper");
+	}
+	if (!__camBlackOut && camRand(101) < 20)
+	{
+		// 20% chance to allow a black out if one isn't currently active
+		effects.push("blackOut");
+	}
+	if (camDiscoverCampaign() > 1)
+	{
+		// Allow Monster Spawners after alpha campaign
+		effects.push("monsterSpawner");
+	}
+	if (camIsResearched("R-Struc-ExplosiveDrum") && !camIsResearched("R-Struc-NuclearDrum"))
+	{
+		// Allow Nuclear Drum Artifact if Explosive Drum is researched
+		effects.push("nukeDrumArti");
+	}
+	if (camIsResearched("R-Vehicle-BodyTwin") && !camIsResearched("R-Vehicle-BodyTriple"))
+	{
+		// Allow Triple Viper Artifact if Twin Viper is researched
+		effects.push("tripleViperArti");
+	}
+	if (camIsResearched("R-Vehicle-Body05"))
+	{
+		// Allow Towering Pillar Of Lancers if Viper II is researched
+		effects.push("lancerPillar");
+	}
+	if (camIsResearched("R-Vehicle-Body11"))
+	{
+		// Allow Bunker Buster Array if Viper III is researched
+		effects.push("bbArray");
+	}
+
+	// Choose an effect
+	switch (effects[camRand(effects.length)])
+	{
+		case "oilDrum":
+			// Spawn a single oil drum
+			addFeature("OilDrum", pos.x, pos.y);
+			break;
+		case "oilDrums":
+			// Spawn several oil drums
+			for (let i = -1; i <= 1; i++)
+			{
+				for (let j = -1; j <= 1; j++)
+				{
+					addFeature("OilDrum", pos.x + i, pos.y + j);
+				}
+			}
+			break;
+		case "explosiveDrum":
+			// Spawn an explosive drum
+			addFeature("ExplosiveDrum", pos.x, pos.y);
+			break;
+		case "twinHostile":
+			// Spawn a group of hostile Twin snugenihcaM
+			for (let i = -1; i <= 1; i++)
+			{
+				for (let j = -1; j <= 1; j++)
+				{
+					addDroid(MOBS, pos.x + i, pos.y + j, 
+						_("Twin nugenihcaM Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "MG2Mk1"
+					);
+				}
+			}
+			break;
+		case "bigViper":
+			// Spawn a Big Machinegun Viper Wheels for the player
+			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y, 
+				_("Big Machinegun Viper Wheels"), "Body1BIG", "wheeled01", "", "", "MG3Mk2"
+			);
+			break;
+		case "bbArray":
+			// Spawn a Bunker Buster Array for the player
+			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y, 
+				_("Bunker Buster Array Viper III Thick Wheels"), "Body11ABT", "tracked01", "", "", "Rocket-BB-IDF"
+			);
+			break;
+		case "lancerPillar":
+			// Spawn a Towering Pillar Of Lancers for the player
+			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y, 
+				_("Towering Pillar Of Lancers Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Rocket-LtA-TPillar"
+			);
+			break;
+		case "manyPodTower":
+			// Spawn a hostile Many-Rocket tower
+			addStructure("GuardTower6", MOBS, pos.x * 128, pos.y * 128);
+			break;
+		case "explode":
+			// Cause a drum explosion
+			let boomBaitId = addDroid(10, pos.x, pos.y, "Boom Bait",
+				"B4body-sml-trike01", "BaBaProp", "", "", "BabaTrikeMG").id; // Spawn a trike...
+			queue("__camDetonateDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
+			break;
+		case "monsterSpawner":
+			// Spawn a Monster Spawner
+			if (camRand(101) < 50)
+			{
+				// 50% chance for Zombie Spawner
+				addStructure("Spawner-Zombie", MOBS, pos.x * 128, pos.y * 128);
+			}
+			else if (camRand(101) < 50)
+			{
+				// 25% chance for Skeleton Spawner
+				addStructure("Spawner-Skeleton", MOBS, pos.x * 128, pos.y * 128);
+			}
+			else
+			{
+				// 25% chance for Creeper Spawner
+				addStructure("Spawner-Creeper", MOBS, pos.x * 128, pos.y * 128);
+			}
+			break;
+		case "miniVipers":
+			// Spawn 18 Mini Machinegun Viper Wheels
+			var player = CAM_HUMAN_PLAYER;
+			if (camRand(101) < 20)
+			{
+				// 20% chance for the swarm to be hostile
+				player = MOBS;
+			}
+			for (let i = -1; i <= 1; i++)
+			{
+				for (let j = -1; j <= 1; j++)
+				{
+					addDroid(player, pos.x + i, pos.y + j, 
+						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
+					);
+					addDroid(player, pos.x + i, pos.y + j, 
+						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
+					);
+				}
+			}
+			break;
+		case "nukeDrumArti":
+			// Spawn an artifact for the Nuclear Drum
+			if (camDef(__camArtifacts["nukeDrumCrate"]))
+			{
+				break; // Don't place if an artifact was already placed
+			}
+			addLabel(addFeature("Crate", pos.x, pos.y), "nukeDrumCrate");
+			__camArtifacts["nukeDrumCrate"] = {tech: "R-Struc-NuclearDrum", placed: true };
+			break;
+		case "tripleViperArti":
+			// Spawn an artifact for the Triple Viper
+			if (camDef(__camArtifacts["tripleViperCrate"]))
+			{
+				break; // Don't place if an artifact was already placed
+			}
+			addLabel(addFeature("Crate", pos.x, pos.y), "tripleViperCrate");
+			__camArtifacts["tripleViperCrate"] = {tech: "R-Vehicle-BodyTriple", placed: true };
+			break;
+		case "blackOut":
+			// Make the whole map go dark
+			__camBlackOut = true;
+			camSetSunPosition(0, 0, 0);
+			camSetSunIntensity(0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4);
+			playSound("Powerdown.ogg");
+			setTimer("__camPlayCaveSounds", camSecondsToMilliseconds(30));
+			queue("__camEndBlackOut", camMinutesToMilliseconds(4));
+			break;
+		default:
+			return;
+	}
+}
+
+//;; ## camSetSunPosition(x, y, z)
+//;;
+//;; A wrapper for `setSunPosition()`, allows the sun to stay persistent between saves.
+//;;
+//;; @param {number} x
+//;; @param {number} y
+//;; @param {number} z
+//;;
+function camSetSunPosition(x, y, z)
+{
+	__camSunPosition = {x: x, y: y, z: z};
+	setSunPosition(x, y, z);
+}
+
+//;; ## camSetSunIntensity(ar, ag, ab, dr, dg, db, sr, sg, sb)
+//;;
+//;; A wrapper for `setSunIntensity()`, allows the sun to stay persistent between saves.
+//;;
+//;; @param {number} ar
+//;; @param {number} ag
+//;; @param {number} ab
+//;; @param {number} dr
+//;; @param {number} dg
+//;; @param {number} db
+//;; @param {number} sr
+//;; @param {number} sg
+//;; @param {number} sb
+//;;
+function camSetSunIntensity(ar, ag, ab, dr, dg, db, sr, sg, sb)
+{
+	__camSunIntensity = {ar: ar, ag: ag, ab: ab, dr: dr, dg: dg, db: db, sr: sr, sg: sg, sb: sb};
+	setSunIntensity(ar, ag, ab, dr, dg, db, sr, sg, sb);
+}
+
 //////////// privates
 
 function __camGlobalContext()
@@ -809,6 +1030,7 @@ function __camScanCreeperRadii()
 			}
 
 			let creepPos = camMakePos(creepList[j]);
+
 			// Check if any enemies are within 2 tiles
 			if (enumRange(creepPos.x, creepPos.y, 2, ALL_PLAYERS, false).filter((obj) => (
 				obj.type !== FEATURE && !allianceExistsBetween(creepList[j].player, obj.player)
@@ -818,6 +1040,66 @@ function __camScanCreeperRadii()
 				__camPrimedCreepers.push(creepList[j].id);
 				fireWeaponAtObj("CreeperHissSFX", creepList[j]); // Play a gamer's nightmare-fuel
 				queue("__camDetonateCreeper", camSecondsToMilliseconds(1.5), creepList[j].id + "");
+			}
+		}
+	}
+}
+
+// See if any Monster Spawners should spawn anything
+function __camMonsterSpawnerTick()
+{
+	// Loop through every Spawner on the map
+	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	{
+		let spawnerList = enumStruct(i, DEFENSE, false).filter((obj) => (
+			obj.name === _("Creeper Spawner") || obj.name === _("Skeleton Spawner")
+			|| obj.name === _("Zombie Spawner")
+		));
+		for (let j = 0; j < spawnerList.length; j++)
+		{
+			let spawnerPos = camMakePos(spawnerList[j]);
+
+			// Check if any enemies are within 24 tiles
+			if (enumRange(spawnerPos.x, spawnerPos.y, 24, ALL_PLAYERS, false).filter((obj) => (
+				obj.type !== FEATURE && !allianceExistsBetween(spawnerList[j].player, obj.player)
+			)).length > 0)
+			{
+				// Enemy in range, try to spawn some mobs
+				let numMobs = difficulty + camRand(1); // 3-4 on Normal
+				let spawnedMobs = [];
+				for (let k = 0; k < numMobs; k++)
+				{
+					let spawnPos = camGenerateRandomMapCoordinateWithinRadius(spawnerPos, 3, 1);
+					var mob;
+					switch (spawnerList[j].name)
+					{
+						case "Creeper Spawner":
+							mob = {name: _("Creeper"), body: "CreeperBody", weap: "Cyb-Wpn-CreeperDud"};
+							break;
+						case "Skeleton Spawner":
+							mob = {name: _("Skeleton"), body: "SkeletonBody", weap: "Cyb-Wpn-SkelBow"};
+							break;
+						case "Zombie Spawner":
+							if (camRand(camChangeOnDiff(101)) < 5)
+							{
+								// Around a 5% chance to spawn a Baby Zombie instead
+								mob = {name: _("Baby Zombie"), body: "ZombieBody", weap: "Cyb-Wpn-ZmbieMelee"};
+							}
+							else
+							{
+								mob = {name: _("Zombie"), body: "ZombieBody", weap: "Cyb-Wpn-ZmbieMelee"};
+							}
+							break;
+						default:
+							mob = {name: _("Zombie"), body: "ZombieBody", weap: "Cyb-Wpn-ZmbieMelee"};
+							break;
+					}
+					// Spawn the mob
+					spawnedMobs.push(addDroid(spawnerList[j].player, spawnPos.x, spawnPos.y, mob.name, mob.body, "CyborgLegs", "", "", mob.weap));
+				}
+
+				// Get the new mobs moving around
+				camManageGroup(camMakeGroup(spawnedMobs), CAM_ORDER_ATTACK);
 			}
 		}
 	}
@@ -886,4 +1168,28 @@ function __camRandomizeFungibleCannons()
 			}
 		}
 	}
+}
+
+// Play a random cave sound
+function __camPlayCaveSounds()
+{
+	let caveSounds = [
+		"Cave1.ogg", "Cave2.ogg", "Cave3.ogg",
+		"Cave4.ogg", "Cave5.ogg", "Cave6.ogg",
+		"Cave7.ogg", "Cave8.ogg", "Cave9.ogg",
+		"Cave10.ogg", "Cave11.ogg", "Cave12.ogg",
+		"Cave13.ogg", "Cave14.ogg", "Cave15.ogg",
+		"Cave16.ogg", "Cave17.ogg", "Cave18.ogg",
+		"Cave19.ogg", 
+	];
+
+	playSound(caveSounds[camRand(caveSounds.length)]);
+}
+
+// Reset the sun back to its standard position and intensity, and end all black out effects
+function __camEndBlackOut()
+{
+	camSetSunPosition(225.0, -600.0, 450.0);
+	setSunIntensity(0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 1);
+	__camBlackOut = false;
 }

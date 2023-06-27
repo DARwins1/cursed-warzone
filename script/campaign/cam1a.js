@@ -201,7 +201,7 @@ function eventStartLevel()
 		"base1ArtifactPos": { tech: "R-Wpn-MG-Damage01" }, // Hardened MG Bullets
 		"base2Factory": { tech: "R-Sys-Engineering01" }, // Engineering
 		"base3Factory": { tech: "R-Defense-Tower01" }, // MG Guard Tower
-		"base4Factory": { tech: "R-Wpn-MG-ROF01" }, // TODO: Black Box
+		"base4Factory": { tech: "R-Struc-BlackBox" }, // Black Box
 	});
 
 	camSetFactories({

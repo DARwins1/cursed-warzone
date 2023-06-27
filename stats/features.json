@@ -367,7 +367,7 @@
 		"id": "NuclearDrum",
 		"model": "minukedrum.pie",
 		"name": "Nuclear Drum",
-		"startVisible": 0,
+		"startVisible": 1,
 		"tileDraw": 1,
 		"type": "TREE",
 		"width": 3

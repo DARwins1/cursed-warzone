@@ -433,6 +433,33 @@
         "weaponSlots": 1,
         "weight": 600
     },
+    "Body1Mini": {
+        "armourHeat": 2,
+        "armourKinetic": 5,
+        "buildPoints": 75,
+        "buildPower": 15,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 35,
+        "id": "Body1Mini",
+        "model": "drlbod01mini.pie",
+        "name": "Mini Viper",
+        "powerOutput": 2500,
+        "propulsionExtraModels": {
+            "wheeled01": {
+                "left": "prlwhlmini.pie"
+            },
+            "wheeled02": {
+                "left": "prlwhlmini.pie"
+            },
+            "wheeled03": {
+                "left": "prlwhlmini.pie"
+            }
+        },
+        "size": "LIGHT",
+        "weaponSlots": 1,
+        "weight": 300
+    },
     "Body2SUP": {
         "armourHeat": 6,
         "armourKinetic": 12,
@@ -790,45 +817,6 @@
         "name": "Big Viper",
         "powerOutput": 50000,
         "propulsionExtraModels": {
-            "HalfTrack": {
-                "left": "prlhtr1.pie"
-            },
-            "HalfTrack02": {
-                "left": "prlhtr1.pie"
-            },
-            "HalfTrack03": {
-                "left": "prlhtr1.pie"
-            },
-            "V-Tol": {
-                "left": "prlvtl1.pie",
-                "moving": "fxvtl01.pie"
-            },
-            "V-Tol02": {
-                "left": "prlvtl1.pie",
-                "moving": "fxvtl01.pie"
-            },
-            "V-Tol03": {
-                "left": "prlvtl1.pie",
-                "moving": "fxvtl01.pie"
-            },
-            "hover01": {
-                "left": "prlhov1.pie"
-            },
-            "hover02": {
-                "left": "prlhov1.pie"
-            },
-            "hover03": {
-                "left": "prlhov1.pie"
-            },
-            "tracked01": {
-                "left": "prltrk1.pie"
-            },
-            "tracked02": {
-                "left": "prltrk1.pie"
-            },
-            "tracked03": {
-                "left": "prltrk1.pie"
-            },
             "wheeled01": {
                 "left": "prlwhl1big.pie"
             },

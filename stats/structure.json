@@ -261,6 +261,25 @@
         "type": "CORNER WALL",
         "width": 1
     },
+    "A0BlackBox": {
+        "armour": 15,
+        "breadth": 3,
+        "buildPoints": 500,
+        "buildPower": 150,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 700,
+        "id": "A0BlackBox",
+        "name": "Mystery Box",
+        "sensorID": "ZNULLSENSOR",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "BLBOX.pie"
+        ],
+        "thermal": 15,
+        "type": "WALL",
+        "width": 3
+    },
     "A0CannonTower": {
         "armour": 10,
         "breadth": 1,
@@ -2308,15 +2327,15 @@
     "P0-AASite-SAM1": {
         "armour": 10,
         "breadth": 1,
-        "buildPoints": 450,
-        "buildPower": 250,
+        "buildPoints": 250,
+        "buildPower": 225,
         "ecmID": "ZNULLECM",
         "height": 1,
         "hitpoints": 400,
         "id": "P0-AASite-SAM1",
-        "name": "Avenger SAM Site",
+        "name": "Sansburst AA Site",
         "resistance": 150,
-        "sensorID": "NavGunSensor",
+        "sensorID": "DefaultSensor1Mk1",
         "strength": "MEDIUM",
         "structureModel": [
             "Blaamnt1.PIE"
@@ -2324,7 +2343,7 @@
         "thermal": 10,
         "type": "DEFENSE",
         "weapons": [
-            "Missile-LtSAM"
+            "Rocket-Sunburst"
         ],
         "width": 1
     },
@@ -3829,6 +3848,25 @@
         "thermal": 5,
         "type": "WALL",
         "width": 1
+    },
+    "A0NuclearDrum": {
+        "armour": 5,
+        "breadth": 3,
+        "buildPoints": 600,
+        "buildPower": 500,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 250,
+        "id": "A0NuclearDrum",
+        "name": "Nuclear Drum",
+        "sensorID": "ZNULLSENSOR",
+        "strength": "SOFT",
+        "structureModel": [
+            "minukedrum.PIE"
+        ],
+        "thermal": 5,
+        "type": "WALL",
+        "width": 3
     },
     "Spawner-Creeper": {
         "armour": 15,

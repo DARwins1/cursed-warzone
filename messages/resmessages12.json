@@ -48,10 +48,10 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_weapons.ogg",
 		"text": [
-			"New Weapon Turret Available",
-			".50-calibre heavy machinegun",
-			"Best Targets: Infantry, wheeled and hover vehicles",
-			"Body Points: Medium"
+			"Want more realism in your 1999 RTS game?",
+			"Well today is your lucky day!",
+			"Now you can watch as your machineguns stop to painstakingly reload each and every bullet into their 50-round magazines.",
+			"Y'know, for realism!"
 		]
 	},
 	"RES_SY_CBSTU1": {
@@ -193,9 +193,7 @@
 		"text": [
 			"New Rocket Available",
 			"Rocket artillery; can be assigned to a sensor",
-			"Best Targets: Vehicles",
-			"Body Points: Very Low"
-		]
+			"Great for hitting everything in the enemy's general direction"		]
 	},
 	"RES_W_RK_MRL1": {
 		"id": "RES_W_RK_MRL1",

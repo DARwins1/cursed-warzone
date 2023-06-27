@@ -983,10 +983,7 @@
 		"imdName": "MICAPSUL.PIE",
 		"sequenceName": "res_weapons.ogg",
 		"text": [
-			"New SAM Turret Available",
-			"Surface-to-air missile",
-			"Best Targets: Aerial targets only",
-			"Body Points: Very Low"
+			"This is the worst joke in the mod."
 		]
 	},
 	"RES_W_MS_MART": {
@@ -1036,12 +1033,11 @@
 	"RES_W_RAIL1": {
 		"id": "RES_W_RAIL1",
 		"imdName": "MICAPSUL.PIE",
-		"sequenceName": "res_weapons.ogg",
+		"sequenceName": "res_power.ogg",
 		"text": [
-			"New Rail Gun Available",
-			"Rapid fire rail gun firing needle darts",
-			"Best Targets: None. Average damage against all targets",
-			"Body Points: Medium"
+			"FRESH OFF THE [[Dumpster]]!!!",
+			"THE ULTIMATE [[Galactic Superweapon]] FOR ALL YOUR [Lobby Stomping] NEEDS!",
+			"TEACH YOUR [Friends and Family] TO [Fear the Pink Mist]!!!"
 		]
 	},
 	"RES_W_RAIL2": {
