@@ -185,4 +185,8 @@ function eventStartLevel()
 
 	// Replace all snowy trees with funny explosive barrels
 	camUpgradeOnMapFeatures("TreeSnow3", "ExplosiveDrum");
+
+	// Spamton items
+	enableResearch("R-Vehicle-Prop-DriftWheels"); // Drift Wheels
+	enableResearch("R-Wpn-Flamer01Extended"); // Extended Flamer
 }

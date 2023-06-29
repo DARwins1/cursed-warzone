@@ -126,14 +126,12 @@ function cam_eventStartLevel()
 	__camAllowVictoryMsgClear = true;
 	__camNeedlerLog = [];
 	__camPrimedCreepers = [];
-	__camResearchLog = [];
 	__camBlackOut = false;
 	__camSunPosition = {x: 225.0, y: -600.0, z: 450.0};
 	__camSunIntensity = {ar: 0.5, ag: 0.5, ab: 0.5, dr: 1, dg: 1, db: 1, sr: 1, sg: 1, sb: 1};
 	__camRandomizeFungibleCannons(); // Randomize all the Fungible Cannons on the map
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
 	__camAiPowerReset(); //grant power to the AI
-	__camUpdateResearchLog(); // Initialize the research log with tech from previous missions
 	setTimer("__camSpawnVtols", camSecondsToMilliseconds(0.5));
 	setTimer("__camRetreatVtols", camSecondsToMilliseconds(0.9));
 	setTimer("__checkVtolSpawnObject", camSecondsToMilliseconds(5));
@@ -512,14 +510,6 @@ function cam_eventObjectTransfer(obj, from)
 			playSound(snd);
 		}
 		queue("camNexusLaugh", camSecondsToMilliseconds(1.5));
-	}
-}
-
-function cam_eventResearched(research, structure, player)
-{
-	if (player === CAM_HUMAN_PLAYER)
-	{
-		__camUpdateResearchLog(research);
 	}
 }
 

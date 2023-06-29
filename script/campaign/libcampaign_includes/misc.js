@@ -613,21 +613,22 @@ function camRandomEffect(pos)
 	let effects = [
 		"oilDrum", "oilDrum", "oilDrums",
 		"explosiveDrum", "twinHostile", "explode",
-		"miniVipers", "manyPodTower"
-	]
+		"miniVipers", "manyPodTower", "scavScorchShot",
+		"trees", "driftVipers", "fungHardpoint",
+	];
 
 	// Additional effects with conditions
-	if (camRand(101) < (30 * camDiscoverCampaign()))
+	if (camRand(101) < (25 * camDiscoverCampaign()))
 	{
 		// Reduce the chances of this event by omitting it from the list:
-		// 70% of the time in alpha
-		// 40% of the time in beta
-		// 10% of the time in gamma
+		// 75% of the time in alpha
+		// 50% of the time in beta
+		// 25% of the time in gamma
 		effects.push("bigViper");
 	}
-	if (!__camBlackOut && camRand(101) < 20)
+	if (!__camBlackOut && camRand(101) < 10)
 	{
-		// 20% chance to allow a black out if one isn't currently active
+		// 10% chance to allow a black out if one isn't currently active
 		effects.push("blackOut");
 	}
 	if (camDiscoverCampaign() > 1)
@@ -655,6 +656,12 @@ function camRandomEffect(pos)
 		// Allow Bunker Buster Array if Viper III is researched
 		effects.push("bbArray");
 	}
+	if (camIsResearched("R-Comp-SynapticLink"))
+	{
+		// Allow Sword and BB cyborgs if Synaptic Link is researched
+		effects.push("bbCyb");
+		effects.push("swordCyb");
+	}
 
 	// Choose an effect
 	switch (effects[camRand(effects.length)])
@@ -677,6 +684,19 @@ function camRandomEffect(pos)
 			// Spawn an explosive drum
 			addFeature("ExplosiveDrum", pos.x, pos.y);
 			break;
+		case "trees":
+			// Spawn a group of trees
+			for (let i = -1; i <= 1; i++)
+			{
+				for (let j = -1; j <= 1; j++)
+				{
+					if (camRand(101) < 50)
+					{
+						addFeature("Tree3", pos.x + i, pos.y + j);
+					}
+				}
+			}
+			break;
 		case "twinHostile":
 			// Spawn a group of hostile Twin snugenihcaM
 			for (let i = -1; i <= 1; i++)
@@ -688,6 +708,43 @@ function camRandomEffect(pos)
 					);
 				}
 			}
+			break;
+		case "scavScorchShot":
+			// Spawn a grid of 4 scav Scorch Shot towers
+			addStructure("A0BaBaFlameTower", SCAV_7, (pos.x - 1) * 128, (pos.y) * 128);
+			addStructure("A0BaBaFlameTower", SCAV_7, (pos.x) * 128, (pos.y - 1) * 128);
+			addStructure("A0BaBaFlameTower", SCAV_7, (pos.x + 1) * 128, (pos.y) * 128);
+			addStructure("A0BaBaFlameTower", SCAV_7, (pos.x) * 128, (pos.y + 1) * 128);
+			break;
+		case "bbCyb":
+			// Spawn a grid of 4 Bunker Buster Cyborgs
+			addDroid(MOBS, pos.x - 1, pos.y, 
+				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
+			);
+			addDroid(MOBS, pos.x + 1, pos.y, 
+				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
+			);
+			addDroid(MOBS, pos.x, pos.y - 1, 
+				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
+			);
+			addDroid(MOBS, pos.x, pos.y + 1, 
+				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
+			);
+			break;
+		case "swordCyb":
+			// Spawn a grid of 4 Sword Cyborgs
+			addDroid(MOBS, pos.x - 1, pos.y, 
+				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
+			);
+			addDroid(MOBS, pos.x + 1, pos.y, 
+				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
+			);
+			addDroid(MOBS, pos.x, pos.y - 1, 
+				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
+			);
+			addDroid(MOBS, pos.x, pos.y + 1, 
+				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
+			);
 			break;
 		case "bigViper":
 			// Spawn a Big Machinegun Viper Wheels for the player
@@ -710,6 +767,10 @@ function camRandomEffect(pos)
 		case "manyPodTower":
 			// Spawn a hostile Many-Rocket tower
 			addStructure("GuardTower6", MOBS, pos.x * 128, pos.y * 128);
+			break;
+		case "fungHardpoint":
+			// Spawn a Fungible Cannon Hardpoint for the player
+			addStructure(__camFungibleCanHardList[camRand(__camFungibleCanHardList.length)], CAM_HUMAN_PLAYER, pos.x * 128, pos.y * 128);
 			break;
 		case "explode":
 			// Cause a drum explosion
@@ -752,6 +813,24 @@ function camRandomEffect(pos)
 					);
 					addDroid(player, pos.x + i, pos.y + j, 
 						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
+					);
+				}
+			}
+			break;
+		case "driftVipers":
+			// Spawn 9 Machinegun Viper Drift Wheels
+			var player = CAM_HUMAN_PLAYER;
+			if (camRand(101) < 50)
+			{
+				// 50% chance for the vipers to be hostile
+				player = MOBS;
+			}
+			for (let i = -1; i <= 1; i++)
+			{
+				for (let j = -1; j <= 1; j++)
+				{
+					addDroid(player, pos.x + i, pos.y + j, 
+						_("Machinegun Viper Drift Wheels"), "Body1REC", "wheeledskiddy", "", "", "MG1Mk1"
 					);
 				}
 			}
@@ -1191,5 +1270,6 @@ function __camEndBlackOut()
 {
 	camSetSunPosition(225.0, -600.0, 450.0);
 	setSunIntensity(0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 1);
+	removeTimer("__camPlayCaveSounds");
 	__camBlackOut = false;
 }

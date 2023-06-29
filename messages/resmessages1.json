@@ -217,10 +217,10 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_weapons.ogg",
 		"text": [
-			"New Indirect Fire Weapon Available",
-			"May be targeted directly or assigned to a sensor turret or tower",
-			"Best Targets: Base structures, infantry, wheeled vehicles",
-			"Body Points: Very Low"
+			"After centuries of weapons development, we have finally perfected the art of chucking huge stones at each other.",
+			"As a great philosopher once stated:",
+			"\"ooga booga kil yuo wit rock\" - Ung",
+			"Ooga booga indeed."
 		]
 	},
 	"RES_PB_ATR": {
@@ -636,8 +636,8 @@
 		"sequenceName": "res_weapons.ogg",
 		"text": [
 			"Machinegun Upgrade",
-			"Armor-Piercing Discard Sabot Bullets",
-			"Increases Machinegun damage",
+			"Hardeneder case machinegun bullets",
+			"Make bullet hurt more",
 			"All machineguns upgraded automatically"
 		]
 	},

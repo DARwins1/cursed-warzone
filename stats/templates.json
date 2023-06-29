@@ -1737,7 +1737,7 @@
         "propulsion": "HalfTrack",
         "type": "DROID",
         "weapons": [
-            "Flame1Mk1"
+            "BabaFlame"
         ]
     },
     "ViperHMGTracks": {

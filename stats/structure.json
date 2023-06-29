@@ -587,8 +587,8 @@
     "A0RepairCentre1": {
         "armour": 10,
         "breadth": 1,
-        "buildPoints": 500,
-        "buildPower": 100,
+        "buildPoints": 250,
+        "buildPower": 50,
         "ecmID": "RepairCentreLight",
         "height": 2,
         "hitpoints": 400,
@@ -1754,7 +1754,7 @@
         "armour": 10,
         "breadth": 1,
         "buildPoints": 400,
-        "buildPower": 275,
+        "buildPower": 125,
         "ecmID": "ZNULLECM",
         "height": 2,
         "hitpoints": 600,
@@ -1767,6 +1767,29 @@
             "BLGUARDR.pie"
         ],
         "thermal": 10,
+        "type": "DEFENSE",
+        "weapons": [
+            "RailGun1Mk1"
+        ],
+        "width": 1
+    },
+    "GuardTower-Rail1Steel": {
+        "armour": 8,
+        "breadth": 1,
+        "buildPoints": 300,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 450,
+        "id": "GuardTower-Rail1Steel",
+        "name": "Needler Guard Tower",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "BLGUARDM.pie"
+        ],
+        "thermal": 8,
         "type": "DEFENSE",
         "weapons": [
             "RailGun1Mk1"
@@ -1797,7 +1820,7 @@
         "width": 1
     },
     "GuardTower1": {
-        "armour": 10,
+        "armour": 8,
         "breadth": 1,
         "buildPoints": 300,
         "buildPower": 100,
@@ -1812,7 +1835,7 @@
         "structureModel": [
             "BLGUARDM.PIE"
         ],
-        "thermal": 10,
+        "thermal": 8,
         "type": "DEFENSE",
         "weapons": [
             "MG3Mk1"
@@ -1843,7 +1866,7 @@
 		"width": 1
 	},
     "GuardTower2": {
-        "armour": 10,
+        "armour": 8,
         "breadth": 1,
         "buildPoints": 400,
         "buildPower": 100,
@@ -1858,7 +1881,7 @@
         "structureModel": [
             "BLGUARDM.PIE"
         ],
-        "thermal": 10,
+        "thermal": 8,
         "type": "DEFENSE",
         "weapons": [
             "MG2Mk1"
@@ -1889,13 +1912,13 @@
         "width": 1
     },
     "GuardTower4": {
-        "armour": 15,
+        "armour": 8,
         "breadth": 1,
         "buildPoints": 400,
         "buildPower": 100,
         "ecmID": "ZNULLECM",
         "height": 2,
-        "hitpoints": 600,
+        "hitpoints": 450,
         "id": "GuardTower4",
         "name": "Scorch Shot Guard Tower",
         "resistance": 150,
@@ -1904,7 +1927,7 @@
         "structureModel": [
             "BLGUARDM.pie"
         ],
-        "thermal": 15,
+        "thermal": 8,
         "type": "DEFENSE",
         "weapons": [
             "BabaFlame"
@@ -1912,13 +1935,13 @@
         "width": 1
     },
     "GuardTowerE": {
-        "armour": 15,
+        "armour": 8,
         "breadth": 1,
         "buildPoints": 400,
         "buildPower": 100,
         "ecmID": "ZNULLECM",
         "height": 3,
-        "hitpoints": 600,
+        "hitpoints": 450,
         "id": "GuardTowerE",
         "name": "Extended Flamer Guard Tower",
         "resistance": 150,
@@ -1926,6 +1949,29 @@
         "strength": "MEDIUM",
         "structureModel": [
             "BLGUARDE.pie"
+        ],
+        "thermal": 8,
+        "type": "DEFENSE",
+        "weapons": [
+            "Flame1Mk2"
+        ],
+        "width": 1
+    },
+    "GuardTowerEH": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 3,
+        "hitpoints": 600,
+        "id": "GuardTowerEH",
+        "name": "Extended Flamer Tower",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "BLGUARDRE.pie"
         ],
         "thermal": 15,
         "type": "DEFENSE",
@@ -1937,11 +1983,11 @@
 	"GuardTower4H": {
 		"armour": 15,
 		"breadth": 1,
-		"buildPoints": 400,
+		"buildPoints": 350,
 		"buildPower": 140,
 		"ecmID": "ZNULLECM",
 		"height": 2,
-		"hitpoints": 400,
+		"hitpoints": 600,
 		"id": "GuardTower4H",
 		"name": "Scorch Shot Tower",
 		"resistance": 150,
@@ -2768,7 +2814,7 @@
         "width": 1
     },
     "Sys-SensoTower01": {
-        "armour": 10,
+        "armour": 8,
         "breadth": 1,
         "buildPoints": 300,
         "buildPower": 60,
@@ -2783,7 +2829,7 @@
         "structureModel": [
             "BLGUARDM.PIE"
         ],
-        "thermal": 10,
+        "thermal": 8,
         "type": "DEFENSE",
         "width": 1
     },

@@ -2,12 +2,38 @@ var cTempl = {
 ////////////////////////////////////////////////////////////////////////////////
 
 // Cursed Vehicles
+// Wheels
 crlsens: { body: "Body1REC", prop: "wheeled01", weap: "SensorTurret1Mk1" }, // Sensor Viper Wheels
 crbigmg: { body: "Body1BIG", prop: "wheeled01", weap: "MG3Mk2" }, // Big Machinegun Viper Wheels
+crminimg: { body: "Body1Mini", prop: "wheeled01", weap: "MGMini" }, // Mini Machinegun Viper Wheels
 crlmgw: { body: "Body1REC", prop: "wheeled01", weap: "MG1Mk1" }, // Machinegun Viper Wheels
 crlscorchw: { body: "Body1REC", prop: "wheeled01", weap: "BabaFlame" }, // Scorch Shot Viper Wheels
 crlcanw: { body: "Body1REC", prop: "wheeled01", weap: "Cannon1Mk1" }, // "Light" Cannon Viper Wheels
 crlbbw: { body: "Body1REC", prop: "wheeled01", weap: "Rocket-BB" }, // Bunker Buster Viper Wheels
+crlpodw: { body: "Body1REC", prop: "wheeled01", weap: "Rocket-Pod" }, // Many-Rocket Pod Viper Wheels
+crlmortw: { body: "Body1REC", prop: "wheeled01", weap: "Mortar1Mk1" }, // Catapult Viper Wheels
+
+// Drift Wheels
+crlmgdw: { body: "Body1REC", prop: "wheeledskiddy", weap: "MG1Mk1" }, // Machinegun Viper Drift Wheels
+crlscorchdw: { body: "Body1REC", prop: "wheeledskiddy", weap: "BabaFlame" }, // Scorch Shot Viper Drift Wheels
+crlcandw: { body: "Body1REC", prop: "wheeledskiddy", weap: "Cannon1Mk1" }, // "Light" Cannon Viper Drift Wheels
+crlbbdw: { body: "Body1REC", prop: "wheeledskiddy", weap: "Rocket-BB" }, // Bunker Buster Viper Drift Wheels
+crlpoddw: { body: "Body1REC", prop: "wheeledskiddy", weap: "Rocket-Pod" }, // Many-Rocket Pod Viper Drift Wheels
+
+// Half-wheels (Half-tracks)
+crlmght: { body: "Body1REC", prop: "HalfTrack", weap: "MG1Mk1" }, // Machinegun Viper Half-wheels
+crlscorchht: { body: "Body1REC", prop: "HalfTrack", weap: "BabaFlame" }, // Scorch Shot Viper Half-wheels
+crlcanht: { body: "Body1REC", prop: "HalfTrack", weap: "Cannon1Mk1" }, // "Light" Cannon Viper Half-wheels
+crlbbht: { body: "Body1REC", prop: "HalfTrack", weap: "Rocket-BB" }, // Bunker Buster Viper Half-wheels
+crlpodht: { body: "Body1REC", prop: "HalfTrack", weap: "Rocket-Pod" }, // Many-Rocket Pod Viper Half-wheels
+crmpillarht: { body: "Body5REC", prop: "HalfTrack", weap: "Rocket-LtA-TPillar" }, // Towering Pillar Of Lancers Viper II Half-wheels
+crmmortht: { body: "Body5REC", prop: "HalfTrack", weap: "Mortar1Mk1" }, // Catapult Viper II Half-wheels
+
+// Thick Wheels (Tracks)
+crmpillarht: { body: "Body11ABT", prop: "tracked01", weap: "Rocket-BB-IDF" }, // Bunker Buster Array Viper III Thick Wheels
+
+// Normal Wheels (basically VTOLs)
+
 
 // Cursed Cyborgs/Infantry
 crcybmg: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgChaingun" }, // Machinegunner Cyborg

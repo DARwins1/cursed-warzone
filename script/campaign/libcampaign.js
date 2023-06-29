@@ -193,43 +193,6 @@ var __camFungibleCanHardList = [ // List of Fungible Cannon Hardpoint variants
 	"WallTower03Mk14", "WallTower03Mk15"
 ];
 
-//research
-const FULL_RESEARCH_LIST = [ // ALL research items (used to populate the research log on level transition)
-	"R-Wpn-MG1Mk1", "R-Wpn-MG2Mk1", "R-Wpn-MG3Mk1", "R-Wpn-Cannon1Mk1",
-	"R-Wpn-Cannon2Mk1", "R-Wpn-Cannon3Mk1", "R-Wpn-Cannon5", "R-Wpn-Flamer01Mk1",
-	"R-Wpn-Flamer01Extended", "R-Wpn-Flame2", "R-Wpn-Mortar01Lt", "R-Wpn-Mortar02Hvy",
-	"R-Wpn-Mortar3", "R-Wpn-Rocket01-LtAT", "R-Wpn-Rocket01-LtAT-Def", "R-Wpn-Rocket02-MRL",
-	"R-Wpn-Rocket03-HvAT", "R-Wpn-Rocket03-HvAT2", "R-Wpn-Rocket03-HvAT3", "R-Wpn-Rocket05-MiniPod",
-	"R-Wpn-Rocket06-IDF", "R-Wpn-AAGun03", "R-Wpn-Missile-LtSAM", "R-Wpn-Bomb01",
-	"R-Wpn-HowitzerMk1", "R-Wpn-SpyTurret", "R-Wpn-RailGun01", "R-Cyborg-Wpn-Cannon",
-	"R-Cyborg-Wpn-Flamer", "R-Cyborg-Wpn-MG", "R-Cyborg-Wpn-MGCool", "R-Cyborg-Wpn-Rocket",
-	"R-Cyborg-Wpn-Rail1", "R-Comp-CommandTurret01", "R-Comp-SynapticLink", "R-Cyborg-Legs01",
-	"R-Cyborg-Metals01", "R-Vehicle-Metals01", "R-Defense-HardcreteWall", "R-Defense-MRL",
-	"R-Defense-MortarPit", "R-Defense-Pillbox01", "R-Defense-Pillbox04", "R-Defense-Pillbox05",
-	"R-Defense-Pillbox06", "R-Defense-PillboxBB", "R-Defense-PillboxBB2", "R-Defense-PillboxBB3",
-	"R-Defense-TankTrap01", "R-Defense-Tower01", "R-Defense-Tower02", "R-Defense-Tower03",
-	"R-Defense-Tower06", "R-Defense-WallTower01", "R-Defense-WallTower02", "R-Defense-WallTower03",
-	"R-Defense-WallTower04", "R-Defense-WallTower06", "R-Defense-WallUpgrade01", "R-Struc-ExplosiveDrum",
-	"R-Struc-BlackBox", "R-Struc-CommandRelay", "R-Struc-Factory-Cyborg", "R-Struc-Factory-Module",
-	"R-Struc-Factory-Upgrade01", "R-Struc-Materials01", "R-Struc-PowerModuleMk1", "R-Struc-RepairFacility",
-	"R-Struc-Research-Module", "R-Struc-Research-Upgrade01", "R-Struc-RprFac-Upgrade01", "R-Sys-Engineering01",
-	"R-Sys-MobileRepairTurret01", "R-Sys-Sensor-Tower01", "R-Sys-Sensor-Turret01", "R-Sys-Sensor-Upgrade01",
-	"R-Sys-Spade1Mk1", "R-Vehicle-Body01", "R-Vehicle-Body05", "R-Vehicle-Body11",
-	"R-Vehicle-BodyTwin", "R-Vehicle-BodyTriple", "R-Vehicle-Engine01", "R-Vehicle-Prop-Halftracks",
-	"R-Vehicle-Prop-Tracks", "R-Vehicle-Prop-Wheels", "R-Vehicle-Prop-DriftWheels", "R-Wpn-Cannon-Accuracy01",
-	"R-Wpn-Cannon-Damage01", "R-Defense-Tower04", "R-Wpn-Flamer-Damage01", "R-Wpn-Flamer-ROF01",
-	"R-Wpn-MG-Damage01", "R-Wpn-MG-Damage02", "R-Wpn-MG-ROF01", "R-Wpn-Mortar-Acc01",
-	"R-Wpn-Mortar-Damage01", "R-Wpn-Mortar-ROF01", "R-Wpn-Rocket-Accuracy01", "R-Wpn-Rocket-Damage01",
-	"R-Wpn-Rocket-ROF01", "R-Wpn-RocketSlow-Accuracy01", "R-Wpn-RocketSlow-Damage01", "R-Defense-Howitzer",
-	"R-Defense-HvyFlamer", "R-Defense-HvyMor", "R-Defense-IDFRocket", "R-Struc-Power-Upgrade01",
-	"R-Struc-VTOLFactory", "R-Struc-VTOLPad", "R-Struc-VTOLPad-Upgrade01", "R-Sys-CBSensor-Tower01",
-	"R-Sys-CBSensor-Turret01", "R-Sys-Engineering02", "R-Sys-Sensor-Tower02", "R-Vehicle-Prop-VTOL",
-	"R-Wpn-AAGun-Damage01", "R-Wpn-AAGun-ROF01", "R-Wpn-Bomb-Damage01", "R-Wpn-Cannon-ROF01",
-	"R-Wpn-Howitzer-Accuracy01", "R-Wpn-Howitzer-Damage01", "R-Wpn-RocketSlow-ROF01", "R-Defense-GuardTower-Rail1",
-	"R-Defense-SamSite1", "R-Sys-Engineering03", "R-Sys-NEXUSrepair", "R-Struc-NuclearDrum"
-]; // NOTE: This excludes certain items such as script-related or tutorial items
-var __camResearchLog; // List of tech researched by the player
-
 //tactics
 const CAM_ORDER_ATTACK = 0;
 const CAM_ORDER_DEFEND = 1;

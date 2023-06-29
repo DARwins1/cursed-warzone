@@ -532,8 +532,10 @@
 		"imdName": "MICAPSUL.PIE",
 		"sequenceName": "res_weapons.ogg",
 		"text": [
-			"New Anti-Anti-Aircraft Turret Available",
-			"The ultimate weapon for your anti-anti-aircraft needs"
+			"New AAA Turret Available",
+			"30mm Anti-Anti-Aircraft machinegun",
+			"Ground targets only",
+			"Body Points: Medium"
 		]
 	},
 	"RES_W_AA4": {

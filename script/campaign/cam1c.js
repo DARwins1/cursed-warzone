@@ -685,9 +685,11 @@ function eventStartLevel()
 	// Replace all snowy trees with funny explosive barrels
 	camUpgradeOnMapFeatures("TreeSnow3", "ExplosiveDrum");
 
-	// Add the gigantic doors
+	// Add the gigantic doors (and signs)
 	camUpgradeOnMapFeatures("TreeSnow1", "GiantDoorHoriz");
 	camUpgradeOnMapFeatures("TreeSnow2", "GiantDoorVert");
+	camUpgradeOnMapFeatures("Pylon", "Sign2");
+	camUpgradeOnMapFeatures("OilTower", "Sign3");
 
 	// HACK: Automatic label transfer doesn't seem to work for features...
 	addLabel(getObject(87, 86), "door1");
@@ -701,4 +703,7 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CLIPPY);
 
 	setTimer("checkPatterns", camSecondsToMilliseconds(1));
+
+	// Spamton items
+	enableResearch("R-Wpn-RailGun01"); // Needler
 }

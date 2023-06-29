@@ -86,23 +86,3 @@ function __camGrantSpecialResearch()
 		}
 	}
 }
-
-// Keep track of what the player has researched.
-function __camUpdateResearchLog(research)
-{
-	if (!camDef(research))
-	{
-		// Initialize the research log
-		for (let i = 0; i < FULL_RESEARCH_LIST.length; i++)
-		{
-			if (getResearch(FULL_RESEARCH_LIST[i], CAM_HUMAN_PLAYER).done)
-			{
-				__camResearchLog.push(FULL_RESEARCH_LIST[i]);
-			}
-		}
-	}
-	else if (!__camResearchLog.includes(research.name))
-	{
-		__camResearchLog.push(research.name);
-	}
-}

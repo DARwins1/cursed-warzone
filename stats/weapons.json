@@ -772,7 +772,7 @@
         "shortRange": 640,
         "waterGfx": "FXFLSHL.PIE",
         "weaponClass": "HEAT",
-        "weaponEffect": "ALL ROUNDER",
+        "weaponEffect": "FLAMER",
         "weaponSubClass": "COMMAND",
         "weaponWav": "pcv432.ogg",
         "weight": 1000
@@ -2569,7 +2569,7 @@
         "shortRange": 512,
         "waterGfx": "FXFLSHL.PIE",
         "weaponClass": "HEAT",
-        "weaponEffect": "ALL ROUNDER",
+        "weaponEffect": "FLAMER",
         "weaponSubClass": "COMMAND",
         "weaponWav": "pcv432.ogg",
         "weight": 120
@@ -2769,7 +2769,7 @@
         "weaponEffect": "BUNKER BUSTER",
         "weaponSubClass": "SLOW ROCKET",
         "weaponWav": "rocket.ogg",
-        "weight": 250
+        "weight": 120
     },
     "CyborgRotMG": {
         "buildPoints": 270,

@@ -308,7 +308,7 @@
 		"text": [
 			"New Structure Available",
 			"Mysterious Box",
-			"Causes a random effect once built",
+			"Causes a random event once built",
 			"What could be inside?"
 		]
 	},
@@ -321,6 +321,63 @@
 			"Gigantic drum filled with supercritical nuclear materials",
 			"Don't build this",
 			"You'll probably die"
+		]
+	},
+	"RES_IMREPTU1": {
+		"id": "RES_IMREPTU1",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_systech.ogg",
+		"text": [
+			"New Systems Turret Available",
+			"Battlefield repair unit",
+			"Automatically Repairs Damaged Units",
+			"...If they're close enough"
+		]
+	},
+	"RES_SCORCH": {
+		"id": "RES_SCORCH",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_weapons.ogg",
+		"text": [
+			"Level 10 Flare Gun",
+			"100% mini-crits vs burning players",
+			"Flare knocks back target on hit and explodes when it hits the ground.",
+			"Increased knockback on burning players",
+			"-35% self damage force",
+			"-35% damage penalty",
+			"This weapon will reload automatically when not active.",
+			"",
+			"...",
+			"Just kidding, it doesn't do any of that.",
+			"It's the camBalance flamer tower.",
+		]
+	},
+	"RES_W_BISON": {
+		"id": "RES_W_BISON",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_weapons.ogg",
+		"text": [
+			"Level 30 Indivisible Particle Smasher",
+			"Does not require ammo",
+			"Projectile penetrates enemy targets",
+			"Projectile cannot be deflected",
+			"Deals only 20% damage to buildings"
+		]
+	},
+	"RES_TOWEREXTENDED": {
+		"id": "RES_TOWEREXTENDED",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"I can see yo momma from here!"
+		]
+	},
+	"RES_TOWERSCORCH": {
+		"id": "RES_TOWERSCORCH",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"TECHNICALLY, this tower is unchanged"
 		]
 	}
 }

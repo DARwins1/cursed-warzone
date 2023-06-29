@@ -788,6 +788,45 @@
 		"type": "SKYSCRAPER",
 		"width": 3
 	},
+	"Sign1": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "Sign1",
+		"lineOfSight": 0,
+		"model": "misign1.PIE",
+		"name": "Sign 1",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "BUILDING",
+		"width": 1
+	},
+	"Sign2": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "Sign2",
+		"lineOfSight": 0,
+		"model": "misign2.PIE",
+		"name": "Sign 2",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "BUILDING",
+		"width": 1
+	},
+	"Sign3": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "Sign3",
+		"lineOfSight": 0,
+		"model": "misign3.PIE",
+		"name": "Sign 3",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "BUILDING",
+		"width": 1
+	},
 	"WaterBuilding": {
 		"armour": 5,
 		"breadth": 2,
