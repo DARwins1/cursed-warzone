@@ -3,7 +3,7 @@ include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
 const ENEMY_RES = [
-	"R-Wpn-Flamer-Damage01", "R-Wpn-MG-Damage02",
+	"R-Wpn-MG-Damage02",
 ];
 
 // Pattern coordinates to place orange rocks.
@@ -272,6 +272,11 @@ var door3Open;
 // True if Clippy has started launching transports
 var clippyTransportsActive;
 
+camAreaEvent("RemoveBeacon", function()
+{
+	hackRemoveMessage("C1C_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER);
+});
+
 function eventStructureBuilt(structure, droid)
 {
 	if (structure.player !== CAM_HUMAN_PLAYER || clippyTransportsActive)
@@ -532,7 +537,7 @@ function doorCheck()
 
 function eventStartLevel()
 {
-	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CAM_1CA", {callback: "doorCheck"});
+	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CTF_2FORT", {callback: "doorCheck"});
 	var startpos = getObject("startPosition");
 	var lz = getObject("landingZone");
 	centreView(startpos.x, startpos.y);

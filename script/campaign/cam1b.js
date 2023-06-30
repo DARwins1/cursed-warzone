@@ -4,7 +4,7 @@ include("script/campaign/templates.js");
 
 var NPScout; // Sensor scout
 const SCAVENGER_RES = [
-	"R-Wpn-Flamer-Damage01", "R-Wpn-MG-Damage01",
+	"R-Wpn-MG-Damage01",
 ];
 
 camAreaEvent("AttackArea1", function(droid)

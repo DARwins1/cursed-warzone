@@ -618,17 +618,17 @@ function camRandomEffect(pos)
 	];
 
 	// Additional effects with conditions
-	if (camRand(101) < (25 * camDiscoverCampaign()))
+	if (camRand(101) < (15 * camDiscoverCampaign()))
 	{
 		// Reduce the chances of this event by omitting it from the list:
-		// 75% of the time in alpha
-		// 50% of the time in beta
-		// 25% of the time in gamma
+		// 85% of the time in alpha
+		// 70% of the time in beta
+		// 55% of the time in gamma
 		effects.push("bigViper");
 	}
-	if (!__camBlackOut && camRand(101) < 10)
+	if (!__camBlackOut && camRand(101) < 15)
 	{
-		// 10% chance to allow a black out if one isn't currently active
+		// 15% chance to allow a black out if one isn't currently active
 		effects.push("blackOut");
 	}
 	if (camDiscoverCampaign() > 1)

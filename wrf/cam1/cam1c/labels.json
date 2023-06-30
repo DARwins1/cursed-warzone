@@ -209,5 +209,12 @@
         "type": 1,
         "player": 1,
         "label": "clipResearch2"
+    },
+
+    "radius_0": {
+        "label": "RemoveBeacon",
+        "subscriber": 0,
+        "pos": [7168, 13888],
+        "radius": 540
     }
 }

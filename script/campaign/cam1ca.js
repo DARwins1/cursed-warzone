@@ -3,7 +3,7 @@ include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
 const ENEMY_RES = [
-	"R-Wpn-Flamer-Damage01", "R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
+	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 ];
 
 camAreaEvent("attackTrigger1", function(droid)
@@ -117,13 +117,13 @@ function openDoors()
 
 function eventStartLevel()
 {
-	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CAM_1END");
+	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "BYE_BYE");
 	var startpos = getObject("startPosition");
 	var lz = getObject("landingZone");
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 
-	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.5)));
+	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.25)));
 	camPlayVideos({video: "MB1CA_MSG", type: CAMP_MSG});
 
 	camCompleteRequiredResearch(ENEMY_RES, CLIPPY);

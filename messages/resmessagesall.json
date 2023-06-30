@@ -349,7 +349,7 @@
 			"",
 			"...",
 			"Just kidding, it doesn't do any of that.",
-			"It's the camBalance flamer tower.",
+			"It's the camBalance flamer tower."
 		]
 	},
 	"RES_W_BISON": {
@@ -378,6 +378,17 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"TECHNICALLY, this tower is unchanged"
+		]
+	},
+	"RES_CYW_BB": {
+		"id": "RES_CYW_BB",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_droid.ogg",
+		"text": [
+			"New Cyborg Available",
+			"Armed with Cyborg Bunker Buster",
+			"Body Points: Medium",
+			"Requires Cyborg factory to produce"
 		]
 	}
 }
