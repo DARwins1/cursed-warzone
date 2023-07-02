@@ -939,8 +939,8 @@ function camResetSun()
 	}
 
 	// Set the sun correctly
-	setSunPosition(sp.x, sp.y, sp.z);
-	setSunIntensity(
+	camSetSunPosition(sp.x, sp.y, sp.z);
+	camSetSunIntensity(
 		si.ar, si.ag, si.ab, 
 		si.dr, si.dg, si.db, 
 		si.sr, si.sg, si.sb
@@ -1107,7 +1107,7 @@ function __camPlayTeleportSfx(targetId)
 	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
 	{
 		target = getObject(DROID, i, targetId);
-		if (camDef(target))
+		if (target !== null)
 		{
 			break;
 		}

@@ -739,7 +739,7 @@
 		"iconID": "IMAGE_RES_CYBORGTECH",
 		"id": "R-Cyborg-Wpn-Sword",
 		"msgName": "RES_CYW_SWORD",
-		"name": "Bunker Buster Cyborg",
+		"name": "Sword Cyborg",
 		"keyTopic": 1,
 		"requiredResearch": [
 			"R-Cyborg-Wpn-MG"

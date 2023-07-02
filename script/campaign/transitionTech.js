@@ -5,7 +5,7 @@ const ALPHA_RESEARCH_NEW = [
 	// 1
 	"R-Wpn-MG1Mk1", "R-Vehicle-Body01", "R-Sys-Spade1Mk1", "R-Vehicle-Prop-Wheels",
 	"R-Struc-ImmobileRepair", "R-Sys-Engineering01", "R-Wpn-MG-Damage01", "R-Defense-Tower01",
-	"R-Defense-TankTrap01",
+	"R-Defense-TankTrap01", "R-Struc-BlackBox",
 
 	// 2
 	"R-Wpn-MG2Mk1", "R-Wpn-MG-Damage02", "R-Sys-Sensor-Turret01", "R-Struc-PowerModuleMk1",

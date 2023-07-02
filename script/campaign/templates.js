@@ -56,7 +56,7 @@ crcybcan: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannon" },
 crcybneedle: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannon" }, // Needler Cyborg
 creeper: { body: "CreeperBody", prop: "CyborgLegs", weap: "Cyb-Wpn-CreeperDud" }, // Creeper
 zombie: { body: "ZombieBody", prop: "CyborgLegs", weap: "Cyb-Wpn-ZmbieMelee" }, // Zombie
-babyzombie: { body: "ZombieBody", prop: "CyborgLegs", weap: "Cyb-Wpn-BabyZmbieMelee" }, // Baby Zombie
+babyzombie: { body: "BabyZombieBody", prop: "CyborgLegs", weap: "Cyb-Wpn-BabyZmbieMelee" }, // Baby Zombie
 skeleton: { body: "SkeletonBody", prop: "CyborgLegs", weap: "Cyb-Wpn-SkelBow" }, // Skeleton
 enderman: { body: "EndermanBody", prop: "CyborgLegs", weap: "Cyb-Wpn-EnderMelee" }, // Enderman
 
