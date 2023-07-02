@@ -152,12 +152,12 @@ data		"wrf/audio.wrf"
 data		"wrf/stats.wrf"
 data		"wrf/camres.wrf"
 
-camstart	CAM_2A
+camstart	how_was_the_fall
 dataset		CAM_2
 game		"wrf/cam2/cam2start.gam"
 data		"wrf/cam2/cam2a.wrf"
 
-camchange	CAM_2A
+camchange	how_was_the_fall
 dataset		CAM_1
 data		"wrf/cam2/cam2change.wrf"
 game		"wrf/cam2/cam2start.gam"

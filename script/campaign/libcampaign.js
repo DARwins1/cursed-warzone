@@ -102,16 +102,30 @@ const UNKNOWN_CAMPAIGN_NUMBER = 1000;
 const ALPHA_LEVELS = [
 	"CAM_1A", "CAM_1B", "SUB_1_1S", "SUB_1_1", "SUB_1_2S", "SUB_1_2", "SUB_1_3S",
 	"SUB_1_3", "CAM_1C", "CAM_1CA", "SUB_1_4AS", "SUB_1_4A", "SUB_1_5S", "SUB_1_5",
-	"CAM_1A-C", "SUB_1_7S", "SUB_1_7", "SUB_1_DS", "SUB_1_D", "CAM_1END"
+	"CAM_1A-C", "SUB_1_7S", "SUB_1_7", "SUB_1_DS", "SUB_1_D", "CAM_1END", 
+	"SURFACE_TENSION", // Alpha 3
+	"CP_DUSTBOWL", // Alpha 4
+	"CTF_2FORT", // Alpha 5
+	"BYE_BYE" // Transition
 ];
 const BETA_LEVELS = [
 	"CAM_2A", "SUB_2_1S", "SUB_2_1", "CAM_2B", "SUB_2_2S", "SUB_2_2", "CAM_2C",
 	"SUB_2_5S", "SUB_2_5", "SUB_2DS", "SUB_2D", "SUB_2_6S", "SUB_2_6", "SUB_2_7S",
-	"SUB_2_7", "SUB_2_8S", "SUB_2_8", "CAM_2END"
+	"SUB_2_7", "SUB_2_8S", "SUB_2_8", "CAM_2END",
+	"how_was_the_fall", // Beta 1
+	"CAVE_UPDATE_PART_4", "MY_COOL_MAP.ZIP", // Beta 2
+	"GET_READY_TO_RUMBLE", "THE_COLOSSEUM", // Beta 4
+	"DEFINETLY_NOT_A_VIRUS", "BONZI_BUDDY", // Beta 5
+	"LET'S_A_GO" // Transition
 ];
 const GAMMA_LEVELS = [
 	"CAM_3A", "SUB_3_1S", "SUB_3_1", "CAM_3B", "SUB_3_2S", "SUB_3_2", "CAM3A-B",
-	"CAM3C", "CAM3A-D1", "CAM3A-D2", "CAM_3_4S", "CAM_3_4"
+	"CAM3C", "CAM3A-D1", "CAM3A-D2", "CAM_3_4S", "CAM_3_4",
+	"WHAT_ARE_YOU_DOING_IN_MY_[Dumpster]!?", // Gamma 1
+	"NO_DON'T_[Steal]_MY_!", "THE_BIG_ONE", // Gamma 2
+	"INVITATION_TO_[[Die]]", "SPAMTON_RESORT", // Gamma 3
+	"THE_G_STANDS_FOR_[[Blaster]]", // Gamma 4
+	"NOW'S_YOUR_CHANCE_TO_BE_A", "BIG_SHOT" // Gamma 5
 ];
 
 //artifact
@@ -151,6 +165,13 @@ var __camNeverGroupDroids;
 var __camOriginalEvents = {};
 
 //misc
+const CAM_SPAWNER_RANGE = 16; // How close the player has to be for a spawner to become active
+const CAM_ALPHA_SUN_POSITION = {x: 225.0, y: -600.0, z: 450.0}; // Default sun stats for Alpha campaign
+const CAM_ALPHA_SUN_INTENSITY = {ar: 0.5, ag: 0.5, ab: 0.5, dr: 1, dg: 1, db: 1, sr: 1, sg: 1, sb: 1};
+const CAM_BETA_SUN_POSITION = {x: 11.0, y: -30.0, z: -10.0}; // Default sun stats for Beta campaign
+const CAM_BETA_SUN_INTENSITY = {ar: 0.4, ag: 0.4, ab: 0.4, dr: 0.9, dg: 0.9, db: 0.9, sr: 0.9, sg: 0.9, sb: 0.9};
+const CAM_GAMMA_SUN_POSITION = {x: 225.0, y: -600.0, z: 450.0}; // Default sun stats for Gamma campaign
+const CAM_GAMMA_SUN_INTENSITY = {ar: 0.5, ag: 0.5, ab: 0.5, dr: 1, dg: 1, db: 1, sr: 1, sg: 1, sb: 1};
 var __camCalledOnce = {};
 var __camNeedlerLog = []; // List of targets with needles in them
 var __camPrimedCreepers = []; // List of Creepers that are ready to explode

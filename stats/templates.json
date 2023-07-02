@@ -1841,6 +1841,16 @@
             "Rocket-MRL"
         ]
     },
+    "ViperMRLHalfTracks": {
+        "body": "Body1REC",
+        "id": "ViperMRLHalfTracks",
+        "name": "Mini-Rocket Artillery Viper Half-tracks",
+        "propulsion": "HalfTrack",
+        "type": "DROID",
+        "weapons": [
+            "Rocket-MRL"
+        ]
+    },
     "ViperMedCnTrks": {
         "body": "Body1REC",
         "id": "ViperMedCnTrks",

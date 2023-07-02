@@ -254,7 +254,11 @@ function setupGame()
 		replaceTexture("page-7-barbarians-arizona.png", "page-7-barbarians-kevlar.png");
 	}
 
-	if (tilesetType !== "ARIZONA")
+	if (tilesetType === "URBAN")
+	{
+		setSky("texpages/page-26-sky.png", 0, 10000.0);
+	}
+	else if (tilesetType === "ROCKIES")
 	{
 		setSky("texpages/page-25-sky-urban.png", 0.5, 10000.0);
 	}

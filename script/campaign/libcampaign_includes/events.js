@@ -127,8 +127,6 @@ function cam_eventStartLevel()
 	__camNeedlerLog = [];
 	__camPrimedCreepers = [];
 	__camBlackOut = false;
-	__camSunPosition = {x: 225.0, y: -600.0, z: 450.0};
-	__camSunIntensity = {ar: 0.5, ag: 0.5, ab: 0.5, dr: 1, dg: 1, db: 1, sr: 1, sg: 1, sb: 1};
 	__camRandomizeFungibleCannons(); // Randomize all the Fungible Cannons on the map
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
 	__camAiPowerReset(); //grant power to the AI
@@ -146,6 +144,7 @@ function cam_eventStartLevel()
 	setTimer("__camMonsterSpawnerTick", camSecondsToMilliseconds(16));
 	queue("__camShowBetaHintEarly", camSecondsToMilliseconds(4));
 	queue("__camGrantSpecialResearch", camSecondsToMilliseconds(6));
+	queue("camResetSun", camSecondsToMilliseconds(0.1)); // Set the sun correctly for the current campaign
 }
 
 function cam_eventDroidBuilt(droid, structure)

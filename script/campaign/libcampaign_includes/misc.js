@@ -508,7 +508,8 @@ function camGenerateRandomMapCoordinate(reachPosition, distFromReach, scanObject
 		reachPosition &&
 		(!propulsionCanReach("wheeled01", reachPosition.x, reachPosition.y, pos.x, pos.y) ||
 		(camDist(pos, reachPosition) < distFromReach) ||
-		(enumRange(pos.x, pos.y, scanObjectRadius, ALL_PLAYERS, false).length > 0)));
+		(enumRange(pos.x, pos.y, scanObjectRadius, ALL_PLAYERS, false).length > 0) ||
+		(terrainType(pos.x, pos.y) === TER_CLIFFFACE)));
 
 	return pos;
 }
@@ -563,7 +564,8 @@ function camGenerateRandomMapCoordinateWithinRadius(center, radius, scanObjectRa
 		center &&
 		(!propulsionCanReach("wheeled01", center.x, center.y, pos.x, pos.y) ||
 		(camDist(pos, center) > radius) ||
-		(enumRange(pos.x, pos.y, scanObjectRadius, ALL_PLAYERS, false).length > 0)));
+		(enumRange(pos.x, pos.y, scanObjectRadius, ALL_PLAYERS, false).length > 0) ||
+		(terrainType(pos.x, pos.y) === TER_CLIFFFACE)));
 
 	return pos;
 }
@@ -606,6 +608,7 @@ function camDiscoverCampaign()
 //;; Cause a random effect at the given position.
 //;;
 //;; @param {Object} pos
+//;; @returns {void}
 //;;
 function camRandomEffect(pos)
 {
@@ -857,7 +860,7 @@ function camRandomEffect(pos)
 			// Make the whole map go dark
 			__camBlackOut = true;
 			camSetSunPosition(0, 0, 0);
-			camSetSunIntensity(0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4);
+			camSetSunIntensity(0.25, 0.25, 0.25, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4);
 			playSound("Powerdown.ogg");
 			setTimer("__camPlayCaveSounds", camSecondsToMilliseconds(30));
 			queue("__camEndBlackOut", camMinutesToMilliseconds(4));
@@ -874,6 +877,7 @@ function camRandomEffect(pos)
 //;; @param {number} x
 //;; @param {number} y
 //;; @param {number} z
+//;; @returns {void}
 //;;
 function camSetSunPosition(x, y, z)
 {
@@ -894,11 +898,53 @@ function camSetSunPosition(x, y, z)
 //;; @param {number} sr
 //;; @param {number} sg
 //;; @param {number} sb
+//;; @returns {void}
 //;;
 function camSetSunIntensity(ar, ag, ab, dr, dg, db, sr, sg, sb)
 {
 	__camSunIntensity = {ar: ar, ag: ag, ab: ab, dr: dr, dg: dg, db: db, sr: sr, sg: sg, sb: sb};
 	setSunIntensity(ar, ag, ab, dr, dg, db, sr, sg, sb);
+}
+
+//;; ## camResetSun()
+//;;
+//;; Reset the sun back to its default position and intensity
+//;;
+//;; @returns {void}
+//;;
+function camResetSun()
+{
+	let camNum = camDiscoverCampaign();
+	var sp;
+	var si;
+	
+	switch (camNum)
+	{
+		case 1:
+			sp = CAM_ALPHA_SUN_POSITION;
+			si = CAM_ALPHA_SUN_INTENSITY;
+			break;
+		case 2:
+			sp = CAM_BETA_SUN_POSITION;
+			si = CAM_BETA_SUN_INTENSITY;
+			break;
+		case 3:
+			sp = CAM_GAMMA_SUN_POSITION;
+			si = CAM_GAMMA_SUN_INTENSITY;
+			break;
+		default:
+			sp = CAM_ALPHA_SUN_POSITION;
+			si = CAM_ALPHA_SUN_INTENSITY;
+			break;
+	}
+
+	// Set the sun correctly
+	setSunPosition(sp.x, sp.y, sp.z);
+	setSunIntensity(
+		si.ar, si.ag, si.ab, 
+		si.dr, si.dg, si.db, 
+		si.sr, si.sg, si.sb
+	);
 }
 
 //////////// privates
@@ -1022,7 +1068,20 @@ function __camDetonateDrum(boomBaitId)
 	}
 	else
 	{
-		fireWeaponAtObj("ExplosiveDrumBlast", bait);
+		switch (camRand(3))
+		{
+		case 0:
+			fireWeaponAtObj("ExplosiveDrumBlast1", bait);
+			break;
+		case 1:
+			fireWeaponAtObj("ExplosiveDrumBlast2", bait);
+			break;
+		case 2:
+			fireWeaponAtObj("ExplosiveDrumBlast3", bait);
+			break;
+		default:
+			fireWeaponAtObj("ExplosiveDrumBlast1", bait);
+		}
 	}
 }
 
@@ -1068,11 +1127,11 @@ function __camPlayTeleportSfx(targetId)
 function __camDetonateCreeper(targetId)
 {
 	// Find our target
-	var target;
+	var target = null;
 	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
 	{
-		target = getObject(DROID, i, targetId);
-		if (camDef(target))
+		target = getObject(DROID, i, targetId); // Try to find the Creeper
+		if (target !== null)
 		{
 			break;
 		}
@@ -1081,7 +1140,7 @@ function __camDetonateCreeper(targetId)
 	// Remove the Creeper from the list of primed ones
 	__camPrimedCreepers.splice(__camPrimedCreepers.indexOf(targetId), 1);
 	
-	if (!camDef(target))
+	if (target === null)
 	{
 		// Creeper is already dead
 		return;
@@ -1138,8 +1197,8 @@ function __camMonsterSpawnerTick()
 		{
 			let spawnerPos = camMakePos(spawnerList[j]);
 
-			// Check if any enemies are within 24 tiles
-			if (enumRange(spawnerPos.x, spawnerPos.y, 24, ALL_PLAYERS, false).filter((obj) => (
+			// Check if any enemies are within range
+			if (enumRange(spawnerPos.x, spawnerPos.y, CAM_SPAWNER_RANGE, CAM_HUMAN_PLAYER, false).filter((obj) => (
 				obj.type !== FEATURE && !allianceExistsBetween(spawnerList[j].player, obj.player)
 			)).length > 0)
 			{
@@ -1268,8 +1327,7 @@ function __camPlayCaveSounds()
 // Reset the sun back to its standard position and intensity, and end all black out effects
 function __camEndBlackOut()
 {
-	camSetSunPosition(225.0, -600.0, 450.0);
-	setSunIntensity(0.5, 0.5, 0.5, 1, 1, 1, 1, 1, 1);
+	camResetSun();
 	removeTimer("__camPlayCaveSounds");
 	__camBlackOut = false;
 }

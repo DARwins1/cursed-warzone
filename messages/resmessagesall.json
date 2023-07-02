@@ -390,5 +390,38 @@
 			"Body Points: Medium",
 			"Requires Cyborg factory to produce"
 		]
+	},
+	"RES_DF_WTMG": {
+		"id": "RES_DF_WTMG",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Defensive Structure Available",
+			"Armored hardpoint with Machinegun",
+			"Automatically targets enemies within sensor range",
+			"Defensive Strength: High"
+		]
+	},
+	"RES_CYW_BOW": {
+		"id": "RES_CYW_BOW",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_droid.ogg",
+		"text": [
+			"New Cyborg Available",
+			"Armed with Bow",
+			"Body Points: Medium",
+			"Requires Cyborg factory to produce"
+		]
+	},
+	"RES_CYW_SWORD": {
+		"id": "RES_CYW_SWORD",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_droid.ogg",
+		"text": [
+			"New Cyborg Available",
+			"Armed with Diamond Sword",
+			"Body Points: Medium",
+			"Requires Cyborg factory to produce"
+		]
 	}
 }

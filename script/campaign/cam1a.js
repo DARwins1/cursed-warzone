@@ -5,6 +5,9 @@ const PLAYER_RES = [
 	"R-Wpn-MG1Mk1", "R-Vehicle-Body01", "R-Sys-Spade1Mk1", "R-Vehicle-Prop-Wheels",
 ];
 
+// Changing the player's colour only updates playerData after save-loading or level progression.
+var playerColour;
+
 // Player zero's droid enters area next to first oil patch.
 camAreaEvent("launchScavAttack", function(droid)
 {
@@ -125,6 +128,67 @@ function enableBaseStructures()
 	}
 }
 
+// Allow the player to change to colors
+function eventChat(from, to, message)
+{
+	var colour = 0;
+	switch (message)
+	{
+		case "green me":
+			colour = 0; // Green
+			break;
+		case "orange me":
+			colour = 1; // Orange
+			break;
+		case "grey me":
+		case "gray me":
+			colour = 2; // Gray
+			break;
+		case "black me":
+			colour = 3; // Black
+			break;
+		case "red me":
+			colour = 4; // Red
+			break;
+		case "blue me":
+			colour = 5; // Blue
+			break;
+		case "pink me":
+			colour = 6; // Pink
+			break;
+		case "aqua me":
+		case "cyan me":
+			colour = 7; // Cyan
+			break;
+		case "yellow me":
+			colour = 8; // Yellow
+			break;
+		case "purple me":
+			colour = 9; // Purple
+			break;
+		case "white me":
+			colour = 10; // White
+			break;
+		default:
+			return; // Some other message
+	}
+
+	playerColour = colour;
+	changePlayerColour(CAM_HUMAN_PLAYER, colour);
+
+	// Make sure enemies aren't choosing conflicting colours with the player
+	if (colour === 4)
+	{
+		changePlayerColour(MOBS, 5); // Switch to blue
+	}
+	else
+	{
+		changePlayerColour(MOBS, 4); // Keep as red
+	}
+
+	playSound("beep6.ogg");
+}
+
 function eventStartLevel()
 {
 	const PLAYER_POWER = 1300;
@@ -147,6 +211,18 @@ function eventStartLevel()
 	else
 	{
 		setPower(PLAYER_POWER, CAM_HUMAN_PLAYER);
+	}
+
+	playerColour = playerData[0].colour;
+
+	// Make sure enemies aren't choosing conflicting colours with the player
+	if (playerColour === 4)
+	{
+		changePlayerColour(MOBS, 5); // Switch to blue
+	}
+	else
+	{
+		changePlayerColour(MOBS, 4); // Keep as red
 	}
 
 	setAlliance(SCAV_6, SCAV_7, true);

@@ -827,6 +827,19 @@
 		"type": "BUILDING",
 		"width": 1
 	},
+	"Sign4": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "Sign4",
+		"lineOfSight": 0,
+		"model": "misign4.PIE",
+		"name": "Sign 3",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "BUILDING",
+		"width": 1
+	},
 	"WaterBuilding": {
 		"armour": 5,
 		"breadth": 2,
