@@ -881,6 +881,21 @@
 		],
 		"statID": "A0HardcreteMk1Wall"
 	},
+	"R-Defense-HardcreteGate": {
+		"iconID": "IMAGE_RES_DEFENCE",
+		"id": "R-Defense-HardcreteGate",
+		"msgName": "RES_DF_HCG1",
+		"name": "Hardcrete Gate",
+		"requiredResearch": [
+			"R-Defense-HardcreteWall"
+		],
+		"researchPoints": 1800,
+		"researchPower": 56,
+		"resultStructures": [
+			"A0HardcreteMk1Gate"
+		],
+		"statID": "A0HardcreteMk1Gate"
+	},
 	"R-Defense-MRL": {
 		"iconID": "IMAGE_RES_DEFENCE",
 		"id": "R-Defense-MRL",
@@ -1197,7 +1212,7 @@
 		"name": "Hardercrete",
 		"requiredResearch": [
 			"R-Defense-HardcreteWall",
-			"R-Sys-Engineering01"
+			"R-Sys-Engineering02"
 		],
 		"researchPoints": 1200,
 		"researchPower": 37,
@@ -1424,6 +1439,7 @@
 		"iconID": "IMAGE_RES_STRUCTURETECH",
 		"id": "R-Struc-RepairFacility",
 		"msgName": "RES_REPAI1",
+		"keyTopic": 1,
 		"name": "Repair Facility",
 		"requiredResearch": [
 			"R-Struc-ImmobileRepair",

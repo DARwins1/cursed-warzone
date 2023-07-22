@@ -5,7 +5,7 @@ include("script/campaign/templates.js");
 const BONZI_RES = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 	"R-Defense-WallUpgrade01", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage01",
-	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01",
+	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Defense-WallUpgrade01",
 ];
 
 camAreaEvent("bbFactoryTrigger", function(droid)
@@ -15,7 +15,10 @@ camAreaEvent("bbFactoryTrigger", function(droid)
 		// Start calling in transports
 		camSetBaseReinforcements("bbCenterBase", 
 			camChangeOnDiff(camMinutesToMilliseconds(3.5)),
-			"getDroidsForBBLZ", CAM_REINFORCE_TRANSPORT);
+			"getDroidsForBBLZ", CAM_REINFORCE_TRANSPORT, {
+				entry: { x: 49, y: 3 },
+				exit: { x: 49, y: 3 }
+			});
 
 		queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(2.5)));
 	}

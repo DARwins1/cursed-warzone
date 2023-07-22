@@ -18,7 +18,7 @@ const ALPHA_RESEARCH_NEW = [
 	"R-Wpn-RailGun01", "R-Defense-HardcreteWall", "R-Defense-WallTowerMG", "R-Defense-PillboxBB",
 	"R-Struc-Research-Module", "R-Wpn-Rocket03-HvAT", "R-Comp-SynapticLink", "R-Wpn-Flamer-Damage01",
 	"R-Struc-Factory-Cyborg", "R-Cyborg-Wpn-MG", "R-Cyborg-Wpn-MGCool", "R-Defense-GuardTower-Rail1",
-	"R-Defense-Tower04Extended", "R-Cyborg-Wpn-BB", "R-Sys-Sensor-Tower02",
+	"R-Defense-Tower04Extended", "R-Cyborg-Wpn-BB", "R-Sys-Sensor-Tower02", "R-Defense-HardcreteGate",
 
 	// 5
 	"R-Wpn-Mortar01Lt", "R-Defense-MortarPit", "R-Wpn-Rocket05-MiniPod",

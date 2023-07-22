@@ -824,7 +824,7 @@ function camRandomEffect(pos)
 			{
 				for (let j = -1; j <= 1; j++)
 				{
-					addDroid(player, pos.x + i, pos.y + j, 
+					addDroid(MOBS, pos.x + i, pos.y + j, 
 						_("Baby Zombie"), "BabyZombieBody", "CyborgLegs", "", "", "Cyb-Wpn-BabyZmbieMelee"
 					);
 				}

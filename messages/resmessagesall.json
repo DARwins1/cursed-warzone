@@ -431,5 +431,13 @@
 		"text": [
 			"Science has definitely gone too far."
 		]
+	},
+	"RES_DF_HCG1": {
+		"id": "RES_DF_HCG1",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"Why aren't these in the normal campaign???"
+		]
 	}
 }
