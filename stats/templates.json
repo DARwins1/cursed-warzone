@@ -450,7 +450,7 @@
         ]
     },
     "CO-M-Sensor-T": {
-        "body": "Body6SUPP",
+        "body": "Body5REC",
         "id": "CO-M-Sensor-T",
         "name": "*CO-M-Sensor-T*",
         "propulsion": "tracked01",

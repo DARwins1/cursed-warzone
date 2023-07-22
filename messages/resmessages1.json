@@ -592,8 +592,8 @@
 		"sequenceName": "res_weapons.ogg",
 		"text": [
 			"Cannon Upgrade",
-			"High Explosive Anti-Tank Cannon Shells",
-			"Increases Cannon damage",
+			"Stronger AA batteries increases cannon brightness",
+			"Increases Cannon damage to enemy eyeballs",
 			"All cannons upgraded automatically"
 		]
 	},
@@ -646,10 +646,10 @@
 		"imdName": "MICAPSUL.PIE",
 		"sequenceName": "res_weapons.ogg",
 		"text": [
-			"Mortar Upgrade",
-			"Improved high explosive shells",
-			"Increases Mortar damage",
-			"All mortars upgraded automatically"
+			"Catapult Upgrade",
+			"Rockier rocks",
+			"Increases the amount of enemy bones broken",
+			"All catapults upgraded automatically"
 		]
 	},
 	"RES_W_RK_AC1": {

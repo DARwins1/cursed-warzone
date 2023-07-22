@@ -114,6 +114,7 @@ const BETA_LEVELS = [
 	"SUB_2_7", "SUB_2_8S", "SUB_2_8", "CAM_2END",
 	"how_was_the_fall", // Beta 1
 	"CAVE_UPDATE_PART_4", "MY_COOL_MAP.ZIP", // Beta 2
+	"BRING_AN_UMBRELLA", "ATYPICAL_RAINSTORM", // Beta 3
 	"GET_READY_TO_RUMBLE", "THE_COLOSSEUM", // Beta 4
 	"DEFINETLY_NOT_A_VIRUS", "BONZI_BUDDY", // Beta 5
 	"LET'S_A_GO" // Transition
@@ -168,8 +169,8 @@ var __camOriginalEvents = {};
 const CAM_SPAWNER_RANGE = 16; // How close the player has to be for a spawner to become active
 const CAM_ALPHA_SUN_POSITION = {x: 225.0, y: -600.0, z: 450.0}; // Default sun stats for Alpha campaign
 const CAM_ALPHA_SUN_INTENSITY = {ar: 0.5, ag: 0.5, ab: 0.5, dr: 1, dg: 1, db: 1, sr: 1, sg: 1, sb: 1};
-const CAM_BETA_SUN_POSITION = {x: 11.0, y: -30.0, z: -10.0}; // Default sun stats for Beta campaign
-const CAM_BETA_SUN_INTENSITY = {ar: 0.4, ag: 0.4, ab: 0.4, dr: 0.9, dg: 0.9, db: 0.9, sr: 0.9, sg: 0.9, sb: 0.9};
+const CAM_BETA_SUN_POSITION = {x: 4.0, y: -20.0, z: -8.0}; // Default sun stats for Beta campaign
+const CAM_BETA_SUN_INTENSITY = {ar: 0.4, ag: 0.4, ab: 0.4, dr: 0.8, dg: 0.8, db: 0.8, sr: 0.8, sg: 0.8, sb: 0.8};
 const CAM_GAMMA_SUN_POSITION = {x: 225.0, y: -600.0, z: 450.0}; // Default sun stats for Gamma campaign
 const CAM_GAMMA_SUN_INTENSITY = {ar: 0.5, ag: 0.5, ab: 0.5, dr: 1, dg: 1, db: 1, sr: 1, sg: 1, sb: 1};
 var __camCalledOnce = {};

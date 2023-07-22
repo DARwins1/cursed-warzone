@@ -13,8 +13,10 @@ crlcanw: { body: "Body1REC", prop: "wheeled01", weap: "Cannon1Mk1" }, // "Light"
 crlbbw: { body: "Body1REC", prop: "wheeled01", weap: "Rocket-BB" }, // Bunker Buster Viper Wheels
 crlpodw: { body: "Body1REC", prop: "wheeled01", weap: "Rocket-Pod" }, // Many-Rocket Pod Viper Wheels
 crlmortw: { body: "Body1REC", prop: "wheeled01", weap: "Mortar1Mk1" }, // Catapult Viper Wheels
+crlslancew: { body: "Body1REC", prop: "wheeled01", weap: "Rocket-LtA-T" }, // Sawed-Off Lancer Viper Wheels
 
 // Drift Wheels
+crlsensht: { body: "Body1REC", prop: "wheeledskiddy", weap: "SensorTurret1Mk1" }, // Sensor Viper Drift Wheels
 crlmgdw: { body: "Body1REC", prop: "wheeledskiddy", weap: "MG1Mk1" }, // Machinegun Viper Drift Wheels
 crlscorchdw: { body: "Body1REC", prop: "wheeledskiddy", weap: "BabaFlame" }, // Scorch Shot Viper Drift Wheels
 crlcandw: { body: "Body1REC", prop: "wheeledskiddy", weap: "Cannon1Mk1" }, // "Light" Cannon Viper Drift Wheels
@@ -23,6 +25,8 @@ crlpoddw: { body: "Body1REC", prop: "wheeledskiddy", weap: "Rocket-Pod" }, // Ma
 crlhmgdw: { body: "Body1REC", prop: "wheeledskiddy", weap: "MG3Mk1" }, // Realistic Heavy Machinegun Viper Drift Wheels
 crlslancedw: { body: "Body1REC", prop: "wheeledskiddy", weap: "Rocket-LtA-T" }, // Sawed-Off Lancer Viper Drift Wheels
 crmmbb2dw: { body: "Body5REC", prop: "wheeledskiddy", weap: "Rocket-BB2" }, // Bunker Buster II Viper II Drift Wheels
+crmhmgdw: { body: "Body5REC", prop: "wheeledskiddy", weap: "MG3Mk1" }, // Realistic Heavy Machinegun Viper II Drift Wheels
+crmslancedw: { body: "Body5REC", prop: "wheeledskiddy", weap: "Rocket-LtA-T" }, // Sawed-Off Lancer Viper II Drift Wheels
 
 // Half-wheels (Half-tracks)
 crlsensht: { body: "Body1REC", prop: "HalfTrack", weap: "SensorTurret1Mk1" }, // Sensor Viper Half-wheels
@@ -33,12 +37,18 @@ crlbbht: { body: "Body1REC", prop: "HalfTrack", weap: "Rocket-BB" }, // Bunker B
 crlpodht: { body: "Body1REC", prop: "HalfTrack", weap: "Rocket-Pod" }, // Many-Rocket Pod Viper Half-wheels
 crlmrlht: { body: "Body1REC", prop: "HalfTrack", weap: "Rocket-MRL" }, // Mono-Rocket Array Viper Half-wheels
 crlhmght: { body: "Body1REC", prop: "HalfTrack", weap: "MG3Mk1" }, // Realistic Heavy Machinegun Viper Half-wheels
+crlslanceht: { body: "Body1REC", prop: "HalfTrack", weap: "Rocket-LtA-T" }, // Sawed-Off Lancer Viper Half-wheels
+crmsensht: { body: "Body5REC", prop: "HalfTrack", weap: "SensorTurret1Mk1" }, // Sensor Viper II Half-wheels
 crmpillarht: { body: "Body5REC", prop: "HalfTrack", weap: "Rocket-LtA-TPillar" }, // Towering Pillar Of Lancers Viper II Half-wheels
 crmmortht: { body: "Body5REC", prop: "HalfTrack", weap: "Mortar1Mk1" }, // Catapult Viper II Half-wheels
-crmmbb2ht: { body: "Body5REC", prop: "HalfTrack", weap: "Rocket-BB2" }, // Bunker Buster II Viper II Half-wheels
+crmbb2ht: { body: "Body5REC", prop: "HalfTrack", weap: "Rocket-BB2" }, // Bunker Buster II Viper II Half-wheels
 
 // Thick Wheels (Tracks)
-crmpillarht: { body: "Body11ABT", prop: "tracked01", weap: "Rocket-BB-IDF" }, // Bunker Buster Array Viper III Thick Wheels
+crmsenst: { body: "Body5REC", prop: "tracked01", weap: "SensorTurret1Mk1" }, // Sensor Viper II Thick Wheels
+crmbb2t: { body: "Body5REC", prop: "tracked01", weap: "Rocket-BB2" }, // Bunker Buster II Viper II Thick Wheels
+crmhmgt: { body: "Body5REC", prop: "tracked01", weap: "MG3Mk1" }, // Realistic Heavy Machinegun Viper II Thick Wheels
+crmmcant: { body: "Body5REC", prop: "tracked01", weap: "Cannon2A-TMk1" }, // Fungible Cannon Viper II Thick Wheels
+crhbbat: { body: "Body11ABT", prop: "tracked01", weap: "Rocket-BB-IDF" }, // Bunker Buster Array Viper III Thick Wheels
 
 // Normal Wheels (basically VTOLs)
 

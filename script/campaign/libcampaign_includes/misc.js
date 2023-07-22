@@ -636,8 +636,10 @@ function camRandomEffect(pos)
 	}
 	if (camDiscoverCampaign() > 1)
 	{
-		// Allow Monster Spawners after alpha campaign
+		// Allow mob spawning after alpha campaign
 		effects.push("monsterSpawner");
+		effects.push("enderman");
+		effects.push("babyZombies");
 	}
 	if (camIsResearched("R-Struc-ExplosiveDrum") && !camIsResearched("R-Struc-NuclearDrum"))
 	{
@@ -664,6 +666,11 @@ function camRandomEffect(pos)
 		// Allow Sword and BB cyborgs if Synaptic Link is researched
 		effects.push("bbCyb");
 		effects.push("swordCyb");
+	}
+	if (camIsResearched("R-Wpn-MG3Mk1"))
+	{
+		// Allow Realistic-er Heavy Machinegun if Synaptic Link is researched
+		effects.push("realerMG");
 	}
 
 	// Choose an effect
@@ -767,6 +774,12 @@ function camRandomEffect(pos)
 				_("Towering Pillar Of Lancers Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Rocket-LtA-TPillar"
 			);
 			break;
+		case "realerMG":
+			// Spawn a Realistic-er Heavy Machinegun Viper Half-wheels for the player
+			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y, 
+				_("Realistic-er Heavy Machinegun Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "MG3Mk3"
+			);
+			break;
 		case "manyPodTower":
 			// Spawn a hostile Many-Rocket tower
 			addStructure("GuardTower6", MOBS, pos.x * 128, pos.y * 128);
@@ -797,6 +810,24 @@ function camRandomEffect(pos)
 			{
 				// 25% chance for Creeper Spawner
 				addStructure("Spawner-Creeper", MOBS, pos.x * 128, pos.y * 128);
+			}
+			break;
+		case "enderman":
+			// Spawn an Enderman
+			addDroid(MOBS, pos.x + i, pos.y + j, 
+				_("Enderman"), "EndermanBody", "CyborgLegs", "", "", "Cyb-Wpn-EnderMelee"
+			);
+			break;
+		case "babyZombies":
+			// Spawn a bunch of baby zombies
+			for (let i = -1; i <= 1; i++)
+			{
+				for (let j = -1; j <= 1; j++)
+				{
+					addDroid(player, pos.x + i, pos.y + j, 
+						_("Baby Zombie"), "BabyZombieBody", "CyborgLegs", "", "", "Cyb-Wpn-BabyZmbieMelee"
+					);
+				}
 			}
 			break;
 		case "miniVipers":
@@ -860,7 +891,7 @@ function camRandomEffect(pos)
 			// Make the whole map go dark
 			__camBlackOut = true;
 			camSetSunPosition(0, 0, 0);
-			camSetSunIntensity(0.25, 0.25, 0.25, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4);
+			camSetSunIntensity(0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4);
 			playSound("Powerdown.ogg");
 			setTimer("__camPlayCaveSounds", camSecondsToMilliseconds(30));
 			queue("__camEndBlackOut", camMinutesToMilliseconds(4));

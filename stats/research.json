@@ -225,12 +225,12 @@
 		"id": "R-Wpn-MG3Mk1",
 		"keyTopic": 1,
 		"msgName": "RES_MG3MK1",
-		"name": "Get Real",
+		"name": "[[Get Real]]",
 		"requiredResearch": [
 			"R-Wpn-MG2Mk1"
 		],
-		"researchPoints": 2400,
-		"researchPower": 75,
+		"researchPoints": 10,
+		"researchPower": 1997,
 		"resultComponents": [
 			"MG3-VTOL",
 			"MG3Mk1"
@@ -260,10 +260,13 @@
 		"requiredResearch": [
 			"R-Wpn-Cannon1Mk1"
 		],
-		"researchPoints": 5,
+		"researchPoints": 10,
 		"researchPower": 1997,
 		"resultComponents": [
 			"Cannon2A-TMk1"
+		],
+		"resultStructures": [
+			"WallTower03"
 		],
 		"statID": "Cannon2A-TMk1"
 	},
@@ -330,7 +333,7 @@
 		"keyTopic": 1,
 		"msgName": "RES_FLAME_E",
 		"name": "FLAMER UPGRADE INCREASED RANGE 100% [Guarantteed]!!!",
-		"researchPoints": 5,
+		"researchPoints": 10,
 		"researchPower": 1997,
 		"resultComponents": [
 			"Flame1Mk2"
@@ -443,7 +446,7 @@
 		"requiredResearch": [
 			"R-Wpn-Rocket05-MiniPod"
 		],
-		"researchPoints": 5,
+		"researchPoints": 10,
 		"researchPower": 1996,
 		"resultComponents": [
 			"Rocket-LtA-TDef",
@@ -523,7 +526,7 @@
 		"keyTopic": 1,
 		"msgName": "RES_W_RK_MP1",
 		"name": "I'M SO FULL OF [High-Yield Explosives] YUM",
-		"researchPoints": 5,
+		"researchPoints": 10,
 		"researchPower": 1997,
 		"resultComponents": [
 			"Rocket-Pod",
@@ -626,7 +629,7 @@
 		"keyTopic": 1,
 		"msgName": "RES_W_RAIL1",
 		"name": "THE [[Mist]] IS COMING THE [[Mist]] IS COMING",
-		"researchPoints": 5,
+		"researchPoints": 10,
 		"researchPower": 1997,
 		"resultComponents": [
 			"RailGun1-VTOL",
@@ -1153,22 +1156,6 @@
 		],
 		"statID": "WallTower02"
 	},
-	"R-Defense-WallTower03": {
-		"iconID": "IMAGE_RES_DEFENCE",
-		"id": "R-Defense-WallTower03",
-		"msgName": "RES_WT3_MC",
-		"name": "Fungible Cannon Hardpoint",
-		"requiredResearch": [
-			"R-Wpn-Cannon2Mk1",
-			"R-Defense-WallTower02"
-		],
-		"researchPoints": 1800,
-		"researchPower": 56,
-		"resultStructures": [
-			"WallTower03"
-		],
-		"statID": "WallTower03"
-	},
 	"R-Defense-WallTower04": {
 		"iconID": "IMAGE_RES_DEFENCE",
 		"id": "R-Defense-WallTower04",
@@ -1208,7 +1195,6 @@
 		"imdName": "BLWALLH.PIE",
 		"msgName": "RES_DF_WU1",
 		"name": "Hardercrete",
-		"keyTopic": 1,
 		"requiredResearch": [
 			"R-Defense-HardcreteWall",
 			"R-Sys-Engineering01"
@@ -1227,6 +1213,20 @@
 				"class": "Building",
 				"filterParameter": "Type",
 				"filterValue": "Wall",
+				"parameter": "HitPoints",
+				"value": 30
+			},
+			{
+				"class": "Building",
+				"filterParameter": "Type",
+				"filterValue": "Structure",
+				"parameter": "Armour",
+				"value": 30
+			},
+			{
+				"class": "Building",
+				"filterParameter": "Type",
+				"filterValue": "Structure",
 				"parameter": "HitPoints",
 				"value": 30
 			}
@@ -1361,6 +1361,7 @@
 		"imdName": "icmolql.pie",
 		"msgName": "RES_ST_MAT1",
 		"name": "Reinforced Base Structure Materials",
+		"keyTopic": 1,
 		"requiredResearch": [
 			"R-Defense-WallUpgrade01"
 		],
@@ -1637,7 +1638,7 @@
 		"requiredResearch": [
 			"R-Vehicle-Body01"
 		],
-		"researchPoints": 5,
+		"researchPoints": 10,
 		"researchPower": 1997,
 		"resultComponents": [
 			"Body1RECTwin"
@@ -1659,6 +1660,19 @@
 			"Body1RECTriple"
 		],
 		"statID": "Body1RECTriple"
+	},
+	"R-Vehicle-BodyDragon": {
+		"iconID": "IMAGE_RES_DROIDTECH",
+		"id": "R-Vehicle-BodyDragon",
+		"msgName": "RES_V_BDRAGON",
+		"name": "BUY IT! BUY IT NOW!!!",
+		"keyTopic": 1,
+		"researchPoints": 10,
+		"researchPower": 1997,
+		"resultComponents": [
+			"Body14SUP"
+		],
+		"statID": "Body14SUP"
 	},
 	"R-Vehicle-Engine01": {
 		"iconID": "IMAGE_RES_DROIDTECH",
@@ -1730,7 +1744,7 @@
 		"id": "R-Vehicle-Prop-DriftWheels",
 		"msgName": "RES_V_P_DRIFTW",
 		"name": "TAKE A [Ride around Town] IN OUR NEW",
-		"researchPoints": 5,
+		"researchPoints": 10,
 		"researchPower": 1997,
 		"resultComponents": [
 			"wheeledskiddy"
@@ -1771,7 +1785,7 @@
 		"iconID": "IMAGE_RES_WEAPONTECH",
 		"id": "R-Wpn-Cannon-Damage01",
 		"msgName": "RES_W_CN_D1",
-		"name": "HEAT Cannon Shells",
+		"name": "Brighter Cannons",
 		"keyTopic": 1,
 		"requiredResearch": [
 			"R-Wpn-Cannon1Mk1"
@@ -1884,9 +1898,9 @@
 		"id": "R-Wpn-Flamer-ROF01",
 		"msgName": "RES_W_FL_ROF1",
 		"name": "how do you reload a flamethrower",
-		"keyTopic": 1,
 		"requiredResearch": [
-			"R-Wpn-Flamer-Damage01"
+			"R-Wpn-Flamer-Damage01",
+			"R-Sys-Engineering02"
 		],
 		"researchPoints": 1100,
 		"researchPower": 95,
@@ -1959,7 +1973,7 @@
 		"id": "R-Wpn-MG-ROF01",
 		"keyTopic": 1,
 		"msgName": "RES_W_MG_ROF1",
-		"name": "MG go brrrrrr",
+		"name": "MG go brr",
 		"requiredResearch": [
 			"R-Wpn-MG1Mk1"
 		],
@@ -1971,14 +1985,14 @@
 				"filterParameter": "ImpactClass",
 				"filterValue": "MACHINE GUN",
 				"parameter": "FirePause",
-				"value": -20
+				"value": -30
 			},
 			{
 				"class": "Weapon",
 				"filterParameter": "ImpactClass",
 				"filterValue": "MACHINE GUN",
 				"parameter": "ReloadTime",
-				"value": -20
+				"value": -30
 			}
 		],
 		"statID": "MG1Mk1",
@@ -2270,10 +2284,7 @@
 		"iconID": "IMAGE_RES_DEFENCE",
 		"id": "R-Defense-HvyMor",
 		"msgName": "RES_EMP_HvyMor",
-		"name": "Bombard Pit",
-		"redStructures": [
-			"Emplacement-MortarPit01"
-		],
+		"name": "TNT Cannon Emplacement",
 		"requiredResearch": [
 			"R-Wpn-Mortar02Hvy",
 			"R-Defense-MortarPit"

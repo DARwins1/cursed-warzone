@@ -1527,19 +1527,19 @@
         "buildPower": 150,
         "ecmID": "ZNULLECM",
         "height": 1,
-        "hitpoints": 300,
+        "hitpoints": 400,
         "id": "Emplacement-MortarPit02",
-        "name": "Bombard Pit",
+        "name": "TNT Cannon Emplacement",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "MEDIUM",
         "structureModel": [
-            "BLMRTPIT.PIE"
+            "BLHARDPT.PIE"
         ],
         "thermal": 10,
         "type": "DEFENSE",
         "weapons": [
-            "Mortar2Mk1"
+            "TNTCannon"
         ],
         "width": 1
     },
@@ -2012,7 +2012,7 @@
         "height": 2,
         "hitpoints": 600,
         "id": "GuardTower5",
-        "name": "Lancer Tower",
+        "name": "Sawed-Off Lancer Tower",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "MEDIUM",
@@ -2540,7 +2540,7 @@
         "height": 1,
         "hitpoints": 700,
         "id": "PillBox6",
-        "name": "Sarissa Bunker",
+        "name": "Sawed-Off Lancer Bunker",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "BUNKER",
@@ -2550,7 +2550,7 @@
         "thermal": 20,
         "type": "DEFENSE",
         "weapons": [
-            "Rocket-LtA-TMk1"
+            "Rocket-LtA-T"
         ],
         "width": 1
     },
@@ -3658,7 +3658,7 @@
         "height": 2,
         "hitpoints": 800,
         "id": "WallTower06",
-        "name": "Lancer Hardpoint",
+        "name": "Sawed-Off Lancer Hardpoint",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "HARD",

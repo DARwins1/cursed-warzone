@@ -423,5 +423,13 @@
 			"Body Points: Medium",
 			"Requires Cyborg factory to produce"
 		]
+	},
+	"RES_V_BDRAGON": {
+		"id": "RES_V_BDRAGON",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_power.ogg",
+		"text": [
+			"Science has definitely gone too far."
+		]
 	}
 }

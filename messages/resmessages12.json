@@ -125,10 +125,7 @@
 		"imdName": "MICAPSUL.PIE",
 		"sequenceName": "res_weapons.ogg",
 		"text": [
-			"Flamer Upgrade",
-			"Automatic loading mechanism replaces manual loader",
-			"Increases Flamer ROF",
-			"All flamers upgraded automatically"
+			"it doesn't make any sense"
 		]
 	},
 	"RES_W_M2": {
@@ -149,8 +146,12 @@
 		"text": [
 			"Machinegun Upgrade",
 			"Chaingun mechanism replaces belt-feed",
-			"Increases Machinegun ROF",
-			"All machineguns upgraded automatically"
+			"Makes gun shoot bullet more",
+			"All machineguns NOT upgraded automatically",
+			"",
+			"...",
+			"",
+			"Just kidding :)"
 		]
 	},
 	"RES_W_M_AC1": {

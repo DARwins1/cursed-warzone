@@ -68,8 +68,8 @@ function getDroidsForBBLZ()
 			break;
 		case "heavy": // Various halftracks
 			list = [
-				cTempl.crmmbb2ht, cTempl.crmmbb2ht, cTempl.crlbbht, cTempl.crlbbht, cTempl.crlcanht,
-				cTempl.crlhmght, cTempl.crlhmght, cTempl.crlcanht, cTempl.crlhmght, cTempl.crmmbb2ht,
+				cTempl.crmbb2ht, cTempl.crmbb2ht, cTempl.crlbbht, cTempl.crlbbht, cTempl.crlcanht,
+				cTempl.crlhmght, cTempl.crlhmght, cTempl.crlcanht, cTempl.crlhmght, cTempl.crmbb2ht,
 			];
 			break;
 		case "artillery": // Almost all artillery
@@ -355,7 +355,7 @@ function eventStartLevel()
 	var lz = getObject("landingZone"); //player lz
 	var enemyLz = getObject("bbLandingZone");
 
-	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "SUB_2_1S");
+	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "SUB_2_2S"); // TODO: Change this to Beta 2 when it's ready
 	setReinforcementTime(LZ_COMPROMISED_TIME);
 
 	centreView(startpos.x, startpos.y);
@@ -423,13 +423,13 @@ function eventStartLevel()
 			assembly: "bbAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(35)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
 			data: {
 				regroup: false,
 				repair: 20,
 				count: -1,
 			},
-			templates: [ cTempl.crlbbht, cTempl.crlmgw, cTempl.crlbbw, cTempl.crlcanw ] // General units
+			templates: [ cTempl.crlbbht, cTempl.crlhmght, cTempl.crlbbht, cTempl.crlcanht ] // General units
 		},
 		"bbFactory2": {
 			assembly: "bbAssembly2",
@@ -446,7 +446,7 @@ function eventStartLevel()
 			assembly: "bbCybAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 8,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(35)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
 			data: {
 				regroup: true,
 				count: -1,
@@ -457,13 +457,13 @@ function eventStartLevel()
 			assembly: "bbCybAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(40)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(35)),
 			data: {
 				regroup: true,
 				repair: 40,
 				count: -1,
 			},
-			templates: [ cTempl.crcybcool, cTempl.crcybcan, cTempl.crcybbb ] // Harrasses in small groups
+			templates: [ cTempl.crcybcool, cTempl.crcybcan, cTempl.crcybbb ] // Harasses in small groups
 		},
 		"bbCybFactory3": {
 			assembly: "bbCybAssembly3",
@@ -507,7 +507,7 @@ function eventStartLevel()
 	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.zombie, MOBS);
 	camUpgradeOnMapTemplates(cTempl.crcybpyro, cTempl.creeper, MOBS);
 	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, MOBS);
-	camUpgradeOnMapTemplates(cTempl.npsbb, cTempl.crmmbb2ht, BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.npsbb, cTempl.crmbb2ht, BONZI_BUDDY);
 	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.crcybcool, BONZI_BUDDY);
 	camUpgradeOnMapTemplates(cTempl.crlmrlht, cTempl.crlbbdw, BONZI_BUDDY);
 	camUpgradeOnMapTemplates(cTempl.crlhmght, cTempl.crlhmgdw, BONZI_BUDDY);
@@ -522,5 +522,5 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", BONZI_BUDDY);
 
 	// Spamton items
-	enableResearch("R-Wpn-Rocket01-LtAT-Def", CAM_HUMAN_PLAYER);
+	enableResearch("R-Wpn-Rocket01-LtAT-Def", CAM_HUMAN_PLAYER); // Defective Lancer
 }

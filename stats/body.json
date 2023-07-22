@@ -297,8 +297,8 @@
     "Body14SUP": {
         "armourHeat": 30,
         "armourKinetic": 30,
-        "buildPoints": 500,
-        "buildPower": 90,
+        "buildPoints": 999999999,
+        "buildPower": 999999999,
         "class": "Droids",
         "designable": 1,
         "hitpoints": 350,
