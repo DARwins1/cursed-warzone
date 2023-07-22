@@ -33,23 +33,23 @@
     },
     "position_8": {
         "pos": [2491, 8886],
-        "label": "Position1"
+        "label": "bbAssembly1"
     },
     "position_9": {
         "pos": [1352, 1721],
-        "label": "Position2"
+        "label": "bbAssembly2"
     },
     "position_10": {
         "pos": [7356, 7607],
-        "label": "Position3"
+        "label": "bbCybAssembly1"
     },
     "position_11": {
         "pos": [1963, 1215],
-        "label": "Position4"
+        "label": "bbCybAssembly2"
     },
     "position_12": {
         "pos": [2514, 1079],
-        "label": "Position5"
+        "label": "bbCybAssembly3"
     },
     "area_0": {
         "pos1": [9344, 9088],

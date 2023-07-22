@@ -165,7 +165,7 @@ function eventStartLevel()
 		"bbCybFactory1": {
 			assembly: "bbCybAssembly1",
 			order: CAM_ORDER_ATTACK,
-			groupSize: 8,
+			groupSize: 5,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
 			data: {
 				regroup: true,
