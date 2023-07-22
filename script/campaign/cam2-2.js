@@ -76,7 +76,7 @@ function activateFirstFactories()
 }
 
 // Activate the two remaining NW factories
-function activateFirstFactories()
+function activateSecondFactories()
 {
 	camEnableFactory("bbFactory2");
 	camEnableFactory("bbCybFactory3");

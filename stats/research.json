@@ -710,6 +710,7 @@
 		"iconID": "IMAGE_RES_CYBORGTECH",
 		"id": "R-Cyborg-Wpn-Rocket",
 		"msgName": "RES_CYW_RK1",
+		"keyTopic": 1,
 		"name": "Lancer Cyborg",
 		"requiredResearch": [
 			"R-Wpn-Rocket01-LtAT",
