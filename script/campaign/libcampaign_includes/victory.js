@@ -368,8 +368,7 @@ function __camVictoryTimeout()
 
 function __camVictoryScripted()
 {
-	let extraObj = camCheckExtraObjective();
-	if (!extraObj || (countDroid(DROID_ANY, CAM_HUMAN_PLAYER) === 0 && __camPlayerDead()))
+	if (countDroid(DROID_ANY, CAM_HUMAN_PLAYER) === 0 && __camPlayerDead())
 	{
 		__camGameLost();
 	}
