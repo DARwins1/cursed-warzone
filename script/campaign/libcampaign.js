@@ -116,7 +116,7 @@ const BETA_LEVELS = [
 	"CAVE_UPDATE_PART_4", "MY_COOL_MAP.ZIP", // Beta 2
 	"BRING_AN_UMBRELLA", "CLOUDY_WITH_A_CHANCE_OF_ROCKETS", // Beta 3
 	"GET_READY_TO_RUMBLE", "THE_COLOSSEUM", // Beta 4
-	"DEFINETLY_NOT_A_VIRUS", "BONZI_BUDDY", // Beta 5
+	"HOW_2_UNINSTALL", "BONZI_BUDDY", // Beta 5
 	"LET'S_A_GO" // Transition
 ];
 const GAMMA_LEVELS = [
@@ -124,9 +124,9 @@ const GAMMA_LEVELS = [
 	"CAM3C", "CAM3A-D1", "CAM3A-D2", "CAM_3_4S", "CAM_3_4",
 	"WHAT_ARE_YOU_DOING_IN_MY_[Dumpster]!?", // Gamma 1
 	"NO_DON'T_[Steal]_MY_!", "THE_BIG_ONE", // Gamma 2
-	"INVITATION_TO_[[Die]]", "SPAMTON_RESORT", // Gamma 3
+	"RIDE_AROUND_TOWN", "SPAMTON_CITY", // Gamma 3
 	"THE_G_STANDS_FOR_[[Blaster]]", // Gamma 4
-	"NOW'S_YOUR_CHANCE_TO_BE_A", "BIG_SHOT" // Gamma 5
+	"BIG_SHOT" // Gamma 5
 ];
 
 //artifact
@@ -205,14 +205,14 @@ var __camFungibleCannonList = [ // List of Fungible Cannon variants
 	"Cannon2A-TMk5", "Cannon2A-TMk6", "Cannon2A-TMk7",
 	"Cannon2A-TMk8", "Cannon2A-TMk9", "Cannon2A-TMk10",
 	"Cannon2A-TMk11", "Cannon2A-TMk12", "Cannon2A-TMk13",
-	"Cannon2A-TMk14", "Cannon2A-TMk15"
+	"Cannon2A-TMk14", "Cannon2A-TMk15",
 ];
 var __camFungibleCanHardList = [ // List of Fungible Cannon Hardpoint variants
 	"WallTower03Mk2", "WallTower03Mk3", "WallTower03Mk4",
 	"WallTower03Mk5", "WallTower03Mk6", "WallTower03Mk7",
 	"WallTower03Mk8", "WallTower03Mk9", "WallTower03Mk10",
 	"WallTower03Mk11", "WallTower03Mk12", "WallTower03Mk13",
-	"WallTower03Mk14", "WallTower03Mk15"
+	"WallTower03Mk14", "WallTower03Mk15",
 ];
 
 //tactics
@@ -250,6 +250,7 @@ const CAM_VICTORY_STANDARD = "__camVictoryStandard";
 const CAM_VICTORY_PRE_OFFWORLD = "__camVictoryPreOffworld";
 const CAM_VICTORY_OFFWORLD = "__camVictoryOffworld";
 const CAM_VICTORY_TIMEOUT = "__camVictoryTimeout";
+const CAM_VICTORY_SCRIPTED = "__camVictoryScripted";
 var __camWinLossCallback;
 var __camNextLevel;
 var __camNeedBonusTime;

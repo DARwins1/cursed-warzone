@@ -16,7 +16,7 @@ crlmortw: { body: "Body1REC", prop: "wheeled01", weap: "Mortar1Mk1" }, // Catapu
 crlslancew: { body: "Body1REC", prop: "wheeled01", weap: "Rocket-LtA-T" }, // Sawed-Off Lancer Viper Wheels
 
 // Drift Wheels
-crlsensht: { body: "Body1REC", prop: "wheeledskiddy", weap: "SensorTurret1Mk1" }, // Sensor Viper Drift Wheels
+crlsensdw: { body: "Body1REC", prop: "wheeledskiddy", weap: "SensorTurret1Mk1" }, // Sensor Viper Drift Wheels
 crlmgdw: { body: "Body1REC", prop: "wheeledskiddy", weap: "MG1Mk1" }, // Machinegun Viper Drift Wheels
 crlscorchdw: { body: "Body1REC", prop: "wheeledskiddy", weap: "BabaFlame" }, // Scorch Shot Viper Drift Wheels
 crlcandw: { body: "Body1REC", prop: "wheeledskiddy", weap: "Cannon1Mk1" }, // "Light" Cannon Viper Drift Wheels
@@ -24,7 +24,7 @@ crlbbdw: { body: "Body1REC", prop: "wheeledskiddy", weap: "Rocket-BB" }, // Bunk
 crlpoddw: { body: "Body1REC", prop: "wheeledskiddy", weap: "Rocket-Pod" }, // Many-Rocket Pod Viper Drift Wheels
 crlhmgdw: { body: "Body1REC", prop: "wheeledskiddy", weap: "MG3Mk1" }, // Realistic Heavy Machinegun Viper Drift Wheels
 crlslancedw: { body: "Body1REC", prop: "wheeledskiddy", weap: "Rocket-LtA-T" }, // Sawed-Off Lancer Viper Drift Wheels
-crmmbb2dw: { body: "Body5REC", prop: "wheeledskiddy", weap: "Rocket-BB2" }, // Bunker Buster II Viper II Drift Wheels
+crmbb2dw: { body: "Body5REC", prop: "wheeledskiddy", weap: "Rocket-BB2" }, // Bunker Buster II Viper II Drift Wheels
 crmhmgdw: { body: "Body5REC", prop: "wheeledskiddy", weap: "MG3Mk1" }, // Realistic Heavy Machinegun Viper II Drift Wheels
 crmslancedw: { body: "Body5REC", prop: "wheeledskiddy", weap: "Rocket-LtA-T" }, // Sawed-Off Lancer Viper II Drift Wheels
 
@@ -153,7 +153,7 @@ prrept: { body: "Body5REC", prop: "tracked01", weap: "LightRepair1" },
 // CAM_2_B
 comatt: { body: "Body6SUPP", prop: "tracked01", weap: "Rocket-LtA-T" },
 comit: { body: "Body6SUPP", prop: "tracked01", weap: "Flame2" },
-colatv: { body: "Body2SUP", prop: "V-Tol", weap: "Rocket-VTOL-LtA-T" },
+colatv: { body: "Body2SUP", prop: "V-Tol", weap: "Rocket-VTOL-LtA-TDef" },
 
 // SUB_2_2
 comtath: { body: "Body6SUPP", prop: "hover01", weap: "Rocket-LtA-T" },

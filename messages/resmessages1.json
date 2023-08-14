@@ -132,7 +132,7 @@
 			"Computer Technology Breakthrough",
 			"Synaptic Link allows humans to interface directly with computers",
 			"Cyborgs can now be researched",
-			"New research options available"
+			"That's pretty convenient"
 		]
 	},
 	"RES_DF_P1": {
@@ -349,10 +349,11 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_struttech.ogg",
 		"text": [
-			"Repair Facility Improved",
+			"Repair Turrets Improved",
 			"New automated repair techniques",
 			"Increases Repair Speed",
-			"All repair facilities upgraded automatically"
+			"Decreases Pain and Frustration",
+			"All Repair Turrets upgraded automatically"
 		]
 	},
 	"RES_ST_RM1": {

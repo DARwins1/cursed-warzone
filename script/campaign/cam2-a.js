@@ -88,15 +88,14 @@ function getDroidsForBBLZ()
 	return droids;
 }
 
-//Send Collective transport units
+//Send a Bonzi Buddy transport
 function sendBBTransporter()
 {
 	var nearbyDefense = enumArea("bbBaseGroup2", BONZI_BUDDY, false);
 
 	if (nearbyDefense.length > 0)
 	{
-		var list = getDroidsForBBLZ();
-		camSendReinforcement(BONZI_BUDDY, camMakePos("bbLandingZone"), list,
+		camSendReinforcement(BONZI_BUDDY, camMakePos("bbLandingZone"), getDroidsForBBLZ(),
 			CAM_REINFORCE_TRANSPORT, {
 				entry: { x: 124, y: 20 },
 				exit: { x: 124, y: 20 }
@@ -128,7 +127,7 @@ function sendPlayerTransporter()
 	if (transporterIndex === 0)
 	{
 		droids = [
-			cTempl.crlsens, cTempl.crltruckw, cTempl.crltruckw, cTempl.crltruckw,
+			cTempl.crltruckw, cTempl.crltruckw, cTempl.crltruckw, cTempl.crltruckw,
 			cTempl.crlscorchw, cTempl.crlscorchw, cTempl.crcybcool, cTempl.crcybcool,
 			cTempl.crcybcan, cTempl.crcybcan
 		];
@@ -178,8 +177,8 @@ function mobAttackWave()
 	var list = [];
 	// Allow zombies if the zombie spawner is alive
 	if (getObject("waveZombieSpawner") !== null) list.push(cTempl.zombie);
-	// Allow baby zombies if the zombie spawner is alive and 5 waves have already occured
-	if (getObject("waveZombieSpawner") !== null && mobWaveIndex >= 5) list.push(cTempl.babyzombie);
+	// Allow baby zombies if the zombie spawner is alive and 4 waves have already occured
+	if (getObject("waveZombieSpawner") !== null && mobWaveIndex >= 4) list.push(cTempl.babyzombie);
 	// Allow skeletons if the skeleton spawner is alive
 	if (getObject("waveSkeletonSpawner") !== null) list.push(cTempl.skeleton); 
 	// Allow creepers if the creeper spawner is alive and 2 waves have already occured

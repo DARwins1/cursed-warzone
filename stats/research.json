@@ -221,7 +221,7 @@
 		"statID": "MG2Mk1"
 	},
 	"R-Wpn-MG3Mk1": {
-		"iconID": "IMAGE_RES_WEAPONTECH",
+		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Wpn-MG3Mk1",
 		"keyTopic": 1,
 		"msgName": "RES_MG3MK1",
@@ -234,6 +234,11 @@
 		"resultComponents": [
 			"MG3-VTOL",
 			"MG3Mk1"
+		],
+		"resultStructures": [
+			"PillBox1",
+			"WallTower01",
+			"GuardTower3"
 		],
 		"statID": "MG3Mk1"
 	},
@@ -263,7 +268,21 @@
 		"researchPoints": 10,
 		"researchPower": 1997,
 		"resultComponents": [
-			"Cannon2A-TMk1"
+			"Cannon2A-TMk1",
+			"Cannon2A-TMk2",
+			"Cannon2A-TMk3",
+			"Cannon2A-TMk4",
+			"Cannon2A-TMk5",
+			"Cannon2A-TMk6",
+			"Cannon2A-TMk7",
+			"Cannon2A-TMk8",
+			"Cannon2A-TMk9",
+			"Cannon2A-TMk10",
+			"Cannon2A-TMk11",
+			"Cannon2A-TMk12",
+			"Cannon2A-TMk13",
+			"Cannon2A-TMk14",
+			"Cannon2A-TMk15"
 		],
 		"resultStructures": [
 			"WallTower03"
@@ -929,22 +948,6 @@
 		],
 		"statID": "Emplacement-MortarPit01"
 	},
-	"R-Defense-Pillbox01": {
-		"iconID": "IMAGE_RES_DEFENCE",
-		"id": "R-Defense-Pillbox01",
-		"msgName": "RES_DF_P1",
-		"name": "Realistic Heavy Machinegun Bunker",
-		"requiredResearch": [
-			"R-Defense-HardcreteWall",
-			"R-Wpn-MG3Mk1"
-		],
-		"researchPoints": 1200,
-		"researchPower": 37,
-		"resultStructures": [
-			"PillBox1"
-		],
-		"statID": "PillBox1"
-	},
 	"R-Defense-Pillbox04": {
 		"iconID": "IMAGE_RES_DEFENCE",
 		"id": "R-Defense-Pillbox04",
@@ -1089,21 +1092,6 @@
 		],
 		"statID": "GuardTower2"
 	},
-	"R-Defense-Tower03": {
-		"iconID": "IMAGE_RES_DEFENCE",
-		"id": "R-Defense-Tower03",
-		"msgName": "RES_TOWER3",
-		"name": "Realistic Machinegun Guard Tower",
-		"requiredResearch": [
-			"R-Wpn-MG3Mk1"
-		],
-		"researchPoints": 1700,
-		"researchPower": 70,
-		"resultStructures": [
-			"GuardTower1"
-		],
-		"statID": "GuardTower1"
-	},
 	"R-Defense-Tower06": {
 		"iconID": "IMAGE_RES_DEFENCE",
 		"id": "R-Defense-Tower06",
@@ -1140,22 +1128,6 @@
 		],
 		"statID": "WallTowerMG"
 	},
-	"R-Defense-WallTower01": {
-		"iconID": "IMAGE_RES_DEFENCE",
-		"id": "R-Defense-WallTower01",
-		"msgName": "RES_DF_WT1",
-		"name": "Realistic Machinegun Hardpoint",
-		"requiredResearch": [
-			"R-Defense-HardcreteWall",
-			"R-Wpn-MG3Mk1"
-		],
-		"researchPoints": 1200,
-		"researchPower": 37,
-		"resultStructures": [
-			"WallTower01"
-		],
-		"statID": "WallTower01"
-	},
 	"R-Defense-WallTower02": {
 		"iconID": "IMAGE_RES_DEFENCE",
 		"id": "R-Defense-WallTower02",
@@ -1178,7 +1150,6 @@
 		"msgName": "RES_WT4_HC",
 		"name": "Very Heavy Cannon Hardpoint",
 		"requiredResearch": [
-			"R-Defense-WallTower03",
 			"R-Wpn-Cannon3Mk1"
 		],
 		"researchPoints": 2400,
@@ -1492,21 +1463,27 @@
 		"iconID": "IMAGE_RES_SYSTEMTECH",
 		"id": "R-Struc-RprFac-Upgrade01",
 		"msgName": "RES_ST_RFU1",
-		"name": "Automated Repair Facility",
+		"name": "For The Love Of God REPAIR FASTER!!!",
 		"requiredResearch": [
-			"R-Struc-RepairFacility",
-			"R-Struc-Factory-Upgrade01"
+			"R-Struc-ImmobileRepair",
+			"R-Sys-Engineering01",
+			"R-Struc-Factory-Module"
 		],
-		"researchPoints": 2400,
+		"researchPoints": 1400,
 		"researchPower": 75,
 		"results": [
 			{
 				"class": "Building",
 				"parameter": "RepairPoints",
 				"value": 50
+			},
+			{
+				"class": "Repair",
+				"parameter": "RepairPoints",
+				"value": 50
 			}
 		],
-		"statID": "A0RepairCentre3",
+		"statID": "LightRepair1",
 		"subgroupIconID": "IMAGE_RES_GRPUPG"
 	},
 	"R-Sys-Engineering01": {
@@ -2002,14 +1979,14 @@
 				"filterParameter": "ImpactClass",
 				"filterValue": "MACHINE GUN",
 				"parameter": "FirePause",
-				"value": -30
+				"value": -20
 			},
 			{
 				"class": "Weapon",
 				"filterParameter": "ImpactClass",
 				"filterValue": "MACHINE GUN",
 				"parameter": "ReloadTime",
-				"value": -30
+				"value": -20
 			}
 		],
 		"statID": "MG1Mk1",
@@ -2317,7 +2294,7 @@
 		"iconID": "IMAGE_RES_DEFENCE",
 		"id": "R-Defense-IDFRocket",
 		"msgName": "RES_EMP_IDFR",
-		"name": "Ripple Rocket Battery",
+		"name": "Rain Rocket Battery",
 		"requiredResearch": [
 			"R-Wpn-Rocket06-IDF",
 			"R-Defense-HardcreteWall"

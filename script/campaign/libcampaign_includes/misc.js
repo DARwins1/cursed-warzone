@@ -814,7 +814,7 @@ function camRandomEffect(pos)
 			break;
 		case "enderman":
 			// Spawn an Enderman
-			addDroid(MOBS, pos.x + i, pos.y + j, 
+			addDroid(MOBS, pos.x, pos.y, 
 				_("Enderman"), "EndermanBody", "CyborgLegs", "", "", "Cyb-Wpn-EnderMelee"
 			);
 			break;
@@ -976,6 +976,34 @@ function camResetSun()
 		si.dr, si.dg, si.db, 
 		si.sr, si.sg, si.sb
 	);
+}
+
+//;; ## camRandPosInArea(area)
+//;;
+//;; Returns a random coordinate located within the given area.
+//;;
+//;; @param {string|Object} area
+//;;
+//;; @returns {void}
+//;;
+function camRandPosInArea(area)
+{
+	if (camIsString(area))
+	{
+		area = getObject(area);
+	}
+	return {x: area.x + camRand(area.x2 - area.x), y: area.y + camRand(area.y2 - area.y)};
+}
+
+//;; ## camRandomFungibleCannon()
+//;;
+//;; Returns the name of a random varient of the Fungible Cannon.
+//;;
+//;; @returns {string}
+//;;
+function camRandomFungibleCannon()
+{
+	return __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
 }
 
 //////////// privates
@@ -1220,7 +1248,7 @@ function __camMonsterSpawnerTick()
 	// Loop through every Spawner on the map
 	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
 	{
-		let spawnerList = enumStruct(i, DEFENSE, false).filter((obj) => (
+		let spawnerList = enumStruct(i, DEFENSE).filter((obj) => (
 			obj.name === _("Creeper Spawner") || obj.name === _("Skeleton Spawner")
 			|| obj.name === _("Zombie Spawner")
 		));
@@ -1252,7 +1280,7 @@ function __camMonsterSpawnerTick()
 							if (camRand(camChangeOnDiff(101)) < 5)
 							{
 								// Around a 5% chance to spawn a Baby Zombie instead
-								mob = {name: _("Baby Zombie"), body: "ZombieBody", weap: "Cyb-Wpn-ZmbieMelee"};
+								mob = {name: _("Baby Zombie"), body: "BabyZombieBody", weap: "Cyb-Wpn-BabyZmbieMelee"};
 							}
 							else
 							{

@@ -788,6 +788,19 @@
 		"type": "SKYSCRAPER",
 		"width": 3
 	},
+	"SignArena": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "SignArena",
+		"lineOfSight": 0,
+		"model": "misignarena.PIE",
+		"name": "Arena Billboard",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "BUILDING",
+		"width": 1
+	},
 	"Sign1": {
 		"armour": 3,
 		"breadth": 1,

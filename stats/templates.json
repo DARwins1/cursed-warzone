@@ -756,6 +756,18 @@
             "Cyb-Wpn-Sword"
         ]
     },
+    "Cyb-Freddy": {
+        "available": false,
+        "body": "FreddyBody",
+        "id": "Cyb-Freddy",
+        "name": "Freddy Fazbear",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cannon1Mk1",
+            "Cannon1Mk1"
+        ]
+    },
     "Cyb-Zmbie": {
         "available": true,
         "body": "ZombieBody",

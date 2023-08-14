@@ -191,7 +191,7 @@
 		"text": [
 			"New Rocket Available",
 			"Dual high explosive shaped charge missiles",
-			"... Because one clearly wasn't enough I guess"
+			"...Because one was clearly not enough"
 		]
 	},
 	"RES_W_RK_HVAT3": {
@@ -429,7 +429,26 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_power.ogg",
 		"text": [
-			"Science has definitely gone too far."
+			"[Check] THIS OUT!!!",
+			"THIS [Fine specimen] WAS [Hauled] OUT OF THE [Deep, Dark Abyss] OF [[Free Online Multiplayer Join Now!!!]]",
+			"BUT NOW Y0U TOO CAN [Enjoy] THE [[The Smooth Taste Of]][Super]",
+			"THIS IS THE BEST [[Workout-Ready Body]] THAT [Money Can't Buy]!",
+			"IT'S GOT MORE [HP]",
+			"MORE [AP]",
+			"AND MORE [TP]",
+			"THAN ANY [P] THAT CAME BEFORE.",
+			"THIS [Baby] CAN DO IT ALL",
+			"IT CAN BE A [Car],",
+			"A [Tent],",
+			"A [Lawnmower],",
+			"A [Memory-Foam Matress],",
+			"A [home to a family of 4],",
+			"A [Wonderful Bouquet For Your One And Only],",
+			"A [trashcan for all your hopes and dreams],",
+			"A [how could they do this to me],",
+			"A [how am I supposed to move on without them?]",
+			"AND IT'S ALL YOURS FOR THE LOW LOW PRICE OF [[IntegerOverflowException]]!!!!!",
+			"[Got Complaints? Just call our toll-free number at ][[1-800-SPAMTON-1997]][ and our Customer Service will be happy to] 1GNORE EVERYTHING YOU S4Y!!!"
 		]
 	},
 	"RES_DF_HCG1": {

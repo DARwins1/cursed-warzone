@@ -1281,6 +1281,22 @@
         "weaponSlots": 1,
         "weight": 150
     },
+    "FreddyBody": {
+        "armourHeat": 3,
+        "armourKinetic": 6,
+        "buildPoints": 95,
+        "buildPower": 25,
+        "class": "Cyborgs",
+        "droidType": "CYBORG",
+        "hitpoints": 50000,
+        "id": "FreddyBody",
+        "model": "freddy_std.pie",
+        "name": "Freddy Body",
+        "powerOutput": 1000,
+        "size": "LIGHT",
+        "weaponSlots": 2,
+        "weight": 150
+    },
     "ZombieBody": {
         "armourHeat": 6,
         "armourKinetic": 12,

@@ -46,12 +46,29 @@
 	"RES_MG3MK1": {
 		"id": "RES_MG3MK1",
 		"imdName": "MICAPSUL.pie",
-		"sequenceName": "res_weapons.ogg",
+		"sequenceName": "res_power.ogg",
 		"text": [
-			"Want more realism in your 1999 RTS game?",
-			"Well today is your lucky day!",
-			"Now you can watch as your machineguns stop to painstakingly reload each and every bullet into their 50-round magazines.",
-			"Y'know, for realism!"
+			"HEY YOU",
+			"YES YOU!",
+			"I HEAR YOU ALL [Screaming]",
+			"[Screaming] FROM YOUR [Homes]",
+			"FROM YOUR [Cungaderos]",
+			"FROM MY [Walls! It's in the walls!]",
+			"AND I [Here] YOU",
+			"YOU [Want more?]!",
+			"YOU NEED [[MORE!!!]]",
+			"MORE [Realistic Gameplay] IN YOUR [[1999 Real Time Strategy Game]].",
+			"AND [don't.] I HAVE A [Sweet And Savory] DEAL FOR YOU!",
+			"WITH OUR N3WEST MODEL OF [Fully Automatic .50 Calibre Heavy Machine Gun][From The Classics You've Come To Expect],",
+			"YOU CAN [Revel] IN THE FACT THAT YOUR [[emm gee's]] HAVE TO STOP, [Drop], AND RELOAD.",
+			"EACH.",
+			"AND EVERY BULLET.",
+			"IN THEIR [50-Round Magazine].",
+			"YOU'LL BE SENDING YOUR [[enenies]] STR4IGHT TO THE [[Grave]], WHERE THEY'LL NEV3R BE ABLE TO ENJOY TH2IR [most cherished traditions],",
+			"L1KE EATING [[Fresh Slime!]], SPENDING TIME [[With Freinds And Flamily]], 0R SOAKING IN THE [[Hyperlink Blocked]]!!!",
+			"YOU'LL HAVE SO MUCH [F.U.N.] SHOOTING THEM YOU WON'T NOTICE THAT I\"VE [[snuck up behind you]] AND ",
+			"",
+			"[Incendiary Rounds Packaged Separately]"
 		]
 	},
 	"RES_SY_CBSTU1": {
@@ -194,7 +211,8 @@
 		"text": [
 			"New Rocket Available",
 			"Rocket artillery; can be assigned to a sensor",
-			"Great for hitting everything in the enemy's general direction"		]
+			"Great for hitting everything in the enemy's general direction"
+		]
 	},
 	"RES_W_RK_MRL1": {
 		"id": "RES_W_RK_MRL1",

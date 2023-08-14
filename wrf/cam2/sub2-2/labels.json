@@ -51,6 +51,7 @@
         "pos": [2514, 1079],
         "label": "bbCybAssembly3"
     },
+
     "area_0": {
         "pos1": [9344, 9088],
         "pos2": [9728, 9472],
@@ -106,6 +107,12 @@
         "pos2": [6272, 8704],
         "label": "bbFactoryTrigger"
     },
+    "area_11": {
+        "pos1": [9088, 8832],
+        "pos2": [9984, 9728],
+        "label": "compromiseZone"
+    },
+
     "object_0": {
         "id": 57,
         "type": 1,

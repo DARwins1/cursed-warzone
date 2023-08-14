@@ -44,7 +44,7 @@ function camSendReinforcement(playerId, position, templates, kind, data)
 		if (templates[i].weap === "Cannon2A-TMk1")
 		{
 			// Swap the Fungible Cannon for any of its varients
-			templates[i].weap = __camFungibleCannonList[camRand(__fungibleCannonList.length)];
+			templates[i].weap = __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
 		}
 	}
 	switch (kind)

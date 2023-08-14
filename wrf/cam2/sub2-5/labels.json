@@ -1,0 +1,94 @@
+{
+    "area_0": {
+        "pos1": [6016, 4736],
+        "pos2": [6399, 5119],
+        "label": "landingZone"
+    },
+    "area_1": {
+        "pos1": [5120, 1280],
+        "pos2": [5632, 1536],
+        "label": "spawnZone1"
+    },
+    "area_2": {
+        "pos1": [2816, 1792],
+        "pos2": [3328, 2048],
+        "label": "spawnZone2"
+    },
+    "area_3": {
+        "pos1": [1920, 2688],
+        "pos2": [2176, 3200],
+        "label": "spawnZone3"
+    },
+    "area_4": {
+        "pos1": [1536, 3968],
+        "pos2": [1792, 4480],
+        "label": "spawnZone4"
+    },
+    "area_5": {
+        "pos1": [1536, 5376],
+        "pos2": [1792, 5888],
+        "label": "spawnZone5"
+    },
+    "area_6": {
+        "pos1": [1920, 6656],
+        "pos2": [2176, 7168],
+        "label": "spawnZone6"
+    },
+    "area_7": {
+        "pos1": [2816, 7808],
+        "pos2": [3328, 8064],
+        "label": "spawnZone7"
+    },
+    "area_8": {
+        "pos1": [5120, 8320],
+        "pos2": [5632, 8576],
+        "label": "spawnZone8"
+    },
+    "area_9": {
+        "pos1": [6784, 8320],
+        "pos2": [7296, 8576],
+        "label": "spawnZone9"
+    },
+    "area_10": {
+        "pos1": [9088, 7808],
+        "pos2": [9600, 8064],
+        "label": "spawnZone10"
+    },
+    "area_11": {
+        "pos1": [10240, 6656],
+        "pos2": [10496, 7168],
+        "label": "spawnZone11"
+    },
+    "area_12": {
+        "pos1": [10624, 5376],
+        "pos2": [10880, 5888],
+        "label": "spawnZone12"
+    },
+    "area_13": {
+        "pos1": [10624, 3968],
+        "pos2": [10880, 4480],
+        "label": "spawnZone13"
+    },
+    "area_14": {
+        "pos1": [10240, 2688],
+        "pos2": [10496, 3200],
+        "label": "spawnZone14"
+    },
+    "area_15": {
+        "pos1": [9088, 1792],
+        "pos2": [9600, 2048],
+        "label": "spawnZone15"
+    },
+    "area_16": {
+        "pos1": [6784, 1280],
+        "pos2": [7296, 1536],
+        "label": "spawnZone16"
+    },
+
+    "radius_0": {
+        "label": "vtolRemoveZone",
+        "subscriber": 2,
+        "pos": [6200, 9656],
+        "radius": 128
+    }
+}

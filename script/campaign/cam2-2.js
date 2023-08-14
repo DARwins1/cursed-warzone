@@ -1,4 +1,3 @@
-
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
@@ -6,6 +5,7 @@ const BONZI_RES = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 	"R-Defense-WallUpgrade01", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage01",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Defense-WallUpgrade01",
+	"R-Struc-RprFac-Upgrade01",
 ];
 
 camAreaEvent("bbFactoryTrigger", function(droid)
@@ -13,6 +13,7 @@ camAreaEvent("bbFactoryTrigger", function(droid)
 	if (droid.player === CAM_HUMAN_PLAYER)
 	{
 		// Start calling in transports
+		setTimer("sendBBTransporter", camChangeOnDiff(camMinutesToMilliseconds(4.5)));
 		camSetBaseReinforcements("bbCenterBase", 
 			camChangeOnDiff(camMinutesToMilliseconds(3.5)),
 			"getDroidsForBBLZ", CAM_REINFORCE_TRANSPORT, {
@@ -27,6 +28,26 @@ camAreaEvent("bbFactoryTrigger", function(droid)
 		resetLabel("bbFactoryTrigger", CAM_HUMAN_PLAYER);
 	}
 });
+
+//Send a Bonzi Buddy transport
+function sendBBTransporter()
+{
+	var nearbyDefense = enumArea("bbBase3", BONZI_BUDDY, false);
+
+	if (nearbyDefense.length > 0)
+	{
+		camSendReinforcement(BONZI_BUDDY, camMakePos("bbLandingZone"), getDroidsForBBLZ(),
+			CAM_REINFORCE_TRANSPORT, {
+				entry: { x: 49, y: 3 },
+				exit: { x: 49, y: 3 }
+			}
+		);
+	}
+	else
+	{
+		removeTimer("sendBBTransporter");
+	}
+}
 
 function getDroidsForBBLZ()
 {
@@ -84,8 +105,8 @@ function activateSecondFactories()
 
 function eventStartLevel()
 {
-	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "SUB_2_3S",{
-		area: "landingZone",
+	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "SUB_2_5S",{
+		area: "compromiseZone",
 		message: "C22_LZ",
 		reinforcements: camMinutesToSeconds(2),
 		eliminateBases: true
@@ -95,8 +116,8 @@ function eventStartLevel()
 	var lz = getObject("landingZone"); //player lz
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
-	startTransporterEntry(85, 70, CAM_HUMAN_PLAYER);
-	setTransporterExit(85, 70, CAM_HUMAN_PLAYER);
+	startTransporterEntry(81, 81, CAM_HUMAN_PLAYER);
+	setTransporterExit(81, 81, CAM_HUMAN_PLAYER);
 
 	var enemyLz = getObject("bbLandingZone");
 	setNoGoArea(enemyLz.x, enemyLz.y, enemyLz.x2, enemyLz.y2, BONZI_BUDDY);
@@ -141,14 +162,14 @@ function eventStartLevel()
 		"bbFactory1": {
 			assembly: "bbAssembly1",
 			order: CAM_ORDER_ATTACK,
-			groupSize: 4,
+			groupSize: 3,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
 			data: {
 				regroup: false,
 				repair: 20,
 				count: -1,
 			},
-			templates: [ cTempl.crlbbht, cTempl.crlhmght, cTempl.crlbbht, cTempl.crlcanht ] // Thick-wheeled units
+			templates: [ cTempl.crmmcant, cTempl.crmhmgt, cTempl.crmbb2t, cTempl.crmmcant ] // Thick-wheeled units
 		},
 		"bbFactory2": {
 			assembly: "bbAssembly2",
@@ -160,7 +181,7 @@ function eventStartLevel()
 				repair: 60,
 				count: -1,
 			},
-			templates: [ cTempl.crlsensdw, cTempl.crmslancedw, cTempl.crmhmgdw, cTempl.crmslancedw, cTempl.crmmbb2dw ] // Drift Wheel harassers
+			templates: [ cTempl.crlsensdw, cTempl.crmslancedw, cTempl.crmhmgdw, cTempl.crmslancedw, cTempl.crmbb2dw ] // Drift Wheel harassers
 		},
 		"bbCybFactory1": {
 			assembly: "bbCybAssembly1",
@@ -180,7 +201,7 @@ function eventStartLevel()
 			groupSize: 9,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(35)),
 			data: {
-				regroup: true,
+				regroup: false,
 				repair: 40,
 				count: -1,
 			},

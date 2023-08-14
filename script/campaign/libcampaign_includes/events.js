@@ -127,7 +127,6 @@ function cam_eventStartLevel()
 	__camNeedlerLog = [];
 	__camPrimedCreepers = [];
 	__camBlackOut = false;
-	__camRandomizeFungibleCannons(); // Randomize all the Fungible Cannons on the map
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
 	__camAiPowerReset(); //grant power to the AI
 	setTimer("__camSpawnVtols", camSecondsToMilliseconds(0.5));
@@ -145,11 +144,13 @@ function cam_eventStartLevel()
 	queue("__camShowBetaHintEarly", camSecondsToMilliseconds(4));
 	queue("__camGrantSpecialResearch", camSecondsToMilliseconds(6));
 	queue("camResetSun", camSecondsToMilliseconds(0.1)); // Set the sun correctly for the current campaign
+	queue("__camRandomizeFungibleCannons", camSecondsToMilliseconds(0.1)); // This is done on a delay so that bases can initialize
 }
 
 function cam_eventDroidBuilt(droid, structure)
 {
 	if ((camDef(droid.weapons[0]) && droid.weapons[0].name === "Cannon2A-TMk1") 
+		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Cannon2A-TMk1")
 		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Cannon2A-TMk1"))
 	{
 		// Swap the standard Fungible Cannon for a random varient
@@ -326,7 +327,7 @@ function cam_eventMissionTimeout()
 		camTrace("0 minutes remaining.");
 		__camGameLost();
 	}
-	else
+	else if (__camWinLossCallback !== CAM_VICTORY_SCRIPTED)
 	{
 		var won = camCheckExtraObjective();
 		if (!won)

@@ -53,6 +53,8 @@ function camNextLevel(nextLevel)
 //;;   Victory when all enemies are destroyed and all artifacts are recovered.
 //;; * `CAM_VICTORY_PRE_OFFWORLD` Defeat on timeout. Victory on transporter launch, then load the sub-level.
 //;; * `CAM_VICTORY_OFFWORLD` Defeat on timeout or all units lost.
+//;; * `CAM_VICTORY_TIMEOUT` Defeat if all ground factories and construction droids are lost. Victory on mission timeout.
+//;; * `CAM_VICTORY_SCRIPTED` Defeat if all ground factories and construction droids are lost. Victory depends on callback function.
 //;;   Victory when all artifacts are recovered and either all enemies are dead (not just bases) or all droids are at the LZ.
 //;;   Also automatically handles the "LZ compromised" message, which is why it needs to know reinforcement interval to restore.
 //;;   The following data parameter fields are available:
@@ -113,6 +115,13 @@ function camSetStandardWinLossConditions(kind, nextLevel, data)
 			__camVictoryData = data;
 			setReinforcementTime(__camVictoryData.reinforcements);
 			useSafetyTransport(true);
+			break;
+		case CAM_VICTORY_SCRIPTED:
+			__camWinLossCallback = CAM_VICTORY_SCRIPTED;
+			__camNeedBonusTime = false;
+			__camDefeatOnTimeout = false;
+			__camVictoryData = data;
+			useSafetyTransport(false);
 			break;
 		default:
 			camDebug("Unknown standard victory condition", kind);
@@ -355,6 +364,19 @@ function __camVictoryTimeout()
 		__camGameLost();
 	}
 	// victory hooked from eventMissionTimeout
+}
+
+function __camVictoryScripted()
+{
+	let extraObj = camCheckExtraObjective();
+	if (!extraObj || (countDroid(DROID_ANY, CAM_HUMAN_PLAYER) === 0 && __camPlayerDead()))
+	{
+		__camGameLost();
+	}
+	if (camCheckExtraObjective())
+	{
+		__camGameWon();
+	}
 }
 
 function __camVictoryOffworld()

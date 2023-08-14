@@ -58,6 +58,18 @@ function camRemoveEnemyTransporterBlip()
 	}
 }
 
+//;; ## camTransporterOnMap(player)
+//;;
+//;; Returns true if the given player has an active transporter on-map, false otherwise.
+//;;
+//;; @param {number} player
+//;; @returns {boolean}
+//;;
+function camTransporterOnMap(player)
+{
+	return camDef(__camIncomingTransports[player]);
+}
+
 //////////// privates
 
 // returns true if transporter was launched,
