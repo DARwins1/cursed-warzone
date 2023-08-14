@@ -791,6 +791,7 @@
 	"SignArena": {
 		"armour": 3,
 		"breadth": 1,
+		"damageable": 0,
 		"hitpoints": 250,
 		"id": "SignArena",
 		"lineOfSight": 0,

@@ -145,7 +145,7 @@ function advanceWave()
 // Core Units: Sword Cyborgs and Archer Cyborgs
 // Support Units: Transporter ("Light" Cannon (half-wheels))
 // WAVE 8
-// Core Units: Sensors (tracked), Fungible Cannon (tracked)
+// Core Units: Sensors (tracked), "Light" Cannon (half-wheels)
 // Support Units: Catapults (half-tracked), Rain Rocket Batteries (from outside)
 // WAVE 9
 // Core Units: Zombies, Baby Zombies, Sword Cyborgs and Cool Cyborgs
@@ -240,8 +240,8 @@ function beginWave()
 		case 10:
 			spawnCoreUnits();
 			spawnSupportUnits();
-			setTimer("spawnCoreUnits", camChangeOnDiff(camSecondsToMilliseconds(20)));
-			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(25)));
+			setTimer("spawnCoreUnits", camChangeOnDiff(camSecondsToMilliseconds(25)));
+			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(20)));
 			break;
 		case 11: // This wave is just a bunch of VTOLs
 			camSetVtolData(BONZI_BUDDY, undefined, camMakePos("vtolRemoveZone"), [cTempl.colatv],
@@ -477,17 +477,17 @@ function spawnCoreUnits()
 				removeTimer("spawnCoreUnits");
 			}
 			break;
-		case 8: // Spawn a total of 20 Sensors and 30 Fungible Cannons
+		case 8: // Spawn a total of 20 Sensors and 40 "Light" Cannons
 			var spawnArea1 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-			for (let i = 0; i < 3; i++)
+			for (let i = 0; i < 4; i++)
 			{
-				// Spawn 5 Fungible Cannons
+				// Spawn 5 "Light" Cannons
 				var pos = camRandPosInArea(spawnArea1);
 				groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
-					_("Fungible Cannon Viper II Thick Wheels"), "Body5REC", "tracked01", "", "", camRandomFungibleCannon()
+					_("\"Light\" Cannon Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "Cannon1Mk1"
 				));
 			}
-			// Include a Sensor with the Fungible Cannons
+			// Include a Sensor with the cannons
 			var pos1 = camRandPosInArea(spawnArea1);
 			groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos1.x, pos1.y, 	
 				_("Sensor Viper II Thick Wheels"), "Body5REC", "tracked01", "", "", "SensorTurret1Mk1"
