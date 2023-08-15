@@ -543,7 +543,7 @@ function spawnCoreUnits()
 				removeTimer("spawnCoreUnits");
 			}
 			break;
-		case 10: // Spawn a total of 4 Endermen, 100 Fungible Cannons, 50 Many-Rocket Pods, and 50 Realistic MGs
+		case 10: // Spawn a total of 4 Endermen, 80 Fungible Cannons, 20 Many-Rocket Pods, and 20 Realistic MGs
 			if (coreIndex === 1)
 			{
 				// Spawn 4 Endermen from 4 different directions
@@ -562,8 +562,8 @@ function spawnCoreUnits()
 				var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
 				if (coreIndex % 2 === 0)
 				{
-					// Spawn 10 Fungible Cannons on even indexes
-					for (let i = 0; i < 10; i++)
+					// Spawn 8 Fungible Cannons on even indexes
+					for (let i = 0; i < 8; i++)
 					{
 						var pos = camRandPosInArea(spawnArea);
 						groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
@@ -575,7 +575,7 @@ function spawnCoreUnits()
 				else
 				{
 					// Spawn 5 Many-Rocket Pods and 5 Realistic MGs on odd indexes
-					for (let i = 0; i < 10; i++)
+					for (let i = 0; i < 4; i++)
 					{
 						if (i % 2 === 0)
 						{
@@ -742,9 +742,9 @@ function spawnSupportUnits()
 			camManageGroup(newGroup, CAM_ORDER_ATTACK);
 			break;
 		case 9: // Spawn Creepers, Skeletons, Archer Cyborgs, Twin BBs, and transports carrying Many-Rocket Pods
-			if (supportIndex % 2 === 0)
+			if (supportIndex % 2 === 1)
 			{
-				// Spawn mobs on even indexes
+				// Spawn mobs on odd indexes
 				var newGroup = camNewGroup();
 				var spawnArea = LEFT_SPAWN_ZONES[camRand(LEFT_SPAWN_ZONES.length)];
 				var numMobs = 2;
@@ -770,7 +770,7 @@ function spawnSupportUnits()
 			}
 			else
 			{
-				// Spawn Bonzi Buddy units on odd indexes
+				// Spawn Bonzi Buddy units on even indexes
 				if (supportIndex % 4 === 0)
 				{
 					// Spawn Archer Cyborgs and Twin BBs every other Bonzi Buddy spawn
@@ -1076,7 +1076,7 @@ function enforceNoGoArea()
 		if (obj.type === DROID)
 		{
 			// Deal a bit of damage (10% HP)
-			if (obj.health > 10)
+			if (Math.floor(obj.health) > 10)
 			{
 				setHealth(obj, obj.health - 10);
 				fireWeaponAtObj("UTHurtSFX", obj);
@@ -1089,7 +1089,7 @@ function enforceNoGoArea()
 		else if (obj.type === STRUCTURE)
 		{
 			// Deal a lot of damage (50% HP)
-			if (obj.health > 50)
+			if (Math.floor(obj.health) > 50)
 			{
 				setHealth(obj, obj.health - 50);
 				fireWeaponAtObj("UTHurtSFX", obj);

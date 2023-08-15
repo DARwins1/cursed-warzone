@@ -4316,7 +4316,7 @@
         "weaponEffect": "ARTILLERY ROUND",
         "weaponSubClass": "HOWITZERS",
         "weaponWav": "pcv419.ogg",
-        "weight": 7500
+        "weight": 5000
     },
     "Mortar3ROTARYMk1": {
         "buildPoints": 800,
