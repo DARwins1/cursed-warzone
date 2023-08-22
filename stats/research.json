@@ -1475,12 +1475,12 @@
 			{
 				"class": "Building",
 				"parameter": "RepairPoints",
-				"value": 50
+				"value": 100
 			},
 			{
 				"class": "Repair",
 				"parameter": "RepairPoints",
-				"value": 50
+				"value": 100
 			}
 		],
 		"statID": "LightRepair1",
@@ -2348,8 +2348,7 @@
 		"msgName": "RES_ST_VP",
 		"name": "Normal Rearming Pad",
 		"requiredResearch": [
-			"R-Vehicle-Prop-VTOL",
-			"R-Struc-VTOLFactory"
+			"R-Vehicle-Prop-VTOL"
 		],
 		"researchPoints": 3600,
 		"researchPower": 112,

@@ -105,7 +105,7 @@ function activateSecondFactories()
 
 function eventStartLevel()
 {
-	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "SUB_2_5S",{
+	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "SUB_2_5S", {
 		area: "compromiseZone",
 		message: "C22_LZ",
 		reinforcements: camMinutesToSeconds(2),
@@ -125,7 +125,7 @@ function eventStartLevel()
 	camSetArtifacts({
 		"bbResearch": { tech: "R-Wpn-MG-ROF01" }, // MG go brrr (yes i know very funny)
 		"bbFactory1": { tech: "R-Vehicle-Prop-Tracks" }, // Thick Wheels
-		"chest": { tech: "R-Wpn-Mortar02Hvy" }, // TNT Cannons
+		"chest": { tech: "R-Wpn-Mortar02Hvy" }, // TNT Cannon
 		"bbRocketEmp": { tech: "R-Wpn-Rocket06-IDF" }, // Rain Rockets
 	});
 
@@ -239,6 +239,7 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", MOBS);
 	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", MOBS);
 	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", MOBS);
+	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "A0Chest", MOBS);
 	camUpgradeOnMapStructures("PillBox5", "PillBox-BB", BONZI_BUDDY);
 	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", BONZI_BUDDY);
 

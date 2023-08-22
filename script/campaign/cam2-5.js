@@ -607,7 +607,7 @@ function spawnCoreUnits()
 			var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
 			var pos = camRandPosInArea(spawnArea);
 			groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
-				_("Freddy Fazbear"), "FreddyBody", "CyborgLegs", "", "", ["Cannon1Mk1", "Cannon1Mk1"]
+				_("Freddy Fazbear"), "FreddyBody", "CyborgLegs", "", "", ["CannonBison", "CannonBison"]
 			));
 			doneSpawning = true;
 			break;

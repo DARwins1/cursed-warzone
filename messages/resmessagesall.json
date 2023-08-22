@@ -38,9 +38,8 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"New Base Structure Available",
-			"VTOL factory enables VTOL production",
-			"VTOL rearming pads required to keep VTOLs flying",
-			"May be upgraded using factory modules"
+			"Normal factory produces Normal units",
+			"There's nothing wrong with it, it's completely normal."
 		]
 	},
 	"RES_ST_VP": {
@@ -49,9 +48,7 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"New Base Structure Available",
-			"Refuels, rearms and repairs VTOLs",
-			"Assign a VTOL by selecting the rearming pad as its target",
-			"The VTOL returns to the selected pad for rearming"
+			"Refuels, rearms and repairs Normal units"
 		]
 	},
 	"RES_SY_CBSTW1": {
@@ -191,7 +188,7 @@
 		"text": [
 			"New Rocket Available",
 			"Dual high explosive shaped charge missiles",
-			"...Because one was clearly not enough"
+			"Because one was simply not enough"
 		]
 	},
 	"RES_W_RK_HVAT3": {

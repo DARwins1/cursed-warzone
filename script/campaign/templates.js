@@ -42,6 +42,8 @@ crmsensht: { body: "Body5REC", prop: "HalfTrack", weap: "SensorTurret1Mk1" }, //
 crmpillarht: { body: "Body5REC", prop: "HalfTrack", weap: "Rocket-LtA-TPillar" }, // Towering Pillar Of Lancers Viper II Half-wheels
 crmmortht: { body: "Body5REC", prop: "HalfTrack", weap: "Mortar1Mk1" }, // Catapult Viper II Half-wheels
 crmbb2ht: { body: "Body5REC", prop: "HalfTrack", weap: "Rocket-BB2" }, // Bunker Buster II Viper II Half-wheels
+crmpepht: { body: "Body5REC", prop: "HalfTrack", weap: "Mortar3ROTARYMk1" }, // Pepperspray Viper II Half-wheels
+crmhmght: { body: "Body5REC", prop: "HalfTrack", weap: "MG3Mk1" }, // Realistic Heavy Machinegun Viper II Half-wheels
 
 // Thick Wheels (Tracks)
 crmsenst: { body: "Body5REC", prop: "tracked01", weap: "SensorTurret1Mk1" }, // Sensor Viper II Thick Wheels
@@ -51,7 +53,12 @@ crmmcant: { body: "Body5REC", prop: "tracked01", weap: "Cannon2A-TMk1" }, // Fun
 crhbbat: { body: "Body11ABT", prop: "tracked01", weap: "Rocket-BB-IDF" }, // Bunker Buster Array Viper III Thick Wheels
 
 // Normal Wheels (basically VTOLs)
-
+crlmgnw: { body: "Body1REC", prop: "wheelednormal", weap: "MG1-VTOL" }, // Machinegun Viper Normal Wheels
+crlhmgnw: { body: "Body1REC", prop: "wheelednormal", weap: "MG3-VTOL" }, // Realistic Heavy Machinegun Viper Normal Wheels
+crllcannw: { body: "Body1REC", prop: "wheelednormal", weap: "Cannon1-VTOL" }, // "Light" Cannon Viper Normal Wheels
+crlpodnw: { body: "Body1REC", prop: "wheelednormal", weap: "Rocket-VTOL-Pod" }, // Many-Rocket Pod Viper Normal Wheels
+crmbb2nw: { body: "Body5REC", prop: "wheelednormal", weap: "Rocket-VTOL-BB2" }, // Bunker Buster II Viper II Normal Wheels
+crmhmgnw: { body: "Body5REC", prop: "wheelednormal", weap: "MG3-VTOL" }, // Realistic Heavy Machinegun Viper II Normal Wheels
 
 // Cursed Cyborgs/Infantry
 crcybmg: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgChaingun" }, // Machinegunner Cyborg
@@ -69,7 +76,10 @@ zombie: { body: "ZombieBody", prop: "CyborgLegs", weap: "Cyb-Wpn-ZmbieMelee" }, 
 babyzombie: { body: "BabyZombieBody", prop: "CyborgLegs", weap: "Cyb-Wpn-BabyZmbieMelee" }, // Baby Zombie
 skeleton: { body: "SkeletonBody", prop: "CyborgLegs", weap: "Cyb-Wpn-SkelBow" }, // Skeleton
 enderman: { body: "EndermanBody", prop: "CyborgLegs", weap: "Cyb-Wpn-EnderMelee" }, // Enderman
+silverfish: { body: "SilverfishBody", prop: "CyborgLegs", weap: "Cyb-Wpn-SilvFishMelee" }, // Silverfish
+crscybcan: { body: "CyborgUltraHeavyBody", prop: "CyborgLegs", weap: "Cyb-Hvywpn-Hcannon" }, // Ultra Heavy-Gunner Cyborg
 
+// Normal Campaign Templates
 // CAM_1A
 bloke: { body: "B1BaBaPerson01", prop: "BaBaLegs", weap: "BabaMG" },
 trike: { body: "B4body-sml-trike01", prop: "BaBaProp", weap: "BabaTrikeMG" },

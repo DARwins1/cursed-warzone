@@ -543,7 +543,7 @@ function eventStartLevel()
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 
-	setMissionTime(camChangeOnDiff(camHoursToSeconds(1)));
+	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.5)));
 
 	door1Open = false;
 	door2Open = false;

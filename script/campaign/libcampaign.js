@@ -166,7 +166,9 @@ var __camNeverGroupDroids;
 var __camOriginalEvents = {};
 
 //misc
-const CAM_SPAWNER_RANGE = 16; // How close the player has to be for a spawner to become active
+const CAM_SPAWNER_RANGE = 16; // How close (in tiles) the player has to be for a spawner to become active
+const CAM_SPY_FEIGN_DURATION = 12 * 1000; // How long a Spy Cyborg stays hidden after feigning death (12 seconds)
+const CAM_SPY_FEIGN_COOLDOWN = 60 * 1000; // How long after a Spy Cyborg feigns death until it can feign again (60 seconds)
 const CAM_ALPHA_SUN_POSITION = {x: 225.0, y: -600.0, z: 450.0}; // Default sun stats for Alpha campaign
 const CAM_ALPHA_SUN_INTENSITY = {ar: 0.5, ag: 0.5, ab: 0.5, dr: 1, dg: 1, db: 1, sr: 1, sg: 1, sb: 1};
 const CAM_BETA_SUN_POSITION = {x: 4.0, y: -20.0, z: -8.0}; // Default sun stats for Beta campaign
@@ -176,6 +178,8 @@ const CAM_GAMMA_SUN_INTENSITY = {ar: 0.5, ag: 0.5, ab: 0.5, dr: 1, dg: 1, db: 1,
 var __camCalledOnce = {};
 var __camNeedlerLog = []; // List of targets with needles in them
 var __camPrimedCreepers = []; // List of Creepers that are ready to explode
+var __camSpyFeigns = []; // List of stats for Spy Cyborgs that have "died" (used to restore unit stats on respawn)
+var __camSpyCooldowns = []; // List id's and dates of Spy Cyborgs that have recently un-died (used to determine when spies can feign again)
 var __camSunPosition; // The xyz position of the sun
 var __camSunIntensity; // The lighting intensity of the sun
 var __camBlackOut; // Whether a "black out" effect is active

@@ -640,15 +640,16 @@ function camRandomEffect(pos)
 		effects.push("monsterSpawner");
 		effects.push("enderman");
 		effects.push("babyZombies");
+		effects.push("silverfish");
 	}
 	if (camIsResearched("R-Struc-ExplosiveDrum") && !camIsResearched("R-Struc-NuclearDrum"))
 	{
 		// Allow Nuclear Drum Artifact if Explosive Drum is researched
 		effects.push("nukeDrumArti");
 	}
-	if (camIsResearched("R-Vehicle-BodyTwin") && !camIsResearched("R-Vehicle-BodyTriple"))
+	if (camIsResearched("R-Vehicle-BodyTwin") && camIsResearched("R-Vehicle-Body11") && !camIsResearched("R-Vehicle-BodyTriple"))
 	{
-		// Allow Triple Viper Artifact if Twin Viper is researched
+		// Allow Triple Viper Artifact if Twin Viper and Viper III is researched
 		effects.push("tripleViperArti");
 	}
 	if (camIsResearched("R-Vehicle-Body05"))
@@ -669,8 +670,13 @@ function camRandomEffect(pos)
 	}
 	if (camIsResearched("R-Wpn-MG3Mk1"))
 	{
-		// Allow Realistic-er Heavy Machinegun if Synaptic Link is researched
+		// Allow Realistic-er Heavy Machinegun if Realistic Heavy Machinegun is researched
 		effects.push("realerMG");
+	}
+	if (camIsResearched("R-Vehicle-Prop-VTOL"))
+	{
+		// Allow Hurricane AAA artifact if Normal Wheels is researched
+		effects.push("hurricaneArti");
 	}
 
 	// Choose an effect
@@ -830,6 +836,16 @@ function camRandomEffect(pos)
 				}
 			}
 			break;
+		case "silverfish":
+			// Spawn a bunch of walls that break into Silverfish
+			for (let i = -1; i <= 1; i++)
+			{
+				for (let j = -1; j <= 1; j++)
+				{
+					addStructure("A0HardcreteMk1CWall", MOBS, pos.x + i * 128, pos.y + j * 128)
+				}
+			}
+			break;
 		case "miniVipers":
 			// Spawn 18 Mini Machinegun Viper Wheels
 			var player = CAM_HUMAN_PLAYER;
@@ -886,6 +902,15 @@ function camRandomEffect(pos)
 			}
 			addLabel(addFeature("Crate", pos.x, pos.y), "tripleViperCrate");
 			__camArtifacts["tripleViperCrate"] = {tech: "R-Vehicle-BodyTriple", placed: true };
+			break;
+		case "hurricaneArti":
+			// Spawn an artifact for the Hurricane AAA
+			if (camDef(__camArtifacts["hurricaneCrate"]))
+			{
+				break; // Don't place if an artifact was already placed
+			}
+			addLabel(addFeature("Crate", pos.x, pos.y), "hurricaneCrate");
+			__camArtifacts["hurricaneCrate"] = {tech: "R-Wpn-AAGun03", placed: true };
 			break;
 		case "blackOut":
 			// Make the whole map go dark
@@ -1004,6 +1029,26 @@ function camRandPosInArea(area)
 function camRandomFungibleCannon()
 {
 	return __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
+}
+
+//;; ## camFeignCooldownCheck(spyId)
+//;;
+//;; Returns true if the given spy ID can feign death, false otherwise.
+//;;
+//;; @param {number} spyId
+//;;
+//;; @returns {boolean}
+//;;
+function camFeignCooldownCheck(spyId)
+{
+	for (let i = 0; i < __camSpyCooldowns.length; i++)
+	{
+		if (__camSpyCooldowns[i].id === spyId)
+		{
+			return false; // This spy is still on cooldown
+		}
+	}
+	return true; // This spy is not on cooldown
 }
 
 //////////// privates
@@ -1172,13 +1217,61 @@ function __camPlayTeleportSfx(targetId)
 		}
 	}
 	
-	if (!camDef(target))
+	if (!camDef(target) || target === null)
 	{
 		return;
 	}
 	else
 	{
 		fireWeaponAtObj("TeleportSFX", target);
+	}
+}
+
+// Play a decloaking sound effect for Spy Cyborgs
+function __camPlayDecloakSfx(targetId)
+{
+	// Find our target
+	var target;
+	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	{
+		target = getObject(DROID, i, targetId);
+		if (target !== null)
+		{
+			break;
+		}
+	}
+	
+	if (!camDef(target) || target === null)
+	{
+		return;
+	}
+	else
+	{
+		fireWeaponAtObj("DeadRingerSFX", target);
+	}
+}
+
+// Play a sound to signify Spy Cyborgs that are ready to feign death once again
+function __camPlayFeignReadySfx(targetId)
+{
+	// Find our target
+	var target;
+	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	{
+		target = getObject(DROID, i, targetId);
+		if (target !== null)
+		{
+			break;
+		}
+	}
+	
+	if (!camDef(target) || target === null)
+	{
+		return;
+	}
+	else
+	{
+		fireWeaponAtObj("DeadRingerReadySFX", target);
 	}
 }
 
@@ -1389,4 +1482,129 @@ function __camEndBlackOut()
 	camResetSun();
 	removeTimer("__camPlayCaveSounds");
 	__camBlackOut = false;
+}
+
+// Fake a Spy Cyborg's demise
+function __camSpyFeignDeath(spy, attacker)
+{
+	// Check if this cyborg is already feigning (since this function also gets called from cam_eventDestroyed())
+	for (let i = 0; i < __camSpyFeigns.length; i++)
+	{
+		if (__camSpyFeigns[i].id === spy.id)
+		{
+			return; // Already feigning
+		}
+	}
+
+	// Store Spy Cyborg stats
+	if (spy.player !== CAM_HUMAN_PLAYER)
+	{
+		// Store ID, XP, group, attacker, feign position, player owner, and "death" time
+		__camSpyFeigns.push({id: spy.id, xp: spy.experience, group: spy.group,
+			attacker: attacker, pos: camMakePos(spy), player: spy.player,
+			time: gameTime});
+	}
+	else
+	{
+		// Store ID, XP, player owner, and "death" time
+		__camSpyFeigns.push({id: spy.id, xp: spy.experience, player: spy.player, time: gameTime});
+	}
+
+	if (camDef(attacker))
+	{
+		// Explode the Spy Cyborg
+		camSafeRemoveObject(spy, true);
+	}
+}
+
+// Check if any "dead" Spy Cyborgs are due to reappear
+// Also allow Spy Cyborgs to feign death if their cooldowns have expired
+function __camSpyFeignTick()
+{
+	// Check for any not-so-dead Spy Cyborgs
+	for (let i = __camSpyFeigns.length - 1; i >= 0; i--)
+	{
+		if (gameTime >= __camSpyFeigns[i].time + CAM_SPY_FEIGN_DURATION)
+		{
+			// Make the Spy reappear...
+			let pos = null;
+			if (__camSpyFeigns[i].player === CAM_HUMAN_PLAYER)
+			{
+				// ...At the player's HQ / LZ
+				let hqs = enumStruct(CAM_HUMAN_PLAYER, HQ);
+				if (camDef(hqs[0]))
+				{
+					// Pick somewhere near the HQ
+					pos = camGenerateRandomMapCoordinateWithinRadius(camMakePos(hqs[0]), 3, 1);
+				}
+				else
+				{
+					// Pick somehwere at the LZ
+					const LZ_NAMES = ["landingZone", "LZ"]; // Bit of a brain-dead solution but oh well
+					for (let j = 0; j < LZ_NAMES.length; j++)
+					{
+						if (camDef(getObject(LZ_NAMES[j])) && getObject(LZ_NAMES[j]) !== null)
+						{
+							pos = camRandPosInArea(LZ_NAMES[j]);
+							break;
+						}
+					}
+					if (pos === null)
+					{
+						console("Could not find an LZ to place Spy Cyborg at!");
+						__camSpyFeigns.splice(i, 1);
+						continue;
+					}
+				}
+			}
+			else
+			{
+				// ...Near it's "killer"
+				let killer = __camSpyFeigns[i].attacker;
+				if (camDef(killer) && killer !== null)
+				{
+					// Pick somewhere near the attacker
+					pos = camGenerateRandomMapCoordinateWithinRadius(camMakePos(killer), 6, 1);
+				}
+				else
+				{
+					// Pick somewhere near where the spy feigned
+					pos = camGenerateRandomMapCoordinateWithinRadius(__camSpyFeigns[i].pos, 6, 1);
+				}
+			}
+			let newSpy = addDroid(__camSpyFeigns[i].player, pos.x, pos.y, 
+				_("Spy Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgSpyChaingun"
+			);
+			queue("__camPlayDecloakSfx", CAM_TICKS_PER_FRAME, newSpy.id + "");
+			setHealth(newSpy, 40);
+			setDroidExperience(newSpy, __camSpyFeigns[i].xp); // Restore the spy's experience
+			if (__camSpyFeigns[i].player != CAM_HUMAN_PLAYER)
+			{
+				let spyGroup = __camSpyFeigns[i].group;
+				// Try placing the spy back into it's old group (if it's still active)
+				if (camDef(__camGroupInfo[spyGroup]))
+				{
+					groupAdd(spyGroup, newSpy);
+				}
+				else
+				{
+					// Make a new group
+					camManageGroup(camMakeGroup(newSpy), CAM_ORDER_ATTACK);
+				}
+			}
+			__camSpyCooldowns.push({id: newSpy.id, time: gameTime}); // Prevent the spy from feigning again for a bit
+			__camSpyFeigns.splice(i, 1); // Remove this spy from the list of "dead" spies
+		}
+	}
+
+	// Remove Spy Cyborgs off the cooldown list if enough time has passed
+	for (let i = __camSpyCooldowns.length - 1; i >= 0; i--)
+	{
+		if (gameTime >= __camSpyCooldowns[i].time + CAM_SPY_FEIGN_COOLDOWN)
+		{
+			// Play an effect signifying that the Cyborg can feign death again
+			__camPlayFeignReadySfx(__camSpyCooldowns[i].id);
+			__camSpyCooldowns.splice(i, 1); // Remove this spy from the cooldown list
+		}
+	}
 }

@@ -125,6 +125,8 @@ function cam_eventStartLevel()
 	__camNumTransporterExits = 0;
 	__camAllowVictoryMsgClear = true;
 	__camNeedlerLog = [];
+	__camSpyFeigns = [];
+	__camSpyCooldowns = [];
 	__camPrimedCreepers = [];
 	__camBlackOut = false;
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
@@ -140,6 +142,7 @@ function cam_eventStartLevel()
 	setTimer("__camTacticsTick", camSecondsToMilliseconds(0.1));
 	setTimer("__camScanCreeperRadii", camSecondsToMilliseconds(0.2));
 	setTimer("__updateNeedlerLog", camSecondsToMilliseconds(8));
+	setTimer("__camSpyFeignTick", camSecondsToMilliseconds(0.5));
 	setTimer("__camMonsterSpawnerTick", camSecondsToMilliseconds(16));
 	queue("__camShowBetaHintEarly", camSecondsToMilliseconds(4));
 	queue("__camGrantSpecialResearch", camSecondsToMilliseconds(6));
@@ -236,6 +239,11 @@ function cam_eventDestroyed(obj)
 		{
 			__camCheckDeadTruck(obj);
 		}
+		else if (camDef(obj.weapons[0]) && obj.weapons[0].id === "CyborgSpyChaingun" && camFeignCooldownCheck(obj.id))
+		{
+			__camSpyFeignDeath(obj);
+			return;
+		}
 		else if (camIsTransporter(obj))
 		{
 			__camRemoveIncomingTransporter(obj.player);
@@ -264,6 +272,37 @@ function cam_eventDestroyed(obj)
 			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
 				"B4body-sml-trike01", "BaBaProp", "", "", "BabaTrikeMG").id; // Spawn a trike...
 			queue("__camDetonateNukeDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
+		}
+	}
+	else if (obj.type === STRUCTURE)
+	{
+		if (obj.stattype === WALL)
+		{
+			// See if a Silverfish should spawn out of the destroyed wall
+			let spawnChance = 0;
+			switch (obj.player)
+			{
+				case BONZI_BUDDY:
+					spawnChance = 20;
+					break;
+				case SPAMTON:
+					spawnChance = 50;
+					break;
+				case MOBS:
+					spawnChance = 100;
+					break;
+				default:
+					break;
+			}
+
+			if (camRand(101) < spawnChance)
+			{
+				// Spawn a Silverfish out of the destroyed wall
+				let pos = camMakePos(obj);
+				camManageGroup(camMakeGroup(addDroid(MOBS, pos.x, pos.y, 
+					_("Silverfish"), "SilverfishBody", "CyborgLegs", "", "", "Cyb-Wpn-SilvFishMelee"
+				)), CAM_ORDER_ATTACK);
+			}
 		}
 	}
 }
@@ -385,6 +424,33 @@ function cam_eventAttacked(victim, attacker)
 				}
 				queue("__camPlayTeleportSfx", CAM_TICKS_PER_FRAME, newMan.id + "");
 				return;
+			}
+			// Feign death for Spy Cyborgs (if they aren't on cooldown)
+			if (camDef(victim.weapons[0]) && victim.weapons[0].id === "CyborgSpyChaingun"
+			 && camDef(attacker) && victim.health < 40 && camFeignCooldownCheck(victim.id))
+			{
+				__camSpyFeignDeath(victim, attacker);
+				return;
+			}
+			if (victim.body === "SilverfishBody")
+			{
+				// Try spawning more Silverfish out of nearby structures
+
+				let structList = enumRange(victim.x, victim.y, 5, ALL_PLAYERS, false).filter((obj) =>
+					obj.type === STRUCTURE && (obj.health < 50 || (obj.player === MOBS && !obj.isSensor))
+				);
+				let silverfishGroup = camNewGroup();
+				for (let i = 0; i < structList.length; i++)
+				{
+					// Spawn a new Silverfish
+					let pos = camMakePos(structList[i]);
+					groupAdd(silverfishGroup, addDroid(MOBS, pos.x, pos.y, 
+						_("Silverfish"), "SilverfishBody", "CyborgLegs", "", "", "Cyb-Wpn-SilvFishMelee"
+					));
+
+					camSafeRemoveObject(structList[i], true); // And blow up the structure
+				}
+				camManageGroup(silverfishGroup, CAM_ORDER_ATTACK);
 			}
 			if (victim.player !== CAM_HUMAN_PLAYER && !allianceExistsBetween(CAM_HUMAN_PLAYER, victim.player))
 			{

@@ -195,7 +195,7 @@ function __camPickTarget(group)
 			if (camDef(gi.target))
 			{
 				targets = enumRange(gi.target.x, gi.target.y,__CAM_TARGET_TRACKING_RADIUS, ALL_PLAYERS, false).filter((obj) => (
-					obj.type === STRUCTURE || (obj.type === DROID && !isVTOL(obj)) && !allianceExistsBetween(droids[0].player, obj.player)
+					(obj.type === STRUCTURE || (obj.type === DROID && !isVTOL(obj))) && !allianceExistsBetween(droids[0].player, obj.player)
 				));
 			}
 			// fall-through! we just don't track targets on COMPROMISE
@@ -518,7 +518,7 @@ function __camTacticsTickForGroup(group)
 		if (vtolUnit)
 		{
 			var arm = droid.weapons[0].armed;
-			var isRearming = droid.order === DORDER_REARM;
+			var isRearming = (droid.order === DORDER_REARM || droid.action === 35); // DACTION_WAITDURINGREARM;
 
 			if ((arm < 1) || (isRearming && (arm < 100 || droid.health < 100)))
 			{

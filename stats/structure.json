@@ -280,6 +280,25 @@
         "type": "WALL",
         "width": 3
     },
+    "A0Chest": {
+        "armour": 5,
+        "breadth": 1,
+        "buildPoints": 500,
+        "buildPower": 150,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 500,
+        "id": "A0Chest",
+        "name": "Chest",
+        "sensorID": "ZNULLSENSOR",
+        "strength": "SOFT",
+        "structureModel": [
+            "BLCHEST.pie"
+        ],
+        "thermal": 5,
+        "type": "DEFENSE",
+        "width": 1
+    },
     "A0CannonTower": {
         "armour": 10,
         "breadth": 1,

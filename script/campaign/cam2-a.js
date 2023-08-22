@@ -517,6 +517,7 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", MOBS);
 	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", MOBS);
 	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", MOBS);
+	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "A0Chest", MOBS);
 	camUpgradeOnMapStructures("PillBox6", "PillBox-BB", BONZI_BUDDY);
 	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", BONZI_BUDDY);
 

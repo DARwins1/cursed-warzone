@@ -712,6 +712,17 @@
             "NX-CyborgChaingun"
         ]
     },
+    "CyborgSpy": {
+        "available": true,
+        "body": "CyborgLightBody",
+        "id": "CyborgSpy",
+        "name": "Spy Cyborg",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "CyborgSpyChaingun"
+        ]
+    },
     "CyborgFlamer01Grd": {
         "available": true,
         "body": "CyborgLightBody",
@@ -764,8 +775,8 @@
         "propulsion": "CyborgLegs",
         "type": "CYBORG",
         "weapons": [
-            "Cannon1Mk1",
-            "Cannon1Mk1"
+            "CannonBison",
+            "CannonBison"
         ]
     },
     "Cyb-Zmbie": {
@@ -823,6 +834,17 @@
             "Cyb-Wpn-EnderMelee"
         ]
     },
+    "Cyb-SilvFish": {
+        "available": true,
+        "body": "SilverfishBody",
+        "id": "Cyb-SilvFish",
+        "name": "Silverfish",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-SilvFishMelee"
+        ]
+    },
     "Cyb-BB": {
         "available": true,
         "body": "CyborgLightBody",
@@ -865,6 +887,17 @@
         "type": "CYBORG_SUPER",
         "weapons": [
             "Cyb-Hvywpn-HPV"
+        ]
+    },
+    "Cyb-Hvy-Hcannon": {
+        "available": true,
+        "body": "CyborgUltraHeavyBody",
+        "id": "Cyb-Hvy-Hcannon",
+        "name": "Ultra Heavy-Gunner Cyborg",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG_SUPER",
+        "weapons": [
+            "Cyb-Hvywpn-Hcannon"
         ]
     },
     "Cyb-Hvy-Mcannon": {
