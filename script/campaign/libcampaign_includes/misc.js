@@ -509,7 +509,8 @@ function camGenerateRandomMapCoordinate(reachPosition, distFromReach, scanObject
 		(!propulsionCanReach("wheeled01", reachPosition.x, reachPosition.y, pos.x, pos.y) ||
 		(camDist(pos, reachPosition) < distFromReach) ||
 		(enumRange(pos.x, pos.y, scanObjectRadius, ALL_PLAYERS, false).length > 0) ||
-		(terrainType(pos.x, pos.y) === TER_CLIFFFACE)));
+		(terrainType(pos.x, pos.y) === TER_CLIFFFACE) ||
+		(terrainType(pos.x, pos.y) === TER_WATER)));
 
 	return pos;
 }
@@ -565,7 +566,8 @@ function camGenerateRandomMapCoordinateWithinRadius(center, radius, scanObjectRa
 		(!propulsionCanReach("wheeled01", center.x, center.y, pos.x, pos.y) ||
 		(camDist(pos, center) > radius) ||
 		(enumRange(pos.x, pos.y, scanObjectRadius, ALL_PLAYERS, false).length > 0) ||
-		(terrainType(pos.x, pos.y) === TER_CLIFFFACE)));
+		(terrainType(pos.x, pos.y) === TER_CLIFFFACE) ||
+		(terrainType(pos.x, pos.y) === TER_WATER)));
 
 	return pos;
 }

@@ -598,10 +598,11 @@
 		"imdName": "MICAPSUL.PIE",
 		"sequenceName": "res_weapons.ogg",
 		"text": [
-			"New Bomb Bay Available",
-			"Drops High Explosive Cluster bombs",
-			"Best Targets: Base structures, infantry, wheeled vehicles",
-			"Body Points: Low"
+			"New from ACME",
+			"1000 kg cast-iron Anvils",
+			"Perfect for obliterating structures, infantry and large birds",
+			"",
+			"... Where did Spamton get these?"
 		]
 	},
 	"RES_W_BMB2": {
@@ -720,9 +721,9 @@
 		"sequenceName": "res_weapons.ogg",
 		"text": [
 			"New Indirect Fire Weapon Available",
-			"May be assigned to a sensor",
-			"Best Targets: Base structures, infantry, wheeled vehicles",
-			"Body Points: Very Low"
+			"Fires bursts of incendiary shells",
+			"Excellent at repelling and incinerating enemy combatants",
+			"...Not necessarily in that order."
 		]
 	},
 	"RES_W_MG_D5": {

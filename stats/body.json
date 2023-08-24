@@ -460,6 +460,425 @@
         "weaponSlots": 1,
         "weight": 300
     },
+    "Body1RECSpam": {
+        "armourHeat": 4,
+        "armourKinetic": 10,
+        "buildPoints": 150,
+        "buildPower": 30,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 65,
+        "id": "Body1RECSpam",
+        "model": "drlbod01spam.pie",
+        "name": "Spamaconda",
+        "powerOutput": 5000,
+        "propulsionExtraModels": {
+            "HalfTrack": {
+                "left": "prlhtr1.pie"
+            },
+            "HalfTrack02": {
+                "left": "prlhtr1.pie"
+            },
+            "HalfTrack03": {
+                "left": "prlhtr1.pie"
+            },
+            "V-Tol": {
+                "left": "prlvtl1.pie",
+                "moving": "fxvtl01.pie"
+            },
+            "V-Tol02": {
+                "left": "prlvtl1.pie",
+                "moving": "fxvtl01.pie"
+            },
+            "V-Tol03": {
+                "left": "prlvtl1.pie",
+                "moving": "fxvtl01.pie"
+            },
+            "hover01": {
+                "left": "prlhov1.pie"
+            },
+            "hover02": {
+                "left": "prlhov1.pie"
+            },
+            "hover03": {
+                "left": "prlhov1.pie"
+            },
+            "tracked01": {
+                "left": "prltrk1.pie"
+            },
+            "tracked02": {
+                "left": "prltrk1.pie"
+            },
+            "tracked03": {
+                "left": "prltrk1.pie"
+            },
+            "wheeled01": {
+                "left": "prlwhl1.pie"
+            },
+            "wheeledskiddy": {
+                "left": "prlskidwhl1.pie",
+                "moving": "fxlskid.pie"
+            },
+            "wheelednormal": {
+                "left": "prlnormwhl1.pie"
+            },
+            "wheeled02": {
+                "left": "prlwhl1.pie"
+            },
+            "wheeled03": {
+                "left": "prlwhl1.pie"
+            }
+        },
+        "size": "LIGHT",
+        "weaponSlots": 1,
+        "weight": 600
+    },
+    "Body1BIGSpam": {
+        "armourHeat": 40,
+        "armourKinetic": 100,
+        "buildPoints": 1500,
+        "buildPower": 300,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 650,
+        "id": "Body1BIGSpam",
+        "model": "drlbod01spambig.pie",
+        "name": "Big Spamaconda",
+        "powerOutput": 50000,
+        "propulsionExtraModels": {
+            "wheeled01": {
+                "left": "prlwhl1big.pie"
+            },
+            "wheeled02": {
+                "left": "prlwhl1big.pie"
+            },
+            "wheeled03": {
+                "left": "prlwhl1big.pie"
+            }
+        },
+        "size": "LIGHT",
+        "weaponSlots": 1,
+        "weight": 6000
+    },
+    "Body1MiniSpam": {
+        "armourHeat": 2,
+        "armourKinetic": 5,
+        "buildPoints": 75,
+        "buildPower": 15,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 35,
+        "id": "Body1MiniSpam",
+        "model": "drlbod01spammini.pie",
+        "name": "Mini Spamaconda",
+        "powerOutput": 2500,
+        "propulsionExtraModels": {
+            "wheeled01": {
+                "left": "prlwhlmini.pie"
+            },
+            "wheeled02": {
+                "left": "prlwhlmini.pie"
+            },
+            "wheeled03": {
+                "left": "prlwhlmini.pie"
+            }
+        },
+        "size": "LIGHT",
+        "weaponSlots": 1,
+        "weight": 300
+    },
+    "Body5RECSpam": {
+        "armourHeat": 6,
+        "armourKinetic": 15,
+        "buildPoints": 250,
+        "buildPower": 46,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 130,
+        "id": "Body5RECSpam",
+        "model": "drlbod05spam.pie",
+        "name": "Spamaconda II",
+        "powerOutput": 15000,
+        "propulsionExtraModels": {
+            "HalfTrack": {
+                "left": "prmhtr2.pie"
+            },
+            "HalfTrack02": {
+                "left": "prmhtr2.pie"
+            },
+            "HalfTrack03": {
+                "left": "prmhtr2.pie"
+            },
+            "V-Tol": {
+                "left": "prmvtl1.pie",
+                "moving": "fxvtl5to8.pie"
+            },
+            "V-Tol02": {
+                "left": "prmvtl1.pie",
+                "moving": "fxvtl5to8.pie"
+            },
+            "V-Tol03": {
+                "left": "prmvtl1.pie",
+                "moving": "fxvtl5to8.pie"
+            },
+            "hover01": {
+                "left": "prmhov1.pie"
+            },
+            "hover02": {
+                "left": "prmhov1.pie"
+            },
+            "hover03": {
+                "left": "prmhov1.pie"
+            },
+            "tracked01": {
+                "left": "prmtrk2.pie"
+            },
+            "tracked02": {
+                "left": "prmtrk2.pie"
+            },
+            "tracked03": {
+                "left": "prmtrk2.pie"
+            },
+            "wheeled01": {
+                "left": "prmwhl1.pie"
+            },
+            "wheeledskiddy": {
+                "left": "prmskidwhl1.pie",
+                "moving": "fxmskid.pie"
+            },
+            "wheelednormal": {
+                "left": "prmnormwhl1.pie"
+            },
+            "wheeled02": {
+                "left": "prmwhl1.pie"
+            },
+            "wheeled03": {
+                "left": "prmwhl1.pie"
+            }
+        },
+        "size": "MEDIUM",
+        "weaponSlots": 1,
+        "weight": 2000
+    },
+    "Body11ABTSpam": {
+        "armourHeat": 9,
+        "armourKinetic": 20,
+        "buildPoints": 350,
+        "buildPower": 60,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 200,
+        "id": "Body11ABTSpam",
+        "model": "drlbod11spam.pie",
+        "name": "Spamaconda III",
+        "powerOutput": 20000,
+        "propulsionExtraModels": {
+            "HalfTrack": {
+                "left": "prhhtr3.pie"
+            },
+            "HalfTrack02": {
+                "left": "prhhtr3.pie"
+            },
+            "HalfTrack03": {
+                "left": "prhhtr3.pie"
+            },
+            "V-Tol": {
+                "left": "prhvtl3.pie",
+                "moving": "fxvtl11.pie"
+            },
+            "V-Tol02": {
+                "left": "prhvtl3.pie",
+                "moving": "fxvtl11.pie"
+            },
+            "V-Tol03": {
+                "left": "prhvtl3.pie",
+                "moving": "fxvtl11.pie"
+            },
+            "hover01": {
+                "left": "prhhov1.pie"
+            },
+            "hover02": {
+                "left": "prhhov1.pie"
+            },
+            "hover03": {
+                "left": "prhhov1.pie"
+            },
+            "tracked01": {
+                "left": "prhtrk3.pie"
+            },
+            "tracked02": {
+                "left": "prhtrk3.pie"
+            },
+            "tracked03": {
+                "left": "prhtrk3.pie"
+            },
+            "wheeled01": {
+                "left": "prhwhl1.pie"
+            },
+            "wheeledskiddy": {
+                "left": "prhskidwhl1.pie",
+                "moving": "fxhskid.pie"
+            },
+            "wheelednormal": {
+                "left": "prhnormwhl1.pie"
+            },
+            "wheeled02": {
+                "left": "prhwhl1.pie"
+            },
+            "wheeled03": {
+                "left": "prhwhl1.pie"
+            }
+        },
+        "size": "HEAVY",
+        "weaponSlots": 1,
+        "weight": 2700
+    },
+    "Body1RECTwinSpam": {
+        "armourHeat": 4,
+        "armourKinetic": 10,
+        "buildPoints": 300,
+        "buildPower": 60,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 130,
+        "id": "Body1RECTwinSpam",
+        "model": "drlbod01spamtwin.pie",
+        "name": "Twin Spamaconda",
+        "powerOutput": 10000,
+        "propulsionExtraModels": {
+            "HalfTrack": {
+                "left": "prlhtrtwin.pie"
+            },
+            "HalfTrack02": {
+                "left": "prlhtrtwin.pie"
+            },
+            "HalfTrack03": {
+                "left": "prlhtrtwin.pie"
+            },
+            "V-Tol": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "V-Tol02": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "V-Tol03": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "hover01": {
+                "left": "prlhovtwin.pie"
+            },
+            "hover02": {
+                "left": "prlhovtwin.pie"
+            },
+            "hover03": {
+                "left": "prlhovtwin.pie"
+            },
+            "tracked01": {
+                "left": "prltrktwin.pie"
+            },
+            "tracked02": {
+                "left": "prltrktwin.pie"
+            },
+            "tracked03": {
+                "left": "prltrktwin.pie"
+            },
+            "wheeled01": {
+                "left": "prlwhltwin.pie"
+            },
+            "wheeledskiddy": {
+                "left": "prlskidwhltwin.pie",
+                "moving": "fxtwinskid.pie"
+            },
+            "wheelednormal": {
+                "left": "prlnormwhltwin.pie"
+            },
+            "wheeled02": {
+                "left": "prlwhltwin.pie"
+            },
+            "wheeled03": {
+                "left": "prlwhltwin.pie"
+            }
+        },
+        "size": "MEDIUM",
+        "weaponSlots": 2,
+        "weight": 1200
+    },
+    "Body1RECTripleSpam": {
+        "armourHeat": 4,
+        "armourKinetic": 10,
+        "buildPoints": 450,
+        "buildPower": 90,
+        "class": "Droids",
+        "designable": 1,
+        "hitpoints": 195,
+        "id": "Body1RECTripleSpam",
+        "model": "drlbod01spamtriple.pie",
+        "name": "Triple Spamaconda",
+        "powerOutput": 15000,
+        "propulsionExtraModels": {
+            "HalfTrack": {
+                "left": "prlhtrtriple.pie"
+            },
+            "HalfTrack02": {
+                "left": "prlhtrtriple.pie"
+            },
+            "HalfTrack03": {
+                "left": "prlhtrtriple.pie"
+            },
+            "V-Tol": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "V-Tol02": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "V-Tol03": {
+                "left": "prlvtltwin.pie",
+                "moving": "fxvtltwin.pie"
+            },
+            "hover01": {
+                "left": "prlhovtwin.pie"
+            },
+            "hover02": {
+                "left": "prlhovtwin.pie"
+            },
+            "hover03": {
+                "left": "prlhovtwin.pie"
+            },
+            "tracked01": {
+                "left": "prltrktriple.pie"
+            },
+            "tracked02": {
+                "left": "prltrktriple.pie"
+            },
+            "tracked03": {
+                "left": "prltrktriple.pie"
+            },
+            "wheeled01": {
+                "left": "prlwhltriple.pie"
+            },
+            "wheeledskiddy": {
+                "left": "prlskidwhltriple.pie",
+                "moving": "fxtripleskid.pie"
+            },
+            "wheelednormal": {
+                "left": "prlnormwhltriple.pie"
+            },
+            "wheeled02": {
+                "left": "prlwhltriple.pie"
+            },
+            "wheeled03": {
+                "left": "prlwhltriple.pie"
+            }
+        },
+        "size": "HEAVY",
+        "weaponSlots": 3,
+        "weight": 1800
+    },
     "Body2SUP": {
         "armourHeat": 6,
         "armourKinetic": 12,
@@ -595,7 +1014,7 @@
                 "left": "prlwhltwin.pie"
             }
         },
-        "size": "LIGHT",
+        "size": "MEDIUM",
         "weaponSlots": 2,
         "weight": 1200
     },
@@ -668,7 +1087,7 @@
                 "left": "prlwhltriple.pie"
             }
         },
-        "size": "LIGHT",
+        "size": "HEAVY",
         "weaponSlots": 3,
         "weight": 1800
     },
@@ -1311,6 +1730,51 @@
         "powerOutput": 1000,
         "size": "LIGHT",
         "weaponSlots": 2,
+        "weight": 150
+    },
+    "NextbotBody1": {
+        "armourHeat": 9999,
+        "armourKinetic": 9999,
+        "buildPoints": 95,
+        "buildPower": 25,
+        "class": "Droids",
+        "hitpoints": 200000,
+        "id": "NextbotBody1",
+        "model": "drnextbot1.pie",
+        "name": "Nextbot Body 1",
+        "powerOutput": 10000,
+        "size": "LIGHT",
+        "weaponSlots": 1,
+        "weight": 150
+    },
+    "NextbotBody2": {
+        "armourHeat": 9999,
+        "armourKinetic": 9999,
+        "buildPoints": 95,
+        "buildPower": 25,
+        "class": "Droids",
+        "hitpoints": 200000,
+        "id": "NextbotBody2",
+        "model": "drnextbot2.pie",
+        "name": "Nextbot Body 2",
+        "powerOutput": 10000,
+        "size": "LIGHT",
+        "weaponSlots": 1,
+        "weight": 150
+    },
+    "NextbotBody3": {
+        "armourHeat": 9999,
+        "armourKinetic": 9999,
+        "buildPoints": 95,
+        "buildPower": 25,
+        "class": "Droids",
+        "hitpoints": 200000,
+        "id": "NextbotBody3",
+        "model": "drnextbot3.pie",
+        "name": "Nextbot Body 3",
+        "powerOutput": 10000,
+        "size": "LIGHT",
+        "weaponSlots": 1,
         "weight": 150
     },
     "ZombieBody": {

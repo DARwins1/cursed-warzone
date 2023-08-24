@@ -242,8 +242,9 @@ dataset		CAM_2
 game		"wrf/cam2/sub2-8.gam"
 data		"wrf/cam2/sub2-8.wrf"
 
-between		CAM_2END
+expand		CAM_2END
 dataset		CAM_2
+game		"wrf/cam2/cam2end.gam"
 data		"wrf/cam2/cam2end.wrf"
 
 

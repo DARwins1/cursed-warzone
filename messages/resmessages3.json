@@ -532,10 +532,9 @@
 		"imdName": "MICAPSUL.PIE",
 		"sequenceName": "res_systech.ogg",
 		"text": [
-			"New Systems Turret Available",
-			"Synaptic Link Scrambler technology",
-			"Electronically attacks and disrupts enemy structures",
-			"Steals technology from enemies"
+			"New Tool Available",
+			"Remover Tool",
+			"Removes entities"
 		]
 	},
 	"RES_SY_VCBSU3": {

@@ -498,8 +498,9 @@ function eventStartLevel()
 	// Replace all snowy trees with funny explosive barrels
 	camUpgradeOnMapFeatures("TreeSnow3", "ExplosiveDrum");
 
-	// Add a funny sign
+	// Add a funny sign and the giant door (for later)
 	camUpgradeOnMapFeatures("Pylon", "Sign4");
+	camUpgradeOnMapFeatures("TreeSnow1", "GiantDoorVert");
 
 	// Make on-map units funny
 	camUpgradeOnMapTemplates(cTempl.npcybr, cTempl.skeleton, MOBS);

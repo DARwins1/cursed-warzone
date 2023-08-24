@@ -79,6 +79,11 @@ enderman: { body: "EndermanBody", prop: "CyborgLegs", weap: "Cyb-Wpn-EnderMelee"
 silverfish: { body: "SilverfishBody", prop: "CyborgLegs", weap: "Cyb-Wpn-SilvFishMelee" }, // Silverfish
 crscybcan: { body: "CyborgUltraHeavyBody", prop: "CyborgLegs", weap: "Cyb-Hvywpn-Hcannon" }, // Ultra Heavy-Gunner Cyborg
 
+// Nextbots
+crnextbot1: { body: "NextbotBody1", prop: "hover01", weap: "Cyb-Wpn-SilvFishMelee" }, // Nextbot (Sans)
+crnextbot2: { body: "NextbotBody2", prop: "hover01", weap: "Cyb-Wpn-SilvFishMelee" }, // Nextbot (Amogus)
+crnextbot3: { body: "NextbotBody3", prop: "hover01", weap: "Cyb-Wpn-SilvFishMelee" }, // Nextbot (Trollface)
+
 // Normal Campaign Templates
 // CAM_1A
 bloke: { body: "B1BaBaPerson01", prop: "BaBaLegs", weap: "BabaMG" },
