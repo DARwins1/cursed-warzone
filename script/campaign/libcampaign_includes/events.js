@@ -129,6 +129,7 @@ function cam_eventStartLevel()
 	__camSpyCooldowns = [];
 	__camPrimedCreepers = [];
 	__camBlackOut = false;
+	__camMobGlobalGroup = camNewGroup();
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
 	__camAiPowerReset(); //grant power to the AI
 	setTimer("__camSpawnVtols", camSecondsToMilliseconds(0.5));
@@ -148,6 +149,8 @@ function cam_eventStartLevel()
 	queue("__camGrantSpecialResearch", camSecondsToMilliseconds(6));
 	queue("camResetSun", camSecondsToMilliseconds(0.1)); // Set the sun correctly for the current campaign
 	queue("__camRandomizeFungibleCannons", camSecondsToMilliseconds(0.1)); // This is done on a delay so that bases can initialize
+
+	camManageGroup(__camMobGlobalGroup, CAM_ORDER_ATTACK, {removable: false});
 }
 
 function cam_eventDroidBuilt(droid, structure)
@@ -299,9 +302,9 @@ function cam_eventDestroyed(obj)
 			{
 				// Spawn a Silverfish out of the destroyed wall
 				let pos = camMakePos(obj);
-				camManageGroup(camMakeGroup(addDroid(MOBS, pos.x, pos.y, 
+				groupAdd(__camMobGlobalGroup, addDroid(MOBS, pos.x, pos.y, 
 					_("Silverfish"), "SilverfishBody", "CyborgLegs", "", "", "Cyb-Wpn-SilvFishMelee"
-				)), CAM_ORDER_ATTACK);
+				));
 			}
 		}
 	}
@@ -403,6 +406,7 @@ function cam_eventAttacked(victim, attacker)
 				let endermanInfo = {health: victim.health, group: victim.group};
 				// Find a random point within 8 tiles of the attacker
 				let tpPos = camGenerateRandomMapCoordinateWithinRadius(camMakePos(attacker), 8);
+				if (tpPos === null) tpPos = camMakePos(victim);
 
 				// "Teleport" the Enderman there by making a copy at the position and then removing the original
 				let newMan = addDroid(victim.player, tpPos.x, tpPos.y, "Enderman",
@@ -417,10 +421,8 @@ function cam_eventAttacked(victim, attacker)
 				}
 				else
 				{
-					// The Enderman didn't have a group, so make one for itself
-					let newGroup = camNewGroup();
-					groupAdd(newGroup, newMan);
-					camManageGroup(newGroup, CAM_ORDER_ATTACK);
+					// The Enderman didn't have a group, so add it to the global group
+					groupAdd(__camMobGlobalGroup, newMan);
 				}
 				queue("__camPlayTeleportSfx", CAM_TICKS_PER_FRAME, newMan.id + "");
 				return;
@@ -439,18 +441,16 @@ function cam_eventAttacked(victim, attacker)
 				let structList = enumRange(victim.x, victim.y, 5, ALL_PLAYERS, false).filter((obj) =>
 					obj.type === STRUCTURE && (obj.health < 50 || (obj.player === MOBS && !obj.isSensor))
 				);
-				let silverfishGroup = camNewGroup();
 				for (let i = 0; i < structList.length; i++)
 				{
 					// Spawn a new Silverfish
 					let pos = camMakePos(structList[i]);
-					groupAdd(silverfishGroup, addDroid(MOBS, pos.x, pos.y, 
+					groupAdd(__camMobGlobalGroup, addDroid(MOBS, pos.x, pos.y, 
 						_("Silverfish"), "SilverfishBody", "CyborgLegs", "", "", "Cyb-Wpn-SilvFishMelee"
 					));
 
 					camSafeRemoveObject(structList[i], true); // And blow up the structure
 				}
-				camManageGroup(silverfishGroup, CAM_ORDER_ATTACK);
 			}
 			if (victim.player !== CAM_HUMAN_PLAYER && !allianceExistsBetween(CAM_HUMAN_PLAYER, victim.player))
 			{

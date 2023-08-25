@@ -157,6 +157,7 @@ var __camFungibleCanSwapList = [
 	"Script-FungibleCannon-Swap11", "Script-FungibleCannon-Swap12", "Script-FungibleCannon-Swap13",
 	"Script-FungibleCannon-Swap14", "Script-FungibleCannon-Swap15"
 ];
+var __camMobGlobalGroup; // Default group for Silverfish and enraged Endermen
 
 //group
 var __camNewGroupCounter;

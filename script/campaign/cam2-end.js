@@ -261,11 +261,13 @@ function manageNextbot()
 		let obj = targetList[i];
 		if (Math.floor(obj.health) > 40)
 		{
+			// Remove 40% HP
 			setHealth(obj, obj.health - 40);
 			fireWeaponAtObj("UTHurtSFX", obj);
 		}
 		else
 		{
+			// Destroy the object
 			camSafeRemoveObject(obj, true);
 		}
 	}

@@ -518,6 +518,7 @@ function camGenerateRandomMapCoordinate(reachPosition, distFromReach, scanObject
 //;; ## camGenerateRandomMapCoordinateWithinRadius(center[, radius[, scanObjectRadius]])
 //;;
 //;; Returns a random coordinate anywhere on the map within a given radius
+//;; Retruns null if no valid position was found
 //;;
 //;; @param {Object} center
 //;; @param {number} radius
@@ -537,9 +538,11 @@ function camGenerateRandomMapCoordinateWithinRadius(center, radius, scanObjectRa
 
 	let limits = getScrollLimits();
 	let pos;
+	let attempts = 0;
 
 	do
 	{
+		attempts++;
 		let randomPos = {x: center.x + camRand(radius * 2) - radius, y: center.y + camRand(radius * 2) - radius};
 
 		if (randomPos.x < (limits.x + 2))
@@ -567,7 +570,14 @@ function camGenerateRandomMapCoordinateWithinRadius(center, radius, scanObjectRa
 		(camDist(pos, center) > radius) ||
 		(enumRange(pos.x, pos.y, scanObjectRadius, ALL_PLAYERS, false).length > 0) ||
 		(terrainType(pos.x, pos.y) === TER_CLIFFFACE) ||
-		(terrainType(pos.x, pos.y) === TER_WATER)));
+		(terrainType(pos.x, pos.y) === TER_WATER)) &&
+		attempts < 100);
+	
+	if (attempts >= 100)
+	{
+		pos = null; // Couldn't find a valid position
+		camTrace("Couldn't find any valid position around " + center.x + ", " + center.y);
+	}
 
 	return pos;
 }
@@ -1357,37 +1367,40 @@ function __camMonsterSpawnerTick()
 			)).length > 0)
 			{
 				// Enemy in range, try to spawn some mobs
-				let numMobs = difficulty + camRand(1); // 3-4 on Normal
+				let numMobs = difficulty + 1 + camRand(2); // 3-4 on Normal
 				let spawnedMobs = [];
 				for (let k = 0; k < numMobs; k++)
 				{
 					let spawnPos = camGenerateRandomMapCoordinateWithinRadius(spawnerPos, 3, 1);
-					var mob;
-					switch (spawnerList[j].name)
+					if (spawnPos !== null)
 					{
-						case "Creeper Spawner":
-							mob = {name: _("Creeper"), body: "CreeperBody", weap: "Cyb-Wpn-CreeperDud"};
-							break;
-						case "Skeleton Spawner":
-							mob = {name: _("Skeleton"), body: "SkeletonBody", weap: "Cyb-Wpn-SkelBow"};
-							break;
-						case "Zombie Spawner":
-							if (camRand(camChangeOnDiff(101)) < 5)
-							{
-								// Around a 5% chance to spawn a Baby Zombie instead
-								mob = {name: _("Baby Zombie"), body: "BabyZombieBody", weap: "Cyb-Wpn-BabyZmbieMelee"};
-							}
-							else
-							{
+						let mob;
+						switch (spawnerList[j].name)
+						{
+							case "Creeper Spawner":
+								mob = {name: _("Creeper"), body: "CreeperBody", weap: "Cyb-Wpn-CreeperDud"};
+								break;
+							case "Skeleton Spawner":
+								mob = {name: _("Skeleton"), body: "SkeletonBody", weap: "Cyb-Wpn-SkelBow"};
+								break;
+							case "Zombie Spawner":
+								if (camRand(camChangeOnDiff(101)) < 5)
+								{
+									// Around a 5% chance to spawn a Baby Zombie instead
+									mob = {name: _("Baby Zombie"), body: "BabyZombieBody", weap: "Cyb-Wpn-BabyZmbieMelee"};
+								}
+								else
+								{
+									mob = {name: _("Zombie"), body: "ZombieBody", weap: "Cyb-Wpn-ZmbieMelee"};
+								}
+								break;
+							default:
 								mob = {name: _("Zombie"), body: "ZombieBody", weap: "Cyb-Wpn-ZmbieMelee"};
-							}
-							break;
-						default:
-							mob = {name: _("Zombie"), body: "ZombieBody", weap: "Cyb-Wpn-ZmbieMelee"};
-							break;
+								break;
+						}
+						// Spawn the mob
+						spawnedMobs.push(addDroid(spawnerList[j].player, spawnPos.x, spawnPos.y, mob.name, mob.body, "CyborgLegs", "", "", mob.weap));
 					}
-					// Spawn the mob
-					spawnedMobs.push(addDroid(spawnerList[j].player, spawnPos.x, spawnPos.y, mob.name, mob.body, "CyborgLegs", "", "", mob.weap));
 				}
 
 				// Get the new mobs moving around
@@ -1539,7 +1552,7 @@ function __camSpyFeignTick()
 					// Pick somewhere near the HQ
 					pos = camGenerateRandomMapCoordinateWithinRadius(camMakePos(hqs[0]), 3, 1);
 				}
-				else
+				else if (pos === null) // No HQ or HQ is saturated
 				{
 					// Pick somehwere at the LZ
 					const LZ_NAMES = ["landingZone", "LZ"]; // Bit of a brain-dead solution but oh well
@@ -1568,10 +1581,15 @@ function __camSpyFeignTick()
 					// Pick somewhere near the attacker
 					pos = camGenerateRandomMapCoordinateWithinRadius(camMakePos(killer), 6, 1);
 				}
-				else
+				else if (pos === null)
 				{
 					// Pick somewhere near where the spy feigned
 					pos = camGenerateRandomMapCoordinateWithinRadius(__camSpyFeigns[i].pos, 6, 1);
+				}
+				else
+				{
+					// Just respawn at the same point
+					pos = __camSpyFeigns[i].pos;
 				}
 			}
 			let newSpy = addDroid(__camSpyFeigns[i].player, pos.x, pos.y, 

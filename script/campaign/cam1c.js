@@ -407,11 +407,14 @@ function eventStructureBuilt(structure, droid)
 // Send a transport to harrass the player as they try to do a puzzle
 function sendClippyTransport()
 {
+	let pos;
 	if (!door2Open && enumArea("patternZone2", CAM_HUMAN_PLAYER, false).filter((obj) => (
 		obj.type === STRUCTURE
 	)).length > 0)
 	{
-		camSendReinforcement(CLIPPY, camGenerateRandomMapCoordinateWithinRadius(camMakePos("patrolPos4"), 10), getDroidsForClippyLZ(),
+		pos = camGenerateRandomMapCoordinateWithinRadius(camMakePos("patrolPos4"), 10);
+		if (pos === null) pos = camMakePos("patrolPos4");
+		camSendReinforcement(CLIPPY, pos, getDroidsForClippyLZ(),
 			CAM_REINFORCE_TRANSPORT, {
 				entry: { x: 107, y: 70 },
 				exit: { x: 107, y: 70 }
@@ -421,7 +424,9 @@ function sendClippyTransport()
 		obj.type === STRUCTURE
 	)).length > 0)
 	{
-		camSendReinforcement(CLIPPY, camGenerateRandomMapCoordinateWithinRadius(camMakePos("patrolPos8"), 10), getDroidsForClippyLZ(),
+		pos = camGenerateRandomMapCoordinateWithinRadius(camMakePos("patrolPos8"), 10);
+		if (pos === null) pos = camMakePos("patrolPos8");
+		camSendReinforcement(CLIPPY, pos, getDroidsForClippyLZ(),
 			CAM_REINFORCE_TRANSPORT, {
 				entry: { x: 107, y: 70 },
 				exit: { x: 107, y: 70 }
