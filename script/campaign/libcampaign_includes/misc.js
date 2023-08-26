@@ -687,8 +687,14 @@ function camRandomEffect(pos)
 	}
 	if (camIsResearched("R-Vehicle-Prop-VTOL"))
 	{
-		// Allow Hurricane AAA artifact if Normal Wheels is researched
+		// Allow Hurricane AAA artifact and Normal Mini MGVs if Normal Wheels is researched
 		effects.push("hurricaneArti");
+		effects.push("miniNormalVipers");
+	}
+	if (camIsResearched("R-Wpn-Rocket06-IDF"))
+	{
+		// Allow Flamitzer Emplacement if Rain Rockets is researched
+		effects.push("flamitzerEmp");
 	}
 
 	// Choose an effect
@@ -806,6 +812,10 @@ function camRandomEffect(pos)
 			// Spawn a Fungible Cannon Hardpoint for the player
 			addStructure(__camFungibleCanHardList[camRand(__camFungibleCanHardList.length)], CAM_HUMAN_PLAYER, pos.x * 128, pos.y * 128);
 			break;
+		case "flamitzerEmp":
+			// Spawn a Flamitzer Emplacement for the player
+			addStructure("Emplacement-Howitzer-Incendiary", CAM_HUMAN_PLAYER, pos.x * 128, pos.y * 128);
+			break;
 		case "explode":
 			// Cause a drum explosion
 			let boomBaitId = addDroid(10, pos.x, pos.y, "Boom Bait",
@@ -837,7 +847,7 @@ function camRandomEffect(pos)
 			);
 			break;
 		case "babyZombies":
-			// Spawn a bunch of baby zombies
+			// Spawn a bunch of Baby Zombies
 			for (let i = -1; i <= 1; i++)
 			{
 				for (let j = -1; j <= 1; j++)
@@ -875,6 +885,22 @@ function camRandomEffect(pos)
 					);
 					addDroid(player, pos.x + i, pos.y + j, 
 						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
+					);
+				}
+			}
+			break;
+			case "miniNormalVipers":
+			// Spawn 18 Mini Machinegun Viper Normal Wheels for the player
+			var player = CAM_HUMAN_PLAYER;
+			for (let i = -1; i <= 1; i++)
+			{
+				for (let j = -1; j <= 1; j++)
+				{
+					addDroid(CAM_HUMAN_PLAYER, pos.x + i, pos.y + j, 
+						_("Mini Machinegun Viper Normal Wheels"), "Body1Mini", "wheelednormal", "", "", "MGMini"
+					);
+					addDroid(CAM_HUMAN_PLAYER, pos.x + i, pos.y + j, 
+						_("Mini Machinegun Viper Normal Wheels"), "Body1Mini", "wheelednormal", "", "", "MGMini"
 					);
 				}
 			}
@@ -1322,7 +1348,7 @@ function __camScanCreeperRadii()
 	// Loop through every Creeper on the map
 	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
 	{
-		let creepList = enumDroid(i, DROID_CYBORG, false).filter((dr) => (dr.body === "CreeperBody"));
+		let creepList = enumDroid(i, DROID_CYBORG, false).filter((dr) => (dr.body === "CreeperBody" || dr.body === "CreeperBodySpam"));
 		for (let j = 0; j < creepList.length; j++)
 		{
 			if (__camPrimedCreepers.indexOf(creepList[j].id) !== -1)
@@ -1335,7 +1361,8 @@ function __camScanCreeperRadii()
 
 			// Check if any enemies are within 2 tiles
 			if (enumRange(creepPos.x, creepPos.y, 2, ALL_PLAYERS, false).filter((obj) => (
-				obj.type !== FEATURE && !allianceExistsBetween(creepList[j].player, obj.player)
+				obj.type !== FEATURE && !allianceExistsBetween(creepList[j].player, obj.player) && 
+				!(obj.type === DROID && isVTOL(obj))
 			)).length > 0)
 			{
 				// Enemy in range, prepare for detonation!
@@ -1355,7 +1382,8 @@ function __camMonsterSpawnerTick()
 	{
 		let spawnerList = enumStruct(i, DEFENSE).filter((obj) => (
 			obj.name === _("Creeper Spawner") || obj.name === _("Skeleton Spawner")
-			|| obj.name === _("Zombie Spawner")
+			|| obj.name === _("Zombie Spawner") || obj.name === _("Spamton Creeper Spawner") 
+			|| obj.name === _("Spamton Skeleton Spawner") || obj.name === _("Spamton Zombie Spawner")
 		));
 		for (let j = 0; j < spawnerList.length; j++)
 		{
@@ -1394,8 +1422,25 @@ function __camMonsterSpawnerTick()
 									mob = {name: _("Zombie"), body: "ZombieBody", weap: "Cyb-Wpn-ZmbieMelee"};
 								}
 								break;
+							case "Spamton Creeper Spawner":
+								mob = {name: _("Spamton Creeper"), body: "CreeperBodySpam", weap: "Cyb-Wpn-CreeperDudSpam"};
+								break;
+							case "Spamton Skeleton Spawner":
+								mob = {name: _("Spamton Skeleton"), body: "SkeletonBodySpam", weap: "Cyb-Wpn-SkelBowSpam"};
+								break;
+							case "Spamton Zombie Spawner":
+								if (camRand(camChangeOnDiff(101)) < 5)
+								{
+									// Around a 5% chance to spawn a Spamton Baby Zombie instead
+									mob = {name: _("Spamton Baby Zombie"), body: "BabyZombieBodySpam", weap: "Cyb-Wpn-BabyZmbieMeleeSpam"};
+								}
+								else
+								{
+									mob = {name: _("Spamton Zombie"), body: "ZombieBodySpam", weap: "Cyb-Wpn-ZmbieMeleeSpam"};
+								}
+								break;
 							default:
-								mob = {name: _("Zombie"), body: "ZombieBody", weap: "Cyb-Wpn-ZmbieMelee"};
+								mob = {name: _("Spamton Zombie"), body: "ZombieBodySpam", weap: "Cyb-Wpn-ZmbieMeleeSpam"};
 								break;
 						}
 						// Spawn the mob

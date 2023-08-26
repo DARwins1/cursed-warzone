@@ -1297,7 +1297,7 @@
         "height": 1,
         "hitpoints": 400,
         "id": "Emplacement-Howitzer-Incendiary",
-        "name": "Incendiary Howitzer Emplacement",
+        "name": "Flamitzer Emplacement",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "HARD",
@@ -3985,6 +3985,66 @@
         "name": "Zombie Spawner",
         "resistance": 150,
         "sensorID": "ZombieSpawner",
+        "strength": "HARD",
+        "structureModel": [
+            "blspawner.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "width": 1
+    },
+    "Spawner-CreeperSpamton": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "Spawner-CreeperSpamton",
+        "name": "Spamton Creeper Spawner",
+        "resistance": 150,
+        "sensorID": "CreeperSpawnerSpamton",
+        "strength": "HARD",
+        "structureModel": [
+            "blspawner.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "width": 1
+    },
+    "Spawner-SkeletonSpamton": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "Spawner-SkeletonSpamton",
+        "name": "Spamton Skeleton Spawner",
+        "resistance": 150,
+        "sensorID": "SkeletonSpawnerSpamton",
+        "strength": "HARD",
+        "structureModel": [
+            "blspawner.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "width": 1
+    },
+    "Spawner-ZombieSpamton": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "Spawner-ZombieSpamton",
+        "name": "Spamton Zombie Spawner",
+        "resistance": 150,
+        "sensorID": "ZombieSpawnerSpamton",
         "strength": "HARD",
         "structureModel": [
             "blspawner.pie"

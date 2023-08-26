@@ -63,6 +63,36 @@
         "type": "STANDARD",
         "weight": 100
     },
+    "CreeperSpawnerSpamton": {
+        "id": "CreeperSpawnerSpamton",
+        "location": "TURRET",
+        "name": "Spamton Creeper Spawner Sensor",
+        "power": 500,
+        "range": 1024,
+        "sensorModel": "creeperspawnerspam.pie",
+        "type": "STANDARD",
+        "weight": 100
+    },
+    "SkeletonSpawnerSpamton": {
+        "id": "SkeletonSpawnerSpamton",
+        "location": "TURRET",
+        "name": "Spamton Skeleton Spawner Sensor",
+        "power": 500,
+        "range": 1024,
+        "sensorModel": "skeletonspawnerspam.pie",
+        "type": "STANDARD",
+        "weight": 100
+    },
+    "ZombieSpawnerSpamton": {
+        "id": "ZombieSpawnerSpamton",
+        "location": "TURRET",
+        "name": "Spamton Zombie Spawner Sensor",
+        "power": 500,
+        "range": 1024,
+        "sensorModel": "zombiespawnerspam.pie",
+        "type": "STANDARD",
+        "weight": 100
+    },
     "FortressSensor": {
         "id": "FortressSensor",
         "location": "DEFAULT",

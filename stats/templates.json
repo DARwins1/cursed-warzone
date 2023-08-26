@@ -790,6 +790,17 @@
             "Cyb-Wpn-ZmbieMelee"
         ]
     },
+    "Cyb-ZmbiSpam": {
+        "available": true,
+        "body": "ZombieBodySpam",
+        "id": "Cyb-ZmbieSpam",
+        "name": "Spamton Zombie",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-ZmbieMeleeSpam"
+        ]
+    },
     "Cyb-BabyZmbie": {
         "available": true,
         "body": "BabyZombieBody",
@@ -799,6 +810,17 @@
         "type": "CYBORG",
         "weapons": [
             "Cyb-Wpn-BabyZmbieMelee"
+        ]
+    },
+    "Cyb-BabyZmbieSpam": {
+        "available": true,
+        "body": "BabyZombieBodySpam",
+        "id": "Cyb-BabyZmbieSpam",
+        "name": "Spamton Baby Zombie",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-BabyZmbieMeleeSpam"
         ]
     },
     "Cyb-Creep": {
@@ -812,6 +834,17 @@
             "Cyb-Wpn-CreeperDud"
         ]
     },
+    "Cyb-CreepSpam": {
+        "available": true,
+        "body": "CreeperBodySpam",
+        "id": "Cyb-CreepSpam",
+        "name": "Spamton Creeper",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-CreeperDudSpam"
+        ]
+    },
     "Cyb-Skel": {
         "available": true,
         "body": "SkeletonBody",
@@ -821,6 +854,17 @@
         "type": "CYBORG",
         "weapons": [
             "Cyb-Wpn-SkelBow"
+        ]
+    },
+    "Cyb-SkelSpam": {
+        "available": true,
+        "body": "SkeletonBodySpam",
+        "id": "Cyb-SkelSpam",
+        "name": "Spamton Skeleton",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-SkelBowSpam"
         ]
     },
     "Cyb-Ender": {

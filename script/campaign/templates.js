@@ -71,6 +71,7 @@ crcybpyro: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgFlamer01"
 crcybpod: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgMiniRocket" }, // Many-Rocket Cyborg
 crcybcan: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannon" }, // "Light" Gunner Cyborg
 crcybneedle: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannon" }, // Needler Cyborg
+crcybspy: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgSpyChaingun" }, // Spy Cyborg
 creeper: { body: "CreeperBody", prop: "CyborgLegs", weap: "Cyb-Wpn-CreeperDud" }, // Creeper
 zombie: { body: "ZombieBody", prop: "CyborgLegs", weap: "Cyb-Wpn-ZmbieMelee" }, // Zombie
 babyzombie: { body: "BabyZombieBody", prop: "CyborgLegs", weap: "Cyb-Wpn-BabyZmbieMelee" }, // Baby Zombie
@@ -78,6 +79,23 @@ skeleton: { body: "SkeletonBody", prop: "CyborgLegs", weap: "Cyb-Wpn-SkelBow" },
 enderman: { body: "EndermanBody", prop: "CyborgLegs", weap: "Cyb-Wpn-EnderMelee" }, // Enderman
 silverfish: { body: "SilverfishBody", prop: "CyborgLegs", weap: "Cyb-Wpn-SilvFishMelee" }, // Silverfish
 crscybcan: { body: "CyborgUltraHeavyBody", prop: "CyborgLegs", weap: "Cyb-Hvywpn-Hcannon" }, // Ultra Heavy-Gunner Cyborg
+
+// Spamton Vehicles
+
+// Spamton Cyborgs/Infantry
+spcybmg: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgChaingunSpam" }, // Spamton Machinegunner Cyborg
+spcybbb: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgBBSpam" }, // Spamton Bunker Buster Cyborg
+spcybbison: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgBisonSpam" }, // Spamton Bison Cyborg
+spcybpyro: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgFlamer01Spam" }, // Spamton Pyro Cyborg
+spcybpod: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgMiniRocketSpam" }, // Spamton Many-Rocket Cyborg
+spcybcan: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannonSpam" }, // Spamton "Light" Gunner Cyborg
+spcybneedle: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannonSpam" }, // Spamton Needler Cyborg
+spcybspy: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgSpyChaingunSpam" }, // Spamton Spy Cyborg
+spamcreeper: { body: "CreeperBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-CreeperDudSpam" }, // Spamton Creeper
+spamzombie: { body: "ZombieBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-ZmbieMeleeSpam" }, // Spamton Zombie
+spambabyzombie: { body: "BabyZombieBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-BabyZmbieMeleeSpam" }, // Spamton Baby Zombie
+spamskeleton: { body: "SkeletonBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-SkelBowSpam" }, // Spamton Skeleton
+spamenderman: { body: "EndermanBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-EnderMeleeSpam" }, // Spamton Enderman
 
 // Nextbots
 crnextbot1: { body: "NextbotBody1", prop: "hover01", weap: "Cyb-Wpn-SilvFishMelee" }, // Nextbot (Sans)
