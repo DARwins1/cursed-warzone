@@ -124,8 +124,7 @@
 		"text": [
 			"New Rocket Available",
 			"High explosive shaped charge missile",
-			"Best Targets: Bunkers, defenses, base structures",
-			"... It's a Bunker Buster"
+			"Best Targets: Bunkers, defenses, base structures"
 		]
 	},
 	"RES_W_RK_LTAT1": {
@@ -295,6 +294,18 @@
 			"New Cyborg Available",
 			"Armed with two Cyborg Machineguns",
 			"Also armed with a pair of cool shades",
+			"Requires Cyborg factory to produce"
+		]
+	},
+	"RES_CYW_MGSPY": {
+		"id": "RES_CYW_MGSPY",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_droid.ogg",
+		"text": [
+			"New Cyborg Available",
+			"Armed with Cyborg Machinegun and Invisibility Device",
+			"Can feign death when attacked with low HP, reappearing at your HQ or LZ",
+			"Feigning death can only be performed once every 60 seconds",
 			"Requires Cyborg factory to produce"
 		]
 	},

@@ -372,6 +372,32 @@
 		"type": "TREE",
 		"width": 3
 	},
+	"Pipis": {
+		"armour": 5,
+		"breadth": 1,
+		"damageable": 1,
+		"hitpoints": 25,
+		"id": "Pipis",
+		"model": "mipipis.pie",
+		"name": "Pipis",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "TREE",
+		"width": 1
+	},
+	"PipisM": {
+		"armour": 5,
+		"breadth": 1,
+		"damageable": 1,
+		"hitpoints": 25,
+		"id": "PipisM",
+		"model": "mipipismiss.pie",
+		"name": "Ms. Pipis",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "TREE",
+		"width": 1
+	},
 	"OilResource": {
 		"armour": 0,
 		"breadth": 1,
@@ -770,7 +796,7 @@
 		"id": "GiantDoorHoriz",
 		"lineOfSight": 1,
 		"model": "midoorhoriz.PIE",
-		"name": "Inconvenient Door",
+		"name": "Inconvenient Horizontal Door",
 		"tileDraw": 1,
 		"type": "SKYSCRAPER",
 		"width": 3
@@ -783,7 +809,7 @@
 		"id": "GiantDoorVert",
 		"lineOfSight": 1,
 		"model": "midoorvert.PIE",
-		"name": "Inconvenient Door",
+		"name": "Inconvenient Vertical Door",
 		"tileDraw": 1,
 		"type": "SKYSCRAPER",
 		"width": 3
@@ -848,7 +874,7 @@
 		"id": "Sign4",
 		"lineOfSight": 0,
 		"model": "misign4.PIE",
-		"name": "Sign 3",
+		"name": "Sign 4",
 		"startVisible": 0,
 		"tileDraw": 1,
 		"type": "BUILDING",

@@ -1227,6 +1227,20 @@ function __camDetonateDrum(boomBaitId)
 	}
 }
 
+// Cause an explosion after Pipis is destroyed
+function __camDetonatePipis(boomBaitId)
+{
+	var bait = getObject(DROID, 10, boomBaitId);
+	if (!camDef(bait))
+	{
+		return;
+	}
+	else
+	{
+		fireWeaponAtObj("PipisBlast", bait);
+	}
+}
+
 // Cause an explosion after a nuclear drum is destroyed
 function __camDetonateNukeDrum(boomBaitId)
 {
@@ -1371,6 +1385,47 @@ function __camScanCreeperRadii()
 				queue("__camDetonateCreeper", camSecondsToMilliseconds(1.5), creepList[j].id + "");
 			}
 		}
+	}
+}
+
+// Check if any Pipis should detonate themselves
+function __camScanPipisRadii()
+{
+	let pipisList = enumFeature(ALL_PLAYERS, "Pipis").concat(enumFeature(ALL_PLAYERS, "PipisM"))
+	for (let i = 0; i < pipisList.length; i++)
+	{
+		let scanNum = 0; // Scan 4 times (since the scan range is centered around the top left corner of the Pipis)
+		let detonated = false;
+		let pipisPos = camMakePos(pipisList[i]);
+
+		// Check if any enemies are within 1 tile
+		do 
+		{
+			scanNum++;
+			if (enumRange(pipisPos.x, pipisPos.y, 1, ALL_PLAYERS, false).filter((obj) => (
+				obj.type !== FEATURE && !allianceExistsBetween(SPAMTON, obj.player) && 
+				!(obj.type === DROID && isVTOL(obj))
+			)).length > 0)
+			{
+				// Enemy in range, detonate!
+				fireWeaponAtObj("PipisDetonate", pipisList[i]);
+				detonated = true;
+			}
+			if (scanNum === 1)
+			{
+				pipisPos.x++;
+			}
+			else if (scanNum === 2)
+			{
+				pipisPos.y++;
+			}
+			else if (scanNum === 3)
+			{
+				pipisPos.x--;
+			}
+
+		} while (!detonated && scanNum < 4)
+		
 	}
 }
 
@@ -1637,8 +1692,10 @@ function __camSpyFeignTick()
 					pos = __camSpyFeigns[i].pos;
 				}
 			}
+			let spyWeap = "CyborgSpyChaingun";
+			if (__camSpyFeigns[i].player === SPAMTON) spyWeap = "CyborgSpyChaingunSpam";
 			let newSpy = addDroid(__camSpyFeigns[i].player, pos.x, pos.y, 
-				_("Spy Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgSpyChaingun"
+				_("Spy Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", spyWeap
 			);
 			queue("__camPlayDecloakSfx", CAM_TICKS_PER_FRAME, newSpy.id + "");
 			setHealth(newSpy, 40);

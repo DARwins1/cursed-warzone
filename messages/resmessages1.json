@@ -151,10 +151,10 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_struttech.ogg",
 		"text": [
-			"Defenses Improved",
-			"Improved Titanium-reinforced concrete",
-			"Increases Armour and Body Points",
-			"All defenses and walls upgraded automatically"
+			"wall better",
+			"Improved wall stuff",
+			"amke walls hardur",
+			"defneses and walls upgaded aumaticaly"
 		]
 	},
 	"RES_EMP_PODTOW": {
@@ -229,7 +229,7 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"New Defensive Structure Available",
-			"Armored bunker with Lancer AT rocket",
+			"Armored bunker with Sawed-Off Lancer AT rocket",
 			"Automatically targets enemies within sensor range",
 			"Defensive Strength: High"
 		]
@@ -328,9 +328,10 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"Vehicle Production Improved",
-			"Automated Factory Production",
-			"Increases factory output",
-			"All vehicle factories upgraded automatically"
+			"Vehicle production now outsourced to edlritch gods through arcane ritual",
+			"Vehicles are then bathed in oil to cleanse them of edlritch influence",
+			"...This is apparently faster than whatever we were doing before",
+			"All factories upgraded automatically"
 		]
 	},
 	"RES_ST_MAT1": {
@@ -718,7 +719,7 @@
 		"sequenceName": "res_weapons.ogg",
 		"text": [
 			"Rocket Upgrade",
-			"High Explosive Anti-Tank warhead",
+			"High Explosive Armor Piercing High Velocity Very Dangerous Big Boom Speed Yes Tank Killing Super Duper Rockets",
 			"Increases Rocket damage",
 			"All rockets upgraded automatically"
 		]

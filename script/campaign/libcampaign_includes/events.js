@@ -142,6 +142,7 @@ function cam_eventStartLevel()
 	setTimer("__camShowVictoryConditions", camMinutesToMilliseconds(5));
 	setTimer("__camTacticsTick", camSecondsToMilliseconds(0.1));
 	setTimer("__camScanCreeperRadii", camSecondsToMilliseconds(0.2));
+	setTimer("__camScanPipisRadii", camSecondsToMilliseconds(0.2));
 	setTimer("__updateNeedlerLog", camSecondsToMilliseconds(8));
 	setTimer("__camSpyFeignTick", camSecondsToMilliseconds(0.5));
 	setTimer("__camMonsterSpawnerTick", camSecondsToMilliseconds(16));
@@ -196,12 +197,26 @@ function cam_eventStructureBuilt(structure, droid)
 		camSafeRemoveObject(structure);
 		addFeature("ExplosiveDrum", pos.x, pos.y);
 	}
-	if (structure.name === _("Nuclear Drum"))
+	else if (structure.name === _("Nuclear Drum"))
 	{
 		// Swap out the structure for the feature object
 		let pos = {x: structure.x, y: structure.y};
 		camSafeRemoveObject(structure);
 		addFeature("NuclearDrum", pos.x, pos.y);
+	}
+	else if (structure.name === _("Pipis"))
+	{
+		// Swap out the structure for the feature object
+		let pos = {x: structure.x, y: structure.y};
+		camSafeRemoveObject(structure);
+		if (camRand(101) < 1)
+		{
+			addFeature("PipisM", pos.x, pos.y);
+		}
+		else
+		{
+			addFeature("Pipis", pos.x, pos.y);
+		}
 	}
 	else if (structure.name === _("Fungible Cannon Hardpoint"))
 	{
@@ -242,7 +257,8 @@ function cam_eventDestroyed(obj)
 		{
 			__camCheckDeadTruck(obj);
 		}
-		else if (camDef(obj.weapons[0]) && obj.weapons[0].id === "CyborgSpyChaingun" && camFeignCooldownCheck(obj.id))
+		else if (camDef(obj.weapons[0]) && (obj.weapons[0].id === "CyborgSpyChaingun" || obj.weapons[0].id === "CyborgSpyChaingunSpam")
+			&& camFeignCooldownCheck(obj.id))
 		{
 			__camSpyFeignDeath(obj);
 			return;
@@ -267,14 +283,20 @@ function cam_eventDestroyed(obj)
 		if (obj.name === _("Explosive Drum"))
 		{
 			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
-				"B4body-sml-trike01", "BaBaProp", "", "", "BabaTrikeMG").id; // Spawn a trike...
+				"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
 			queue("__camDetonateDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
 		}
 		else if (obj.name === _("Nuclear Drum"))
 		{
 			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
-				"B4body-sml-trike01", "BaBaProp", "", "", "BabaTrikeMG").id; // Spawn a trike...
+				"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
 			queue("__camDetonateNukeDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
+		}
+		else if (obj.name === _("Pipis") || obj.name === _("Ms. Pipis"))
+		{
+			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
+				"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
+			queue("__camDetonatePipis", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
 		}
 	}
 	else if (obj.type === STRUCTURE)

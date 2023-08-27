@@ -4,8 +4,7 @@ include("script/campaign/templates.js");
 const BONZI_RES = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 	"R-Defense-WallUpgrade01", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage01",
-	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Defense-WallUpgrade01",
-	"R-Struc-RprFac-Upgrade01",
+	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
 ];
 
 const SPECTATORS = 1; // Player number of the spectators/misc. arena objects.
@@ -607,7 +606,7 @@ function spawnCoreUnits()
 			var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
 			var pos = camRandPosInArea(spawnArea);
 			groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
-				_("Freddy Fazbear"), "FreddyBody", "CyborgLegs", "", "", ["CannonBison", "CannonBison"]
+				_("Freddy Fazbear"), "FreddyBody", "CyborgLegs", "", "", "CannonBison", "CannonBison"
 			));
 			doneSpawning = true;
 			break;

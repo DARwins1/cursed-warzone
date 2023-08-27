@@ -8,6 +8,7 @@ crltruckw: { body: "Body1REC", prop: "wheeled01", weap: "Spade1Mk1" }, // Truck 
 crbigmg: { body: "Body1BIG", prop: "wheeled01", weap: "MG3Mk2" }, // Big Machinegun Viper Wheels
 crminimg: { body: "Body1Mini", prop: "wheeled01", weap: "MGMini" }, // Mini Machinegun Viper Wheels
 crlmgw: { body: "Body1REC", prop: "wheeled01", weap: "MG1Mk1" }, // Machinegun Viper Wheels
+crtmgw: { body: "Body1REC", prop: "wheeled01", weap: "MG2Mk1" }, // Twin nugenihcaM Viper Wheels
 crlscorchw: { body: "Body1REC", prop: "wheeled01", weap: "BabaFlame" }, // Scorch Shot Viper Wheels
 crlcanw: { body: "Body1REC", prop: "wheeled01", weap: "Cannon1Mk1" }, // "Light" Cannon Viper Wheels
 crlbbw: { body: "Body1REC", prop: "wheeled01", weap: "Rocket-BB" }, // Bunker Buster Viper Wheels
@@ -44,6 +45,9 @@ crmmortht: { body: "Body5REC", prop: "HalfTrack", weap: "Mortar1Mk1" }, // Catap
 crmbb2ht: { body: "Body5REC", prop: "HalfTrack", weap: "Rocket-BB2" }, // Bunker Buster II Viper II Half-wheels
 crmpepht: { body: "Body5REC", prop: "HalfTrack", weap: "Mortar3ROTARYMk1" }, // Pepperspray Viper II Half-wheels
 crmhmght: { body: "Body5REC", prop: "HalfTrack", weap: "MG3Mk1" }, // Realistic Heavy Machinegun Viper II Half-wheels
+crmtruckht: { body: "Body5REC", prop: "HalfTrack", weap: "Spade1Mk1" }, // Truck Viper II Half-wheels
+crtwinhmgcanht: { body: "Body1RECTwin", prop: "HalfTrack", weap: ["MG3Mk1", "Cannon1Mk1"] }, // Realistic Heavy Machinegun Hydra Twin Viper Half-wheels
+crtwinscorchpodht: { body: "Body1RECTwin", prop: "HalfTrack", weap: ["BabaFlame", "Rocket-Pod"] }, // Scorch Shot Hydra Twin Viper Half-wheels
 
 // Thick Wheels (Tracks)
 crmsenst: { body: "Body5REC", prop: "tracked01", weap: "SensorTurret1Mk1" }, // Sensor Viper II Thick Wheels
@@ -81,6 +85,37 @@ silverfish: { body: "SilverfishBody", prop: "CyborgLegs", weap: "Cyb-Wpn-SilvFis
 crscybcan: { body: "CyborgUltraHeavyBody", prop: "CyborgLegs", weap: "Cyb-Hvywpn-Hcannon" }, // Ultra Heavy-Gunner Cyborg
 
 // Spamton Vehicles
+// Wheels
+spbigmg: { body: "Body1BIGSpam", prop: "wheeled01", weap: "MG3Mk2" }, // Big Machinegun Spamaconda Wheels
+spminimg: { body: "Body1MiniSpam", prop: "wheeled01", weap: "MGMini" }, // Mini Machinegun Spamaconda Wheels
+splmgw: { body: "Body1RECSpam", prop: "wheeled01", weap: "MG1Mk1" }, // Machinegun Spamaconda Wheels
+splneedlew: { body: "Body1RECSpam", prop: "wheeled01", weap: "RailGun1Mk1" }, // Needler Spamaconda Wheels
+splcanw: { body: "Body1RECSpam", prop: "wheeled01", weap: "Cannon1Mk1" }, // "Light" Cannon Spamaconda Wheels
+sptwin2mgw: { body: "Body1RECTwinSpam", prop: "wheeled01", weap: ["MG1Mk1", "MG1Mk1"] }, // Machinegun Hydra Twin Spamaconda Wheels
+
+// Drift Wheels
+splmgdw: { body: "Body1RECSpam", prop: "wheeledskiddy", weap: "MG1Mk1" }, // Machinegun Spamaconda Drift Wheels
+spleflamdw: { body: "Body1RECSpam", prop: "wheeledskiddy", weap: "Flame1Mk2" }, // Extended Flamer Spamaconda Drift Wheels
+splcandw: { body: "Body1RECSpam", prop: "wheeledskiddy", weap: "Cannon1Mk1" }, // "Light" Cannon Spamaconda Drift Wheels
+splpoddw: { body: "Body1RECSpam", prop: "wheeledskiddy", weap: "Rocket-Pod" }, // Many-Rocket Pod Spamaconda Drift Wheels
+spmhmgdw: { body: "Body5RECSpam", prop: "wheeledskiddy", weap: "MG3Mk1" }, // Realistic Heavy Machinegun Spamaconda II Drift Wheels
+sptwin2eflamdw: { body: "Body1RECTwinSpam", prop: "wheeledskiddy", weap: ["Flame1Mk2", "Flame1Mk2"] }, // Extended Flamer Hydra Twin Spamaconda Drift Wheels
+
+// Half-wheels (Half-tracks)
+spleflamht: { body: "Body1RECSpam", prop: "HalfTrack", weap: "Flame1Mk2" }, // Extended Flamer Spamaconda Half-wheels
+splneedleht: { body: "Body1RECSpam", prop: "HalfTrack", weap: "RailGun1Mk1" }, // Needler Spamaconda Half-wheels
+spmlcanht: { body: "Body5RECSpam", prop: "HalfTrack", weap: "Cannon1Mk1" }, // "Light" Cannon Spamaconda II Half-wheels
+sptwinneedlereflamht: { body: "Body5RECSpam", prop: "HalfTrack", weap: ["Cannon1Mk1", "Flame1Mk2"] }, // Needler Hydra Twin Spamaconda Half-wheels
+
+// Thick Wheels (Tracks)
+sphmcant: { body: "Body11ABTSpam", prop: "tracked01", weap: "Cannon2A-TMk1" }, // Fungible Cannon Spamaconda III Thick Wheels
+sphhflamt: { body: "Body11ABTSpam", prop: "tracked01", weap: "Flame2" }, // HV Flamer Spamaconda III Thick Wheels
+
+// Normal Wheels (basically VTOLs)
+spminimgnw: { body: "Body1MiniSpam", prop: "wheelednormal", weap: "MGMini-VTOL" }, // Mini Machinegun Spamaconda Normal Wheels
+splmgnw: { body: "Body1RECSpam", prop: "wheelednormal", weap: "MG1-VTOL" }, // Machinegun Spamaconda Normal Wheels
+splneedlenw: { body: "Body1RECSpam", prop: "wheelednormal", weap: "RailGun1-VTOL" }, // Needler Spamaconda Normal Wheels
+spmanvilnw: { body: "Body5RECSpam", prop: "wheelednormal", weap: "Bomb-VTOL-Anvil" }, // Anvil Spamaconda II Normal Wheels
 
 // Spamton Cyborgs/Infantry
 spcybmg: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgChaingunSpam" }, // Spamton Machinegunner Cyborg

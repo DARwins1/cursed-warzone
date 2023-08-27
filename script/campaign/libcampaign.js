@@ -122,10 +122,10 @@ const BETA_LEVELS = [
 const GAMMA_LEVELS = [
 	"CAM_3A", "SUB_3_1S", "SUB_3_1", "CAM_3B", "SUB_3_2S", "SUB_3_2", "CAM3A-B",
 	"CAM3C", "CAM3A-D1", "CAM3A-D2", "CAM_3_4S", "CAM_3_4",
-	"WHAT_ARE_YOU_DOING_IN_MY_[Dumpster]!?", // Gamma 1
-	"NO_DON'T_[Steal]_MY_!", "THE_BIG_ONE", // Gamma 2
+	"WHAT_ARE_YOU_DOING_IN_MY_", // Gamma 1
+	"NO_DONT_STEAL_MY_", "THE_BIG_ONE", // Gamma 2
 	"RIDE_AROUND_TOWN", "SPAMTON_CITY", // Gamma 3
-	"THE_G_STANDS_FOR_[[Blaster]]", // Gamma 4
+	"THE_G_STANDS_FOR_BLASTER", // Gamma 4
 	"BIG_SHOT" // Gamma 5
 ];
 

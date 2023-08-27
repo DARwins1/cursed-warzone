@@ -14,6 +14,20 @@
         "weaponSlots": 1,
         "weight": 100
     },
+    "BaitBody": {
+        "armourHeat": 1,
+        "armourKinetic": 1,
+        "buildPoints": 20,
+        "buildPower": 1,
+        "hitpoints": 10000,
+        "id": "BaitBody",
+        "model": "exbloke.pie",
+        "name": "*Bait Body*",
+        "powerOutput": 125,
+        "size": "LIGHT",
+        "weaponSlots": 1,
+        "weight": 100
+    },
     "B2JeepBody": {
         "armourHeat": 1,
         "armourKinetic": 4,
@@ -454,6 +468,9 @@
             },
             "wheeled03": {
                 "left": "prlwhlmini.pie"
+            },
+            "wheelednormal": {
+                "left": "prlnormwhlmini.pie"
             }
         },
         "size": "LIGHT",
@@ -581,6 +598,9 @@
             },
             "wheeled03": {
                 "left": "prlwhlmini.pie"
+            },
+            "wheelednormal": {
+                "left": "prlnormwhlmini.pie"
             }
         },
         "size": "LIGHT",

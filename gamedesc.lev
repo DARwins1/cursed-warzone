@@ -260,41 +260,41 @@ data		"wrf/audio.wrf"
 data		"wrf/stats.wrf"
 data		"wrf/camres.wrf"
 
-camstart	CAM_3A
+camstart	WHAT_ARE_YOU_DOING_IN_MY_
 dataset		CAM_3
 game		"wrf/cam3/cam3a.gam"
 data		"wrf/cam3/cam3a.wrf"
 
-camchange	CAM_3A
+camchange	WHAT_ARE_YOU_DOING_IN_MY_
 dataset		CAM_2
 data		"wrf/cam3/cam3change.wrf"
 game		"wrf/cam3/cam3a.gam"
 data		"wrf/cam3/cam3a.wrf"
 
-between		SUB_3_1S
+between		NO_DONT_STEAL_MY_
 dataset		CAM_3
 data		"wrf/cam3/sub3-1s.wrf"
 
-miss_keep_limbo	SUB_3_1
+miss_keep	THE_BIG_ONE
 dataset		CAM_3
 game		"wrf/cam3/sub3-1.gam"
 data		"wrf/cam3/sub3-1.wrf"
 
-expand		CAM_3B
+expand		THE_G_STANDS_FOR_BLASTER
 dataset		CAM_3
 game		"wrf/cam3/cam3b.gam"
 data		"wrf/cam3/cam3b.wrf"
 
-between		SUB_3_2S
+between		RIDE_AROUND_TOWN
 dataset		CAM_3
 data		"wrf/cam3/sub3-2s.wrf"
 
-miss_keep	SUB_3_2
+miss_keep	SPAMTON_CITY
 dataset		CAM_3
 game		"wrf/cam3/sub3-2.gam"
 data		"wrf/cam3/sub3-2.wrf"
 
-expand		CAM3A-B
+expand		BIG_SHOT
 dataset		CAM_3
 game		"wrf/cam3/cam3a-b.gam"
 data		"wrf/cam3/cam3ab.wrf"

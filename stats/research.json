@@ -446,7 +446,7 @@
 		"requiredResearch": [
 			"R-Wpn-Mortar01Lt"
 		],
-		"researchPoints": 7200,
+		"researchPoints": 5200,
 		"researchPower": 225,
 		"resultComponents": [
 			"TNTCannon"
@@ -462,7 +462,7 @@
 		"requiredResearch": [
 			"R-Wpn-Mortar02Hvy"
 		],
-		"researchPoints": 10000,
+		"researchPoints": 38000,
 		"researchPower": 312,
 		"resultComponents": [
 			"Mortar3ROTARYMk1"
@@ -593,12 +593,7 @@
 		"keyTopic": 1,
 		"msgName": "RES_W_RK_IDF",
 		"name": "Rain Rockets",
-		"requiredResearch": [
-			"R-Wpn-Rocket02-MRL",
-			"R-Sys-CBSensor-Tower01",
-			"R-Wpn-RocketSlow-ROF01"
-		],
-		"researchPoints": 7200,
+		"researchPoints": 5200,
 		"researchPower": 225,
 		"resultComponents": [
 			"Rocket-IDF"
@@ -756,6 +751,22 @@
 		],
 		"statID": "NX-CyborgChaingun"
 	},
+	"R-Cyborg-Wpn-MGSpy": {
+		"iconID": "IMAGE_RES_CYBORGTECH",
+		"id": "R-Cyborg-Wpn-MGSpy",
+		"msgName": "RES_CYW_MGSPY",
+		"name": "Spy Cyborg",
+		"keyTopic": 1,
+		"requiredResearch": [
+			"R-Cyborg-Wpn-MG"
+		],
+		"researchPoints": 1200,
+		"researchPower": 97,
+		"resultComponents": [
+			"CyborgSpyChaingun"
+		],
+		"statID": "CyborgSpyChaingun"
+	},
 	"R-Cyborg-Wpn-Rocket": {
 		"iconID": "IMAGE_RES_CYBORGTECH",
 		"id": "R-Cyborg-Wpn-Rocket",
@@ -888,6 +899,36 @@
 		],
 		"subgroupIconID": "IMAGE_RES_GRPUPG"
 	},
+	"R-Cyborg-Metals02": {
+		"iconID": "IMAGE_RES_CYBORGTECH",
+		"id": "R-Cyborg-Metals02",
+		"imdName": "icmolql.pie",
+		"msgName": "RES_CYMET4",
+		"name": "Cyborg Composite-er Alloys",
+		"requiredResearch": [
+			"R-Cyborg-Metals01",
+			"R-Vehicle-Metals02"
+		],
+		"researchPoints": 2400,
+		"researchPower": 84,
+		"results": [
+			{
+				"class": "Body",
+				"filterParameter": "BodyClass",
+				"filterValue": "Cyborgs",
+				"parameter": "Armour",
+				"value": 35
+			},
+			{
+				"class": "Body",
+				"filterParameter": "BodyClass",
+				"filterValue": "Cyborgs",
+				"parameter": "HitPointPct",
+				"value": 35
+			}
+		],
+		"subgroupIconID": "IMAGE_RES_GRPUPG"
+	},
 	"R-Vehicle-Metals01": {
 		"iconID": "IMAGE_RES_DROIDTECH",
 		"id": "R-Vehicle-Metals01",
@@ -895,6 +936,36 @@
 		"keyTopic": 1,
 		"msgName": "RES_V_MET1",
 		"name": "Composite Alloys",
+		"researchPoints": 1800,
+		"researchPower": 56,
+		"results": [
+			{
+				"class": "Body",
+				"filterParameter": "BodyClass",
+				"filterValue": "Droids",
+				"parameter": "Armour",
+				"value": 30
+			},
+			{
+				"class": "Body",
+				"filterParameter": "BodyClass",
+				"filterValue": "Droids",
+				"parameter": "HitPointPct",
+				"value": 30
+			}
+		],
+		"subgroupIconID": "IMAGE_RES_GRPUPG"
+	},
+	"R-Vehicle-Metals02": {
+		"iconID": "IMAGE_RES_DROIDTECH",
+		"id": "R-Vehicle-Metals02",
+		"imdName": "icmolql.pie",
+		"msgName": "RES_V_MET4",
+		"name": "Composite-er Alloys",
+		"requiredResearch": [
+			"R-Vehicle-Metals01",
+			"R-Vehicle-Body11"
+		],
 		"researchPoints": 1800,
 		"researchPower": 56,
 		"results": [
@@ -1204,8 +1275,7 @@
 		"resultStructures": [
 			"WallTower06"
 		],
-		"statID": "WallTower06",
-		"subgroupIconID": "IMAGE_RES_GRPACC"
+		"statID": "WallTower06"
 	},
 	"R-Defense-WallUpgrade01": {
 		"iconID": "IMAGE_RES_DEFENCE",
@@ -1216,6 +1286,50 @@
 		"requiredResearch": [
 			"R-Defense-HardcreteWall",
 			"R-Sys-Engineering02"
+		],
+		"researchPoints": 1200,
+		"researchPower": 37,
+		"results": [
+			{
+				"class": "Building",
+				"filterParameter": "Type",
+				"filterValue": "Wall",
+				"parameter": "Armour",
+				"value": 30
+			},
+			{
+				"class": "Building",
+				"filterParameter": "Type",
+				"filterValue": "Wall",
+				"parameter": "HitPoints",
+				"value": 30
+			},
+			{
+				"class": "Building",
+				"filterParameter": "Type",
+				"filterValue": "Structure",
+				"parameter": "Armour",
+				"value": 30
+			},
+			{
+				"class": "Building",
+				"filterParameter": "Type",
+				"filterValue": "Structure",
+				"parameter": "HitPoints",
+				"value": 30
+			}
+		],
+		"subgroupIconID": "IMAGE_RES_GRPUPG"
+	},
+	"R-Defense-WallUpgrade02": {
+		"iconID": "IMAGE_RES_DEFENCE",
+		"id": "R-Defense-WallUpgrade02",
+		"imdName": "BLWALLH.PIE",
+		"msgName": "RES_DF_WU4",
+		"name": "Hardestcrete",
+		"requiredResearch": [
+			"R-Defense-WallUpgrade01",
+			"R-Sys-Engineering03"
 		],
 		"researchPoints": 1200,
 		"researchPower": 37,
@@ -1358,7 +1472,7 @@
 		"id": "R-Struc-Factory-Upgrade01",
 		"imdName": "BLFACT1.PIE",
 		"msgName": "RES_ST_FU1",
-		"name": "Automated Factory Production",
+		"name": "More Faster Factory Production",
 		"requiredResearch": [
 			"R-Struc-Factory-Module"
 		],
@@ -1779,6 +1893,7 @@
 	"R-Wpn-Cannon-Accuracy01": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
 		"id": "R-Wpn-Cannon-Accuracy01",
+		"keyTopic": 1,
 		"msgName": "RES_W_CNAC1",
 		"name": "Cannon Laser Rangefinder",
 		"requiredResearch": [
@@ -1896,6 +2011,36 @@
 		"requiredResearch": [
 			"R-Wpn-Flamer01Extended",
 			"R-Struc-Research-Module"
+		],
+		"researchPoints": 800,
+		"researchPower": 75,
+		"results": [
+			{
+				"class": "Weapon",
+				"filterParameter": "ImpactClass",
+				"filterValue": "FLAME",
+				"parameter": "Damage",
+				"value": 30
+			},
+			{
+				"class": "Weapon",
+				"filterParameter": "ImpactClass",
+				"filterValue": "FLAME",
+				"parameter": "RepeatDamage",
+				"value": 20
+			}
+		],
+		"statID": "Flame1Mk1",
+		"subgroupIconID": "IMAGE_RES_GRPDAM"
+	},
+	"R-Wpn-Flamer-Damage02": {
+		"iconID": "IMAGE_RES_WEAPONTECH",
+		"id": "R-Wpn-Flamer-Damage02",
+		"msgName": "RES_W_FL_D4",
+		"name": "Superhot Flamer Sauce",
+		"requiredResearch": [
+			"R-Wpn-Flame2",
+			"R-Wpn-Flamer-Damage01"
 		],
 		"researchPoints": 800,
 		"researchPower": 75,
@@ -2215,6 +2360,7 @@
 	"R-Wpn-RocketSlow-Accuracy01": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
 		"id": "R-Wpn-RocketSlow-Accuracy01",
+		"keyTopic": 1,
 		"msgName": "RES_W_SRK_AC1",
 		"name": "Improved Rocket Wire Guidance",
 		"requiredResearch": [
@@ -2246,7 +2392,7 @@
 		"iconID": "IMAGE_RES_WEAPONTECH",
 		"id": "R-Wpn-RocketSlow-Damage01",
 		"msgName": "RES_W_SRK_D1",
-		"name": "HEAT Rocket Warhead",
+		"name": "HEAPHVVDBBSYTKSD Rocket Warhead",
 		"requiredResearch": [
 			"R-Wpn-Rocket01-LtAT"
 		],
@@ -2256,14 +2402,14 @@
 			{
 				"class": "Weapon",
 				"filterParameter": "ImpactClass",
-				"filterValue": "SLOW ROCKET",
+				"filterValue": "ROCKET",
 				"parameter": "Damage",
 				"value": 25
 			},
 			{
 				"class": "Weapon",
 				"filterParameter": "ImpactClass",
-				"filterValue": "SLOW ROCKET",
+				"filterValue": "ROCKET",
 				"parameter": "RadiusDamage",
 				"value": 25
 			}
@@ -2330,7 +2476,7 @@
 			"R-Wpn-Rocket06-IDF",
 			"R-Defense-HardcreteWall"
 		],
-		"researchPoints": 4800,
+		"researchPoints": 3600,
 		"researchPower": 150,
 		"resultStructures": [
 			"Emplacement-Rocket06-IDF"
@@ -2366,7 +2512,7 @@
 		"requiredResearch": [
 			"R-Vehicle-Prop-VTOL"
 		],
-		"researchPoints": 6000,
+		"researchPoints": 3000,
 		"researchPower": 187,
 		"resultStructures": [
 			"A0VTolFactory1"
@@ -2381,7 +2527,7 @@
 		"requiredResearch": [
 			"R-Vehicle-Prop-VTOL"
 		],
-		"researchPoints": 3600,
+		"researchPoints": 3000,
 		"researchPower": 112,
 		"resultStructures": [
 			"A0VtolPad"
@@ -2448,6 +2594,27 @@
 		"name": "Engineer Gaming",
 		"requiredResearch": [
 			"R-Sys-Engineering01"
+		],
+		"researchPoints": 4800,
+		"researchPower": 150,
+		"results": [
+			{
+				"class": "Construct",
+				"parameter": "ConstructorPoints",
+				"value": 20
+			}
+		],
+		"subgroupIconID": "IMAGE_RES_GRPUPG"
+	},
+	"R-Sys-Engineering03": {
+		"iconID": "IMAGE_RES_SYSTEMTECH",
+		"id": "R-Sys-Engineering03",
+		"imdName": "trlcon.pie",
+		"keyTopic": 1,
+		"msgName": "RES_ENGIN3",
+		"name": "\"Road Work Ahead\"? I Sure Hope It Does!",
+		"requiredResearch": [
+			"R-Sys-Engineering02"
 		],
 		"researchPoints": 4800,
 		"researchPower": 150,

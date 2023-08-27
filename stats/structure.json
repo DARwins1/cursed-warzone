@@ -2412,6 +2412,29 @@
         ],
         "width": 1
     },
+    "P0-AASite-Sunburst": {
+        "armour": 10,
+        "breadth": 1,
+        "buildPoints": 250,
+        "buildPower": 225,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 400,
+        "id": "P0-AASite-Sunburst",
+        "name": "Sansburst AA Site",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "Blaamnt1.PIE"
+        ],
+        "thermal": 10,
+        "type": "DEFENSE",
+        "weapons": [
+            "Rocket-Sunburst"
+        ],
+        "width": 1
+    },
     "P0-AASite-SAM2": {
         "armour": 10,
         "breadth": 1,
@@ -2490,7 +2513,7 @@
         "height": 1,
         "hitpoints": 700,
         "id": "PillBox3",
-        "name": "HMG Bunker",
+        "name": "RMG Bunker",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "BUNKER",
@@ -2661,7 +2684,7 @@
         "thermal": 40,
         "type": "DEFENSE",
         "weapons": [
-            "MG3Mk2"
+            "MG3Mk2-Pillbox"
         ],
         "width": 2
     },
@@ -2940,7 +2963,7 @@
         "height": 1,
         "hitpoints": 700,
         "id": "Tower-Projector",
-        "name": "Inferno Bunker",
+        "name": "HV Flamer Bunker",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "BUNKER",
@@ -3629,7 +3652,7 @@
         "height": 2,
         "hitpoints": 800,
         "id": "WallTower04",
-        "name": "Heavy Cannon Hardpoint",
+        "name": "Very Heavy Cannon Hardpoint",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "HARD",
@@ -3639,7 +3662,7 @@
         "thermal": 15,
         "type": "DEFENSE",
         "weapons": [
-            "Cannon375mmMk1"
+            "Cannon375mmMk1Structure"
         ],
         "width": 1
     },
@@ -3909,6 +3932,25 @@
         "strength": "SOFT",
         "structureModel": [
             "miexpdrum.PIE"
+        ],
+        "thermal": 5,
+        "type": "WALL",
+        "width": 1
+    },
+    "Pipis": {
+        "armour": 5,
+        "breadth": 1,
+        "buildPoints": 40,
+        "buildPower": 50,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 25,
+        "id": "Pipis",
+        "name": "Pipis",
+        "sensorID": "ZNULLSENSOR",
+        "strength": "SOFT",
+        "structureModel": [
+            "mipipis.PIE"
         ],
         "thermal": 5,
         "type": "WALL",

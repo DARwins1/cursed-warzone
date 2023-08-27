@@ -109,7 +109,19 @@ function __camDispatchTransporterUnsafe()
 	{
 		var template = list[i];
 		var prop = __camChangePropulsionOnDiff(template.prop);
-		var droid = addDroid(player, -1, -1, "Reinforcement", template.body, prop, "", "", template.weap);
+		var droid;
+		if (typeof template.weap === "object" && camDef(template.weap[2]))
+		{
+			droid = addDroid(player, -1, -1, "Reinforcement", template.body, prop, "", "", template.weap[0], template.weap[1], template.weap[2]);
+		}
+		else if (typeof template.weap === "object" && camDef(template.weap[1]))
+		{
+			droid = addDroid(player, -1, -1, "Reinforcement", template.body, prop, "", "", template.weap[0], template.weap[1]);
+		}
+		else
+		{
+			droid = addDroid(player, -1, -1, "Reinforcement", template.body, prop, "", "", template.weap);
+		}
 		droids.push(droid);
 		addDroidToTransporter(trans, droid);
 	}

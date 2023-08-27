@@ -392,7 +392,16 @@ function camUpgradeOnMapFeatures(feat1, feat2, excluded)
 		//Replace it
 		let featInfo = {x: feature.x, y: feature.y};
 		camSafeRemoveObject(feature, false);
-		let newFeat = addFeature(feat2, featInfo.x, featInfo.y);
+		let newFeat;
+		if (feat2 === "Pipis" && camRand(101) < 1)
+		{
+			// 1/100 chance to place a Ms. Pipis instead of normal Pipis
+			newFeat = addFeature("PipisM", featInfo.x, featInfo.y);
+		}
+		else
+		{
+			newFeat = addFeature(feat2, featInfo.x, featInfo.y);
+		}
 
 		if (camDef(label)) 
 		{
@@ -519,8 +528,19 @@ function __camBuildDroid(template, structure)
 	makeComponentAvailable(prop, structure.player);
 	makeComponentAvailable(template.weap, structure.player);
 	var n = [ structure.name, structure.id, template.body, prop, template.weap ].join(" ");
-	// multi-turret templates are not supported yet
-	return buildDroid(structure, n, template.body, prop, "", "", template.weap);
+	// multi-turret templates are NOW supported :)
+	if (typeof template.weap === "object" && camDef(template.weap[2]))
+	{
+		return buildDroid(structure, n, template.body, prop, "", "", template.weap[0], template.weap[1], template.weap[2]);
+	}
+	else if (typeof template.weap === "object" && camDef(template.weap[1]))
+	{
+		return buildDroid(structure, n, template.body, prop, "", "", template.weap[0], template.weap[1]);
+	}
+	else
+	{
+		return buildDroid(structure, n, template.body, prop, "", "", template.weap);
+	}
 }
 
 //Check if an enabled factory can begin manufacturing something. Doing this
