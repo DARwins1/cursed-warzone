@@ -1,0 +1,63 @@
+{
+    "area_0": {
+        "pos1": [384, 640],
+        "pos2": [3072, 3328],
+        "label": "baseTemple"
+    },
+    "area_1": {
+        "pos1": [4096, 384],
+        "pos2": [6912, 2944],
+        "label": "baseCastle"
+    },
+    "area_2": {
+        "pos1": [3712, 6656],
+        "pos2": [4096, 7040],
+        "label": "landingzone"
+    },
+    "area_3": {
+        "pos1": [6144, 5632],
+        "pos2": [6528, 6016],
+        "label": "house"
+    },
+    "area_4": {
+        "pos1": [8064, 640],
+        "pos2": [10368, 2816],
+        "label": "baseFarm"
+    },
+    "object_30": {
+        "id": 917,
+        "type": 1,
+        "player": 2,
+        "label": "castleFactory2"
+    },
+    "object_192": {
+        "id": 1120,
+        "type": 1,
+        "player": 2,
+        "label": "farmFactory2"
+    },
+    "object_254": {
+        "id": 468,
+        "type": 1,
+        "player": 2,
+        "label": "templeFactory"
+    },
+    "object_255": {
+        "id": 918,
+        "type": 1,
+        "player": 2,
+        "label": "castleFactory1"
+    },
+    "object_317": {
+        "id": 1026,
+        "type": 1,
+        "player": 2,
+        "label": "farmFactory1"
+    },
+    "object_401": {
+        "id": 1123,
+        "type": 1,
+        "player": 2,
+        "label": "shotgun"
+    }
+}
