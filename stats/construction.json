@@ -11,6 +11,18 @@
         "sensorModel": "TRLCON.PIE",
         "weight": 800
     },
+    "Spade1Mk1Spam": {
+        "buildPoints": 85,
+        "buildPower": 17,
+        "constructPoints": 8,
+        "designable": 1,
+        "droidType": "DROID_CONSTRUCT",
+        "hitpoints": 25,
+        "id": "Spade1Mk1Spam",
+        "name": "Pipis Truck",
+        "sensorModel": "TRLCONpipis.PIE",
+        "weight": 800
+    },
     "CyborgSpade": {
         "buildPoints": 65,
         "buildPower": 10,

@@ -328,7 +328,7 @@
 		"requiredResearch": [
 			"R-Wpn-Cannon2Mk1"
 		],
-		"researchPoints": 7200,
+		"researchPoints": 4200,
 		"researchPower": 225,
 		"resultComponents": [
 			"Cannon375mmMk1"
@@ -462,7 +462,7 @@
 		"requiredResearch": [
 			"R-Wpn-Mortar02Hvy"
 		],
-		"researchPoints": 38000,
+		"researchPoints": 3800,
 		"researchPower": 312,
 		"resultComponents": [
 			"Mortar3ROTARYMk1"

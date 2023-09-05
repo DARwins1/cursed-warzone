@@ -269,9 +269,8 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"New Defensive Structure Available",
-			"SAM site with Avenger missiles",
-			"Automatically targets VTOLs",
-			"Defensive Strength: Medium"
+			"AA site armed with bones",
+			"Automatically targets things that pretend the floor is lava"
 		]
 	},
 	"RES_EMP_SAM2": {

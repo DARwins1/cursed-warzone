@@ -1078,7 +1078,7 @@
         "thermal": 12,
         "type": "DEFENSE",
         "weapons": [
-            "Cannon375mmMk1"
+            "Cannon375mmMk1Structure"
         ],
         "width": 1
     },
@@ -3934,10 +3934,10 @@
             "miexpdrum.PIE"
         ],
         "thermal": 5,
-        "type": "WALL",
+        "type": "CORNER WALL",
         "width": 1
     },
-    "Pipis": {
+    "A0Pipis": {
         "armour": 5,
         "breadth": 1,
         "buildPoints": 40,
@@ -3945,7 +3945,7 @@
         "ecmID": "ZNULLECM",
         "height": 1,
         "hitpoints": 25,
-        "id": "Pipis",
+        "id": "A0Pipis",
         "name": "Pipis",
         "sensorID": "ZNULLSENSOR",
         "strength": "SOFT",
@@ -3953,7 +3953,7 @@
             "mipipis.PIE"
         ],
         "thermal": 5,
-        "type": "WALL",
+        "type": "CORNER WALL",
         "width": 1
     },
     "A0NuclearDrum": {
@@ -3972,7 +3972,7 @@
             "minukedrum.PIE"
         ],
         "thermal": 5,
-        "type": "WALL",
+        "type": "CORNER WALL",
         "width": 3
     },
     "Spawner-Creeper": {

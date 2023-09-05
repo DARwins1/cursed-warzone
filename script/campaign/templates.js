@@ -74,7 +74,7 @@ crcybbison: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgBison" }
 crcybpyro: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgFlamer01" }, // Pyro Cyborg
 crcybpod: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgMiniRocket" }, // Many-Rocket Cyborg
 crcybcan: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannon" }, // "Light" Gunner Cyborg
-crcybneedle: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannon" }, // Needler Cyborg
+crcybneedle: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "Cyb-Wpn-Rail1" }, // Needler Cyborg
 crcybspy: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgSpyChaingun" }, // Spy Cyborg
 creeper: { body: "CreeperBody", prop: "CyborgLegs", weap: "Cyb-Wpn-CreeperDud" }, // Creeper
 zombie: { body: "ZombieBody", prop: "CyborgLegs", weap: "Cyb-Wpn-ZmbieMelee" }, // Zombie
@@ -124,7 +124,7 @@ spcybbison: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgBisonSpa
 spcybpyro: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgFlamer01Spam" }, // Spamton Pyro Cyborg
 spcybpod: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgMiniRocketSpam" }, // Spamton Many-Rocket Cyborg
 spcybcan: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannonSpam" }, // Spamton "Light" Gunner Cyborg
-spcybneedle: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannonSpam" }, // Spamton Needler Cyborg
+spcybneedle: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "Cyb-Wpn-Rail1Spam" }, // Spamton Needler Cyborg
 spcybspy: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgSpyChaingunSpam" }, // Spamton Spy Cyborg
 spamcreeper: { body: "CreeperBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-CreeperDudSpam" }, // Spamton Creeper
 spamzombie: { body: "ZombieBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-ZmbieMeleeSpam" }, // Spamton Zombie

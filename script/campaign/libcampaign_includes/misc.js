@@ -897,10 +897,10 @@ function camRandomEffect(pos)
 				for (let j = -1; j <= 1; j++)
 				{
 					addDroid(CAM_HUMAN_PLAYER, pos.x + i, pos.y + j, 
-						_("Mini Machinegun Viper Normal Wheels"), "Body1Mini", "wheelednormal", "", "", "MGMini"
+						_("Mini Machinegun Viper Normal Wheels"), "Body1Mini", "wheelednormal", "", "", "MGMini-VTOL"
 					);
 					addDroid(CAM_HUMAN_PLAYER, pos.x + i, pos.y + j, 
-						_("Mini Machinegun Viper Normal Wheels"), "Body1Mini", "wheelednormal", "", "", "MGMini"
+						_("Mini Machinegun Viper Normal Wheels"), "Body1Mini", "wheelednormal", "", "", "MGMini-VTOL"
 					);
 				}
 			}
@@ -1404,7 +1404,7 @@ function __camScanPipisRadii()
 			scanNum++;
 			if (enumRange(pipisPos.x, pipisPos.y, 1, ALL_PLAYERS, false).filter((obj) => (
 				obj.type !== FEATURE && !allianceExistsBetween(SPAMTON, obj.player) && 
-				!(obj.type === DROID && isVTOL(obj))
+				!(obj.type === DROID && (isVTOL(obj) || obj.droidType === DROID_SUPERTRANSPORTER))
 			)).length > 0)
 			{
 				// Enemy in range, detonate!

@@ -55,7 +55,9 @@
 			"New Weapon Turret Available",
 			"Very Heavy Cannon firing 1200 mm rounds",
 			"Best Targets: Anything in front of it",
-			"Body Points: High"
+			"Body Points: High",
+			"Weight: Also High",
+			"Where is your god now"
 		]
 	},
 	"RES_CYMET1": {
@@ -154,7 +156,7 @@
 			"wall better",
 			"Improved wall stuff",
 			"amke walls hardur",
-			"defneses and walls upgaded aumaticaly"
+			"bulding upgaded aumaticaly"
 		]
 	},
 	"RES_EMP_PODTOW": {
@@ -328,8 +330,8 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"Vehicle Production Improved",
-			"Vehicle production now outsourced to edlritch gods through arcane ritual",
-			"Vehicles are then bathed in oil to cleanse them of edlritch influence",
+			"Vehicle production now outsourced to eldritch gods through arcane ritual",
+			"Vehicles are then bathed in oil to cleanse them of eldritch influence",
 			"...This is apparently faster than whatever we were doing before",
 			"All factories upgraded automatically"
 		]
@@ -474,8 +476,7 @@
 		"text": [
 			"Decades of blood, sweat and tears have finally produced the true successor to the universally-beloved Viper body",
 			"The Viper II body has more Viper per body than any body previously conceived",
-			"Scientists still work to truly harness the concentrated levels of Viper this body has",
-			"I have no idea what I'm saying"
+			"Scientists still work to truly comprehend the concentrated levels of Viper contained within this body"
 		]
 	},
 	"RES_V_B08": {
@@ -496,8 +497,8 @@
 		"text": [
 			"The true nature of the Viper body has finally been fulfilled in this third iteration",
 			"There is truly no body more powerful or versatile as the Viper",
-			"Probably",
-			"IDK"
+			"\n",
+			"...Probably"
 		]
 	},
 	"RES_V_B12": {

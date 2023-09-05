@@ -9,7 +9,18 @@ var startedFromMenu;
 var playerColour;
 
 // Enable factories in bases if the player enters them early
-// Note that factory 1 and cyborg factory 1 are activated at around the start of the mission and are not included here 
+camAreaEvent("spamBase1", function(droid)
+{
+	if (droid.player === CAM_HUMAN_PLAYER)
+	{
+		camEnableFactory("spamCybFactory1");
+	}
+	else
+	{
+		resetLabel("spamBase1", CAM_HUMAN_PLAYER);
+	}
+});
+
 camAreaEvent("spamBase2", function(droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER)
@@ -27,7 +38,7 @@ camAreaEvent("spamBase3", function(droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER)
 	{
-		// NOTE: Factory 1 is already active at the start of the mission
+		camEnableFactory("spamFactory1");
 		camEnableFactory("spamFactory2");
 		camEnableFactory("spamCybFactory2");
 	}
@@ -468,6 +479,7 @@ function eventStartLevel()
 	// Make units funny
 	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.splmgw, SPAMTON);
 	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.spcybspy, SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybneedle, cTempl.spcybneedle, SPAMTON);
 	camUpgradeOnMapTemplates(cTempl.crtmgw, cTempl.spminimg, SPAMTON);
 
 	// Make structures funny

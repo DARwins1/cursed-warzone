@@ -260,12 +260,12 @@ data		"wrf/audio.wrf"
 data		"wrf/stats.wrf"
 data		"wrf/camres.wrf"
 
-camstart	WHAT_ARE_YOU_DOING_IN_MY_
+camstart	HOLY_CUNGADERO
 dataset		CAM_3
 game		"wrf/cam3/cam3a.gam"
 data		"wrf/cam3/cam3a.wrf"
 
-camchange	WHAT_ARE_YOU_DOING_IN_MY_
+camchange	HOLY_CUNGADERO
 dataset		CAM_2
 data		"wrf/cam3/cam3change.wrf"
 game		"wrf/cam3/cam3a.gam"

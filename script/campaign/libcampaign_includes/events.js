@@ -142,7 +142,7 @@ function cam_eventStartLevel()
 	setTimer("__camShowVictoryConditions", camMinutesToMilliseconds(5));
 	setTimer("__camTacticsTick", camSecondsToMilliseconds(0.1));
 	setTimer("__camScanCreeperRadii", camSecondsToMilliseconds(0.2));
-	setTimer("__camScanPipisRadii", camSecondsToMilliseconds(0.2));
+	setTimer("__camScanPipisRadii", camSecondsToMilliseconds(0.5));
 	setTimer("__updateNeedlerLog", camSecondsToMilliseconds(8));
 	setTimer("__camSpyFeignTick", camSecondsToMilliseconds(0.5));
 	setTimer("__camMonsterSpawnerTick", camSecondsToMilliseconds(16));
@@ -256,6 +256,13 @@ function cam_eventDestroyed(obj)
 		if (obj.droidType === DROID_CONSTRUCT)
 		{
 			__camCheckDeadTruck(obj);
+			if (obj.body === "Body1RECSpam" || obj.body === "Body5RECSpam" || obj.body === "Body11ABTSpam")
+			{
+				// Explode the Pipis Truck
+				var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
+					"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
+				queue("__camDetonatePipis", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
+			}
 		}
 		else if (camDef(obj.weapons[0]) && (obj.weapons[0].id === "CyborgSpyChaingun" || obj.weapons[0].id === "CyborgSpyChaingunSpam")
 			&& camFeignCooldownCheck(obj.id))
@@ -292,7 +299,7 @@ function cam_eventDestroyed(obj)
 				"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
 			queue("__camDetonateNukeDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
 		}
-		else if (obj.name === _("Pipis") || obj.name === _("Ms. Pipis"))
+		else if (obj.name === _("Pipis") || obj.name === _("Ms. Pipis") || obj.name === _("Pipis (Dummy)") || obj.name === _("Ms. Pipis (Dummy)"))
 		{
 			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
 				"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
@@ -301,7 +308,8 @@ function cam_eventDestroyed(obj)
 	}
 	else if (obj.type === STRUCTURE)
 	{
-		if (obj.stattype === WALL)
+		if (obj.stattype === WALL && obj.id === "A0ExplosiveDrum" 
+			&& obj.id === "A0NuclearDrum" && obj.id === "A0Pipis")
 		{
 			// See if a Silverfish should spawn out of the destroyed wall
 			let spawnChance = 0;
@@ -417,7 +425,7 @@ function cam_eventAttacked(victim, attacker)
 		if (victim.type === DROID)
 		{
 			// Needler schenanigans
-			if (attacker.weapons[0].id === "RailGun1Mk1" || attacker.weapons[0].id === "Cyb-Wpn-Rail1")
+			if (attacker.weapons[0].id === "RailGun1Mk1" || attacker.weapons[0].id === "Cyb-Wpn-Rail1" || attacker.weapons[0].id === "RailGun1-VTOL")
 			{
 				__updateNeedlerLog(victim);
 			}

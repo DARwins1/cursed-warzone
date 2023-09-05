@@ -395,13 +395,19 @@ function camUpgradeOnMapFeatures(feat1, feat2, excluded)
 		let newFeat;
 		if (feat2 === "Pipis" && camRand(101) < 1)
 		{
-			// 1/100 chance to place a Ms. Pipis instead of normal Pipis
+			// 1/100 chance to place a Ms. Pipis instead of a normal Pipis
 			newFeat = addFeature("PipisM", featInfo.x, featInfo.y);
+		}
+		else if (feat2 === "PipisDummy" && camRand(101) < 1)
+		{
+			// 1/100 chance to place a Ms. Pipis Dummy instead of a normal Pipis Dummy
+			newFeat = addFeature("PipisMDummy", featInfo.x, featInfo.y);
 		}
 		else
 		{
 			newFeat = addFeature(feat2, featInfo.x, featInfo.y);
 		}
+		
 
 		if (camDef(label)) 
 		{

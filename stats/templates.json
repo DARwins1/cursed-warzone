@@ -591,11 +591,11 @@
         "type": "CONSTRUCT"
     },
     "CobraHoverTruck": {
-        "body": "Body5REC",
-        "construct": "Spade1Mk1",
+        "body": "Body1RECSpam",
+        "construct": "Spade1Mk1Spam",
         "id": "CobraHoverTruck",
-        "name": "Truck Cobra Hover",
-        "propulsion": "hover01",
+        "name": "Pipis Truck Spamaconda Wheels",
+        "propulsion": "wheeled01",
         "type": "CONSTRUCT"
     },
     "ConstructionDroid": {

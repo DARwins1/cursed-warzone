@@ -304,7 +304,8 @@
 		"text": [
 			"New Cyborg Available",
 			"Armed with Cyborg Machinegun and Invisibility Device",
-			"Can feign death when attacked with low HP, reappearing at your HQ or LZ",
+			"Can feign death when attacked at low HP",
+			"Cyborgs that have feigned death will reappear at your LZ or HQ (if built)",
 			"Feigning death can only be performed once every 60 seconds",
 			"Requires Cyborg factory to produce"
 		]

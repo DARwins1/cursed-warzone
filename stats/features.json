@@ -398,6 +398,32 @@
 		"type": "TREE",
 		"width": 1
 	},
+	"PipisDummy": {
+		"armour": 5,
+		"breadth": 1,
+		"damageable": 1,
+		"hitpoints": 25,
+		"id": "PipisDummy",
+		"model": "mipipis.pie",
+		"name": "Pipis (Dummy)",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "TREE",
+		"width": 1
+	},
+	"PipisMDummy": {
+		"armour": 5,
+		"breadth": 1,
+		"damageable": 1,
+		"hitpoints": 25,
+		"id": "PipisMDummy",
+		"model": "mipipismiss.pie",
+		"name": "Ms. Pipis (Dummy)",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "TREE",
+		"width": 1
+	},
 	"OilResource": {
 		"armour": 0,
 		"breadth": 1,
