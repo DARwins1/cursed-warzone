@@ -354,7 +354,7 @@ function eventStartLevel()
 	var lz = getObject("landingZone"); //player lz
 	var enemyLz = getObject("bbLandingZone");
 
-	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "SUB_2_2S"); // TODO: Change this to Beta 2 when it's ready
+	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "SUB_2_1S"); // TODO: Change this to Beta 2 when it's ready
 	setReinforcementTime(LZ_COMPROMISED_TIME);
 
 	centreView(startpos.x, startpos.y);

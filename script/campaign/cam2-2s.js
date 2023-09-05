@@ -12,12 +12,4 @@ function eventStartLevel()
 	// Spamton items
 	enableResearch("R-Vehicle-BodyDragon", CAM_HUMAN_PLAYER); // Dragon
 	enableResearch("R-Wpn-Cannon2Mk1", CAM_HUMAN_PLAYER); // Fungible Cannon
-
-	// TEMPORARY: Items from Beta 2, along with bonus power
-	enableResearch("R-Struc-Factory-Module", CAM_HUMAN_PLAYER); // Factory Module
-	enableResearch("R-Wpn-Rocket01-LtAT", CAM_HUMAN_PLAYER); // Sawed-Off Lancer
-	enableResearch("R-Wpn-Cannon-Damage01", CAM_HUMAN_PLAYER); // Brighter Cannons
-
-	enableResearch("R-Wpn-MG3Mk1", CAM_HUMAN_PLAYER); // Realistic Heavy Machinegun (from Spamton)
-	setPower(playerPower(CAM_HUMAN_PLAYER) + 5000, CAM_HUMAN_PLAYER);
 }
