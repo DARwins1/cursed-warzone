@@ -143,6 +143,7 @@ function cam_eventStartLevel()
 	setTimer("__camTacticsTick", camSecondsToMilliseconds(0.1));
 	setTimer("__camScanCreeperRadii", camSecondsToMilliseconds(0.2));
 	setTimer("__camScanPipisRadii", camSecondsToMilliseconds(0.5));
+	setTimer("__camScanWreckRadii", camSecondsToMilliseconds(1));
 	setTimer("__updateNeedlerLog", camSecondsToMilliseconds(8));
 	setTimer("__camSpyFeignTick", camSecondsToMilliseconds(0.5));
 	setTimer("__camMonsterSpawnerTick", camSecondsToMilliseconds(16));
@@ -305,6 +306,64 @@ function cam_eventDestroyed(obj)
 				"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
 			queue("__camDetonatePipis", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
 		}
+		else if (obj.name === _("*Wreck0*") || obj.name === _("*Wreck1*"))
+		{
+			// Spawn Spamton unit(s)
+			const unitChoices = [
+				"zombie", "skeleton", "creeper",
+			 	"bison", "spy", "needler",
+			 	"miniMGs",
+			];
+
+			switch (unitChoices[camRand(unitChoices.length)])
+			{
+				case "zombie":
+					// Spawn a Zombie
+					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), // Wreck features are 2x2
+						_("Spamton Zombie"), "ZombieBodySpam", "CyborgLegs", "", "", "Cyb-Wpn-ZmbieMeleeSpam"
+					));
+					break;
+				case "skeleton":
+					// Spawn a Skeleton
+					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+						_("Spamton Skeleton"), "SkeletonBodySpam", "CyborgLegs", "", "", "Cyb-Wpn-SkelBowSpam"
+					));
+					break;
+				case "creeper":
+					// Spawn a Creeper
+					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+						_("Spamton Creeper"), "CreeperBodySpam", "CyborgLegs", "", "", "Cyb-Wpn-CreeperDudSpam"
+					));
+					break;
+				case "bison":
+					// Spawn a Bison Cyborg
+					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+						_("Spamton Bison Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBisonSpam"
+					));
+					break;
+				case "spy":
+					// Spawn a Spy Cyborg
+					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+						_("Spamton Spy Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgSpyChaingunSpam"
+					));
+					break;
+				case "needler":
+					// Spawn a Needler Cyborg
+					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+						_("Spamton Needler Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Rail1Spam"
+					));
+					break;
+				case "miniMGs":
+					// Spawn 4 Mini Spamacondas
+					for (let i = 0; i < 4; i++)
+					{
+						groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+							_("Mini Machinegun Spamaconda Wheels"), "Body1MiniSpam", "wheeled01", "", "", "MGMini"
+						));
+					}
+					break;
+			}
+		}
 	}
 	else if (obj.type === STRUCTURE)
 	{
@@ -331,8 +390,7 @@ function cam_eventDestroyed(obj)
 			if (camRand(101) < spawnChance)
 			{
 				// Spawn a Silverfish out of the destroyed wall
-				let pos = camMakePos(obj);
-				groupAdd(__camMobGlobalGroup, addDroid(MOBS, pos.x, pos.y, 
+				groupAdd(__camMobGlobalGroup, addDroid(MOBS, obj.x, obj.y, 
 					_("Silverfish"), "SilverfishBody", "CyborgLegs", "", "", "Cyb-Wpn-SilvFishMelee"
 				));
 			}

@@ -289,7 +289,7 @@ between		RIDE_AROUND_TOWN
 dataset		CAM_3
 data		"wrf/cam3/sub3-2s.wrf"
 
-miss_keep	SPAMTON_CITY
+miss_keep	SPAMTOPIA
 dataset		CAM_3
 game		"wrf/cam3/sub3-2.gam"
 data		"wrf/cam3/sub3-2.wrf"

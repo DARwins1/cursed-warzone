@@ -1429,6 +1429,26 @@ function __camScanPipisRadii()
 	}
 }
 
+// Check if any trash piles should destroy themselves to reveal a unit
+function __camScanWreckRadii()
+{
+	let wreckList = enumFeature(ALL_PLAYERS, "Wreck0").concat(enumFeature(ALL_PLAYERS, "Wreck1"))
+	for (let i = 0; i < wreckList.length; i++)
+	{
+		let wreckPos = camMakePos(wreckList[i]);
+
+		// Check if any enemies are within 3 tiles
+		if (enumRange(wreckPos.x, wreckPos.y, 3, ALL_PLAYERS, false).filter((obj) => (
+			obj.type !== FEATURE && !allianceExistsBetween(SPAMTON, obj.player) && 
+			!(obj.type === DROID && (isVTOL(obj) || obj.droidType === DROID_SUPERTRANSPORTER))
+		)).length > 0)
+		{
+			// Enemy in range, detonate!
+			fireWeaponAtObj("PipisDetonate", wreckList[i]);
+		}
+	}
+}
+
 // See if any Monster Spawners should spawn anything
 function __camMonsterSpawnerTick()
 {
@@ -1446,11 +1466,12 @@ function __camMonsterSpawnerTick()
 
 			// Check if any enemies are within range
 			if (enumRange(spawnerPos.x, spawnerPos.y, CAM_SPAWNER_RANGE, CAM_HUMAN_PLAYER, false).filter((obj) => (
-				obj.type !== FEATURE && !allianceExistsBetween(spawnerList[j].player, obj.player)
+				obj.type !== FEATURE && !allianceExistsBetween(spawnerList[j].player, obj.player &&
+				!(obj.type === DROID && obj.droidType === DROID_SUPERTRANSPORTER))
 			)).length > 0)
 			{
 				// Enemy in range, try to spawn some mobs
-				let numMobs = difficulty + 1 + camRand(2); // 3-4 on Normal
+				let numMobs = difficulty + camRand(2); // 2-3 on Normal
 				let spawnedMobs = [];
 				for (let k = 0; k < numMobs; k++)
 				{

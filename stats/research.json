@@ -1,19 +1,4 @@
 {
-	"ADVANCEDRESEARCH": {
-		"iconID": "IMAGE_RES_COMPUTERTECH",
-		"id": "ADVANCEDRESEARCH",
-		"imdName": "MICAPSUL.PIE",
-		"keyTopic": 1,
-		"name": "ADVANCED RESEARCH",
-		"techCode": 1
-	},
-	"CAM3RESEARCH": {
-		"iconID": "IMAGE_RES_COMPUTERTECH",
-		"id": "CAM3RESEARCH",
-		"imdName": "MICAPSUL.PIE",
-		"name": "CAM3 RESEARCH",
-		"techCode": 1
-	},
 	"Script-FungibleCannon-Swap2": {
 		"iconID": "IMAGE_RES_COMPUTERTECH",
 		"id": "Script-FungibleCannon-Swap2",
@@ -328,7 +313,7 @@
 		"requiredResearch": [
 			"R-Wpn-Cannon2Mk1"
 		],
-		"researchPoints": 4200,
+		"researchPoints": 3600,
 		"researchPower": 225,
 		"resultComponents": [
 			"Cannon375mmMk1"
@@ -359,7 +344,7 @@
 		"researchPower": 187,
 		"resultComponents": [
 			"CannonBison",
-			"CyborgBison"
+			"CannonBison-VTOL"
 		],
 		"statID": "CannonBison"
 	},
@@ -410,7 +395,7 @@
 		"id": "R-Wpn-Flame2",
 		"keyTopic": 1,
 		"msgName": "RES_FLAME2",
-		"name": "High-Volume Flamer",
+		"name": "Excessive Flamer",
 		"redComponents": [
 			"Flame1Mk1"
 		],
@@ -462,7 +447,7 @@
 		"requiredResearch": [
 			"R-Wpn-Mortar02Hvy"
 		],
-		"researchPoints": 3800,
+		"researchPoints": 3600,
 		"researchPower": 312,
 		"resultComponents": [
 			"Mortar3ROTARYMk1"
@@ -642,19 +627,6 @@
 		],
 		"statID": "Bomb-VTOL-Anvil"
 	},
-	"R-Wpn-HowitzerMk1": {
-		"iconID": "IMAGE_RES_WEAPONTECH",
-		"id": "R-Wpn-HowitzerMk1",
-		"keyTopic": 1,
-		"msgName": "RES_W_HMK1",
-		"name": "Howitzer",
-		"researchPoints": 9000,
-		"researchPower": 281,
-		"resultComponents": [
-			"Howitzer105Mk1"
-		],
-		"statID": "Howitzer105Mk1"
-	},
 	"R-Wpn-SpyTurret": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
 		"id": "R-Wpn-SpyTurret",
@@ -831,6 +803,22 @@
 			"Cyb-Wpn-Bow"
 		],
 		"statID": "Cyb-Wpn-Bow"
+	},
+	"R-Cyborg-Wpn-Bison": {
+		"iconID": "IMAGE_RES_CYBORGTECH",
+		"id": "R-Cyborg-Wpn-Bison",
+		"msgName": "RES_CYW_BISON",
+		"name": "Bison Cyborg",
+		"requiredResearch": [
+			"R-Wpn-CannonBison",
+			"R-Cyborg-Wpn-MG"
+		],
+		"researchPoints": 2500,
+		"researchPower": 187,
+		"resultComponents": [
+			"CyborgBison"
+		],
+		"statID": "CyborgBison"
 	},
 	"R-Comp-CommandTurret01": {
 		"iconID": "IMAGE_RES_COMPUTERTECH",
@@ -1050,6 +1038,22 @@
 		],
 		"statID": "Emplacement-MortarPit01"
 	},
+	"R-Defense-BisonEmp": {
+		"iconID": "IMAGE_RES_DEFENCE",
+		"id": "R-Defense-BisonEmp",
+		"msgName": "RES_EMP_BISON",
+		"name": "Righteous Bison Emplacement",
+		"requiredResearch": [
+			"R-Defense-HardcreteWall",
+			"R-Wpn-CannonBison"
+		],
+		"researchPoints": 1800,
+		"researchPower": 112,
+		"resultStructures": [
+			"Emplacement-HPVcannon"
+		],
+		"statID": "Emplacement-HPVcannon"
+	},
 	"R-Defense-Pillbox04": {
 		"iconID": "IMAGE_RES_DEFENCE",
 		"id": "R-Defense-Pillbox04",
@@ -1123,6 +1127,9 @@
 			"R-Wpn-Rocket03-HvAT2",
 			"R-Defense-HardcreteWall"
 		],
+		"redStructures": [
+			"PillBox-BB"
+		],
 		"researchPoints": 1750,
 		"researchPower": 76,
 		"resultStructures": [
@@ -1139,12 +1146,31 @@
 			"R-Wpn-Rocket03-HvAT3",
 			"R-Defense-HardcreteWall"
 		],
+		"redStructures": [
+			"PillBox-BB2"
+		],
 		"researchPoints": 2000,
 		"researchPower": 106,
 		"resultStructures": [
 			"PillBox-BB3"
 		],
 		"statID": "PillBox-BB3"
+	},
+	"R-Defense-PillboxBison": {
+		"iconID": "IMAGE_RES_DEFENCE",
+		"id": "R-Defense-PillboxBison",
+		"msgName": "RES_PB_BISON",
+		"name": "Righteous Bison Bunker",
+		"requiredResearch": [
+			"R-Wpn-CannonBison",
+			"R-Defense-HardcreteWall"
+		],
+		"researchPoints": 2600,
+		"researchPower": 146,
+		"resultStructures": [
+			"PillBoxBison"
+		],
+		"statID": "PillBoxBison"
 	},
 	"R-Defense-TankTrap01": {
 		"iconID": "IMAGE_RES_DEFENCE",
@@ -1211,6 +1237,22 @@
 		],
 		"statID": "GuardTower6"
 	},
+	"R-Defense-TowerBison": {
+		"iconID": "IMAGE_RES_DEFENCE",
+		"id": "R-Defense-TowerBison",
+		"msgName": "RES_EMP_BISONTOW",
+		"name": "Righteous Bison Tower",
+		"requiredResearch": [
+			"R-Wpn-CannonBison",
+			"R-Defense-HardcreteWall"
+		],
+		"researchPoints": 2200,
+		"researchPower": 120,
+		"resultStructures": [
+			"Tower-VulcanCan"
+		],
+		"statID": "Tower-VulcanCan"
+	},
 	"R-Defense-WallTowerMG": {
 		"iconID": "IMAGE_RES_DEFENCE",
 		"id": "R-Defense-WallTowerMG",
@@ -1255,7 +1297,7 @@
 			"R-Wpn-Cannon3Mk1"
 		],
 		"researchPoints": 2400,
-		"researchPower": 75,
+		"researchPower": 200,
 		"resultStructures": [
 			"WallTower04"
 		],
@@ -1276,6 +1318,22 @@
 			"WallTower06"
 		],
 		"statID": "WallTower06"
+	},
+	"R-Defense-WallTowerBison": {
+		"iconID": "IMAGE_RES_DEFENCE",
+		"id": "R-Defense-WallTowerBison",
+		"msgName": "RES_WT_BISON",
+		"name": "Righteous Bison Hardpoint",
+		"requiredResearch": [
+			"R-Wpn-CannonBison",
+			"R-Defense-HardcreteWall"
+		],
+		"researchPoints": 2700,
+		"researchPower": 159,
+		"resultStructures": [
+			"WallTower-HPVcannon"
+		],
+		"statID": "WallTower-HPVcannon"
 	},
 	"R-Defense-WallUpgrade01": {
 		"iconID": "IMAGE_RES_DEFENCE",
@@ -2168,37 +2226,6 @@
 		"statID": "MG1Mk1",
 		"subgroupIconID": "IMAGE_RES_GRPROF"
 	},
-	"R-Wpn-Mortar-Acc01": {
-		"iconID": "IMAGE_RES_WEAPONTECH",
-		"id": "R-Wpn-Mortar-Acc01",
-		"msgName": "RES_W_M_AC1",
-		"name": "Mortar Targeting Computer",
-		"keyTopic": 1,
-		"requiredResearch": [
-			"R-Wpn-Mortar-Damage01",
-			"R-Struc-Research-Upgrade01"
-		],
-		"researchPoints": 3600,
-		"researchPower": 112,
-		"results": [
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "MORTARS",
-				"parameter": "HitChance",
-				"value": 10
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "MORTARS",
-				"parameter": "ShortHitChance",
-				"value": 10
-			}
-		],
-		"statID": "Mortar1Mk1",
-		"subgroupIconID": "IMAGE_RES_GRPACC"
-	},
 	"R-Wpn-Mortar-Damage01": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
 		"id": "R-Wpn-Mortar-Damage01",
@@ -2236,102 +2263,11 @@
 		],
 		"subgroupIconID": "IMAGE_RES_GRPDAM"
 	},
-	"R-Wpn-Mortar-ROF01": {
-		"iconID": "IMAGE_RES_WEAPONTECH",
-		"id": "R-Wpn-Mortar-ROF01",
-		"msgName": "RES_W_M_ROF1",
-		"name": "Mortar Autoloader",
-		"keyTopic": 1,
-		"requiredResearch": [
-			"R-Wpn-Mortar01Lt"
-		],
-		"researchPoints": 1800,
-		"researchPower": 80,
-		"results": [
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "MORTARS",
-				"parameter": "FirePause",
-				"value": -10
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "MORTARS",
-				"parameter": "ReloadTime",
-				"value": -10
-			}
-		],
-		"statID": "Mortar1Mk1",
-		"subgroupIconID": "IMAGE_RES_GRPROF"
-	},
-	"R-Wpn-Rocket-Accuracy01": {
-		"iconID": "IMAGE_RES_WEAPONTECH",
-		"id": "R-Wpn-Rocket-Accuracy01",
-		"msgName": "RES_W_RK_AC1",
-		"name": "Stabilized Mini-Rockets",
-		"keyTopic": 1,
-		"requiredResearch": [
-			"R-Struc-Research-Upgrade01",
-			"R-Wpn-Rocket05-MiniPod"
-		],
-		"researchPoints": 3600,
-		"researchPower": 112,
-		"results": [
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "ROCKET",
-				"parameter": "HitChance",
-				"value": 5
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "ROCKET",
-				"parameter": "ShortHitChance",
-				"value": 5
-			}
-		],
-		"statID": "Rocket-Pod",
-		"subgroupIconID": "IMAGE_RES_GRPACC"
-	},
-	"R-Wpn-Rocket-Damage01": {
-		"iconID": "IMAGE_RES_WEAPONTECH",
-		"id": "R-Wpn-Rocket-Damage01",
-		"msgName": "RES_W_RK_D1",
-		"name": "HE Mini-Rockets",
-		"keyTopic": 1,
-		"requiredResearch": [
-			"R-Wpn-Rocket05-MiniPod"
-		],
-		"researchPoints": 1200,
-		"researchPower": 37,
-		"results": [
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "ROCKET",
-				"parameter": "Damage",
-				"value": 35
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "ROCKET",
-				"parameter": "RadiusDamage",
-				"value": 35
-			}
-		],
-		"statID": "Rocket-Pod",
-		"subgroupIconID": "IMAGE_RES_GRPDAM"
-	},
 	"R-Wpn-Rocket-ROF01": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
 		"id": "R-Wpn-Rocket-ROF01",
 		"msgName": "RES_W_RK_ROF1",
-		"name": "Fast Fire Mini-Rockets",
+		"name": "Moar Mini-Rockets",
 		"keyTopic": 1,
 		"requiredResearch": [
 			"R-Wpn-Rocket05-MiniPod"
@@ -2344,49 +2280,18 @@
 				"filterParameter": "ImpactClass",
 				"filterValue": "ROCKET",
 				"parameter": "FirePause",
-				"value": -20
+				"value": -50
 			},
 			{
 				"class": "Weapon",
 				"filterParameter": "ImpactClass",
 				"filterValue": "ROCKET",
 				"parameter": "ReloadTime",
-				"value": -20
+				"value": -50
 			}
 		],
 		"statID": "Rocket-Pod",
 		"subgroupIconID": "IMAGE_RES_GRPROF"
-	},
-	"R-Wpn-RocketSlow-Accuracy01": {
-		"iconID": "IMAGE_RES_WEAPONTECH",
-		"id": "R-Wpn-RocketSlow-Accuracy01",
-		"keyTopic": 1,
-		"msgName": "RES_W_SRK_AC1",
-		"name": "Improved Rocket Wire Guidance",
-		"requiredResearch": [
-			"R-Struc-Research-Upgrade01",
-			"R-Wpn-Rocket01-LtAT"
-		],
-		"researchPoints": 3600,
-		"researchPower": 112,
-		"results": [
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "SLOW ROCKET",
-				"parameter": "HitChance",
-				"value": 10
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "SLOW ROCKET",
-				"parameter": "ShortHitChance",
-				"value": 10
-			}
-		],
-		"statID": "Rocket-LtA-T",
-		"subgroupIconID": "IMAGE_RES_GRPACC"
 	},
 	"R-Wpn-RocketSlow-Damage01": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
@@ -2417,29 +2322,11 @@
 		"statID": "Rocket-LtA-T",
 		"subgroupIconID": "IMAGE_RES_GRPDAM"
 	},
-	"R-Defense-Howitzer": {
-		"iconID": "IMAGE_RES_DEFENCE",
-		"id": "R-Defense-Howitzer",
-		"msgName": "RES_EMP_HOW",
-		"name": "Howitzer Emplacement",
-		"requiredResearch": [
-			"R-Wpn-HowitzerMk1"
-		],
-		"researchPoints": 4800,
-		"researchPower": 150,
-		"resultStructures": [
-			"Emplacement-Howitzer105"
-		],
-		"statID": "Emplacement-Howitzer105"
-	},
 	"R-Defense-HvyFlamer": {
 		"iconID": "IMAGE_RES_DEFENCE",
 		"id": "R-Defense-HvyFlamer",
 		"msgName": "RES_EMP_HVFL",
-		"name": "Inferno Emplacement",
-		"redStructures": [
-			"PillBox5"
-		],
+		"name": "Excessive Flamer Bunker",
 		"requiredResearch": [
 			"R-Wpn-Flame2",
 			"R-Defense-Pillbox05"
@@ -2684,69 +2571,6 @@
 			}
 		],
 		"statID": "Cannon1Mk1",
-		"subgroupIconID": "IMAGE_RES_GRPROF"
-	},
-	"R-Wpn-Howitzer-Damage01": {
-		"iconID": "IMAGE_RES_WEAPONTECH",
-		"id": "R-Wpn-Howitzer-Damage01",
-		"msgName": "RES_W_HOWD1",
-		"name": "HE Howitzer Shells",
-		"requiredResearch": [
-			"R-Wpn-HowitzerMk1"
-		],
-		"researchPoints": 6000,
-		"researchPower": 187,
-		"results": [
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "HOWITZERS",
-				"parameter": "Damage",
-				"value": 25
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "HOWITZERS",
-				"parameter": "RepeatDamage",
-				"value": 25
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "HOWITZERS",
-				"parameter": "RadiusDamage",
-				"value": 25
-			}
-		],
-		"statID": "Howitzer105Mk1",
-		"subgroupIconID": "IMAGE_RES_GRPDAM"
-	},
-	"R-Wpn-RocketSlow-ROF01": {
-		"iconID": "IMAGE_RES_WEAPONTECH",
-		"id": "R-Wpn-RocketSlow-ROF01",
-		"keyTopic": 1,
-		"msgName": "RES_W_SRK_ROF1",
-		"name": "Rocket Autoloader",
-		"researchPoints": 6000,
-		"researchPower": 187,
-		"results": [
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "SLOW ROCKET",
-				"parameter": "FirePause",
-				"value": -10
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "SLOW ROCKET",
-				"parameter": "ReloadTime",
-				"value": -10
-			}
-		],
-		"statID": "Rocket-LtA-T",
 		"subgroupIconID": "IMAGE_RES_GRPROF"
 	},
 	"R-Defense-GuardTower-Rail1": {

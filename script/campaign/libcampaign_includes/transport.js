@@ -135,7 +135,7 @@ function __camDispatchTransporterUnsafe()
 	         "droids for player", player +
 	         ", queued transports", __camTransporterQueue.length);
 
-	setNoGoArea(pos.x - OFFSET, pos.y - OFFSET, pos.x + OFFSET, pos.y + OFFSET, player);
+	// setNoGoArea(pos.x - OFFSET, pos.y - OFFSET, pos.x + OFFSET, pos.y + OFFSET, player);
 
 	//Delete previous enemy reinforcement transport blip
 	if (player !== CAM_HUMAN_PLAYER)

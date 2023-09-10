@@ -1270,12 +1270,12 @@
         "armour": 10,
         "breadth": 1,
         "buildPoints": 400,
-        "buildPower": 200,
+        "buildPower": 100,
         "ecmID": "ZNULLECM",
         "height": 1,
         "hitpoints": 400,
         "id": "Emplacement-HPVcannon",
-        "name": "Hyper Velocity Cannon Emplacement",
+        "name": "Righteous Bison Emplacement",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "HARD",
@@ -1285,7 +1285,7 @@
         "thermal": 10,
         "type": "DEFENSE",
         "weapons": [
-            "Cannon4AUTOMk1"
+            "CannonBison"
         ],
         "width": 1
     },
@@ -1445,7 +1445,7 @@
         "thermal": 10,
         "type": "DEFENSE",
         "weapons": [
-            "Rocket-MRL"
+            "Rocket-MRLStructure"
         ],
         "width": 1
     },
@@ -2559,7 +2559,7 @@
         "height": 1,
         "hitpoints": 700,
         "id": "PillBox5",
-        "name": "Flamer Bunker",
+        "name": "Flamer Bunker?",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "BUNKER",
@@ -2662,6 +2662,29 @@
         "type": "DEFENSE",
         "weapons": [
             "Rocket-BB3"
+        ],
+        "width": 1
+    },
+    "PillBoxBison": {
+        "armour": 20,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 150,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 700,
+        "id": "PillBoxBison",
+        "name": "Righteous Bison Bunker",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "BUNKER",
+        "structureModel": [
+            "Blcanpil.pie"
+        ],
+        "thermal": 20,
+        "type": "DEFENSE",
+        "weapons": [
+            "CannonBison"
         ],
         "width": 1
     },
@@ -2963,7 +2986,7 @@
         "height": 1,
         "hitpoints": 700,
         "id": "Tower-Projector",
-        "name": "HV Flamer Bunker",
+        "name": "Excessive Flamer Bunker",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "BUNKER",
@@ -3004,12 +3027,12 @@
         "armour": 15,
         "breadth": 1,
         "buildPoints": 100,
-        "buildPower": 225,
+        "buildPower": 150,
         "ecmID": "ZNULLECM",
         "height": 2,
         "hitpoints": 600,
         "id": "Tower-VulcanCan",
-        "name": "Assault Cannon Guard Tower",
+        "name": "Righteous Bison Tower",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "MEDIUM",
@@ -3019,7 +3042,7 @@
         "thermal": 15,
         "type": "DEFENSE",
         "weapons": [
-            "Cannon4AUTOMk1"
+            "CannonBison"
         ],
         "width": 1
     },
@@ -3118,13 +3141,13 @@
         "armour": 15,
         "breadth": 1,
         "buildPoints": 400,
-        "buildPower": 225,
+        "buildPower": 200,
         "combinesWithWall": true,
         "ecmID": "ZNULLECM",
         "height": 2,
         "hitpoints": 800,
         "id": "WallTower-HPVcannon",
-        "name": "Hyper Velocity Cannon Hardpoint",
+        "name": "Righteous Bison Hardpoint",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "HARD",
@@ -3134,7 +3157,7 @@
         "thermal": 15,
         "type": "DEFENSE",
         "weapons": [
-            "Cannon4AUTOMk1"
+            "CannonBison"
         ],
         "width": 1
     },
@@ -3645,8 +3668,8 @@
     "WallTower04": {
         "armour": 15,
         "breadth": 1,
-        "buildPoints": 400,
-        "buildPower": 250,
+        "buildPoints": 1200,
+        "buildPower": 750,
         "combinesWithWall": true,
         "ecmID": "ZNULLECM",
         "height": 2,

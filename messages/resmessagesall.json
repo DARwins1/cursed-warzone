@@ -355,7 +355,7 @@
 			"-35% self damage force",
 			"-35% damage penalty",
 			"This weapon will reload automatically when not active.",
-			"",
+			"\n",
 			"...",
 			"Just kidding, it doesn't do any of that.",
 			"It's the camBalance flamer tower."
@@ -373,6 +373,61 @@
 			"Deals only 20% damage to buildings"
 		]
 	},
+	"RES_EMP_BISON": {
+		"id": "RES_EMP_BISON",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Defensive Structure Available",
+			"Emplacement with Righteous Bison",
+			"Objectively worse than the other options",
+			"Defensive Strength: Bad"
+		]
+	},
+	"RES_PB_BISON": {
+		"id": "RES_PB_BISON",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Defensive Structure Available",
+			"Armored bunker with Righteous Bison",
+			"Automatically targets enemies within sensor range",
+			"Defensive Strength: Bunker"
+		]
+	},
+	"RES_EMP_BISONTOW": {
+		"id": "RES_EMP_BISONTOW",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Defensive Structure Available",
+			"Armored guard tower with Righteous Bison",
+			"Automatically targets enemies within sensor range",
+			"Defensive Strength: it's OK i guess"
+		]
+	},
+	"RES_WT_BISON": {
+		"id": "RES_WT_BISON",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Defensive Structure Available",
+			"Armored hardpoint with Righteous Bison",
+			"Automatically targets enemies within sensor range",
+			"Defensive Strength: Hard"
+		]
+	},
+	"RES_CYW_BISON": {
+		"id": "RES_CYW_BISON",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_droid.ogg",
+		"text": [
+			"New Cyborg Available",
+			"Armed with Cyborg Righteous Bison",
+			"Body Points: Medium",
+			"Requires Cyborg factory to produce"
+		]
+	},
 	"RES_TOWEREXTENDED": {
 		"id": "RES_TOWEREXTENDED",
 		"imdName": "MICAPSUL.pie",
@@ -386,7 +441,7 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_struttech.ogg",
 		"text": [
-			"TECHNICALLY, this tower is unchanged"
+			"TECHNICALLY, this tower is unchanged..."
 		]
 	},
 	"RES_CYW_BB": {

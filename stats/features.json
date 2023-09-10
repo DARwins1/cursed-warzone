@@ -956,30 +956,28 @@
 		"width": 1
 	},
 	"Wreck0": {
-		"armour": 0,
-		"breadth": 1,
-		"damageable": 0,
-		"hitpoints": 0,
+		"armour": 5,
+		"breadth": 2,
+		"hitpoints": 100,
 		"id": "Wreck0",
 		"lineOfSight": 0,
-		"model": "miwreck.pie",
+		"model": "mispamwrek0.pie",
 		"name": "*Wreck0*",
 		"tileDraw": 1,
-		"type": "BOULDER",
-		"width": 1
+		"type": "TREE",
+		"width": 2
 	},
 	"Wreck1": {
-		"armour": 0,
-		"breadth": 1,
-		"damageable": 0,
-		"hitpoints": 0,
+		"armour": 5,
+		"breadth": 2,
+		"hitpoints": 100,
 		"id": "Wreck1",
 		"lineOfSight": 0,
-		"model": "miwrek1.pie",
+		"model": "mispamwrek1.pie",
 		"name": "*Wreck1*",
 		"tileDraw": 1,
-		"type": "BOULDER",
-		"width": 1
+		"type": "TREE",
+		"width": 2
 	},
 	"Wreck2": {
 		"armour": 0,

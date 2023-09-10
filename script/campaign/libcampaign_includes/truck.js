@@ -157,10 +157,12 @@ function __camCheckDeadTruck(obj)
 		// multi-turret templates are not supported yet
 		// cyborg engineers are not supported yet
 		// cannot use obj.weapons[] because spade is not a weapon
+		let tool = "Spade1Mk1";
+		if (obj.player === SPAMTON) tool = "Spade1Mk1Spam";
 		camQueueDroidProduction(obj.player, {
 			body: obj.body,
 			prop: obj.propulsion,
-			weap: "Spade1Mk1"
+			weap: tool
 		});
 	}
 }

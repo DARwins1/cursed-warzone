@@ -57,7 +57,7 @@
 			"Best Targets: Anything in front of it",
 			"Body Points: High",
 			"Weight: Also High",
-			"Where is your god now"
+			"Where is your god now?"
 		]
 	},
 	"RES_CYMET1": {
@@ -584,9 +584,9 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"New Defensive Structure Available",
-			"Armored hardpoint with Heavy Cannon",
-			"Automatically targets enemies within sensor range",
-			"Defensive Strength: High"
+			"Armored hardpoint with Very Heavy Cannon",
+			"Automatically obliterates enemies within sensor range",
+			"Defensive Strength: oh my god"
 		]
 	},
 	"RES_W_CN_D1": {
