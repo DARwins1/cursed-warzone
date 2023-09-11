@@ -63,12 +63,12 @@
 			"Brutalist buildings are characterised by minimalist constructions that showcase the bare building materials and structural elements over decorative design.",
 			"The style commonly makes use of exposed, unpainted concrete or brick, angular geometric shapes and a predominantly monochrome colour palette;",
 			"other materials, such as steel, timber, and glass, are also featured.",
-			"",
+			"\n",
 			"Descending from the modernist movement, brutalism is said to be a reaction against the nostalgia of architecture in the 1940s.",
 			"Derived from the Swedish phrase nybrutalism, the term \"new brutalism\" was first used by British architects Alison and Peter Smithson for their pioneering approach to design.",
 			"The style was further popularised in a 1955 essay by architectural critic Reyner Banham, who also associated the movement with the French phrases béton brut (\"raw concrete\") and art brut (\"raw art\").",
-			"The style, as developed by architects such as the Smithsons, Hungarian-born Ernő Goldfinger, and the British firm Chamberlin, Powell & Bon, was partly foreshadowed by the modernist work of other architects such as French-Swiss Le Corbusier, Estonian-American Louis Kahn, German-American Mies van der Rohe, and Finnish Alvar Aalto.",
-			"",
+			"The style, as developed by architects such as the Smithsons, Hungarian-born Erno Goldfinger, and the British firm Chamberlin, Powell & Bon, was partly foreshadowed by the modernist work of other architects such as French-Swiss Le Corbusier, Estonian-American Louis Kahn, German-American Mies van der Rohe, and Finnish Alvar Aalto.",
+			"\n",
 			"In the United Kingdom, brutalism was featured in the design of utilitarian, low-cost social housing influenced by socialist principles and soon spread to other regions around the world.",
 			"Brutalist designs became most commonly used in the design of institutional buildings, such as universities, libraries, courts, and city halls.",
 			"The popularity of the movement began to decline in the late 1970s, with some associating the style with urban decay and totalitarianism.",
@@ -335,9 +335,15 @@
 		"imdName": "MICAPSUL.pie",
 		"sequenceName": "res_struttech.ogg",
 		"text": [
-			"VTOL Rearming Times Reduced",
-			"Automated VTOL Rearming",
+			"Rearming Times Reduced",
+			"Automated Rearming",
 			"Reduces rearming time",
+			"The time that is required for rearming is reduced",
+			"The task designated as \"rearming\" now consumes less time",
+			"The process of rearming, which is required for specific units to return to the battlefield at full combat potential, now requires less time to pass until the process is completed",
+			"\n",
+			"rearm fast",
+			"\n",
 			"All rearming pads upgraded automatically"
 		]
 	},
@@ -613,7 +619,7 @@
 			"New from ACME",
 			"1000 kg cast-iron Anvils",
 			"Perfect for obliterating structures, infantry and large birds",
-			"",
+			"\n",
 			"... Where did Spamton get these?"
 		]
 	},

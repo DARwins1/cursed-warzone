@@ -1224,6 +1224,8 @@ function __camDetonateDrum(boomBaitId)
 		default:
 			fireWeaponAtObj("ExplosiveDrumBlast1", bait);
 		}
+
+		queue("__camRemoveBoomBait", CAM_TICKS_PER_FRAME * 10, boomBaitId + "");
 	}
 }
 
@@ -1238,6 +1240,7 @@ function __camDetonatePipis(boomBaitId)
 	else
 	{
 		fireWeaponAtObj("PipisBlast", bait);
+		queue("__camRemoveBoomBait", CAM_TICKS_PER_FRAME * 10, boomBaitId + "");
 	}
 }
 
@@ -1252,7 +1255,15 @@ function __camDetonateNukeDrum(boomBaitId)
 	else
 	{
 		fireWeaponAtObj("NuclearDrumBlast", bait);
+		queue("__camRemoveBoomBait", CAM_TICKS_PER_FRAME * 10, boomBaitId + "");
 	}
+}
+
+// Quietly remove the bait object if it wasn't destroyed in the blast for some reason
+function __camRemoveBoomBait(boomBaitId)
+{
+	var bait = getObject(DROID, 10, boomBaitId);
+	camSafeRemoveObject(bait);
 }
 
 // Play an Enderman's teleportation sound effect

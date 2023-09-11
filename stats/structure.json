@@ -624,6 +624,27 @@
         "type": "REPAIR FACILITY",
         "width": 1
     },
+    "A0RepairCentre2": {
+        "armour": 10,
+        "breadth": 1,
+        "buildPoints": 300,
+        "buildPower": 100,
+        "ecmID": "RepairCentreHeavy",
+        "height": 2,
+        "hitpoints": 400,
+        "id": "A0RepairCentre2",
+        "name": "Immobile Heavy Repair Turret",
+        "repairPoints": 30,
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "BLHARDPT.PIE"
+        ],
+        "thermal": 10,
+        "type": "REPAIR FACILITY",
+        "width": 1
+    },
     "A0RepairCentre3": {
         "armour": 10,
         "baseModel": "BLBGEN.PIE",
@@ -3957,7 +3978,7 @@
             "miexpdrum.PIE"
         ],
         "thermal": 5,
-        "type": "CORNER WALL",
+        "type": "WALL",
         "width": 1
     },
     "A0Pipis": {
@@ -3976,7 +3997,7 @@
             "mipipis.PIE"
         ],
         "thermal": 5,
-        "type": "CORNER WALL",
+        "type": "WALL",
         "width": 1
     },
     "A0NuclearDrum": {
@@ -3995,7 +4016,7 @@
             "minukedrum.PIE"
         ],
         "thermal": 5,
-        "type": "CORNER WALL",
+        "type": "WALL",
         "width": 3
     },
     "Spawner-Creeper": {

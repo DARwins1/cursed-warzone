@@ -12,9 +12,9 @@ const SPAMTON_RES = [
 var centerTowerDestroyed;
 var nwTowerDestroyed;
 var seTowerDestroyed;
-var northTowerDestroyed;
+// var northTowerDestroyed;
 var neTowerDestroyed;
-var eastTowerDestroyed;
+// var eastTowerDestroyed;
 
 // Set up patrol and ambuhs groups
 function setupMapGroups()
@@ -113,11 +113,11 @@ function checkTowers()
 	}
 
 	// Check the north tower
-	if (!northTowerDestroyed && getObject("northTower") === null)
-	{
-		northTowerDestroyed = true;
-		hackRemoveMessage("TOWER_N", PROX_MSG, CAM_HUMAN_PLAYER);
-	}
+	// if (!northTowerDestroyed && getObject("northTower") === null)
+	// {
+	// 	northTowerDestroyed = true;
+	// 	hackRemoveMessage("TOWER_N", PROX_MSG, CAM_HUMAN_PLAYER);
+	// }
 
 	// Check the NE tower
 	if (!neTowerDestroyed && getObject("neTower") === null)
@@ -127,11 +127,11 @@ function checkTowers()
 	}
 
 	// Check the east tower
-	if (!eastTowerDestroyed && getObject("eastTower") === null)
-	{
-		eastTowerDestroyed = true;
-		hackRemoveMessage("TOWER_E", PROX_MSG, CAM_HUMAN_PLAYER);
-	}
+	// if (!eastTowerDestroyed && getObject("eastTower") === null)
+	// {
+	// 	eastTowerDestroyed = true;
+	// 	hackRemoveMessage("TOWER_E", PROX_MSG, CAM_HUMAN_PLAYER);
+	// }
 
 	// Check the SE tower
 	if (!seTowerDestroyed && getObject("seTower") === null)
@@ -140,8 +140,8 @@ function checkTowers()
 		hackRemoveMessage("TOWER_SE", PROX_MSG, CAM_HUMAN_PLAYER);
 	}
 
-	if (centerTowerDestroyed && nwTowerDestroyed && northTowerDestroyed
-		&& neTowerDestroyed && eastTowerDestroyed && seTowerDestroyed)
+	if (centerTowerDestroyed && nwTowerDestroyed /*&& northTowerDestroyed*/
+		&& neTowerDestroyed /*&& eastTowerDestroyed*/ && seTowerDestroyed)
 	{
 		camSetExtraObjectiveMessage();
 		return true; // None remaining
@@ -209,7 +209,7 @@ function eventStartLevel()
 			assembly: "spamAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(35)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(42)),
 			data: {
 				regroup: false,
 				repair: 30,
@@ -221,7 +221,7 @@ function eventStartLevel()
 			assembly: "spamAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(60)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(90)),
 			data: {
 				regroup: true,
 				repair: 75,
@@ -252,6 +252,7 @@ function eventStartLevel()
 			},
 			templates: [ 
 				cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg,
+				cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg,
 				cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spbigmg 
 			] // Mini MG spam with an occasional Big Machinegun
 		},
@@ -259,7 +260,7 @@ function eventStartLevel()
 			assembly: "spamCybAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(35)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(42)),
 			data: {
 				regroup: false,
 				repair: 30,
@@ -271,19 +272,19 @@ function eventStartLevel()
 			assembly: "spamCybAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(67.5)),
 			data: {
-				regroup: true,
+				regroup: false,
 				repair: 75,
 				count: -1,
 			},
-			templates: [ cTempl.spcybpod, cTempl.spcybspy ] // Many-Rocket Cyborgs and Spies
+			templates: [ cTempl.spcybpod, cTempl.spscybflame ] // Many-Rocket Cyborgs and Super Flamer Cyborgs
 		},
 		"spamCybFactory3": {
 			assembly: "spamCybAssembly3",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(40)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(60)),
 			data: {
 				regroup: true,
 				repair: 40,
@@ -295,7 +296,7 @@ function eventStartLevel()
 			assembly: "spamCybAssembly4",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 5,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(67.5)),
 			data: {
 				regroup: true,
 				repair: 40,
@@ -307,7 +308,7 @@ function eventStartLevel()
 			assembly: "spamNormAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
 			data: {
 				regroup: false,
 				count: -1,
@@ -318,7 +319,7 @@ function eventStartLevel()
 			assembly: "spamNormAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(40)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(60)),
 			data: {
 				regroup: false,
 				count: -1,
@@ -403,7 +404,7 @@ function eventStartLevel()
 	// Make structures funny
 	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", SPAMTON);
 	camUpgradeOnMapStructures("PillBox4", "PillBoxBison", SPAMTON);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", SPAMTON);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre2", SPAMTON);
 	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", SPAMTON);
 	camUpgradeOnMapStructures("X-Super-Rocket", "GuardTower-MEGA", SPAMTON);
 	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-ZombieSpamton", SPAMTON);
@@ -413,13 +414,13 @@ function eventStartLevel()
 	// Place beacons on all the towers
 	hackAddMessage("TOWER_C", PROX_MSG, CAM_HUMAN_PLAYER);
 	hackAddMessage("TOWER_NW", PROX_MSG, CAM_HUMAN_PLAYER);
-	hackAddMessage("TOWER_N", PROX_MSG, CAM_HUMAN_PLAYER);
+	// hackAddMessage("TOWER_N", PROX_MSG, CAM_HUMAN_PLAYER);
 	hackAddMessage("TOWER_NE", PROX_MSG, CAM_HUMAN_PLAYER);
-	hackAddMessage("TOWER_E", PROX_MSG, CAM_HUMAN_PLAYER);
+	// hackAddMessage("TOWER_E", PROX_MSG, CAM_HUMAN_PLAYER);
 	hackAddMessage("TOWER_SE", PROX_MSG, CAM_HUMAN_PLAYER);
 
 	queue("setupMapGroups", camChangeOnDiff(camSecondsToMilliseconds(25)));
 	queue("activateFirstFactories", camChangeOnDiff(camMinutesToMilliseconds(2.5)));
 	queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(8)));
-	queue("activateFinalFactories", camChangeOnDiff(camMinutesToMilliseconds(14)));
+	queue("activateFinalFactories", camChangeOnDiff(camMinutesToMilliseconds(16)));
 }

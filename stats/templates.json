@@ -955,6 +955,17 @@
             "Cyb-Hvywpn-Mcannon"
         ]
     },
+    "Cyb-Hvy-HFlamer": {
+        "available": true,
+        "body": "CyborgHeavyBody",
+        "id": "Cyb-Hvy-HFlamer",
+        "name": "Super Flamer Cyborg",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG_SUPER",
+        "weapons": [
+            "Cyb-Hvywpn-HFlamer"
+        ]
+    },
     "Cyb-Hvy-PulseLsr": {
         "available": true,
         "body": "CyborgHeavyBody",

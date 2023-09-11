@@ -302,6 +302,9 @@
 		"resultStructures": [
 			"WallTower03"
 		],
+		"redStructures": [
+			"WallTower02"
+		],
 		"statID": "Cannon2A-TMk1"
 	},
 	"R-Wpn-Cannon3Mk1": {
@@ -402,7 +405,7 @@
 		"requiredResearch": [
 			"R-Wpn-Flamer01Mk1"
 		],
-		"researchPoints": 7200,
+		"researchPoints": 2800,
 		"researchPower": 225,
 		"resultComponents": [
 			"Flame2"
@@ -703,7 +706,8 @@
 		"resultComponents": [
 			"CyborgLegs",
 			"CyborgChaingun",
-			"CyborgLightBody"
+			"CyborgLightBody",
+			"CyborgHeavyBody"
 		],
 		"statID": "CyborgChaingun"
 	},
@@ -820,6 +824,23 @@
 		],
 		"statID": "CyborgBison"
 	},
+	"R-Cyborg-Hvywpn-HFlamer": {
+		"iconID": "IMAGE_RES_CYBORGTECH",
+		"id": "R-Cyborg-Hvywpn-HFlamer",
+		"msgName": "RES_CYW_H_HFLAM",
+		"name": "Super Flamer Cyborg",
+		"requiredResearch": [
+			"R-Wpn-Flame2",
+			"R-Cyborg-Wpn-MG",
+			"R-Cyborg-Metals02"
+		],
+		"researchPoints": 2400,
+		"researchPower": 200,
+		"resultComponents": [
+			"Cyb-Hvywpn-HFlamer"
+		],
+		"statID": "Cyb-Hvywpn-HFlamer"
+	},
 	"R-Comp-CommandTurret01": {
 		"iconID": "IMAGE_RES_COMPUTERTECH",
 		"id": "R-Comp-CommandTurret01",
@@ -845,18 +866,6 @@
 		"name": "Conveniently Placed Synaptic Link",
 		"researchPoints": 1200,
 		"researchPower": 37
-	},
-	"R-Cyborg-Legs01": {
-		"iconID": "IMAGE_RES_CYBORGTECH",
-		"id": "R-Cyborg-Legs01",
-		"name": "Cyborg Propulsion",
-		"researchPoints": 7200,
-		"researchPower": 225,
-		"resultComponents": [
-			"CyborgLegs"
-		],
-		"statID": "CyborgLegs",
-		"techCode": 1
 	},
 	"R-Cyborg-Metals01": {
 		"iconID": "IMAGE_RES_CYBORGTECH",
@@ -1610,6 +1619,24 @@
 		],
 		"statID": "LightRepair1"
 	},
+	"R-Struc-ImmobileHeavyRepair": {
+		"iconID": "IMAGE_RES_SYSTEMTECH",
+		"id": "R-Struc-ImmobileHeavyRepair",
+		"msgName": "RES_IMREPTU2",
+		"name": "Immobile Heavy Repair Turret",
+		"requiredResearch": [
+			"R-Sys-Engineering03"
+		],
+		"researchPoints": 1800,
+		"researchPower": 127,
+		"resultStructures": [
+			"A0RepairCentre2"
+		],
+		"redStructures": [
+			"A0RepairCentre1"
+		],
+		"statID": "HeavyRepair"
+	},
 	"R-Struc-RepairFacility": {
 		"iconID": "IMAGE_RES_STRUCTURETECH",
 		"id": "R-Struc-RepairFacility",
@@ -1639,28 +1666,6 @@
 			"A0ResearchModule1"
 		],
 		"statID": "A0ResearchModule1"
-	},
-	"R-Struc-Research-Upgrade01": {
-		"iconID": "IMAGE_RES_COMPUTERTECH",
-		"id": "R-Struc-Research-Upgrade01",
-		"imdName": "blresch4.PIE",
-		"msgName": "RES_ST_RU1",
-		"name": "Synaptic Link Data Analysis",
-		"keyTopic": 1,
-		"requiredResearch": [
-			"R-Struc-Research-Module",
-			"R-Comp-SynapticLink"
-		],
-		"researchPoints": 1200,
-		"researchPower": 37,
-		"results": [
-			{
-				"class": "Building",
-				"parameter": "ResearchPoints",
-				"value": 30
-			}
-		],
-		"subgroupIconID": "IMAGE_RES_GRPUPG"
 	},
 	"R-Struc-RprFac-Upgrade01": {
 		"iconID": "IMAGE_RES_SYSTEMTECH",
@@ -1756,8 +1761,7 @@
 		"msgName": "RES_SY_SU1",
 		"name": "Sensor Upgrade",
 		"requiredResearch": [
-			"R-Sys-Sensor-Tower01",
-			"R-Struc-Research-Upgrade01"
+			"R-Sys-Sensor-Tower01"
 		],
 		"researchPoints": 1800,
 		"researchPower": 56,
@@ -1947,37 +1951,6 @@
 			"wheeledskiddy"
 		],
 		"statID": "wheeledskiddy"
-	},
-	"R-Wpn-Cannon-Accuracy01": {
-		"iconID": "IMAGE_RES_WEAPONTECH",
-		"id": "R-Wpn-Cannon-Accuracy01",
-		"keyTopic": 1,
-		"msgName": "RES_W_CNAC1",
-		"name": "Cannon Laser Rangefinder",
-		"requiredResearch": [
-			"R-Struc-Research-Upgrade01",
-			"R-Wpn-Cannon1Mk1"
-		],
-		"researchPoints": 3600,
-		"researchPower": 112,
-		"results": [
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "CANNON",
-				"parameter": "HitChance",
-				"value": 10
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "ImpactClass",
-				"filterValue": "CANNON",
-				"parameter": "ShortHitChance",
-				"value": 10
-			}
-		],
-		"statID": "Cannon1Mk1",
-		"subgroupIconID": "IMAGE_RES_GRPACC"
 	},
 	"R-Wpn-Cannon-Damage01": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
@@ -2331,7 +2304,7 @@
 			"R-Wpn-Flame2",
 			"R-Defense-Pillbox05"
 		],
-		"researchPoints": 4800,
+		"researchPoints": 2200,
 		"researchPower": 150,
 		"resultStructures": [
 			"Tower-Projector"
@@ -2424,19 +2397,19 @@
 	"R-Struc-VTOLPad-Upgrade01": {
 		"iconID": "IMAGE_RES_STRUCTURETECH",
 		"id": "R-Struc-VTOLPad-Upgrade01",
-		"keyTopic": 1,
 		"msgName": "RES_ST_VPU1",
-		"name": "Automated VTOL Rearming",
+		"name": "Automated Rearming",
 		"requiredResearch": [
-			"R-Struc-VTOLPad"
+			"R-Struc-VTOLPad",
+			"R-Sys-Engineering03"
 		],
-		"researchPoints": 4800,
+		"researchPoints": 3200,
 		"researchPower": 150,
 		"results": [
 			{
 				"class": "Building",
 				"parameter": "RearmPoints",
-				"value": 30
+				"value": 50
 			}
 		],
 		"statID": "A0VtolPad",

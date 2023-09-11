@@ -12,6 +12,13 @@
 		"mountModel": "TRMECM1.PIE",
         "sensorModel": "GNMREPAR.PIE"
 	},
+	"RepairCentreHeavy": {
+		"id": "RepairCentreHeavy",
+		"location": "TURRET",
+		"name": "*RepairCenterHeavy*",
+		"mountModel": "TRMECM1.PIE",
+        "sensorModel": "GNMREPR2.PIE"
+	},
 	"ZNULLECM": {
 		"id": "ZNULLECM",
 		"location": "DEFAULT",

@@ -343,6 +343,17 @@
 			"...If they're close enough"
 		]
 	},
+	"RES_IMREPTU2": {
+		"id": "RES_IMREPTU2",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_systech.ogg",
+		"text": [
+			"New Systems Turret Available",
+			"Battlefield repair unit",
+			"Heals your Stuff faster",
+			"Obsoletes that other thing that you were using"
+		]
+	},
 	"RES_SCORCH": {
 		"id": "RES_SCORCH",
 		"imdName": "MICAPSUL.pie",
@@ -425,6 +436,17 @@
 			"New Cyborg Available",
 			"Armed with Cyborg Righteous Bison",
 			"Body Points: Medium",
+			"Requires Cyborg factory to produce"
+		]
+	},
+	"RES_CYW_H_HFLAM": {
+		"id": "RES_CYW_H_HFLAM",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_droid.ogg",
+		"text": [
+			"New Super Cyborg Available",
+			"Armed with Cyborg Excessive Flamer",
+			"Body Points: High",
 			"Requires Cyborg factory to produce"
 		]
 	},

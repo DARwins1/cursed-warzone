@@ -484,7 +484,7 @@ function eventStartLevel()
 
 	// Make structures funny
 	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", SPAMTON);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", SPAMTON);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre2", SPAMTON);
 	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", SPAMTON);
 
 	queue("spamAmbush1", camSecondsToMilliseconds(35)); // Also sets up patrols

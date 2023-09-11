@@ -309,11 +309,12 @@ function cam_eventDestroyed(obj)
 		else if (obj.name === _("*Wreck0*") || obj.name === _("*Wreck1*"))
 		{
 			// Spawn Spamton unit(s)
-			const unitChoices = [
+			let unitChoices = [
 				"zombie", "skeleton", "creeper",
 			 	"bison", "spy", "needler",
 			 	"miniMGs",
 			];
+			if (difficulty >= HARD) unitChoices.push("superFlamer");
 
 			switch (unitChoices[camRand(unitChoices.length)])
 			{
@@ -353,6 +354,12 @@ function cam_eventDestroyed(obj)
 						_("Spamton Needler Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Rail1Spam"
 					));
 					break;
+				case "needler":
+					// Spawn a Super Flamer Cyborg (Hard+ only)
+					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+						_("Spamton Super Flamer Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-HFlamerSpam"
+					));
+					break;
 				case "miniMGs":
 					// Spawn 4 Mini Spamacondas
 					for (let i = 0; i < 4; i++)
@@ -367,8 +374,8 @@ function cam_eventDestroyed(obj)
 	}
 	else if (obj.type === STRUCTURE)
 	{
-		if (obj.stattype === WALL && obj.id === "A0ExplosiveDrum" 
-			&& obj.id === "A0NuclearDrum" && obj.id === "A0Pipis")
+		if (obj.stattype === WALL && 
+			!(obj.id === "A0ExplosiveDrum" || obj.id === "A0NuclearDrum" || obj.id === "A0Pipis"))
 		{
 			// See if a Silverfish should spawn out of the destroyed wall
 			let spawnChance = 0;
