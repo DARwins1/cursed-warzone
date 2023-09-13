@@ -49,17 +49,17 @@ function activateFarmFactories()
 function eventStartLevel()
 {
 	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "SUB_2_2S", {
-		area: "landingzone",
+		area: "compromiseZone",
   		reinforcements: camMinutesToSeconds(2),
 		eliminateBases: true
 	});
 
-	var startpos = camMakePos(getObject("landingzone"));
-	var lz = getObject("landingzone"); //player lz
+	var startpos = camMakePos(getObject("landingZone"));
+	var lz = getObject("landingZone"); //player lz
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
-	startTransporterEntry(40, 64, CAM_HUMAN_PLAYER);
-	setTransporterExit(40, 64, CAM_HUMAN_PLAYER);
+	startTransporterEntry(31, 62, CAM_HUMAN_PLAYER);
+	setTransporterExit(31, 62, CAM_HUMAN_PLAYER);
 
 	// Make structures funny
 	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", MOBS);
@@ -67,6 +67,9 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", MOBS);
 	camUpgradeOnMapStructures("PillBox5", "PillBox-BB", BONZI_BUDDY);
 	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", BONZI_BUDDY);
+	//fix wacky walls
+	camUpgradeOnMapStructures("A0HardcreteMk1Wall", "A0HardcreteMk1Wall", BONZI_BUDDY);
+
 	// Add a funny sign and the giant door for the Sword area
 	// NOTE: this sign is a placeholder
 	camUpgradeOnMapFeatures("Pylon", "Sign1");
@@ -103,7 +106,7 @@ function eventStartLevel()
 
 	camSetFactories({
 		"templeFactory": {
-			//assembly: "bbAssembly1",
+			assembly: "tankAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
@@ -115,7 +118,7 @@ function eventStartLevel()
 			templates: [ cTempl.crmmcant, cTempl.crmhmgt, cTempl.crmbb2t, cTempl.crmmcant ] // Thick-wheeled units
 		},
 		"castleFactory1": {
-			//assembly: "bbAssembly2",
+			assembly: "tankAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 5,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(40)),
@@ -127,7 +130,7 @@ function eventStartLevel()
 			templates: [ cTempl.crlmortw, cTempl.crlsensdw, cTempl.crlmortw, cTempl.crlslancedw, cTempl.crlhmgdw, cTempl.crlslancedw, cTempl.crmbb2dw ] // Drift Wheel harassers
 		},
 		"castleFactory2": {
-			//assembly: "bbCybAssembly1",
+			assembly: "tankAssembly3",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 5,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
@@ -139,7 +142,7 @@ function eventStartLevel()
 			templates: [ cTempl.crlhmght, cTempl.crmbb2ht, cTempl.crlcanht ]
 		},
 		"farmFactory1": {
-			//assembly: "bbCybAssembly2",
+			assembly: "cybAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 5,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
@@ -151,7 +154,7 @@ function eventStartLevel()
 			templates: [ cTempl.crcybbb, cTempl.crcybsword, cTempl.crcybbow ]
 		},
 		"farmFactory2": {
-			//assembly: "bbCybAssembly3",
+			assembly: "cybAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 7,
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),

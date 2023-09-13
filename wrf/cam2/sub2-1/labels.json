@@ -1,4 +1,24 @@
 {
+    "position_0": {
+        "pos": [5078, 2192],
+        "label": "tankAssembly2"
+    },
+    "position_1": {
+        "pos": [5895, 2191],
+        "label": "tankAssembly3"
+    },
+    "position_2": {
+        "pos": [1198, 1989],
+        "label": "tankAssembly1"
+    },
+    "position_3": {
+        "pos": [8752, 1474],
+        "label": "cybAssembly1"
+    },
+    "position_4": {
+        "pos": [9682, 1474],
+        "label": "cybAssembly2"
+    },
     "area_0": {
         "pos1": [384, 640],
         "pos2": [3072, 3328],
@@ -12,7 +32,7 @@
     "area_2": {
         "pos1": [3712, 6656],
         "pos2": [4096, 7040],
-        "label": "landingzone"
+        "label": "landingZone"
     },
     "area_3": {
         "pos1": [6144, 5632],
@@ -23,6 +43,11 @@
         "pos1": [8064, 640],
         "pos2": [10368, 2816],
         "label": "baseFarm"
+    },
+    "area_5": {
+        "pos1": [3328, 6272],
+        "pos2": [4480, 7424],
+        "label": "compromiseZone"
     },
     "object_30": {
         "id": 917,
