@@ -1687,12 +1687,22 @@ function __camSpyFeignTick()
 				else if (pos === null) // No HQ or HQ is saturated
 				{
 					// Pick somehwere at the LZ
-					const LZ_NAMES = ["landingZone", "LZ"]; // Bit of a brain-dead solution but oh well
-					for (let j = 0; j < LZ_NAMES.length; j++)
+					let lzNames = ["landingZone", "LZ"]; // Bit of a brain-dead solution but oh well
+					// Special case for Gamma 4 since it has 2 LZs
+					if (__camNextLevel === "BIG_SHOT" && getMissionTime() < 7200)
 					{
-						if (camDef(getObject(LZ_NAMES[j])) && getObject(LZ_NAMES[j]) !== null)
+						lzNames.push("landingZone1");
+					}
+					else if (__camNextLevel === "BIG_SHOT")
+					{
+						lzNames.push("landingZone2");
+					}
+
+					for (let j = 0; j < lzNames.length; j++)
+					{
+						if (camDef(getObject(lzNames[j])) && getObject(lzNames[j]) !== null)
 						{
-							pos = camRandPosInArea(LZ_NAMES[j]);
+							pos = camRandPosInArea(lzNames[j]);
 							break;
 						}
 					}

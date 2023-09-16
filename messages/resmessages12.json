@@ -16,9 +16,9 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"New Defensive Structure Available",
-			"Mini-rocket armored strongpoint",
+			"Mono-rocket armored strongpoint",
 			"Assigned automatically to nearest sensor or CB tower",
-			"Defensive Strength: Medium"
+			"Defensive Strength: :)"
 		]
 	},
 	"RES_EMP_Mpit": {
@@ -220,8 +220,8 @@
 		"sequenceName": "res_weapons.ogg",
 		"text": [
 			"New Rocket Available",
-			"Fires salvoes of mini-rockets",
-			"Best Targets: Base structures, infantry, wheeled vehicles",
+			"Fires a single, oversized Rocket",
+			"Best Targets: Base structures, infantry, wheeled vehicles, and the enemy's will to live",
 			"Body Points: Very Low"
 		]
 	},

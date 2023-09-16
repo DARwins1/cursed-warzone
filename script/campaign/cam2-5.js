@@ -1113,7 +1113,7 @@ function victoryCheck()
 
 function eventStartLevel()
 {
-	camSetStandardWinLossConditions(CAM_VICTORY_SCRIPTED, "SUB_2_6S",{
+	camSetStandardWinLossConditions(CAM_VICTORY_SCRIPTED, "HOW_2_UNINSTALL",{
 		callback: "victoryCheck"
 	});
 

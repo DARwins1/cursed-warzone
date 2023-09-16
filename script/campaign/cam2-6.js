@@ -299,7 +299,7 @@ function bonziBossStatus()
 
 function eventStartLevel()
 {
-	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "CAM_2END", {
+	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "KILL_YOUR_TV", {
 		area: "compromiseZone",
 		message: "C26_LZ",
 		reinforcements: camMinutesToSeconds(2),

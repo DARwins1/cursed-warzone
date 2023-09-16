@@ -9,7 +9,7 @@ function eventStartLevel()
 	centreView(88, 101);
 	setNoGoArea(86, 99, 88, 101, CAM_HUMAN_PLAYER);
 	setMissionTime(camChangeOnDiff(camMinutesToSeconds(70)));
-	camSetStandardWinLossConditions(CAM_VICTORY_PRE_OFFWORLD, "SUB_2_1");
+	camSetStandardWinLossConditions(CAM_VICTORY_PRE_OFFWORLD, "XBOX_LIVE");
 
         enableResearch("R-Wpn-MG3Mk1", CAM_HUMAN_PLAYER); // Realistic Heavy Machinegun (from Spamton)
 }

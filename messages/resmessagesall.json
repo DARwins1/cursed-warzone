@@ -73,6 +73,17 @@
 			"May be assigned as spotter for indirect fire weapons"
 		]
 	},
+	"RES_SY_STW3": {
+		"id": "RES_SY_STW3",
+		"imdName": "MICAPSUL.PIE",
+		"sequenceName": "res_systech.ogg",
+		"text": [
+			"New Systems Hardpoint Available",
+			"Keeps map areas under constant surveillance",
+			"May be assigned as spotter for indirect fire weapons",
+			"Defensive Strength: Harder"
+		]
+	},
 	"RES_SY_SU1": {
 		"id": "RES_SY_SU1",
 		"imdName": "MICAPSUL.PIE",
@@ -381,7 +392,11 @@
 			"Does not require ammo",
 			"Projectile penetrates enemy targets",
 			"Projectile cannot be deflected",
-			"Deals only 20% damage to buildings"
+			"Deals only 20% damage to buildings",
+			"\n",
+			"\n",
+			"\n",
+			"...Most of that is probably accurate"
 		]
 	},
 	"RES_EMP_BISON": {
@@ -404,6 +419,17 @@
 			"Armored bunker with Righteous Bison",
 			"Automatically targets enemies within sensor range",
 			"Defensive Strength: Bunker"
+		]
+	},
+	"RES_PB_BIG": {
+		"id": "RES_PB_BIG",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Defensive Structure Available",
+			"Gigantic Machinegun Bunker",
+			"Automatically targets enemies within sensor range",
+			"Defensive Strength: Bunker (but big)"
 		]
 	},
 	"RES_EMP_BISONTOW": {

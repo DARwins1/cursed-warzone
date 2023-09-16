@@ -697,10 +697,10 @@
 		"imdName": "MICAPSUL.PIE",
 		"sequenceName": "res_weapons.ogg",
 		"text": [
-			"Mini-Rocket Upgrade",
-			"Automated reload system",
-			"Increases Mini-Rockets ROF",
-			"All mini-rockets upgraded automatically"
+			"Rocket Upgrade",
+			"Puts even more rockets in your rockets",
+			"Increases rockets",
+			"All Many-Rocket Pods and Lancers upgraded automatically"
 		]
 	},
 	"RES_W_SRK_AC1": {

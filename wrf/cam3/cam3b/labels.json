@@ -1,0 +1,206 @@
+{
+    "position_0": {
+        "pos": [600, 1571],
+        "label": "normalSpawn1"
+    },
+    "position_1": {
+        "pos": [421, 6626],
+        "label": "normalSpawn2"
+    },
+    "position_2": {
+        "pos": [12221, 180],
+        "label": "spamSpawn1"
+    },
+    "position_3": {
+        "pos": [15682, 8002],
+        "label": "spamSpawn2"
+    },
+    "position_4": {
+        "pos": [18103, 182],
+        "label": "spamSpawn3"
+    },
+    "position_5": {
+        "pos": [22460, 7992],
+        "label": "spamSpawn4"
+    },
+    "position_6": {
+        "pos": [25410, 4536],
+        "label": "spamSpawn5"
+    },
+    "position_7": {
+        "pos": [14823, 360],
+        "label": "normalRemovePos"
+    },
+    "position_8": {
+        "pos": [12685, 2466],
+        "label": "spamPatrolPos1"
+    },
+    "position_9": {
+        "pos": [15601, 5680],
+        "label": "spamPatrolPos2"
+    },
+    "position_10": {
+        "pos": [17940, 2313],
+        "label": "spamPatrolPos3"
+    },
+    "position_11": {
+        "pos": [20634, 5613],
+        "label": "spamPatrolPos4"
+    },
+    "position_12": {
+        "pos": [22951, 941],
+        "label": "spamAssembly1"
+    },
+    "position_13": {
+        "pos": [15430, 2634],
+        "label": "spamAssembly2"
+    },
+    "position_14": {
+        "pos": [13505, 7351],
+        "label": "spamAssembly3"
+    },
+    "position_15": {
+        "pos": [11318, 3123],
+        "label": "spamAssembly4"
+    },
+    "position_16": {
+        "pos": [21936, 2488],
+        "label": "spamCybAssembly1"
+    },
+    "position_17": {
+        "pos": [21044, 955],
+        "label": "spamCybAssembly2"
+    },
+    "position_18": {
+        "pos": [14143, 1093],
+        "label": "spamCybAssembly3"
+    },
+    "position_19": {
+        "pos": [19518, 7491],
+        "label": "spamNormAssembly1"
+    },
+
+    "area_0": {
+        "pos1": [1792, 4352],
+        "pos2": [2176, 4736],
+        "label": "landingZone1"
+    },
+    "area_1": {
+        "pos1": [23296, 1280],
+        "pos2": [23680, 1664],
+        "label": "landingZone2"
+    },
+    "area_2": {
+        "pos1": [18816, 640],
+        "pos2": [24320, 6272],
+        "label": "spamBase1"
+    },
+    "area_3": {
+        "pos1": [17536, 5376],
+        "pos2": [20608, 7680],
+        "label": "spamBase2"
+    },
+    "area_4": {
+        "pos1": [13312, 640],
+        "pos2": [17024, 4096],
+        "label": "spamBase3"
+    },
+    "area_5": {
+        "pos1": [11776, 6272],
+        "pos2": [14336, 7680],
+        "label": "spamBase4"
+    },
+    "area_6": {
+        "pos1": [10624, 2432],
+        "pos2": [12416, 4992],
+        "label": "spamBase5"
+    },
+    "area_7": {
+        "pos1": [12544, 5376],
+        "pos2": [13056, 5760],
+        "label": "spamAmbushGroup1"
+    },
+    "area_8": {
+        "pos1": [12544, 1792],
+        "pos2": [13056, 2176],
+        "label": "spamAmbushGroup2"
+    },
+    "area_9": {
+        "pos1": [15232, 5760],
+        "pos2": [16000, 6144],
+        "label": "spamPatrolGroup1"
+    },
+    "area_10": {
+        "pos1": [17664, 1792],
+        "pos2": [18176, 2176],
+        "label": "spamPatrolGroup2"
+    },
+
+    "object_18": {
+        "id": 618,
+        "type": 1,
+        "player": 3,
+        "label": "spamNormFactory1"
+    },
+    "object_82": {
+        "id": 643,
+        "type": 1,
+        "player": 3,
+        "label": "spamFactory3"
+    },
+    "object_145": {
+        "id": 244,
+        "type": 1,
+        "player": 3,
+        "label": "spamFactory1"
+    },
+    "object_236": {
+        "id": 652,
+        "type": 1,
+        "player": 3,
+        "label": "spamCybFactory2"
+    },
+    "object_272": {
+        "id": 22,
+        "type": 1,
+        "player": 3,
+        "label": "spamMonoEmp"
+    },
+    "object_557": {
+        "id": 148,
+        "type": 1,
+        "player": 3,
+        "label": "spamFactory2"
+    },
+    "object_566": {
+        "id": 653,
+        "type": 1,
+        "player": 3,
+        "label": "spamCybFactory1"
+    },
+    "object_567": {
+        "id": 85,
+        "type": 1,
+        "player": 3,
+        "label": "spamFactory4"
+    },
+    "object_588": {
+        "id": 241,
+        "type": 1,
+        "player": 3,
+        "label": "spamCybFactory3"
+    },
+    "object_642": {
+        "id": 684,
+        "type": 1,
+        "player": 3,
+        "label": "spamCybFactory4"
+    },
+
+    "radius_0": {
+        "label": "normalRemoveZone",
+        "subscriber": 3,
+        "pos": [14823, 360],
+        "radius": 300
+    }
+}

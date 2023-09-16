@@ -48,7 +48,7 @@ function activateFarmFactories()
 
 function eventStartLevel()
 {
-	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "SUB_2_2S", {
+	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "BRING_AN_UMBRELLA", {
 		area: "compromiseZone",
   		reinforcements: camMinutesToSeconds(2),
 		eliminateBases: true

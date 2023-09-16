@@ -327,7 +327,7 @@ function eventStartLevel()
 	nextbotGroup = camMakeGroup(getObject("nextbot"));
 	setScrollLimits(64, 0, 128, 128);
 
-	camSetStandardWinLossConditions(CAM_VICTORY_PRE_OFFWORLD, "WHAT_ARE_YOU_DOING_IN_MY_");
+	camSetStandardWinLossConditions(CAM_VICTORY_PRE_OFFWORLD, "HOLY_CUNGADERO");
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 	camSetupTransporter(tCoords.xStart, tCoords.yStart, tCoords.xOut, tCoords.yOut);

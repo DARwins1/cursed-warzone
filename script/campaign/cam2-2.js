@@ -104,7 +104,7 @@ function activateSecondFactories()
 
 function eventStartLevel()
 {
-	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "SUB_2_5S", {
+	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "GET_READY_TO_RUMBLE", {
 		area: "compromiseZone",
 		message: "C22_LZ",
 		reinforcements: camMinutesToSeconds(2),

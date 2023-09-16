@@ -2155,7 +2155,7 @@
         "height": 1,
         "hitpoints": 2000,
         "id": "NX-ANTI-SATSite",
-        "name": "Nexus Missile Silo",
+        "name": "Spamton Missile Silo",
         "sensorID": "DefaultSensor1Mk1",
         "strength": "BUNKER",
         "structureModel": [
@@ -2712,8 +2712,8 @@
     "Pillbox-Big": {
         "armour": 40,
         "breadth": 2,
-        "buildPoints": 800,
-        "buildPower": 300,
+        "buildPoints": 1200,
+        "buildPower": 600,
         "ecmID": "ZNULLECM",
         "height": 3,
         "hitpoints": 1400,
@@ -2806,11 +2806,11 @@
         "height": 3,
         "hitpoints": 600,
         "id": "Sys-NEXUSLinkTOW",
-        "name": "*Sys-NEXUSLinkTOW*",
-        "sensorID": "NavGunSensor",
+        "name": "Spamton Link Tower",
+        "sensorID": "DefaultSensor1Mk1",
         "strength": "HARD",
         "structureModel": [
-            "Blgrdnex.PIE"
+            "BLGUARDR.PIE"
         ],
         "thermal": 15,
         "type": "DEFENSE",
@@ -2934,6 +2934,27 @@
         "strength": "HARD",
         "structureModel": [
             "BLGUARDR.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "width": 1
+    },
+    "Sys-SensoTower03": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 450,
+        "buildPower": 125,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "Sys-SensoTower03",
+        "name": "Sensor Hardpoint",
+        "resistance": 150,
+        "sensorID": "SensorTower2Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
         ],
         "thermal": 15,
         "type": "DEFENSE",

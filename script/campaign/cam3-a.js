@@ -472,7 +472,7 @@ function eventStartLevel()
 		setReinforcementTime(camMinutesToSeconds(2));
 	}
 
-	// Replace all boulder with explosives
+	// Replace all boulders with explosives
 	camUpgradeOnMapFeatures("Boulder1", "ExplosiveDrum");
 	camUpgradeOnMapFeatures("Boulder2", "Pipis");
 

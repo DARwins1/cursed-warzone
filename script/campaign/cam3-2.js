@@ -191,7 +191,7 @@ function eventStartLevel()
 	var startpos = camMakePos(getObject("landingZone"));
 	var lz = getObject("landingZone");
 
-	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "THE_G_STANDS_FOR_BLASTER", {
+	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "THE_G_STANDS_FOR_", {
 		area: "compromiseZone",
 		message: "C32_LZ",
 		reinforcements: camMinutesToSeconds(1),
@@ -313,7 +313,7 @@ function eventStartLevel()
 				regroup: false,
 				count: -1,
 			},
-			templates: [ cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spmanvilnw ] // Minis and Anviles
+			templates: [ cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spmanvilnw ] // Minis and Anvils
 		},
 		"spamNormFactory2": {
 			assembly: "spamNormAssembly2",
@@ -385,10 +385,10 @@ function eventStartLevel()
 
 		camManageTrucks(SPAMTON);
 
-		setTimer("placePipis", camChangeOnDiff(camSecondsToMilliseconds(5)));
+		setTimer("placePipis", camSecondsToMilliseconds(3));
 	}
 
-	// Replace all boulder with explosives
+	// Replace all boulders with explosives
 	camUpgradeOnMapFeatures("Boulder1", "Pipis");
 	camUpgradeOnMapFeatures("Wreck1", "Wreck1"); // I know this looks stupid but it's to align the pile positions better
 

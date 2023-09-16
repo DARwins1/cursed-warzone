@@ -164,11 +164,11 @@ game		"wrf/cam2/cam2start.gam"
 data		"wrf/cam2/cam2a.wrf"
 
 
-between		SUB_2_1S
+between		CAVE_UPDATE_PART_4
 dataset		CAM_2
 data		"wrf/cam2/sub2-1s.wrf"
 
-miss_keep	SUB_2_1
+miss_keep	XBOX_LIVE
 dataset		CAM_2
 game		"wrf/cam2/sub2-1.gam"
 data		"wrf/cam2/sub2-1.wrf"
@@ -178,11 +178,11 @@ dataset		CAM_2
 game		"wrf/cam2/cam2b.gam"
 data		"wrf/cam2/cam2b.wrf"
 
-between		SUB_2_2S
+between		BRING_AN_UMBRELLA
 dataset		CAM_2
 data		"wrf/cam2/sub2-2s.wrf"
 
-miss_keep	SUB_2_2
+miss_keep	HAIL
 dataset		CAM_2
 game		"wrf/cam2/sub2-2.gam"
 data		"wrf/cam2/sub2-2.wrf"
@@ -197,20 +197,20 @@ dataset		CAM_2
 game		"wrf/cam2/cam2c2.gam"
 data		"wrf/cam2/cam2c2.wrf"
 
-between		SUB_2_5S
+between		GET_READY_TO_RUMBLE
 dataset		CAM_2
 data		"wrf/cam2/sub2-5s.wrf"
 
-miss_keep	SUB_2_5
+miss_keep	THE_COLOSSEUM
 dataset		CAM_2
 game		"wrf/cam2/sub2-5.gam"
 data		"wrf/cam2/sub2-5.wrf"
 
-between		SUB_2DS
+between		HOW_2_UNINSTALL
 dataset		CAM_2
 data		"wrf/cam2/sub2-ds.wrf"
 
-miss_keep	SUB_2D
+miss_keep	BONZI_BUDDY
 dataset		CAM_2
 game		"wrf/cam2/sub2-d.gam"
 data		"wrf/cam2/sub2-d.wrf"
@@ -242,7 +242,7 @@ dataset		CAM_2
 game		"wrf/cam2/sub2-8.gam"
 data		"wrf/cam2/sub2-8.wrf"
 
-expand		CAM_2END
+expand		KILL_YOUR_TV
 dataset		CAM_2
 game		"wrf/cam2/cam2end.gam"
 data		"wrf/cam2/cam2end.wrf"
@@ -280,7 +280,7 @@ dataset		CAM_3
 game		"wrf/cam3/sub3-1.gam"
 data		"wrf/cam3/sub3-1.wrf"
 
-expand		THE_G_STANDS_FOR_BLASTER
+expand		THE_G_STANDS_FOR_
 dataset		CAM_3
 game		"wrf/cam3/cam3b.gam"
 data		"wrf/cam3/cam3b.wrf"

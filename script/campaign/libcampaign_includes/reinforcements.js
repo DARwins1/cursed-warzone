@@ -55,7 +55,19 @@ function camSendReinforcement(playerId, position, templates, kind, data)
 			{
 				var template = templates[i];
 				var prop = __camChangePropulsionOnDiff(template.prop);
-				droids.push(addDroid(playerId, pos.x, pos.y, "Reinforcement", template.body, prop, "", "", template.weap));
+				// droids.push(addDroid(playerId, pos.x, pos.y, "Reinforcement", template.body, prop, "", "", template.weap));
+				if (typeof template.weap === "object" && camDef(template.weap[2]))
+				{
+					droid = addDroid(playerId, pos.x, pos.y, "Reinforcement", template.body, prop, "", "", template.weap[0], template.weap[1], template.weap[2]);
+				}
+				else if (typeof template.weap === "object" && camDef(template.weap[1]))
+				{
+					droid = addDroid(playerId, pos.x, pos.y, "Reinforcement", template.body, prop, "", "", template.weap[0], template.weap[1]);
+				}
+				else
+				{
+					droids.push(addDroid(playerId, pos.x, pos.y, "Reinforcement", template.body, prop, "", "", template.weap));
+				}
 			}
 			camManageGroup(camMakeGroup(droids), order, order_data);
 			break;

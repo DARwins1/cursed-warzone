@@ -354,7 +354,7 @@ function eventStartLevel()
 	var lz = getObject("landingZone"); //player lz
 	var enemyLz = getObject("bbLandingZone");
 
-	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "SUB_2_1S");
+	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CAVE_UPDATE_PART_4");
 	setReinforcementTime(LZ_COMPROMISED_TIME);
 
 	centreView(startpos.x, startpos.y);

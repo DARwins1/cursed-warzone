@@ -113,11 +113,11 @@ const BETA_LEVELS = [
 	"SUB_2_5S", "SUB_2_5", "SUB_2DS", "SUB_2D", "SUB_2_6S", "SUB_2_6", "SUB_2_7S",
 	"SUB_2_7", "SUB_2_8S", "SUB_2_8", "CAM_2END",
 	"how_was_the_fall", // Beta 1
-	"CAVE_UPDATE_PART_4", "MY_COOL_MAP.ZIP", // Beta 2
-	"BRING_AN_UMBRELLA", "CLOUDY_WITH_A_CHANCE_OF_ROCKETS", // Beta 3
+	"CAVE_UPDATE_PART_4", "XBOX_LIVE", // Beta 2
+	"BRING_AN_UMBRELLA", "HAIL", // Beta 3
 	"GET_READY_TO_RUMBLE", "THE_COLOSSEUM", // Beta 4
 	"HOW_2_UNINSTALL", "BONZI_BUDDY", // Beta 5
-	"LET'S_A_GO" // Transition
+	"KILL_YOUR_TV" // Transition
 ];
 const GAMMA_LEVELS = [
 	"CAM_3A", "SUB_3_1S", "SUB_3_1", "CAM_3B", "SUB_3_2S", "SUB_3_2", "CAM3A-B",
@@ -125,7 +125,7 @@ const GAMMA_LEVELS = [
 	"HOLY_CUNGADERO", // Gamma 1
 	"NO_DONT_STEAL_MY_", "THE_BIG_ONE", // Gamma 2
 	"RIDE_AROUND_TOWN", "SPAMTOPIA", // Gamma 3
-	"THE_G_STANDS_FOR_BLASTER", // Gamma 4
+	"THE_G_STANDS_FOR_", // Gamma 4
 	"BIG_SHOT" // Gamma 5
 ];
 
