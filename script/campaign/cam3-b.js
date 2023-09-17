@@ -159,6 +159,8 @@ function startDefensePhase()
 	// Let the player start researching the missile codes
 	enableResearch("R-Comp-MissileCodes01", CAM_HUMAN_PLAYER);
 	setTimer("sendSpamtonGroundWave", camChangeOnDiff(camSecondsToMilliseconds(30)));
+	removeTimer("advanceBlasterZone");
+	setTimer("advanceBlasterZone", camChangeOnDiff(camSecondsToMilliseconds(20)));
 	defenseTime = gameTime;
 	camAbsorbPlayer(SILOS, CAM_HUMAN_PLAYER); // Give silos to the player
 
@@ -628,8 +630,8 @@ function fireBlaster()
 // Start spam-queuing blaster shots around the missile silo area
 function blasterFrenzy()
 {
-	let pos1 = camGenerateRandomMapCoordinateWithinRadius(camMakePos("spamBase1"), 22, 0);
-	let pos2 = camGenerateRandomMapCoordinateWithinRadius(camMakePos("spamBase1"), 22, 0);
+	let pos1 = camRandPosInArea("spamBase1");
+	let pos2 = camRandPosInArea("spamBase1");
 
 	// Relatively long delay to give the player a chance to react
 	setBlasterTarget(pos1, camChangeOnDiff(10));
@@ -796,7 +798,7 @@ function eventStartLevel()
 	camSetStandardWinLossConditions(CAM_VICTORY_SCRIPTED, "BIG_SHOT", {
 		callback: "victoryCallback"
 	});
-	setMissionTime(camChangeOnDiff(camMinutesToSeconds(60))); // For the attack phase.
+	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.25))); // For the attack phase.
 
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);

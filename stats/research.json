@@ -2526,7 +2526,7 @@
 		"name": "Excessive Flamer Bunker",
 		"requiredResearch": [
 			"R-Wpn-Flame2",
-			"R-Defense-Pillbox05"
+			"R-Defense-HardcreteWall"
 		],
 		"researchPoints": 2200,
 		"researchPower": 150,

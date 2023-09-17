@@ -266,7 +266,7 @@ function cam_eventDestroyed(obj)
 			}
 		}
 		else if (camDef(obj.weapons[0]) && (obj.weapons[0].id === "CyborgSpyChaingun" || obj.weapons[0].id === "CyborgSpyChaingunSpam")
-			&& camFeignCooldownCheck(obj.id))
+			&& camFeignCooldownCheck(obj.id) && obj.order !== DORDER_RECYCLE)
 		{
 			__camSpyFeignDeath(obj);
 			return;
@@ -375,7 +375,7 @@ function cam_eventDestroyed(obj)
 	else if (obj.type === STRUCTURE)
 	{
 		if (obj.stattype === WALL && 
-			!(obj.id === "A0ExplosiveDrum" || obj.id === "A0NuclearDrum" || obj.id === "A0Pipis"))
+			!(obj.name === _("Explosive Drum") || obj.name === _("Nuclear Drum") || obj.name === _("Pipis")))
 		{
 			// See if a Silverfish should spawn out of the destroyed wall
 			let spawnChance = 0;

@@ -1728,7 +1728,7 @@ function __camSpyFeignTick()
 					// Pick somewhere near where the spy feigned
 					pos = camGenerateRandomMapCoordinateWithinRadius(__camSpyFeigns[i].pos, 6, 1);
 				}
-				else
+				if (pos === null)
 				{
 					// Just respawn at the same point
 					pos = __camSpyFeigns[i].pos;
