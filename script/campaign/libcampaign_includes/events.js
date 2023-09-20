@@ -153,6 +153,9 @@ function cam_eventStartLevel()
 	queue("__camRandomizeFungibleCannons", camSecondsToMilliseconds(0.1)); // This is done on a delay so that bases can initialize
 
 	camManageGroup(__camMobGlobalGroup, CAM_ORDER_ATTACK, {removable: false});
+	
+	setAlliance(CAM_HUMAN_PLAYER, 10, true);
+	__camUpdateSwappableUnits();
 }
 
 function cam_eventDroidBuilt(droid, structure)
@@ -161,9 +164,22 @@ function cam_eventDroidBuilt(droid, structure)
 		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Cannon2A-TMk1")
 		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Cannon2A-TMk1"))
 	{
-		// Swap the standard Fungible Cannon for a random varient
-		completeResearch(__camFungibleCanSwapList[camRand(__camFungibleCanSwapList.length)], droid.player, true);
-		makeComponentAvailable("Cannon2A-TMk1", droid.player); // Prevent the Fungible Cannon from being marked obsolete
+		// If the human player is producing one of these, then completing the research directly messes with templates in other factories.
+		// So instead we have to donate the unit to a different player (player 10) so THEY can do the research and swap the component instead.
+		// THEN, the units are donated back to the player...
+		if (droid.player === CAM_HUMAN_PLAYER)
+		{
+			if (getObject(DROID, CAM_HUMAN_PLAYER, droid.id) !== null) // Make sure it's not off-world
+			{
+				// ...UNLESS they're built on an away mission, in which case we wait for the transport to bring them or until the mission ends.
+				donateObject(droid, 10);
+			}
+		}
+		else
+		{
+			// Swap the standard Fungible Cannon for a random variant
+			completeResearch(__camFungibleCanSwapList[camRand(__camFungibleCanSwapList.length)], droid.player, true);
+		}
 	}
 
 	if ((camDef(droid.weapons[0]) && droid.weapons[0].name === "Rocket-LtA-TWarr") 
@@ -173,18 +189,27 @@ function cam_eventDroidBuilt(droid, structure)
 		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr")
 		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr"))
 	{
-		// Swap the Warranty-Expired Lancer for a either a standard or Defective varient
-		if (camRand(3) === 0) // 33% chance
+		if (droid.player === CAM_HUMAN_PLAYER)
 		{
-			// Swap with Lancer
-			completeResearch("Script-Lancer-FunctionalSwap", droid.player, true);
-			makeComponentAvailable("Rocket-LtA-TWarr", droid.player); // Prevent the Warranty-Expired Lancer from being marked obsolete
+			if (getObject(DROID, CAM_HUMAN_PLAYER, droid.id) !== null) // Make sure it's not off-world
+			{
+				// Temporarily donate the object to player 10
+				donateObject(droid, 10);
+			}
 		}
 		else
 		{
-			// Swap with Defective Lancer
-			completeResearch("Script-Lancer-DefectiveSwap", droid.player, true);
-			makeComponentAvailable("Rocket-LtA-TWarr", droid.player);
+			// Swap the Warranty-Expired Lancer for a either a standard or Defective variant
+			if (camRand(3) === 0) // 33% chance
+			{
+				// Swap with Lancer
+				completeResearch("Script-Lancer-FunctionalSwap", droid.player, true);
+			}
+			else
+			{
+				// Swap with Defective Lancer
+				completeResearch("Script-Lancer-DefectiveSwap", droid.player, true);
+			}
 		}
 	}
 
@@ -477,6 +502,11 @@ function cam_eventTransporterLanded(transport)
 	{
 		__camLandTransporter(transport.player, camMakePos(transport));
 	}
+	else
+	{
+		// Swap any Fungible Cannons or Warranty-Expired Lancers that arrived on the transport
+		__camUpdateSwappableUnits();
+	}
 }
 
 function cam_eventMissionTimeout()
@@ -693,6 +723,21 @@ function cam_eventObjectTransfer(obj, from)
 			playSound(snd);
 		}
 		queue("camNexusLaugh", camSecondsToMilliseconds(1.5));
+	}
+	else if (from === CAM_HUMAN_PLAYER && obj.player === 10 && obj.type === DROID)
+	{
+		completeResearch(__camFungibleCanSwapList[camRand(__camFungibleCanSwapList.length)], 10, true);
+		if (camRand(3) === 0) // 33% chance
+		{
+			// Swap with Lancer
+			completeResearch("Script-Lancer-FunctionalSwap", 10, true);
+		}
+		else
+		{
+			// Swap with Defective Lancer
+			completeResearch("Script-Lancer-DefectiveSwap", 10, true);
+		}
+		donateObject(obj, CAM_HUMAN_PLAYER);
 	}
 }
 

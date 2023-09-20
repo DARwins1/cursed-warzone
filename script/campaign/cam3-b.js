@@ -897,6 +897,7 @@ function eventStartLevel()
 			throttle: camChangeOnDiff(camSecondsToMilliseconds(35)),
 			data: {
 				regroup: false,
+				repair: 40,
 				count: -1,
 			},
 			templates: [ cTempl.splbisonw, cTempl.spmbisonht, cTempl.sptwin2bisonht, cTempl.splbisonw, cTempl.splbisonht ] // Bisons only

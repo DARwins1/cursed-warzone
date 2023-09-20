@@ -1326,6 +1326,20 @@ function __camDetonateNukeDrum(boomBaitId)
 	}
 }
 
+// Donate a player droid to player 10
+function __camTempDonate(droidId)
+{
+	var droid = getObject(DROID, CAM_HUMAN_PLAYER, droidId);
+	if (!camDef(droid))
+	{
+		return;
+	}
+	else
+	{
+		donateObject(droid, 10);
+	}
+}
+
 // Quietly remove the bait object if it wasn't destroyed in the blast for some reason
 function __camRemoveBoomBait(boomBaitId)
 {
@@ -1836,6 +1850,31 @@ function __camSpyFeignTick()
 			// Play an effect signifying that the Cyborg can feign death again
 			__camPlayFeignReadySfx(__camSpyCooldowns[i].id);
 			__camSpyCooldowns.splice(i, 1); // Remove this spy from the cooldown list
+		}
+	}
+}
+
+// Switch any Fungible Cannon or Warranty-Expired Lancer unit on the map to its proper variant
+function __camUpdateSwappableUnits()
+{
+	// Check for any Fungible Cannons or Warranty-Expired Lancers
+	const droidList = enumDroid(CAM_HUMAN_PLAYER, DROID_WEAPON);
+	let donateDelay = CAM_TICKS_PER_FRAME;
+	for (let i = 0; i < droidList.length; i++)
+	{
+		const droid = droidList[i];
+		if ((camDef(droid.weapons[0]) && droid.weapons[0].name === "Cannon2A-TMk1") 
+			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Cannon2A-TMk1")
+			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Cannon2A-TMk1")
+			|| (camDef(droid.weapons[0]) && droid.weapons[0].name === "Rocket-LtA-TWarr") 
+			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-LtA-TWarr")
+			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-LtA-TWarr")
+			|| (camDef(droid.weapons[0]) && droid.weapons[0].name === "Rocket-VTOL-LtA-TWarr") 
+			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr")
+			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr"))
+		{
+			queue("__camTempDonate", donateDelay, droid.id + "");
+			donateDelay += CAM_TICKS_PER_FRAME;
 		}
 	}
 }
