@@ -207,5 +207,11 @@
         "type": 0,
         "player": 2,
         "label": "bonziBoss"
+    },
+    "object_631": {
+        "id": 809,
+        "type": 1,
+        "player": 2,
+        "label": "bbChest"
     }
 }

@@ -199,7 +199,7 @@ function eventResearched(research, structure, player)
 			setTimer("sendSpamtonGroundWave", camChangeOnDiff(camSecondsToMilliseconds(40)));
 			// TODO: Start sending normal units here
 			const normList = [cTempl.spmanvilnw, cTempl.sptwin2lcannw, cTempl.spmhmgnw, cTempl.splbisonnw, cTempl.sptwin2podnw];
-			camSetVtolData(SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camMinutesToMilliseconds(1.5)), {
+			camSetVtolData(SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camSecondsToMilliseconds(45)), {
 				minVTOLs: 3,
 				maxRandomVTOLs: 2,
 			});
@@ -214,7 +214,7 @@ function eventResearched(research, structure, player)
 			// Ground wave come at the same rate, but are a bit tougher
 			// Start sending Anvils
 			const normList = [cTempl.spmanvilnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw];
-			camSetVtolData(SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camMinutesToMilliseconds(2)), {
+			camSetVtolData(SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camSecondsToMilliseconds(60)), {
 				minVTOLs: 8,
 				maxRandomVTOLs: 0,
 			});
@@ -345,10 +345,10 @@ function chooseSpamtonGroundUnits()
 		case 2:
 			// Various units
 			let groupTypes = [
-				"bisons", "spies", "heavyCan", "drift",
+				"bisons", "spies", "bunkerBuster", "drift",
 				"rockets",
 			];
-			if (codeCount === 2) groupTypes.push("bunkerBuster", "minis", "flamers");
+			if (codeCount === 2) groupTypes.push("heavyCan", "minis", "flamers");
 
 			switch (groupTypes[camRand(groupTypes.length)])
 			{
@@ -367,9 +367,8 @@ function chooseSpamtonGroundUnits()
 				case "heavyCan":
 					// One Very Heavy Cannon and some escorts
 					mainTemplates = [cTempl.sphhcant];
-					if (codeCount === 2 || difficulty >= HARD) mainTemplates.push(cTempl.sphmcant, cTempl.sphmcant);
-					supportTemplates = [cTempl.spcybcan, cTempl.spmlcanht, cTempl.spcybcan];
-					if (codeCount === 2 || difficulty >= HARD) supportTemplates.push(cTempl.sptwinlcanhmght);
+					if (difficulty >= HARD) mainTemplates.push(cTempl.sphmcant, cTempl.sphmcant);
+					supportTemplates = [cTempl.spcybcan, cTempl.spmlcanht, cTempl.spcybcan, cTempl.sptwinlcanhmght];
 					supportSize = 3 + difficulty;
 					break;
 				case "drift":
@@ -743,17 +742,17 @@ function blastLZ()
 
 	// 'X' shaped pattern
 	// Top-left to bottom-right line
-	setBlasterTarget(camMakePos(x - 4, y - 4), 10);
+	// setBlasterTarget(camMakePos(x - 4, y - 4), 10);
 	setBlasterTarget(camMakePos(x - 2, y - 2), 10 + (0.1 * 1));
 	setBlasterTarget(camMakePos(x + 0, y + 0), 10 + (0.1 * 2));
 	setBlasterTarget(camMakePos(x + 2, y + 2), 10 + (0.1 * 3));
-	setBlasterTarget(camMakePos(x + 4, y + 4), 10 + (0.1 * 4));
+	// setBlasterTarget(camMakePos(x + 4, y + 4), 10 + (0.1 * 4));
 	// Bottom-right to top-left line
-	setBlasterTarget(camMakePos(x - 4, y + 4), 10 + 2);
+	// setBlasterTarget(camMakePos(x - 4, y + 4), 10 + 2);
 	setBlasterTarget(camMakePos(x - 2, y + 2), 10 + (0.1 * 1) + 2);
 	setBlasterTarget(camMakePos(x + 0, y + 0), 10 + (0.1 * 2) + 2);
 	setBlasterTarget(camMakePos(x + 2, y - 2), 10 + (0.1 * 3) + 2);
-	setBlasterTarget(camMakePos(x + 4, y - 4), 10 + (0.1 * 4) + 2);
+	// setBlasterTarget(camMakePos(x + 4, y - 4), 10 + (0.1 * 4) + 2);
 }
 
 // If the player runs out of time during the attack segment

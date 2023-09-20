@@ -76,6 +76,7 @@ crcybpod: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgMiniRocket
 crcybcan: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannon" }, // "Light" Gunner Cyborg
 crcybneedle: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "Cyb-Wpn-Rail1" }, // Needler Cyborg
 crcybspy: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgSpyChaingun" }, // Spy Cyborg
+crcybfirew: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgRocket" }, // Firework Cyborg
 creeper: { body: "CreeperBody", prop: "CyborgLegs", weap: "Cyb-Wpn-CreeperDud" }, // Creeper
 zombie: { body: "ZombieBody", prop: "CyborgLegs", weap: "Cyb-Wpn-ZmbieMelee" }, // Zombie
 babyzombie: { body: "BabyZombieBody", prop: "CyborgLegs", weap: "Cyb-Wpn-BabyZmbieMelee" }, // Baby Zombie

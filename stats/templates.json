@@ -966,6 +966,17 @@
             "Cyb-Hvywpn-HFlamer"
         ]
     },
+    "Cyb-Hvy-Axe": {
+        "available": true,
+        "body": "CyborgHeavyBody",
+        "id": "Cyb-Hvy-Axe",
+        "name": "Super Axe Cyborg",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG_SUPER",
+        "weapons": [
+            "Cyb-Hvywpn-Axe"
+        ]
+    },
     "Cyb-Hvy-PulseLsr": {
         "available": true,
         "body": "CyborgHeavyBody",
@@ -1034,7 +1045,7 @@
         "available": true,
         "body": "CyborgLightBody",
         "id": "Cyb-Rocket-GROUND",
-        "name": "Lancer Cyborg",
+        "name": "Firework Cyborg",
         "propulsion": "CyborgLegs",
         "type": "CYBORG",
         "weapons": [
@@ -1056,7 +1067,7 @@
         "available": false,
         "body": "CyborgLightBody",
         "id": "Cyb-Rocket-GROUND",
-        "name": "Lancer Cyborg",
+        "name": "Firework Cyborg",
         "propulsion": "CyborgLegs",
         "type": "CYBORG",
         "weapons": [

@@ -3803,6 +3803,30 @@
         ],
         "width": 1
     },
+    "X-Super-MG": {
+        "armour": 15,
+        "breadth": 2,
+        "buildPoints": 800,
+        "buildPower": 250,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 3200,
+        "id": "X-Super-MG",
+        "name": "Machinegun Fortress",
+        "resistance": 150,
+        "sensorID": "FortressSensor",
+        "strength": "HARD",
+        "structureModel": [
+            "STWPFCAN.pie"
+        ],
+        "thermal": 15,
+        "type": "GENERIC",
+        "weapons": [
+            "MG1Mk1"
+        ],
+        "width": 2
+    },
     "WreckedTransporter": {
         "armour": 12,
         "breadth": 3,

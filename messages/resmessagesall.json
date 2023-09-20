@@ -237,8 +237,8 @@
 			"[Road Safety] HAS NEVER BEEN MORE [[violation of our Terms Of Service]]!!!"
 		]
 	},
-	"RES_W_RK_LTATDEF": {
-		"id": "RES_W_RK_LTATDEF",
+	"RES_W_RK_LTATWARR": {
+		"id": "RES_W_RK_LTATWARR",
 		"imdName": "MICAPSUL.PIE",
 		"sequenceName": "res_power.ogg",
 		"text": [
@@ -511,6 +511,17 @@
 			"New Defensive Structure Available",
 			"Armored hardpoint with Machinegun",
 			"Automatically targets enemies within sensor range",
+			"Defensive Strength: High"
+		]
+	},
+	"RES_DF_SUPERMG": {
+		"id": "RES_DF_SUPERMG",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Defensive Structure Available",
+			"Armored fortress with Machinegun",
+			"We have finally come full circle",
 			"Defensive Strength: High"
 		]
 	},

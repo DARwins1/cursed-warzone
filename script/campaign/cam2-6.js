@@ -323,6 +323,7 @@ function eventStartLevel()
 		"bbFactory1": { tech: "R-Wpn-Rocket03-HvAT2" }, // Bunker Buster 2
 		"bbNormFactory1": { tech: "R-Vehicle-Prop-VTOL" }, // Normal Wheels
 		"bbFactory4": { tech: "R-Wpn-Mortar3" }, // Pepperspray
+		"bbChest": { tech: "R-Cyborg-Wpn-Rocket" }, // Firework Cyborg
 	});
 
 	camCompleteRequiredResearch(BONZI_RES, BONZI_BUDDY);
@@ -435,7 +436,7 @@ function eventStartLevel()
 				repair: 40,
 				count: -1,
 			},
-			templates: [ cTempl.crcybpod, cTempl.crcybbb, cTempl.crcybpod ] // Many-Rocket Cyborgs
+			templates: [ cTempl.crcybpod, cTempl.crcybfirew, cTempl.crcybpod ] // Many-Rocket and Firework Cyborgs
 		},
 		"bbCybFactory3": {
 			assembly: "bbCybAssembly3",
@@ -490,6 +491,7 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", MOBS);
 	camUpgradeOnMapStructures("PillBox5", "PillBox-BB2", BONZI_BUDDY);
 	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", BONZI_BUDDY);
+	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "A0Chest", BONZI_BUDDY);
 
 	queue("startPatrols", camSecondsToMilliseconds(3));
 	setTimer("nukeDrumCheck", camSecondsToMilliseconds(2));

@@ -631,9 +631,10 @@ function camRandomEffect(pos)
 		"miniVipers", "manyPodTower", "scavScorchShot",
 		"trees", "driftVipers", "fungHardpoint",
 	];
+	const ng = camNewGroup(); // Place spawned hostiles into this group
 
 	// Additional effects with conditions
-	if (camRand(101) < (15 * camDiscoverCampaign()))
+	if (camRand(100) < (15 * camDiscoverCampaign()))
 	{
 		// Reduce the chances of this event by omitting it from the list:
 		// 85% of the time in alpha
@@ -641,7 +642,7 @@ function camRandomEffect(pos)
 		// 55% of the time in gamma
 		effects.push("bigViper");
 	}
-	if (!__camBlackOut && camRand(101) < 15)
+	if (!__camBlackOut && camRand(100) < 15)
 	{
 		// 15% chance to allow a black out if one isn't currently active
 		effects.push("blackOut");
@@ -654,10 +655,25 @@ function camRandomEffect(pos)
 		effects.push("babyZombies");
 		effects.push("silverfish");
 	}
+	if (camDiscoverCampaign() > 2)
+	{
+		// Allow Pipis after beta campaign
+		effects.push("pipis");
+	}
 	if (camIsResearched("R-Struc-ExplosiveDrum") && !camIsResearched("R-Struc-NuclearDrum"))
 	{
 		// Allow Nuclear Drum Artifact if Explosive Drum is researched
 		effects.push("nukeDrumArti");
+	}
+	if (camIsResearched("R-Defense-WallTowerMG") && !camIsResearched("R-Defense-MGSuper"))
+	{
+		// Allow Machinegun Fortress Artifact if Machinegun Hardpoint is researched
+		effects.push("mgFortArti");
+	}
+	if (camIsResearched("R-Cyborg-Wpn-Sword"))
+	{
+		// Allow Super Axe Cyborg if Sword Cyborg is researched
+		effects.push("superAxe");
 	}
 	if (camIsResearched("R-Vehicle-BodyTwin") && camIsResearched("R-Vehicle-Body11") && !camIsResearched("R-Vehicle-BodyTriple"))
 	{
@@ -704,6 +720,17 @@ function camRandomEffect(pos)
 			// Spawn a single oil drum
 			addFeature("OilDrum", pos.x, pos.y);
 			break;
+		case "pipis":
+			// Spawn a single Pipis
+			if (camRand(100) < 1)
+			{
+				addFeature("PipisM", pos.x, pos.y);
+			}
+			else
+			{
+				addFeature("Pipis", pos.x, pos.y);
+			}
+			break;
 		case "oilDrums":
 			// Spawn several oil drums
 			for (let i = -1; i <= 1; i++)
@@ -724,7 +751,7 @@ function camRandomEffect(pos)
 			{
 				for (let j = -1; j <= 1; j++)
 				{
-					if (camRand(101) < 50)
+					if (camRand(100) < 50)
 					{
 						addFeature("Tree3", pos.x + i, pos.y + j);
 					}
@@ -737,9 +764,9 @@ function camRandomEffect(pos)
 			{
 				for (let j = -1; j <= 1; j++)
 				{
-					addDroid(MOBS, pos.x + i, pos.y + j, 
+					groupAdd(ng, addDroid(MOBS, pos.x + i, pos.y + j, 
 						_("Twin nugenihcaM Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "MG2Mk1"
-					);
+					));
 				}
 			}
 			break;
@@ -752,33 +779,33 @@ function camRandomEffect(pos)
 			break;
 		case "bbCyb":
 			// Spawn a grid of 4 Bunker Buster Cyborgs
-			addDroid(MOBS, pos.x - 1, pos.y, 
+			groupAdd(ng, addDroid(MOBS, pos.x - 1, pos.y, 
 				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
-			);
-			addDroid(MOBS, pos.x + 1, pos.y, 
+			));
+			groupAdd(ng, addDroid(MOBS, pos.x + 1, pos.y, 
 				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
-			);
-			addDroid(MOBS, pos.x, pos.y - 1, 
+			));
+			groupAdd(ng, addDroid(MOBS, pos.x, pos.y - 1, 
 				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
-			);
-			addDroid(MOBS, pos.x, pos.y + 1, 
+			));
+			groupAdd(ng, addDroid(MOBS, pos.x, pos.y + 1, 
 				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
-			);
+			));
 			break;
 		case "swordCyb":
 			// Spawn a grid of 4 Sword Cyborgs
-			addDroid(MOBS, pos.x - 1, pos.y, 
+			groupAdd(ng, addDroid(MOBS, pos.x - 1, pos.y, 
 				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
-			);
-			addDroid(MOBS, pos.x + 1, pos.y, 
+			));
+			groupAdd(ng, addDroid(MOBS, pos.x + 1, pos.y, 
 				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
-			);
-			addDroid(MOBS, pos.x, pos.y - 1, 
+			));
+			groupAdd(ng, addDroid(MOBS, pos.x, pos.y - 1, 
 				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
-			);
-			addDroid(MOBS, pos.x, pos.y + 1, 
+			));
+			groupAdd(ng, addDroid(MOBS, pos.x, pos.y + 1, 
 				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
-			);
+			));
 			break;
 		case "bigViper":
 			// Spawn a Big Machinegun Viper Wheels for the player
@@ -798,9 +825,24 @@ function camRandomEffect(pos)
 				_("Towering Pillar Of Lancers Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Rocket-LtA-TPillar"
 			);
 			break;
-		case "realerMG":
-			// Spawn a Realistic-er Heavy Machinegun Viper Half-wheels for the player
+		case "superAxe":
+			// Spawn a Super Axe Cyborg for the player
 			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y, 
+				_("Super Axe Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-Axe"
+			);
+			break;
+		case "realerMG":
+			// Spawn a grid of 4 Realistic-er Heavy Machinegun Viper Half-wheels for the player
+			addDroid(CAM_HUMAN_PLAYER, pos.x - 1, pos.y, 
+				_("Realistic-er Heavy Machinegun Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "MG3Mk3"
+			);
+			addDroid(CAM_HUMAN_PLAYER, pos.x + 1, pos.y, 
+				_("Realistic-er Heavy Machinegun Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "MG3Mk3"
+			);
+			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y - 1, 
+				_("Realistic-er Heavy Machinegun Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "MG3Mk3"
+			);
+			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y + 1, 
 				_("Realistic-er Heavy Machinegun Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "MG3Mk3"
 			);
 			break;
@@ -824,12 +866,12 @@ function camRandomEffect(pos)
 			break;
 		case "monsterSpawner":
 			// Spawn a Monster Spawner
-			if (camRand(101) < 50)
+			if (camRand(100) < 50)
 			{
 				// 50% chance for Zombie Spawner
 				addStructure("Spawner-Zombie", MOBS, pos.x * 128, pos.y * 128);
 			}
-			else if (camRand(101) < 50)
+			else if (camRand(100) < 50)
 			{
 				// 25% chance for Skeleton Spawner
 				addStructure("Spawner-Skeleton", MOBS, pos.x * 128, pos.y * 128);
@@ -842,6 +884,7 @@ function camRandomEffect(pos)
 			break;
 		case "enderman":
 			// Spawn an Enderman
+			// Note that this unit is NOT automatically grouped
 			addDroid(MOBS, pos.x, pos.y, 
 				_("Enderman"), "EndermanBody", "CyborgLegs", "", "", "Cyb-Wpn-EnderMelee"
 			);
@@ -852,9 +895,9 @@ function camRandomEffect(pos)
 			{
 				for (let j = -1; j <= 1; j++)
 				{
-					addDroid(MOBS, pos.x + i, pos.y + j, 
+					groupAdd(ng, addDroid(MOBS, pos.x + i, pos.y + j, 
 						_("Baby Zombie"), "BabyZombieBody", "CyborgLegs", "", "", "Cyb-Wpn-BabyZmbieMelee"
-					);
+					));
 				}
 			}
 			break;
@@ -871,7 +914,7 @@ function camRandomEffect(pos)
 		case "miniVipers":
 			// Spawn 18 Mini Machinegun Viper Wheels
 			var player = CAM_HUMAN_PLAYER;
-			if (camRand(101) < 20)
+			if (camRand(100) < 20)
 			{
 				// 20% chance for the swarm to be hostile
 				player = MOBS;
@@ -880,12 +923,17 @@ function camRandomEffect(pos)
 			{
 				for (let j = -1; j <= 1; j++)
 				{
-					addDroid(player, pos.x + i, pos.y + j, 
+					const nDroid1 = addDroid(player, pos.x + i, pos.y + j, 
 						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
 					);
-					addDroid(player, pos.x + i, pos.y + j, 
+					const nDroid2 = addDroid(player, pos.x + i, pos.y + j, 
 						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
 					);
+					if (player === MOBS)
+					{
+						groupAdd(ng, nDroid1);
+						groupAdd(ng, nDroid2);
+					}
 				}
 			}
 			break;
@@ -908,7 +956,7 @@ function camRandomEffect(pos)
 		case "driftVipers":
 			// Spawn 9 Machinegun Viper Drift Wheels
 			var player = CAM_HUMAN_PLAYER;
-			if (camRand(101) < 50)
+			if (camRand(100) < 50)
 			{
 				// 50% chance for the vipers to be hostile
 				player = MOBS;
@@ -917,9 +965,13 @@ function camRandomEffect(pos)
 			{
 				for (let j = -1; j <= 1; j++)
 				{
-					addDroid(player, pos.x + i, pos.y + j, 
+					const nDroid = addDroid(player, pos.x + i, pos.y + j, 
 						_("Machinegun Viper Drift Wheels"), "Body1REC", "wheeledskiddy", "", "", "MG1Mk1"
 					);
+					if (player === MOBS)
+					{
+						groupAdd(ng, nDroid);
+					}
 				}
 			}
 			break;
@@ -950,6 +1002,15 @@ function camRandomEffect(pos)
 			addLabel(addFeature("Crate", pos.x, pos.y), "hurricaneCrate");
 			__camArtifacts["hurricaneCrate"] = {tech: "R-Wpn-AAGun03", placed: true };
 			break;
+		case "mgFortArti":
+			// Spawn an artifact for the Machinegun Fortress
+			if (camDef(__camArtifacts["mgFortCrate"]))
+			{
+				break; // Don't place if an artifact was already placed
+			}
+			addLabel(addFeature("Crate", pos.x, pos.y), "mgFortCrate");
+			__camArtifacts["mgFortCrate"] = {tech: "R-Defense-MGSuper", placed: true };
+			break;
 		case "blackOut":
 			// Make the whole map go dark
 			__camBlackOut = true;
@@ -961,6 +1022,12 @@ function camRandomEffect(pos)
 			break;
 		default:
 			return;
+	}
+
+	if (groupSize(ng) > 0)
+	{
+		// If we spawned hostile units, order them to attack
+		camManageGroup(ng, CAM_ORDER_ATTACK);
 	}
 }
 

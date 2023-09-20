@@ -77,7 +77,6 @@
     "HalfTrack02": {
         "buildPoints": 75,
         "buildPower": 100,
-        "designable": 1,
         "hitpointPctOfBody": 350,
         "id": "HalfTrack02",
         "model": "prlhtr1.PIE",
@@ -90,7 +89,6 @@
     "HalfTrack03": {
         "buildPoints": 75,
         "buildPower": 125,
-        "designable": 1,
         "hitpointPctOfBody": 500,
         "id": "HalfTrack03",
         "model": "prlhtr1.PIE",
@@ -135,7 +133,6 @@
         "buildPoints": 125,
         "buildPower": 250,
         "deceleration": 200,
-        "designable": 1,
         "hitpointPctOfBody": 100,
         "id": "V-Tol02",
         "model": "DPVTOL.PIE",
@@ -151,7 +148,6 @@
         "buildPoints": 125,
         "buildPower": 300,
         "deceleration": 200,
-        "designable": 1,
         "hitpointPctOfBody": 300,
         "id": "V-Tol03",
         "model": "DPVTOL.PIE",
@@ -184,7 +180,6 @@
     "hover02": {
         "buildPoints": 100,
         "buildPower": 150,
-        "designable": 1,
         "hitpointPctOfBody": 100,
         "id": "hover02",
         "model": "PRLHOV1.PIE",
@@ -197,7 +192,6 @@
     "hover03": {
         "buildPoints": 100,
         "buildPower": 200,
-        "designable": 1,
         "hitpointPctOfBody": 300,
         "id": "hover03",
         "model": "PRLHOV1.PIE",
@@ -223,7 +217,6 @@
     "tracked02": {
         "buildPoints": 125,
         "buildPower": 200,
-        "designable": 1,
         "hitpointPctOfBody": 450,
         "id": "tracked02",
         "model": "prltrk1.PIE",
@@ -236,7 +229,6 @@
     "tracked03": {
         "buildPoints": 125,
         "buildPower": 275,
-        "designable": 1,
         "hitpointPctOfBody": 600,
         "id": "tracked03",
         "model": "prltrk1.PIE",
@@ -276,7 +268,6 @@
     "wheeled02": {
         "buildPoints": 50,
         "buildPower": 100,
-        "designable": 1,
         "hitpointPctOfBody": 200,
         "id": "wheeled02",
         "model": "prlwhl1.PIE",
@@ -289,7 +280,6 @@
     "wheeled03": {
         "buildPoints": 50,
         "buildPower": 150,
-        "designable": 1,
         "hitpointPctOfBody": 300,
         "id": "wheeled03",
         "model": "prlwhl1.PIE",

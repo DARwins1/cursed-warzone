@@ -393,12 +393,12 @@ function camUpgradeOnMapFeatures(feat1, feat2, excluded)
 		let featInfo = {x: feature.x, y: feature.y};
 		camSafeRemoveObject(feature, false);
 		let newFeat;
-		if (feat2 === "Pipis" && camRand(101) < 1)
+		if (feat2 === "Pipis" && camRand(100) < 1)
 		{
 			// 1/100 chance to place a Ms. Pipis instead of a normal Pipis
 			newFeat = addFeature("PipisM", featInfo.x, featInfo.y);
 		}
-		else if (feat2 === "PipisDummy" && camRand(101) < 1)
+		else if (feat2 === "PipisDummy" && camRand(100) < 1)
 		{
 			// 1/100 chance to place a Ms. Pipis Dummy instead of a normal Pipis Dummy
 			newFeat = addFeature("PipisMDummy", featInfo.x, featInfo.y);

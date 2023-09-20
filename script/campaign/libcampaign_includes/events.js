@@ -166,6 +166,28 @@ function cam_eventDroidBuilt(droid, structure)
 		makeComponentAvailable("Cannon2A-TMk1", droid.player); // Prevent the Fungible Cannon from being marked obsolete
 	}
 
+	if ((camDef(droid.weapons[0]) && droid.weapons[0].name === "Rocket-LtA-TWarr") 
+		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-LtA-TWarr")
+		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-LtA-TWarr")
+		|| (camDef(droid.weapons[0]) && droid.weapons[0].name === "Rocket-VTOL-LtA-TWarr") 
+		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr")
+		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr"))
+	{
+		// Swap the Warranty-Expired Lancer for a either a standard or Defective varient
+		if (camRand(3) === 0) // 33% chance
+		{
+			// Swap with Lancer
+			completeResearch("Script-Lancer-FunctionalSwap", droid.player, true);
+			makeComponentAvailable("Rocket-LtA-TWarr", droid.player); // Prevent the Warranty-Expired Lancer from being marked obsolete
+		}
+		else
+		{
+			// Swap with Defective Lancer
+			completeResearch("Script-Lancer-DefectiveSwap", droid.player, true);
+			makeComponentAvailable("Rocket-LtA-TWarr", droid.player);
+		}
+	}
+
 	if (!camDef(structure)) // "clone wars" cheat
 	{
 		return;
@@ -210,7 +232,7 @@ function cam_eventStructureBuilt(structure, droid)
 		// Swap out the structure for the feature object
 		let pos = {x: structure.x, y: structure.y};
 		camSafeRemoveObject(structure);
-		if (camRand(101) < 1)
+		if (camRand(100) < 1)
 		{
 			addFeature("PipisM", pos.x, pos.y);
 		}
@@ -394,7 +416,7 @@ function cam_eventDestroyed(obj)
 					break;
 			}
 
-			if (camRand(101) < spawnChance)
+			if (camRand(100) < spawnChance)
 			{
 				// Spawn a Silverfish out of the destroyed wall
 				groupAdd(__camMobGlobalGroup, addDroid(MOBS, obj.x, obj.y, 
@@ -495,7 +517,7 @@ function cam_eventAttacked(victim, attacker)
 				__updateNeedlerLog(victim);
 			}
 			// Teleport Enderman
-			if (victim.body === "EndermanBody" && camDef(attacker) && camRand(101) > 50)
+			if (victim.body === "EndermanBody" && camDef(attacker) && camRand(100) < 50)
 			{
 				// Store Enderman health and group
 				let endermanInfo = {health: victim.health, group: victim.group};
@@ -524,7 +546,7 @@ function cam_eventAttacked(victim, attacker)
 			}
 			// Feign death for Spy Cyborgs (if they aren't on cooldown)
 			if (camDef(victim.weapons[0]) && victim.weapons[0].id === "CyborgSpyChaingun"
-			 && camDef(attacker) && victim.health < 40 && camFeignCooldownCheck(victim.id))
+			 && camDef(attacker) && victim.health < 25 && camFeignCooldownCheck(victim.id))
 			{
 				__camSpyFeignDeath(victim, attacker);
 				return;
