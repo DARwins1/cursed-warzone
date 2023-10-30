@@ -906,6 +906,19 @@
 		"type": "BUILDING",
 		"width": 1
 	},
+	"Sign5": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "Sign5",
+		"lineOfSight": 0,
+		"model": "misign5.PIE",
+		"name": "Sign 5",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "BUILDING",
+		"width": 1
+	},
 	"WaterBuilding": {
 		"armour": 5,
 		"breadth": 2,
