@@ -14,7 +14,7 @@ const BONZI_RES = [
 // Sword Zone event
 function eventDestroyed(obj)
 {
-	if (obj.type === FEATURE && obj.name === _("Sign 5")) // NOTE: Sign name will NOT be changed later
+	if (obj.type === FEATURE && obj.name === _("Sign 5"))
 	{
 		const numCyborgs = 20; // Set to however many cyborgs you want
 		let cyborgGroup = camNewGroup(); // Create a new group to place the cyborgs into
@@ -71,7 +71,6 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("A0HardcreteMk1Wall", "A0HardcreteMk1Wall", BONZI_BUDDY);
 
 	// Add a funny sign and the giant door for the Sword area
-	// NOTE: this sign is a placeholder
 	camUpgradeOnMapFeatures("Pylon", "Sign5");
 	camUpgradeOnMapFeatures("TreeSnow2", "GiantDoorHoriz");
 	
