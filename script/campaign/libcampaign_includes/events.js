@@ -130,6 +130,7 @@ function cam_eventStartLevel()
 	__camPrimedCreepers = [];
 	__camBlackOut = false;
 	__camMobGlobalGroup = camNewGroup();
+	__camAllowSilverfishSpawn = false;
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
 	__camAiPowerReset(); //grant power to the AI
 	setTimer("__camSpawnVtols", camSecondsToMilliseconds(0.5));
@@ -156,6 +157,9 @@ function cam_eventStartLevel()
 	
 	setAlliance(CAM_HUMAN_PLAYER, 10, true);
 	__camUpdateSwappableUnits();
+
+	queue("__camSpamtonize", camSecondsToMilliseconds(0.5));
+	queue("__camEnableSilverfishSpawn", camSecondsToMilliseconds(2));
 }
 
 function cam_eventDroidBuilt(droid, structure)
@@ -421,7 +425,7 @@ function cam_eventDestroyed(obj)
 	}
 	else if (obj.type === STRUCTURE)
 	{
-		if (obj.stattype === WALL && 
+		if (__camAllowSilverfishSpawn && obj.stattype === WALL && 
 			!(obj.name === _("Explosive Drum") || obj.name === _("Nuclear Drum") || obj.name === _("Pipis")))
 		{
 			// See if a Silverfish should spawn out of the destroyed wall
@@ -738,6 +742,10 @@ function cam_eventObjectTransfer(obj, from)
 			completeResearch("Script-Lancer-DefectiveSwap", 10, true);
 		}
 		donateObject(obj, CAM_HUMAN_PLAYER);
+	}
+	else if (obj.player === SPAMTON)
+	{
+		__camSpamtonize();
 	}
 }
 

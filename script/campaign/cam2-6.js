@@ -484,7 +484,7 @@ function eventStartLevel()
 	// Make units funny
 	camUpgradeOnMapTemplates(cTempl.npsbb, cTempl.crmbb2ht, BONZI_BUDDY);
 	camUpgradeOnMapTemplates(cTempl.crcybpyro, cTempl.crcybsword, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.crscybcan, BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.bonziscybcan, BONZI_BUDDY);
 	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, MOBS);
 
 	// Make structures funny

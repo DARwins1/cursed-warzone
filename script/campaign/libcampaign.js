@@ -158,6 +158,7 @@ var __camFungibleCanSwapList = [
 	"Script-FungibleCannon-Swap14", "Script-FungibleCannon-Swap15"
 ];
 var __camMobGlobalGroup; // Default group for Silverfish and enraged Endermen
+var __camAllowSilverfishSpawn; // Whether Silverfish can spawn randomly out of destroyed buildings
 
 //group
 var __camNewGroupCounter;

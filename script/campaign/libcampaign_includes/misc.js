@@ -670,15 +670,20 @@ function camRandomEffect(pos)
 		// Allow Machinegun Fortress Artifact if Machinegun Hardpoint is researched
 		effects.push("mgFortArti");
 	}
-	if (camIsResearched("R-Cyborg-Wpn-Sword"))
-	{
-		// Allow Super Axe Cyborg if Sword Cyborg is researched
-		effects.push("superAxe");
-	}
 	if (camIsResearched("R-Vehicle-BodyTwin") && camIsResearched("R-Vehicle-Body11") && !camIsResearched("R-Vehicle-BodyTriple"))
 	{
 		// Allow Triple Viper Artifact if Twin Viper and Viper III is researched
 		effects.push("tripleViperArti");
+	}
+	if (camIsResearched("R-Defense-WallTowerMG") && !camIsResearched("R-Defense-MGSuper"))
+	{
+		// Allow Machinegun Fortress Artifact if Machinegun Hardpoint is researched
+		effects.push("mgFortArti");
+	}
+	if (camIsResearched("R-Vehicle-Prop-VTOL") && !camIsResearched("R-Wpn-AAGun03"))
+	{
+		// Allow Hurricane AAA artifact if Normal Wheels is researched
+		effects.push("hurricaneArti");
 	}
 	if (camIsResearched("R-Vehicle-Body05"))
 	{
@@ -701,16 +706,25 @@ function camRandomEffect(pos)
 		// Allow Realistic-er Heavy Machinegun if Realistic Heavy Machinegun is researched
 		effects.push("realerMG");
 	}
+	if (camIsResearched("R-Wpn-Rocket03-HvAT") && camRand(2) === 0)
+	{
+		// 50% chance of allowing Big MG Bunker if Bunker Buster is researched
+		effects.push("bigBunker");
+	}
 	if (camIsResearched("R-Vehicle-Prop-VTOL"))
 	{
-		// Allow Hurricane AAA artifact and Normal Mini MGVs if Normal Wheels is researched
-		effects.push("hurricaneArti");
+		// Allow Normal Mini MGVs if Normal Wheels is researched
 		effects.push("miniNormalVipers");
 	}
 	if (camIsResearched("R-Wpn-Rocket06-IDF"))
 	{
 		// Allow Flamitzer Emplacement if Rain Rockets is researched
 		effects.push("flamitzerEmp");
+	}
+	if (camIsResearched("R-Wpn-Cannon3Mk1") && camRand(10) === 0)
+	{
+		// 10% chance to allow Ultra-Heavy Gunner if Very Heavy Cannon is researched
+		effects.push("ultraCyb");
 	}
 
 	// Choose an effect
@@ -831,6 +845,12 @@ function camRandomEffect(pos)
 				_("Super Axe Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-Axe"
 			);
 			break;
+		case "ultraCyb":
+			// Spawn an Ultra Heavy-Gunner Cyborg for the player
+			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y, 
+				_("Ultra Heavy-Gunner Cyborg"), "CyborgUltraHeavyBody", "CyborgLegs", "", "", "Cyb-Hvy-Hcannon"
+			);
+			break;
 		case "realerMG":
 			// Spawn a grid of 4 Realistic-er Heavy Machinegun Viper Half-wheels for the player
 			addDroid(CAM_HUMAN_PLAYER, pos.x - 1, pos.y, 
@@ -907,7 +927,7 @@ function camRandomEffect(pos)
 			{
 				for (let j = -1; j <= 1; j++)
 				{
-					addStructure("A0HardcreteMk1CWall", MOBS, pos.x + i * 128, pos.y + j * 128)
+					addStructure("A0HardcreteMk1CWall", MOBS, (pos.x + i) * 128, (pos.y + j) * 128);
 				}
 			}
 			break;
@@ -974,6 +994,16 @@ function camRandomEffect(pos)
 					}
 				}
 			}
+			break;
+		case "bigBunker":
+			// Spawn a Big Machinegun Bunker
+			var player = CAM_HUMAN_PLAYER;
+			if (camRand(100) < 20)
+			{
+				// 20% chance for the bunker to be hostile
+				player = MOBS;
+			}
+			addStructure("Pillbox-Big", player, (pos.x + i) * 128, (pos.y + j) * 128);
 			break;
 		case "nukeDrumArti":
 			// Spawn an artifact for the Nuclear Drum
@@ -1673,8 +1703,14 @@ function __camRandomizeFungibleCannons()
 
 			// Replace the structure
 			let structInfo = {x: str.x * 128, y: str.y * 128};
+			let structName = __camFungibleCanHardList[camRand(__camFungibleCanHardList.length)];
+			if (str.player === SPAMTON)
+			{
+				// Use Spamtonized hardpoints
+				structName = structName + "Spam";
+			}
 			camSafeRemoveObject(str, false);
-			let newStruct = addStructure(__camFungibleCanHardList[camRand(__camFungibleCanHardList.length)], i, structInfo.x, structInfo.y);
+			let newStruct = addStructure(structName, i, structInfo.x, structInfo.y);
 
 			if (camDef(label)) 
 			{
@@ -1877,4 +1913,54 @@ function __camUpdateSwappableUnits()
 			donateDelay += CAM_TICKS_PER_FRAME;
 		}
 	}
+}
+
+// Replaces structures and components with Spamton-themed ones.
+// Called at the start of the level and when something is absorbed by Spamton.
+function __camSpamtonize()
+{
+	completeResearch("Script-Spamtonize", SPAMTON, true);
+
+	camUpgradeOnMapStructures("GuardTower-MEGA", "GuardTower-MEGASpam", SPAMTON); // Tower Of Babel
+	camUpgradeOnMapStructures("Spawner-Zombie", "Spawner-ZombieSpam", SPAMTON); // Zombie Spawner
+	camUpgradeOnMapStructures("Spawner-Skeleton", "Spawner-SkeletonSpam", SPAMTON); // Skeleton Spawner
+	camUpgradeOnMapStructures("Spawner-Creeper", "Spawner-CreeperSpam", SPAMTON); // Creeper Spawner
+	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "CollectiveCWall", SPAMTON); // Hardcrete Corner Wall
+	camUpgradeOnMapStructures("A0HardcreteMk1Wall", "CollectiveWall", SPAMTON); // Hardcrete Wall
+	camUpgradeOnMapStructures("Tower-Projector", "CO-Tower-HvFlame", SPAMTON); // Excessive Flamer Bunker
+	camUpgradeOnMapStructures("WallTower04", "WallTower04Spam", SPAMTON); // Very Heavy Cannon Hardpoint
+	camUpgradeOnMapStructures("Sys-SensoTower02", "Sys-CO-SensoTower", SPAMTON); // Hardened Sensor Tower
+	camUpgradeOnMapStructures("GuardTowerEH", "GuardTowerEHSpam", SPAMTON); // Extended Flamer Tower
+	camUpgradeOnMapStructures("GuardTower6", "GuardTower6Spam", SPAMTON); // Many-Rocket Tower
+	camUpgradeOnMapStructures("PillBox1", "PillBox1Spam", SPAMTON); // Realistic Heavy Machinegun Bunker
+	camUpgradeOnMapStructures("PillBox4", "PillBox4Spam", SPAMTON); // "Light" Cannon Bunker
+	camUpgradeOnMapStructures("PillBox-BB3", "PillBox-BB3Spam", SPAMTON); // Bunker Buster Bunker III
+	camUpgradeOnMapStructures("PillBoxBison", "PillBoxBisonSpam", SPAMTON); // Righteous Bison Bunker
+	camUpgradeOnMapStructures("Pillbox-Big", "Pillbox-BigSpam", SPAMTON); // Big Machinegun Bunker
+	camUpgradeOnMapStructures("Sys-SensoTower03", "Sys-SensoTower03Spam", SPAMTON); // Sensor Hardpoint
+	camUpgradeOnMapStructures("Tower-VulcanCan", "Tower-VulcanCanSpam", SPAMTON); // Righteous Bison Tower
+	camUpgradeOnMapStructures("WallTower-HPVcannon", "WallTower-HPVcannonSpam", SPAMTON); // Righteous Bison Hardpoint
+	camUpgradeOnMapStructures("GuardTower-Rail1", "GuardTower-Rail1Spam", SPAMTON); // Needler Tower
+
+	camUpgradeOnMapStructures("WallTower03Mk2", "WallTower03Mk2Spam", SPAMTON); // Fungible Cannon Hardpoint 2
+	camUpgradeOnMapStructures("WallTower03Mk3", "WallTower03Mk3Spam", SPAMTON); // Fungible Cannon Hardpoint 3
+	camUpgradeOnMapStructures("WallTower03Mk4", "WallTower03Mk4Spam", SPAMTON); // Fungible Cannon Hardpoint 4
+	camUpgradeOnMapStructures("WallTower03Mk5", "WallTower03Mk5Spam", SPAMTON); // Fungible Cannon Hardpoint 5
+	camUpgradeOnMapStructures("WallTower03Mk6", "WallTower03Mk6Spam", SPAMTON); // Fungible Cannon Hardpoint 6
+	camUpgradeOnMapStructures("WallTower03Mk7", "WallTower03Mk7Spam", SPAMTON); // Fungible Cannon Hardpoint 7
+	camUpgradeOnMapStructures("WallTower03Mk8", "WallTower03Mk8Spam", SPAMTON); // Fungible Cannon Hardpoint 8
+	camUpgradeOnMapStructures("WallTower03Mk9", "WallTower03Mk9Spam", SPAMTON); // Fungible Cannon Hardpoint 9
+	camUpgradeOnMapStructures("WallTower03Mk10", "WallTower03Mk10Spam", SPAMTON); // Fungible Cannon Hardpoint 10
+	camUpgradeOnMapStructures("WallTower03Mk11", "WallTower03Mk11Spam", SPAMTON); // Fungible Cannon Hardpoint 11
+	camUpgradeOnMapStructures("WallTower03Mk12", "WallTower03Mk12Spam", SPAMTON); // Fungible Cannon Hardpoint 12
+	camUpgradeOnMapStructures("WallTower03Mk13", "WallTower03Mk13Spam", SPAMTON); // Fungible Cannon Hardpoint 13
+	camUpgradeOnMapStructures("WallTower03Mk14", "WallTower03Mk14Spam", SPAMTON); // Fungible Cannon Hardpoint 14
+	camUpgradeOnMapStructures("WallTower03Mk15", "WallTower03Mk15Spam", SPAMTON); // Fungible Cannon Hardpoint 15
+}
+
+// Allows Silverfish to spawn out of destroyed structures
+// Disabled at the start to avoid spawning Silverfish when swapping structures
+function __camEnableSilverfishSpawn()
+{
+	__camAllowSilverfishSpawn = true;
 }

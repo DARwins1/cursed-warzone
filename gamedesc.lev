@@ -294,7 +294,7 @@ dataset		CAM_3
 game		"wrf/cam3/sub3-2.gam"
 data		"wrf/cam3/sub3-2.wrf"
 
-expand		BIG_SHOT
+expand		CAM_3AB
 dataset		CAM_3
 game		"wrf/cam3/cam3a-b.gam"
 data		"wrf/cam3/cam3ab.wrf"
@@ -310,7 +310,7 @@ game		"wrf/cam3/sub3-3.gam"
 data		"wrf/cam3/sub3-3.wrf"
 */
 
-expand_limbo	CAM3C
+expand		BIG_SHOT
 dataset		CAM_3
 game		"wrf/cam3/cam3c.gam"
 data		"wrf/cam3/cam3c.wrf"

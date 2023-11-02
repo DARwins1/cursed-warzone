@@ -964,22 +964,22 @@
         "width": 1
     },
     "CO-Tower-HvFlame": {
-        "armour": 12,
+        "armour": 20,
         "breadth": 1,
-        "buildPoints": 500,
-        "buildPower": 100,
+        "buildPoints": 400,
+        "buildPower": 125,
         "ecmID": "ZNULLECM",
         "height": 1,
-        "hitpoints": 600,
+        "hitpoints": 700,
         "id": "CO-Tower-HvFlame",
-        "name": "*CO-Tower-HvFlame*",
+        "name": "Spamton Excessive Flamer Bunker",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
-        "strength": "MEDIUM",
+        "strength": "BUNKER",
         "structureModel": [
-            "BLHARDPT.pie"
+            "Blcanpilspam.pie"
         ],
-        "thermal": 12,
+        "thermal": 20,
         "type": "DEFENSE",
         "weapons": [
             "Flame2"
@@ -1089,12 +1089,12 @@
         "height": 2,
         "hitpoints": 800,
         "id": "CO-WallTower-HvCan",
-        "name": "*CO-WallTower-HvCan*",
+        "name": "Spamton Very Heavy Cannon Hardpoint",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "HARD",
         "structureModel": [
-            "BLGUARD2.pie"
+            "BLGUARD1spam.pie"
         ],
         "thermal": 12,
         "type": "DEFENSE",
@@ -1128,7 +1128,7 @@
         "width": 1
     },
     "CollectiveCWall": {
-        "armour": 12,
+        "armour": 15,
         "breadth": 1,
         "buildPoints": 125,
         "buildPower": 25,
@@ -1136,18 +1136,18 @@
         "height": 2,
         "hitpoints": 700,
         "id": "CollectiveCWall",
-        "name": "Collective CWall",
+        "name": "Spamton CWall",
         "sensorID": "ZNULLSENSOR",
         "strength": "HARD",
         "structureModel": [
-            "BLWALLC2.pie"
+            "blwallc1spam.pie"
         ],
-        "thermal": 12,
+        "thermal": 15,
         "type": "CORNER WALL",
         "width": 1
     },
     "CollectiveWall": {
-        "armour": 12,
+        "armour": 15,
         "breadth": 1,
         "buildPoints": 125,
         "buildPower": 25,
@@ -1155,13 +1155,16 @@
         "height": 2,
         "hitpoints": 700,
         "id": "CollectiveWall",
-        "name": "Collective Wall",
+        "name": "Spamton Wall",
         "sensorID": "ZNULLSENSOR",
         "strength": "HARD",
         "structureModel": [
-            "BLWALL2.pie"
+            "blwallhspam.pie",
+            "blwallc1spam.pie",
+            "blwallh_tspam.pie",
+            "blwallh_lspam.pie"
         ],
-        "thermal": 12,
+        "thermal": 15,
         "type": "WALL",
         "width": 1
     },
@@ -1174,12 +1177,12 @@
         "height": 3,
         "hitpoints": 600,
         "id": "Sys-CO-SensoTower",
-        "name": "Collective Sensor Tower",
+        "name": "Spamton Sensor Tower",
         "resistance": 150,
         "sensorID": "SensorTower2Mk1",
         "strength": "HARD",
         "structureModel": [
-            "blguardn.pie"
+            "blguardrspam.pie"
         ],
         "thermal": 15,
         "type": "DEFENSE",
@@ -1194,12 +1197,12 @@
         "height": 3,
         "hitpoints": 600,
         "id": "Sys-COCB-Tower01",
-        "name": "Collective CB Tower",
+        "name": "Spamton CB Tower",
         "resistance": 150,
         "sensorID": "Sys-CBTower01",
         "strength": "HARD",
         "structureModel": [
-            "blguardn.pie"
+            "blguardrspam.pie"
         ],
         "thermal": 15,
         "type": "DEFENSE",
@@ -1214,12 +1217,12 @@
         "height": 3,
         "hitpoints": 600,
         "id": "Sys-CO-VTOL-CB-Tower01",
-        "name": "Collective VTOL CB Tower",
+        "name": "Spamton VTOL CB Tower",
         "resistance": 150,
         "sensorID": "Sys-VTOLCBTower01",
         "strength": "HARD",
         "structureModel": [
-            "blguardn.pie"
+            "blguardrspam.pie"
         ],
         "thermal": 15,
         "type": "DEFENSE",
@@ -1234,38 +1237,15 @@
         "height": 3,
         "hitpoints": 600,
         "id": "Sys-CO-VTOL-RadarTower01",
-        "name": "Collective VTOL Radar Tower",
+        "name": "Spamton VTOL Radar Tower",
         "resistance": 150,
         "sensorID": "Sys-VTOLRadarTower01",
         "strength": "HARD",
         "structureModel": [
-            "blguardn.pie"
+            "blguardrspam.pie"
         ],
         "thermal": 15,
         "type": "DEFENSE",
-        "width": 1
-    },
-    "CO-WallTower-QuadRotAAGun": {
-        "armour": 15,
-        "breadth": 1,
-        "buildPoints": 375,
-        "buildPower": 250,
-        "combinesWithWall": true,
-        "height": 2,
-        "hitpoints": 800,
-        "id": "CO-WallTower-QuadRotAAGun",
-        "name": "Collective Whirlwind AA Hardpoint",
-        "resistance": 150,
-        "sensorID": "DefaultSensor1Mk1",
-        "strength": "HARD",
-        "structureModel": [
-            "BLGUARD2.pie"
-        ],
-        "thermal": 15,
-        "type": "DEFENSE",
-        "weapons": [
-            "QuadRotAAGun"
-        ],
         "width": 1
     },
     "CoolingTower": {
@@ -1679,7 +1659,7 @@
         "armour": 10,
         "breadth": 1,
         "buildPoints": 400,
-        "buildPower": 175,
+        "buildPower": 125,
         "ecmID": "ZNULLECM",
         "height": 1,
         "hitpoints": 400,
@@ -1805,6 +1785,29 @@
         "strength": "MEDIUM",
         "structureModel": [
             "BLGUARDR.pie"
+        ],
+        "thermal": 10,
+        "type": "DEFENSE",
+        "weapons": [
+            "RailGun1Mk1"
+        ],
+        "width": 1
+    },
+    "GuardTower-Rail1Spam": {
+        "armour": 10,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 125,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "GuardTower-Rail1Spam",
+        "name": "Spamton Needler Tower",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "BLGUARDRspam.pie"
         ],
         "thermal": 10,
         "type": "DEFENSE",
@@ -2020,6 +2023,29 @@
         ],
         "width": 1
     },
+    "GuardTowerEHSpam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 3,
+        "hitpoints": 600,
+        "id": "GuardTowerEHSpam",
+        "name": "Spamton Extended Flamer Tower",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "BLGUARDREspam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Flame1Mk2"
+        ],
+        "width": 1
+    },
 	"GuardTower4H": {
 		"armour": 15,
 		"breadth": 1,
@@ -2081,6 +2107,29 @@
         "strength": "MEDIUM",
         "structureModel": [
             "BLGUARDR.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Rocket-Pod"
+        ],
+        "width": 1
+    },
+    "GuardTower6Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "GuardTower6Spam",
+        "name": "Spamton Many-Rocket Tower",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "BLGUARDRspam.pie"
         ],
         "thermal": 15,
         "type": "DEFENSE",
@@ -2155,7 +2204,7 @@
         "height": 1,
         "hitpoints": 2000,
         "id": "NX-ANTI-SATSite",
-        "name": "Spamton Missile Silo",
+        "name": "Conveniently-Placed Missile Silo",
         "sensorID": "DefaultSensor1Mk1",
         "strength": "BUNKER",
         "structureModel": [
@@ -2755,27 +2804,120 @@
         ],
         "width": 1
     },
-    "Plasmite-flamer-bunker": {
+    "PillBox1Spam": {
         "armour": 20,
         "breadth": 1,
         "buildPoints": 400,
-        "buildPower": 125,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
         "height": 1,
         "hitpoints": 700,
-        "id": "Plasmite-flamer-bunker",
-        "name": "Plasmite Flamer Bunker",
+        "id": "PillBox1Spam",
+        "name": "Spamton Realistic Heavy Machinegun Bunker",
         "resistance": 150,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "BUNKER",
         "structureModel": [
-            "Blcanpil.pie"
+            "blpilboxspam.pie"
         ],
         "thermal": 20,
         "type": "DEFENSE",
         "weapons": [
-            "PlasmiteFlamer"
+            "MG3-Pillbox"
         ],
         "width": 1
+    },
+    "PillBox4Spam": {
+        "armour": 20,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 125,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 700,
+        "id": "PillBox4Spam",
+        "name": "Spamton \"Light\" Cannon Bunker",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "BUNKER",
+        "structureModel": [
+            "Blcanpilspam.pie"
+        ],
+        "thermal": 20,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon1Mk1"
+        ],
+        "width": 1
+    },
+    "PillBox-BB3Spam": {
+        "armour": 20,
+        "breadth": 1,
+        "buildPoints": 500,
+        "buildPower": 175,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 700,
+        "id": "PillBox-BB3Spam",
+        "name": "Spamton Bunker Buster Bunker III",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "BUNKER",
+        "structureModel": [
+            "Blcanpilspam.pie"
+        ],
+        "thermal": 20,
+        "type": "DEFENSE",
+        "weapons": [
+            "Rocket-BB3"
+        ],
+        "width": 1
+    },
+    "PillBoxBisonSpam": {
+        "armour": 20,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 150,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 700,
+        "id": "PillBoxBisonSpam",
+        "name": "Spamton Righteous Bison Bunker",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "BUNKER",
+        "structureModel": [
+            "Blcanpilspam.pie"
+        ],
+        "thermal": 20,
+        "type": "DEFENSE",
+        "weapons": [
+            "CannonBison"
+        ],
+        "width": 1
+    },
+    "Pillbox-BigSpam": {
+        "armour": 40,
+        "breadth": 2,
+        "buildPoints": 1200,
+        "buildPower": 600,
+        "ecmID": "ZNULLECM",
+        "height": 3,
+        "hitpoints": 1400,
+        "id": "Pillbox-BigSpam",
+        "name": "Spamton Big Machinegun Bunker",
+        "resistance": 300,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "BUNKER",
+        "structureModel": [
+            "blpilbox_megaspam.pie"
+        ],
+        "thermal": 40,
+        "type": "DEFENSE",
+        "weapons": [
+            "MG3Mk2-Pillbox"
+        ],
+        "width": 2
     },
     "Sys-CB-Tower01": {
         "armour": 15,
@@ -2810,7 +2952,7 @@
         "sensorID": "DefaultSensor1Mk1",
         "strength": "HARD",
         "structureModel": [
-            "BLGUARDR.PIE"
+            "BLGUARDRspam.PIE"
         ],
         "thermal": 15,
         "type": "DEFENSE",
@@ -2960,6 +3102,27 @@
         "type": "DEFENSE",
         "width": 1
     },
+    "Sys-SensoTower03Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 450,
+        "buildPower": 125,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "Sys-SensoTower03Spam",
+        "name": "Spamton Sensor Hardpoint",
+        "resistance": 150,
+        "sensorID": "SensorTower2Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "width": 1
+    },
     "Sys-VTOL-CB-Tower01": {
         "armour": 15,
         "breadth": 1,
@@ -3088,6 +3251,29 @@
         ],
         "width": 1
     },
+    "Tower-VulcanCanSpam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 100,
+        "buildPower": 150,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "Tower-VulcanCanSpam",
+        "name": "Spamton Righteous Bison Tower",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "blguardrspam.PIE"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "CannonBison"
+        ],
+        "width": 1
+    },
     "UplinkCentre": {
         "armour": 10,
         "breadth": 2,
@@ -3195,6 +3381,30 @@
         "strength": "HARD",
         "structureModel": [
             "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "CannonBison"
+        ],
+        "width": 1
+    },
+    "WallTower-HPVcannonSpam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower-HPVcannonSpam",
+        "name": "Spamton Righteous Bison Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
         ],
         "thermal": 15,
         "type": "DEFENSE",
@@ -3707,6 +3917,342 @@
         ],
         "width": 1
     },
+    "WallTower03Mk2Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk2Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk2"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk3Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk3Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk3Spam"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk4Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk4Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk4"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk5Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk5Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk5"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk6Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk6Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk6"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk7Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk7Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk7"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk8Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk8Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk8"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk9Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk9Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk9"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk10Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk10Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk10"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk11Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk11Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk11"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk12Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk12Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk12"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk13Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk13Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk13"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk14Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk14Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk14"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk15Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk15Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk15"
+        ],
+        "width": 1
+    },
     "WallTower04": {
         "armour": 15,
         "breadth": 1,
@@ -3723,6 +4269,30 @@
         "strength": "HARD",
         "structureModel": [
             "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon375mmMk1Structure"
+        ],
+        "width": 1
+    },
+    "WallTower04Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 1200,
+        "buildPower": 750,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower04Spam",
+        "name": "Spamton Very Heavy Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
         ],
         "thermal": 15,
         "type": "DEFENSE",
@@ -3815,7 +4385,7 @@
         "id": "X-Super-MG",
         "name": "Machinegun Fortress",
         "resistance": 150,
-        "sensorID": "FortressSensor",
+        "sensorID": "DefaultSensor1Mk1",
         "strength": "HARD",
         "structureModel": [
             "STWPFCAN.pie"
@@ -3869,98 +4439,6 @@
         ],
         "width": 2
     },
-    "WallTower-TwinAssaultGun": {
-        "armour": 15,
-        "breadth": 1,
-        "buildPoints": 400,
-        "buildPower": 325,
-        "combinesWithWall": true,
-        "height": 2,
-        "hitpoints": 800,
-        "id": "WallTower-TwinAssaultGun",
-        "name": "Twin Assault Gun Hardpoint",
-        "resistance": 150,
-        "sensorID": "DefaultSensor1Mk1",
-        "strength": "HARD",
-        "structureModel": [
-            "BLGUARD1.pie"
-        ],
-        "thermal": 15,
-        "type": "DEFENSE",
-        "weapons": [
-            "MG5TWINROTARY"
-        ],
-        "width": 1
-    },
-    "CO-WallTower-TwinAssaultGun": {
-        "armour": 15,
-        "breadth": 1,
-        "buildPoints": 400,
-        "buildPower": 325,
-        "combinesWithWall": true,
-        "height": 2,
-        "hitpoints": 800,
-        "id": "CO-WallTower-TwinAssaultGun",
-        "name": "Collective Twin Assault Gun Hardpoint",
-        "resistance": 150,
-        "sensorID": "DefaultSensor1Mk1",
-        "strength": "HARD",
-        "structureModel": [
-            "BLGUARD2.pie"
-        ],
-        "thermal": 15,
-        "type": "DEFENSE",
-        "weapons": [
-            "MG5TWINROTARY"
-        ],
-        "width": 1
-    },
-    "PillBox-Cannon6": {
-        "armour": 15,
-        "breadth": 1,
-        "buildPoints": 400,
-        "buildPower": 325,
-        "combinesWithWall": true,
-        "height": 2,
-        "hitpoints": 800,
-        "id": "PillBox-Cannon6",
-        "name": "Collective Twin Assault Cannon Hardpoint",
-        "resistance": 150,
-        "sensorID": "DefaultSensor1Mk1",
-        "strength": "HARD",
-        "structureModel": [
-            "BLGUARD2.pie"
-        ],
-        "thermal": 15,
-        "type": "DEFENSE",
-        "weapons": [
-            "Cannon6TwinAslt"
-        ],
-        "width": 1
-    },
-    "WallTower-TwinAssaultCannon": {
-        "armour": 15,
-        "breadth": 1,
-        "buildPoints": 400,
-        "buildPower": 325,
-        "combinesWithWall": true,
-        "height": 2,
-        "hitpoints": 800,
-        "id": "WallTower-TwinAssaultCannon",
-        "name": "Twin Assault Cannon Hardpoint",
-        "resistance": 150,
-        "sensorID": "DefaultSensor1Mk1",
-        "strength": "HARD",
-        "structureModel": [
-            "BLGUARD1.pie"
-        ],
-        "thermal": 15,
-        "type": "DEFENSE",
-        "weapons": [
-            "Cannon6TwinAslt"
-        ],
-        "width": 1
-    },
     "X-Super-Rocket": {
         "armour": 15,
         "breadth": 2,
@@ -4004,6 +4482,29 @@
         "type": "DEFENSE",
         "weapons": [
         	"MortarEMP"
+        ],
+        "width": 4
+    },
+    "GuardTower-MEGASpam": {
+        "armour": 30,
+        "breadth": 4,
+        "buildPoints": 4000,
+        "buildPower": 1000,
+        "ecmID": "ZNULLECM",
+        "height": 3,
+        "hitpoints": 6000,
+        "id": "GuardTower-MEGASpam",
+        "name": "Tower Of Spamton",
+        "resistance": 1500,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "BLGUARDMEGASpam.pie"
+        ],
+        "thermal": 30,
+        "type": "DEFENSE",
+        "weapons": [
+            "MortarEMP"
         ],
         "width": 4
     },

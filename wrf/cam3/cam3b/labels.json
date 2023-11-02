@@ -1,138 +1,138 @@
 {
     "position_0": {
-        "pos": [600, 1571],
+        "pos": [600, 7715],
         "label": "normalSpawn1"
     },
     "position_1": {
-        "pos": [421, 6626],
+        "pos": [421, 12323],
         "label": "normalSpawn2"
     },
     "position_2": {
-        "pos": [12221, 180],
+        "pos": [12221, 6324],
         "label": "spamSpawn1"
     },
     "position_3": {
-        "pos": [15682, 8002],
+        "pos": [15682, 14146],
         "label": "spamSpawn2"
     },
     "position_4": {
-        "pos": [18103, 182],
+        "pos": [18103, 6326],
         "label": "spamSpawn3"
     },
     "position_5": {
-        "pos": [22460, 7992],
+        "pos": [22460, 14136],
         "label": "spamSpawn4"
     },
     "position_6": {
-        "pos": [25410, 4536],
+        "pos": [25410, 10680],
         "label": "spamSpawn5"
     },
     "position_7": {
-        "pos": [14823, 360],
+        "pos": [14823, 6504],
         "label": "normalRemovePos"
     },
     "position_8": {
-        "pos": [12685, 2466],
+        "pos": [12685, 8610],
         "label": "spamPatrolPos1"
     },
     "position_9": {
-        "pos": [15601, 5680],
+        "pos": [15601, 11824],
         "label": "spamPatrolPos2"
     },
     "position_10": {
-        "pos": [17940, 2313],
+        "pos": [17940, 8457],
         "label": "spamPatrolPos3"
     },
     "position_11": {
-        "pos": [20634, 5613],
+        "pos": [20634, 11757],
         "label": "spamPatrolPos4"
     },
     "position_12": {
-        "pos": [22951, 941],
+        "pos": [22951, 7085],
         "label": "spamAssembly1"
     },
     "position_13": {
-        "pos": [15430, 2634],
+        "pos": [15430, 8778],
         "label": "spamAssembly2"
     },
     "position_14": {
-        "pos": [13505, 7351],
+        "pos": [13505, 13495],
         "label": "spamAssembly3"
     },
     "position_15": {
-        "pos": [11318, 3123],
+        "pos": [11318, 9267],
         "label": "spamAssembly4"
     },
     "position_16": {
-        "pos": [21936, 2488],
+        "pos": [21936, 8632],
         "label": "spamCybAssembly1"
     },
     "position_17": {
-        "pos": [21044, 955],
+        "pos": [21044, 7099],
         "label": "spamCybAssembly2"
     },
     "position_18": {
-        "pos": [14143, 1093],
+        "pos": [14143, 7237],
         "label": "spamCybAssembly3"
     },
     "position_19": {
-        "pos": [19518, 7491],
+        "pos": [19518, 13635],
         "label": "spamNormAssembly1"
     },
-
+    
     "area_0": {
-        "pos1": [1792, 4352],
-        "pos2": [2176, 4736],
+        "pos1": [1792, 10496],
+        "pos2": [2176, 10880],
         "label": "landingZone1"
     },
     "area_1": {
-        "pos1": [23296, 1280],
-        "pos2": [23680, 1664],
+        "pos1": [23296, 7424],
+        "pos2": [23680, 7808],
         "label": "landingZone2"
     },
     "area_2": {
-        "pos1": [18816, 640],
-        "pos2": [24320, 6272],
+        "pos1": [18816, 6784],
+        "pos2": [24320, 12416],
         "label": "spamBase1"
     },
     "area_3": {
-        "pos1": [17536, 5376],
-        "pos2": [20608, 7680],
+        "pos1": [17536, 11520],
+        "pos2": [20608, 13824],
         "label": "spamBase2"
     },
     "area_4": {
-        "pos1": [13312, 640],
-        "pos2": [17024, 4096],
+        "pos1": [13312, 6784],
+        "pos2": [17024, 10240],
         "label": "spamBase3"
     },
     "area_5": {
-        "pos1": [11776, 6272],
-        "pos2": [14336, 7680],
+        "pos1": [11776, 12416],
+        "pos2": [14336, 13824],
         "label": "spamBase4"
     },
     "area_6": {
-        "pos1": [10624, 2432],
-        "pos2": [12416, 4992],
+        "pos1": [10624, 8576],
+        "pos2": [12416, 11136],
         "label": "spamBase5"
     },
     "area_7": {
-        "pos1": [12544, 5376],
-        "pos2": [13056, 5760],
+        "pos1": [12544, 11520],
+        "pos2": [13056, 11904],
         "label": "spamAmbushGroup1"
     },
     "area_8": {
-        "pos1": [12544, 1792],
-        "pos2": [13056, 2176],
+        "pos1": [12544, 7936],
+        "pos2": [13056, 8320],
         "label": "spamAmbushGroup2"
     },
     "area_9": {
-        "pos1": [15232, 5760],
-        "pos2": [16000, 6144],
+        "pos1": [15232, 11904],
+        "pos2": [16000, 12288],
         "label": "spamPatrolGroup1"
     },
     "area_10": {
-        "pos1": [17664, 1792],
-        "pos2": [18176, 2176],
+        "pos1": [17664, 7936],
+        "pos2": [18176, 8320],
         "label": "spamPatrolGroup2"
     },
 

@@ -293,12 +293,12 @@ function setLimits()
 
 	for (let i = 0; i < maxPlayers; ++i)
 	{
-		setStructureLimits("A0PowerGenerator", 5, i);
+		setStructureLimits("A0PowerGenerator", i === selectedPlayer ? 5 : 10, i);
 		setStructureLimits("A0ResourceExtractor", 200, i);
 		setStructureLimits("A0ResearchFacility", 5, i);
-		setStructureLimits("A0LightFactory", 5, i);
-		setStructureLimits("A0CyborgFactory", 5, i);
-		setStructureLimits("A0VTolFactory1", 5, i);
+		setStructureLimits("A0LightFactory", i === selectedPlayer ? 5 : 10, i);
+		setStructureLimits("A0CyborgFactory", i === selectedPlayer ? 5 : 10, i);
+		setStructureLimits("A0VTolFactory1", i === selectedPlayer ? 5 : 10, i);
 		//non human players get five of these
 		setStructureLimits("A0CommandCentre", i === selectedPlayer ? 1 : 5, i);
 		setStructureLimits("A0ComDroidControl", i === selectedPlayer ? 1 : 5, i);

@@ -3,7 +3,7 @@ include("script/campaign/templates.js");
 include("script/campaign/transitionTech.js");
 
 const SPAMTON_RES = [
-	"R-Wpn-MG-Damage02", "R-Vehicle-Metals02", "R-Cyborg-Metals02",
+	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 	"R-Defense-WallUpgrade02", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage02",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
 	"R-Wpn-RocketSlow-Damage01", "R-Wpn-Flamer-ROF01",

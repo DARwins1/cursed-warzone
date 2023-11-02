@@ -9,57 +9,57 @@ var startedFromMenu;
 var playerColour;
 
 // Enable factories in bases if the player enters them early
-camAreaEvent("spamBase1", function(droid)
-{
-	if (droid.player === CAM_HUMAN_PLAYER)
-	{
-		camEnableFactory("spamCybFactory1");
-	}
-	else
-	{
-		resetLabel("spamBase1", CAM_HUMAN_PLAYER);
-	}
-});
+// camAreaEvent("spamBase1", function(droid)
+// {
+// 	if (droid.player === CAM_HUMAN_PLAYER)
+// 	{
+// 		camEnableFactory("spamCybFactory1");
+// 	}
+// 	else
+// 	{
+// 		resetLabel("spamBase1", CAM_HUMAN_PLAYER);
+// 	}
+// });
 
-camAreaEvent("spamBase2", function(droid)
-{
-	if (droid.player === CAM_HUMAN_PLAYER)
-	{
-		camEnableFactory("spamNormFactory1");
-		camEnableFactory("spamCybFactory4");
-	}
-	else
-	{
-		resetLabel("spamBase2", CAM_HUMAN_PLAYER);
-	}
-});
+// camAreaEvent("spamBase2", function(droid)
+// {
+// 	if (droid.player === CAM_HUMAN_PLAYER)
+// 	{
+// 		camEnableFactory("spamNormFactory1");
+// 		camEnableFactory("spamCybFactory4");
+// 	}
+// 	else
+// 	{
+// 		resetLabel("spamBase2", CAM_HUMAN_PLAYER);
+// 	}
+// });
 
-camAreaEvent("spamBase3", function(droid)
-{
-	if (droid.player === CAM_HUMAN_PLAYER)
-	{
-		camEnableFactory("spamFactory1");
-		camEnableFactory("spamFactory2");
-		camEnableFactory("spamCybFactory2");
-	}
-	else
-	{
-		resetLabel("spamBase3", CAM_HUMAN_PLAYER);
-	}
-});
+// camAreaEvent("spamBase3", function(droid)
+// {
+// 	if (droid.player === CAM_HUMAN_PLAYER)
+// 	{
+// 		camEnableFactory("spamFactory1");
+// 		camEnableFactory("spamFactory2");
+// 		camEnableFactory("spamCybFactory2");
+// 	}
+// 	else
+// 	{
+// 		resetLabel("spamBase3", CAM_HUMAN_PLAYER);
+// 	}
+// });
 
-camAreaEvent("spamBase4", function(droid)
-{
-	if (droid.player === CAM_HUMAN_PLAYER)
-	{
-		camEnableFactory("spamFactory3");
-		camEnableFactory("spamCybFactory3");
-	}
-	else
-	{
-		resetLabel("spamBase4", CAM_HUMAN_PLAYER);
-	}
-});
+// camAreaEvent("spamBase4", function(droid)
+// {
+// 	if (droid.player === CAM_HUMAN_PLAYER)
+// 	{
+// 		camEnableFactory("spamFactory3");
+// 		camEnableFactory("spamCybFactory3");
+// 	}
+// 	else
+// 	{
+// 		resetLabel("spamBase4", CAM_HUMAN_PLAYER);
+// 	}
+// });
 
 function setUnitRank(transport)
 {
@@ -124,8 +124,8 @@ function sendPlayerTransporter()
 
 	camSendReinforcement(CAM_HUMAN_PLAYER, camMakePos("landingZone"), droids,
 		CAM_REINFORCE_TRANSPORT, {
-			entry: {x: 5, y: 25},
-			exit: {x: 5, y: 25}
+			entry: {x: 5, y: 73},
+			exit: {x: 5, y: 73}
 		}
 	);
 
@@ -136,7 +136,7 @@ function sendPlayerTransporter()
 function cam3Setup()
 {
 	const SPAMTON_RES = [
-		"R-Wpn-MG-Damage02", "R-Vehicle-Metals02", "R-Cyborg-Metals02",
+		"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 		"R-Defense-WallUpgrade02", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage02",
 		"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
 		"R-Wpn-RocketSlow-Damage01",
@@ -268,16 +268,14 @@ function eventStartLevel()
 {
 	var startpos = camMakePos(getObject("landingZone"));
 	var lz = getObject("landingZone");
-	var tent = {x: 5, y: 25};
-	var text = {x: 5, y: 25};
 
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "NO_DONT_STEAL_MY_");
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.25)));
 
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
-	startTransporterEntry(tent.x, tent.y, CAM_HUMAN_PLAYER);
-	setTransporterExit(text.x, text.y, CAM_HUMAN_PLAYER);
+	startTransporterEntry(5, 73, CAM_HUMAN_PLAYER);
+	setTransporterExit(5, 73, CAM_HUMAN_PLAYER);
 
 	camSetArtifacts({
 		"spamCybFactory1": { tech: "R-Cyborg-Wpn-MGSpy" }, // Spy Cyborg

@@ -77,6 +77,7 @@ const BETA_RESEARCH_NEW = [
 	// 5
 	"R-Wpn-Rocket03-HvAT2", "R-Vehicle-Prop-VTOL", "R-Wpn-Mortar3",
 	"R-Struc-VTOLFactory", "R-Struc-VTOLPad", "R-Defense-PillboxBB2",
+	"R-Cyborg-Wpn-Rocket",
 
 	// 6
 	

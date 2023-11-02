@@ -13,13 +13,6 @@ camAreaEvent("bbFactoryTrigger", function(droid)
 	{
 		// Start calling in transports
 		setTimer("sendBBTransporter", camChangeOnDiff(camMinutesToMilliseconds(4.5)));
-		camSetBaseReinforcements("bbCenterBase", 
-			camChangeOnDiff(camMinutesToMilliseconds(3.5)),
-			"getDroidsForBBLZ", CAM_REINFORCE_TRANSPORT, {
-				entry: { x: 49, y: 3 },
-				exit: { x: 49, y: 3 }
-			});
-
 		queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(2.5)));
 	}
 	else

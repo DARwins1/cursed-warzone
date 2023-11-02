@@ -197,7 +197,6 @@ function eventResearched(research, structure, player)
 			camPlayVideos({video: "MB3_B_MSG4", type: CAMP_MSG});
 			removeTimer("sendSpamtonGroundWave");
 			setTimer("sendSpamtonGroundWave", camChangeOnDiff(camSecondsToMilliseconds(40)));
-			// TODO: Start sending normal units here
 			const normList = [cTempl.spmanvilnw, cTempl.sptwin2lcannw, cTempl.spmhmgnw, cTempl.splbisonnw, cTempl.sptwin2podnw];
 			camSetVtolData(SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camSecondsToMilliseconds(45)), {
 				minVTOLs: 3,
@@ -477,18 +476,16 @@ function advanceBlasterZone()
 {
 	if (codeCount < 4 && blasterX < BLASTER_LIMITS[codeCount])
 	{
-		// TODO: Values may need to change after Gamma 5 map is done
-		unmarkTiles(blasterX - 1, 0, blasterX, 64);
+		unmarkTiles(blasterX - 1, 48, blasterX, 112);
 		blasterX++;
-		markTiles(blasterX - 1, 0, blasterX, 64);
+		markTiles(blasterX - 1, 48, blasterX, 112);
 	}
 }
 
 // See if any player object is within the blaster zone. If there is, set up an attack pattern
 function scanBlasterZone()
 {
-	// TODO: Values may need to change after Gamma 5 map is done
-	let targets = enumArea(0, 0, blasterX, 64, ALL_PLAYERS, false).filter((obj) => (obj.type !== FEATURE && obj.player !== SPAMTON));
+	let targets = enumArea(0, 48, blasterX, 112, ALL_PLAYERS, false).filter((obj) => (obj.type !== FEATURE && obj.player !== SPAMTON));
 	let target;
 	if (targets.length > 0)
 	{
@@ -964,14 +961,11 @@ function eventStartLevel()
 		},
 	});
 
-	if (difficulty >= EASY)
-	{
-		let body = "Body1RECSpam"; // Spamaconda
-		if (difficulty >= HARD) body = "Body5RECSpam"; // Upgrade to Spamaconda II
-		addDroid(SPAMTON, 183, 11, "Pipis Truck", body, "HalfTrack", "", "", "Spade1Mk1Spam"); // Place in the Silo base
+	let body = "Body1RECSpam"; // Spamaconda
+	if (difficulty >= HARD) body = "Body5RECSpam"; // Upgrade to Spamaconda II
+	addDroid(SPAMTON, 183, 11, "Pipis Truck", body, "HalfTrack", "", "", "Spade1Mk1Spam"); // Place in the Silo base
+	camManageTrucks(SPAMTON);
 
-		camManageTrucks(SPAMTON);
-	}
 	setTimer("placePipis", camSecondsToMilliseconds(3));
 
 	enableResearch("R-Comp-Death01", CAM_HUMAN_PLAYER);
@@ -986,7 +980,7 @@ function eventStartLevel()
 	setTimer("fireBlaster", camSecondsToMilliseconds(0.1));
 
 	queue("blastLZ", camSecondsToMilliseconds(5));
-	queue("setupMapGroups", camChangeOnDiff(camSecondsToMilliseconds(5)));
+	queue("setupMapGroups", camSecondsToMilliseconds(5));
 	queue("activateFirstFactories", camChangeOnDiff(camMinutesToMilliseconds(0.5)));
 	queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(8)));
 	queue("activateFinalFactories", camChangeOnDiff(camMinutesToMilliseconds(16)));

@@ -110,8 +110,8 @@ function advanceWave()
 	setReinforcementTime(10);
 	playSound("pcv440.ogg"); // "Reinforcements are available"
 
-	// Set the mission timer to 59 seconds
-	setMissionTime(59);
+	// Set the mission timer to 119 seconds (~2 minutes)
+	setMissionTime(119);
 
 	// Grant the player temporary full visibility
 	addSpotter(48, 38, 0, 8192, false, gameTime + camSecondsToMilliseconds(59));
