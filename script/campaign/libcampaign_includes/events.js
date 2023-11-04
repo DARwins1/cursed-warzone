@@ -630,19 +630,19 @@ function cam_eventAttacked(victim, attacker)
 					});
 				}
 
-				if (camDef(__camGroupInfo[victim.group]))
-				{
-					__camGroupInfo[victim.group].lastHit = gameTime;
+				// if (camDef(__camGroupInfo[victim.group]))
+				// {
+				// 	__camGroupInfo[victim.group].lastHit = gameTime;
 
-					//Increased Nexus intelligence if struck on cam3-4
-					if (__camNextLevel === CAM_GAMMA_OUT)
-					{
-						if (__camGroupInfo[victim.group].order === CAM_ORDER_PATROL)
-						{
-							__camGroupInfo[victim.group].order = CAM_ORDER_ATTACK;
-						}
-					}
-				}
+				// 	//Increased Nexus intelligence if struck on cam3-4
+				// 	if (__camNextLevel === CAM_GAMMA_OUT)
+				// 	{
+				// 		if (__camGroupInfo[victim.group].order === CAM_ORDER_PATROL)
+				// 		{
+				// 			__camGroupInfo[victim.group].order = CAM_ORDER_ATTACK;
+				// 		}
+				// 	}
+				// }
 			}
 		}
 	}

@@ -142,8 +142,8 @@ splbisont: { body: "Body1RECSpam", prop: "tracked01", weap: "CannonBison" }, // 
 sphmcant: { body: "Body11ABTSpam", prop: "tracked01", weap: "Cannon2A-TMk1" }, // Fungible Cannon Spamaconda III Thick Wheels
 sphhflamt: { body: "Body11ABTSpam", prop: "tracked01", weap: "Flame2" }, // Excessive Flamer Spamaconda III Thick Wheels
 sphhcant: { body: "Body11ABTSpam", prop: "tracked01", weap: "Cannon375mmMk1" }, // Very Heavy Cannon Spamaconda III Thick Wheels
-sptriplemono2needle: { body: "Body11ABTSpam", prop: "tracked01", weap: ["Rocket-MRL", "RailGun1Mk1", "RailGun1Mk1"] }, // Mono-Rocket Array Triple Spamaconda Thick Wheels
-sptriplelcan2bb3t: { body: "Body11ABTSpam", prop: "tracked01", weap: ["Cannon1Mk1", "Rocket-BB3", "Rocket-BB3"] }, // "Light" Cannon Triple Spamaconda Thick Wheels
+sptriplemono2needle: { body: "Body1RECTripleSpam", prop: "tracked01", weap: ["Rocket-MRL", "RailGun1Mk1", "RailGun1Mk1"] }, // Mono-Rocket Array Triple Spamaconda Thick Wheels
+sptriplelcan2bb3t: { body: "Body1RECTripleSpam", prop: "tracked01", weap: ["Cannon1Mk1", "Rocket-BB3", "Rocket-BB3"] }, // "Light" Cannon Triple Spamaconda Thick Wheels
 
 // Normal Wheels (basically VTOLs)
 spminimgnw: { body: "Body1MiniSpam", prop: "wheelednormal", weap: "MGMini-VTOL" }, // Mini Machinegun Spamaconda Normal Wheels
@@ -156,7 +156,7 @@ spmanvilnw: { body: "Body5RECSpam", prop: "wheelednormal", weap: "Bomb-VTOL-Anvi
 spmhmgnw: { body: "Body5RECSpam", prop: "wheelednormal", weap: "MG3-VTOL" }, // Realistic Heavy Machinegun Spamaconda II Normal Wheels
 sptwin2lcannw: { body: "Body1RECTwinSpam", prop: "wheelednormal", weap: ["Cannon1-VTOL", "Cannon1-VTOL"] }, // "Light" Cannon Hydra Twin Spamaconda Normal Wheels
 sptwin2podnw: { body: "Body1RECTwinSpam", prop: "wheelednormal", weap: ["Rocket-VTOL-Pod", "Rocket-VTOL-Pod"] }, // Many-Rocket Pod Hydra Twin Spamaconda Normal Wheels
-sptriplelcan2podnw: { body: "Body11ABTSpam", prop: "tracked01", weap: ["Cannon1-VTOL", "Rocket-VTOL-Pod", "Rocket-VTOL-Pod"] }, // "Light" Cannon Triple Spamaconda Normal Wheels
+sptriplelcan2podnw: { body: "Body1RECTripleSpam", prop: "wheelednormal", weap: ["Cannon1-VTOL", "Rocket-VTOL-Pod", "Rocket-VTOL-Pod"] }, // "Light" Cannon Triple Spamaconda Normal Wheels
 
 // Spamton Cyborgs/Infantry
 spcybmg: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgChaingunSpam" }, // Spamton Machinegunner Cyborg

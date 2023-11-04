@@ -6,8 +6,251 @@ const SPAMTON_RES = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals02", "R-Cyborg-Metals02",
 	"R-Defense-WallUpgrade02", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage02",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
-	"R-Wpn-RocketSlow-Damage01", "R-Wpn-Flamer-ROF01",
+	"R-Wpn-RocketSlow-Damage01", "R-Wpn-Flamer-ROF01", "R-Wpn-Rocket-ROF01"
 ];
+var enabledFactoryGroups; // Increases as groups of factories are activated
+// Default throttles for Spamton's factories
+const fact1throttle = camChangeOnDiff(camSecondsToMilliseconds(90)); // Scary factory
+const fact2throttle = camChangeOnDiff(camSecondsToMilliseconds(45)); // Drift factory
+const fact3throttle = camChangeOnDiff(camSecondsToMilliseconds(6)); // Mini swarm factory
+const fact4throttle = camChangeOnDiff(camSecondsToMilliseconds(30)); // Bison factory
+const fact5throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Bison drift factory
+const fact6throttle = camChangeOnDiff(camSecondsToMilliseconds(45)); // Misc. factory
+const cyb1throttle = camChangeOnDiff(camSecondsToMilliseconds(90)); // Super flamers
+const cyb2throttle = camChangeOnDiff(camSecondsToMilliseconds(50)); // Cannons and needlers
+const cyb3throttle = camChangeOnDiff(camSecondsToMilliseconds(40)); // Spies
+const cyb4throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Bisons
+const cyb5throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Many rockets
+const norm1throttle = camChangeOnDiff(camSecondsToMilliseconds(8)); // Minis
+const norm2throttle = camChangeOnDiff(camSecondsToMilliseconds(50)); // Anvils
+const norm3throttle = camChangeOnDiff(camSecondsToMilliseconds(60)); // Misc.
+const defaultThrottles = [
+	fact1throttle, fact2throttle, fact3throttle, fact4throttle, fact5throttle, fact6throttle,
+	cyb1throttle, cyb2throttle, cyb3throttle, cyb4throttle, cyb5throttle,
+	norm1throttle, norm2throttle, norm3throttle,
+];;
+
+// If a Spamton factory is destroyed, make the remaining ones run faster
+function eventDestroyed(obj)
+{
+	if (obj.player === SPAMTON && obj.type === STRUCTURE 
+		&& (obj.stattype === FACTORY || obj.stattype === CYBORG_FACTORY || obj.stattype === VTOL_FACTORY))
+	{
+		// Count how many factories are left
+		// TODO: If we eventually give Spamton unique factories, then these names will need to be changed
+		const factoryCount = countStruct("A0LightFactory", SPAMTON) + countStruct("A0CyborgFactory", SPAMTON) + countStruct("A0VTolFactory1", SPAMTON);
+
+		// Calculate new factory throttles
+		let newThrottles = []
+		for (let i = 0; i < defaultThrottles.length; i++)
+		{
+			// At the start of the mission, there are 14 factories
+			// On Normal difficulty, factories will have a x1.2 throttle multiplier at the start, decreasing with each factory destroyed.
+			// Increasing or decreasing the difficulty is equivalent to decreasing or increasing the amount of factories respectively.
+			newThrottles[i] = defaultThrottles[i] * (0.5 + (0.05 * (factoryCount - difficulty + 2)));
+		}
+
+		// Update factory throttles
+		setSpamtonFactoryData(newThrottles);
+
+		// Re-enable factories (since updating factory data disables them automatically)
+		if (enabledFactoryGroups < 1) return; // No factories active
+		camEnableFactory("spamFactory4"); // NE Factory 1
+		camEnableFactory("spamCybFactory5"); // NW Cyborg Factory
+		camEnableFactory("spamNormFactory1"); // SE Normal Factory
+		if (enabledFactoryGroups < 2) return;
+		camEnableFactory("spamFactory3"); // SE Factory
+		camEnableFactory("spamFactory6"); // N Factory
+		camEnableFactory("spamCybFactory3"); // SE Cyborg Factory 2
+		camEnableFactory("spamCybFactory4"); // NE Cyborg Factory
+		camEnableFactory("spamNormFactory3"); // NW Normal Factory 2
+		if (enabledFactoryGroups < 3) return;
+		camEnableFactory("spamFactory2"); // S Factory
+		camEnableFactory("spamFactory5"); // NE Factory 2
+		camEnableFactory("spamCybFactory1"); // SW Cyborg Factory
+		if (enabledFactoryGroups < 4) return;
+		camEnableFactory("spamFactory1"); // SW Factory
+		camEnableFactory("spamCybFactory2"); // SE Cyborg Factory 1
+		camEnableFactory("spamNormFactory2"); // NW Normal Factory 1
+	}
+}
+
+// Calls camSetFactories(), wrapped here so we can update factory throttles as the player progresses
+function setSpamtonFactoryData(throttles)
+{
+	camSetFactories({
+		"spamFactory1": {
+			assembly: "spamAssembly1",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 4,
+			throttle: throttles[0],
+			data: {
+				regroup: true,
+				repair: 25,
+				count: -1,
+			},
+			templates: [ cTempl.sphhcant, cTempl.sptriplemono2needle, cTempl.sphhflamt, cTempl.sphhcant, cTempl.sptriplelcan2bb3t ] // Scary stuff
+		},
+		"spamFactory2": {
+			assembly: "spamAssembly2",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			throttle: throttles[1],
+			data: {
+				regroup: false,
+				repair: 60,
+				count: -1,
+			},
+			templates: [ cTempl.sptwin2eflamdw, cTempl.spmhmgdw, cTempl.splcandw, cTempl.sptriplcan2hmgdw, cTempl.spleflamdw, cTempl.sphbb3dw ] // Drift wheels
+		},
+		"spamFactory3": {
+			assembly: "spamAssembly3",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 18,
+			throttle: throttles[2],
+			data: {
+				regroup: false,
+				count: -1,
+			},
+			templates: [ 
+				cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg,
+				cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg,
+				cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spbigmg 
+			] // Big groups of Mini MGs with a Big MG
+		},
+		"spamFactory4": {
+			assembly: "spamAssembly4",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 4,
+			throttle: throttles[3],
+			data: {
+				regroup: false,
+				repair: 40,
+				count: -1,
+			},
+			templates: [ cTempl.sphbisonht, cTempl.spmbisonht, cTempl.sptwin2bisonht, cTempl.splbisont, cTempl.splbisonht ] // Bisons only
+		},
+		"spamFactory5": {
+			assembly: "spamAssembly5",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 4,
+			throttle: throttles[4],
+			data: {
+				regroup: false,
+				repair: 60,
+				count: -1,
+			},
+			templates: [ cTempl.spmbisondw, cTempl.sptrip3bisondw, cTempl.sptwin2bisondw, cTempl.splbisondw, cTempl.splbisondw ] // Bisons Drift Wheels only
+		},
+		"spamFactory6": {
+			assembly: "spamAssembly6",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 4,
+			throttle: throttles[5],
+			data: {
+				regroup: false,
+				repair: 40,
+				count: -1,
+			},
+			templates: [ cTempl.sphlinkht, cTempl.spmlcanht, cTempl.spmpodht, cTempl.sptwinlcanhmght, cTempl.ssplneedleht, ] // Misc. tanks
+		},
+		"spamCybFactory1": {
+			assembly: "spamCybAssembly1",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 4,
+			throttle: throttles[6],
+			data: {
+				regroup: false,
+				repair: 40,
+				count: -1,
+			},
+			templates: [ cTempl.spscybflame, cTempl.spscybflame, cTempl.spcybneedle ] // Super Flamer Cyborgs and Needlers
+		},
+		"spamCybFactory2": {
+			assembly: "spamCybAssembly2",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 6,
+			throttle: throttles[7],
+			data: {
+				regroup: false,
+				repair: 75,
+				count: -1,
+			},
+			templates: [ cTempl.spcybcan, cTempl.spcybneedle ] // "Light" Gunners and Needlers
+		},
+		"spamCybFactory3": {
+			assembly: "spamCybAssembly3",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 4,
+			throttle: throttles[8],
+			data: {
+				regroup: false,
+				repair: 40,
+				count: -1,
+			},
+			templates: [ cTempl.spcybspy ] // Spies only
+		},
+		"spamCybFactory4": {
+			assembly: "spamCybAssembly4",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 4,
+			throttle: throttles[9],
+			data: {
+				regroup: false,
+				repair: 40,
+				count: -1,
+			},
+			templates: [ cTempl.spcybbison ] // Bison Cyborgs only
+		},
+		"spamCybFactory5": {
+			assembly: "spamCybAssembly5",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 4,
+			throttle: throttles[10],
+			data: {
+				regroup: false,
+				repair: 40,
+				count: -1,
+			},
+			templates: [ cTempl.spcybpod ] // Many-Rocket Cyborgs only
+		},
+		"spamNormFactory1": {
+			assembly: "spamNormAssembly1",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 6,
+			throttle: throttles[11],
+			data: {
+				regroup: false,
+				count: -1,
+			},
+			templates: [ cTempl.spminimgnw ] // Mini MGs only
+		},
+		"spamNormFactory2": {
+			assembly: "spamNormAssembly2",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 3,
+			throttle: throttles[12],
+			data: {
+				regroup: false,
+				repair: 20,
+				count: -1,
+			},
+			templates: [ cTempl.sptwin2lcannw, cTempl.spmhmgnw, cTempl.splbisonnw, cTempl.sptwin2podnw, cTempl.sptriplelcan2podnw ] // Various stuff
+		},
+		"spamNormFactory3": {
+			assembly: "spamNormAssembly3",
+			order: CAM_ORDER_ATTACK,
+			groupSize: 2,
+			throttle: throttles[13],
+			data: {
+				regroup: false,
+				repair: 20,
+				count: -1,
+			},
+			templates: [ cTempl.spmanvilnw ] // Anvils
+		},
+	});
+}
 
 // Set up defensive patrols
 function setupPatrolGroups()
@@ -21,7 +264,7 @@ function setupPatrolGroups()
 		],
 		interval: camSecondsToMilliseconds(35),
 		repair: 60,
-		regroup: false,
+		regroup: false
 	});
 
 	camManageGroup(camMakeGroup("spamPatrolGroup2"), CAM_ORDER_PATROL, {
@@ -33,7 +276,7 @@ function setupPatrolGroups()
 		],
 		interval: camSecondsToMilliseconds(35),
 		repair: 60,
-		regroup: false,
+		regroup: false
 	});
 
 	camManageGroup(camMakeGroup("spamPatrolGroup3"), CAM_ORDER_PATROL, {
@@ -46,7 +289,7 @@ function setupPatrolGroups()
 		],
 		interval: camSecondsToMilliseconds(35),
 		repair: 60,
-		regroup: false,
+		regroup: false
 	});
 
 	camManageGroup(camMakeGroup("spamMiniPatrolGroup"), CAM_ORDER_PATROL, {
@@ -56,7 +299,7 @@ function setupPatrolGroups()
 			camMakePos("spamMiniPatrolPos3"),
 		],
 		interval: camSecondsToMilliseconds(25),
-		regroup: false,
+		regroup: false
 	});
 }
 
@@ -66,7 +309,7 @@ function vtolSwarm()
 	camSetVtolData(SPAMTON, undefined, camMakePos("spamNormAssembly1"), [cTempl.colatv],
 		camSecondsToMilliseconds(0.5), undefined, {minVTOLs: 50, maxRandomVTOLs: 0}
 	);
-	queue("stopVtolSwarm", camSecondsToMilliseconds(18.1));
+	queue("stopVtolSwarm", camSecondsToMilliseconds(12.1));
 	queue("destroyVtolSwarm", camSecondsToMilliseconds(35));
 }
 
@@ -92,6 +335,7 @@ function destroyVtolSwarm()
 // Activate a few factories
 function activateFirstFactories()
 {
+	enabledFactoryGroups = 1;
 	camEnableFactory("spamFactory4"); // NE Factory 1
 	camEnableFactory("spamCybFactory5"); // NW Cyborg Factory
 	camEnableFactory("spamNormFactory1"); // SE Normal Factory
@@ -100,6 +344,7 @@ function activateFirstFactories()
 // Activate a few more factories
 function activateSecondFactories()
 {
+	enabledFactoryGroups = 2;
 	camEnableFactory("spamFactory3"); // SE Factory
 	camEnableFactory("spamFactory6"); // N Factory
 	camEnableFactory("spamCybFactory3"); // SE Cyborg Factory 2
@@ -110,6 +355,7 @@ function activateSecondFactories()
 // Activate even more factories
 function activateThirdFactories()
 {
+	enabledFactoryGroups = 3;
 	camEnableFactory("spamFactory2"); // S Factory
 	camEnableFactory("spamFactory5"); // NE Factory 2
 	camEnableFactory("spamCybFactory1"); // SW Cyborg Factory
@@ -118,6 +364,7 @@ function activateThirdFactories()
 // Activate all the factories
 function activateFinalFactories()
 {
+	enabledFactoryGroups = 4;
 	camEnableFactory("spamFactory1"); // SW Factory
 	camEnableFactory("spamCybFactory2"); // SE Cyborg Factory 1
 	camEnableFactory("spamNormFactory2"); // NW Normal Factory 1
@@ -234,178 +481,8 @@ function eventStartLevel()
 		},
 	});
 
-	camSetFactories({
-		"spamFactory1": {
-			assembly: "spamAssembly1",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(90)),
-			data: {
-				regroup: true,
-				repair: 25,
-				count: -1,
-			},
-			templates: [ cTempl.sphhcant, cTempl.sptriplemono2needle, cTempl.sphhflamt, cTempl.sphhcant, cTempl.sptriplelcan2bb3t ] // Scary stuff
-		},
-		"spamFactory2": {
-			assembly: "spamAssembly2",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
-			data: {
-				regroup: false,
-				repair: 60,
-				count: -1,
-			},
-			templates: [ cTempl.sptwin2eflamdw, cTempl.spmhmgdw, cTempl.splcandw, cTempl.sptriplcan2hmgdw, cTempl.spleflamdw, cTempl.sphbb3dw ] // Drift wheels
-		},
-		"spamFactory3": {
-			assembly: "spamAssembly3",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 8,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(6)),
-			data: {
-				regroup: false,
-				count: -1,
-			},
-			templates: [ 
-				cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg,
-				cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg,
-				cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spminimg, cTempl.spbigmg 
-			] // Mini MG spam with an occasional Big Machinegun
-		},
-		"spamFactory4": {
-			assembly: "spamAssembly4",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
-			data: {
-				regroup: false,
-				repair: 40,
-				count: -1,
-			},
-			templates: [ cTempl.sphbisonht, cTempl.spmbisonht, cTempl.sptwin2bisonht, cTempl.splbisont, cTempl.splbisonht ] // Bisons only
-		},
-		"spamFactory5": {
-			assembly: "spamAssembly5",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(35)),
-			data: {
-				regroup: false,
-				repair: 60,
-				count: -1,
-			},
-			templates: [ cTempl.spmbisondw, cTempl.sptrip3bisondw, cTempl.sptwin2bisondw, cTempl.splbisondw, cTempl.splbisondw ] // Bisons Drift Wheels only
-		},
-		"spamFactory6": {
-			assembly: "spamAssembly6",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
-			data: {
-				regroup: false,
-				repair: 40,
-				count: -1,
-			},
-			templates: [ cTempl.sphlinkht, cTempl.spmlcanht, cTempl.spmpodht, cTempl.sptwinlcanhmght, cTempl.ssplneedleht, ] // Misc. tanks
-		},
-		"spamCybFactory1": {
-			assembly: "spamCybAssembly1",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(90)),
-			data: {
-				regroup: false,
-				repair: 40,
-				count: -1,
-			},
-			templates: [ cTempl.spscybflame, cTempl.spscybflame, cTempl.spcybneedle ] // Super Flamer Cyborgs and Needlers
-		},
-		"spamCybFactory2": {
-			assembly: "spamCybAssembly2",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 6,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(50)),
-			data: {
-				regroup: false,
-				repair: 75,
-				count: -1,
-			},
-			templates: [ cTempl.spcybcan, cTempl.spcybneedle ] // "Light" Gunners and Needlers
-		},
-		"spamCybFactory3": {
-			assembly: "spamCybAssembly3",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(40)),
-			data: {
-				regroup: false,
-				repair: 40,
-				count: -1,
-			},
-			templates: [ cTempl.spcybspy ] // Spies only
-		},
-		"spamCybFactory4": {
-			assembly: "spamCybAssembly4",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(35)),
-			data: {
-				regroup: false,
-				repair: 40,
-				count: -1,
-			},
-			templates: [ cTempl.spcybbison ] // Bison Cyborgs only
-		},
-		"spamCybFactory5": {
-			assembly: "spamCybAssembly5",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(35)),
-			data: {
-				regroup: false,
-				repair: 40,
-				count: -1,
-			},
-			templates: [ cTempl.spcybpod ] // Many-Rocket Cyborgs only
-		},
-		"spamNormFactory1": {
-			assembly: "spamNormAssembly1",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 6,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(8)),
-			data: {
-				regroup: false,
-				count: -1,
-			},
-			templates: [ cTempl.spminimgnw ] // Mini MGs only
-		},
-		"spamNormFactory2": {
-			assembly: "spamNormAssembly2",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(50)),
-			data: {
-				regroup: false,
-				repair: 20,
-				count: -1,
-			},
-			templates: [ cTempl.sptwin2lcannw, cTempl.spmhmgnw, cTempl.splbisonnw, cTempl.sptwin2podnw, cTempl.sptriplelcan2podnw ] // Various stuff
-		},
-		"spamNormFactory3": {
-			assembly: "spamNormAssembly3",
-			order: CAM_ORDER_ATTACK,
-			groupSize: 2,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(60)),
-			data: {
-				regroup: false,
-				repair: 20,
-				count: -1,
-			},
-			templates: [ cTempl.spmanvilnw ] // Anvils
-		},
-	});
+	enabledFactoryGroups = 0;
+	setSpamtonFactoryData(defaultThrottles);
 
 	let body = "Body1RECSpam"; // Spamaconda
 	if (difficulty >= HARD) body = "Body5RECSpam"; // Upgrade to Spamaconda II
@@ -420,9 +497,9 @@ function eventStartLevel()
 	queue("vtolSwarm", camSecondsToMilliseconds(8));
 	queue("activateFirstFactories", camChangeOnDiff(camMinutesToMilliseconds(2)));
 	queue("activatePipisTrucks", camChangeOnDiff(camMinutesToMilliseconds(6)));
-	queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(8)));
-	queue("activateThirdFactories", camChangeOnDiff(camMinutesToMilliseconds(14)));
-	queue("activateFinalFactories", camChangeOnDiff(camMinutesToMilliseconds(20)));
+	queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(10)));
+	queue("activateThirdFactories", camChangeOnDiff(camMinutesToMilliseconds(18)));
+	queue("activateFinalFactories", camChangeOnDiff(camMinutesToMilliseconds(26)));
 
 	// Replace all boulders with explosives
 	camUpgradeOnMapFeatures("Boulder1", "ExplosiveDrum");
