@@ -724,6 +724,11 @@ function camRandomEffect(pos)
 		effects.push("bbCyb");
 		effects.push("swordCyb");
 	}
+	if (camIsResearched("R-Cyborg-Wpn-Sword"))
+	{
+		// Allow Super Axe Cyborg if Sword Cyborg is researched
+		effects.push("superAxe");
+	}
 	if (camIsResearched("R-Wpn-MG3Mk1"))
 	{
 		// Allow Realistic-er Heavy Machinegun if Realistic Heavy Machinegun is researched
