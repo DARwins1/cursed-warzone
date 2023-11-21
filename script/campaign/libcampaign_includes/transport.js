@@ -82,7 +82,7 @@ function __camDispatchTransporterUnsafe()
 		camDebug("Transporter queue empty!");
 		return false;
 	}
-	const __OFFSET = 1; //Increaze LZ "no go" zone area a bit
+	const __OFFSET = 1; // Decrease LZ "no go" zone area a bit
 	const args = __camTransporterQueue[0];
 	const __PLAYER = args.player;
 	const pos = args.position;
@@ -135,7 +135,7 @@ function __camDispatchTransporterUnsafe()
 	         "droids for player", __PLAYER +
 	         ", queued transports", __camTransporterQueue.length);
 
-	// setNoGoArea(pos.x - __OFFSET, pos.y - __OFFSET, pos.x + __OFFSET, pos.y + __OFFSET, __PLAYER);
+	setNoGoArea(pos.x + __OFFSET, pos.y + __OFFSET, pos.x - __OFFSET, pos.y - __OFFSET, __PLAYER);
 
 	//Delete previous enemy reinforcement transport blip
 	if (__PLAYER !== CAM_HUMAN_PLAYER)

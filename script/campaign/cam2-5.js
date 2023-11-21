@@ -67,7 +67,7 @@ function eventDestroyed(obj)
 function eventGameLoaded()
 {
 	// Make sure the billboard texture is correct
-	if (waveIndex !== 0 && waveIndex < 13)
+	if (waveIndex > 0 && waveIndex < 13)
 	{
 		replaceTexture("page-506-cursedsignsarena1.png", mis_billboardTextures[waveIndex]);
 	}
@@ -101,9 +101,9 @@ function advanceWave()
 	setupTime = true;
 
 	// Change the billboard texture
-	if (waveIndex < 13)
+	if (waveIndex > 0 && waveIndex < 13)
 	{
-		replaceTexture("page-506-cursedsignsarena1.png", mis_billboardTextures[waveIndex]);
+		replaceTexture(mis_billboardTextures[waveIndex - 1], mis_billboardTextures[waveIndex]);
 	}
 
 	// Enable player reinforcements
@@ -248,7 +248,7 @@ function beginWave()
 				camSecondsToMilliseconds(0.5), undefined, {minVTOLs: 50, maxRandomVTOLs: 0}
 			);
 			queue("stopVtols", camSecondsToMilliseconds(8.1));
-			queue("advanceWave", camSecondsToMilliseconds(35));
+			queue("advanceWave", camSecondsToMilliseconds(30));
 			break;
 		case 12: // Boss wave: Core unit is spawned immediately
 			spawnCoreUnits();
@@ -704,7 +704,7 @@ function spawnSupportUnits()
 				if (difficulty >= INSANE) numMobs++;
 				for (let i = 0; i < numMobs; i++)
 				{
-					const pos = camRandPosInArea(spawnArea);
+					const pos = camRandPosInArea(SPAWN_AREA);
 					groupAdd(NEW_GROUP, addDroid(CAM_MOBS, pos.x, pos.y, 
 						_("Creeper"), "CreeperBody", "CyborgLegs", "", "", "Cyb-Wpn-CreeperDud"
 					));
@@ -814,7 +814,7 @@ function spawnSupportUnits()
 					let numCyborgs = 2;
 					if (difficulty >= HARD) numCyborgs++;
 					if (difficulty >= INSANE) numCyborgs++;
-					for (let i = 0; i < numMobs; i++)
+					for (let i = 0; i < numCyborgs; i++)
 					{
 						// Spawn Archer Cyborgs
 						const pos = camRandPosInArea(SPAWN_AREA);
@@ -1042,7 +1042,7 @@ function stopVtols()
 
 // Deal damage to any player object too close to the edge of the arena (marked by polished deepslate)
 // Warning: Very bad code
-function enforceNoGoArea()
+function enforceArenaBoundry()
 {
 	let list = [];
 	// 4 corners of the arena
@@ -1163,7 +1163,9 @@ function eventStartLevel()
 	startTransporterEntry(40, 50, CAM_HUMAN_PLAYER);
 	setTransporterExit(60, 30, CAM_HUMAN_PLAYER);
 
-	setTimer("enforceNoGoArea", camSecondsToMilliseconds(2));
+	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_BONZI_BUDDY);
+
+	setTimer("enforceArenaBoundry", camSecondsToMilliseconds(2));
 
 	waveIndex = 0;
 	coreIndex = 0;

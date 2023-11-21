@@ -206,20 +206,20 @@ dataset		CAM_2
 game		"wrf/cam2/sub2-5.gam"
 data		"wrf/cam2/sub2-5.wrf"
 
-between		HOW_2_UNINSTALL
+between		SUB_2DS
 dataset		CAM_2
 data		"wrf/cam2/sub2-ds.wrf"
 
-miss_keep	BONZI_BUDDY
+miss_keep	SUB_2D
 dataset		CAM_2
 game		"wrf/cam2/sub2-d.gam"
 data		"wrf/cam2/sub2-d.wrf"
 
-between		SUB_2_6S
+between		HOW_2_UNINSTALL
 dataset		CAM_2
 data		"wrf/cam2/sub2-6s.wrf"
 
-miss_keep	SUB_2_6
+miss_keep	BONZI_BUDDY
 dataset		CAM_2
 game		"wrf/cam2/sub2-6.gam"
 data		"wrf/cam2/sub2-6.wrf"
