@@ -2,7 +2,7 @@ include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
 const startpos = {x: 92, y: 99};
-const HARD_PATTERNS = [
+const mis_hardPatterns = [
 	// "Heart"
 	// . . . . . . . . . . . .
 	// . . # # . . . . # # . .
@@ -148,23 +148,23 @@ function checkPattern()
 	let pattern = [];
 	if (camIsResearched("Script-Labyrinth-Puzzle-1"))
 	{
-		pattern = HARD_PATTERNS[0]; // Heart
+		pattern = mis_hardPatterns[0]; // Heart
 	}
 	else if (camIsResearched("Script-Labyrinth-Puzzle-2"))
 	{
-		pattern = HARD_PATTERNS[1]; // Sans
+		pattern = mis_hardPatterns[1]; // Sans
 	}
 	else if (camIsResearched("Script-Labyrinth-Puzzle-3"))
 	{
-		pattern = HARD_PATTERNS[2]; // Creeper
+		pattern = mis_hardPatterns[2]; // Creeper
 	}
 	else if (camIsResearched("Script-Labyrinth-Puzzle-4"))
 	{
-		pattern = HARD_PATTERNS[3]; // Eye
+		pattern = mis_hardPatterns[3]; // Eye
 	}
 	else if (camIsResearched("Script-Labyrinth-Puzzle-5"))
 	{
-		pattern = HARD_PATTERNS[4]; // Spamton
+		pattern = mis_hardPatterns[4]; // Spamton
 	}
 	else
 	{
@@ -177,7 +177,7 @@ function checkPattern()
 	// 2: The number of player structures on the grid equals the total amount of "1"s in the pattern template.
 
 	// Count the number of structures on the grid
-	let patternStructCount = enumArea(pZone.x, pZone.y, pZone.x2, pZone.y2, CAM_HUMAN_PLAYER, false).filter((obj) => (
+	const PATTERN_STRUCT_COUNT = enumArea(pZone.x, pZone.y, pZone.x2, pZone.y2, CAM_HUMAN_PLAYER, false).filter((obj) => (
 		obj.type === STRUCTURE
 	)).length;
 
@@ -201,7 +201,7 @@ function checkPattern()
 	}
 
 	// Finally, check that the amount of structures matches the amount of "1"s
-	if (patternStructCount !== patternCount)
+	if (PATTERN_STRUCT_COUNT !== patternCount)
 	{
 		return; // Mismatch
 	}
@@ -241,7 +241,7 @@ function doorEffects()
 // Also damage any player objects too close to the Nextbot
 function manageNextbot()
 {
-	let nextbot = getObject("nextbot");
+	const nextbot = getObject("nextbot");
 	if (!camDef(nextbot) || nextbot === null)
 	{
 		// Nextbot is dead
@@ -254,11 +254,11 @@ function manageNextbot()
 	// Deal damage to any nearby non-mobs
 	const nbPos = camMakePos(nextbot);
 	const targetList = enumRange(nbPos.x, nbPos.y, 2, ALL_PLAYERS, false).filter((obj) => (
-		!(obj.type !== FEATURE && obj.player === MOBS)
+		!(obj.type !== FEATURE && obj.player === CAM_MOBS)
 	));
 	for (let i = 0; i < targetList.length; i++)
 	{
-		let obj = targetList[i];
+		const obj = targetList[i];
 		if (Math.floor(obj.health) > 40)
 		{
 			// Remove 40% HP
@@ -321,8 +321,8 @@ function nextbotNearWaypoint(waypointLabel)
 
 function eventStartLevel()
 {
-	var lz = {x: 86, y: 99, x2: 88, y2: 101};
-	var tCoords = {xStart: 87, yStart: 100, xOut: 0, yOut: 55};
+	const lz = {x: 86, y: 99, x2: 88, y2: 101};
+	const tCoords = {xStart: 87, yStart: 100, xOut: 0, yOut: 55};
 
 	nextbotGroup = camMakeGroup(getObject("nextbot"));
 	setScrollLimits(64, 0, 128, 128);
@@ -333,27 +333,27 @@ function eventStartLevel()
 	camSetupTransporter(tCoords.xStart, tCoords.yStart, tCoords.xOut, tCoords.yOut);
 
 	// Add Endermen
-	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, MOBS);
+	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, CAM_MOBS);
 	// Choose a random Nextbot type
 	const nextbotType = camRand(3);
 	if (nextbotType === 0)
 	{
-		camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.crnextbot1, MOBS); // Sans Nextbot
+		camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.crnextbot1, CAM_MOBS); // "Sans" Nextbot
 	}
 	else if (nextbotType === 1)
 	{
-		camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.crnextbot2, MOBS); // Amogus Nextbot
+		camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.crnextbot2, CAM_MOBS); // "Amogus" Nextbot
 	}
 	else if (nextbotType === 2)
 	{
-		camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.crnextbot3, MOBS); // Troll Nextbot
+		camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.crnextbot3, CAM_MOBS); // "Trollface" Nextbot
 	}
 
 	// Make structures funny
-	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", MOBS);
-	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", MOBS);
-	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", MOBS);
-	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "A0Chest", MOBS);
+	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", CAM_MOBS);
+	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", CAM_MOBS);
+	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", CAM_MOBS);
+	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "A0Chest", CAM_MOBS);
 
 	setMissionTime(camMinutesToSeconds(15));
 	setTimer("checkPattern", camSecondsToMilliseconds(1));

@@ -1,7 +1,7 @@
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
-const SPAMTON_RES = [
+const mis_spamtonRes = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 	"R-Defense-WallUpgrade02", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage02",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
@@ -89,7 +89,7 @@ function eventPickup(feature, droid)
 		}
 
 		// Order the trucks to place the Pipis
-		enableStructure("A0Pipis", SPAMTON);
+		enableStructure("A0Pipis", CAM_SPAMTON);
 		const truck1 = getObject("truck1");
 		const truck2 = getObject("truck2");
 		if (camDef(truck1) && truck1 !== null)
@@ -105,10 +105,10 @@ function eventPickup(feature, droid)
 
 function eventStartLevel()
 {
-	var startpos = camMakePos("landingZone");
-	var lz = getObject("landingZone");
+	const startpos = camMakePos("landingZone");
+	const lz = getObject("landingZone");
 
-	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "RIDE_AROUND_TOWN", {
+	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "WELCOME_TO_THE", {
 		area: "compromiseZone",
 		message: "C3-1_LZ",
 		reinforcements: -1, //No reinforcements
@@ -125,7 +125,7 @@ function eventStartLevel()
 	const transporter = enumDroid();
 	cameraTrack(transporter[0]);
 
-	camCompleteRequiredResearch(SPAMTON_RES, SPAMTON);
+	camCompleteRequiredResearch(mis_spamtonRes, CAM_SPAMTON);
 
 	camSetArtifacts({
 		"crate": { tech: "R-Wpn-Cannon3Mk1" }, // Very Heavy Cannon

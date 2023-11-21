@@ -3,7 +3,7 @@ include("script/campaign/templates.js");
 include("script/campaign/transitionTech.js");
 
 const SILOS = 1; // Owns the Missile Silos until captured by the player.
-const SPAMTON_RES = [
+const mis_spamtonRes = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals02", "R-Cyborg-Metals02",
 	"R-Defense-WallUpgrade02", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage02",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
@@ -94,7 +94,7 @@ camAreaEvent("normalRemoveZone", function(droid)
 		}
 	}
 
-	resetLabel("normalRemoveZone", SPAMTON);
+	resetLabel("normalRemoveZone", CAM_SPAMTON);
 });
 
 // Set up ambush and patrol groups
@@ -164,7 +164,7 @@ function startDefensePhase()
 	defenseTime = gameTime;
 	camAbsorbPlayer(SILOS, CAM_HUMAN_PLAYER); // Give silos to the player
 
-	var lz2 = getObject("landingZone2");
+	const lz2 = getObject("landingZone2");
 	setNoGoArea(lz2.x, lz2.y, lz2.x2, lz2.y2, CAM_HUMAN_PLAYER);
 
 	hackRemoveMessage("CM3B_SILOS", PROX_MSG, CAM_HUMAN_PLAYER);
@@ -177,10 +177,10 @@ function eventResearched(research, structure, player)
 	if (research.name.substring(0, 12) === "R-Comp-Death") // e.g. "R-Comp-Death01"
 	{
 		// Fire the blaster at every player object and then trigger a game over
-		let objects = enumDroid(CAM_HUMAN_PLAYER).concat(enumStruct(CAM_HUMAN_PLAYER));
+		const objects = enumDroid(CAM_HUMAN_PLAYER).concat(enumStruct(CAM_HUMAN_PLAYER));
 		for (let i = 0; i < objects.length; i++)
 		{
-			fireWeaponAtObj("LasSat", objects[i], SPAMTON);
+			fireWeaponAtObj("LasSat", objects[i], CAM_SPAMTON);
 		}
 		failure = true;
 	}
@@ -198,7 +198,7 @@ function eventResearched(research, structure, player)
 			removeTimer("sendSpamtonGroundWave");
 			setTimer("sendSpamtonGroundWave", camChangeOnDiff(camSecondsToMilliseconds(40)));
 			const normList = [cTempl.spmanvilnw, cTempl.sptwin2lcannw, cTempl.spmhmgnw, cTempl.splbisonnw, cTempl.sptwin2podnw];
-			camSetVtolData(SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camSecondsToMilliseconds(45)), {
+			camSetVtolData(CAM_SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camSecondsToMilliseconds(45)), {
 				minVTOLs: 3,
 				maxRandomVTOLs: 2,
 			});
@@ -213,7 +213,7 @@ function eventResearched(research, structure, player)
 			// Ground wave come at the same rate, but are a bit tougher
 			// Start sending Anvils
 			const normList = [cTempl.spmanvilnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw];
-			camSetVtolData(SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camSecondsToMilliseconds(60)), {
+			camSetVtolData(CAM_SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camSecondsToMilliseconds(60)), {
 				minVTOLs: 8,
 				maxRandomVTOLs: 0,
 			});
@@ -234,7 +234,7 @@ function eventResearched(research, structure, player)
 			removeTimer("sendSpamtonGroundWave");
 			setTimer("sendSpamtonGroundWave", camChangeOnDiff(camSecondsToMilliseconds(3)));
 			camSetVtolSpawnStateAll(false);
-			camSetVtolData(SPAMTON, undefined, "normalRemovePos", [cTempl.spminimgnw], camSecondsToMilliseconds(3), {
+			camSetVtolData(CAM_SPAMTON, undefined, "normalRemovePos", [cTempl.spminimgnw], camSecondsToMilliseconds(3), {
 				minVTOLs: 12,
 				maxRandomVTOLs: 4,
 			});
@@ -264,55 +264,55 @@ function sendSpamtonGroundWave()
 	const spawn5 = camMakePos("spamSpawn5");
 
 	// NW spawn
-	camSendReinforcement(SPAMTON, spawn1, chooseSpamtonGroundUnits(), CAM_REINFORCE_GROUND);
+	camSendReinforcement(CAM_SPAMTON, spawn1, chooseSpamtonGroundUnits(), CAM_REINFORCE_GROUND);
 	// Add a Pipis Truck if there's not enough on the map
 	if (notEnoughPipisTrucks())
 	{
-		let tTemp = getPipisTruckTemplate();
-		addDroid(SPAMTON, spawn1.x, spawn1.y, _("Pipis Truck"), tTemp.body, tTemp.prop, "", "", "Spade1Mk1Spam");
+		const tTemp = getPipisTruckTemplate();
+		addDroid(CAM_SPAMTON, spawn1.x, spawn1.y, _("Pipis Truck"), tTemp.body, tTemp.prop, "", "", "Spade1Mk1Spam");
 	}
 
 	// SW spawn
 	if (gameTime >= defenseTime + camChangeOnDiff(camMinutesToMilliseconds(6)))
 	{
-		camSendReinforcement(SPAMTON, spawn2, chooseSpamtonGroundUnits(), CAM_REINFORCE_GROUND);
+		camSendReinforcement(CAM_SPAMTON, spawn2, chooseSpamtonGroundUnits(), CAM_REINFORCE_GROUND);
 		if (notEnoughPipisTrucks())
 		{
-			let tTemp = getPipisTruckTemplate();
-			addDroid(SPAMTON, spawn2.x, spawn2.y, _("Pipis Truck"), tTemp.body, tTemp.prop, "", "", "Spade1Mk1Spam");
+			const tTemp = getPipisTruckTemplate();
+			addDroid(CAM_SPAMTON, spawn2.x, spawn2.y, _("Pipis Truck"), tTemp.body, tTemp.prop, "", "", "Spade1Mk1Spam");
 		}
 	}
 
 	// NE spawn
 	if (gameTime >= defenseTime + camChangeOnDiff(camMinutesToMilliseconds(12)))
 	{
-		camSendReinforcement(SPAMTON, spawn3, chooseSpamtonGroundUnits(), CAM_REINFORCE_GROUND);
+		camSendReinforcement(CAM_SPAMTON, spawn3, chooseSpamtonGroundUnits(), CAM_REINFORCE_GROUND);
 		if (notEnoughPipisTrucks())
 		{
-			let tTemp = getPipisTruckTemplate();
-			addDroid(SPAMTON, spawn3.x, spawn3.y, _("Pipis Truck"), tTemp.body, tTemp.prop, "", "", "Spade1Mk1Spam");
+			const tTemp = getPipisTruckTemplate();
+			addDroid(CAM_SPAMTON, spawn3.x, spawn3.y, _("Pipis Truck"), tTemp.body, tTemp.prop, "", "", "Spade1Mk1Spam");
 		}
 	}
 
 	// SE spawn
 	if (gameTime >= defenseTime + camChangeOnDiff(camMinutesToMilliseconds(16)))
 	{
-		camSendReinforcement(SPAMTON, spawn4, chooseSpamtonGroundUnits(), CAM_REINFORCE_GROUND);
+		camSendReinforcement(CAM_SPAMTON, spawn4, chooseSpamtonGroundUnits(), CAM_REINFORCE_GROUND);
 		if (notEnoughPipisTrucks())
 		{
-			let tTemp = getPipisTruckTemplate();
-			addDroid(SPAMTON, spawn4.x, spawn4.y, _("Pipis Truck"), tTemp.body, tTemp.prop, "", "", "Spade1Mk1Spam");
+			const tTemp = getPipisTruckTemplate();
+			addDroid(CAM_SPAMTON, spawn4.x, spawn4.y, _("Pipis Truck"), tTemp.body, tTemp.prop, "", "", "Spade1Mk1Spam");
 		}
 	}
 
 	// East spawn
 	if (gameTime >= defenseTime + camChangeOnDiff(camMinutesToMilliseconds(20)))
 	{
-		camSendReinforcement(SPAMTON, spawn5, chooseSpamtonGroundUnits(), CAM_REINFORCE_GROUND);
+		camSendReinforcement(CAM_SPAMTON, spawn5, chooseSpamtonGroundUnits(), CAM_REINFORCE_GROUND);
 		if (notEnoughPipisTrucks())
 		{
-			let tTemp = getPipisTruckTemplate();
-			addDroid(SPAMTON, spawn5.x, spawn5.y, _("Pipis Truck"), tTemp.body, tTemp.prop, "", "", "Spade1Mk1Spam");
+			const tTemp = getPipisTruckTemplate();
+			addDroid(CAM_SPAMTON, spawn5.x, spawn5.y, _("Pipis Truck"), tTemp.body, tTemp.prop, "", "", "Spade1Mk1Spam");
 		}
 	}
 }
@@ -333,7 +333,7 @@ function chooseSpamtonGroundUnits()
 			supportSize = 4 + difficulty;
 			if (difficulty >= HARD || gameTime >= defenseTime + camChangeOnDiff(camMinutesToMilliseconds(3)))
 			{
-				let temps = [
+				const temps = [
 					cTempl.sphhflamht, cTempl.sphhbb3ht, cTempl.sphlinkht
 				];
 				if (difficulty >= HARD) temps.push(cTempl.spbigmg);
@@ -343,7 +343,7 @@ function chooseSpamtonGroundUnits()
 		case 1:
 		case 2:
 			// Various units
-			let groupTypes = [
+			const groupTypes = [
 				"bisons", "spies", "bunkerBuster", "drift",
 				"rockets",
 			];
@@ -424,7 +424,7 @@ function chooseSpamtonGroundUnits()
 			break;
 	}
 
-	let list = mainTemplates;
+	const list = mainTemplates;
 	for (let i = 0; i < supportSize; i++)
 	{
 		// Add a random support unit
@@ -437,7 +437,7 @@ function chooseSpamtonGroundUnits()
 // Returns true if an additional Pipis Truck should be deployed
 function notEnoughPipisTrucks()
 {
-	const truckCount = countDroid(DROID_CONSTRUCT, SPAMTON);
+	const truckCount = countDroid(DROID_CONSTRUCT, CAM_SPAMTON);
 	const truckGoal = (codeCount * 2 + difficulty - 2); // Increases by 2 per missile code, +/- on difficulties
 	if (codeCount > 0 && truckCount < truckGoal)
 	{
@@ -485,13 +485,13 @@ function advanceBlasterZone()
 // See if any player object is within the blaster zone. If there is, set up an attack pattern
 function scanBlasterZone()
 {
-	let targets = enumArea(0, 48, blasterX, 112, ALL_PLAYERS, false).filter((obj) => (obj.type !== FEATURE && obj.player !== SPAMTON));
+	const targets = enumArea(0, 48, blasterX, 112, ALL_PLAYERS, false).filter((obj) => (obj.type !== FEATURE && obj.player !== CAM_SPAMTON));
 	let target;
 	if (targets.length > 0)
 	{
-		var dr = targets.filter((obj) => (obj.type === DROID && !isVTOL(obj)));
-		var vt = targets.filter((obj) => (obj.type === DROID && isVTOL(obj)));
-		var st = targets.filter((obj) => (obj.type === STRUCTURE));
+		const dr = targets.filter((obj) => (obj.type === DROID && !isVTOL(obj)));
+		const vt = targets.filter((obj) => (obj.type === DROID && isVTOL(obj)));
+		const st = targets.filter((obj) => (obj.type === STRUCTURE));
 
 		if (dr.length)
 		{
@@ -517,11 +517,11 @@ function scanBlasterZone()
 // Choose a random excessive blaster attack pattern to bombard the target area with
 function randomBlasterPattern(x, y)
 {
-	let blasterPatterns = [
+	const blasterPatterns = [
 		"cross", "crossDiagonal", "circle", "square",
 	];
-	const pd = camChangeOnDiff(4); // How long until the blaster starts firing (pattern delay)
-	const bd = 0.1; // Standard delay between blasts in a pattern (blast delay)
+	const PATT_DELAY = camChangeOnDiff(4); // How long until the blaster starts firing (pattern delay)
+	const BLAST_DELAY = 0.1; // Standard delay between blasts in a pattern (blast delay)
 
 	// Choose a random pattern
 	switch (blasterPatterns[camRand(blasterPatterns.length)])
@@ -529,68 +529,68 @@ function randomBlasterPattern(x, y)
 		case "cross":
 			// '+' shaped pattern
 			// Vertical line
-			setBlasterTarget(camMakePos(x, y - 4), pd);
-			setBlasterTarget(camMakePos(x, y - 2), pd + (bd * 1));
-			setBlasterTarget(camMakePos(x, y + 0), pd + (bd * 2));
-			setBlasterTarget(camMakePos(x, y + 2), pd + (bd * 3));
-			setBlasterTarget(camMakePos(x, y + 4), pd + (bd * 4));
+			setBlasterTarget(camMakePos(x, y - 4), PATT_DELAY);
+			setBlasterTarget(camMakePos(x, y - 2), PATT_DELAY + (BLAST_DELAY * 1));
+			setBlasterTarget(camMakePos(x, y + 0), PATT_DELAY + (BLAST_DELAY * 2));
+			setBlasterTarget(camMakePos(x, y + 2), PATT_DELAY + (BLAST_DELAY * 3));
+			setBlasterTarget(camMakePos(x, y + 4), PATT_DELAY + (BLAST_DELAY * 4));
 			// Horizontal line
-			setBlasterTarget(camMakePos(x - 4, y), pd + 2);
-			setBlasterTarget(camMakePos(x - 2, y), pd + (bd * 1) + 2);
-			setBlasterTarget(camMakePos(x + 0, y), pd + (bd * 2) + 2);
-			setBlasterTarget(camMakePos(x + 2, y), pd + (bd * 3) + 2);
-			setBlasterTarget(camMakePos(x + 4, y), pd + (bd * 4) + 2);
+			setBlasterTarget(camMakePos(x - 4, y), PATT_DELAY + 2);
+			setBlasterTarget(camMakePos(x - 2, y), PATT_DELAY + (BLAST_DELAY * 1) + 2);
+			setBlasterTarget(camMakePos(x + 0, y), PATT_DELAY + (BLAST_DELAY * 2) + 2);
+			setBlasterTarget(camMakePos(x + 2, y), PATT_DELAY + (BLAST_DELAY * 3) + 2);
+			setBlasterTarget(camMakePos(x + 4, y), PATT_DELAY + (BLAST_DELAY * 4) + 2);
 			break;
 		case "crossDiagonal":
 			// 'X' shaped pattern
 			// Top-left to bottom-right line
-			setBlasterTarget(camMakePos(x - 4, y - 4), pd);
-			setBlasterTarget(camMakePos(x - 2, y - 2), pd + (bd * 1));
-			setBlasterTarget(camMakePos(x + 0, y + 0), pd + (bd * 2));
-			setBlasterTarget(camMakePos(x + 2, y + 2), pd + (bd * 3));
-			setBlasterTarget(camMakePos(x + 4, y + 4), pd + (bd * 4));
+			setBlasterTarget(camMakePos(x - 4, y - 4), PATT_DELAY);
+			setBlasterTarget(camMakePos(x - 2, y - 2), PATT_DELAY + (BLAST_DELAY * 1));
+			setBlasterTarget(camMakePos(x + 0, y + 0), PATT_DELAY + (BLAST_DELAY * 2));
+			setBlasterTarget(camMakePos(x + 2, y + 2), PATT_DELAY + (BLAST_DELAY * 3));
+			setBlasterTarget(camMakePos(x + 4, y + 4), PATT_DELAY + (BLAST_DELAY * 4));
 			// Bottom-right to top-left line
-			setBlasterTarget(camMakePos(x - 4, y + 4), pd + 2);
-			setBlasterTarget(camMakePos(x - 2, y + 2), pd + (bd * 1) + 2);
-			setBlasterTarget(camMakePos(x + 0, y + 0), pd + (bd * 2) + 2);
-			setBlasterTarget(camMakePos(x + 2, y - 2), pd + (bd * 3) + 2);
-			setBlasterTarget(camMakePos(x + 4, y - 4), pd + (bd * 4) + 2);
+			setBlasterTarget(camMakePos(x - 4, y + 4), PATT_DELAY + 2);
+			setBlasterTarget(camMakePos(x - 2, y + 2), PATT_DELAY + (BLAST_DELAY * 1) + 2);
+			setBlasterTarget(camMakePos(x + 0, y + 0), PATT_DELAY + (BLAST_DELAY * 2) + 2);
+			setBlasterTarget(camMakePos(x + 2, y - 2), PATT_DELAY + (BLAST_DELAY * 3) + 2);
+			setBlasterTarget(camMakePos(x + 4, y - 4), PATT_DELAY + (BLAST_DELAY * 4) + 2);
 			break;
 		case "circle":
 			// Tight circle around the target
-			setBlasterTarget(camMakePos(x - 3, y + 0), pd);
-			setBlasterTarget(camMakePos(x - 1, y - 2), pd + (bd * 1));
-			setBlasterTarget(camMakePos(x + 1, y - 2), pd + (bd * 2));
-			setBlasterTarget(camMakePos(x + 3, y + 0), pd + (bd * 3));
-			setBlasterTarget(camMakePos(x + 1, y + 2), pd + (bd * 4));
-			setBlasterTarget(camMakePos(x - 1, y + 2), pd + (bd * 5));
+			setBlasterTarget(camMakePos(x - 3, y + 0), PATT_DELAY);
+			setBlasterTarget(camMakePos(x - 1, y - 2), PATT_DELAY + (BLAST_DELAY * 1));
+			setBlasterTarget(camMakePos(x + 1, y - 2), PATT_DELAY + (BLAST_DELAY * 2));
+			setBlasterTarget(camMakePos(x + 3, y + 0), PATT_DELAY + (BLAST_DELAY * 3));
+			setBlasterTarget(camMakePos(x + 1, y + 2), PATT_DELAY + (BLAST_DELAY * 4));
+			setBlasterTarget(camMakePos(x - 1, y + 2), PATT_DELAY + (BLAST_DELAY * 5));
 			break;
 		case "square":
 			// Wide box around the target (and shots into the center)
 			// Center shot 1
-			setBlasterTarget(camMakePos(x, y), pd);
+			setBlasterTarget(camMakePos(x, y), PATT_DELAY);
 			// Left side (bottom to top)
-			setBlasterTarget(camMakePos(x - 4, y + 4), pd + 2);
-			setBlasterTarget(camMakePos(x - 4, y + 2), pd + (bd * 3) + 2);
-			setBlasterTarget(camMakePos(x - 4, y + 0), pd + (bd * 6) + 2);
-			setBlasterTarget(camMakePos(x - 4, y - 2), pd + (bd * 9) + 2);
+			setBlasterTarget(camMakePos(x - 4, y + 4), PATT_DELAY + 2);
+			setBlasterTarget(camMakePos(x - 4, y + 2), PATT_DELAY + (BLAST_DELAY * 3) + 2);
+			setBlasterTarget(camMakePos(x - 4, y + 0), PATT_DELAY + (BLAST_DELAY * 6) + 2);
+			setBlasterTarget(camMakePos(x - 4, y - 2), PATT_DELAY + (BLAST_DELAY * 9) + 2);
 			// Top side (left to right)
-			setBlasterTarget(camMakePos(x - 4, y - 4), pd + 2);
-			setBlasterTarget(camMakePos(x - 2, y - 4), pd + (bd * 3) + 2);
-			setBlasterTarget(camMakePos(x + 0, y - 4), pd + (bd * 6) + 2);
-			setBlasterTarget(camMakePos(x + 2, y - 4), pd + (bd * 9) + 2);
+			setBlasterTarget(camMakePos(x - 4, y - 4), PATT_DELAY + 2);
+			setBlasterTarget(camMakePos(x - 2, y - 4), PATT_DELAY + (BLAST_DELAY * 3) + 2);
+			setBlasterTarget(camMakePos(x + 0, y - 4), PATT_DELAY + (BLAST_DELAY * 6) + 2);
+			setBlasterTarget(camMakePos(x + 2, y - 4), PATT_DELAY + (BLAST_DELAY * 9) + 2);
 			// Right side (top to bottom)
-			setBlasterTarget(camMakePos(x + 4, y - 4), pd + 2);
-			setBlasterTarget(camMakePos(x + 4, y - 2), pd + (bd * 3) + 2);
-			setBlasterTarget(camMakePos(x + 4, y + 0), pd + (bd * 6) + 2);
-			setBlasterTarget(camMakePos(x + 4, y + 2), pd + (bd * 9) + 2);
+			setBlasterTarget(camMakePos(x + 4, y - 4), PATT_DELAY + 2);
+			setBlasterTarget(camMakePos(x + 4, y - 2), PATT_DELAY + (BLAST_DELAY * 3) + 2);
+			setBlasterTarget(camMakePos(x + 4, y + 0), PATT_DELAY + (BLAST_DELAY * 6) + 2);
+			setBlasterTarget(camMakePos(x + 4, y + 2), PATT_DELAY + (BLAST_DELAY * 9) + 2);
 			// Bottom side (right to left)
-			setBlasterTarget(camMakePos(x + 4, y + 4), pd + 2);
-			setBlasterTarget(camMakePos(x + 2, y + 4), pd + (bd * 3) + 2);
-			setBlasterTarget(camMakePos(x + 0, y + 4), pd + (bd * 6) + 2);
-			setBlasterTarget(camMakePos(x - 2, y + 4), pd + (bd * 9) + 2);
+			setBlasterTarget(camMakePos(x + 4, y + 4), PATT_DELAY + 2);
+			setBlasterTarget(camMakePos(x + 2, y + 4), PATT_DELAY + (BLAST_DELAY * 3) + 2);
+			setBlasterTarget(camMakePos(x + 0, y + 4), PATT_DELAY + (BLAST_DELAY * 6) + 2);
+			setBlasterTarget(camMakePos(x - 2, y + 4), PATT_DELAY + (BLAST_DELAY * 9) + 2);
 			// Center shot 2
-			setBlasterTarget(camMakePos(x, y), pd + 5);
+			setBlasterTarget(camMakePos(x, y), PATT_DELAY + 5);
 			break;
 	}
 }
@@ -616,7 +616,7 @@ function fireBlaster()
 	{
 		if (gameTime >= blasterTargets[i].time)
 		{
-			fireWeaponAtLoc("LasSat", blasterTargets[i].x, blasterTargets[i].y, SPAMTON);
+			fireWeaponAtLoc("LasSat", blasterTargets[i].x, blasterTargets[i].y, CAM_SPAMTON);
 			unmarkTiles(blasterTargets[i].x, blasterTargets[i].y)
 			blasterTargets.splice(i, 1); // Remove this target
 		}
@@ -626,8 +626,8 @@ function fireBlaster()
 // Start spam-queuing blaster shots around the missile silo area
 function blasterFrenzy()
 {
-	let pos1 = camRandPosInArea("spamBase1");
-	let pos2 = camRandPosInArea("spamBase1");
+	const pos1 = camRandPosInArea("spamBase1");
+	const pos2 = camRandPosInArea("spamBase1");
 
 	// Relatively long delay to give the player a chance to react
 	setBlasterTarget(pos1, camChangeOnDiff(10));
@@ -656,7 +656,7 @@ function unmarkTiles(x, y, x2, y2)
 {
 	for (let i = 0; i < markedTiles.length; i++)
 	{
-		let m = markedTiles[i];
+		const m = markedTiles[i];
 		if (camDef(x2))
 		{
 			// Area
@@ -682,7 +682,7 @@ function unmarkTiles(x, y, x2, y2)
 	// Re-mark all the remaining tiles
 	for (let i = 0; i < markedTiles.length; i++)
 	{
-		let m = markedTiles[i];
+		const m = markedTiles[i];
 		if (camDef(m.x2))
 		{
 			hackMarkTiles(m.x, m.y, m.x2, m.y2); // Area
@@ -697,22 +697,22 @@ function unmarkTiles(x, y, x2, y2)
 // If any trucks are near the player, place Pipis around themselves
 function placePipis()
 {
-	var truckList = enumDroid(SPAMTON, DROID_CONSTRUCT);
+	const truckList = enumDroid(CAM_SPAMTON, DROID_CONSTRUCT);
 	for (let i = 0, l = truckList.length; i < l; ++i)
 	{
-		var truck = truckList[i];
+		const truck = truckList[i];
 		if (truck.order !== DORDER_BUILD && truck.order !== DORDER_HELPBUILD && truck.order !== DORDER_LINEBUILD)
 		{
 			// First, see if we're close enough to the player (12 tiles)
 			if (enumRange(truck.x, truck.y, 12, CAM_HUMAN_PLAYER, false).filter((obj) => (obj.type === DROID && !isVTOL(obj))).length > 0) // Ignore flyers
 			{
 				// If so, place Pipis at this location
-				camQueueBuilding(SPAMTON, "A0Pipis", camMakePos(truck));
+				camQueueBuilding(CAM_SPAMTON, "A0Pipis", camMakePos(truck));
 			}
 			else
 			{
 				// If not, then move towards the player
-				let targets = enumDroid(CAM_HUMAN_PLAYER).filter((obj) => (
+				const targets = enumDroid(CAM_HUMAN_PLAYER).filter((obj) => (
 					propulsionCanReach("wheeled01", truck.x, truck.y, obj.x, obj.y) &&
 						(obj.type === STRUCTURE || (obj.type === DROID && !isVTOL(obj)))
 				));
@@ -788,8 +788,9 @@ function victoryCallback()
 function eventStartLevel()
 {
 	camSetExtraObjectiveMessage(_("Avoid getting blasted"));
-	var startpos = camMakePos(getObject("landingZone1"));
-	var lz = getObject("landingZone1");
+	const startpos = camMakePos(getObject("landingZone1"));
+	const lz = getObject("landingZone1");
+	const lz2 = getObject("landingZone2");
 
 	camSetStandardWinLossConditions(CAM_VICTORY_SCRIPTED, "BIG_SHOT", {
 		callback: "victoryCallback"
@@ -798,12 +799,13 @@ function eventStartLevel()
 
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
+	setNoGoArea(lz2.x, lz2.y, lz2.x2, lz2.y2, CAM_SPAMTON);
 
-	camCompleteRequiredResearch(SPAMTON_RES, SPAMTON);
-	camCompleteRequiredResearch(SPAMTON_RES, SILOS);
+	camCompleteRequiredResearch(mis_spamtonRes, CAM_SPAMTON); // Prevent the player from building on LZ #2
+	camCompleteRequiredResearch(mis_spamtonRes, SILOS);
 
 	setAlliance(SILOS, CAM_HUMAN_PLAYER, true);
-	setAlliance(SILOS, SPAMTON, true);
+	setAlliance(SILOS, CAM_SPAMTON, true);
 
 	defensePhase = false;
 	codeCount = 0;
@@ -963,8 +965,8 @@ function eventStartLevel()
 
 	let body = "Body1RECSpam"; // Spamaconda
 	if (difficulty >= HARD) body = "Body5RECSpam"; // Upgrade to Spamaconda II
-	addDroid(SPAMTON, 183, 11, "Pipis Truck", body, "HalfTrack", "", "", "Spade1Mk1Spam"); // Place in the Silo base
-	camManageTrucks(SPAMTON);
+	addDroid(CAM_SPAMTON, 183, 11, "Pipis Truck", body, "HalfTrack", "", "", "Spade1Mk1Spam"); // Place in the Silo base
+	camManageTrucks(CAM_SPAMTON);
 
 	setTimer("placePipis", camSecondsToMilliseconds(3));
 
@@ -973,7 +975,7 @@ function eventStartLevel()
 	hackAddMessage("CM3B_SILOS", PROX_MSG, CAM_HUMAN_PLAYER, false);
 	// camPlayVideos([{video: "MB3_B_MSG", type: CAMP_MSG}, {video: "MB3_B_MSG2", type: MISS_MSG}]);
 
-	changePlayerColour(SILOS, playerData[SPAMTON].colour);
+	changePlayerColour(SILOS, playerData[CAM_SPAMTON].colour);
 
 	setTimer("scanBlasterZone", camChangeOnDiff(camSecondsToMilliseconds(15)));
 	setTimer("advanceBlasterZone", camChangeOnDiff(camSecondsToMilliseconds(45)));
@@ -990,18 +992,18 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("Boulder2", "Pipis");
 
 	// Make units funny
-	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.sphlinkht, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.spcybspy, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crcybpyro, cTempl.spscybflame, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crcybcan, cTempl.spcybbison, SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.sphlinkht, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.spcybspy, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybpyro, cTempl.spscybflame, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybcan, cTempl.spcybbison, CAM_SPAMTON);
 
 	// Make structures funny
-	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", SPAMTON);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre2", SPAMTON);
-	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", SPAMTON);
-	camUpgradeOnMapStructures("PillBox4", "PillBoxBison", SPAMTON);
-	camUpgradeOnMapStructures("WallTower05", "Sys-SensoTower03", SPAMTON);
-	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-ZombieSpamton", SPAMTON);
-	camUpgradeOnMapStructures("Sys-NX-CBTower", "Spawner-SkeletonSpamton", SPAMTON);
-	camUpgradeOnMapStructures("Sys-NX-VTOL-RadTow", "Spawner-CreeperSpamton", SPAMTON);
+	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", CAM_SPAMTON);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre2", CAM_SPAMTON);
+	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", CAM_SPAMTON);
+	camUpgradeOnMapStructures("PillBox4", "PillBoxBison", CAM_SPAMTON);
+	camUpgradeOnMapStructures("WallTower05", "Sys-SensoTower03", CAM_SPAMTON);
+	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-ZombieSpamton", CAM_SPAMTON);
+	camUpgradeOnMapStructures("Sys-NX-CBTower", "Spawner-SkeletonSpamton", CAM_SPAMTON);
+	camUpgradeOnMapStructures("Sys-NX-VTOL-RadTow", "Spawner-CreeperSpamton", CAM_SPAMTON);
 }

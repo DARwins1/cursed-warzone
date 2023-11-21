@@ -63,15 +63,15 @@ var playerColour;
 
 function setUnitRank(transport)
 {
-	const DROID_EXP = [128, 64, 32, 16];
-	var droids = enumCargo(transport);
+	const droidEXP = [128, 64, 32, 16];
+	const droids = enumCargo(transport);
 
 	for (let i = 0, len = droids.length; i < len; ++i)
 	{
-		var droid = droids[i];
+		const droid = droids[i];
 		if (!camIsSystemDroid(droid))
 		{
-			setDroidExperience(droid, DROID_EXP[transporterIndex - 1]);
+			setDroidExperience(droid, droidEXP[transporterIndex - 1]);
 		}
 	}
 }
@@ -100,7 +100,7 @@ function sendPlayerTransporter()
 		return;
 	}
 
-	var droids = [];
+	let droids = [];
 	if (transporterIndex === 0)
 	{
 		droids = [
@@ -111,9 +111,9 @@ function sendPlayerTransporter()
 	}
 	else
 	{
-		var list = [
+		const list = [
 			cTempl.crmbb2ht, cTempl.crtwinhmgcanht, cTempl.crcybpod, cTempl.crtwinscorchpodht,
-			cTempl.crcybbb, cTempl.crcybcan, cTempl.crcybpyro, cTempl.crcybcool
+			cTempl.crcybbb, cTempl.crcybcan, cTempl.crcybfirew, cTempl.crcybcool
 		];
 
 		for (let i = 0; i < 10; ++i)
@@ -135,21 +135,21 @@ function sendPlayerTransporter()
 //Gives starting tech and research.
 function cam3Setup()
 {
-	const SPAMTON_RES = [
+	const mis_spamtonRes = [
 		"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 		"R-Defense-WallUpgrade02", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage02",
 		"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
 		"R-Wpn-RocketSlow-Damage01",
 	];
 
-	for (let x = 0, l = STRUCTS_ALPHA.length; x < l; ++x)
+	for (let x = 0, l = mis_structsAlpha.length; x < l; ++x)
 	{
-		enableStructure(STRUCTS_ALPHA[x], CAM_HUMAN_PLAYER);
+		enableStructure(mis_structsAlpha[x], CAM_HUMAN_PLAYER);
 	}
 
-	camCompleteRequiredResearch(ALPHA_RESEARCH_NEW, CAM_HUMAN_PLAYER);
-	camCompleteRequiredResearch(BETA_RESEARCH_NEW, CAM_HUMAN_PLAYER);
-	camCompleteRequiredResearch(SPAMTON_RES, SPAMTON);
+	camCompleteRequiredResearch(mis_alphaResearchNew, CAM_HUMAN_PLAYER);
+	camCompleteRequiredResearch(mis_betaResearchNew, CAM_HUMAN_PLAYER);
+	camCompleteRequiredResearch(mis_spamtonRes, CAM_SPAMTON);
 }
 
 // Move the group of Spamacondas from the east
@@ -197,7 +197,7 @@ function activateFinalFactories()
 // Allow the player to change to colors
 function eventChat(from, to, message)
 {
-	var colour = 0;
+	let colour = 0;
 	switch (message)
 	{
 		case "green me":
@@ -235,8 +235,34 @@ function eventChat(from, to, message)
 		case "white me":
 			colour = 10; // White
 			break;
+		case "bright blue me":
+		case "bright me":
+			colour = 11; // Bright Blue
+			break;
+		case "neon green me":
+		case "neon me":
+		case "bright green me":
+			colour = 12; // Neon Green
+			break;
+		case "infrared me":
+		case "infra red me":
+		case "infra me":
+		case "dark red me":
+			colour = 13; // Infrared
+			break;
+		case "ultraviolet me":
+		case "ultra violet me":
+		case "ultra me":
+		case "uv me":
+		case "dark blue me":
+			colour = 14; // Ultraviolet
+			break;
+		case "brown me":
+		case "dark green me":
+			colour = 15; // Brown
+			break;
 		default:
-			return; // Some other message
+			return; // Some other message; do nothing
 	}
 
 	playerColour = colour;
@@ -245,20 +271,20 @@ function eventChat(from, to, message)
 	// Make sure enemies aren't choosing conflicting colours with the player
 	if (colour === 4)
 	{
-		changePlayerColour(MOBS, 5); // Switch to blue
+		changePlayerColour(CAM_MOBS, 5); // Switch to blue
 	}
 	else
 	{
-		changePlayerColour(MOBS, 4); // Keep as red
+		changePlayerColour(CAM_MOBS, 4); // Keep as red
 	}
 
 	if (colour === 6)
 	{
-		changePlayerColour(SPAMTON, 8); // Switch to yellow
+		changePlayerColour(CAM_SPAMTON, 8); // Switch to yellow
 	}
 	else
 	{
-		changePlayerColour(SPAMTON, 6); // Keep as pink
+		changePlayerColour(CAM_SPAMTON, 6); // Keep as pink
 	}
 
 	playSound("beep6.ogg");
@@ -266,8 +292,8 @@ function eventChat(from, to, message)
 
 function eventStartLevel()
 {
-	var startpos = camMakePos(getObject("landingZone"));
-	var lz = getObject("landingZone");
+	const startpos = camMakePos(getObject("landingZone"));
+	const lz = getObject("landingZone");
 
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "NO_DONT_STEAL_MY_");
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.25)));
@@ -289,20 +315,20 @@ function eventStartLevel()
 	// Make sure enemies aren't choosing conflicting colours with the player
 	if (playerColour === 4)
 	{
-		changePlayerColour(MOBS, 5); // Switch to blue
+		changePlayerColour(CAM_MOBS, 5); // Switch to blue
 	}
 	else
 	{
-		changePlayerColour(MOBS, 4); // Keep as red
+		changePlayerColour(CAM_MOBS, 4); // Keep as red
 	}
 
 	if (playerColour === 6)
 	{
-		changePlayerColour(SPAMTON, 8); // Switch to yellow
+		changePlayerColour(CAM_SPAMTON, 8); // Switch to yellow
 	}
 	else
 	{
-		changePlayerColour(SPAMTON, 6); // Keep as pink
+		changePlayerColour(CAM_SPAMTON, 6); // Keep as pink
 	}
 
 	let playerPower = 12000;
@@ -475,15 +501,15 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("Boulder2", "Pipis");
 
 	// Make units funny
-	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.splmgw, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.spcybspy, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crcybneedle, cTempl.spcybneedle, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crtmgw, cTempl.spminimg, SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.splmgw, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.spcybspy, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybneedle, cTempl.spcybneedle, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crtmgw, cTempl.spminimg, CAM_SPAMTON);
 
 	// Make structures funny
-	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", SPAMTON);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre2", SPAMTON);
-	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", SPAMTON);
+	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", CAM_SPAMTON);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre2", CAM_SPAMTON);
+	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", CAM_SPAMTON);
 
 	queue("spamAmbush1", camSecondsToMilliseconds(35)); // Also sets up patrols
 	queue("spamAmbush2", camSecondsToMilliseconds(65)); // Also activates the first two factories

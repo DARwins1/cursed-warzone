@@ -48,6 +48,15 @@ function cam_eventChat(from, to, message)
 	{
 		__camShowVictoryConditions();
 	}
+	if (message.lastIndexOf("rank ", 0) === 0)
+	{
+		camSetExpLevel(Number(message.substring(5)));
+		camSetOnMapEnemyUnitExp();
+	}
+	if (message.lastIndexOf("prop ", 0) === 0)
+	{
+		camSetPropulsionTypeLimit(Number(message.substring(5)));
+	}
 	if (!camIsCheating())
 	{
 		return;
@@ -78,15 +87,15 @@ function cam_eventChat(from, to, message)
 	{
 		while (true) // eslint-disable-line no-constant-condition
 		{
-			var research = enumResearch();
+			const research = enumResearch();
 			if (research.length === 0)
 			{
 				break;
 			}
 			for (let i = 0, len = research.length; i < len; ++i)
 			{
-				var researchName = research[i].name;
-				completeResearch(researchName, CAM_HUMAN_PLAYER);
+				const __RESEARCH_NAME = research[i].name;
+				completeResearch(__RESEARCH_NAME, CAM_HUMAN_PLAYER);
 			}
 		}
 	}
@@ -131,6 +140,7 @@ function cam_eventStartLevel()
 	__camBlackOut = false;
 	__camMobGlobalGroup = camNewGroup();
 	__camAllowSilverfishSpawn = false;
+	__camExpLevel = 0;
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
 	__camAiPowerReset(); //grant power to the AI
 	setTimer("__camSpawnVtols", camSecondsToMilliseconds(0.5));
@@ -229,10 +239,16 @@ function cam_eventDroidBuilt(droid, structure)
 	{
 		return;
 	}
+	if (camGetNexusState() && droid.player === CAM_NEXUS && __camNextLevel === "CAM3C" && camRand(100) < 7)
+	{
+		// Occasionally hint that NEXUS is producing units on Gamma 5.
+		playSound(CAM_PRODUCTION_COMPLETE_SND);
+	}
 	if (!camDef(__camFactoryInfo))
 	{
 		return;
 	}
+	camSetDroidExperience(droid);
 	__camAddDroidToFactoryGroup(droid, structure);
 }
 
@@ -245,21 +261,21 @@ function cam_eventStructureBuilt(structure, droid)
 	if (structure.name === _("Explosive Drum"))
 	{
 		// Swap out the structure for the feature object
-		let pos = {x: structure.x, y: structure.y};
+		const pos = {x: structure.x, y: structure.y};
 		camSafeRemoveObject(structure);
 		addFeature("ExplosiveDrum", pos.x, pos.y);
 	}
 	else if (structure.name === _("Nuclear Drum"))
 	{
 		// Swap out the structure for the feature object
-		let pos = {x: structure.x, y: structure.y};
+		const pos = {x: structure.x, y: structure.y};
 		camSafeRemoveObject(structure);
 		addFeature("NuclearDrum", pos.x, pos.y);
 	}
 	else if (structure.name === _("Pipis"))
 	{
 		// Swap out the structure for the feature object
-		let pos = {x: structure.x, y: structure.y};
+		const pos = {x: structure.x, y: structure.y};
 		camSafeRemoveObject(structure);
 		if (camRand(100) < 1)
 		{
@@ -274,27 +290,27 @@ function cam_eventStructureBuilt(structure, droid)
 	{
 		// Check if this structure has a label and/or group assigned to it
 		// FIXME: O(n) lookup here
-		let label = (getLabel(structure));
-		let group = (structure.group);
+		const label = (getLabel(structure));
+		const __GROUP_ID = (structure.group);
 
 		// Replace the structure
-		let structInfo = {x: structure.x * 128, y: structure.y * 128, player: structure.player};
+		const structInfo = {x: structure.x * 128, y: structure.y * 128, player: structure.player};
 		camSafeRemoveObject(structure, false);
-		let newStruct = addStructure(__camFungibleCanHardList[camRand(__camFungibleCanHardList.length)], structInfo.player, structInfo.x, structInfo.y);
+		const newStruct = addStructure(__camFungibleCanHardList[camRand(__camFungibleCanHardList.length)], structInfo.player, structInfo.x, structInfo.y);
 
 		if (camDef(label)) 
 		{
 			addLabel(newStruct, label);
 		}
-		if (group !== null)
+		if (__GROUP_ID !== null)
 		{
-			groupAdd(group, newStruct);
+			groupAdd(__GROUP_ID, newStruct);
 		}
 	}
 	else if (structure.name === _("Mystery Box"))
 	{
 		// Destroy the box and cause a random effect at its location
-		let pos = {x: structure.x, y: structure.y};
+		const pos = {x: structure.x, y: structure.y};
 		camSafeRemoveObject(structure, true);
 		camRandomEffect(pos);
 	}
@@ -311,9 +327,9 @@ function cam_eventDestroyed(obj)
 			if (obj.body === "Body1RECSpam" || obj.body === "Body5RECSpam" || obj.body === "Body11ABTSpam")
 			{
 				// Explode the Pipis Truck
-				var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
+				const __BOOM_BAIT_ID = addDroid(10, obj.x, obj.y, "Boom Bait",
 					"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
-				queue("__camDetonatePipis", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
+				queue("__camDetonatePipis", __CAM_TICKS_PER_FRAME, __BOOM_BAIT_ID + ""); // ...then blow it up
 			}
 		}
 		else if (camDef(obj.weapons[0]) && (obj.weapons[0].id === "CyborgSpyChaingun" || obj.weapons[0].id === "CyborgSpyChaingunSpam")
@@ -341,26 +357,26 @@ function cam_eventDestroyed(obj)
 	{
 		if (obj.name === _("Explosive Drum"))
 		{
-			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
+			const __BOOM_BAIT_ID = addDroid(10, obj.x, obj.y, "Boom Bait",
 				"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
-			queue("__camDetonateDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
+			queue("__camDetonateDrum", __CAM_TICKS_PER_FRAME, __BOOM_BAIT_ID + ""); // ...then blow it up
 		}
 		else if (obj.name === _("Nuclear Drum"))
 		{
-			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
+			const __BOOM_BAIT_ID = addDroid(10, obj.x, obj.y, "Boom Bait",
 				"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
-			queue("__camDetonateNukeDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
+			queue("__camDetonateNukeDrum", __CAM_TICKS_PER_FRAME, __BOOM_BAIT_ID + ""); // ...then blow it up
 		}
 		else if (obj.name === _("Pipis") || obj.name === _("Ms. Pipis") || obj.name === _("Pipis (Dummy)") || obj.name === _("Ms. Pipis (Dummy)"))
 		{
-			var boomBaitId = addDroid(10, obj.x, obj.y, "Boom Bait",
+			const __BOOM_BAIT_ID = addDroid(10, obj.x, obj.y, "Boom Bait",
 				"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
-			queue("__camDetonatePipis", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
+			queue("__camDetonatePipis", __CAM_TICKS_PER_FRAME, __BOOM_BAIT_ID + ""); // ...then blow it up
 		}
 		else if (obj.name === _("*Wreck0*") || obj.name === _("*Wreck1*"))
 		{
 			// Spawn Spamton unit(s)
-			let unitChoices = [
+			const unitChoices = [
 				"zombie", "skeleton", "creeper",
 			 	"bison", "spy", "needler",
 			 	"miniMGs",
@@ -371,43 +387,43 @@ function cam_eventDestroyed(obj)
 			{
 				case "zombie":
 					// Spawn a Zombie
-					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), // Wreck features are 2x2
+					groupAdd(__camMobGlobalGroup, addDroid(CAM_SPAMTON, obj.x - camRand(2), obj.y - camRand(2), // Wreck features are 2x2
 						_("Spamton Zombie"), "ZombieBodySpam", "CyborgLegs", "", "", "Cyb-Wpn-ZmbieMeleeSpam"
 					));
 					break;
 				case "skeleton":
 					// Spawn a Skeleton
-					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+					groupAdd(__camMobGlobalGroup, addDroid(CAM_SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
 						_("Spamton Skeleton"), "SkeletonBodySpam", "CyborgLegs", "", "", "Cyb-Wpn-SkelBowSpam"
 					));
 					break;
 				case "creeper":
 					// Spawn a Creeper
-					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+					groupAdd(__camMobGlobalGroup, addDroid(CAM_SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
 						_("Spamton Creeper"), "CreeperBodySpam", "CyborgLegs", "", "", "Cyb-Wpn-CreeperDudSpam"
 					));
 					break;
 				case "bison":
 					// Spawn a Bison Cyborg
-					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+					groupAdd(__camMobGlobalGroup, addDroid(CAM_SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
 						_("Spamton Bison Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBisonSpam"
 					));
 					break;
 				case "spy":
 					// Spawn a Spy Cyborg
-					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+					groupAdd(__camMobGlobalGroup, addDroid(CAM_SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
 						_("Spamton Spy Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgSpyChaingunSpam"
 					));
 					break;
 				case "needler":
 					// Spawn a Needler Cyborg
-					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+					groupAdd(__camMobGlobalGroup, addDroid(CAM_SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
 						_("Spamton Needler Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Rail1Spam"
 					));
 					break;
 				case "needler":
 					// Spawn a Super Flamer Cyborg (Hard+ only)
-					groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+					groupAdd(__camMobGlobalGroup, addDroid(CAM_SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
 						_("Spamton Super Flamer Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-HFlamerSpam"
 					));
 					break;
@@ -415,7 +431,7 @@ function cam_eventDestroyed(obj)
 					// Spawn 4 Mini Spamacondas
 					for (let i = 0; i < 4; i++)
 					{
-						groupAdd(__camMobGlobalGroup, addDroid(SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
+						groupAdd(__camMobGlobalGroup, addDroid(CAM_SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
 							_("Mini Machinegun Spamaconda Wheels"), "Body1MiniSpam", "wheeled01", "", "", "MGMini"
 						));
 					}
@@ -432,13 +448,13 @@ function cam_eventDestroyed(obj)
 			let spawnChance = 0;
 			switch (obj.player)
 			{
-				case BONZI_BUDDY:
+				case CAM_BONZI_BUDDY:
 					spawnChance = 20;
 					break;
-				case SPAMTON:
+				case CAM_SPAMTON:
 					spawnChance = 50;
 					break;
-				case MOBS:
+				case CAM_MOBS:
 					spawnChance = 100;
 					break;
 				default:
@@ -448,7 +464,7 @@ function cam_eventDestroyed(obj)
 			if (camRand(100) < spawnChance)
 			{
 				// Spawn a Silverfish out of the destroyed wall
-				groupAdd(__camMobGlobalGroup, addDroid(MOBS, obj.x, obj.y, 
+				groupAdd(__camMobGlobalGroup, addDroid(CAM_MOBS, obj.x, obj.y, 
 					_("Silverfish"), "SilverfishBody", "CyborgLegs", "", "", "Cyb-Wpn-SilvFishMelee"
 				));
 			}
@@ -482,8 +498,18 @@ function cam_eventTransporterExit(transport)
 			__camVictoryData.reinforcements > -1) ||
 			__camWinLossCallback === CAM_VICTORY_STANDARD))
 		{
-			const REINFORCEMENTS_AVAILABLE_SOUND = "pcv440.ogg";
-			playSound(REINFORCEMENTS_AVAILABLE_SOUND);
+			const __REINFORCEMENTS_AVAILABLE_SOUND = "pcv440.ogg";
+			playSound(__REINFORCEMENTS_AVAILABLE_SOUND);
+			//Show the transporter reinforcement timer when it leaves for the first time.
+			if (__camWinLossCallback === CAM_VICTORY_OFFWORLD)
+			{
+				setReinforcementTime(__camVictoryData.reinforcements);
+			}
+		}
+		// Show how long until the transporter comes back on Beta End.
+		if (__camWinLossCallback === CAM_VICTORY_TIMEOUT)
+		{
+			setReinforcementTime(__camVictoryData.reinforcements);
 		}
 	}
 
@@ -510,6 +536,12 @@ function cam_eventTransporterLanded(transport)
 	{
 		// Swap any Fungible Cannons or Warranty-Expired Lancers that arrived on the transport
 		__camUpdateSwappableUnits();
+
+		// Make the transporter timer on Beta End disappear, since the transporter has arrived.
+		if (__camWinLossCallback === CAM_VICTORY_TIMEOUT)
+		{
+			setReinforcementTime(-1);
+		}
 	}
 }
 
@@ -522,8 +554,8 @@ function cam_eventMissionTimeout()
 	}
 	else if (__camWinLossCallback !== CAM_VICTORY_SCRIPTED)
 	{
-		var won = camCheckExtraObjective();
-		if (!won)
+		const __WON = camCheckExtraObjective();
+		if (!__WON)
 		{
 			__camGameLost();
 			return;
@@ -550,17 +582,18 @@ function cam_eventAttacked(victim, attacker)
 			{
 				__updateNeedlerLog(victim);
 			}
+
 			// Teleport Enderman
 			if (victim.body === "EndermanBody" && camDef(attacker) && camRand(100) < 50)
 			{
 				// Store Enderman health and group
-				let endermanInfo = {health: victim.health, group: victim.group};
+				const endermanInfo = {health: victim.health, group: victim.group};
 				// Find a random point within 8 tiles of the attacker
 				let tpPos = camGenerateRandomMapCoordinateWithinRadius(camMakePos(attacker), 8);
 				if (tpPos === null) tpPos = camMakePos(victim);
 
 				// "Teleport" the Enderman there by making a copy at the position and then removing the original
-				let newMan = addDroid(victim.player, tpPos.x, tpPos.y, "Enderman",
+				const newMan = addDroid(victim.player, tpPos.x, tpPos.y, "Enderman",
 				"EndermanBody", "CyborgLegs", "", "", "Cyb-Wpn-EnderMelee");
 				camSafeRemoveObject(victim);
 
@@ -575,9 +608,10 @@ function cam_eventAttacked(victim, attacker)
 					// The Enderman didn't have a group, so add it to the global group
 					groupAdd(__camMobGlobalGroup, newMan);
 				}
-				queue("__camPlayTeleportSfx", CAM_TICKS_PER_FRAME, newMan.id + "");
+				queue("__camPlayTeleportSfx", __CAM_TICKS_PER_FRAME, newMan.id + "");
 				return;
 			}
+
 			// Feign death for Spy Cyborgs (if they aren't on cooldown)
 			if (camDef(victim.weapons[0]) && victim.weapons[0].id === "CyborgSpyChaingun"
 			 && camDef(attacker) && victim.health < 25 && camFeignCooldownCheck(victim.id))
@@ -588,59 +622,56 @@ function cam_eventAttacked(victim, attacker)
 			if (victim.body === "SilverfishBody")
 			{
 				// Try spawning more Silverfish out of nearby structures
-
-				let structList = enumRange(victim.x, victim.y, 5, ALL_PLAYERS, false).filter((obj) =>
-					obj.type === STRUCTURE && (obj.health < 50 || (obj.player === MOBS && !obj.isSensor))
+				const structList = enumRange(victim.x, victim.y, 5, ALL_PLAYERS, false).filter((obj) =>
+					obj.type === STRUCTURE && (obj.health < 50 || (obj.player === CAM_MOBS && !obj.isSensor))
 				);
 				for (let i = 0; i < structList.length; i++)
 				{
 					// Spawn a new Silverfish
-					let pos = camMakePos(structList[i]);
-					groupAdd(__camMobGlobalGroup, addDroid(MOBS, pos.x, pos.y, 
+					const pos = camMakePos(structList[i]);
+					groupAdd(__camMobGlobalGroup, addDroid(CAM_MOBS, pos.x, pos.y, 
 						_("Silverfish"), "SilverfishBody", "CyborgLegs", "", "", "Cyb-Wpn-SilvFishMelee"
 					));
 
 					camSafeRemoveObject(structList[i], true); // And blow up the structure
 				}
 			}
-			if (victim.player !== CAM_HUMAN_PLAYER && !allianceExistsBetween(CAM_HUMAN_PLAYER, victim.player))
+
+			//Try dynamically creating a group of nearby droids not part
+			//of a group. Only supports those who can hit ground units.
+			if (victim.group === null)
 			{
-				//Try dynamically creating a group of nearby droids not part
-				//of a group. Only supports those who can hit ground units.
-				if (victim.group === null)
+				const __DEFAULT_RADIUS = 6;
+				const loc = {x: victim.x, y: victim.y};
+				const droids = enumRange(loc.x, loc.y, __DEFAULT_RADIUS, victim.player, false).filter((obj) => (
+					obj.type === DROID &&
+					obj.group === null &&
+					(obj.canHitGround || obj.isSensor) &&
+					obj.droidType !== DROID_CONSTRUCT &&
+					!camIsTransporter(obj) &&
+					!camInNeverGroup(obj)
+				));
+				if (droids.length === 0)
 				{
-					const DEFAULT_RADIUS = 6;
-					var loc = {x: victim.x, y: victim.y};
-					var droids = enumRange(loc.x, loc.y, DEFAULT_RADIUS, victim.player, false).filter((obj) => (
-						obj.type === DROID &&
-						obj.group === null &&
-						(obj.canHitGround || obj.isSensor) &&
-						obj.droidType !== DROID_CONSTRUCT &&
-						!camIsTransporter(obj) &&
-						!camInNeverGroup(obj)
-					));
-					if (droids.length === 0)
-					{
-						return;
-					}
-					camManageGroup(camMakeGroup(droids), CAM_ORDER_ATTACK, {
-						count: -1,
-						regroup: false
-						// repair: 70
-					});
+					return;
 				}
+				camManageGroup(camMakeGroup(droids), CAM_ORDER_ATTACK, {
+					count: -1,
+					regroup: false,
+					repair: 70
+				});
+			}
 
-				// if (camDef(__camGroupInfo[victim.group]))
+			if (camDef(__camGroupInfo[victim.group]))
+			{
+				__camGroupInfo[victim.group].lastHit = gameTime;
+
+				//Increased Nexus intelligence if struck on cam3-4
+				// if (__camNextLevel === CAM_GAMMA_OUT)
 				// {
-				// 	__camGroupInfo[victim.group].lastHit = gameTime;
-
-				// 	//Increased Nexus intelligence if struck on cam3-4
-				// 	if (__camNextLevel === CAM_GAMMA_OUT)
+				// 	if (__camGroupInfo[victim.group].order === CAM_ORDER_PATROL)
 				// 	{
-				// 		if (__camGroupInfo[victim.group].order === CAM_ORDER_PATROL)
-				// 		{
-				// 			__camGroupInfo[victim.group].order = CAM_ORDER_ATTACK;
-				// 		}
+				// 		__camGroupInfo[victim.group].order = CAM_ORDER_ATTACK;
 				// 	}
 				// }
 			}
@@ -653,17 +684,17 @@ function cam_eventGameLoaded()
 {
 	receiveAllEvents(true);
 	__camSaveLoading = true;
-	const SCAV_KEVLAR_MISSIONS = [
+	const scavKevlarMissions = [
 		"CAM_1CA", "SUB_1_4AS", "SUB_1_4A", "SUB_1_5S", "SUB_1_5",
 		"CAM_1A-C", "SUB_1_7S", "SUB_1_7", "SUB_1_DS", "CAM_1END", "SUB_2_5S"
 	];
 
 	//Need to set the scavenger kevlar vests when loading a save from later Alpha
 	//missions or else it reverts to the original texture.
-	for (let i = 0, l = SCAV_KEVLAR_MISSIONS.length; i < l; ++i)
+	for (let i = 0, l = scavKevlarMissions.length; i < l; ++i)
 	{
-		var mission = SCAV_KEVLAR_MISSIONS[i];
-		if (__camNextLevel === mission)
+		const __MISSION = scavKevlarMissions[i];
+		if (__camNextLevel === __MISSION)
 		{
 			if (tilesetType === "ARIZONA")
 			{
@@ -687,6 +718,13 @@ function cam_eventGameLoaded()
 		__camSunIntensity.sr, __camSunIntensity.sg, __camSunIntensity.sb
 	);
 
+	if (__camWinLossCallback === CAM_VICTORY_TIMEOUT
+		&& enumDroid(CAM_HUMAN_PLAYER, DROID_SUPERTRANSPORTER).length === 0)
+	{
+		// If the transport is gone on Beta End, put a timer up to show when it'll be back
+		setReinforcementTime(__camVictoryData.reinforcements);
+	}
+
 	//Subscribe to eventGroupSeen again.
 	camSetEnemyBases();
 
@@ -699,27 +737,27 @@ function cam_eventGameLoaded()
 //Plays Nexus sounds if nexusActivated is true.
 function cam_eventObjectTransfer(obj, from)
 {
-	if (from === CAM_HUMAN_PLAYER && obj.player === NEXUS && __camNexusActivated === true)
+	if (camGetNexusState() && from === CAM_HUMAN_PLAYER && obj.player === CAM_NEXUS)
 	{
-		var snd;
+		let snd;
 		if (obj.type === STRUCTURE)
 		{
 			if (obj.stattype === DEFENSE)
 			{
-				snd = DEFENSE_ABSORBED;
+				snd = CAM_DEFENSE_ABSORBED_SND;
 			}
 			else if (obj.stattype === RESEARCH_LAB)
 			{
-				snd = RES_ABSORBED;
+				snd = CAM_RES_ABSORBED_SND;
 			}
 			else
 			{
-				snd = STRUCTURE_ABSORBED;
+				snd = CAM_STRUCTURE_ABSORBED_SND;
 			}
 		}
 		else if (obj.type === DROID)
 		{
-			snd = UNIT_ABSORBED;
+			snd = CAM_UNIT_ABSORBED_SND;
 		}
 
 		if (camDef(snd))
@@ -730,6 +768,9 @@ function cam_eventObjectTransfer(obj, from)
 	}
 	else if (from === CAM_HUMAN_PLAYER && obj.player === 10 && obj.type === DROID)
 	{
+		// The player's Fungible Cannons and Warranty-Expired Lancers are donated to player 10, 
+		// modified, then returned to the player.
+		// This is all done just so building these units from multiple factories doesn't break.
 		completeResearch(__camFungibleCanSwapList[camRand(__camFungibleCanSwapList.length)], 10, true);
 		if (camRand(3) === 0) // 33% chance
 		{
@@ -743,7 +784,7 @@ function cam_eventObjectTransfer(obj, from)
 		}
 		donateObject(obj, CAM_HUMAN_PLAYER);
 	}
-	else if (obj.player === SPAMTON)
+	else if (obj.player === CAM_SPAMTON)
 	{
 		__camSpamtonize();
 	}

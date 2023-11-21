@@ -2,15 +2,15 @@
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
-var NPScout; // Sensor scout
-const SCAVENGER_RES = [
+var CScout; // Sensor scout
+const mis_scavengerRes = [
 	"R-Wpn-MG-Damage01",
 ];
 
 camAreaEvent("AttackArea1", function(droid)
 {
-	queue("camCallOnce", camSecondsToMilliseconds(2), "doNPRetreat");
-	camManageGroup(camMakeGroup("enemy1Force1", SCAV_6), CAM_ORDER_ATTACK, {
+	queue("camCallOnce", camSecondsToMilliseconds(2), "doClippyRetreat");
+	camManageGroup(camMakeGroup("enemy1Force1", CAM_SCAV_6), CAM_ORDER_ATTACK, {
 		pos: camMakePos("enemy1Force1Pos"),
 		fallback: camMakePos("enemy1Force1Fallback"),
 		morale: 50
@@ -35,13 +35,13 @@ camAreaEvent("AttackArea2", function(droid)
 	camEnableFactory("base4factory");
 });
 
-function doNPRetreat()
+function doClippyRetreat()
 {
-	var pos = camMakePos("NPSensorTurn");
-	if (NPScout)
+	const pos = camMakePos("NPSensorTurn");
+	if (CScout)
 	{
-		camTrace("New Paradigm sensor droid is retreating");
-		orderDroidLoc(NPScout, DORDER_MOVE, pos.x, pos.y);
+		camTrace("Clippy sensor droid is retreating");
+		orderDroidLoc(CScout, DORDER_MOVE, pos.x, pos.y);
 	}
 	else
 	{
@@ -51,9 +51,9 @@ function doNPRetreat()
 
 function eventDestroyed(obj)
 {
-	if (NPScout && (obj.id === NPScout.id))
+	if (CScout && (obj.id === CScout.id))
 	{
-		NPScout = null;
+		CScout = null;
 		camUnmarkTiles("NPSensorTurn");
 		camUnmarkTiles("NPSensorRemove");
 	}
@@ -61,45 +61,43 @@ function eventDestroyed(obj)
 
 camAreaEvent("NPSensorTurn", function(droid)
 {
-	var pos = camMakePos("NPSensorRemove");
-	orderDroidLoc(NPScout, DORDER_MOVE, pos.x, pos.y);
+	const pos = camMakePos("NPSensorRemove");
+	orderDroidLoc(CScout, DORDER_MOVE, pos.x, pos.y);
 });
 
 camAreaEvent("NPSensorRemove", function(droid)
 {
-	removeObject(NPScout, false);
+	removeObject(CScout, false);
 });
 
 function eventStartLevel()
 {
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "SUB_1_1S");
-	var startpos = getObject("startPosition");
-	var lz = getObject("landingZone");
+	const startpos = getObject("startPosition");
+	const lz = getObject("landingZone");
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(1)));
-	setAlliance(NEW_PARADIGM, SCAV_6, true);
-	setAlliance(NEW_PARADIGM, SCAV_7, true);
-	setAlliance(SCAV_6, SCAV_7, true);
+	setAlliance(CAM_CLIPPY, CAM_SCAV_6, true);
+	setAlliance(CAM_CLIPPY, CAM_SCAV_7, true);
+	setAlliance(CAM_SCAV_6, CAM_SCAV_7, true);
 
-	// Change the "New Paradigm" to white if the player is not white
+	// Change Clippy to white if the player is not white
 	// otherwise, set them to gray
-	// NOTE: CLIPPY and NEW_PARADIGM are the same player number!
-	// I'm just too lazy to update all references of the New Paradigm in this one script file.
 	if (playerData[0].colour != 10)
 	{
-		changePlayerColour(CLIPPY, 10); // Set Clippy to white
+		changePlayerColour(CAM_CLIPPY, 10); // Set Clippy to white
 	}
 	else
 	{
-		changePlayerColour(CLIPPY, 2); // Set Clippy to gray
+		changePlayerColour(CAM_CLIPPY, 2); // Set Clippy to gray
 	}
 
 	if (difficulty === INSANE)
 	{
-		camCompleteRequiredResearch(SCAVENGER_RES, 6);
-		camCompleteRequiredResearch(SCAVENGER_RES, 7);
+		camCompleteRequiredResearch(mis_scavengerRes, 6);
+		camCompleteRequiredResearch(mis_scavengerRes, 7);
 	}
 
 	camSetArtifacts({
@@ -177,11 +175,11 @@ function eventStartLevel()
 	//Timed attacks if player dawdles
 	queue("eventAreaAttackArea2", camChangeOnDiff(camMinutesToMilliseconds(6)));
 
-	// New Paradigm sensor scout. Now comes with the map!
-	NPScout = getObject("npscout");
-	camNeverGroupDroid(NPScout);
-	var pos = getObject("NPSensorWatch");
-	orderDroidLoc(NPScout, DORDER_MOVE, pos.x, pos.y);
+	// Clippy sensor scout.
+	CScout = getObject("npscout");
+	camNeverGroupDroid(CScout);
+	const pos = getObject("NPSensorWatch");
+	orderDroidLoc(CScout, DORDER_MOVE, pos.x, pos.y);
 
 	// Replace all snowy trees with funny explosive barrels
 	camUpgradeOnMapFeatures("TreeSnow3", "ExplosiveDrum");

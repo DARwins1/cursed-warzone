@@ -2,7 +2,7 @@ include("script/campaign/transitionTech.js");
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
-const TRANSPORT_LIMIT = 4; // Number of transports brought when starting from the menu
+const MIS_TRANSPORT_LIMIT = 4; // Number of transports brought when starting from the menu
 var transporterIndex; // Number of transport loads sent into the level by the player
 var mobWaveIndex; // Number mob attack waves 
 var startedFromMenu;
@@ -53,12 +53,12 @@ camAreaEvent("bbAttackTrigger", function(droid)
 
 function getDroidsForBBLZ()
 {
-	var droids = [];
-	var count = 6 + difficulty; // 6 to 10 units
-	var list;
-	var templates = ["drift", "heavy", "artillery"];
+	const droids = [];
+	const COUNT = 6 + difficulty; // 6 to 10 units
+	let list;
+	const groupTypes = ["drift", "heavy", "artillery"];
 
-	switch (templates[camRand(templates.length)]) // Choose a random group template
+	switch (groupTypes[camRand(groupTypes.length)]) // Choose a random group template
 	{
 		case "drift": // All drifty boys
 			list = [
@@ -80,7 +80,7 @@ function getDroidsForBBLZ()
 			break;
 	}
 
-	for (let i = 0; i < count; ++i)
+	for (let i = 0; i < COUNT; ++i)
 	{
 		droids.push(list[i]);
 	}
@@ -91,11 +91,11 @@ function getDroidsForBBLZ()
 //Send a Bonzi Buddy transport
 function sendBBTransporter()
 {
-	var nearbyDefense = enumArea("bbBaseGroup2", BONZI_BUDDY, false);
+	const nearbyDefense = enumArea("bbBaseGroup2", CAM_BONZI_BUDDY, false);
 
 	if (nearbyDefense.length > 0)
 	{
-		camSendReinforcement(BONZI_BUDDY, camMakePos("bbLandingZone"), getDroidsForBBLZ(),
+		camSendReinforcement(CAM_BONZI_BUDDY, camMakePos("bbLandingZone"), getDroidsForBBLZ(),
 			CAM_REINFORCE_TRANSPORT, {
 				entry: { x: 124, y: 20 },
 				exit: { x: 124, y: 20 }
@@ -117,13 +117,13 @@ function sendPlayerTransporter()
 		transporterIndex = 0;
 	}
 
-	if (transporterIndex === TRANSPORT_LIMIT)
+	if (transporterIndex === MIS_TRANSPORT_LIMIT)
 	{
 		removeTimer("sendPlayerTransporter");
 		return;
 	}
 
-	var droids = [];
+	let droids = [];
 	if (transporterIndex === 0)
 	{
 		droids = [
@@ -134,7 +134,7 @@ function sendPlayerTransporter()
 	}
 	else
 	{
-		var list = [
+		const list = [
 			cTempl.crlbbw, cTempl.crlcanw, cTempl.crlmgw, cTempl.crlscorchw,
 			cTempl.crcybbb, cTempl.crcybcan, cTempl.crcybpyro, cTempl.crcybcool
 		];
@@ -166,15 +166,15 @@ function mobAttackWave()
 	}
 
 	let spawnPos = camMakePos("mobAttackPos")
-	if (enumRange(spawnPos.x, spawnPos.y, CAM_SPAWNER_RANGE, CAM_HUMAN_PLAYER, false).length > 0)
+	if (enumRange(spawnPos.x, spawnPos.y, 16, CAM_HUMAN_PLAYER, false).length > 0)
 	{
 		// Player too close, let the spawners do their thing on their own
 		mobWaveIndex++;
 		return;
 	}
 
-	var mobCount = Math.min(mobWaveIndex + 3, difficulty + 5);
-	var list = [];
+	const MOB_COUNT = Math.min(mobWaveIndex + 3, difficulty + 5);
+	const list = [];
 	// Allow zombies if the zombie spawner is alive
 	if (getObject("waveZombieSpawner") !== null) list.push(cTempl.zombie);
 	// Allow baby zombies if the zombie spawner is alive and 4 waves have already occured
@@ -184,47 +184,47 @@ function mobAttackWave()
 	// Allow creepers if the creeper spawner is alive and 2 waves have already occured
 	if (getObject("waveCreeperSpawner") !== null && mobWaveIndex >= 2) list.push(cTempl.creeper); 
 
-	var droids = [];
-	for (let i = 0; i < mobCount; ++i)
+	const droids = [];
+	for (let i = 0; i < MOB_COUNT; ++i)
 	{
 		droids.push(list[camRand(list.length)]);
 	}
 
 	mobWaveIndex++;
-	camSendReinforcement(MOBS, spawnPos, droids, CAM_REINFORCE_GROUND);
+	camSendReinforcement(CAM_MOBS, spawnPos, droids, CAM_REINFORCE_GROUND);
 }
 
 //Gives starting tech and research.
 function cam2Setup()
 {
-	const BONZI_RES = [
+	const bonziRes = [
 		"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 		"R-Defense-WallUpgrade01", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage01",
 	];
 
-	for (let x = 0, l = STRUCTS_ALPHA.length; x < l; ++x)
+	for (let x = 0, l = mis_structsAlpha.length; x < l; ++x)
 	{
-		enableStructure(STRUCTS_ALPHA[x], CAM_HUMAN_PLAYER);
+		enableStructure(mis_structsAlpha[x], CAM_HUMAN_PLAYER);
 	}
 
-	camCompleteRequiredResearch(BONZI_RES, BONZI_BUDDY);
-	camCompleteRequiredResearch(ALPHA_RESEARCH_NEW, CAM_HUMAN_PLAYER);
+	camCompleteRequiredResearch(bonziRes, CAM_BONZI_BUDDY);
+	camCompleteRequiredResearch(mis_alphaResearchNew, CAM_HUMAN_PLAYER);
 }
 
 //Get some higher rank droids.
 function setUnitRank(transport)
 {
-	const DROID_EXP = [32, 16, 8, 4];
-	var droids;
+	const droidEXP = [32, 16, 8, 4];
+	let droids;
 
 	droids = enumCargo(transport);
 
 	for (let i = 0, len = droids.length; i < len; ++i)
 	{
-		var droid = droids[i];
+		const droid = droids[i];
 		if (!camIsSystemDroid(droid))
 		{
-			setDroidExperience(droid, DROID_EXP[transporterIndex - 1]);
+			setDroidExperience(droid, droidEXP[transporterIndex - 1]);
 		}
 	}
 }
@@ -280,7 +280,7 @@ function eventTransporterLanded(transport)
 // Allow the player to change to colors
 function eventChat(from, to, message)
 {
-	var colour = 0;
+	let colour = 0;
 	switch (message)
 	{
 		case "green me":
@@ -318,8 +318,34 @@ function eventChat(from, to, message)
 		case "white me":
 			colour = 10; // White
 			break;
+		case "bright blue me":
+		case "bright me":
+			colour = 11; // Bright Blue
+			break;
+		case "neon green me":
+		case "neon me":
+		case "bright green me":
+			colour = 12; // Neon Green
+			break;
+		case "infrared me":
+		case "infra red me":
+		case "infra me":
+		case "dark red me":
+			colour = 13; // Infrared
+			break;
+		case "ultraviolet me":
+		case "ultra violet me":
+		case "ultra me":
+		case "uv me":
+		case "dark blue me":
+			colour = 14; // Ultraviolet
+			break;
+		case "brown me":
+		case "dark green me":
+			colour = 15; // Brown
+			break;
 		default:
-			return; // Some other message
+			return; // Some other message; do nothing
 	}
 
 	playerColour = colour;
@@ -328,20 +354,20 @@ function eventChat(from, to, message)
 	// Make sure enemies aren't choosing conflicting colours with the player
 	if (colour === 4)
 	{
-		changePlayerColour(MOBS, 5); // Switch to blue
+		changePlayerColour(CAM_MOBS, 5); // Switch to blue
 	}
 	else
 	{
-		changePlayerColour(MOBS, 4); // Keep as red
+		changePlayerColour(CAM_MOBS, 4); // Keep as red
 	}
 
 	if (colour === 9)
 	{
-		changePlayerColour(BONZI_BUDDY, 3); // Switch to black
+		changePlayerColour(CAM_BONZI_BUDDY, 3); // Switch to black
 	}
 	else
 	{
-		changePlayerColour(BONZI_BUDDY, 9); // Keep as purple
+		changePlayerColour(CAM_BONZI_BUDDY, 9); // Keep as purple
 	}
 
 	playSound("beep6.ogg");
@@ -350,9 +376,9 @@ function eventChat(from, to, message)
 function eventStartLevel()
 {
 	const PLAYER_POWER = 5000;
-	var startpos = camMakePos(getObject("landingZone"));
-	var lz = getObject("landingZone"); //player lz
-	var enemyLz = getObject("bbLandingZone");
+	const startpos = camMakePos(getObject("landingZone"));
+	const lz = getObject("landingZone"); //player lz
+	const enemyLz = getObject("bbLandingZone");
 
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CAVE_UPDATE_PART_4");
 	setReinforcementTime(LZ_COMPROMISED_TIME);
@@ -380,20 +406,20 @@ function eventStartLevel()
 	// Make sure enemies aren't choosing conflicting colours with the player
 	if (playerColour === 4)
 	{
-		changePlayerColour(MOBS, 5); // Switch to blue
+		changePlayerColour(CAM_MOBS, 5); // Switch to blue
 	}
 	else
 	{
-		changePlayerColour(MOBS, 4); // Keep as red
+		changePlayerColour(CAM_MOBS, 4); // Keep as red
 	}
 
 	if (playerColour === 9)
 	{
-		changePlayerColour(BONZI_BUDDY, 3); // Switch to black
+		changePlayerColour(CAM_BONZI_BUDDY, 3); // Switch to black
 	}
 	else
 	{
-		changePlayerColour(BONZI_BUDDY, 9); // Keep as purple
+		changePlayerColour(CAM_BONZI_BUDDY, 9); // Keep as purple
 	}
 
 	camSetEnemyBases({
@@ -503,24 +529,24 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("TreeSnow1", "GiantDoorVert");
 
 	// Make on-map units funny
-	camUpgradeOnMapTemplates(cTempl.npcybr, cTempl.skeleton, MOBS);
-	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.zombie, MOBS);
-	camUpgradeOnMapTemplates(cTempl.crcybpyro, cTempl.creeper, MOBS);
-	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, MOBS);
-	camUpgradeOnMapTemplates(cTempl.npsbb, cTempl.crmbb2ht, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.crcybcool, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.crlmrlht, cTempl.crlbbdw, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.crlhmght, cTempl.crlhmgdw, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.crlpodht, cTempl.crlpoddw, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.npcybr, cTempl.crcybbb, BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.npcybr, cTempl.skeleton, CAM_MOBS);
+	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.zombie, CAM_MOBS);
+	camUpgradeOnMapTemplates(cTempl.crcybpyro, cTempl.creeper, CAM_MOBS);
+	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, CAM_MOBS);
+	camUpgradeOnMapTemplates(cTempl.npsbb, cTempl.crmbb2ht, CAM_BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.crcybcool, CAM_BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.crlmrlht, cTempl.crlbbdw, CAM_BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.crlhmght, cTempl.crlhmgdw, CAM_BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.crlpodht, cTempl.crlpoddw, CAM_BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.npcybr, cTempl.crcybbb, CAM_BONZI_BUDDY);
 
 	// Make structures funny
-	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", MOBS);
-	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", MOBS);
-	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", MOBS);
-	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "A0Chest", MOBS);
-	camUpgradeOnMapStructures("PillBox6", "PillBox-BB", BONZI_BUDDY);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", BONZI_BUDDY);
+	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", CAM_MOBS);
+	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", CAM_MOBS);
+	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", CAM_MOBS);
+	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "A0Chest", CAM_MOBS);
+	camUpgradeOnMapStructures("PillBox6", "PillBox-BB", CAM_BONZI_BUDDY);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CAM_BONZI_BUDDY);
 
 	// Spamton items
 	enableResearch("R-Wpn-Rocket01-LtAT-Def", CAM_HUMAN_PLAYER); // Defective Lancer

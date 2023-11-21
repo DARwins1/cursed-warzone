@@ -1,7 +1,7 @@
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
-const BONZI_RES = [
+const mis_bonziRes = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 	"R-Defense-WallUpgrade01", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage01",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
@@ -24,11 +24,11 @@ camAreaEvent("bbFactoryTrigger", function(droid)
 //Send a Bonzi Buddy transport
 function sendBBTransporter()
 {
-	var nearbyDefense = enumArea("bbBase3", BONZI_BUDDY, false);
+	const nearbyDefense = enumArea("bbBase3", CAM_BONZI_BUDDY, false);
 
 	if (nearbyDefense.length > 0)
 	{
-		camSendReinforcement(BONZI_BUDDY, camMakePos("bbLandingZone"), getDroidsForBBLZ(),
+		camSendReinforcement(CAM_BONZI_BUDDY, camMakePos("bbLandingZone"), getDroidsForBBLZ(),
 			CAM_REINFORCE_TRANSPORT, {
 				entry: { x: 49, y: 3 },
 				exit: { x: 49, y: 3 }
@@ -43,11 +43,11 @@ function sendBBTransporter()
 
 function getDroidsForBBLZ()
 {
-	var droids = [];
-	var count = 6 + difficulty; // 6 to 10 units
-	var list = [cTempl.crmbb2t, cTempl.crmhmgt, cTempl.crmmcant];
+	const droids = [];
+	const COUNT = 6 + difficulty; // 6 to 10 units
+	const list = [cTempl.crmbb2t, cTempl.crmhmgt, cTempl.crmmcant];
 
-	for (let i = 0; i < count; ++i)
+	for (let i = 0; i < COUNT; ++i)
 	{
 		droids.push(list[camRand(list.length)]);
 	}
@@ -104,15 +104,15 @@ function eventStartLevel()
 		eliminateBases: true
 	});
 
-	var startpos = camMakePos(getObject("landingZone"));
-	var lz = getObject("landingZone"); //player lz
+	const startpos = camMakePos(getObject("landingZone"));
+	const lz = getObject("landingZone"); //player lz
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 	startTransporterEntry(81, 81, CAM_HUMAN_PLAYER);
 	setTransporterExit(81, 81, CAM_HUMAN_PLAYER);
 
-	var enemyLz = getObject("bbLandingZone");
-	setNoGoArea(enemyLz.x, enemyLz.y, enemyLz.x2, enemyLz.y2, BONZI_BUDDY);
+	const enemyLz = getObject("bbLandingZone");
+	setNoGoArea(enemyLz.x, enemyLz.y, enemyLz.x2, enemyLz.y2, CAM_BONZI_BUDDY);
 
 	camSetArtifacts({
 		"bbResearch": { tech: "R-Wpn-MG-ROF01" }, // MG go brrr (yes i know very funny)
@@ -121,7 +121,7 @@ function eventStartLevel()
 		"bbRocketEmp": { tech: "R-Wpn-Rocket06-IDF" }, // Rain Rockets
 	});
 
-	camCompleteRequiredResearch(BONZI_RES, BONZI_BUDDY);
+	camCompleteRequiredResearch(mis_bonziRes, CAM_BONZI_BUDDY);
 
 	camSetEnemyBases({
 		"bbSEBase": {
@@ -222,18 +222,18 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("Pylon", "Sign4");
 
 	// Make units funny
-	camUpgradeOnMapTemplates(cTempl.crlslancew, cTempl.crlslanceht, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.crlpodw, cTempl.crlpodht, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.npcybr, cTempl.crcybpod, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, MOBS);
+	camUpgradeOnMapTemplates(cTempl.crlslancew, cTempl.crlslanceht, CAM_BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.crlpodw, cTempl.crlpodht, CAM_BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.npcybr, cTempl.crcybpod, CAM_BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, CAM_MOBS);
 
 	// Make structures funny
-	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", MOBS);
-	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", MOBS);
-	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", MOBS);
-	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "A0Chest", MOBS);
-	camUpgradeOnMapStructures("PillBox5", "PillBox-BB", BONZI_BUDDY);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", BONZI_BUDDY);
+	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", CAM_MOBS);
+	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", CAM_MOBS);
+	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", CAM_MOBS);
+	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "A0Chest", CAM_MOBS);
+	camUpgradeOnMapStructures("PillBox5", "PillBox-BB", CAM_BONZI_BUDDY);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CAM_BONZI_BUDDY);
 
 	queue("startPatrols", camSecondsToMilliseconds(3));
 	queue("sensorAmbush", camSecondsToMilliseconds(30));

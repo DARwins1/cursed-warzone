@@ -1,22 +1,22 @@
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
-const BONZI_RES = [
+const mis_bonziRes = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 	"R-Defense-WallUpgrade01", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage01",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
 ];
 
-const SPECTATORS = 1; // Player number of the spectators/misc. arena objects.
-const SPAWN_ZONES = ["spawnZone1", "spawnZone2", "spawnZone3", "spawnZone4", 
+const MIS_SPECTATORS = 1; // Player number of the spectators/misc. arena objects.
+const mis_spawnZones = ["spawnZone1", "spawnZone2", "spawnZone3", "spawnZone4", 
 	"spawnZone5", "spawnZone6", "spawnZone7", "spawnZone8", 
 	"spawnZone9", "spawnZone10", "spawnZone11", "spawnZone12", 
 	"spawnZone13", "spawnZone14", "spawnZone15", "spawnZone16"]; // List of every spawning zone label
-const LEFT_SPAWN_ZONES = ["spawnZone1", "spawnZone2", "spawnZone3", "spawnZone4", 
+const mis_leftSpawnZones = ["spawnZone1", "spawnZone2", "spawnZone3", "spawnZone4", 
 	"spawnZone5", "spawnZone6", "spawnZone7", "spawnZone8"]; // List of spawning zones on the left side of the arena.
-const RIGHT_SPAWN_ZONES = ["spawnZone9", "spawnZone10", "spawnZone11", "spawnZone12", 
+const mis_rightSpawnZones = ["spawnZone9", "spawnZone10", "spawnZone11", "spawnZone12", 
 	"spawnZone13", "spawnZone14", "spawnZone15", "spawnZone16"]; // List of spawning zones on the right side of the arena.
-const BILLBOARD_TEXTURES = [ null, 
+const mis_billboardTextures = [ null, 
 	"page-506-cursedsignsarena1.png", "page-506-cursedsignsarena2.png", "page-506-cursedsignsarena3.png",
 	"page-506-cursedsignsarena4.png", "page-506-cursedsignsarena5.png", "page-506-cursedsignsarena6.png",
 	"page-506-cursedsignsarena7.png", "page-506-cursedsignsarena8.png", "page-506-cursedsignsarena9.png",
@@ -33,7 +33,7 @@ var spectatorGroup; // Group containing all spectator units. Made so they don't 
 camAreaEvent("vtolRemoveZone", function(droid)
 {
 	camSafeRemoveObject(droid, false);
-	resetLabel("vtolRemoveZone", BONZI_BUDDY);
+	resetLabel("vtolRemoveZone", CAM_BONZI_BUDDY);
 });
 
 function eventDestroyed(obj)
@@ -48,7 +48,7 @@ function eventDestroyed(obj)
 	if (waveIndex === 0)
 	{
 		// For wave 0, just make sure there's no mobs left in the arena
-		if (enumDroid(MOBS).concat(enumStruct(MOBS)).length > 0)
+		if (enumDroid(CAM_MOBS).concat(enumStruct(CAM_MOBS)).length > 0)
 		{
 			return; // Still some stuff left.
 		}
@@ -69,7 +69,7 @@ function eventGameLoaded()
 	// Make sure the billboard texture is correct
 	if (waveIndex !== 0 && waveIndex < 13)
 	{
-		replaceTexture("page-506-cursedsignsarena1.png", BILLBOARD_TEXTURES[waveIndex]);
+		replaceTexture("page-506-cursedsignsarena1.png", mis_billboardTextures[waveIndex]);
 	}
 }
 
@@ -77,16 +77,16 @@ function eventGameLoaded()
 function advanceWave()
 {
 	// Clear out any leftover enemies
-	let mobList = enumDroid(MOBS).concat(enumStruct(MOBS));
+	const mobList = enumDroid(CAM_MOBS).concat(enumStruct(CAM_MOBS));
 	for (let i = 0; i < mobList.length; i++)
 	{
-		var leftover = mobList[i];
+		const leftover = mobList[i];
 		if (!camIsTransporter(leftover)) camSafeRemoveObject(leftover, true);
 	}
-	let bbList = enumDroid(BONZI_BUDDY).concat(enumStruct(BONZI_BUDDY));
+	const bbList = enumDroid(CAM_BONZI_BUDDY).concat(enumStruct(CAM_BONZI_BUDDY));
 	for (let i = 0; i < bbList.length; i++)
 	{
-		var leftover = bbList[i];
+		const leftover = bbList[i];
 		if (!camIsTransporter(leftover)) camSafeRemoveObject(leftover, true);
 	}
 
@@ -103,7 +103,7 @@ function advanceWave()
 	// Change the billboard texture
 	if (waveIndex < 13)
 	{
-		replaceTexture("page-506-cursedsignsarena1.png", BILLBOARD_TEXTURES[waveIndex]);
+		replaceTexture("page-506-cursedsignsarena1.png", mis_billboardTextures[waveIndex]);
 	}
 
 	// Enable player reinforcements
@@ -111,12 +111,13 @@ function advanceWave()
 	playSound("pcv440.ogg"); // "Reinforcements are available"
 
 	// Set the mission timer to 119 seconds (~2 minutes)
-	setMissionTime(119);
+	const PREP_PHASE_DURATION = 119;
+	setMissionTime(PREP_PHASE_DURATION);
 
 	// Grant the player temporary full visibility
-	addSpotter(48, 38, 0, 8192, false, gameTime + camSecondsToMilliseconds(59));
+	addSpotter(48, 38, 0, 8192, false, gameTime + camSecondsToMilliseconds(PREP_PHASE_DURATION));
 
-	queue("beginWave", camSecondsToMilliseconds(59));
+	queue("beginWave", camSecondsToMilliseconds(PREP_PHASE_DURATION));
 }
 
 // WAVE LIST
@@ -223,12 +224,12 @@ function beginWave()
 			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(25)));
 			// HACK: For some reason, the sensor units can't pathfind through the arena gates, so just remove them so they don't get stuck.
 			// This should be fixed in 4.4.0
-			let gateList = enumStruct(SPECTATORS);
-			for (let i = 0; i < gateList.length; i++)
-			{
-				var gate = gateList[i];
-				camSafeRemoveObject(gate, false);
-			}
+			// const gateList = enumStruct(MIS_SPECTATORS);
+			// for (let i = 0; i < gateList.length; i++)
+			// {
+			// 	const gate = gateList[i];
+			// 	camSafeRemoveObject(gate, false);
+			// }
 			break;
 		case 9:
 			spawnCoreUnits();
@@ -243,7 +244,7 @@ function beginWave()
 			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(20)));
 			break;
 		case 11: // This wave is just a bunch of VTOLs
-			camSetVtolData(BONZI_BUDDY, undefined, camMakePos("vtolRemoveZone"), [cTempl.colatv],
+			camSetVtolData(CAM_BONZI_BUDDY, undefined, camMakePos("vtolRemoveZone"), [cTempl.colatv],
 				camSecondsToMilliseconds(0.5), undefined, {minVTOLs: 50, maxRandomVTOLs: 0}
 			);
 			queue("stopVtols", camSecondsToMilliseconds(8.1));
@@ -253,7 +254,7 @@ function beginWave()
 			spawnCoreUnits();
 			spawnSupportUnits();
 			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(10)));
-			camSetVtolData(BONZI_BUDDY, undefined, camMakePos("vtolRemoveZone"), [cTempl.colatv],
+			camSetVtolData(CAM_BONZI_BUDDY, undefined, camMakePos("vtolRemoveZone"), [cTempl.colatv],
 				camSecondsToMilliseconds(10), undefined, {minVTOLs: 20, maxRandomVTOLs: 0}
 			);
 			break;
@@ -272,35 +273,34 @@ function spawnCoreUnits()
 	switch (waveIndex)
 	{
 		case 1: // Spawn a total of 10 Zombies, 10 Skeletons, and 2 Creepers
+		{
+			let SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];;
 			switch (coreIndex)
 			{
 				case 1: 
 				case 4: // Spawn 5 Zombies
-					var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
 					for (let i = 0; i < 5; i++)
 					{
-						var pos = camRandPosInArea(spawnArea);
-						groupAdd(coreGroup, addDroid(MOBS, pos.x, pos.y, 
+						const pos = camRandPosInArea(SPAWN_AREA);
+						groupAdd(coreGroup, addDroid(CAM_MOBS, pos.x, pos.y, 
 							_("Zombie"), "ZombieBody", "CyborgLegs", "", "", "Cyb-Wpn-ZmbieMelee"
 						));
 					}
 					break;
 				case 2: 
 				case 5: // Spawn 5 Skeletons
-					var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
 					for (let i = 0; i < 5; i++)
 					{
-						var pos = camRandPosInArea(spawnArea);
-						groupAdd(coreGroup, addDroid(MOBS, pos.x, pos.y, 
+						const pos = camRandPosInArea(SPAWN_AREA);
+						groupAdd(coreGroup, addDroid(CAM_MOBS, pos.x, pos.y, 
 							_("Skeleton"), "SkeletonBody", "CyborgLegs", "", "", "Cyb-Wpn-SkelBow"
 						));
 					}
 					break;
 				case 3: 
 				case 6: // Spawn a Creeper
-					var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-					var pos = camRandPosInArea(spawnArea);
-					groupAdd(coreGroup, addDroid(MOBS, pos.x, pos.y, 
+					const pos = camRandPosInArea(SPAWN_AREA);
+					groupAdd(coreGroup, addDroid(CAM_MOBS, pos.x, pos.y, 
 						_("Creeper"), "CreeperBody", "CyborgLegs", "", "", "Cyb-Wpn-CreeperDud"
 					));
 
@@ -315,42 +315,44 @@ function spawnCoreUnits()
 					break;
 			}
 			break;
+		}
 		case 2: // Spawn a total of 12 Realistic MGs, 10 BB Cyborgs, and 10 Cool Cyborgs
+		{
 			switch (coreIndex) // Note that nothing happens on case 3:
 			{
 				case 1: 
 				case 4: // Spawn 6 Realistic MGs
-					var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
+					const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
 					for (let i = 0; i < 5; i++)
 					{
-						var pos = camRandPosInArea(spawnArea);
-						groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+						const pos = camRandPosInArea(SPAWN_AREA);
+						groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 							_("Realistic Heavy Machinegun Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "MG3Mk1"
 						));
 					}
 					break;
 				case 2: 
-				case 5: // Spawn 5 BB Cyborgs and 5 Cool Cyborgs (split into two groups)
-					var spawnArea1 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-					var spawnArea2 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
+				case 5: // Spawn 5 BB Cyborgs and 5 Cool Cyborgs (split into two spawns)
+					const SPAWN_AREA1 = mis_spawnZones[camRand(mis_spawnZones.length)];
+					const SPAWN_AREA2 = mis_spawnZones[camRand(mis_spawnZones.length)];
 					for (let i = 0; i < 5; i++)
 					{
-						var pos1;
-						var pos2;
+						let pos1;
+						let pos2;
 						if (i % 2 === 0)
 						{
-							pos1 = camRandPosInArea(spawnArea1);
-							pos2 = camRandPosInArea(spawnArea2);
+							pos1 = camRandPosInArea(SPAWN_AREA1);
+							pos2 = camRandPosInArea(SPAWN_AREA2);
 						}
 						else
 						{
-							pos1 = camRandPosInArea(spawnArea2);
-							pos2 = camRandPosInArea(spawnArea1);
+							pos1 = camRandPosInArea(SPAWN_AREA2);
+							pos2 = camRandPosInArea(SPAWN_AREA1);
 						}
-						groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos1.x, pos1.y, 
+						groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos1.x, pos1.y, 
 							_("Cooler Machinegunner Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "NX-CyborgChaingun"
 						));
-						groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos2.x, pos2.y, 
+						groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos2.x, pos2.y, 
 							_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
 						));
 					}
@@ -365,22 +367,24 @@ function spawnCoreUnits()
 					break;
 			}
 			break;
+		}
 		case 3: // Spawn a total of 16 Fungible Cannons and 32 "Light" Cannon Cyborgs
+		{
 			if (coreIndex <= 8)
 			{
 				// Spawn a group of 2 Fungible Cannons and 4 "Light" Cannon Cyborgs 8 times
-				var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
+				const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
 				for (let i = 0; i < 2; i++)
 				{
-					var pos = camRandPosInArea(spawnArea);
-					groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+					const pos = camRandPosInArea(SPAWN_AREA);
+					groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 						_("Fungible Cannon Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", camRandomFungibleCannon()
 					));
 				}
 				for (let i = 0; i < 4; i++)
 				{
-					var pos = camRandPosInArea(spawnArea);
-					groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+					const pos = camRandPosInArea(SPAWN_AREA);
+					groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 						_("\"Light\" Gunner Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgCannon"
 					));
 				}
@@ -393,10 +397,12 @@ function spawnCoreUnits()
 				removeTimer("spawnCoreUnits");
 			}
 			break;
+		}
 		case 4: // Spawn a total of 12 Twin BBs, 42 Realistic MGs, and 42 Sawed-Off Lancers
-			var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-			var weapon;
-			var name;
+		{
+			const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
+			let weapon;
+			let name;
 			if (coreIndex % 2 === 1)
 			{
 				// Spawn Sawed-Off Lancers on odd indexes
@@ -411,12 +417,12 @@ function spawnCoreUnits()
 			}
 			for (let i = 0; i < 7; i++) // Spawn 7 of the chosen vehicle
 			{
-				var pos = camRandPosInArea(spawnArea);
-				groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+				const pos = camRandPosInArea(SPAWN_AREA);
+				groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 					_(name), "Body1REC", "wheeledskiddy", "", "", weapon));
 			}
-			var pos = camRandPosInArea(spawnArea);
-			groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+			const pos = camRandPosInArea(SPAWN_AREA);
+			groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 				_("Bunker Buster II Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Rocket-BB2"
 			));
 			if (coreIndex >= 12)
@@ -426,10 +432,12 @@ function spawnCoreUnits()
 				removeTimer("spawnCoreUnits");
 			}
 			break;
+		}
 		case 5: // Spawn a total of 8 Endermen
-			var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-			var pos = camRandPosInArea(spawnArea);
-			groupAdd(coreGroup, addDroid(MOBS, pos.x, pos.y, 
+		{
+			const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
+			const pos = camRandPosInArea(SPAWN_AREA);
+			groupAdd(coreGroup, addDroid(CAM_MOBS, pos.x, pos.y, 
 				_("Enderman"), "EndermanBody", "CyborgLegs", "", "", "Cyb-Wpn-EnderMelee"
 			));
 			if (coreIndex >= 8)
@@ -439,33 +447,37 @@ function spawnCoreUnits()
 				removeTimer("spawnCoreUnits");
 			}
 			break;
+		}
 		case 6: // Spawn 2 Big Machinegun Viper Wheels on opposite sides of the arena
-			var pos1 = camRandPosInArea("spawnZone4");
-			var pos2 = camRandPosInArea("spawnZone12");
-			groupAdd(coreGroup, addDroid(MOBS, pos1.x, pos1.y, 
+		{
+			const pos1 = camRandPosInArea("spawnZone4");
+			const pos2 = camRandPosInArea("spawnZone12");
+			groupAdd(coreGroup, addDroid(CAM_MOBS, pos1.x, pos1.y, 
 				_("Big Machinegun Viper Wheels"), "Body1BIG", "wheeled01", "", "", "MG3Mk2"
 			));
-			groupAdd(coreGroup, addDroid(MOBS, pos2.x, pos2.y, 
+			groupAdd(coreGroup, addDroid(CAM_MOBS, pos2.x, pos2.y, 
 				_("Big Machinegun Viper Wheels"), "Body1BIG", "wheeled01", "", "", "MG3Mk2"
 			));
 			doneSpawning = true;
 			break;
+		}
 		case 7: // Spawn a total of 64 Sword Cyborgs and 64 Archer Cyborgs
-			var spawnArea1 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
+		{
+			const SPAWN_AREA1 = mis_spawnZones[camRand(mis_spawnZones.length)];
 			for (let i = 0; i < 8; i++)
 			{
 				// Spawn 8 Sword Cyborgs
-				var pos = camRandPosInArea(spawnArea1);
-				groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+				const pos = camRandPosInArea(SPAWN_AREA1);
+				groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 					_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
 				));
 			}
-			var spawnArea2 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
+			const SPAWN_AREA2 = mis_spawnZones[camRand(mis_spawnZones.length)];
 			for (let i = 0; i < 8; i++)
 			{
 				// Spawn 8 Archer Cyborgs
-				var pos = camRandPosInArea(spawnArea2);
-				groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+				const pos = camRandPosInArea(SPAWN_AREA2);
+				groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 					_("Archer Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Bow"
 				));
 			}
@@ -476,25 +488,27 @@ function spawnCoreUnits()
 				removeTimer("spawnCoreUnits");
 			}
 			break;
+		}
 		case 8: // Spawn a total of 20 Sensors and 40 "Light" Cannons
-			var spawnArea1 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
+		{
+			const SPAWN_AREA1 = mis_spawnZones[camRand(mis_spawnZones.length)];
 			for (let i = 0; i < 4; i++)
 			{
 				// Spawn 5 "Light" Cannons
-				var pos = camRandPosInArea(spawnArea1);
-				groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+				const pos = camRandPosInArea(SPAWN_AREA1);
+				groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 					_("\"Light\" Cannon Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "Cannon1Mk1"
 				));
 			}
 			// Include a Sensor with the cannons
-			var pos1 = camRandPosInArea(spawnArea1);
-			groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos1.x, pos1.y, 	
+			const pos1 = camRandPosInArea(SPAWN_AREA1);
+			groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos1.x, pos1.y, 	
 				_("Sensor Viper II Thick Wheels"), "Body5REC", "tracked01", "", "", "SensorTurret1Mk1"
 			));
 			// Spawn an additional Sensor somewhere else
-			var spawnArea2 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-			var pos2 = camRandPosInArea(spawnArea2);
-			groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos2.x, pos2.y, 	
+			const SPAWN_AREA2 = mis_spawnZones[camRand(mis_spawnZones.length)];
+			const pos2 = camRandPosInArea(SPAWN_AREA2);
+			groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos2.x, pos2.y, 	
 				_("Sensor Viper II Thick Wheels"), "Body5REC", "tracked01", "", "", "SensorTurret1Mk1"
 			));
 			if (coreIndex >= 10)
@@ -504,34 +518,36 @@ function spawnCoreUnits()
 				removeTimer("spawnCoreUnits");
 			}
 			break;
+		}
 		case 9: // Spawn a total of 64 Zombies, 32 Baby Zombies, 48 Sword Cyborgs, and 48 Cool Cyborgs
+		{
 			// Mobs spawn from the left, BB's units spawn from the right.
-			var spawnArea1 = LEFT_SPAWN_ZONES[camRand(LEFT_SPAWN_ZONES.length)];
+			const SPAWN_AREA1 = mis_leftSpawnZones[camRand(mis_leftSpawnZones.length)];
 			for (let i = 0; i < 4; i++)
 			{
 				// Spawn 4 Zombies and 2 Baby Zombies
-				var pos1 = camRandPosInArea(spawnArea1);
-				groupAdd(coreGroup, addDroid(MOBS, pos1.x, pos1.y, 
+				const pos1 = camRandPosInArea(SPAWN_AREA1);
+				groupAdd(coreGroup, addDroid(CAM_MOBS, pos1.x, pos1.y, 
 					_("Zombie"), "ZombieBody", "CyborgLegs", "", "", "Cyb-Wpn-ZmbieMelee"
 				));
 				if (i % 2 === 0)
 				{
-					var pos2 = camRandPosInArea(spawnArea1);
-					groupAdd(coreGroup, addDroid(MOBS, pos2.x, pos2.y, 
+					const pos2 = camRandPosInArea(SPAWN_AREA1);
+					groupAdd(coreGroup, addDroid(CAM_MOBS, pos2.x, pos2.y, 
 						_("Baby Zombie"), "BabyZombieBody", "CyborgLegs", "", "", "Cyb-Wpn-BabyZmbieMelee"
 					));
 				}
 			}
-			var spawnArea2 = RIGHT_SPAWN_ZONES[camRand(RIGHT_SPAWN_ZONES.length)];
+			const SPAWN_AREA2 = mis_rightSpawnZones[camRand(mis_rightSpawnZones.length)];
 			for (let i = 0; i < 3; i++)
 			{
 				// Spawn 3 Sword Cyborgs and 3 Cool Cyborgs
-				var pos1 = camRandPosInArea(spawnArea2);
-				groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos1.x, pos1.y, 
+				const pos1 = camRandPosInArea(SPAWN_AREA2);
+				groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos1.x, pos1.y, 
 					_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
 				));
-				var pos2 = camRandPosInArea(spawnArea2);
-				groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos2.x, pos2.y, 
+				const pos2 = camRandPosInArea(SPAWN_AREA2);
+				groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos2.x, pos2.y, 
 					_("Cooler Machinegunner Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "NX-CyborgChaingun"
 				));
 			}
@@ -542,15 +558,17 @@ function spawnCoreUnits()
 				removeTimer("spawnCoreUnits");
 			}
 			break;
+		}
 		case 10: // Spawn a total of 4 Endermen, 80 Fungible Cannons, 20 Many-Rocket Pods, and 20 Realistic MGs
+		{
 			if (coreIndex === 1)
 			{
 				// Spawn 4 Endermen from 4 different directions
-				let zoneList = ["spawnZone1", "spawnZone5", "spawnZone9", "spawnZone13"];
+				const zoneList = ["spawnZone1", "spawnZone5", "spawnZone9", "spawnZone13"];
 				for (let i = 0; i < zoneList.length; i++)
 				{
-					var pos = camRandPosInArea(zoneList[i]);
-					groupAdd(coreGroup, addDroid(MOBS, pos.x, pos.y, 
+					const pos = camRandPosInArea(zoneList[i]);
+					groupAdd(coreGroup, addDroid(CAM_MOBS, pos.x, pos.y, 
 						_("Enderman"), "EndermanBody", "CyborgLegs", "", "", "Cyb-Wpn-EnderMelee"
 					));
 				}
@@ -558,14 +576,14 @@ function spawnCoreUnits()
 			// Wait a bit before spawning more core units.
 			else if (coreIndex >= 4)
 			{
-				var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
+				const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
 				if (coreIndex % 2 === 0)
 				{
 					// Spawn 8 Fungible Cannons on even indexes
 					for (let i = 0; i < 8; i++)
 					{
-						var pos = camRandPosInArea(spawnArea);
-						groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+						const pos = camRandPosInArea(SPAWN_AREA);
+						groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 							_("Fungible Cannon Viper II Thick Wheels"), "Body5REC", "tracked01", "", "", camRandomFungibleCannon()
 						));
 					}
@@ -576,6 +594,8 @@ function spawnCoreUnits()
 					// Spawn 5 Many-Rocket Pods and 5 Realistic MGs on odd indexes
 					for (let i = 0; i < 4; i++)
 					{
+						let weapon;
+						let name;
 						if (i % 2 === 0)
 						{
 							// Spawn a Many-Rocket Pod
@@ -588,8 +608,8 @@ function spawnCoreUnits()
 							weapon = "MG3Mk1";
 							name = "Realistic Heavy Machinegun Viper Thick Wheels";
 						}
-						var pos = camRandPosInArea(spawnArea);
-						groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+						const pos = camRandPosInArea(SPAWN_AREA);
+						groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 							_(name), "Body1REC", "tracked01", "", "", weapon));
 					}
 				}
@@ -602,14 +622,17 @@ function spawnCoreUnits()
 			}
 			break;
 			break;
+		}
 		case 12: // Spawn a giant bear
-			var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-			var pos = camRandPosInArea(spawnArea);
-			groupAdd(coreGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+		{
+			const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
+			const pos = camRandPosInArea(SPAWN_AREA);
+			groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 				_("Freddy Fazbear"), "FreddyBody", "CyborgLegs", "", "", "CannonBison", "CannonBison"
 			));
 			doneSpawning = true;
 			break;
+		}
 		default:
 			break;
 	}
@@ -626,45 +649,50 @@ function spawnSupportUnits()
 	{
 		// NOTE: The first 2 waves don't have any support units
 		case 3: // Send transports which place Explosive Drums where it lands
-			if (!camTransporterOnMap(BONZI_BUDDY))
+		{
+			if (!camTransporterOnMap(CAM_BONZI_BUDDY))
 			{
-				var pos = camGenerateRandomMapCoordinate(camMakePos("landingZone"), 5);
-				var list = [cTempl.crltruckw, cTempl.crltruckw, cTempl.crltruckw, cTempl.crltruckw];
-				camSendReinforcement(BONZI_BUDDY, pos, list,
+				const pos = camGenerateRandomMapCoordinate(camMakePos("landingZone"), 5);
+				const list = [cTempl.crltruckw, cTempl.crltruckw, cTempl.crltruckw, cTempl.crltruckw];
+				camSendReinforcement(CAM_BONZI_BUDDY, pos, list,
 					CAM_REINFORCE_TRANSPORT, {
 					entry: camGenerateRandomMapEdgeCoordinate(),
 					exit: camGenerateRandomMapEdgeCoordinate()
 				});
 			}
 			break;
+		}
 		case 4: // Send transports carrying Many-Rocket Cyborgs
-			if (!camTransporterOnMap(BONZI_BUDDY))
+		{
+			if (!camTransporterOnMap(CAM_BONZI_BUDDY))
 			{
-				var pos = camGenerateRandomMapCoordinate(camMakePos("landingZone"), 5);
-				var list = [];
+				const pos = camGenerateRandomMapCoordinate(camMakePos("landingZone"), 5);
+				const list = [];
 				for (let i = 0; i < difficulty + 6; i++)
 				{
 					list.push(cTempl.crcybpod);
 				}
-				camSendReinforcement(BONZI_BUDDY, pos, list, CAM_REINFORCE_TRANSPORT, {
+				camSendReinforcement(CAM_BONZI_BUDDY, pos, list, CAM_REINFORCE_TRANSPORT, {
 					entry: camGenerateRandomMapEdgeCoordinate(),
 					exit: camGenerateRandomMapEdgeCoordinate()
 				});
 			}
 			break;
+		}
 		case 5: // Spawn Creepers and Skeletons
-			var newGroup = camNewGroup();
-			var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
+		{
+			const NEW_GROUP = camNewGroup();
+			const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
 			if (supportIndex % 2 === 0)
 			{
 				// Spawn Skeletons on even indexes
-				var numMobs = 2;
+				let numMobs = 2;
 				if (difficulty >= HARD) numMobs++;
 				if (difficulty >= INSANE) numMobs++;
 				for (let i = 0; i < numMobs; i++)
 				{
-					var pos = camRandPosInArea(spawnArea);
-					groupAdd(newGroup, addDroid(MOBS, pos.x, pos.y, 
+					const pos = camRandPosInArea(SPAWN_AREA);
+					groupAdd(NEW_GROUP, addDroid(CAM_MOBS, pos.x, pos.y, 
 						_("Skeleton"), "SkeletonBody", "CyborgLegs", "", "", "Cyb-Wpn-SkelBow"
 					));
 				}
@@ -672,100 +700,108 @@ function spawnSupportUnits()
 			else
 			{
 				// Spawn a Creeper on odd indexes
-				var numMobs = 1;
+				let numMobs = 1;
 				if (difficulty >= INSANE) numMobs++;
 				for (let i = 0; i < numMobs; i++)
 				{
-					var pos = camRandPosInArea(spawnArea);
-					groupAdd(newGroup, addDroid(MOBS, pos.x, pos.y, 
+					const pos = camRandPosInArea(spawnArea);
+					groupAdd(NEW_GROUP, addDroid(CAM_MOBS, pos.x, pos.y, 
 						_("Creeper"), "CreeperBody", "CyborgLegs", "", "", "Cyb-Wpn-CreeperDud"
 					));
 				}
 			}
-			camManageGroup(newGroup, CAM_ORDER_ATTACK);
+			camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 			break;
+		}
 		case 6: // Spawn four groups of Mini MGV's
-			var spawnArea1 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-			var spawnArea2 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-			var spawnArea3 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-			var spawnArea4 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-			var newGroup = camNewGroup();
+		{
+			const SPAWN_AREA1 = mis_spawnZones[camRand(mis_spawnZones.length)];
+			const SPAWN_AREA2 = mis_spawnZones[camRand(mis_spawnZones.length)];
+			const SPAWN_AREA3 = mis_spawnZones[camRand(mis_spawnZones.length)];
+			const SPAWN_AREA4 = mis_spawnZones[camRand(mis_spawnZones.length)];
+			const NEW_GROUP = camNewGroup();
 			for (let i = 0; i < difficulty + 6; i++)
 			{
-				var pos1 = camRandPosInArea(spawnArea1);
-				groupAdd(newGroup, addDroid(MOBS, pos1.x, pos1.y, 
+				const pos1 = camRandPosInArea(SPAWN_AREA1);
+				groupAdd(NEW_GROUP, addDroid(CAM_MOBS, pos1.x, pos1.y, 
 					_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
 				));
-				var pos2 = camRandPosInArea(spawnArea2);
-				groupAdd(newGroup, addDroid(MOBS, pos2.x, pos2.y, 
+				const pos2 = camRandPosInArea(SPAWN_AREA2);
+				groupAdd(NEW_GROUP, addDroid(CAM_MOBS, pos2.x, pos2.y, 
 					_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
 				));
-				var pos3 = camRandPosInArea(spawnArea3);
-				groupAdd(newGroup, addDroid(MOBS, pos3.x, pos3.y, 
+				const pos3 = camRandPosInArea(SPAWN_AREA3);
+				groupAdd(NEW_GROUP, addDroid(CAM_MOBS, pos3.x, pos3.y, 
 					_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
 				));
-				var pos4 = camRandPosInArea(spawnArea4);
-				groupAdd(newGroup, addDroid(MOBS, pos4.x, pos4.y, 
+				const pos4 = camRandPosInArea(SPAWN_AREA4);
+				groupAdd(NEW_GROUP, addDroid(CAM_MOBS, pos4.x, pos4.y, 
 					_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
 				));
 			}
-			camManageGroup(newGroup, CAM_ORDER_ATTACK);
+			camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 			break;
+		}
 		case 7: // Send transports carrying "Light" Cannons
-			if (!camTransporterOnMap(BONZI_BUDDY))
+		{
+			if (!camTransporterOnMap(CAM_BONZI_BUDDY))
 			{
 				// Send a transport every third index
-				var pos = camGenerateRandomMapCoordinate(camMakePos("landingZone"), 5);
-				var list = [];
+				const pos = camGenerateRandomMapCoordinate(camMakePos("landingZone"), 5);
+				const list = [];
 				for (let i = 0; i < difficulty + 6; i++)
 				{
 					list.push(cTempl.crlcanht);
 				}
-				camSendReinforcement(BONZI_BUDDY, pos, list, CAM_REINFORCE_TRANSPORT, {
+				camSendReinforcement(CAM_BONZI_BUDDY, pos, list, CAM_REINFORCE_TRANSPORT, {
 					entry: camGenerateRandomMapEdgeCoordinate(),
 					exit: camGenerateRandomMapEdgeCoordinate()
 				});
 			}
 			break;
+		}
 		case 8: // Spawn Catapults
-			var newGroup = camNewGroup();
-			var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-			var numUnits = 1 + difficulty;
-			for (let i = 0; i < numUnits; i++)
+		{
+			const NEW_GROUP = camNewGroup();
+			const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
+			const NUM_UNITS = 1 + difficulty;
+			for (let i = 0; i < NUM_UNITS; i++)
 			{
-				var pos = camRandPosInArea(spawnArea);
-				groupAdd(newGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+				const pos = camRandPosInArea(SPAWN_AREA);
+				groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 					_("Catapult Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Mortar1Mk1"
 				));
 			}
-			camManageGroup(newGroup, CAM_ORDER_ATTACK);
+			camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 			break;
+		}
 		case 9: // Spawn Creepers, Skeletons, Archer Cyborgs, Twin BBs, and transports carrying Many-Rocket Pods
+		{
 			if (supportIndex % 2 === 1)
 			{
 				// Spawn mobs on odd indexes
-				var newGroup = camNewGroup();
-				var spawnArea = LEFT_SPAWN_ZONES[camRand(LEFT_SPAWN_ZONES.length)];
-				var numMobs = 2;
+				const NEW_GROUP = camNewGroup();
+				const SPAWN_AREA = mis_leftSpawnZones[camRand(mis_leftSpawnZones.length)];
+				let numMobs = 2;
 				if (difficulty >= HARD) numMobs++;
 				if (difficulty >= INSANE) numMobs++;
 				for (let i = 0; i < numMobs; i++)
 				{
 					// Spawn Skeletons
-					var pos = camRandPosInArea(spawnArea);
-					groupAdd(newGroup, addDroid(MOBS, pos.x, pos.y, 
+					const pos = camRandPosInArea(SPAWN_AREA);
+					groupAdd(NEW_GROUP, addDroid(CAM_MOBS, pos.x, pos.y, 
 						_("Skeleton"), "SkeletonBody", "CyborgLegs", "", "", "Cyb-Wpn-SkelBow"
 					));
 				}
 				if (supportIndex % 4 === 0 || difficulty >= HARD)
 				{
 					// Add a Creeper every other mob spawn (or every spawn if on Hard+)
-					var pos = camRandPosInArea(spawnArea);
-					groupAdd(newGroup, addDroid(MOBS, pos.x, pos.y, 
+					const pos = camRandPosInArea(SPAWN_AREA);
+					groupAdd(NEW_GROUP, addDroid(CAM_MOBS, pos.x, pos.y, 
 						_("Creeper"), "CreeperBody", "CyborgLegs", "", "", "Cyb-Wpn-CreeperDud"
 					));
 				}
-				camManageGroup(newGroup, CAM_ORDER_ATTACK);
+				camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 			}
 			else
 			{
@@ -773,101 +809,103 @@ function spawnSupportUnits()
 				if (supportIndex % 4 === 0)
 				{
 					// Spawn Archer Cyborgs and Twin BBs every other Bonzi Buddy spawn
-					var newGroup = camNewGroup();
-					var spawnArea = RIGHT_SPAWN_ZONES[camRand(RIGHT_SPAWN_ZONES.length)];
-					var numCyborgs = 2;
+					const NEW_GROUP = camNewGroup();
+					const SPAWN_AREA = mis_rightSpawnZones[camRand(mis_rightSpawnZones.length)];
+					let numCyborgs = 2;
 					if (difficulty >= HARD) numCyborgs++;
 					if (difficulty >= INSANE) numCyborgs++;
 					for (let i = 0; i < numMobs; i++)
 					{
 						// Spawn Archer Cyborgs
-						var pos = camRandPosInArea(spawnArea);
-						groupAdd(newGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+						const pos = camRandPosInArea(SPAWN_AREA);
+						groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 							_("Archer Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Bow"
 						));
 					}
 					// Add a Twin BB
-					var pos = camRandPosInArea(spawnArea);
-					groupAdd(newGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+					const pos = camRandPosInArea(SPAWN_AREA);
+					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 						_("Bunker Buster II Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Rocket-BB2"
 					));
-					camManageGroup(newGroup, CAM_ORDER_ATTACK);
+					camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 				}
-				else if (!camTransporterOnMap(BONZI_BUDDY))
+				else if (!camTransporterOnMap(CAM_BONZI_BUDDY))
 				{
 					// Send a transport with Many-Rocket Pods
-					var pos = camGenerateRandomMapCoordinate(camMakePos("landingZone"), 5);
-					var list = [];
+					const pos = camGenerateRandomMapCoordinate(camMakePos("landingZone"), 5);
+					const list = [];
 					for (let i = 0; i < difficulty + 6; i++)
 					{
 						list.push(cTempl.crlpoddw);
 					}
-					camSendReinforcement(BONZI_BUDDY, pos, list, CAM_REINFORCE_TRANSPORT, {
+					camSendReinforcement(CAM_BONZI_BUDDY, pos, list, CAM_REINFORCE_TRANSPORT, {
 						entry: camGenerateRandomMapEdgeCoordinate(),
 						exit: camGenerateRandomMapEdgeCoordinate()
 					});
 				}
 			}
 			break;
+		}
 		case 10: // Spawn Twin BB/Sawed-Off Lancers and Sensors/Catapults
-			var newGroup = camNewGroup();
+		{
+			const NEW_GROUP = camNewGroup();
+			const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
 			if (supportIndex % 3 === 0)
 			{
 				// Spawn a Sensor + group of Catapults every third index
-				var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-				var numUnits = 2 + difficulty;
-				for (let i = 0; i < numUnits; i++)
+				
+				for (let i = 0; i < 2 + difficulty; i++)
 				{
-					var pos = camRandPosInArea(spawnArea);
-					groupAdd(newGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+					const pos = camRandPosInArea(SPAWN_AREA);
+					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 						_("Catapult Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Mortar1Mk1"
 					));
 				}
 				// Also add a Sensor
-				var pos = camRandPosInArea(spawnArea);
-				groupAdd(newGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+				const pos = camRandPosInArea(SPAWN_AREA);
+				groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 					_("Sensor Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "SensorTurret1Mk1"
 				));
 			}
 			else
 			{
 				// Spawn a group of Twin BBs and Sawed-Off Lancers
-				var spawnArea = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-				var numUnits = 4 + difficulty;
-				for (let i = 1; i <= numUnits; i++)
+				for (let i = 1; i <= 4 + difficulty; i++)
 				{
-					var pos = camRandPosInArea(spawnArea);
+					const pos = camRandPosInArea(SPAWN_AREA);
 					if (i % 4 === 0)
 					{
-						groupAdd(newGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+						groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 							_("Bunker Buster II Viper II Drift Wheels"), "Body5REC", "wheeledskiddy", "", "", "Rocket-BB2"
 						));
 					}
 					else
 					{
-						groupAdd(newGroup, addDroid(BONZI_BUDDY, pos.x, pos.y, 
+						groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 							_("Sawed-Off Lancer Viper I Drift Wheels"), "Body1REC", "wheeledskiddy", "", "", "Rocket-LtA-T"
 						));
 					}
 				}
 			}
-			camManageGroup(newGroup, CAM_ORDER_ATTACK);
+			camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 			break;
+		}
 		case 12: // Spawn Mini MGV's, BB Cyborgs, Many-Rocket Pods, and send transports which place Explosive Drums where it lands
-			var newGroup = camNewGroup();
-			var spawnArea1 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
-			var spawnArea2 = SPAWN_ZONES[camRand(SPAWN_ZONES.length)];
+		{
+			const NEW_GROUP = camNewGroup();
+			const SPAWN_AREA1 = mis_spawnZones[camRand(mis_spawnZones.length)];
+			const SPAWN_AREA2 = mis_spawnZones[camRand(mis_spawnZones.length)];
 			if (supportIndex % 2 === 0)
 			{
 				// Spawn 2 groups of Mini MGV's on even indexes
 				for (let i = 0; i < difficulty + 8; i++)
 				{
-					var pos1 = camRandPosInArea(spawnArea1);
-					groupAdd(newGroup, addDroid(BONZI_BUDDY, pos1.x, pos1.y, 
+					const pos1 = camRandPosInArea(SPAWN_AREA1);
+					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos1.x, pos1.y, 
 						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
 					));
-					var pos2 = camRandPosInArea(spawnArea2);
-					groupAdd(newGroup, addDroid(BONZI_BUDDY, pos2.x, pos2.y, 
+					const pos2 = camRandPosInArea(SPAWN_AREA2);
+					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos2.x, pos2.y, 
 						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
 					));
 				}
@@ -877,29 +915,30 @@ function spawnSupportUnits()
 				// Spawn BB Cyborgs and Many-Rocket Pods on odd indexes
 				for (let i = 0; i < difficulty + 2; i++)
 				{
-					var pos1 = camRandPosInArea(spawnArea1);
-					groupAdd(newGroup, addDroid(BONZI_BUDDY, pos1.x, pos1.y, 
+					const pos1 = camRandPosInArea(SPAWN_AREA1);
+					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos1.x, pos1.y, 
 						_("Many-Rocket Pod Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "Rocket-Pod"
 					));
-					var pos2 = camRandPosInArea(spawnArea2);
-					groupAdd(newGroup, addDroid(BONZI_BUDDY, pos2.x, pos2.y, 
+					const pos2 = camRandPosInArea(SPAWN_AREA2);
+					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos2.x, pos2.y, 
 						_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
 					));
 				}
 			}
-			camManageGroup(newGroup, CAM_ORDER_ATTACK);
-			if (supportIndex % 4 === 0 && !camTransporterOnMap(BONZI_BUDDY))
+			camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
+			if (supportIndex % 4 === 0 && !camTransporterOnMap(CAM_BONZI_BUDDY))
 			{
 				// Send a transport every 4th index
-				var pos = camGenerateRandomMapCoordinate(camMakePos("landingZone"), 5);
-				let list = [cTempl.crltruckw, cTempl.crltruckw, cTempl.crltruckw, cTempl.crltruckw];
-				camSendReinforcement(BONZI_BUDDY, pos, list,
+				const pos = camGenerateRandomMapCoordinate(camMakePos("landingZone"), 5);
+				const list = [cTempl.crltruckw, cTempl.crltruckw, cTempl.crltruckw, cTempl.crltruckw];
+				camSendReinforcement(CAM_BONZI_BUDDY, pos, list,
 					CAM_REINFORCE_TRANSPORT, {
 					entry: camGenerateRandomMapEdgeCoordinate(),
 					exit: camGenerateRandomMapEdgeCoordinate()
 				});
 			}
 			break;
+		}
 		default:
 			break;
 	}
@@ -928,11 +967,11 @@ function placeRainRockets()
 	{
 		let x1 = 10 - i;
 		let y1 = 3 + i;
-		addStructure("Emplacement-Rocket06-IDF", BONZI_BUDDY, x1*128, y1*128);
+		addStructure("Emplacement-Rocket06-IDF", CAM_BONZI_BUDDY, x1*128, y1*128);
 
 		let x2 = 93 - i;
 		let y2 = 66 + i;
-		addStructure("Emplacement-Rocket06-IDF", BONZI_BUDDY, x2*128, y2*128);
+		addStructure("Emplacement-Rocket06-IDF", CAM_BONZI_BUDDY, x2*128, y2*128);
 	}
 
 	// Place lines at the NE and SW corners
@@ -940,11 +979,11 @@ function placeRainRockets()
 	{
 		let x1 = 85 + i;
 		let y1 = 3 + i;
-		addStructure("Emplacement-Rocket06-IDF", BONZI_BUDDY, x1*128, y1*128);
+		addStructure("Emplacement-Rocket06-IDF", CAM_BONZI_BUDDY, x1*128, y1*128);
 		
 		let x2 = 3 + i;
 		let y2 = 66 + i;
-		addStructure("Emplacement-Rocket06-IDF", BONZI_BUDDY, x2*128, y2*128);
+		addStructure("Emplacement-Rocket06-IDF", CAM_BONZI_BUDDY, x2*128, y2*128);
 	}
 }
 
@@ -967,23 +1006,23 @@ function eventTransporterLanded(transport)
 	if (setupTime)
 	{
 		// Don't allow enemy transports to deliver more units during setup
-		let mobList = enumDroid(MOBS)
+		const mobList = enumDroid(CAM_MOBS)
 		for (let i = 0; i < mobList.length; i++)
 		{
-			var unit = mobList[i];
+			const unit = mobList[i];
 			if (!camIsTransporter(unit)) camSafeRemoveObject(unit, false);
 		}
-		let bbList = enumDroid(BONZI_BUDDY)
+		const bbList = enumDroid(CAM_BONZI_BUDDY)
 		for (let i = 0; i < bbList.length; i++)
 		{
-			var unit = bbList[i];
+			const unit = bbList[i];
 			if (!camIsTransporter(unit)) camSafeRemoveObject(unit, false);
 		}
 	}
-	else if (transport.player === BONZI_BUDDY)
+	else if (transport.player === CAM_BONZI_BUDDY)
 	{
 		// Replace all of the placeholder trucks with explosive drums
-		var truckList = enumDroid(BONZI_BUDDY).filter((obj) => (
+		const truckList = enumDroid(CAM_BONZI_BUDDY).filter((obj) => (
 			obj.droidType === DROID_CONSTRUCT
 		));;
 		for (let i = 0; i < truckList.length; i++)
@@ -1117,8 +1156,8 @@ function eventStartLevel()
 		callback: "victoryCheck"
 	});
 
-	var startpos = camMakePos(getObject("landingZone"));
-	var lz = getObject("landingZone"); //player lz
+	const startpos = camMakePos(getObject("landingZone"));
+	const lz = getObject("landingZone"); //player lz
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 	startTransporterEntry(40, 50, CAM_HUMAN_PLAYER);
@@ -1138,29 +1177,29 @@ function eventStartLevel()
 	camManageGroup(coreGroup, CAM_ORDER_ATTACK, {removable: false});
 
 	// Also put all the spectators into a group so they don't automatically get grouped up.
-	spectatorGroup = camMakeGroup(enumDroid(SPECTATORS));
+	spectatorGroup = camMakeGroup(enumDroid(MIS_SPECTATORS));
 
-	camCompleteRequiredResearch(BONZI_RES, BONZI_BUDDY);
+	camCompleteRequiredResearch(mis_bonziRes, CAM_BONZI_BUDDY);
 
-	setAlliance(SPECTATORS, CAM_HUMAN_PLAYER, true);
-	setAlliance(SPECTATORS, BONZI_BUDDY, true);
-	setAlliance(SPECTATORS, MOBS, true);
+	setAlliance(MIS_SPECTATORS, CAM_HUMAN_PLAYER, true);
+	setAlliance(MIS_SPECTATORS, CAM_BONZI_BUDDY, true);
+	setAlliance(MIS_SPECTATORS, CAM_MOBS, true);
 
 	if (playerData[CAM_HUMAN_PLAYER].colour !== 8)
 	{
 		// Set spectators to yellow
-		changePlayerColour(SPECTATORS, 8);
+		changePlayerColour(MIS_SPECTATORS, 8);
 	}
 	else
 	{
 		// Set spectators to orange
-		changePlayerColour(SPECTATORS, 1);
+		changePlayerColour(MIS_SPECTATORS, 1);
 	}
 
 	// Add the wave billboard	
 	camUpgradeOnMapFeatures("TreeSnow1", "SignArena");
 
 	// Make structures funny
-	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", MOBS);
-	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", MOBS);
+	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", CAM_MOBS);
+	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", CAM_MOBS);
 }

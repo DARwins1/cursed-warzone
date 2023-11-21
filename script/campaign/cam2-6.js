@@ -1,12 +1,12 @@
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
-const BONZI_RES = [
+const mis_bonziRes = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 	"R-Defense-WallUpgrade01", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage01",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
 ];
-const HARD_PATTERNS = [
+const mis_hardPatterns = [
 	// "Heart"
 	// . . . . . . . . . . . .
 	// . . # # . . . . # # . .
@@ -195,11 +195,11 @@ function activateBonziBoss()
 //Send a Bonzi Buddy transport
 function sendBBTransporter()
 {
-	var nearbyDefense = enumArea("bbBase3", BONZI_BUDDY, false);
+	const nearbyDefense = enumArea("bbBase3", CAM_BONZI_BUDDY, false);
 
 	if (nearbyDefense.length > 0)
 	{
-		camSendReinforcement(BONZI_BUDDY, camMakePos("bbLandingZone"), getDroidsForBBLZ(),
+		camSendReinforcement(CAM_BONZI_BUDDY, camMakePos("bbLandingZone"), getDroidsForBBLZ(),
 			CAM_REINFORCE_TRANSPORT, {
 				entry: { x: 8, y: 8 },
 				exit: { x: 8, y: 8 }
@@ -214,11 +214,11 @@ function sendBBTransporter()
 
 function getDroidsForBBLZ()
 {
-	var droids = [];
-	var count = 6 + difficulty; // 6 to 10 units
-	var list = [cTempl.crmpepht, cTempl.crlslanceht, cTempl.crmbb2ht];
+	const droids = [];
+	const COUNT = 6 + difficulty; // 6 to 10 units
+	const list = [cTempl.crmpepht, cTempl.crlslanceht, cTempl.crmbb2ht];
 
-	for (let i = 0; i < count; ++i)
+	for (let i = 0; i < COUNT; ++i)
 	{
 		droids.push(list[camRand(list.length)]);
 	}
@@ -248,10 +248,10 @@ function startPatrols()
 // Activate the boss if the player tries to build a nuclear drum nearby
 function nukeDrumCheck()
 {
-	let nukeDrum = enumArea("bbBase4", ALL_PLAYERS, false).filter((obj) => (
+	const NUKE_DRUM_NEARBY = enumArea("bbBase4", ALL_PLAYERS, false).filter((obj) => (
 		obj.type === STRUCTURE && obj.player === CAM_HUMAN_PLAYER && obj.name === _("Nuclear Drum")
 	)).length > 0;
-	if (nukeDrum)
+	if (NUKE_DRUM_NEARBY)
 	{
 		camCallOnce("activateBonziBoss");
 		removeTimer("nukeDrumCheck");
@@ -262,9 +262,9 @@ function nukeDrumCheck()
 function setPattern()
 {
 	// Choose a random pattern from the list
-	const patternNum = camRand(HARD_PATTERNS.length);
-	let pattern = HARD_PATTERNS[patternNum];
-	completeResearch("Script-Labyrinth-Puzzle-" + (patternNum + 1));
+	const PATTERN_NUM = camRand(mis_hardPatterns.length);
+	const pattern = mis_hardPatterns[PATTERN_NUM];
+	completeResearch("Script-Labyrinth-Puzzle-" + (PATTERN_NUM + 1));
 
 	// Possible rock types to place
 	const rockTypes = ["Boulder1", "Boulder2", "Boulder3"];
@@ -307,15 +307,15 @@ function eventStartLevel()
 	});
 	camSetExtraObjectiveMessage("Defeat Bonzi Buddy");
 
-	var startpos = camMakePos(getObject("landingZone"));
-	var lz = getObject("landingZone"); //player lz
+	const startpos = camMakePos(getObject("landingZone"));
+	const lz = getObject("landingZone"); //player lz
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 	startTransporterEntry(25, 90, CAM_HUMAN_PLAYER);
 	setTransporterExit(25, 90, CAM_HUMAN_PLAYER);
 
-	var enemyLz = getObject("bbLandingZone");
-	setNoGoArea(enemyLz.x, enemyLz.y, enemyLz.x2, enemyLz.y2, BONZI_BUDDY);
+	const enemyLz = getObject("bbLandingZone");
+	setNoGoArea(enemyLz.x, enemyLz.y, enemyLz.x2, enemyLz.y2, CAM_BONZI_BUDDY);
 
 	bossGroup = camMakeGroup("bbBossGroup");
 
@@ -326,7 +326,7 @@ function eventStartLevel()
 		"bbChest": { tech: "R-Cyborg-Wpn-Rocket" }, // Firework Cyborg
 	});
 
-	camCompleteRequiredResearch(BONZI_RES, BONZI_BUDDY);
+	camCompleteRequiredResearch(mis_bonziRes, CAM_BONZI_BUDDY);
 
 	camSetEnemyBases({
 		"bbSWBase": {
@@ -482,16 +482,16 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("TreeSnow3", "ExplosiveDrum");
 
 	// Make units funny
-	camUpgradeOnMapTemplates(cTempl.npsbb, cTempl.crmbb2ht, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.crcybpyro, cTempl.crcybsword, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.bonziscybcan, BONZI_BUDDY);
-	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, MOBS);
+	camUpgradeOnMapTemplates(cTempl.npsbb, cTempl.crmbb2ht, CAM_BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.crcybpyro, cTempl.crcybsword, CAM_BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.bonziscybcan, CAM_BONZI_BUDDY);
+	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, CAM_MOBS);
 
 	// Make structures funny
-	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", MOBS);
-	camUpgradeOnMapStructures("PillBox5", "PillBox-BB2", BONZI_BUDDY);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", BONZI_BUDDY);
-	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "A0Chest", BONZI_BUDDY);
+	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", CAM_MOBS);
+	camUpgradeOnMapStructures("PillBox5", "PillBox-BB2", CAM_BONZI_BUDDY);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CAM_BONZI_BUDDY);
+	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "A0Chest", CAM_BONZI_BUDDY);
 
 	queue("startPatrols", camSecondsToMilliseconds(3));
 	setTimer("nukeDrumCheck", camSecondsToMilliseconds(2));

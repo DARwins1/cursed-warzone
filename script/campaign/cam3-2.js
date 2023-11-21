@@ -2,7 +2,7 @@ include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 include("script/campaign/transitionTech.js");
 
-const SPAMTON_RES = [
+const mis_spamtonRes = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 	"R-Defense-WallUpgrade02", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage02",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
@@ -151,22 +151,22 @@ function checkTowers()
 // If any trucks are near the player, place Pipis around themselves
 function placePipis()
 {
-	var truckList = enumDroid(SPAMTON, DROID_CONSTRUCT);
+	const truckList = enumDroid(CAM_SPAMTON, DROID_CONSTRUCT);
 	for (let i = 0, l = truckList.length; i < l; ++i)
 	{
-		var truck = truckList[i];
+		const truck = truckList[i];
 		if (truck.order !== DORDER_BUILD && truck.order !== DORDER_HELPBUILD && truck.order !== DORDER_LINEBUILD)
 		{
 			// First, see if we're close enough to the player (10 tiles)
 			if (enumRange(truck.x, truck.y, 10, CAM_HUMAN_PLAYER, false).filter((obj) => (obj.type === DROID && !isVTOL(obj))).length > 0) // Ignore flyers
 			{
 				// If so, place Pipis at this location
-				camQueueBuilding(SPAMTON, "A0Pipis", camMakePos(truck));
+				camQueueBuilding(CAM_SPAMTON, "A0Pipis", camMakePos(truck));
 			}
 			else
 			{
 				// If not, then move towards the player
-				let targets = enumDroid(CAM_HUMAN_PLAYER).filter((obj) => (
+				const targets = enumDroid(CAM_HUMAN_PLAYER).filter((obj) => (
 					propulsionCanReach("wheeled01", truck.x, truck.y, obj.x, obj.y) &&
 						(obj.type === STRUCTURE || (obj.type === DROID && !isVTOL(obj)))
 				));
@@ -188,8 +188,8 @@ function eventStartLevel()
 {
 	camSetExtraObjectiveMessage(_("Destroy Spamton's stupid towers"));
 
-	var startpos = camMakePos(getObject("landingZone"));
-	var lz = getObject("landingZone");
+	const startpos = camMakePos(getObject("landingZone"));
+	const lz = getObject("landingZone");
 
 	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "THE_G_STANDS_FOR_", {
 		area: "compromiseZone",
@@ -372,7 +372,7 @@ function eventStartLevel()
 	startTransporterEntry(5, 80, CAM_HUMAN_PLAYER);
 	setTransporterExit(5, 80, CAM_HUMAN_PLAYER);
 
-	camCompleteRequiredResearch(SPAMTON_RES, SPAMTON);
+	camCompleteRequiredResearch(mis_spamtonRes, CAM_SPAMTON);
 
 	if (difficulty >= EASY)
 	{
@@ -380,10 +380,10 @@ function eventStartLevel()
 		let prop = "wheeled01"; // Wheels
 		if (difficulty === INSANE) body = "Body5RECSpam"; // Upgrade to Spamaconda II
 		if (difficulty >= HARD) prop = "HalfTrack"; // Upgrade to Half-wheels
-		addDroid(SPAMTON, 4, 8, "Pipis Truck", body, prop, "", "", "Spade1Mk1Spam"); // One truck in the Bison base
-		addDroid(SPAMTON, 88, 75, "Pipis Truck", body, prop, "", "", "Spade1Mk1Spam"); // Another in the SE base
+		addDroid(CAM_SPAMTON, 4, 8, "Pipis Truck", body, prop, "", "", "Spade1Mk1Spam"); // One truck in the Bison base
+		addDroid(CAM_SPAMTON, 88, 75, "Pipis Truck", body, prop, "", "", "Spade1Mk1Spam"); // Another in the SE base
 
-		camManageTrucks(SPAMTON);
+		camManageTrucks(CAM_SPAMTON);
 
 		setTimer("placePipis", camSecondsToMilliseconds(3));
 	}
@@ -393,23 +393,23 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("Wreck1", "Wreck1"); // I know this looks stupid but it's to align the pile positions better
 
 	// Make units funny
-	camUpgradeOnMapTemplates(cTempl.crlcanw, cTempl.splbisonht, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crlcanht, cTempl.spmbisonht, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crlscorchw, cTempl.sphhflamht, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crlbbw, cTempl.sphhbb3ht, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crcybcan, cTempl.spcybbison, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.spcybspy, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crcybneedle, cTempl.spcybneedle, SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crlcanw, cTempl.splbisonht, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crlcanht, cTempl.spmbisonht, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crlscorchw, cTempl.sphhflamht, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crlbbw, cTempl.sphhbb3ht, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybcan, cTempl.spcybbison, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.spcybspy, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybneedle, cTempl.spcybneedle, CAM_SPAMTON);
 
 	// Make structures funny
-	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", SPAMTON);
-	camUpgradeOnMapStructures("PillBox4", "PillBoxBison", SPAMTON);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre2", SPAMTON);
-	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", SPAMTON);
-	camUpgradeOnMapStructures("X-Super-Rocket", "GuardTower-MEGA", SPAMTON);
-	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-ZombieSpamton", SPAMTON);
-	camUpgradeOnMapStructures("Sys-NX-CBTower", "Spawner-SkeletonSpamton", SPAMTON);
-	camUpgradeOnMapStructures("Sys-NX-VTOL-RadTow", "Spawner-CreeperSpamton", SPAMTON);
+	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", CAM_SPAMTON);
+	camUpgradeOnMapStructures("PillBox4", "PillBoxBison", CAM_SPAMTON);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre2", CAM_SPAMTON);
+	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", CAM_SPAMTON);
+	camUpgradeOnMapStructures("X-Super-Rocket", "GuardTower-MEGA", CAM_SPAMTON);
+	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-ZombieSpamton", CAM_SPAMTON);
+	camUpgradeOnMapStructures("Sys-NX-CBTower", "Spawner-SkeletonSpamton", CAM_SPAMTON);
+	camUpgradeOnMapStructures("Sys-NX-VTOL-RadTow", "Spawner-CreeperSpamton", CAM_SPAMTON);
 
 	// Place beacons on all the towers
 	hackAddMessage("TOWER_C", PROX_MSG, CAM_HUMAN_PLAYER);

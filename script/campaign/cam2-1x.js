@@ -4,7 +4,7 @@ include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
 // this could be changed
-const BONZI_RES = [
+const mis_bonziRes = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 	"R-Defense-WallUpgrade01", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage01",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Defense-WallUpgrade01",
@@ -16,14 +16,14 @@ function eventDestroyed(obj)
 {
 	if (obj.type === FEATURE && obj.name === _("Sign 5"))
 	{
-		const numCyborgs = 20; // Set to however many cyborgs you want
-		let cyborgGroup = camNewGroup(); // Create a new group to place the cyborgs into
-		for (let i = 0; i < numCyborgs; i++)
+		const NUM_CYBORGS = 20; // Set to however many cyborgs you want
+		const CYBORG_GROUP = camNewGroup(); // Create a new group to place the cyborgs into
+		for (let i = 0; i < NUM_CYBORGS; i++)
 		{
-			let newCyborg = addDroid(MOBS, 6, 60, "Sword Cyborg", "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword");
-			groupAdd(cyborgGroup, newCyborg); // Place the newly created cyborg into a group
+			const newCyborg = addDroid(CAM_MOBS, 6, 60, "Sword Cyborg", "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword");
+			groupAdd(CYBORG_GROUP, newCyborg); // Place the newly created cyborg into a group
 		}
-		camManageGroup(cyborgGroup, CAM_ORDER_ATTACK); // Tell the new group of cyborgs to attack the player
+		camManageGroup(CYBORG_GROUP, CAM_ORDER_ATTACK); // Tell the new group of cyborgs to attack the player
 		
 		// remove the door
 		const doorList = enumFeature(ALL_PLAYERS, "GiantDoorHoriz");
@@ -54,21 +54,21 @@ function eventStartLevel()
 		eliminateBases: true
 	});
 
-	var startpos = camMakePos(getObject("landingZone"));
-	var lz = getObject("landingZone"); //player lz
+	const startpos = camMakePos(getObject("landingZone"));
+	const lz = getObject("landingZone"); //player lz
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 	startTransporterEntry(31, 62, CAM_HUMAN_PLAYER);
 	setTransporterExit(31, 62, CAM_HUMAN_PLAYER);
 
 	// Make structures funny
-	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", MOBS);
-	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", MOBS);
-	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", MOBS);
-	camUpgradeOnMapStructures("PillBox5", "PillBox-BB", BONZI_BUDDY);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", BONZI_BUDDY);
+	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", CAM_MOBS);
+	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", CAM_MOBS);
+	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-Creeper", CAM_MOBS);
+	camUpgradeOnMapStructures("PillBox5", "PillBox-BB", CAM_BONZI_BUDDY);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CAM_BONZI_BUDDY);
 	//fix wacky walls
-	camUpgradeOnMapStructures("A0HardcreteMk1Wall", "A0HardcreteMk1Wall", BONZI_BUDDY);
+	camUpgradeOnMapStructures("A0HardcreteMk1Wall", "A0HardcreteMk1Wall", CAM_BONZI_BUDDY);
 
 	// Add a funny sign and the giant door for the Sword area
 	camUpgradeOnMapFeatures("Pylon", "Sign5");
@@ -80,7 +80,7 @@ function eventStartLevel()
 		"castleFactory1": { tech: "R-Wpn-Cannon-Damage01" }, // Brighter Cannons
 	});
 
-	camCompleteRequiredResearch(BONZI_RES, BONZI_BUDDY);
+	camCompleteRequiredResearch(mis_bonziRes, CAM_BONZI_BUDDY);
 	
 	camSetEnemyBases({
 		"bbLeftBase": {

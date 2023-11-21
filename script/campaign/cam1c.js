@@ -2,14 +2,14 @@
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
-const ENEMY_RES = [
+const mis_enemyRes = [
 	"R-Wpn-MG-Damage02",
 ];
 
 // Pattern coordinates to place orange rocks.
 // A "1" represents a position with it's index in 
 // the pattern's 2D array.
-const EASY_PATTERNS = [
+const mis_easyPatterns = [
 	// "Smile"
 	// . . . . . . . . . . . .
 	// . . . . . . . . . . . .
@@ -119,7 +119,7 @@ const EASY_PATTERNS = [
 		[0,0,0,0,0,0,0,0,0,0,0,0],
 	],
 ];
-const MEDIUM_PATTERNS = [
+const mis_mediumPatterns = [
 	// "Nubert"
 	// . . . . . . . . . . . .
 	// . . . . . . . . . . . .
@@ -229,7 +229,7 @@ const MEDIUM_PATTERNS = [
 		[0,0,0,0,0,0,1,0,0,0,0,0],
 	],
 ];
-const HARD_PATTERNS = [
+const mis_hardPatterns = [
 	// "Heart"
 	// . . . . . . . . . . . .
 	// . . # # . . . . # # . .
@@ -414,7 +414,7 @@ function sendClippyTransport()
 	{
 		pos = camGenerateRandomMapCoordinateWithinRadius(camMakePos("patrolPos4"), 10);
 		if (pos === null) pos = camMakePos("patrolPos4");
-		camSendReinforcement(CLIPPY, pos, getDroidsForClippyLZ(),
+		camSendReinforcement(CAM_CLIPPY, pos, getDroidsForClippyLZ(),
 			CAM_REINFORCE_TRANSPORT, {
 				entry: { x: 107, y: 70 },
 				exit: { x: 107, y: 70 }
@@ -426,7 +426,7 @@ function sendClippyTransport()
 	{
 		pos = camGenerateRandomMapCoordinateWithinRadius(camMakePos("patrolPos8"), 10);
 		if (pos === null) pos = camMakePos("patrolPos8");
-		camSendReinforcement(CLIPPY, pos, getDroidsForClippyLZ(),
+		camSendReinforcement(CAM_CLIPPY, pos, getDroidsForClippyLZ(),
 			CAM_REINFORCE_TRANSPORT, {
 				entry: { x: 107, y: 70 },
 				exit: { x: 107, y: 70 }
@@ -460,9 +460,9 @@ function initializePatterns()
 	let pattern3Pos = {x: 78, y: 5};
 
 	// Choose a random pattern from each list
-	let pattern1 = EASY_PATTERNS[camRand(EASY_PATTERNS.length)];
-	let pattern2 = MEDIUM_PATTERNS[camRand(MEDIUM_PATTERNS.length)];
-	let pattern3 = HARD_PATTERNS[camRand(HARD_PATTERNS.length)];
+	let pattern1 = mis_easyPatterns[camRand(mis_easyPatterns.length)];
+	let pattern2 = mis_mediumPatterns[camRand(mis_mediumPatterns.length)];
+	let pattern3 = mis_hardPatterns[camRand(mis_hardPatterns.length)];
 
 	// Possible rock types to place
 	let rockTypes = ["Boulder1", "Boulder2", "Boulder3"];
@@ -651,8 +651,8 @@ function doorCheck()
 function eventStartLevel()
 {
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CTF_2FORT", {callback: "doorCheck"});
-	var startpos = getObject("startPosition");
-	var lz = getObject("landingZone");
+	const startpos = getObject("startPosition");
+	const lz = getObject("landingZone");
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 
@@ -664,9 +664,9 @@ function eventStartLevel()
 	clippyTransportsActive = false;
 
 	setReinforcementTime(-1);
-	setAlliance(CLIPPY, SCAV_7, true);
-	camCompleteRequiredResearch(ENEMY_RES, CLIPPY);
-	camCompleteRequiredResearch(ENEMY_RES, SCAV_7);
+	setAlliance(CAM_CLIPPY, CAM_SCAV_7, true);
+	camCompleteRequiredResearch(mis_enemyRes, CAM_CLIPPY);
+	camCompleteRequiredResearch(mis_enemyRes, CAM_SCAV_7);
 
 	camSetEnemyBases({
 		"scavBase1": {
@@ -686,7 +686,7 @@ function eventStartLevel()
 			detectMsg: "C1C_BASE3",
 			detectSnd: "pcv374.ogg",
 			eliminateSnd: "pcv391.ogg",
-			player: SCAV_7 // hence discriminate by player filter
+			player: CAM_SCAV_7 // hence discriminate by player filter
 		},
 		"clipBase1": {
 			cleanup: "clipBaseGroup1",
@@ -705,7 +705,7 @@ function eventStartLevel()
 			detectMsg: "C1C_BASE6",
 			detectSnd: "pcv379.ogg",
 			eliminateSnd: "pcv394.ogg",
-			player: CLIPPY // hence discriminate by player filter
+			player: CAM_CLIPPY // hence discriminate by player filter
 		},
 		"clipBase4": {
 			cleanup: "clipBaseGroup4",
@@ -815,10 +815,10 @@ function eventStartLevel()
 	addLabel(getObject(106, 18), "door3");
 
 	// Make Clippy's structures funny
-	camUpgradeOnMapStructures("GuardTower1", "GuardTower1MG", CLIPPY);
-	camUpgradeOnMapStructures("WallTower05", "WallTowerMG", CLIPPY);
-	camUpgradeOnMapStructures("PillBox6", "PillBox-BB", CLIPPY);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CLIPPY);
+	camUpgradeOnMapStructures("GuardTower1", "GuardTower1MG", CAM_CLIPPY);
+	camUpgradeOnMapStructures("WallTower05", "WallTowerMG", CAM_CLIPPY);
+	camUpgradeOnMapStructures("PillBox6", "PillBox-BB", CAM_CLIPPY);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CAM_CLIPPY);
 
 	setTimer("checkPatterns", camSecondsToMilliseconds(1));
 

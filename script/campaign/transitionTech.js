@@ -1,7 +1,7 @@
 //Contains the campaign transition technology definitions.
 
 //This array should give a player all the research from Alpha.
-const ALPHA_RESEARCH_NEW = [
+const mis_alphaResearchNew = [
 	// 1
 	"R-Wpn-MG1Mk1", "R-Vehicle-Body01", "R-Sys-Spade1Mk1", "R-Vehicle-Prop-Wheels",
 	"R-Struc-ImmobileRepair", "R-Sys-Engineering01", "R-Wpn-MG-Damage01", "R-Defense-Tower01",
@@ -42,7 +42,7 @@ const ALPHA_RESEARCH_NEW = [
 ];
 
 //Basic base structures.
-const STRUCTS_ALPHA = [
+const mis_structsAlpha = [
 	"A0CommandCentre",
 	"A0PowerGenerator",
 	"A0ResourceExtractor",
@@ -51,10 +51,10 @@ const STRUCTS_ALPHA = [
 ];
 
 //BETA 2-A bonus research
-const PLAYER_RES_BETA = [];
+const mis_playerResBeta = [];
 
 //This array should give a player all the research from Beta.
-const BETA_RESEARCH_NEW = [
+const mis_betaResearchNew = [
 	// 1
 	"R-Cyborg-Wpn-Bow", "R-Cyborg-Wpn-Sword", "R-Sys-Engineering02",
 	"R-Vehicle-Prop-Halftracks", "R-Wpn-Mortar-Damage01", "R-Wpn-Rocket01-LtAT-Def",
@@ -98,9 +98,9 @@ const BETA_RESEARCH_NEW = [
 ];
 
 //This is used for giving allies in Gamma technology (3-b/3-2/3-c)
-const GAMMA_ALLY_RES = ALPHA_RESEARCH_NEW.concat(PLAYER_RES_BETA).concat(BETA_RESEARCH_NEW);
+const mis_gammaAllyRes = mis_alphaResearchNew.concat(mis_playerResBeta).concat(mis_betaResearchNew);
 
-const GAMMA_RESEARCH_NEW = [
+const mis_gammaResearchNew = [
 	// 1
 	"R-Wpn-Howitzer03-Rot", "R-Wpn-MG-Damage08", "R-Struc-Power-Upgrade02", "R-Sys-Engineering03",
 	"R-Wpn-Cannon-Damage07", "R-Wpn-AAGun-Damage04", "R-Defense-WallUpgrade07", "R-Defense-WallUpgrade08",

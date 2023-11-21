@@ -2,7 +2,7 @@ include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 include("script/campaign/transitionTech.js");
 
-const SPAMTON_RES = [
+const mis_spamtonRes = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals02", "R-Cyborg-Metals02",
 	"R-Defense-WallUpgrade02", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage02",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
@@ -10,44 +10,44 @@ const SPAMTON_RES = [
 ];
 var enabledFactoryGroups; // Increases as groups of factories are activated
 // Default throttles for Spamton's factories
-const fact1throttle = camChangeOnDiff(camSecondsToMilliseconds(90)); // Scary factory
-const fact2throttle = camChangeOnDiff(camSecondsToMilliseconds(45)); // Drift factory
-const fact3throttle = camChangeOnDiff(camSecondsToMilliseconds(6)); // Mini swarm factory
-const fact4throttle = camChangeOnDiff(camSecondsToMilliseconds(30)); // Bison factory
-const fact5throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Bison drift factory
-const fact6throttle = camChangeOnDiff(camSecondsToMilliseconds(45)); // Misc. factory
-const cyb1throttle = camChangeOnDiff(camSecondsToMilliseconds(90)); // Super flamers
-const cyb2throttle = camChangeOnDiff(camSecondsToMilliseconds(50)); // Cannons and needlers
-const cyb3throttle = camChangeOnDiff(camSecondsToMilliseconds(40)); // Spies
-const cyb4throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Bisons
-const cyb5throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Many rockets
-const norm1throttle = camChangeOnDiff(camSecondsToMilliseconds(8)); // Minis
-const norm2throttle = camChangeOnDiff(camSecondsToMilliseconds(50)); // Anvils
-const norm3throttle = camChangeOnDiff(camSecondsToMilliseconds(60)); // Misc.
-const defaultThrottles = [
-	fact1throttle, fact2throttle, fact3throttle, fact4throttle, fact5throttle, fact6throttle,
-	cyb1throttle, cyb2throttle, cyb3throttle, cyb4throttle, cyb5throttle,
-	norm1throttle, norm2throttle, norm3throttle,
+const mis_fact1throttle = camChangeOnDiff(camSecondsToMilliseconds(90)); // Scary factory
+const mis_fact2throttle = camChangeOnDiff(camSecondsToMilliseconds(45)); // Drift factory
+const mis_fact3throttle = camChangeOnDiff(camSecondsToMilliseconds(6)); // Mini swarm factory
+const mis_fact4throttle = camChangeOnDiff(camSecondsToMilliseconds(30)); // Bison factory
+const mis_fact5throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Bison drift factory
+const mis_fact6throttle = camChangeOnDiff(camSecondsToMilliseconds(45)); // Misc. factory
+const mis_cyb1throttle = camChangeOnDiff(camSecondsToMilliseconds(90)); // Super flamers
+const mis_cyb2throttle = camChangeOnDiff(camSecondsToMilliseconds(50)); // Cannons and needlers
+const mis_cyb3throttle = camChangeOnDiff(camSecondsToMilliseconds(40)); // Spies
+const mis_cyb4throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Bisons
+const mis_cyb5throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Many rockets
+const mis_norm1throttle = camChangeOnDiff(camSecondsToMilliseconds(8)); // Minis
+const mis_norm2throttle = camChangeOnDiff(camSecondsToMilliseconds(50)); // Anvils
+const mis_norm3throttle = camChangeOnDiff(camSecondsToMilliseconds(60)); // Misc.
+const mis_defaultThrottles = [
+	mis_fact1throttle, mis_fact2throttle, mis_fact3throttle, mis_fact4throttle, mis_fact5throttle, mis_fact6throttle,
+	mis_cyb1throttle, mis_cyb2throttle, mis_cyb3throttle, mis_cyb4throttle, mis_cyb5throttle,
+	mis_norm1throttle, mis_norm2throttle, mis_norm3throttle,
 ];;
 
 // If a Spamton factory is destroyed, make the remaining ones run faster
 function eventDestroyed(obj)
 {
-	if (obj.player === SPAMTON && obj.type === STRUCTURE 
+	if (obj.player === CAM_SPAMTON && obj.type === STRUCTURE 
 		&& (obj.stattype === FACTORY || obj.stattype === CYBORG_FACTORY || obj.stattype === VTOL_FACTORY))
 	{
 		// Count how many factories are left
 		// TODO: If we eventually give Spamton unique factories, then these names will need to be changed
-		const factoryCount = countStruct("A0LightFactory", SPAMTON) + countStruct("A0CyborgFactory", SPAMTON) + countStruct("A0VTolFactory1", SPAMTON);
+		const factoryCount = countStruct("A0LightFactory", CAM_SPAMTON) + countStruct("A0CyborgFactory", CAM_SPAMTON) + countStruct("A0VTolFactory1", CAM_SPAMTON);
 
 		// Calculate new factory throttles
-		let newThrottles = []
-		for (let i = 0; i < defaultThrottles.length; i++)
+		const newThrottles = [];
+		for (let i = 0; i < mis_defaultThrottles.length; i++)
 		{
 			// At the start of the mission, there are 14 factories
 			// On Normal difficulty, factories will have a x1.2 throttle multiplier at the start, decreasing with each factory destroyed.
 			// Increasing or decreasing the difficulty is equivalent to decreasing or increasing the amount of factories respectively.
-			newThrottles[i] = defaultThrottles[i] * (0.5 + (0.05 * (factoryCount - difficulty + 2)));
+			newThrottles[i] = mis_defaultThrottles[i] * (0.5 + (0.05 * (factoryCount - difficulty + 2)));
 		}
 
 		// Update factory throttles
@@ -306,7 +306,7 @@ function setupPatrolGroups()
 // Spawn a bajillion Defective Lancer VTOLs
 function vtolSwarm()
 {
-	camSetVtolData(SPAMTON, undefined, camMakePos("spamNormAssembly1"), [cTempl.colatv],
+	camSetVtolData(CAM_SPAMTON, undefined, camMakePos("spamNormAssembly1"), [cTempl.colatv],
 		camSecondsToMilliseconds(0.5), undefined, {minVTOLs: 50, maxRandomVTOLs: 0}
 	);
 	queue("stopVtolSwarm", camSecondsToMilliseconds(12.1));
@@ -322,7 +322,7 @@ function stopVtolSwarm()
 // Blow up all the funny VTOLs
 function destroyVtolSwarm()
 {
-	let vtolList = enumDroid(SPAMTON).filter((droid) => {
+	const vtolList = enumDroid(CAM_SPAMTON).filter((droid) => {
 		return droid.isVTOL;
 	});
 
@@ -379,22 +379,22 @@ function activatePipisTrucks()
 // If any trucks are near the player, place Pipis around themselves
 function placePipis()
 {
-	var truckList = enumDroid(SPAMTON, DROID_CONSTRUCT);
+	const truckList = enumDroid(CAM_SPAMTON, DROID_CONSTRUCT);
 	for (let i = 0, l = truckList.length; i < l; ++i)
 	{
-		var truck = truckList[i];
+		const truck = truckList[i];
 		if (truck.order !== DORDER_BUILD && truck.order !== DORDER_HELPBUILD && truck.order !== DORDER_LINEBUILD)
 		{
 			// First, see if we're close enough to the player (12 tiles)
 			if (enumRange(truck.x, truck.y, 12, CAM_HUMAN_PLAYER, false).filter((obj) => (obj.type === DROID && !isVTOL(obj))).length > 0) // Ignore flyers
 			{
 				// If so, place Pipis at this location
-				camQueueBuilding(SPAMTON, "A0Pipis", camMakePos(truck));
+				camQueueBuilding(CAM_SPAMTON, "A0Pipis", camMakePos(truck));
 			}
 			else
 			{
 				// If not, then move towards the player
-				let targets = enumDroid(CAM_HUMAN_PLAYER).filter((obj) => (
+				const targets = enumDroid(CAM_HUMAN_PLAYER).filter((obj) => (
 					propulsionCanReach("wheeled01", truck.x, truck.y, obj.x, obj.y) &&
 						(obj.type === STRUCTURE || (obj.type === DROID && !isVTOL(obj)))
 				));
@@ -414,7 +414,7 @@ function placePipis()
 
 function checkHqs()
 {
-	if (enumStruct(SPAMTON, HQ).length === 0)
+	if (enumStruct(CAM_SPAMTON, HQ).length === 0)
 	{
 		return true; // All HQs are destroyed
 	}
@@ -424,8 +424,8 @@ function eventStartLevel()
 {
 	camSetExtraObjectiveMessage([_("Find Spamton"), _("Defeat Spamton")]);
 
-	var startpos = camMakePos(getObject("landingZone"));
-	var lz = getObject("landingZone");
+	const startpos = camMakePos(getObject("landingZone"));
+	const lz = getObject("landingZone");
 
 	camSetStandardWinLossConditions(CAM_VICTORY_SCRIPTED, "GAMMA_OUT", {
 		callback: "checkHqs" // Player wins if all 4 HQs are destroyed
@@ -434,7 +434,7 @@ function eventStartLevel()
 	centreView(startpos.x, startpos.y);
 	// setMissionTime(camChangeOnDiff(camMinutesToSeconds(10)));
 
-	camCompleteRequiredResearch(SPAMTON_RES, SPAMTON);
+	camCompleteRequiredResearch(mis_spamtonRes, CAM_SPAMTON);
 
 	camSetEnemyBases({
 		"spamSWBase": {
@@ -482,14 +482,14 @@ function eventStartLevel()
 	});
 
 	enabledFactoryGroups = 0;
-	setSpamtonFactoryData(defaultThrottles);
+	setSpamtonFactoryData(mis_defaultThrottles);
 
 	let body = "Body1RECSpam"; // Spamaconda
 	if (difficulty >= HARD) body = "Body5RECSpam"; // Upgrade to Spamaconda II
-	addDroid(SPAMTON, 160, 15, "Pipis Truck", body, "HalfTrack", "", "", "Spade1Mk1Spam"); // Place in the North base
-	addDroid(SPAMTON, 232, 80, "Pipis Truck", body, "wheeledskiddy", "", "", "Spade1Mk1Spam"); // Place in the East base
-	addDroid(SPAMTON, 150, 125, "Pipis Truck", body, "HalfTrack", "", "", "Spade1Mk1Spam"); // Place in the South base
-	camManageTrucks(SPAMTON);
+	addDroid(CAM_SPAMTON, 160, 15, "Pipis Truck", body, "HalfTrack", "", "", "Spade1Mk1Spam"); // Place in the North base
+	addDroid(CAM_SPAMTON, 232, 80, "Pipis Truck", body, "wheeledskiddy", "", "", "Spade1Mk1Spam"); // Place in the East base
+	addDroid(CAM_SPAMTON, 150, 125, "Pipis Truck", body, "HalfTrack", "", "", "Spade1Mk1Spam"); // Place in the South base
+	camManageTrucks(CAM_SPAMTON);
 
 	// camPlayVideos([{video: "MB3_C_MSG", type: CAMP_MSG}, {video: "MB3_C_MSG2", type: MISS_MSG}]);
 
@@ -506,20 +506,20 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("Boulder2", "Pipis");
 
 	// Make units funny
-	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.sphlinkht, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.spcybspy, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crcybpyro, cTempl.spscybflame, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crcybcan, cTempl.spcybbison, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crtmgw, cTempl.spminimg, SPAMTON);
-	camUpgradeOnMapTemplates(cTempl.crlhmght, cTempl.spbigmg, SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.sphlinkht, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.spcybspy, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybpyro, cTempl.spscybflame, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crcybcan, cTempl.spcybbison, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crtmgw, cTempl.spminimg, CAM_SPAMTON);
+	camUpgradeOnMapTemplates(cTempl.crlhmght, cTempl.spbigmg, CAM_SPAMTON);
 
 	// Make structures funny
-	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", SPAMTON);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre2", SPAMTON);
-	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", SPAMTON);
-	camUpgradeOnMapStructures("PillBox4", "PillBoxBison", SPAMTON);
-	camUpgradeOnMapStructures("WallTower05", "Sys-SensoTower03", SPAMTON);
-	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-ZombieSpamton", SPAMTON);
-	camUpgradeOnMapStructures("Sys-NX-CBTower", "Spawner-SkeletonSpamton", SPAMTON);
-	camUpgradeOnMapStructures("Sys-NX-VTOL-RadTow", "Spawner-CreeperSpamton", SPAMTON);
+	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", CAM_SPAMTON);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre2", CAM_SPAMTON);
+	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", CAM_SPAMTON);
+	camUpgradeOnMapStructures("PillBox4", "PillBoxBison", CAM_SPAMTON);
+	camUpgradeOnMapStructures("WallTower05", "Sys-SensoTower03", CAM_SPAMTON);
+	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-ZombieSpamton", CAM_SPAMTON);
+	camUpgradeOnMapStructures("Sys-NX-CBTower", "Spawner-SkeletonSpamton", CAM_SPAMTON);
+	camUpgradeOnMapStructures("Sys-NX-VTOL-RadTow", "Spawner-CreeperSpamton", CAM_SPAMTON);
 }

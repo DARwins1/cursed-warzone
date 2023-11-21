@@ -285,7 +285,7 @@ dataset		CAM_3
 game		"wrf/cam3/cam3b.gam"
 data		"wrf/cam3/cam3b.wrf"
 
-between		RIDE_AROUND_TOWN
+between		WELCOME_TO_THE
 dataset		CAM_3
 data		"wrf/cam3/sub3-2s.wrf"
 

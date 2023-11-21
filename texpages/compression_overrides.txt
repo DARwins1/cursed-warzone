@@ -1,0 +1,52 @@
+# [Per-Texture Compression Overrides]
+#
+# Line format:
+# <filename>=<max texture compression quality level>
+# Where <filename> is the path inside the data directory (example: texpages/page-6.png), *case-sensitive*
+# Where <max texture compression quality level> corresponds to the following table:
+#   0: same as source (for loading a PNG: no gpu texture compression, for loading a KTX2: ASTC4x4 or uncompressed)
+#   1: highest quality compressed texture formats only (for loading a KTX2: ASTC4x4 or BPTC, for PNGs: this will still currently lead to uncompressed textures in memory)
+#
+# To get the default behavior, which is to use the best texture compression format available on a particular system, omit listing the texture filename at all. (This file is intended only for overriding the default behavior.)
+# NOTE: This is only intended for compatibility with some old manually-created pixel-art texture atlases that are tightly packed and may have "bleed" issues as a result of texture compression.
+# In general, modern texture files with appropriate format, resolution, and padding (if needed between elements) should not need to be listed here, or should be reformatted to avoid it.
+
+texpages/page-14-droid-hubs.png=0
+texpages/page-17-droid-weapons.png=0
+texpages/page-18-fx.png=0
+texpages/page-19-fx.png=0
+texpages/page-20-fx.png=0
+texpages/page-21-fx.png=0
+texpages/page-22-fx.png=0
+texpages/page-23-fx.png=0
+texpages/page-24-fx.png=0
+texpages/page-8-player-buildings-bases-rockies.png=0
+texpages/page-8-player-buildings-bases-urban.png=0
+texpages/page-8-player-buildings-bases.png=0
+texpages/page-9-player-buildings-bases-rockies.png=1
+texpages/page-9-player-buildings-bases-urban.png=1
+texpages/page-9-player-buildings-bases.png=1
+texpages/page-113-player-buildings-bases_Collective.png=0
+texpages/page-113-player-buildings-bases_Collective.png=0
+texpages/page-117-player-buildings-bases_nex.png=1
+texpages/page-120-player-buildings-bases_Collective.png=1
+texpages/page-500-cursedfx.png=0
+texpages/page-501-cursedminecraft.png=0
+texpages/page-503-cursedcannons.png=0
+texpages/page-505-cursedsigns.png=0
+texpages/page-506-cursedsignsarena1.png=0
+texpages/page-506-cursedsignsarena2.png=0
+texpages/page-506-cursedsignsarena3.png=0
+texpages/page-506-cursedsignsarena4.png=0
+texpages/page-506-cursedsignsarena5.png=0
+texpages/page-506-cursedsignsarena6.png=0
+texpages/page-506-cursedsignsarena7.png=0
+texpages/page-506-cursedsignsarena8.png=0
+texpages/page-506-cursedsignsarena9.png=0
+texpages/page-506-cursedsignsarena10.png=0
+texpages/page-506-cursedsignsarena11.png=0
+texpages/page-506-cursedsignsarena12.png=0
+texpages/page-507-spamton-droid-hubs.png=0
+texpages/page-508-cursed-nextbot.png=0
+texpages/page-510-spamtonfx.png=0
+texpages/page-511-spamton-buildings.png=0

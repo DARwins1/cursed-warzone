@@ -2,7 +2,7 @@
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
-const ENEMY_RES = [
+const mis_clippyRes = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals01", "R-Cyborg-Metals01",
 ];
 
@@ -102,7 +102,7 @@ function openDoors()
 	camEnableFactory("clipCybFact4");
 
 	// Enable Clippy's repair structures
-	camUpgradeOnMapStructures("A0VtolPad", "A0RepairCentre1", CLIPPY);
+	camUpgradeOnMapStructures("A0VtolPad", "A0RepairCentre1", CAM_CLIPPY);
 
 	// Activate the remaining groups
 	camManageGroup(camMakeGroup("driftAmbushGroup4"), CAM_ORDER_ATTACK, {
@@ -118,15 +118,15 @@ function openDoors()
 function eventStartLevel()
 {
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "BYE_BYE");
-	var startpos = getObject("startPosition");
-	var lz = getObject("landingZone");
+	const startpos = getObject("startPosition");
+	const lz = getObject("landingZone");
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.25)));
 	camPlayVideos({video: "MB1CA_MSG", type: CAMP_MSG});
 
-	camCompleteRequiredResearch(ENEMY_RES, CLIPPY);
+	camCompleteRequiredResearch(mis_clippyRes, CAM_CLIPPY);
 
 	camSetEnemyBases({
 		"clipBaseOilN": {
@@ -318,18 +318,18 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("Pylon", "Sign1");
 
 	// Make Clippy's structures funny
-	camUpgradeOnMapStructures("GuardTower1", "GuardTower1MG", CLIPPY);
-	camUpgradeOnMapStructures("WallTower05", "WallTowerMG", CLIPPY);
-	camUpgradeOnMapStructures("GuardTower4", "GuardTower4H", CLIPPY);
-	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CLIPPY);
-	// camUpgradeOnMapStructures("A0VTolFactory1", "", CLIPPY); // TODO: Clippy's Computer
+	camUpgradeOnMapStructures("GuardTower1", "GuardTower1MG", CAM_CLIPPY);
+	camUpgradeOnMapStructures("WallTower05", "WallTowerMG", CAM_CLIPPY);
+	camUpgradeOnMapStructures("GuardTower4", "GuardTower4H", CAM_CLIPPY);
+	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CAM_CLIPPY);
+	// camUpgradeOnMapStructures("A0VTolFactory1", "", CAM_CLIPPY); // TODO: Clippy's Computer
 
 	// Make Clippy's units funny
-	camUpgradeOnMapTemplates(cTempl.crlmght, cTempl.crlmgdw, CLIPPY);
-	camUpgradeOnMapTemplates(cTempl.crlcanht, cTempl.crlcandw, CLIPPY);
-	camUpgradeOnMapTemplates(cTempl.crlscorchht, cTempl.crlscorchdw, CLIPPY);
-	camUpgradeOnMapTemplates(cTempl.crmmortht, cTempl.crlmortw, CLIPPY);
-	camUpgradeOnMapTemplates(cTempl.npcybr, cTempl.crcybbb, CLIPPY);
+	camUpgradeOnMapTemplates(cTempl.crlmght, cTempl.crlmgdw, CAM_CLIPPY);
+	camUpgradeOnMapTemplates(cTempl.crlcanht, cTempl.crlcandw, CAM_CLIPPY);
+	camUpgradeOnMapTemplates(cTempl.crlscorchht, cTempl.crlscorchdw, CAM_CLIPPY);
+	camUpgradeOnMapTemplates(cTempl.crmmortht, cTempl.crlmortw, CAM_CLIPPY);
+	camUpgradeOnMapTemplates(cTempl.npcybr, cTempl.crcybbb, CAM_CLIPPY);
 
 	// Spamton items
 	enableResearch("R-Wpn-Rocket05-MiniPod"); // Many-Rocket Pod

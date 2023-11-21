@@ -1,7 +1,7 @@
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
-const PLAYER_RES = [
+const mis_playerRes = [
 	"R-Wpn-MG1Mk1", "R-Vehicle-Body01", "R-Sys-Spade1Mk1", "R-Vehicle-Prop-Wheels",
 ];
 
@@ -28,8 +28,8 @@ camAreaEvent("launchScavAttack", function(droid)
 
 function runAway()
 {
-	var oilPatch = getObject("oilPatch");
-	var droids = enumRange(oilPatch.x, oilPatch.y, 7, SCAV_7, false);
+	const oilPatch = getObject("oilPatch");
+	const droids = enumRange(oilPatch.x, oilPatch.y, 7, CAM_SCAV_7, false);
 	camManageGroup(camMakeGroup(droids), CAM_ORDER_ATTACK, {
 		pos: camMakePos("scavAttack1"),
 		fallback: camMakePos("retreat1"),
@@ -87,10 +87,10 @@ function eventStructureBuilt(structure, droid)
 	if (structure.player === CAM_HUMAN_PLAYER && structure.stattype === RESOURCE_EXTRACTOR)
 	{
 		// Is it in the base two area?
-		var objs = enumArea("scavBase2Cleanup", CAM_HUMAN_PLAYER);
+		const objs = enumArea("scavBase2Cleanup", CAM_HUMAN_PLAYER);
 		for (let i = 0, l = objs.length; i < l; ++i)
 		{
-			var obj = objs[i];
+			const obj = objs[i];
 			if (obj.type === STRUCTURE && obj.stattype === RESOURCE_EXTRACTOR)
 			{
 				camCallOnce("raidAttack");
@@ -131,7 +131,7 @@ function enableBaseStructures()
 // Allow the player to change to colors
 function eventChat(from, to, message)
 {
-	var colour = 0;
+	let colour = 0;
 	switch (message)
 	{
 		case "green me":
@@ -169,8 +169,34 @@ function eventChat(from, to, message)
 		case "white me":
 			colour = 10; // White
 			break;
+		case "bright blue me":
+		case "bright me":
+			colour = 11; // Bright Blue
+			break;
+		case "neon green me":
+		case "neon me":
+		case "bright green me":
+			colour = 12; // Neon Green
+			break;
+		case "infrared me":
+		case "infra red me":
+		case "infra me":
+		case "dark red me":
+			colour = 13; // Infrared
+			break;
+		case "ultraviolet me":
+		case "ultra violet me":
+		case "ultra me":
+		case "uv me":
+		case "dark blue me":
+			colour = 14; // Ultraviolet
+			break;
+		case "brown me":
+		case "dark green me":
+			colour = 15; // Brown
+			break;
 		default:
-			return; // Some other message
+			return; // Some other message; do nothing
 	}
 
 	playerColour = colour;
@@ -179,11 +205,11 @@ function eventChat(from, to, message)
 	// Make sure enemies aren't choosing conflicting colours with the player
 	if (colour === 4)
 	{
-		changePlayerColour(MOBS, 5); // Switch to blue
+		changePlayerColour(CAM_MOBS, 5); // Switch to blue
 	}
 	else
 	{
-		changePlayerColour(MOBS, 4); // Keep as red
+		changePlayerColour(CAM_MOBS, 4); // Keep as red
 	}
 
 	playSound("beep6.ogg");
@@ -192,8 +218,8 @@ function eventChat(from, to, message)
 function eventStartLevel()
 {
 	const PLAYER_POWER = 1300;
-	var startpos = getObject("startPosition");
-	var lz = getObject("landingZone");
+	const startpos = getObject("startPosition");
+	const lz = getObject("landingZone");
 
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CAM_1B");
 
@@ -218,17 +244,17 @@ function eventStartLevel()
 	// Make sure enemies aren't choosing conflicting colours with the player
 	if (playerColour === 4)
 	{
-		changePlayerColour(MOBS, 5); // Switch to blue
+		changePlayerColour(CAM_MOBS, 5); // Switch to blue
 	}
 	else
 	{
-		changePlayerColour(MOBS, 4); // Keep as red
+		changePlayerColour(CAM_MOBS, 4); // Keep as red
 	}
 
-	setAlliance(SCAV_6, SCAV_7, true);
+	setAlliance(CAM_SCAV_6, CAM_SCAV_7, true);
 
 	enableBaseStructures();
-	camCompleteRequiredResearch(PLAYER_RES, CAM_HUMAN_PLAYER);
+	camCompleteRequiredResearch(mis_playerRes, CAM_HUMAN_PLAYER);
 
 	// Give player briefing.
 	camPlayVideos({video: "CMB1_MSG", type: CAMP_MSG, immediate: false});

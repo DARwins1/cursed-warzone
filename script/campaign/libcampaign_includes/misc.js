@@ -105,7 +105,7 @@ function camMakePos(x, y)
 	{
 		return undefined;
 	}
-	var obj = x;
+	let obj = x;
 	if (camIsString(x))
 	{
 		obj = getObject(x);
@@ -162,7 +162,7 @@ function camDist(x1, y1, x2, y2)
 	{
 		return distBetweenTwoPoints(x1.x, x1.y, y1.x, y1.y);
 	}
-	var pos2 = camMakePos(x2);
+	const pos2 = camMakePos(x2);
 	if (camDef(pos2.x)) // x2 is pos2
 	{
 		return distBetweenTwoPoints(x1, y1, pos2.x, pos2.y);
@@ -187,9 +187,9 @@ function camPlayerMatchesFilter(playerId, playerFilter)
 		case ALL_PLAYERS:
 			return true;
 		case ALLIES:
-			return allianceExistsBetween(CAM_HUMAN_PLAYER, playerId);
+			return playerId === CAM_HUMAN_PLAYER;
 		case ENEMIES:
-			return playerId >= 0 && playerId < CAM_MAX_PLAYERS && playerId !== CAM_HUMAN_PLAYER;
+			return playerId >= 0 && playerId < __CAM_MAX_PLAYERS && playerId !== CAM_HUMAN_PLAYER;
 		default:
 			return playerId === playerFilter;
 	}
@@ -204,11 +204,11 @@ function camPlayerMatchesFilter(playerId, playerFilter)
 //;;
 function camRemoveDuplicates(items)
 {
-	var prims = {"boolean":{}, "number":{}, "string":{}};
-	var objs = [];
+	let prims = {"boolean":{}, "number":{}, "string":{}};
+	const objs = [];
 
 	return items.filter((item) => {
-		var type = typeof item;
+		const type = typeof item;
 		if (type in prims)
 		{
 			return prims[type].hasOwnProperty(item) ? false : (prims[type][item] = true);
@@ -234,11 +234,11 @@ function camCountStructuresInArea(label, playerFilter)
 	{
 		playerFilter = CAM_HUMAN_PLAYER;
 	}
-	var list = enumArea(label, playerFilter, false);
-	var ret = 0;
+	const list = enumArea(label, playerFilter, false);
+	let ret = 0;
 	for (let i = 0, l = list.length; i < l; ++i)
 	{
-		var object = list[i];
+		const object = list[i];
 		if (object.type === STRUCTURE && object.stattype !== WALL && object.status === BUILT)
 		{
 			++ret;
@@ -256,7 +256,7 @@ function camCountStructuresInArea(label, playerFilter)
 //;;
 function camChangeOnDiff(numericValue)
 {
-	var modifier = 0;
+	let modifier = 0;
 
 	switch (difficulty)
 	{
@@ -323,8 +323,8 @@ function camMakeGroup(what, playerFilter)
 	{
 		playerFilter = ENEMIES;
 	}
-	var array;
-	var obj;
+	let array;
+	let obj;
 	if (camIsString(what)) // label
 	{
 		obj = getObject(what);
@@ -363,10 +363,10 @@ function camMakeGroup(what, playerFilter)
 	}
 	if (camDef(array))
 	{
-		var group = camNewGroup();
+		const group = camNewGroup();
 		for (let i = 0, l = array.length; i < l; ++i)
 		{
-			var o = array[i];
+			const o = array[i];
 			if (!camDef(o) || !o)
 			{
 				camDebug("Trying to add", o);
@@ -390,9 +390,9 @@ function camMakeGroup(what, playerFilter)
 //;;
 function camBreakAlliances()
 {
-	for (let i = 0; i < CAM_MAX_PLAYERS; ++i)
+	for (let i = 0; i < __CAM_MAX_PLAYERS; ++i)
 	{
-		for (let c = 0; c < CAM_MAX_PLAYERS; ++c)
+		for (let c = 0; c < __CAM_MAX_PLAYERS; ++c)
 		{
 			if (i !== c && allianceExistsBetween(i, c) === true)
 			{
@@ -411,12 +411,12 @@ function camBreakAlliances()
 //;;
 function camGenerateRandomMapEdgeCoordinate(reachPosition)
 {
-	let limits = getScrollLimits();
+	const limits = getScrollLimits();
 	let loc;
 
 	do
 	{
-		let location = {x: 0, y: 0};
+		const location = {x: 0, y: 0};
 		let xWasRandom = false;
 
 		if (camRand(100) < 50)
@@ -478,7 +478,7 @@ function camGenerateRandomMapCoordinate(reachPosition, distFromReach, scanObject
 		scanObjectRadius = 2;
 	}
 
-	let limits = getScrollLimits();
+	const limits = getScrollLimits();
 	let pos;
 
 	do
@@ -536,7 +536,7 @@ function camGenerateRandomMapCoordinateWithinRadius(center, radius, scanObjectRa
 		scanObjectRadius = 2;
 	}
 
-	let limits = getScrollLimits();
+	const limits = getScrollLimits();
 	let pos;
 	let attempts = 0;
 
@@ -590,29 +590,52 @@ function camGenerateRandomMapCoordinateWithinRadius(center, radius, scanObjectRa
 //;;
 function camDiscoverCampaign()
 {
-	for (let i = 0, len = ALPHA_LEVELS.length; i < len; ++i)
+	for (let i = 0, len = __cam_alphaLevels.length; i < len; ++i)
 	{
-		if (__camNextLevel === ALPHA_LEVELS[i] || __camNextLevel === BETA_LEVELS[0])
+		if (__camNextLevel === __cam_alphaLevels[i] || __camNextLevel === __cam_betaLevels[0])
 		{
-			return ALPHA_CAMPAIGN_NUMBER;
+			return __CAM_ALPHA_CAMPAIGN_NUMBER;
 		}
 	}
-	for (let i = 0, len = BETA_LEVELS.length; i < len; ++i)
+	for (let i = 0, len = __cam_betaLevels.length; i < len; ++i)
 	{
-		if (__camNextLevel === BETA_LEVELS[i] || __camNextLevel === GAMMA_LEVELS[0])
+		if (__camNextLevel === __cam_betaLevels[i] || __camNextLevel === __cam_gammaLevels[0])
 		{
-			return BETA_CAMPAIGN_NUMBER;
+			return __CAM_BETA_CAMPAIGN_NUMBER;
 		}
 	}
-	for (let i = 0, len = GAMMA_LEVELS.length; i < len; ++i)
+	for (let i = 0, len = __cam_gammaLevels.length; i < len; ++i)
 	{
-		if (__camNextLevel === GAMMA_LEVELS[i] || __camNextLevel === CAM_GAMMA_OUT)
+		if (__camNextLevel === __cam_gammaLevels[i] || __camNextLevel === CAM_GAMMA_OUT)
 		{
-			return GAMMA_CAMPAIGN_NUMBER;
+			return __CAM_GAMMA_CAMPAIGN_NUMBER;
 		}
 	}
 
-	return UNKNOWN_CAMPAIGN_NUMBER;
+	return __CAM_UNKNOWN_CAMPAIGN_NUMBER;
+}
+
+function camSetExpLevel(number)
+{
+	__camExpLevel = number;
+}
+
+function camSetOnMapEnemyUnitExp()
+{
+	enumDroid(CAM_NEW_PARADIGM)
+	.concat(enumDroid(CAM_THE_COLLECTIVE))
+	.concat(enumDroid(CAM_NEXUS))
+	.concat(enumDroid(CAM_SCAV_6))
+	.concat(enumDroid(CAM_SCAV_7))
+	.forEach(function(obj) {
+		if (!allianceExistsBetween(CAM_HUMAN_PLAYER, obj.player) && //may have friendly units as other player
+			!camIsTransporter(obj) &&
+			obj.droidType !== DROID_CONSTRUCT &&
+			obj.droidType !== DROID_REPAIR)
+		{
+			camSetDroidExperience(obj);
+		}
+	});
 }
 
 //;; ## camRandomEffect(pos)
@@ -625,13 +648,13 @@ function camDiscoverCampaign()
 function camRandomEffect(pos)
 {
 	// Set a default list of effects
-	let effects = [
+	const effects = [
 		"oilDrum", "oilDrum", "oilDrums",
 		"explosiveDrum", "twinHostile", "explode",
 		"miniVipers", "manyPodTower", "scavScorchShot",
 		"trees", "driftVipers", "fungHardpoint",
 	];
-	const ng = camNewGroup(); // Place spawned hostiles into this group
+	const __NEW_GROUP = camNewGroup(); // Place spawned hostiles into this group
 
 	// Additional effects with conditions
 	if (camRand(100) < (15 * camDiscoverCampaign()))
@@ -728,6 +751,7 @@ function camRandomEffect(pos)
 	}
 
 	// Choose an effect
+	let player = CAM_HUMAN_PLAYER;
 	switch (effects[camRand(effects.length)])
 	{
 		case "oilDrum":
@@ -778,7 +802,7 @@ function camRandomEffect(pos)
 			{
 				for (let j = -1; j <= 1; j++)
 				{
-					groupAdd(ng, addDroid(MOBS, pos.x + i, pos.y + j, 
+					groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x + i, pos.y + j, 
 						_("Twin nugenihcaM Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "MG2Mk1"
 					));
 				}
@@ -786,38 +810,38 @@ function camRandomEffect(pos)
 			break;
 		case "scavScorchShot":
 			// Spawn a grid of 4 scav Scorch Shot towers
-			addStructure("A0BaBaFlameTower", SCAV_7, (pos.x - 1) * 128, (pos.y) * 128);
-			addStructure("A0BaBaFlameTower", SCAV_7, (pos.x) * 128, (pos.y - 1) * 128);
-			addStructure("A0BaBaFlameTower", SCAV_7, (pos.x + 1) * 128, (pos.y) * 128);
-			addStructure("A0BaBaFlameTower", SCAV_7, (pos.x) * 128, (pos.y + 1) * 128);
+			addStructure("A0BaBaFlameTower", CAM_SCAV_7, (pos.x - 1) * 128, (pos.y) * 128);
+			addStructure("A0BaBaFlameTower", CAM_SCAV_7, (pos.x) * 128, (pos.y - 1) * 128);
+			addStructure("A0BaBaFlameTower", CAM_SCAV_7, (pos.x + 1) * 128, (pos.y) * 128);
+			addStructure("A0BaBaFlameTower", CAM_SCAV_7, (pos.x) * 128, (pos.y + 1) * 128);
 			break;
 		case "bbCyb":
 			// Spawn a grid of 4 Bunker Buster Cyborgs
-			groupAdd(ng, addDroid(MOBS, pos.x - 1, pos.y, 
+			groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x - 1, pos.y, 
 				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
 			));
-			groupAdd(ng, addDroid(MOBS, pos.x + 1, pos.y, 
+			groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x + 1, pos.y, 
 				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
 			));
-			groupAdd(ng, addDroid(MOBS, pos.x, pos.y - 1, 
+			groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x, pos.y - 1, 
 				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
 			));
-			groupAdd(ng, addDroid(MOBS, pos.x, pos.y + 1, 
+			groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x, pos.y + 1, 
 				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
 			));
 			break;
 		case "swordCyb":
 			// Spawn a grid of 4 Sword Cyborgs
-			groupAdd(ng, addDroid(MOBS, pos.x - 1, pos.y, 
+			groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x - 1, pos.y, 
 				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
 			));
-			groupAdd(ng, addDroid(MOBS, pos.x + 1, pos.y, 
+			groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x + 1, pos.y, 
 				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
 			));
-			groupAdd(ng, addDroid(MOBS, pos.x, pos.y - 1, 
+			groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x, pos.y - 1, 
 				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
 			));
-			groupAdd(ng, addDroid(MOBS, pos.x, pos.y + 1, 
+			groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x, pos.y + 1, 
 				_("Sword Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Sword"
 			));
 			break;
@@ -868,7 +892,7 @@ function camRandomEffect(pos)
 			break;
 		case "manyPodTower":
 			// Spawn a hostile Many-Rocket tower
-			addStructure("GuardTower6", MOBS, pos.x * 128, pos.y * 128);
+			addStructure("GuardTower6", CAM_MOBS, pos.x * 128, pos.y * 128);
 			break;
 		case "fungHardpoint":
 			// Spawn a Fungible Cannon Hardpoint for the player
@@ -882,30 +906,30 @@ function camRandomEffect(pos)
 			// Cause a drum explosion
 			let boomBaitId = addDroid(10, pos.x, pos.y, "Boom Bait",
 				"B4body-sml-trike01", "BaBaProp", "", "", "BabaTrikeMG").id; // Spawn a trike...
-			queue("__camDetonateDrum", CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
+			queue("__camDetonateDrum", __CAM_TICKS_PER_FRAME, boomBaitId + ""); // ...then blow it up
 			break;
 		case "monsterSpawner":
 			// Spawn a Monster Spawner
 			if (camRand(100) < 50)
 			{
 				// 50% chance for Zombie Spawner
-				addStructure("Spawner-Zombie", MOBS, pos.x * 128, pos.y * 128);
+				addStructure("Spawner-Zombie", CAM_MOBS, pos.x * 128, pos.y * 128);
 			}
 			else if (camRand(100) < 50)
 			{
 				// 25% chance for Skeleton Spawner
-				addStructure("Spawner-Skeleton", MOBS, pos.x * 128, pos.y * 128);
+				addStructure("Spawner-Skeleton", CAM_MOBS, pos.x * 128, pos.y * 128);
 			}
 			else
 			{
 				// 25% chance for Creeper Spawner
-				addStructure("Spawner-Creeper", MOBS, pos.x * 128, pos.y * 128);
+				addStructure("Spawner-Creeper", CAM_MOBS, pos.x * 128, pos.y * 128);
 			}
 			break;
 		case "enderman":
 			// Spawn an Enderman
 			// Note that this unit is NOT automatically grouped
-			addDroid(MOBS, pos.x, pos.y, 
+			addDroid(CAM_MOBS, pos.x, pos.y, 
 				_("Enderman"), "EndermanBody", "CyborgLegs", "", "", "Cyb-Wpn-EnderMelee"
 			);
 			break;
@@ -915,7 +939,7 @@ function camRandomEffect(pos)
 			{
 				for (let j = -1; j <= 1; j++)
 				{
-					groupAdd(ng, addDroid(MOBS, pos.x + i, pos.y + j, 
+					groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x + i, pos.y + j, 
 						_("Baby Zombie"), "BabyZombieBody", "CyborgLegs", "", "", "Cyb-Wpn-BabyZmbieMelee"
 					));
 				}
@@ -927,17 +951,16 @@ function camRandomEffect(pos)
 			{
 				for (let j = -1; j <= 1; j++)
 				{
-					addStructure("A0HardcreteMk1CWall", MOBS, (pos.x + i) * 128, (pos.y + j) * 128);
+					addStructure("A0HardcreteMk1CWall", CAM_MOBS, (pos.x + i) * 128, (pos.y + j) * 128);
 				}
 			}
 			break;
 		case "miniVipers":
 			// Spawn 18 Mini Machinegun Viper Wheels
-			var player = CAM_HUMAN_PLAYER;
 			if (camRand(100) < 20)
 			{
 				// 20% chance for the swarm to be hostile
-				player = MOBS;
+				player = CAM_MOBS;
 			}
 			for (let i = -1; i <= 1; i++)
 			{
@@ -949,17 +972,16 @@ function camRandomEffect(pos)
 					const nDroid2 = addDroid(player, pos.x + i, pos.y + j, 
 						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
 					);
-					if (player === MOBS)
+					if (player === CAM_MOBS)
 					{
-						groupAdd(ng, nDroid1);
-						groupAdd(ng, nDroid2);
+						groupAdd(__NEW_GROUP, nDroid1);
+						groupAdd(__NEW_GROUP, nDroid2);
 					}
 				}
 			}
 			break;
 			case "miniNormalVipers":
 			// Spawn 18 Mini Machinegun Viper Normal Wheels for the player
-			var player = CAM_HUMAN_PLAYER;
 			for (let i = -1; i <= 1; i++)
 			{
 				for (let j = -1; j <= 1; j++)
@@ -975,11 +997,10 @@ function camRandomEffect(pos)
 			break;
 		case "driftVipers":
 			// Spawn 9 Machinegun Viper Drift Wheels
-			var player = CAM_HUMAN_PLAYER;
 			if (camRand(100) < 50)
 			{
 				// 50% chance for the vipers to be hostile
-				player = MOBS;
+				player = CAM_MOBS;
 			}
 			for (let i = -1; i <= 1; i++)
 			{
@@ -988,20 +1009,19 @@ function camRandomEffect(pos)
 					const nDroid = addDroid(player, pos.x + i, pos.y + j, 
 						_("Machinegun Viper Drift Wheels"), "Body1REC", "wheeledskiddy", "", "", "MG1Mk1"
 					);
-					if (player === MOBS)
+					if (player === CAM_MOBS)
 					{
-						groupAdd(ng, nDroid);
+						groupAdd(__NEW_GROUP, nDroid);
 					}
 				}
 			}
 			break;
 		case "bigBunker":
 			// Spawn a Big Machinegun Bunker
-			var player = CAM_HUMAN_PLAYER;
 			if (camRand(100) < 20)
 			{
 				// 20% chance for the bunker to be hostile
-				player = MOBS;
+				player = CAM_MOBS;
 			}
 			addStructure("Pillbox-Big", player, (pos.x + i) * 128, (pos.y + j) * 128);
 			break;
@@ -1054,10 +1074,10 @@ function camRandomEffect(pos)
 			return;
 	}
 
-	if (groupSize(ng) > 0)
+	if (groupSize(__NEW_GROUP) > 0)
 	{
 		// If we spawned hostile units, order them to attack
-		camManageGroup(ng, CAM_ORDER_ATTACK);
+		camManageGroup(__NEW_GROUP, CAM_ORDER_ATTACK);
 	}
 }
 
@@ -1106,26 +1126,26 @@ function camSetSunIntensity(ar, ag, ab, dr, dg, db, sr, sg, sb)
 function camResetSun()
 {
 	let camNum = camDiscoverCampaign();
-	var sp;
-	var si;
+	let sp;
+	let si;
 	
 	switch (camNum)
 	{
 		case 1:
-			sp = CAM_ALPHA_SUN_POSITION;
-			si = CAM_ALPHA_SUN_INTENSITY;
+			sp = __CAM_ALPHA_SUN_POSITION;
+			si = __CAM_ALPHA_SUN_INTENSITY;
 			break;
 		case 2:
-			sp = CAM_BETA_SUN_POSITION;
-			si = CAM_BETA_SUN_INTENSITY;
+			sp = __CAM_BETA_SUN_POSITION;
+			si = __CAM_BETA_SUN_INTENSITY;
 			break;
 		case 3:
-			sp = CAM_GAMMA_SUN_POSITION;
-			si = CAM_GAMMA_SUN_INTENSITY;
+			sp = __CAM_GAMMA_SUN_POSITION;
+			si = __CAM_GAMMA_SUN_INTENSITY;
 			break;
 		default:
-			sp = CAM_ALPHA_SUN_POSITION;
-			si = CAM_ALPHA_SUN_INTENSITY;
+			sp = __CAM_ALPHA_SUN_POSITION;
+			si = __CAM_ALPHA_SUN_INTENSITY;
 			break;
 	}
 
@@ -1143,7 +1163,6 @@ function camResetSun()
 //;; Returns a random coordinate located within the given area.
 //;;
 //;; @param {string|Object} area
-//;;
 //;; @returns {void}
 //;;
 function camRandPosInArea(area)
@@ -1158,7 +1177,6 @@ function camRandPosInArea(area)
 //;; ## camRandomFungibleCannon()
 //;;
 //;; Returns the name of a random varient of the Fungible Cannon.
-//;;
 //;; @returns {string}
 //;;
 function camRandomFungibleCannon()
@@ -1171,7 +1189,6 @@ function camRandomFungibleCannon()
 //;; Returns true if the given spy ID can feign death, false otherwise.
 //;;
 //;; @param {number} spyId
-//;;
 //;; @returns {boolean}
 //;;
 function camFeignCooldownCheck(spyId)
@@ -1186,6 +1203,89 @@ function camFeignCooldownCheck(spyId)
 	return true; // This spy is not on cooldown
 }
 
+//;; ## camNameTemplate(weapon, body, propulsion)
+//;; Returns a nice name for the passed in template
+//;; Takes in either a template object or a turret + body + propulsion
+//;;
+//;; @param {string | Object} weapon
+//;; @param {string} body
+//;; @param {string} propulsion
+//;; @returns {string}
+//;;
+function camNameTemplate(weapon, body, propulsion)
+{
+	if (!camDef(body))
+	{
+		// Template passed in...
+		propulsion = weapon.prop;
+		body = weapon.body;
+		weapon = weapon.weap;
+	}
+
+	const __MULTI_TURRET = (typeof weapon === "object" && camDef(weapon[1]));
+	// If `weapon` is an array of weapons, we only care about the first one.
+	weapon = __MULTI_TURRET ? weapon[0] : weapon;
+
+	let name;
+	let weapName = camGetCompNameFromId(weapon, "Weapon");
+	if (!camDef(weapName))
+	{
+		// Sensor unit?
+		weapName = camGetCompNameFromId(weapon, "Sensor");
+		if (!camDef(weapName))
+		{
+			// Truck??
+			weapName = camGetCompNameFromId(weapon, "Construct");
+			if (!camDef(weapName))
+			{
+				// Repair Turret???
+				weapName = camGetCompNameFromId(weapon, "Repair");
+				if (!camDef(weapName))
+				{
+					// Commander????
+					weapName = camGetCompNameFromId(weapon, "Brain");
+				}
+			}
+		}
+	}
+
+	if (body === "CyborgLightBody" || body === "CyborgHeavyBody")
+	{
+		// Just use the weapon name for cyborgs
+		name = weapName;
+	}
+	else
+	{
+		const __BODY_NAME = camGetCompNameFromId(body, "Body");
+		const __PROP_NAME = camGetCompNameFromId(propulsion, "Propulsion");
+		name = (__MULTI_TURRET) 
+			? [ weapName, _("Hydra"), __BODY_NAME, __PROP_NAME ].join(" ") // Add "Hydra" if multiple turrets
+			: [ weapName, __BODY_NAME, __PROP_NAME ].join(" ");
+	}
+	return name;
+}
+
+//;; ## camGetCompNameFromId(compId, compType)
+//;; Returns the external name of a component from it's internal ID name.
+//;; For example, `camGetCompNameFromId("Rocket-LtA-T", "Weapon")` returns "Lancer".
+//;;
+//;; @param {string} compId
+//;; @param {string} compType
+//;; @returns {string}
+//;;
+function camGetCompNameFromId(compId, compType)
+{
+	// FIXME: O(n) lookup here
+	const compList = Stats[compType];
+	for (let compName in compList)
+	{
+		if (compList[compName].Id === compId)
+		{
+			return compName;
+		}
+	}	
+}
+
 //////////// privates
 
 function __camGlobalContext()
@@ -1196,21 +1296,21 @@ function __camGlobalContext()
 function __camFindClusters(list, size)
 {
 	// The good old cluster analysis algorithm taken from NullBot AI.
-	var ret = { clusters: [], xav: [], yav: [], maxIdx: 0, maxCount: 0 };
+	const ret = { clusters: [], xav: [], yav: [], maxIdx: 0, maxCount: 0 };
 	for (let i = list.length - 1; i >= 0; --i)
 	{
-		var x = list[i].x;
-		var y = list[i].y;
-		var found = false;
-		var n = 0;
+		const __X = list[i].x;
+		const __Y = list[i].y;
+		let found = false;
+		let n = 0;
 		for (let j = 0; j < ret.clusters.length; ++j)
 		{
-			if (camDist(ret.xav[j], ret.yav[j], x, y) < size)
+			if (camDist(ret.xav[j], ret.yav[j], __X, __Y) < size)
 			{
 				n = ret.clusters[j].length;
 				ret.clusters[j][n] = list[i];
-				ret.xav[j] = Math.floor((n * ret.xav[j] + x) / (n + 1));
-				ret.yav[j] = Math.floor((n * ret.yav[j] + y) / (n + 1));
+				ret.xav[j] = Math.floor((n * ret.xav[j] + __X) / (n + 1));
+				ret.yav[j] = Math.floor((n * ret.yav[j] + __Y) / (n + 1));
 				if (ret.clusters[j].length > ret.maxCount)
 				{
 					ret.maxIdx = j;
@@ -1224,8 +1324,8 @@ function __camFindClusters(list, size)
 		{
 			n = ret.clusters.length;
 			ret.clusters[n] = [list[i]];
-			ret.xav[n] = x;
-			ret.yav[n] = y;
+			ret.xav[n] = __X;
+			ret.yav[n] = __Y;
 			if (1 > ret.maxCount)
 			{
 				ret.maxIdx = n;
@@ -1249,9 +1349,9 @@ function __camTick()
 //Reset AI power back to highest storage possible.
 function __camAiPowerReset()
 {
-	for (let i = 1; i < CAM_MAX_PLAYERS; ++i)
+	for (let i = 1; i < __CAM_MAX_PLAYERS; ++i)
 	{
-		setPower(AI_POWER, i);
+		setPower(__CAM_AI_POWER, i);
 	}
 }
 
@@ -1263,7 +1363,7 @@ function __updateNeedlerLog(target)
 	if (camDef(target))
 	{
 		// Find if the target is already in the log
-		for (var i = 0; i < __camNeedlerLog.length; i++)
+		for (let i = 0; i < __camNeedlerLog.length; i++)
 		{
 			if (__camNeedlerLog[i].droid.id === target.id)
 			{
@@ -1283,8 +1383,8 @@ function __updateNeedlerLog(target)
 	}
 	else
 	{
-		var newNeedlerLog = [];
-		for (var i = 0; i < __camNeedlerLog.length; i++)
+		const newNeedlerLog = [];
+		for (let i = 0; i < __camNeedlerLog.length; i++)
 		{
 			__camNeedlerLog[i].needleCount--;
 			if (__camNeedlerLog[i].needleCount > 0)
@@ -1300,7 +1400,7 @@ function __updateNeedlerLog(target)
 // Cause an explosion after an explosive drum is destroyed
 function __camDetonateDrum(boomBaitId)
 {
-	var bait = getObject(DROID, 10, boomBaitId);
+	const bait = getObject(DROID, 10, boomBaitId);
 	if (!camDef(bait))
 	{
 		return;
@@ -1322,14 +1422,14 @@ function __camDetonateDrum(boomBaitId)
 			fireWeaponAtObj("ExplosiveDrumBlast1", bait);
 		}
 
-		queue("__camRemoveBoomBait", CAM_TICKS_PER_FRAME * 10, boomBaitId + "");
+		queue("__camRemoveBoomBait", __CAM_TICKS_PER_FRAME * 10, boomBaitId + "");
 	}
 }
 
 // Cause an explosion after Pipis is destroyed
 function __camDetonatePipis(boomBaitId)
 {
-	var bait = getObject(DROID, 10, boomBaitId);
+	const bait = getObject(DROID, 10, boomBaitId);
 	if (!camDef(bait))
 	{
 		return;
@@ -1337,14 +1437,14 @@ function __camDetonatePipis(boomBaitId)
 	else
 	{
 		fireWeaponAtObj("PipisBlast", bait);
-		queue("__camRemoveBoomBait", CAM_TICKS_PER_FRAME * 10, boomBaitId + "");
+		queue("__camRemoveBoomBait", __CAM_TICKS_PER_FRAME * 10, boomBaitId + "");
 	}
 }
 
 // Cause an explosion after a nuclear drum is destroyed
 function __camDetonateNukeDrum(boomBaitId)
 {
-	var bait = getObject(DROID, 10, boomBaitId);
+	const bait = getObject(DROID, 10, boomBaitId);
 	if (!camDef(bait))
 	{
 		return;
@@ -1352,14 +1452,14 @@ function __camDetonateNukeDrum(boomBaitId)
 	else
 	{
 		fireWeaponAtObj("NuclearDrumBlast", bait);
-		queue("__camRemoveBoomBait", CAM_TICKS_PER_FRAME * 10, boomBaitId + "");
+		queue("__camRemoveBoomBait", __CAM_TICKS_PER_FRAME * 10, boomBaitId + "");
 	}
 }
 
 // Donate a player droid to player 10
 function __camTempDonate(droidId)
 {
-	var droid = getObject(DROID, CAM_HUMAN_PLAYER, droidId);
+	const droid = getObject(DROID, CAM_HUMAN_PLAYER, droidId);
 	if (!camDef(droid))
 	{
 		return;
@@ -1373,7 +1473,7 @@ function __camTempDonate(droidId)
 // Quietly remove the bait object if it wasn't destroyed in the blast for some reason
 function __camRemoveBoomBait(boomBaitId)
 {
-	var bait = getObject(DROID, 10, boomBaitId);
+	const bait = getObject(DROID, 10, boomBaitId);
 	camSafeRemoveObject(bait);
 }
 
@@ -1381,8 +1481,8 @@ function __camRemoveBoomBait(boomBaitId)
 function __camPlayTeleportSfx(targetId)
 {
 	// Find our target
-	var target;
-	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	let target = null;
+	for (let i = 0; i < __CAM_MAX_PLAYERS; i++)
 	{
 		target = getObject(DROID, i, targetId);
 		if (target !== null)
@@ -1405,8 +1505,8 @@ function __camPlayTeleportSfx(targetId)
 function __camPlayDecloakSfx(targetId)
 {
 	// Find our target
-	var target;
-	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	let target = null;
+	for (let i = 0; i < __CAM_MAX_PLAYERS; i++)
 	{
 		target = getObject(DROID, i, targetId);
 		if (target !== null)
@@ -1429,8 +1529,8 @@ function __camPlayDecloakSfx(targetId)
 function __camPlayFeignReadySfx(targetId)
 {
 	// Find our target
-	var target;
-	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	let target = null;
+	for (let i = 0; i < __CAM_MAX_PLAYERS; i++)
 	{
 		target = getObject(DROID, i, targetId);
 		if (target !== null)
@@ -1453,8 +1553,8 @@ function __camPlayFeignReadySfx(targetId)
 function __camDetonateCreeper(targetId)
 {
 	// Find our target
-	var target = null;
-	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	let target = null;
+	for (let i = 0; i < __CAM_MAX_PLAYERS; i++)
 	{
 		target = getObject(DROID, i, targetId); // Try to find the Creeper
 		if (target !== null)
@@ -1482,9 +1582,9 @@ function __camDetonateCreeper(targetId)
 function __camScanCreeperRadii()
 {
 	// Loop through every Creeper on the map
-	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	for (let i = 0; i < __CAM_MAX_PLAYERS; i++)
 	{
-		let creepList = enumDroid(i, DROID_CYBORG, false).filter((dr) => (dr.body === "CreeperBody" || dr.body === "CreeperBodySpam"));
+		const creepList = enumDroid(i, DROID_CYBORG, false).filter((dr) => (dr.body === "CreeperBody" || dr.body === "CreeperBodySpam"));
 		for (let j = 0; j < creepList.length; j++)
 		{
 			if (__camPrimedCreepers.indexOf(creepList[j].id) !== -1)
@@ -1493,7 +1593,7 @@ function __camScanCreeperRadii()
 				continue;
 			}
 
-			let creepPos = camMakePos(creepList[j]);
+			const creepPos = camMakePos(creepList[j]);
 
 			// Check if any enemies are within 2 tiles
 			if (enumRange(creepPos.x, creepPos.y, 2, ALL_PLAYERS, false).filter((obj) => (
@@ -1513,19 +1613,19 @@ function __camScanCreeperRadii()
 // Check if any Pipis should detonate themselves
 function __camScanPipisRadii()
 {
-	let pipisList = enumFeature(ALL_PLAYERS, "Pipis").concat(enumFeature(ALL_PLAYERS, "PipisM"))
+	const pipisList = enumFeature(ALL_PLAYERS, "Pipis").concat(enumFeature(ALL_PLAYERS, "PipisM"))
 	for (let i = 0; i < pipisList.length; i++)
 	{
 		let scanNum = 0; // Scan 4 times (since the scan range is centered around the top left corner of the Pipis)
 		let detonated = false;
-		let pipisPos = camMakePos(pipisList[i]);
+		const pipisPos = camMakePos(pipisList[i]);
 
 		// Check if any enemies are within 1 tile
 		do 
 		{
 			scanNum++;
 			if (enumRange(pipisPos.x, pipisPos.y, 1, ALL_PLAYERS, false).filter((obj) => (
-				obj.type !== FEATURE && !allianceExistsBetween(SPAMTON, obj.player) && 
+				obj.type !== FEATURE && !allianceExistsBetween(CAM_SPAMTON, obj.player) && 
 				!(obj.type === DROID && (isVTOL(obj) || obj.droidType === DROID_SUPERTRANSPORTER))
 			)).length > 0)
 			{
@@ -1554,14 +1654,14 @@ function __camScanPipisRadii()
 // Check if any trash piles should destroy themselves to reveal a unit
 function __camScanWreckRadii()
 {
-	let wreckList = enumFeature(ALL_PLAYERS, "Wreck0").concat(enumFeature(ALL_PLAYERS, "Wreck1"))
+	const wreckList = enumFeature(ALL_PLAYERS, "Wreck0").concat(enumFeature(ALL_PLAYERS, "Wreck1"))
 	for (let i = 0; i < wreckList.length; i++)
 	{
-		let wreckPos = camMakePos(wreckList[i]);
+		const wreckPos = camMakePos(wreckList[i]);
 
 		// Check if any enemies are within 3 tiles
 		if (enumRange(wreckPos.x, wreckPos.y, 3, ALL_PLAYERS, false).filter((obj) => (
-			obj.type !== FEATURE && !allianceExistsBetween(SPAMTON, obj.player) && 
+			obj.type !== FEATURE && !allianceExistsBetween(CAM_SPAMTON, obj.player) && 
 			!(obj.type === DROID && (isVTOL(obj) || obj.droidType === DROID_SUPERTRANSPORTER))
 		)).length > 0)
 		{
@@ -1575,26 +1675,26 @@ function __camScanWreckRadii()
 function __camMonsterSpawnerTick()
 {
 	// Loop through every Spawner on the map
-	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	for (let i = 0; i < __CAM_MAX_PLAYERS; i++)
 	{
-		let spawnerList = enumStruct(i, DEFENSE).filter((obj) => (
+		const spawnerList = enumStruct(i, DEFENSE).filter((obj) => (
 			obj.name === _("Creeper Spawner") || obj.name === _("Skeleton Spawner")
 			|| obj.name === _("Zombie Spawner") || obj.name === _("Spamton Creeper Spawner") 
 			|| obj.name === _("Spamton Skeleton Spawner") || obj.name === _("Spamton Zombie Spawner")
 		));
 		for (let j = 0; j < spawnerList.length; j++)
 		{
-			let spawnerPos = camMakePos(spawnerList[j]);
+			const spawnerPos = camMakePos(spawnerList[j]);
 
 			// Check if any enemies are within range
-			if (enumRange(spawnerPos.x, spawnerPos.y, CAM_SPAWNER_RANGE, CAM_HUMAN_PLAYER, false).filter((obj) => (
+			if (enumRange(spawnerPos.x, spawnerPos.y, __CAM_SPAWNER_RANGE, CAM_HUMAN_PLAYER, false).filter((obj) => (
 				obj.type !== FEATURE && !allianceExistsBetween(spawnerList[j].player, obj.player &&
 				!(obj.type === DROID && obj.droidType === DROID_SUPERTRANSPORTER))
 			)).length > 0)
 			{
 				// Enemy in range, try to spawn some mobs
-				let numMobs = difficulty + camRand(2); // 2-3 on Normal
-				let spawnedMobs = [];
+				const numMobs = difficulty + camRand(2); // 2-3 on Normal
+				const spawnedMobs = [];
 				for (let k = 0; k < numMobs; k++)
 				{
 					let spawnPos = camGenerateRandomMapCoordinateWithinRadius(spawnerPos, 3, 1);
@@ -1656,69 +1756,69 @@ function __camMonsterSpawnerTick()
 // Called at the start of a mission
 function __camRandomizeFungibleCannons()
 {
-	for (let i = 0; i < CAM_MAX_PLAYERS; i++)
+	for (let i = 0; i < __CAM_MAX_PLAYERS; i++)
 	{
 		// Replace units
-		let drList = enumDroid(i);
+		const drList = enumDroid(i);
 		for (let j = 0; j < drList.length; j++)
 		{
-			let dr = drList[j];
+			const dr = drList[j];
 
 			// Check if the droid has a Fungible Cannon
 			if (camDef(dr.weapons[0]) && dr.weapons[0].name === "Cannon2A-TMk1")
 			{
 				// Check if this droid has a label and/or group assigned to it
 				// FIXME: O(n) lookup here
-				let label = (getLabel(dr));
-				let group = (dr.group);
+				const __DROID_LABEL = (getLabel(dr));
+				const __DROID_GROUP = (dr.group);
 
 				// Replace the droid
-				var newWeapon = __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
-				let droidInfo = {x: dr.x, y: dr.y, name: dr.name, body: dr.body, prop: dr.propulsion};
+				const __NEW_WEAPON = __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
+				const droidInfo = {x: dr.x, y: dr.y, name: dr.name, body: dr.body, prop: dr.propulsion};
 				camSafeRemoveObject(dr, false);
-				let newDroid = addDroid(i, droidInfo.x, droidInfo.y, droidInfo.name, droidInfo.body,
-					__camChangePropulsionOnDiff(droidInfo.prop), "", "", newWeapon);
+				const newDroid = addDroid(i, droidInfo.x, droidInfo.y, droidInfo.name, droidInfo.body,
+					__camChangePropulsion(droidInfo.prop), "", "", __NEW_WEAPON);
 
-				if (camDef(label)) 
+				if (camDef(__DROID_LABEL)) 
 				{
-					addLabel(newDroid, label);
+					addLabel(newDroid, __DROID_LABEL);
 				}
-				if (group !== null)
+				if (__DROID_GROUP !== null)
 				{
-					groupAdd(group, newDroid);
+					groupAdd(__DROID_GROUP, newDroid);
 				}
 			}
 		}
 
 		// Replace structures
-		let strList = enumStruct(i, "WallTower03");
+		const strList = enumStruct(i, "WallTower03");
 		for (let j = 0; j < strList.length; j++)
 		{
-			let str = strList[j];
+			const str = strList[j];
 
 			// Check if this structure has a label and/or group assigned to it
 			// FIXME: O(n) lookup here
-			let label = (getLabel(str));
-			let group = (str.group);
+			const __STRUCT_LABEL = (getLabel(str));
+			const __STRUCT_GROUP = (str.group);
 
 			// Replace the structure
-			let structInfo = {x: str.x * 128, y: str.y * 128};
+			const structInfo = {x: str.x * 128, y: str.y * 128};
 			let structName = __camFungibleCanHardList[camRand(__camFungibleCanHardList.length)];
-			if (str.player === SPAMTON)
+			if (str.player === CAM_SPAMTON)
 			{
 				// Use Spamtonized hardpoints
 				structName = structName + "Spam";
 			}
 			camSafeRemoveObject(str, false);
-			let newStruct = addStructure(structName, i, structInfo.x, structInfo.y);
+			const newStruct = addStructure(structName, i, structInfo.x, structInfo.y);
 
-			if (camDef(label)) 
+			if (camDef(__STRUCT_LABEL)) 
 			{
-				addLabel(newStruct, label);
+				addLabel(newStruct, __STRUCT_LABEL);
 			}
-			if (group !== null)
+			if (__STRUCT_GROUP !== null)
 			{
-				groupAdd(group, newStruct);
+				groupAdd(__STRUCT_GROUP, newStruct);
 			}
 		}
 	}
@@ -1727,7 +1827,7 @@ function __camRandomizeFungibleCannons()
 // Play a random cave sound
 function __camPlayCaveSounds()
 {
-	let caveSounds = [
+	const caveSounds = [
 		"Cave1.ogg", "Cave2.ogg", "Cave3.ogg",
 		"Cave4.ogg", "Cave5.ogg", "Cave6.ogg",
 		"Cave7.ogg", "Cave8.ogg", "Cave9.ogg",
@@ -1788,7 +1888,7 @@ function __camSpyFeignTick()
 	// Check for any not-so-dead Spy Cyborgs
 	for (let i = __camSpyFeigns.length - 1; i >= 0; i--)
 	{
-		if (gameTime >= __camSpyFeigns[i].time + CAM_SPY_FEIGN_DURATION)
+		if (gameTime >= __camSpyFeigns[i].time + __CAM_SPY_FEIGN_DURATION)
 		{
 			// Make the Spy reappear...
 			let pos = null;
@@ -1804,8 +1904,8 @@ function __camSpyFeignTick()
 				else if (pos === null) // No HQ or HQ is saturated
 				{
 					// Pick somehwere at the LZ
-					let lzNames = ["landingZone", "LZ"]; // Bit of a brain-dead solution but oh well
-					// Special case for Gamma 4 since it has 2 LZs
+					const lzNames = ["landingZone", "LZ"]; // Bit of a brain-dead solution but oh well
+					// Special case for Gamma 4 since it has two LZ's
 					if (__camNextLevel === "BIG_SHOT" && getMissionTime() < 7200)
 					{
 						lzNames.push("landingZone1");
@@ -1834,7 +1934,7 @@ function __camSpyFeignTick()
 			else
 			{
 				// ...Near it's "killer"
-				let killer = __camSpyFeigns[i].attacker;
+				const killer = __camSpyFeigns[i].attacker;
 				if (camDef(killer) && killer !== null)
 				{
 					// Pick somewhere near the attacker
@@ -1852,20 +1952,20 @@ function __camSpyFeignTick()
 				}
 			}
 			let spyWeap = "CyborgSpyChaingun";
-			if (__camSpyFeigns[i].player === SPAMTON) spyWeap = "CyborgSpyChaingunSpam";
-			let newSpy = addDroid(__camSpyFeigns[i].player, pos.x, pos.y, 
+			if (__camSpyFeigns[i].player === CAM_SPAMTON) spyWeap = "CyborgSpyChaingunSpam";
+			const newSpy = addDroid(__camSpyFeigns[i].player, pos.x, pos.y, 
 				_("Spy Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", spyWeap
 			);
-			queue("__camPlayDecloakSfx", CAM_TICKS_PER_FRAME, newSpy.id + "");
+			queue("__camPlayDecloakSfx", __CAM_TICKS_PER_FRAME, newSpy.id + "");
 			setHealth(newSpy, 40);
 			setDroidExperience(newSpy, __camSpyFeigns[i].xp); // Restore the spy's experience
 			if (__camSpyFeigns[i].player != CAM_HUMAN_PLAYER)
 			{
-				let spyGroup = __camSpyFeigns[i].group;
+				const __SPY_GROUP = __camSpyFeigns[i].group;
 				// Try placing the spy back into it's old group (if it's still active)
-				if (camDef(__camGroupInfo[spyGroup]))
+				if (camDef(__camGroupInfo[__SPY_GROUP]))
 				{
-					groupAdd(spyGroup, newSpy);
+					groupAdd(__SPY_GROUP, newSpy);
 				}
 				else
 				{
@@ -1881,7 +1981,7 @@ function __camSpyFeignTick()
 	// Remove Spy Cyborgs off the cooldown list if enough time has passed
 	for (let i = __camSpyCooldowns.length - 1; i >= 0; i--)
 	{
-		if (gameTime >= __camSpyCooldowns[i].time + CAM_SPY_FEIGN_COOLDOWN)
+		if (gameTime >= __camSpyCooldowns[i].time + __CAM_SPY_FEIGN_COOLDOWN)
 		{
 			// Play an effect signifying that the Cyborg can feign death again
 			__camPlayFeignReadySfx(__camSpyCooldowns[i].id);
@@ -1895,7 +1995,7 @@ function __camUpdateSwappableUnits()
 {
 	// Check for any Fungible Cannons or Warranty-Expired Lancers
 	const droidList = enumDroid(CAM_HUMAN_PLAYER, DROID_WEAPON);
-	let donateDelay = CAM_TICKS_PER_FRAME;
+	let donateDelay = __CAM_TICKS_PER_FRAME;
 	for (let i = 0; i < droidList.length; i++)
 	{
 		const droid = droidList[i];
@@ -1910,7 +2010,7 @@ function __camUpdateSwappableUnits()
 			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr"))
 		{
 			queue("__camTempDonate", donateDelay, droid.id + "");
-			donateDelay += CAM_TICKS_PER_FRAME;
+			donateDelay += __CAM_TICKS_PER_FRAME;
 		}
 	}
 }
@@ -1919,43 +2019,43 @@ function __camUpdateSwappableUnits()
 // Called at the start of the level and when something is absorbed by Spamton.
 function __camSpamtonize()
 {
-	completeResearch("Script-Spamtonize", SPAMTON, true);
+	completeResearch("Script-Spamtonize", CAM_SPAMTON, true);
 
-	camUpgradeOnMapStructures("GuardTower-MEGA", "GuardTower-MEGASpam", SPAMTON); // Tower Of Babel
-	camUpgradeOnMapStructures("Spawner-Zombie", "Spawner-ZombieSpam", SPAMTON); // Zombie Spawner
-	camUpgradeOnMapStructures("Spawner-Skeleton", "Spawner-SkeletonSpam", SPAMTON); // Skeleton Spawner
-	camUpgradeOnMapStructures("Spawner-Creeper", "Spawner-CreeperSpam", SPAMTON); // Creeper Spawner
-	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "CollectiveCWall", SPAMTON); // Hardcrete Corner Wall
-	camUpgradeOnMapStructures("A0HardcreteMk1Wall", "CollectiveWall", SPAMTON); // Hardcrete Wall
-	camUpgradeOnMapStructures("Tower-Projector", "CO-Tower-HvFlame", SPAMTON); // Excessive Flamer Bunker
-	camUpgradeOnMapStructures("WallTower04", "WallTower04Spam", SPAMTON); // Very Heavy Cannon Hardpoint
-	camUpgradeOnMapStructures("Sys-SensoTower02", "Sys-CO-SensoTower", SPAMTON); // Hardened Sensor Tower
-	camUpgradeOnMapStructures("GuardTowerEH", "GuardTowerEHSpam", SPAMTON); // Extended Flamer Tower
-	camUpgradeOnMapStructures("GuardTower6", "GuardTower6Spam", SPAMTON); // Many-Rocket Tower
-	camUpgradeOnMapStructures("PillBox1", "PillBox1Spam", SPAMTON); // Realistic Heavy Machinegun Bunker
-	camUpgradeOnMapStructures("PillBox4", "PillBox4Spam", SPAMTON); // "Light" Cannon Bunker
-	camUpgradeOnMapStructures("PillBox-BB3", "PillBox-BB3Spam", SPAMTON); // Bunker Buster Bunker III
-	camUpgradeOnMapStructures("PillBoxBison", "PillBoxBisonSpam", SPAMTON); // Righteous Bison Bunker
-	camUpgradeOnMapStructures("Pillbox-Big", "Pillbox-BigSpam", SPAMTON); // Big Machinegun Bunker
-	camUpgradeOnMapStructures("Sys-SensoTower03", "Sys-SensoTower03Spam", SPAMTON); // Sensor Hardpoint
-	camUpgradeOnMapStructures("Tower-VulcanCan", "Tower-VulcanCanSpam", SPAMTON); // Righteous Bison Tower
-	camUpgradeOnMapStructures("WallTower-HPVcannon", "WallTower-HPVcannonSpam", SPAMTON); // Righteous Bison Hardpoint
-	camUpgradeOnMapStructures("GuardTower-Rail1", "GuardTower-Rail1Spam", SPAMTON); // Needler Tower
+	camUpgradeOnMapStructures("GuardTower-MEGA", "GuardTower-MEGASpam", CAM_SPAMTON); // Tower Of Babel
+	camUpgradeOnMapStructures("Spawner-Zombie", "Spawner-ZombieSpam", CAM_SPAMTON); // Zombie Spawner
+	camUpgradeOnMapStructures("Spawner-Skeleton", "Spawner-SkeletonSpam", CAM_SPAMTON); // Skeleton Spawner
+	camUpgradeOnMapStructures("Spawner-Creeper", "Spawner-CreeperSpam", CAM_SPAMTON); // Creeper Spawner
+	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "CollectiveCWall", CAM_SPAMTON); // Hardcrete Corner Wall
+	camUpgradeOnMapStructures("A0HardcreteMk1Wall", "CollectiveWall", CAM_SPAMTON); // Hardcrete Wall
+	camUpgradeOnMapStructures("Tower-Projector", "CO-Tower-HvFlame", CAM_SPAMTON); // Excessive Flamer Bunker
+	camUpgradeOnMapStructures("WallTower04", "WallTower04Spam", CAM_SPAMTON); // Very Heavy Cannon Hardpoint
+	camUpgradeOnMapStructures("Sys-SensoTower02", "Sys-CO-SensoTower", CAM_SPAMTON); // Hardened Sensor Tower
+	camUpgradeOnMapStructures("GuardTowerEH", "GuardTowerEHSpam", CAM_SPAMTON); // Extended Flamer Tower
+	camUpgradeOnMapStructures("GuardTower6", "GuardTower6Spam", CAM_SPAMTON); // Many-Rocket Tower
+	camUpgradeOnMapStructures("PillBox1", "PillBox1Spam", CAM_SPAMTON); // Realistic Heavy Machinegun Bunker
+	camUpgradeOnMapStructures("PillBox4", "PillBox4Spam", CAM_SPAMTON); // "Light" Cannon Bunker
+	camUpgradeOnMapStructures("PillBox-BB3", "PillBox-BB3Spam", CAM_SPAMTON); // Bunker Buster Bunker III
+	camUpgradeOnMapStructures("PillBoxBison", "PillBoxBisonSpam", CAM_SPAMTON); // Righteous Bison Bunker
+	camUpgradeOnMapStructures("Pillbox-Big", "Pillbox-BigSpam", CAM_SPAMTON); // Big Machinegun Bunker
+	camUpgradeOnMapStructures("Sys-SensoTower03", "Sys-SensoTower03Spam", CAM_SPAMTON); // Sensor Hardpoint
+	camUpgradeOnMapStructures("Tower-VulcanCan", "Tower-VulcanCanSpam", CAM_SPAMTON); // Righteous Bison Tower
+	camUpgradeOnMapStructures("WallTower-HPVcannon", "WallTower-HPVcannonSpam", CAM_SPAMTON); // Righteous Bison Hardpoint
+	camUpgradeOnMapStructures("GuardTower-Rail1", "GuardTower-Rail1Spam", CAM_SPAMTON); // Needler Tower
 
-	camUpgradeOnMapStructures("WallTower03Mk2", "WallTower03Mk2Spam", SPAMTON); // Fungible Cannon Hardpoint 2
-	camUpgradeOnMapStructures("WallTower03Mk3", "WallTower03Mk3Spam", SPAMTON); // Fungible Cannon Hardpoint 3
-	camUpgradeOnMapStructures("WallTower03Mk4", "WallTower03Mk4Spam", SPAMTON); // Fungible Cannon Hardpoint 4
-	camUpgradeOnMapStructures("WallTower03Mk5", "WallTower03Mk5Spam", SPAMTON); // Fungible Cannon Hardpoint 5
-	camUpgradeOnMapStructures("WallTower03Mk6", "WallTower03Mk6Spam", SPAMTON); // Fungible Cannon Hardpoint 6
-	camUpgradeOnMapStructures("WallTower03Mk7", "WallTower03Mk7Spam", SPAMTON); // Fungible Cannon Hardpoint 7
-	camUpgradeOnMapStructures("WallTower03Mk8", "WallTower03Mk8Spam", SPAMTON); // Fungible Cannon Hardpoint 8
-	camUpgradeOnMapStructures("WallTower03Mk9", "WallTower03Mk9Spam", SPAMTON); // Fungible Cannon Hardpoint 9
-	camUpgradeOnMapStructures("WallTower03Mk10", "WallTower03Mk10Spam", SPAMTON); // Fungible Cannon Hardpoint 10
-	camUpgradeOnMapStructures("WallTower03Mk11", "WallTower03Mk11Spam", SPAMTON); // Fungible Cannon Hardpoint 11
-	camUpgradeOnMapStructures("WallTower03Mk12", "WallTower03Mk12Spam", SPAMTON); // Fungible Cannon Hardpoint 12
-	camUpgradeOnMapStructures("WallTower03Mk13", "WallTower03Mk13Spam", SPAMTON); // Fungible Cannon Hardpoint 13
-	camUpgradeOnMapStructures("WallTower03Mk14", "WallTower03Mk14Spam", SPAMTON); // Fungible Cannon Hardpoint 14
-	camUpgradeOnMapStructures("WallTower03Mk15", "WallTower03Mk15Spam", SPAMTON); // Fungible Cannon Hardpoint 15
+	camUpgradeOnMapStructures("WallTower03Mk2", "WallTower03Mk2Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 2
+	camUpgradeOnMapStructures("WallTower03Mk3", "WallTower03Mk3Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 3
+	camUpgradeOnMapStructures("WallTower03Mk4", "WallTower03Mk4Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 4
+	camUpgradeOnMapStructures("WallTower03Mk5", "WallTower03Mk5Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 5
+	camUpgradeOnMapStructures("WallTower03Mk6", "WallTower03Mk6Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 6
+	camUpgradeOnMapStructures("WallTower03Mk7", "WallTower03Mk7Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 7
+	camUpgradeOnMapStructures("WallTower03Mk8", "WallTower03Mk8Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 8
+	camUpgradeOnMapStructures("WallTower03Mk9", "WallTower03Mk9Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 9
+	camUpgradeOnMapStructures("WallTower03Mk10", "WallTower03Mk10Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 10
+	camUpgradeOnMapStructures("WallTower03Mk11", "WallTower03Mk11Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 11
+	camUpgradeOnMapStructures("WallTower03Mk12", "WallTower03Mk12Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 12
+	camUpgradeOnMapStructures("WallTower03Mk13", "WallTower03Mk13Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 13
+	camUpgradeOnMapStructures("WallTower03Mk14", "WallTower03Mk14Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 14
+	camUpgradeOnMapStructures("WallTower03Mk15", "WallTower03Mk15Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 15
 }
 
 // Allows Silverfish to spawn out of destroyed structures
@@ -1963,4 +2063,79 @@ function __camSpamtonize()
 function __camEnableSilverfishSpawn()
 {
 	__camAllowSilverfishSpawn = true;
+}
+
+function __camGetExpRangeLevel()
+{
+	const ranks = {
+		rookie: 0,
+		green: 4,
+		trained: 8,
+		regular: 16,
+		professional: 32,
+		veteran: 64,
+		elite: 128,
+		special: 256,
+		hero: 512,
+	}; //see brain.json
+	let exp = [];
+
+	switch (__camExpLevel)
+	{
+		case 0: // fall-through
+		case 1:
+			exp = [ranks.rookie, ranks.rookie];
+			break;
+		case 2:
+			exp = [ranks.green, ranks.trained, ranks.regular];
+			break;
+		case 3:
+			exp = [ranks.trained, ranks.regular, ranks.professional];
+			break;
+		case 4:
+			exp = [ranks.regular, ranks.professional, ranks.veteran];
+			break;
+		case 5:
+			exp = [ranks.professional, ranks.veteran, ranks.elite];
+			break;
+		case 6:
+			exp = [ranks.veteran, ranks.elite, ranks.special];
+			break;
+		case 7:
+			exp = [ranks.elite, ranks.special, ranks.hero];
+			break;
+		case 8:
+			exp = [ranks.special, ranks.hero];
+			break;
+		case 9:
+			exp = [ranks.hero, ranks.hero];
+			break;
+		default:
+			__camExpLevel = 0;
+			exp = [ranks.rookie, ranks.rookie];
+	}
+
+	return exp;
+}
+
+function camSetDroidExperience(droid)
+{
+	if (droid.droidType === DROID_REPAIR || droid.droidType === DROID_CONSTRUCT || camIsTransporter(droid))
+	{
+		return;
+	}
+	if (droid.player === CAM_HUMAN_PLAYER)
+	{
+		return;
+	}
+
+	const expRange = __camGetExpRangeLevel();
+	let exp = expRange[camRand(expRange.length)];
+
+	if (droid.droidType === DROID_COMMAND || droid.droidType === DROID_SENSOR)
+	{
+		exp = exp * 2;
+	}
+
+	setDroidExperience(droid, exp);
 }
