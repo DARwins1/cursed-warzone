@@ -116,18 +116,14 @@ const __CAM_BETA_CAMPAIGN_NUMBER = 2;
 const __CAM_GAMMA_CAMPAIGN_NUMBER = 3;
 const __CAM_UNKNOWN_CAMPAIGN_NUMBER = 1000;
 const __cam_alphaLevels = [
-	"CAM_1A", "CAM_1B", "SUB_1_1S", "SUB_1_1", "SUB_1_2S", "SUB_1_2", "SUB_1_3S",
-	"SUB_1_3", "CAM_1C", "CAM_1CA", "SUB_1_4AS", "SUB_1_4A", "SUB_1_5S", "SUB_1_5",
-	"CAM_1A-C", "SUB_1_7S", "SUB_1_7", "SUB_1_DS", "SUB_1_D", "CAM_1END", 
-	"SURFACE_TENSION", // Alpha 3
+	"CAM_1A", // Alpha 1
+	"CAM_1B", // Alpha 2
+	"SUB_1_1S", "SURFACE_TENSION", // Alpha 3
 	"CP_DUSTBOWL", // Alpha 4
 	"CTF_2FORT", // Alpha 5
 	"BYE_BYE" // Transition
 ];
 const __cam_betaLevels = [
-	"CAM_2A", "SUB_2_1S", "SUB_2_1", "CAM_2B", "SUB_2_2S", "SUB_2_2", "CAM_2C",
-	"SUB_2_5S", "SUB_2_5", "SUB_2DS", "SUB_2D", "SUB_2_6S", "SUB_2_6", "SUB_2_7S",
-	"SUB_2_7", "SUB_2_8S", "SUB_2_8", "CAM_2END",
 	"how_was_the_fall", // Beta 1
 	"CAVE_UPDATE_PART_4", "XBOX_LIVE", // Beta 2
 	"BRING_AN_UMBRELLA", "HAIL", // Beta 3
@@ -136,8 +132,6 @@ const __cam_betaLevels = [
 	"KILL_YOUR_TV" // Transition
 ];
 const __cam_gammaLevels = [
-	"CAM_3A", "SUB_3_1S", "SUB_3_1", "CAM_3B", "SUB_3_2S", "SUB_3_2", "CAM3A-B",
-	"CAM3C", "CAM3A-D1", "CAM3A-D2", "CAM_3_4S", "CAM_3_4",
 	"HOLY_CUNGADERO", // Gamma 1
 	"NO_DONT_STEAL_MY_", "THE_BIG_ONE", // Gamma 2
 	"WELCOME_TO_THE", "SPAMTOPIA", // Gamma 3

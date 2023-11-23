@@ -59,14 +59,16 @@ camAreaEvent("routeTrigger4", function(droid)
 	}
 });
 
-// Block the route the player took with Pipis, and activate the mini factory
+// Block the route the player took with Pipis
 function eventPickup(feature, droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER && feature.stattype === ARTIFACT)
 	{
 		hackRemoveMessage("C3-1_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER);
 		playSound("pcv447.ogg"); // Spamton creepy laugh
-		camEnableFactory("spamFactory");
+
+		// Start harassing the player after a delay
+		queue("activateMiniFactory", camChangeOnDiff(camSecondsToMilliseconds(45)));
 
 		// Choose where the Pipis shall be placed
 		let buildPos1;
@@ -101,6 +103,12 @@ function eventPickup(feature, droid)
 			orderDroidBuild(truck2, DORDER_BUILD, "A0Pipis", buildPos2.x, buildPos2.y);
 		}
 	}
+}
+
+// Start building Mini MGVs
+function activateMiniFactory()
+{
+	camEnableFactory("spamFactory");
 }
 
 function eventStartLevel()
@@ -155,4 +163,7 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("Boulder2", "Pipis");
 	camUpgradeOnMapFeatures("Boulder3", "PipisDummy"); // Pipis that doesn't scan for enemies (to reduce script lag)
 	camUpgradeOnMapFeatures("Advmaterialslab", "NuclearDrum");
+
+	// Extend the flamer tower
+	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", CAM_SPAMTON);
 }
