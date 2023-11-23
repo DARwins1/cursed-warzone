@@ -128,9 +128,9 @@ function __camTruckTick()
 				if (orderDroidBuild(truck, DORDER_BUILD, __QI.stat, loc.x + randx, loc.y + randy))
 				{
 					freeTrucks = freeTrucks.filter((tr) => (tr.id !== truck.id));
-					ti.queue.shift(); // consider it handled
 				}
 			}
+			ti.queue.shift(); // consider it handled
 		}
 
 		// Then, capture free oils.

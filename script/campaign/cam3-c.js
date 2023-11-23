@@ -6,7 +6,8 @@ const mis_spamtonRes = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals02", "R-Cyborg-Metals02",
 	"R-Defense-WallUpgrade02", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage02",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
-	"R-Wpn-RocketSlow-Damage01", "R-Wpn-Flamer-ROF01", "R-Wpn-Rocket-ROF01"
+	"R-Wpn-RocketSlow-Damage01", "R-Wpn-Flamer-ROF01", "R-Wpn-Rocket-ROF01",
+	"R-Struc-VTOLPad-Upgrade01",
 ];
 var enabledFactoryGroups; // Increases as groups of factories are activated
 // Default throttles for Spamton's factories
@@ -480,6 +481,24 @@ function eventStartLevel()
 			eliminateSnd: "pcv394.ogg",
 		},
 	});
+
+	// Remove a bunch of the last level's research items from the menu
+	const removableResearch = [
+		"R-Comp-MissileCodes04", // Only need the final missile code here
+		"R-Comp-Death01", "R-Comp-Death02", "R-Comp-Death03", "R-Comp-Death04",
+		"R-Comp-Death05", "R-Comp-Death06", "R-Comp-Death07", "R-Comp-Death08",
+		"R-Comp-Death09", "R-Comp-Death10", "R-Comp-Death11", "R-Comp-Death12",
+	];
+	camCompleteRequiredResearch(removableResearch, CAM_HUMAN_PLAYER);
+
+	// Destroy everything outside limits
+	const scrollLimits = getScrollLimits();
+	// Get everything to the left of the current map limit (0 < x < scrollLimits.x)
+	const destroyZone = enumArea(0, scrollLimits.y, scrollLimits.x, scrollLimits.y2, CAM_HUMAN_PLAYER, false);
+	for (let i = 0; i < destroyZone.length; i++)
+	{
+		camSafeRemoveObject(destroyZone[i], false);
+	}
 
 	enabledFactoryGroups = 0;
 	setSpamtonFactoryData(mis_defaultThrottles);

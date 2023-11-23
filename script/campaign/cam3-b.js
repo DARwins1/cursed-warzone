@@ -7,7 +7,7 @@ const mis_spamtonRes = [
 	"R-Wpn-MG-Damage02", "R-Vehicle-Metals02", "R-Cyborg-Metals02",
 	"R-Defense-WallUpgrade02", "R-Wpn-Mortar-Damage01", "R-Wpn-Flamer-Damage02",
 	"R-Wpn-Cannon-Damage01", "R-Wpn-MG-ROF01", "R-Struc-RprFac-Upgrade01",
-	"R-Wpn-RocketSlow-Damage01", "R-Wpn-Flamer-ROF01",
+	"R-Wpn-RocketSlow-Damage01", "R-Wpn-Flamer-ROF01", "R-Struc-VTOLPad-Upgrade01", 
 ];
 const BLASTER_LIMITS = [ 80, 112, 147, 200 ]; // How far east the blaster can travel, increases with each missile code researched
 var defensePhase; // Whether the defense stage of the mission has begun
@@ -174,6 +174,11 @@ function startDefensePhase()
 // Or game over the player on funny research
 function eventResearched(research, structure, player)
 {
+	if (!structure)
+	{
+		return;
+	}
+
 	if (research.name.substring(0, 12) === "R-Comp-Death") // e.g. "R-Comp-Death01"
 	{
 		// Fire the blaster at every player object and then trigger a game over
@@ -197,7 +202,7 @@ function eventResearched(research, structure, player)
 			camPlayVideos({video: "MB3_B_MSG4", type: CAMP_MSG});
 			removeTimer("sendSpamtonGroundWave");
 			setTimer("sendSpamtonGroundWave", camChangeOnDiff(camSecondsToMilliseconds(40)));
-			const normList = [cTempl.spmanvilnw, cTempl.sptwin2lcannw, cTempl.spmhmgnw, cTempl.splbisonnw, cTempl.sptwin2podnw];
+			const normList = [cTempl.splbisonnw, cTempl.sptwin2lcannw, cTempl.spmhmgnw, cTempl.splbisonnw, cTempl.sptwin2podnw];
 			camSetVtolData(CAM_SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camSecondsToMilliseconds(45)), {
 				minVTOLs: 3,
 				maxRandomVTOLs: 2,
