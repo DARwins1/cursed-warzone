@@ -548,13 +548,11 @@
 		"keyTopic": 1,
 		"msgName": "RES_W_M3",
 		"name": "Pepperspray",
-		"requiredResearch": [
-			"R-Wpn-Mortar02Hvy"
-		],
 		"researchPoints": 3600,
 		"researchPower": 312,
 		"resultComponents": [
-			"Mortar3ROTARYMk1"
+			"Mortar3ROTARYMk1",
+			"Mortar3ROTARYMk1-VTOL"
 		],
 		"statID": "Mortar3ROTARYMk1"
 	},

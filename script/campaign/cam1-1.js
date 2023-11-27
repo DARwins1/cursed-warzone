@@ -53,5 +53,5 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("TreeSnow3", "ExplosiveDrum");
 	camUpgradeOnMapFeatures("TreeSnow1", "NuclearDrum");
 
-	queue("scavAttack", camSecondsToMilliseconds(2));
+	queue("scavAttack", camSecondsToMilliseconds(1));
 }
