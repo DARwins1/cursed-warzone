@@ -2587,6 +2587,13 @@
 			{
 				"class": "Weapon",
 				"filterParameter": "Id",
+				"filterValue": "Rocket-LtA-TJump",
+				"parameter": "ReloadTime",
+				"value": -50
+			},
+			{
+				"class": "Weapon",
+				"filterParameter": "Id",
 				"filterValue": "Rocket-LtA-TWarr",
 				"parameter": "ReloadTime",
 				"value": -50
@@ -2616,6 +2623,13 @@
 				"class": "Weapon",
 				"filterParameter": "Id",
 				"filterValue": "Rocket-VTOL-LtA-TUnDef",
+				"parameter": "ReloadTime",
+				"value": -50
+			},
+			{
+				"class": "Weapon",
+				"filterParameter": "Id",
+				"filterValue": "Rocket-VTOL-LtA-TJump",
 				"parameter": "ReloadTime",
 				"value": -50
 			},
