@@ -1,0 +1,14 @@
+/*
+ * Cam2-6s.wrf
+ *
+ */
+
+/* Directory for Proximity messages and mission briefs */
+directory		"messages"
+file			SMSG		"beta5brief.txt"
+
+directory "script"
+file JAVASCRIPT "rules.js"
+
+directory       "script/campaign"
+file            JAVASCRIPT      "beta5s.js"

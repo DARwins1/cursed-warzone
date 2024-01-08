@@ -139,6 +139,129 @@ const __cam_gammaLevels = [
 	"BIG_SHOT" // Gamma 5
 ];
 
+// Structure for accessing the game's sounds
+const camSounds = {
+	sfx: {
+		barrelExpl1: "pcv331.ogg",
+		barrelExpl2: "pcv332.ogg",
+		barrelExpl3: "pcv333.ogg",
+		enderTele: "pcv426.ogg",
+		powerDown: "Powerdown.ogg",
+		cave1: "Cave1.ogg",
+		cave2: "Cave2.ogg",
+		cave3: "Cave3.ogg",
+		cave4: "Cave4.ogg",
+		cave5: "Cave5.ogg",
+		cave6: "Cave6.ogg",
+		cave7: "Cave7.ogg",
+		cave8: "Cave8.ogg",
+		cave9: "Cave9.ogg",
+		cave10: "Cave10.ogg",
+		cave11: "Cave11.ogg",
+		cave12: "Cave12.ogg",
+		cave13: "Cave13.ogg",
+		cave14: "Cave14.ogg",
+		cave15: "Cave15.ogg",
+		cave16: "Cave16.ogg",
+		cave17: "Cave17.ogg",
+		cave18: "Cave18.ogg",
+		cave19: "Cave19.ogg",
+	},
+	project: {
+		incomIntel: "pcv456.ogg", // Incoming Intelligence Report
+		scavOutpst: "pcv375.ogg", // Scavenger Outpost Detected
+		scavBase: "pcv374.ogg", // Scavenger Base Detected
+		enemyBase: "pcv379.ogg", // Enemy Base Detected
+		scavOutpstErad: "pcv391.ogg", //  Scavenger Outpost Eradicated
+		scavBaseErad: "pcv392.ogg", // Scavenger Base Eradicated
+		enemyBaseErad: "pcv394.ogg", // Enemy Base Eradicated
+		retLz: "pcv427.ogg", // Return To LZ
+		lzComp: "pcv445.ogg", // LZ Compromised
+		lzClear: "lz-clear.ogg", // LZ Clear
+		enemyTrans: "pcv381.ogg", // Enemy Transport Detected
+		incomTrans: "pcv395.ogg", // Incoming Enemy Transport
+		reinforceAvail: "pcv440.ogg", // Reinforcements Are Available
+		artiRecovered: "pcv352.ogg", // Artifact Recovered
+	},
+	spamton: {
+		talk1: "pcv451.ogg",
+		talk2: "pcv452.ogg",
+		laugh: "pcv446.ogg",
+		deepLaugh: "pcv447.ogg",
+	},
+	bonzi: {
+		// Colosseum stuff:
+		// Wave 3
+		w3_1: "W3B1.ogg", // You have not fallen yet, Commander?
+		w3_2: "W3B2.ogg", // Then let's shake things up a bit...
+		// Wave 6
+		w6_1: "W6B1.ogg", // This is growing tiresome, Commander. So I will add an extra challenge for this next wave.
+		w6_2: "W6B2.ogg", // If you do not finish the wave within the time limit, I will wipe this arena with nuclear fire.
+		// Wave 10
+		w10_1: "W10B1.ogg", // Or don't.
+		w10_2: "W10B2.ogg", // You could just die now.
+		// Wave 11
+		w11_1: "W11B1.ogg", // Enough. This is the end for you.
+		w11_2: "W11B2.ogg", // Prepare to bow before the might of Lord BonziBUDDY!
+		// Wave 12
+		w12_1: "W12B1.ogg", // I should've known that slimy salesman couldn't be trusted.
+		w12_2: "W12B2.ogg", // Nonetheless, this is as far as you go, Commander.
+		w12_3: "W12B3.ogg", // For you will not stand against my most valiant warrior.
+		w12_4: "W12B4.ogg", // Prepare to meet your end!
+		// Post-waves
+		end_1: "ENDB1.ogg", // Impossible!
+		end_2: "ENDB2.ogg", // No!
+	},
+	announcer: {
+		// Wave 1
+		w1_1: "W1A1.ogg", // Hello and welcome to The Colosseum. 
+		w1_2: "W1A2.ogg", // You have been summoned here by Lord BonziBUDDY to complete a series of challenges.
+		w1_3: "W1A3.ogg", // The rules of The Colosseum are simple.
+		w1_4: "W1A4.ogg", // Defeat the enemies in each wave to continue to the next.
+		w1_5: "W1A5.ogg", // You must survive all twelve waves in order to succeed.
+		w1_6: "W1A6.ogg", // Do not approach the edges of the arena, as this will damage your units.
+		w1_7: "W1A7.ogg", // The sign on the north side of the arena will show you what enemies you will face in the upcoming wave.
+		w1_8: "W1A8.ogg", // Finally, you may call one transport of reinforcements between each wave.
+		w1_9: "W1A9.ogg", // You may begin preparing for the first wave now.
+		// Wave 2
+		w2_1: "W2A1.ogg", // Very good. You are still alive.
+		w2_2: "W2A2.ogg", // You may begin preparing for the second wave.
+		// Wave 4
+		w4_1: "W4A1.ogg", // Congratulations. You are not dead.
+		w4_2: "W4A2.ogg", // You should keep doing that.
+		// Wave 5
+		w5_1: "W5A1.ogg", // A reminder to all spectators to not look contestants directly in the eyes.
+		w5_2: "W5A2.ogg", // The Colosseum is not responsible for injuries caused by agitating the contestants.
+		w5_3: "W5A3.ogg", // The Colosseum is also not responsible for any heartbreaks caused by forming emotional attachments to contestants who are then inevitably riddled with bullets.
+		// Wave 6
+		w6_1: "W6A1.ogg", // Congratulations, you have reached the half-way point.
+		w6_2: "W6A2.ogg", // Please do not blow up The Colosseum.
+		// Wave 7
+		w7_1: "W7A1.ogg", // Congratulations on not blowing up.
+		w7_2: "W7A2.ogg", // Please prepare for the next wave.
+		// Wave 8
+		w8_1: "W8A1.ogg", // A reminder to all spectators that The Colosseum is not responsible for any injuries caused by rockets, shells, large rocks, or other projectiles that are hurled into the spectator gallery.
+		// Wave 9
+		w9_1: "W9A1.ogg", // Please do not refer to The Colosseum as a "Circle of Slaughter".
+		w9_2: "W9A2.ogg", // We cannot afford the legal fees, since the majority of our funds are spent feeding the contestants.
+		w9_3: "W9A3.ogg", // With the funds.
+		w9_4: "W9A4.ogg", // We feed them money.
+		w9_5: "W9A5.ogg", // We are financially unstable.
+		// Wave 10
+		w10_1: "W10A1.ogg", // This next wave is by far the most challenging yet, Commander.
+		w10_2: "W10A2.ogg", // But you have done well up to now, hopefully you can persevere.
+		w10_3: "W10A3.ogg", // Please do not die yet. Our ratings have never been higher.
+		// Post-waves
+		end_1: "ENDA1.ogg", // Congratulations, Commander.
+		end_2: "ENDA2.ogg", // You have successfully overcome the challenges and are now the Colosseum champion.
+		end_3: "ENDA3.ogg", // We will now grant you your hard-earned victory prize.
+		end_4: "ENDA4.ogg", // 5$ have been wired to your account.
+		// Misc.
+		cCheer: "crowd_cheer.ogg",
+		cGasp: "crowd_gasp.ogg",
+	},
+}
+
 //artifact
 var __camArtifacts;
 var __camNumArtifacts;
@@ -146,6 +269,9 @@ var __camNumArtifacts;
 //base
 var __camEnemyBases;
 var __camNumEnemyBases;
+
+//dialogue
+var __camQueuedDialogue;
 
 //reinforcements
 const CAM_REINFORCE_NONE = 0;
@@ -298,7 +424,7 @@ include(__CAM_INCLUDE_PATH + "misc.js");
 include(__CAM_INCLUDE_PATH + "debug.js");
 include(__CAM_INCLUDE_PATH + "hook.js");
 include(__CAM_INCLUDE_PATH + "events.js");
-
+include(__CAM_INCLUDE_PATH + "dialogue.js");
 include(__CAM_INCLUDE_PATH + "time.js");
 include(__CAM_INCLUDE_PATH + "research.js");
 include(__CAM_INCLUDE_PATH + "artifact.js");

@@ -1,0 +1,16 @@
+/*
+ * Sub1-1.wrf
+ *
+ */
+
+/* Directory for Proximity messages and mission briefs */
+directory	"messages"
+
+file		SMSG		"alpha3brief.txt"
+file		SMSG		"alpha3prox.txt"
+
+directory "script"
+file JAVASCRIPT "rules.js"
+
+directory "script/campaign"
+file JAVASCRIPT "alpha3.js"

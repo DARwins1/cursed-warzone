@@ -141,6 +141,7 @@ function cam_eventStartLevel()
 	__camMobGlobalGroup = camNewGroup();
 	__camAllowSilverfishSpawn = false;
 	__camExpLevel = 0;
+	__camQueuedDialogue = [];
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
 	__camAiPowerReset(); //grant power to the AI
 	setTimer("__camSpawnVtols", camSecondsToMilliseconds(0.5));
@@ -158,6 +159,7 @@ function cam_eventStartLevel()
 	setTimer("__updateNeedlerLog", camSecondsToMilliseconds(8));
 	setTimer("__camSpyFeignTick", camSecondsToMilliseconds(0.5));
 	setTimer("__camMonsterSpawnerTick", camSecondsToMilliseconds(16));
+	setTimer("__camPlayScheduledDialogues", camSecondsToMilliseconds(.1))
 	queue("__camShowBetaHintEarly", camSecondsToMilliseconds(4));
 	queue("__camGrantSpecialResearch", camSecondsToMilliseconds(6));
 	queue("camResetSun", camSecondsToMilliseconds(0.1)); // Set the sun correctly for the current campaign
@@ -498,7 +500,7 @@ function cam_eventTransporterExit(transport)
 			__camVictoryData.reinforcements > -1) ||
 			__camWinLossCallback === CAM_VICTORY_STANDARD))
 		{
-			const __REINFORCEMENTS_AVAILABLE_SOUND = "pcv440.ogg";
+			const __REINFORCEMENTS_AVAILABLE_SOUND = camSounds.project.reinforceAvail;
 			playSound(__REINFORCEMENTS_AVAILABLE_SOUND);
 			//Show the transporter reinforcement timer when it leaves for the first time.
 			if (__camWinLossCallback === CAM_VICTORY_OFFWORLD)

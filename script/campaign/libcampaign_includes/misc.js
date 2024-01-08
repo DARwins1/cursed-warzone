@@ -1071,7 +1071,7 @@ function camRandomEffect(pos)
 			__camBlackOut = true;
 			camSetSunPosition(0, 0, 0);
 			camSetSunIntensity(0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4);
-			playSound("Powerdown.ogg");
+			playSound(camSounds.sfx.powerDown);
 			setTimer("__camPlayCaveSounds", camSecondsToMilliseconds(30));
 			queue("__camEndBlackOut", camMinutesToMilliseconds(4));
 			break;
@@ -1831,15 +1831,16 @@ function __camRandomizeFungibleCannons()
 
 // Play a random cave sound
 function __camPlayCaveSounds()
-{
+{	
+	const sfx = camSounds.sfx;
 	const caveSounds = [
-		"Cave1.ogg", "Cave2.ogg", "Cave3.ogg",
-		"Cave4.ogg", "Cave5.ogg", "Cave6.ogg",
-		"Cave7.ogg", "Cave8.ogg", "Cave9.ogg",
-		"Cave10.ogg", "Cave11.ogg", "Cave12.ogg",
-		"Cave13.ogg", "Cave14.ogg", "Cave15.ogg",
-		"Cave16.ogg", "Cave17.ogg", "Cave18.ogg",
-		"Cave19.ogg", 
+		sfx.cave1, sfx.cave2, sfx.cave3,
+		sfx.cave4, sfx.cave5, sfx.cave6,
+		sfx.cave7, sfx.cave8, sfx.cave9,
+		sfx.cave10, sfx.cave11, sfx.cave12,
+		sfx.cave13, sfx.cave14, sfx.cave15,
+		sfx.cave16, sfx.cave17, sfx.cave18,
+		sfx.cave19, 
 	];
 
 	playSound(caveSounds[camRand(caveSounds.length)]);

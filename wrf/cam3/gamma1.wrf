@@ -1,0 +1,16 @@
+/*
+ * Cam3a.wrf
+ *
+ */
+
+/* Directory for Proximity messages and mission briefs */
+directory	"messages"
+file		SMSG		"gamma1brief.txt"
+file		SMSG		"brief3intro.txt"
+file		SMSG		"gamma1prox.txt"
+
+directory "script"
+file JAVASCRIPT "rules.js"
+
+directory	"script/campaign"
+file		JAVASCRIPT		"gamma1.js"

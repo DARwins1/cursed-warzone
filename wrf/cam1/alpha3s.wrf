@@ -1,0 +1,15 @@
+/*
+ * Sub1-1s.wrf	temporary to start off world
+ *
+ */
+
+/* Directory for Proximity messages and mission briefs */
+directory	"messages"
+
+file		SMSG		"alpha3brief.txt"
+
+directory "script"
+file JAVASCRIPT "rules.js"
+
+directory "script/campaign"
+file JAVASCRIPT "alpha3s.js"

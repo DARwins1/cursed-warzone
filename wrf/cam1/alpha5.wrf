@@ -1,0 +1,16 @@
+/*
+ * Cam1ca.wrf
+ *
+ */
+
+/* Directory for Proximity messages and mission briefs */
+directory	"messages"
+
+file		SMSG		"alpha5brief.txt"
+file		SMSG		"alpha5prox.txt"
+
+directory "script"
+file JAVASCRIPT "rules.js"
+
+directory "script/campaign"
+file JAVASCRIPT "alpha5.js"

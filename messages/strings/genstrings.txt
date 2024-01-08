@@ -31,3 +31,4 @@ INCOM_INT		_("Incoming intelligence report.")
 
 /* Additional Messages */
 ADD_MSG42			_("Nuclear Reactor")
+SIGN_MSG			_("You should probably pay attention to this thing")
