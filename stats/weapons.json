@@ -6213,7 +6213,7 @@
         "explosionWav": "smlexpl.ogg",
         "facePlayer": 1,
         "fireOnMove": 0,
-        "firePause": 1,
+        "firePause": 3,
         "flightGfx": "FXHPLME.PIE",
         "flightSpeed": 1500,
         "hitGfx": "FXMNExp.PIE",
@@ -6449,8 +6449,8 @@
         "weight": 250
     },
     "Rocket-LtA-TJump": {
-        "buildPoints": 500,
-        "buildPower": 150,
+        "buildPoints": 100,
+        "buildPower": 50,
         "damage": 0,
         "designable": 1,
         "effectSize": 50,
@@ -7026,8 +7026,8 @@
         "weight": 250
     },
     "Rocket-VTOL-LtA-TJump": {
-        "buildPoints": 500,
-        "buildPower": 150,
+        "buildPoints": 100,
+        "buildPower": 50,
         "damage": 0,
         "designable": 1,
         "effectSize": 75,

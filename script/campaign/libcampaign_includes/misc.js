@@ -647,12 +647,12 @@ function camSetOnMapEnemyUnitExp()
 //;;
 function camRandomEffect(pos)
 {
-	// Set a default list of effects
 	const effects = [
 		"oilDrum", "oilDrum", "oilDrums",
 		"explosiveDrum", "twinHostile", "explode",
 		"miniVipers", "manyPodTower", "scavScorchShot",
 		"trees", "driftVipers", "fungHardpoint",
+		"bunkerBusters"
 	];
 	const __NEW_GROUP = camNewGroup(); // Place spawned hostiles into this group
 
@@ -708,6 +708,11 @@ function camRandomEffect(pos)
 		// Allow Hurricane AAA artifact if Normal Wheels is researched
 		effects.push("hurricaneArti");
 	}
+	if ((camIsResearched("R-Wpn-Rocket01-LtAT-Def") || camIsResearched("R-Wpn-Rocket01-LtAT")) && !camIsResearched("R-Wpn-Rocket01-LtATJump"))
+	{
+		// Allow Lancer Jumper artifact if any Lancer is researched
+		effects.push("lancerJumperArti");
+	}
 	if (camIsResearched("R-Vehicle-Body05"))
 	{
 		// Allow Towering Pillar Of Lancers if Viper II is researched
@@ -724,10 +729,21 @@ function camRandomEffect(pos)
 		effects.push("bbCyb");
 		effects.push("swordCyb");
 	}
+	if (camIsResearched("R-Wpn-ScorchShot"))
+	{
+		// Allow fire Cyborgs and Drift Scorch Shots if Scorch Cyborg is researched
+		effects.push("fireCybs");
+		effects.push("scorchDrift");
+	}
 	if (camIsResearched("R-Cyborg-Wpn-Sword"))
 	{
 		// Allow Super Axe Cyborg if Sword Cyborg is researched
 		effects.push("superAxe");
+	}
+	if (camIsResearched("R-Cyborg-Wpn-Bow"))
+	{
+		// Allow Firework Cyborgs if Archer Cyborg is researched
+		effects.push("fireworkCybs");
 	}
 	if (camIsResearched("R-Wpn-MG3Mk1"))
 	{
@@ -738,6 +754,26 @@ function camRandomEffect(pos)
 	{
 		// 50% chance of allowing Big MG Bunker if Bunker Buster is researched
 		effects.push("bigBunker");
+	}
+	if (camIsResearched("R-Wpn-Rocket01-LtATJump")) 
+	{
+		// Allow Lancer Jumper artifact if the Lancer Jumper is researched
+		effects.push("lancerJumpers");
+	}
+	if (camIsResearched("R-Wpn-Rocket01-LtAT")) 
+	{
+		// Allow Sawed-Off Lancers if the Sawed-Off Lancer is researched
+		effects.push("sawedLancers");
+	}
+	if (camIsResearched("R-Wpn-Rocket01-LtAT-Def"))
+	{
+		// Allow Defective Lancers if Warranty-Expired Lancer is researched
+		effects.push("defLancers");
+	}
+	if (camIsResearched("R-Wpn-Cannon2Mk1")) 
+	{
+		// Allow Fungible Cannons if the Fungible Cannon is researched
+		effects.push("fungCannons");
 	}
 	if (camIsResearched("R-Vehicle-Prop-VTOL"))
 	{
@@ -834,6 +870,27 @@ function camRandomEffect(pos)
 			groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x, pos.y + 1, 
 				_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
 			));
+			break;
+		case "bunkerBusters":
+			// Spawns 2 Bunker Buster Viper Wheels
+			if (camRand(100) < 20)
+			{
+				// 20% chance for the BB's to be hostile
+				player = CAM_MOBS;
+			}
+
+			const bb1 = addDroid(player, pos.x - 1, pos.y, 
+				_("Bunker Buster Viper Wheels"), "Body1REC", "wheeled01", "", "", "Rocket-BB"
+			);
+			const bb2 = addDroid(player, pos.x + 1, pos.y, 
+				_("Bunker Buster Viper Wheels"), "Body1REC", "wheeled01", "", "", "Rocket-BB"
+			);
+
+			if (player === CAM_MOBS)
+			{
+				groupAdd(__NEW_GROUP, bb1);
+				groupAdd(__NEW_GROUP, bb2);
+			}
 			break;
 		case "swordCyb":
 			// Spawn a grid of 4 Sword Cyborgs
@@ -961,42 +1018,45 @@ function camRandomEffect(pos)
 			}
 			break;
 		case "miniVipers":
-			// Spawn 18 Mini Machinegun Viper Wheels
+			// Spawn 18 Mini Machinegun Viper Wheels (+9 for every campaign after Alpha)
 			if (camRand(100) < 20)
 			{
 				// 20% chance for the swarm to be hostile
 				player = CAM_MOBS;
 			}
-			for (let i = -1; i <= 1; i++)
+			// Loop twice on Alpha, thrice on Beta, etc.
+			for (let i = 0; i < camDiscoverCampaign() + 1; i++)
 			{
-				for (let j = -1; j <= 1; j++)
+				// Spawn 9 Mini's
+				for (let x = -1; x <= 1; x++)
 				{
-					const nDroid1 = addDroid(player, pos.x + i, pos.y + j, 
-						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
-					);
-					const nDroid2 = addDroid(player, pos.x + i, pos.y + j, 
-						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
-					);
-					if (player === CAM_MOBS)
+					for (let y = -1; y <= 1; y++)
 					{
-						groupAdd(__NEW_GROUP, nDroid1);
-						groupAdd(__NEW_GROUP, nDroid2);
+						const nDroid = addDroid(player, pos.x + x, pos.y + y, 
+							_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
+						);
+						if (player === CAM_MOBS)
+						{
+							groupAdd(__NEW_GROUP, nDroid);
+						}
 					}
 				}
 			}
 			break;
-			case "miniNormalVipers":
-			// Spawn 18 Mini Machinegun Viper Normal Wheels for the player
-			for (let i = -1; i <= 1; i++)
+		case "miniNormalVipers":
+			// Spawn 18 Mini Machinegun Viper Normal Wheels for the player (+9 for every campaign after Beta)
+			// Loop twice on Beta, thrice on Gamma
+			for (let i = 0; i < camDiscoverCampaign(); i++)
 			{
-				for (let j = -1; j <= 1; j++)
+				// Spawn 9 Mini's
+				for (let x = -1; x <= 1; x++)
 				{
-					addDroid(CAM_HUMAN_PLAYER, pos.x + i, pos.y + j, 
-						_("Mini Machinegun Viper Normal Wheels"), "Body1Mini", "wheelednormal", "", "", "MGMini-VTOL"
-					);
-					addDroid(CAM_HUMAN_PLAYER, pos.x + i, pos.y + j, 
-						_("Mini Machinegun Viper Normal Wheels"), "Body1Mini", "wheelednormal", "", "", "MGMini-VTOL"
-					);
+					for (let y = -1; y <= 1; y++)
+					{
+							addDroid(CAM_HUMAN_PLAYER, pos.x + x, pos.y + y, 
+							_("Mini Machinegun Viper Normal Wheels"), "Body1Mini", "wheelednormal", "", "", "MGMini-VTOL"
+						);
+					}
 				}
 			}
 			break;
@@ -1007,17 +1067,170 @@ function camRandomEffect(pos)
 				// 50% chance for the vipers to be hostile
 				player = CAM_MOBS;
 			}
-			for (let i = -1; i <= 1; i++)
+			for (let x = -1; x <= 1; x++)
 			{
-				for (let j = -1; j <= 1; j++)
+				for (let y = -1; y <= 1; y++)
 				{
-					const nDroid = addDroid(player, pos.x + i, pos.y + j, 
+					const nDroid = addDroid(player, pos.x + x, pos.y + y, 
 						_("Machinegun Viper Drift Wheels"), "Body1REC", "wheeledskiddy", "", "", "MG1Mk1"
 					);
 					if (player === CAM_MOBS)
 					{
 						groupAdd(__NEW_GROUP, nDroid);
 					}
+				}
+			}
+			break;
+		case "scorchDrift":
+			// Spawn 4 Scorch Shot Viper II Drift Wheels
+			for (let x = -1; x <= 1; x += 2)
+			{
+				for (let y = -1; y <= 1; y += 2)
+				{
+					const nDroid = addDroid(CAM_MOBS, pos.x + x, pos.y + y, 
+						_("corch Shot Viper II Drift Wheels"), "Body5REC", "wheeledskiddy", "", "", "BabaFlame"
+					);
+					groupAdd(__NEW_GROUP, nDroid);
+				}
+			}
+			break;
+		case "sawedLancers":
+			// Spawn 9 Sawed-Off Viper Drift Wheels
+			if (camRand(100) < 50)
+			{
+				// 50% chance for the vipers to be hostile
+				player = CAM_MOBS;
+			}
+			for (let x = -1; x <= 1; x++)
+			{
+				for (let y = -1; y <= 1; y++)
+				{
+					const nDroid = addDroid(player, pos.x + x, pos.y + y, 
+						_("Sawed-Off Lancer Viper Drift Wheels"), "Body1REC", "wheeledskiddy", "", "", "Rocket-LtA-T"
+					);
+					if (player === CAM_MOBS)
+					{
+						groupAdd(__NEW_GROUP, nDroid);
+					}
+				}
+			}
+			break;
+		case "fireworkCybs":
+			// Spawn 6 Firework Cyborgs
+			if (camRand(100) < 30)
+			{
+				// 30% chance for the cyborgs to be hostile
+				player = CAM_MOBS;
+			}
+			for (let x = -1; x <= 1; x++)
+			{
+				for (let y = -1; y <= 1; y += 2)
+				{
+					const nDroid = addDroid(player, pos.x + x, pos.y + y, 
+						_("Firework Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgRocket"
+					);
+					if (player === CAM_MOBS)
+					{
+						groupAdd(__NEW_GROUP, nDroid);
+					}
+				}
+			}
+			break;
+		case "fungCannons":
+			// Spawn 4 Fungible Cannon Viper II Half-wheels
+			if (camRand(100) < 40)
+			{
+				// 40% chance for the tanks to be hostile
+				player = CAM_MOBS;
+			}
+			for (let x = -1; x <= 1; x += 2)
+			{
+				for (let y = -1; y <= 1; y += 2)
+				{
+					const nDroid = addDroid(player, pos.x + x, pos.y + y, 
+						_("Fungible Cannon Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", camRandomFungibleCannon()
+					);
+					if (player === CAM_MOBS)
+					{
+						groupAdd(__NEW_GROUP, nDroid);
+					}
+				}
+			}
+			break;
+		case "fireCybs":
+			// Spawn a Super Flamer Cyborg
+			// If we're in Gamma, spawn an additional 4
+			// Otherwise, spawn 4 Pyro Cyborgs instead
+			if (camRand(100) < 50)
+			{
+				// 50% chance for the cyborg(s) to be hostile
+				player = CAM_MOBS;
+			}
+
+			const nDroid1 = addDroid(player, pos.x, pos.y, 
+				_("Super Flamer Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-HFlamer"
+			);
+			if (player === CAM_MOBS)
+			{
+				groupAdd(__NEW_GROUP, nDroid1);
+			}
+
+			for (let x = -1; x <= 1; x += 2)
+			{
+				for (let y = -1; y <= 1; y += 2)
+				{
+					let nDroid2;
+					if (camDiscoverCampaign() < 3)
+					{
+						nDroid2 = addDroid(player, pos.x + x, pos.y + y, 
+							_("Pyro Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgFlamer01"
+						);
+					}
+					else
+					{
+						nDroid2 = addDroid(player, pos.x + x, pos.y + y, 
+							_("Super Flamer Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-HFlamer"
+						);
+					}
+					
+					if (player === CAM_MOBS)
+					{
+						groupAdd(__NEW_GROUP, nDroid2);
+					}
+				}
+			}
+			break;
+		case "lancerJumpers":
+			// Spawn 9 Lancer Jumper Viper Wheels
+			if (camRand(100) < 50)
+			{
+				// 50% chance for the vipers to be hostile
+				player = CAM_MOBS;
+			}
+			for (let x = -1; x <= 1; x++)
+			{
+				for (let y = -1; y <= 1; y++)
+				{
+					const nDroid = addDroid(player, pos.x + x, pos.y + y, 
+						_("Lancer Jumper Viper Wheels"), "Body1REC", "wheeled01", "", "", "Rocket-LtA-TJump"
+					);
+					if (player === CAM_MOBS)
+					{
+						groupAdd(__NEW_GROUP, nDroid);
+					}
+				}
+			}
+			break;
+		case "defLancers":
+			// Spawn 9 Defective Lancer Viper Thick Wheels
+			for (let x = -1; x <= 1; x++)
+			{
+				for (let y = -1; y <= 1; y++)
+				{
+					const nDroid = addDroid(CAM_MOBS, pos.x + x, pos.y + y, 
+						_("Defective Lancer Viper Thick Wheels"), "Body1REC", "tracked01", "", "", "Rocket-LtA-TDef"
+					);
+					groupAdd(__NEW_GROUP, nDroid);
 				}
 			}
 			break;
@@ -1065,6 +1278,15 @@ function camRandomEffect(pos)
 			}
 			addLabel(addFeature("Crate", pos.x, pos.y), "mgFortCrate");
 			__camArtifacts["mgFortCrate"] = {tech: "R-Defense-MGSuper", placed: true };
+			break;
+		case "lancerJumperArti":
+			// Spawn an artifact for the Machinegun Fortress
+			if (camDef(__camArtifacts["lancerJumperCrate"]))
+			{
+				break; // Don't place if an artifact was already placed
+			}
+			addLabel(addFeature("Crate", pos.x, pos.y), "lancerJumperCrate");
+			__camArtifacts["lancerJumperCrate"] = {tech: "R-Wpn-Rocket01-LtATJump", placed: true };
 			break;
 		case "blackOut":
 			// Make the whole map go dark

@@ -212,7 +212,7 @@
 	"RES_FLAME_E": {
 		"id": "RES_FLAME_E",
 		"imdName": "MICAPSUL.PIE",
-		"sequenceName": "res_power.ogg",
+		"sequenceName": "res_spamton.ogv",
 		"text": [
 			"EVER FEEL [[Small and Insignificant]]???",
 			"WELL< DON'T WORRY [Kids], YOU'RE FAVORITE [[Number 1 Rated Salesman1997]] IS HERE TO [Help! Help me!]!!",
@@ -225,7 +225,7 @@
 	"RES_V_P_DRIFTW": {
 		"id": "RES_V_P_DRIFTW",
 		"imdName": "MICAPSUL.PIE",
-		"sequenceName": "res_power.ogg",
+		"sequenceName": "res_spamton.ogv",
 		"text": [
 			"WANNA [[Get away from me!]]???",
 			"WELL NOW YOU",
@@ -240,7 +240,7 @@
 	"RES_W_RK_LTATWARR": {
 		"id": "RES_W_RK_LTATWARR",
 		"imdName": "MICAPSUL.PIE",
-		"sequenceName": "res_power.ogg",
+		"sequenceName": "res_spamton.ogv",
 		"text": [
 			"CONGRULATIONS!!!!",
 			"YOU ARE NOW OFFICIALLY [Esteemed Customer]!",
@@ -264,7 +264,7 @@
 	"RES_V_BTWIN": {
 		"id": "RES_V_BTWIN",
 		"imdName": "MICAPSUL.pie",
-		"sequenceName": "res_power.ogg",
+		"sequenceName": "res_spamton.ogv",
 		"text": [
 			"CAN?T GET ENOUGH OF YOUR>E FAVORITE  [[Number 1 Rated Chassis 1999]]??!",
 			"WELL TODAY'S YOUR LUCKY DAY, YOU LITTLE [%$*!]",
@@ -550,7 +550,7 @@
 	"RES_V_BDRAGON": {
 		"id": "RES_V_BDRAGON",
 		"imdName": "MICAPSUL.pie",
-		"sequenceName": "res_power.ogg",
+		"sequenceName": "res_spamton.ogv",
 		"text": [
 			"[Check] THIS OUT!!!",
 			"THIS [Fine specimen] WAS [Hauled] OUT OF THE [Deep, Dark Abyss] OF [[Free Online Multiplayer Join Now!!!]]",
@@ -580,6 +580,15 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"Why aren't these in the normal campaign???"
+		]
+	},
+	"RES_W_RK_LTATJUMP": {
+		"id": "RES_W_RK_LTATJUMP",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_weapons.ogg",
+		"text": [
+			"Perfect for practicing your skills",
+			"And for imagining how much damage you could be doing if you were using a different weapon"
 		]
 	}
 }

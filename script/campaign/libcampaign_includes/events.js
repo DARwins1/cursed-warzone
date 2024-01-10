@@ -216,7 +216,7 @@ function cam_eventDroidBuilt(droid, structure)
 		else
 		{
 			// Swap the Warranty-Expired Lancer for a either a standard or Defective variant
-			if (camRand(3) === 0) // 33% chance
+			if (camRand(2) === 0) // 50% chance
 			{
 				// Swap with Lancer
 				completeResearch("Script-Lancer-FunctionalSwap", droid.player, true);

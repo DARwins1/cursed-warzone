@@ -30,7 +30,7 @@
 	"RES_CN2MK1": {
 		"id": "RES_CN2MK1",
 		"imdName": "MICAPSUL.pie",
-		"sequenceName": "res_power.ogg",
+		"sequenceName": "res_spamton.ogv",
 		"text": [
 			"GET YOUR ONE OF A [Baker's dozen] PRECISION WEAPON RIGHT HERE!",
 			"IT'S GOT EVERYTHING YOU COULD EVER [[Des1re]], ALL IN ONE [[Family Un-Friendly]][ Packaging Fee:]!",
@@ -187,7 +187,7 @@
 		"sequenceName": "res_droid.ogg",
 		"text": [
 			"New Propulsion Available",
-			"Armored Half-tracks",
+			"Wheels combined with a foreign, non-wheel propulsion",
 			"Speed: Medium",
 			"Body Points: Medium"
 		]
@@ -261,7 +261,7 @@
 	"RES_POWMD1": {
 		"id": "RES_POWMD1",
 		"imdName": "MICAPSUL.pie",
-		"sequenceName": "res_pow.ogg",
+		"sequenceName": "res_systech.ogg",
 		"text": [
 			"Power Module Available",
 			"Improved Power Generator Performance",
@@ -431,9 +431,9 @@
 		"sequenceName": "res_droid.ogg",
 		"text": [
 			"New Propulsion Available",
-			"Armored Tracks",
-			"Speed: Slow",
-			"Body Points: High"
+			"big thicc weel wit hi armar",
+			"Speed: :(",
+			"Body Points: :)"
 		]
 	},
 	"RES_TTRAP1": {
@@ -680,7 +680,7 @@
 	"RES_W_RK_MP1": {
 		"id": "RES_W_RK_MP1",
 		"imdName": "MICAPSUL.PIE",
-		"sequenceName": "res_power.ogg",
+		"sequenceName": "res_spamton.ogv",
 		"text": [
 			"WANT MORE [Bang] FOR YOUR [Buck]???",
 			"MORE [Boom] FOR YOUR [#$%!]???",

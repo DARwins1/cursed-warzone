@@ -182,8 +182,8 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"New Defensive Structure Available",
-			"Armored Bombard battery pit",
-			"Assigned automatically to nearest sensor or CB tower",
+			"Convenient thing to build your TNT Cannons on",
+			"Assigned automatically to be loud",
 			"Defensive Strength: Medium"
 		]
 	},
@@ -193,9 +193,9 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"New Defensive Structure Available",
-			"Indirect fire rocket battery",
-			"Assigned automatically to nearest sensor or CB tower",
-			"Defensive Strength: Medium"
+			"Indiscreet fire rocket battery",
+			"Automatically sprays at anything your sensors can see",
+			"Defensive Strength: Funny"
 		]
 	},
 	"RES_EMP_IncHOW": {

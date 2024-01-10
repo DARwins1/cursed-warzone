@@ -653,7 +653,7 @@
         "body": "CyborgLightBody",
         "construct": "CyborgSpade",
         "id": "Cyb-ComEng",
-        "name": "Combat Engineer Cyborg",
+        "name": "Engineer Cyborg",
         "propulsion": "CyborgLegs",
         "type": "CYBORG_CONSTRUCT"
     },

@@ -222,44 +222,30 @@ function __camGameWon()
 }
 
 //Checks if the player is considered to be alive on all non-offworld missions.
-//NOTE: Do not count cyborg factory here since combat engineer does not exist
-//in campaign at the moment.
 function __camPlayerDead()
 {
 	let dead = true;
-	const __HAVE_FACTORIES = enumStruct(CAM_HUMAN_PLAYER, FACTORY).filter((obj) => (
+	let haveFactories = enumStruct(CAM_HUMAN_PLAYER, FACTORY).filter((obj) => (
 		obj.status === BUILT
 	)).length > 0;
 
-	if (__HAVE_FACTORIES)
+	//If no normal factories are found, check for any cyborg factories since the player can build Engineer Cyborgs
+	if (!haveFactories)
+	{
+		haveFactories = enumStruct(CAM_HUMAN_PLAYER, CYBORG_FACTORY).filter(function(obj) {
+			return obj.status === BUILT;
+		}).length > 0;
+	}
+
+	if (haveFactories)
 	{
 		dead = false;
 	}
 
-	if (__camNextLevel === "SUB_3_1S")
-	{
-		//Check for any construction units.
-		//NOTE: countDroid() will return the counts of construction units in
-		//apsLimboDroids between Gamma 3 to Gamma 5.
-		if (countDroid(DROID_CONSTRUCT) > 0)
-		{
-			dead = false;
-		}
-	}
-	else if (enumDroid(CAM_HUMAN_PLAYER, DROID_CONSTRUCT).length > 0)
+	if (enumDroid(CAM_HUMAN_PLAYER, DROID_CONSTRUCT).length > 0)
 	{
 		//A construction unit is currently on the map.
 		dead = false;
-	}
-	else if (__camNextLevel === "CAM3A-D1")
-	{
-		const __GAMMA_PLAYER = 1;
-
-		//Care about all units and not just trucks at the start of cam3-c.
-		if (allianceExistsBetween(__GAMMA_PLAYER, CAM_NEXUS) && enumDroid(CAM_HUMAN_PLAYER).length > 0)
-		{
-			dead = false;
-		}
 	}
 	else
 	{

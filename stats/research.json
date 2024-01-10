@@ -573,6 +573,23 @@
 		],
 		"statID": "Rocket-LtA-T"
 	},
+	"R-Wpn-Rocket01-LtATJump": {
+		"iconID": "IMAGE_RES_WEAPONTECH",
+		"id": "R-Wpn-Rocket01-LtATJump",
+		"msgName": "RES_W_RK_LTATJUMP",
+		"name": "Lancer Jumper",
+		"keyTopic": 1,
+		"requiredResearch": [
+			"R-Wpn-Rocket05-MiniPod"
+		],
+		"researchPoints": 1800,
+		"researchPower": 71,
+		"resultComponents": [
+			"Rocket-LtA-TJump",
+			"Rocket-VTOL-LtA-TJump"
+		],
+		"statID": "Rocket-LtA-TJump"
+	},
 	"R-Wpn-Rocket01-LtAT-Def": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Wpn-Rocket01-LtAT-Def",
@@ -1910,7 +1927,7 @@
 		"subgroupIconID": "IMAGE_RES_GRPUPG"
 	},
 	"R-Struc-PowerModuleMk1": {
-		"iconID": "IMAGE_RES_POWERTECH",
+		"iconID": "IMAGE_RES_SYSTEMTECH",
 		"id": "R-Struc-PowerModuleMk1",
 		"keyTopic": 1,
 		"msgName": "RES_POWMD1",
@@ -2167,7 +2184,7 @@
 		"statID": "Body1RECTriple"
 	},
 	"R-Vehicle-BodyDragon": {
-		"iconID": "IMAGE_RES_DROIDTECH",
+		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Vehicle-BodyDragon",
 		"msgName": "RES_V_BDRAGON",
 		"name": "BUY IT! BUY IT NOW!!!",
@@ -2790,6 +2807,9 @@
 				"parameter": "ConstructorPoints",
 				"value": 20
 			}
+		],
+		"resultComponents": [
+			"CyborgSpade"
 		],
 		"subgroupIconID": "IMAGE_RES_GRPUPG"
 	},
