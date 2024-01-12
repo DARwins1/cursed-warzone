@@ -16,6 +16,9 @@ camAreaEvent("bbAttackTrigger", function(droid)
 	// Only trigger if the player moves a droid in
 	if (droid.player === CAM_HUMAN_PLAYER)
 	{
+		// Play funny video
+		camPlayVideos({video: "BONZI_PROWLER_MSG", type: MISS_MSG});
+
 		// Attack the player with the two ambush groups
 		camManageGroup(camMakeGroup("bbAmbushGroup1"), CAM_ORDER_ATTACK, {
 			repair: 60
@@ -373,6 +376,23 @@ function eventChat(from, to, message)
 	playSound("beep6.ogg");
 }
 
+// Trigger a warning message from Bonzi Buddy after all bases are destroyed
+function bonziEndMessage()
+{
+	if (camAllEnemyBasesEliminated())
+	{
+		camCallOnce("playWarning");
+		return true;
+	}
+	return undefined;
+}
+
+// Play Bonzi Buddy's warning message
+function playWarning()
+{
+	camPlayVideos({video: "BONZI_WARNING_MSG", type: MISS_MSG});
+}
+
 function eventStartLevel()
 {
 	const PLAYER_POWER = 5000;
@@ -380,7 +400,9 @@ function eventStartLevel()
 	const lz = getObject("landingZone"); //player lz
 	const enemyLz = getObject("bbLandingZone");
 
-	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CAVE_UPDATE_PART_4");
+	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CAVE_UPDATE_PART_4", {
+		callback: "bonziEndMessage"
+	});
 	setReinforcementTime(LZ_COMPROMISED_TIME);
 
 	centreView(startpos.x, startpos.y);
@@ -503,7 +525,7 @@ function eventStartLevel()
 		},
 	});
 
-	camPlayVideos({video: "MB2A_MSG", type: MISS_MSG});
+	camPlayVideos({video: "BETA_INTRO_MSG", type: MISS_MSG});
 	startedFromMenu = false;
 
 	//Only if starting Beta directly rather than going through Alpha

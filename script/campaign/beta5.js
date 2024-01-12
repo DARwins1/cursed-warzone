@@ -144,6 +144,8 @@ const mis_hardPatterns = [
 	],
 ];
 var bossGroup; // Used to control Bonzi Buddy's ultra cyborg thingy (and his guards)
+var playerDetected;
+var lastTauntTime;
 
 function camEnemyBaseEliminated_bbGateBase()
 {
@@ -172,6 +174,8 @@ function activateFirstFactories()
 	camEnableFactory("bbFactory1"); // General factory
 	camEnableFactory("bbFactory3"); // Drift wheel factory
 	camEnableFactory("bbCybFactory3"); // General factory
+	playerDetected = true;
+	camCallOnce("welcomeDialogue");
 }
 
 function activateSecondFactories()
@@ -190,6 +194,13 @@ function activateBonziBoss()
 
 	camEnableFactory("bbCybFactory2"); // Many-Rocket Pod factory
 	camEnableFactory("bbNormFactory2"); // Heavy factory
+
+	camQueueDialogues([
+		{text: "BONZI BUDDY: Enough!", delay: 0, sound: camSounds.bonzi.aggro1},
+		{text: "BONZI BUDDY: Your demise is here, Commander.", delay: camSecondsToMilliseconds(2), sound: camSounds.bonzi.aggro2},
+		{text: "BONZI BUDDY: For I shall break you down until nothing of you remains.", delay: camSecondsToMilliseconds(5), sound: camSounds.bonzi.aggro3},
+		{text: "BONZI BUDDY: Prepare yourself for obliteration!", delay: camSecondsToMilliseconds(9), sound: camSounds.bonzi.aggro4},
+	]);
 }
 
 //Send a Bonzi Buddy transport
@@ -295,6 +306,57 @@ function bonziBossStatus()
 	{
 		return undefined; // Boss isn't destroyed yet
 	}
+}
+
+function camEnemyBaseDetected_bbGateBase()
+{
+	camQueueDialogues([
+		{text: "BONZI BUDDY: Do you feel it?", delay: 0, sound: camSounds.bonzi.gate1},
+		{text: "BONZI BUDDY: That sense of impending doom?", delay: camSecondsToMilliseconds(3), sound: camSounds.bonzi.gate2},
+		{text: "BONZI BUDDY: Every step you take brings you closer to your own demise.", delay: camSecondsToMilliseconds(7), sound: camSounds.bonzi.gate3},
+	]);
+}
+
+// Used to trigger dialogue
+function eventAttacked(victim, attacker)
+{
+	if (victim.player === CAM_BONZI_BUDDY || victim.player === CAM_HUMAN_PLAYER)
+	{
+		if (!playerDetected)
+		{
+			playerDetected = true;
+			camCallOnce("welcomeDialogue");
+		}
+
+		if ((victim.group === bossGroup || attacker.group === bossGroup) 
+			&& bonziBossStatus() === true && lastTauntTime <= gameTime - camSecondsToMilliseconds(10))
+		{
+			// Play a random taunt
+			lastTauntTime = gameTime;
+			const taunts = [
+				{text: "BONZI BUDDY: Die!", delay: 0, sound: camSounds.bonzi.taunt1},
+				{text: "BONZI BUDDY: Perish!", delay: 0, sound: camSounds.bonzi.taunt2},
+				{text: "BONZI BUDDY: Feel my wrath!", delay: 0, sound: camSounds.bonzi.taunt3},
+				{text: "BONZI BUDDY: Become paste!", delay: 0, sound: camSounds.bonzi.taunt4},
+				{text: "BONZI BUDDY: Become nothing!", delay: 0, sound: camSounds.bonzi.taunt5},
+			];
+
+			// Choose a taunt from the array
+			const rTaunt = taunts[camRand(taunts.length)];
+			// Play it
+			camQueueDialogue(rTaunt.text, rTaunt.delay, rTaunt.sound);
+		}
+	}
+}
+
+// Welcome the player to Bonzi Buddy's minecraft server
+function welcomeDialogue()
+{
+	camQueueDialogues([
+		{text: "BONZI BUDDY: Welcome to my glorious palace grounds, Commander.", delay: 0, sound: camSounds.bonzi.welcome1},
+		{text: "BONZI BUDDY: This is the heart of what will soon be my glorious empire.", delay: camSecondsToMilliseconds(5), sound: camSounds.bonzi.welcome2},
+		{text: "BONZI BUDDY: And what will also soon be your grave.", delay: camSecondsToMilliseconds(10), sound: camSounds.bonzi.welcome3},
+	]);
 }
 
 function eventStartLevel()
@@ -477,6 +539,8 @@ function eventStartLevel()
 	});
 
 	setPattern();
+	playerDetected = false;
+	lastTauntTime = gameTime;
 
 	// Replace all snowy trees with funny explosive barrels
 	camUpgradeOnMapFeatures("TreeSnow3", "ExplosiveDrum");

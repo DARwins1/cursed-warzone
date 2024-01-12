@@ -1,0 +1,2 @@
+0	400	0.0	5.0	_("The volume of this cutscene was reduced by 30 DECIBELS.")
+0	420	2.5	5.0	_("You're welcome.")

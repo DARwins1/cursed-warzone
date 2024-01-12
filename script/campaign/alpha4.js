@@ -722,7 +722,7 @@ function eventStartLevel()
 	});
 
 	hackAddMessage("C1C_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER, false); // initial beacon
-	camPlayVideos([{video: "MB1C_MSG", type: CAMP_MSG}, {video: "MB1C2_MSG", type: CAMP_MSG}]);
+	camPlayVideos({video: "SPAM_ALPHA4_MSG", type: CAMP_MSG});
 
 	camSetArtifacts({
 		"synapticCrate": { tech: "R-Comp-SynapticLink" }, // Synaptic Link

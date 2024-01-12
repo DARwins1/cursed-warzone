@@ -332,6 +332,8 @@ function eventStartLevel()
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 	camSetupTransporter(tCoords.xStart, tCoords.yStart, tCoords.xOut, tCoords.yOut);
 
+	camPlayVideos({video: "BETA6_MSG", type: CAMP_MSG});
+
 	// Add Endermen
 	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, CAM_MOBS);
 	// Choose a random Nextbot type

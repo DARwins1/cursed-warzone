@@ -124,7 +124,7 @@ function eventStartLevel()
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.25)));
-	camPlayVideos({video: "MB1CA_MSG", type: CAMP_MSG});
+	// camPlayVideos({video: "MB1CA_MSG", type: CAMP_MSG});
 
 	camCompleteRequiredResearch(mis_clippyRes, CAM_CLIPPY);
 
