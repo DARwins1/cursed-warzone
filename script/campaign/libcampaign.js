@@ -213,21 +213,21 @@ const camSounds = {
 		end_2: "ENDB2.ogg", // No!
 
 		// Beta 5
-		welcome1: "B5-wlcm1.ogg" // Welcome to my glorious palace grounds, Commander.
-		welcome2: "B5-wlcm2.ogg" // This is the heart of what will soon be my glorious empire.
-		welcome3: "B5-wlcm3.ogg" // And what will also soon be your grave.
-		gate1: "B5-gate1.ogg" // Do you feel it?
-		gate2: "B5-gate2.ogg" // That sense of impending doom?
-		gate3: "B5-gate3.ogg" // Every step you take brings you closer to your own demise.
-		aggro1: "B5-aggro1.ogg" // Enough!
-		aggro2: "B5-aggro2.ogg" // Your demise is here, Commander.
-		aggro3: "B5-aggro3.ogg" // For I shall break you down until nothing of you remains.
-		aggro4: "B5-aggro4.ogg" // Prepare yourself for obliteration!
-		taunt1: "B5-taunt1.ogg" // Die!
-		taunt2: "B5-taunt2.ogg" // Perish!
-		taunt3: "B5-taunt3.ogg" // Feel my wrath!
-		taunt4: "B5-taunt4.ogg" // Become paste!
-		taunt5: "B5-taunt5.ogg" // Become nothing!
+		welcome1: "B5-wlcm1.ogg", // Welcome to my glorious palace grounds, Commander.
+		welcome2: "B5-wlcm2.ogg", // This is the heart of what will soon be my glorious empire.
+		welcome3: "B5-wlcm3.ogg", // And what will also soon be your grave.
+		gate1: "B5-gate1.ogg", // Do you feel it?
+		gate2: "B5-gate2.ogg", // That sense of impending doom?
+		gate3: "B5-gate3.ogg", // Every step you take brings you closer to your own demise.
+		aggro1: "B5-aggro1.ogg", // Enough!
+		aggro2: "B5-aggro2.ogg", // Your demise is here, Commander.
+		aggro3: "B5-aggro3.ogg", // For I shall break you down until nothing of you remains.
+		aggro4: "B5-aggro4.ogg", // Prepare yourself for obliteration!
+		taunt1: "B5-taunt1.ogg", // Die!
+		taunt2: "B5-taunt2.ogg", // Perish!
+		taunt3: "B5-taunt3.ogg", // Feel my wrath!
+		taunt4: "B5-taunt4.ogg", // Become paste!
+		taunt5: "B5-taunt5.ogg", // Become nothing!
 	},
 	announcer: {
 		// Wave 1
