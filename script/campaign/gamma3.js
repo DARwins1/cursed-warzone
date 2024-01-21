@@ -15,6 +15,22 @@ var seTowerDestroyed;
 // var northTowerDestroyed;
 var neTowerDestroyed;
 // var eastTowerDestroyed;
+var dialogueIndex;
+
+function eventTransporterLanded(transport)
+{
+	camCallOnce("entryDialogue");
+}
+
+function entryDialogue()
+{
+	camQueueDialogues([
+		{text: "SPAMTON: COMMANDER !!!", delay: camSecondsToMilliseconds(21), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: [You're Not Supposed To Be Here]", delay: camSecondsToMilliseconds(24), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: THIS IS A [Me]TOPIA, NOT A [You]TOPIA!!!", delay: camSecondsToMilliseconds(27), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: [Rattle Em' Boys!]", delay: camSecondsToMilliseconds(30), sound: camSounds.spamton.talk1},
+	]);
+}
 
 // Set up patrol and ambuhs groups
 function setupMapGroups()
@@ -103,6 +119,7 @@ function checkTowers()
 	{
 		centerTowerDestroyed = true;
 		hackRemoveMessage("TOWER_C", PROX_MSG, CAM_HUMAN_PLAYER);
+		towerDialogue();
 	}
 
 	// Check the NW tower
@@ -110,6 +127,7 @@ function checkTowers()
 	{
 		nwTowerDestroyed = true;
 		hackRemoveMessage("TOWER_NW", PROX_MSG, CAM_HUMAN_PLAYER);
+		towerDialogue();
 	}
 
 	// Check the north tower
@@ -124,6 +142,7 @@ function checkTowers()
 	{
 		neTowerDestroyed = true;
 		hackRemoveMessage("TOWER_NE", PROX_MSG, CAM_HUMAN_PLAYER);
+		towerDialogue();
 	}
 
 	// Check the east tower
@@ -138,6 +157,7 @@ function checkTowers()
 	{
 		seTowerDestroyed = true;
 		hackRemoveMessage("TOWER_SE", PROX_MSG, CAM_HUMAN_PLAYER);
+		towerDialogue();
 	}
 
 	if (centerTowerDestroyed && nwTowerDestroyed /*&& northTowerDestroyed*/
@@ -145,6 +165,41 @@ function checkTowers()
 	{
 		camSetExtraObjectiveMessage();
 		return true; // None remaining
+	}
+}
+
+function towerDialogue()
+{
+	dialogueIndex++;
+	switch (dialogueIndex)
+	{
+		case 1:
+			camQueueDialogues([
+				{text: "SPAMTON: HEY!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: HOW DID YOU EVEN DO THAT?!?!", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: THOSE THINGS ARE HUGE!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: ALMOST AS BIG AS...", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: [[Your Mother]]", delay: camSecondsToMilliseconds(15), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: [*badumtiss.ogg*]", delay: camSecondsToMilliseconds(17), sound: camSounds.spamton.badumtiss},
+				{text: "SPAMTON: SO KNOCK IT OFF!!!", delay: camSecondsToMilliseconds(20), sound: camSounds.spamton.talk2},
+			]);
+			break;
+		case 2:
+			camQueueDialogues([
+				{text: "SPAMTON: QUIT [Tilting] MY [Towers] !!!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: HOW WOULD YOU LIKEIT IF SOME [Schmuck] CAME UP AND", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: TOPPLED YOUR [[Gigantic Concrete Abomination]]S!?", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+			]);
+			break;
+		case 3:
+			camQueueDialogues([
+				{text: "SPAMTON: HOW COULD YOU?!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: I THOUGHT WE WERE [Friend Request Accepted]", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: BACK WHEN YOU WERE GIVING ME [Money]", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: AND I WAS GIVING YOU [garbage]", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: BUT NOW YOU<RE JUST [Last Online: 24 years ago]", delay: camSecondsToMilliseconds(15), sound: camSounds.spamton.talk2},
+			]);
+			break;
 	}
 }
 
@@ -190,6 +245,8 @@ function eventStartLevel()
 
 	const startpos = camMakePos(getObject("landingZone"));
 	const lz = getObject("landingZone");
+
+	dialogueIndex = 0;
 
 	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "THE_G_STANDS_FOR_", {
 		area: "compromiseZone",
@@ -278,7 +335,7 @@ function eventStartLevel()
 				repair: 75,
 				count: -1,
 			},
-			templates: [ cTempl.spcybpod, cTempl.spscybflame ] // Many-Rocket Cyborgs and Super Flamer Cyborgs
+			templates: [ cTempl.spcybpod, cTempl.spscybflame ] // Many-Rocket Cyborgs and Super Excessive Flamer Cyborgs
 		},
 		"spamCybFactory3": {
 			assembly: "spamCybAssembly3",

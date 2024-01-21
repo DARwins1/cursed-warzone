@@ -424,9 +424,9 @@ function cam_eventDestroyed(obj)
 					));
 					break;
 				case "needler":
-					// Spawn a Super Flamer Cyborg (Hard+ only)
+					// Spawn a Super Excessive Flamer Cyborg (Hard+ only)
 					groupAdd(__camMobGlobalGroup, addDroid(CAM_SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
-						_("Spamton Super Flamer Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-HFlamerSpam"
+						_("Spamton Super Excessive Flamer Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-HFlamerSpam"
 					));
 					break;
 				case "miniMGs":
@@ -641,7 +641,7 @@ function cam_eventAttacked(victim, attacker)
 
 			//Try dynamically creating a group of nearby droids not part
 			//of a group. Only supports those who can hit ground units.
-			if (victim.group === null)
+			if (victim.group === null && victim.player !== CAM_HUMAN_PLAYER)
 			{
 				const __DEFAULT_RADIUS = 6;
 				const loc = {x: victim.x, y: victim.y};

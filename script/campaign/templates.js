@@ -167,7 +167,7 @@ spcybpod: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgMiniRocket
 spcybcan: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgCannonSpam" }, // Spamton "Light" Gunner Cyborg
 spcybneedle: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "Cyb-Wpn-Rail1Spam" }, // Spamton Needler Cyborg
 spcybspy: { body: "CyborgLightBody", prop: "CyborgLegs", weap: "CyborgSpyChaingunSpam" }, // Spamton Spy Cyborg
-spscybflame: { body: "CyborgHeavyBody", prop: "CyborgLegs", weap: "Cyb-Hvywpn-HFlamerSpam" }, // Spamton Super Flamer Cyborg
+spscybflame: { body: "CyborgHeavyBody", prop: "CyborgLegs", weap: "Cyb-Hvywpn-HFlamerSpam" }, // Spamton Super Excessive Flamer Cyborg
 spamcreeper: { body: "CreeperBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-CreeperDudSpam" }, // Spamton Creeper
 spamzombie: { body: "ZombieBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-ZmbieMeleeSpam" }, // Spamton Zombie
 spambabyzombie: { body: "BabyZombieBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-BabyZmbieMeleeSpam" }, // Spamton Baby Zombie

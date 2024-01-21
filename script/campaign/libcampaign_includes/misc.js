@@ -718,6 +718,16 @@ function camRandomEffect(pos)
 		// Allow Towering Pillar Of Lancers if Viper II is researched
 		effects.push("lancerPillar");
 	}
+	if (camIsResearched("R-Vehicle-BodyDragon"))
+	{
+		// Allow Dragon if Dragon is researched
+		effects.push("dragon");
+	}
+	if (camIsResearched("R-Vehicle-BodyTwin"))
+	{
+		// Allow Twin Viper Wheels if Twin Viper is researched
+		effects.push("twinVipers");
+	}
 	if (camIsResearched("R-Vehicle-Body11"))
 	{
 		// Allow Bunker Buster Array if Viper III is researched
@@ -913,6 +923,12 @@ function camRandomEffect(pos)
 				_("Big Machinegun Viper Wheels"), "Body1BIG", "wheeled01", "", "", "MG3Mk2"
 			);
 			break;
+		case "dragon":
+			// Spawn a hostile Machinegun Hydra Dragon Thick Wheels
+			groupAdd(__NEW_GROUP, addDroid(CAM_MOBS, pos.x, pos.y, 
+				_("Machinegun Hydra Dragon Thick Wheels"), "Body14SUP", "tracked01", "", "", "MG1Mk1", "MG1Mk1"
+			));
+			break;
 		case "bbArray":
 			// Spawn a Bunker Buster Array for the player
 			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y, 
@@ -1081,6 +1097,27 @@ function camRandomEffect(pos)
 				}
 			}
 			break;
+		case "twinVipers":
+			// Spawn 9 Machinegun Hydra Twin Viper Wheels
+			if (camRand(100) < 50)
+			{
+				// 50% chance for the vipers to be hostile
+				player = CAM_MOBS;
+			}
+			for (let x = -1; x <= 1; x++)
+			{
+				for (let y = -1; y <= 1; y++)
+				{
+					const nDroid = addDroid(player, pos.x + x, pos.y + y, 
+						_("Machinegun Hydra Twin Viper Wheels"), "Body1RECTwin", "wheeled01", "", "", "MG1Mk1", "MG1Mk1"
+					);
+					if (player === CAM_MOBS)
+					{
+						groupAdd(__NEW_GROUP, nDroid);
+					}
+				}
+			}
+			break;
 		case "scorchDrift":
 			// Spawn 4 Scorch Shot Viper II Drift Wheels
 			for (let x = -1; x <= 1; x += 2)
@@ -1158,7 +1195,7 @@ function camRandomEffect(pos)
 			}
 			break;
 		case "fireCybs":
-			// Spawn a Super Flamer Cyborg
+			// Spawn a Super Excessive Flamer Cyborg
 			// If we're in Gamma, spawn an additional 4
 			// Otherwise, spawn 4 Pyro Cyborgs instead
 			if (camRand(100) < 50)
@@ -1168,7 +1205,7 @@ function camRandomEffect(pos)
 			}
 
 			const nDroid1 = addDroid(player, pos.x, pos.y, 
-				_("Super Flamer Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-HFlamer"
+				_("Super Excessive Flamer Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-HFlamer"
 			);
 			if (player === CAM_MOBS)
 			{
@@ -1189,7 +1226,7 @@ function camRandomEffect(pos)
 					else
 					{
 						nDroid2 = addDroid(player, pos.x + x, pos.y + y, 
-							_("Super Flamer Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-HFlamer"
+							_("Super Excessive Flamer Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-HFlamer"
 						);
 					}
 					

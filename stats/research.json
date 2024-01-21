@@ -948,7 +948,7 @@
 		"iconID": "IMAGE_RES_CYBORGTECH",
 		"id": "R-Cyborg-Hvywpn-HFlamer",
 		"msgName": "RES_CYW_H_HFLAM",
-		"name": "Super Flamer Cyborg",
+		"name": "Super Excessive Flamer Cyborg",
 		"requiredResearch": [
 			"R-Wpn-Flame2",
 			"R-Cyborg-Wpn-MG",

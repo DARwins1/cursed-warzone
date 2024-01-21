@@ -123,6 +123,13 @@ function setupMapGroups()
 	});
 }
 
+// Give the player an easy way out
+function spamtonDeathResearch()
+{
+	enableResearch("R-Comp-Death01", CAM_HUMAN_PLAYER);
+	camQueueDialogue("New research options are available!", 0, camSounds.spamton.laugh);
+}
+
 // Activate the Bison and Mini factories
 function activateFirstFactories()
 {
@@ -168,6 +175,14 @@ function startDefensePhase()
 	setNoGoArea(lz2.x, lz2.y, lz2.x2, lz2.y2, CAM_HUMAN_PLAYER);
 
 	hackRemoveMessage("CM3B_SILOS", PROX_MSG, CAM_HUMAN_PLAYER);
+
+	camQueueDialogues([
+		{text: "SPAMTON: WHAT?!?", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: HEY, WA1T!!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: GIVE THOSE BACK!!", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: I ALREADY [Steal]ed THOSE!!!", delay: camSecondsToMilliseconds(15), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: YOU CAN\"T JUST [Steal] THEM AGAIN!!", delay: camSecondsToMilliseconds(18), sound: camSounds.spamton.talk2},
+	]);
 }
 
 // Progress the defense phase on missile code research
@@ -199,7 +214,7 @@ function eventResearched(research, structure, player)
 			// 3 total funnies
 			enableResearch("R-Comp-Death02", CAM_HUMAN_PLAYER);
 			enableResearch("R-Comp-Death03", CAM_HUMAN_PLAYER);
-			camPlayVideos({video: "MB3_B_MSG4", type: CAMP_MSG});
+			camPlayVideos({video: "MB3_B_MSG3", type: CAMP_MSG});
 			removeTimer("sendSpamtonGroundWave");
 			setTimer("sendSpamtonGroundWave", camChangeOnDiff(camSecondsToMilliseconds(40)));
 			const normList = [cTempl.splbisonnw, cTempl.sptwin2lcannw, cTempl.spmhmgnw, cTempl.splbisonnw, cTempl.sptwin2podnw];
@@ -207,6 +222,15 @@ function eventResearched(research, structure, player)
 				minVTOLs: 3,
 				maxRandomVTOLs: 2,
 			});
+
+			camQueueDialogues([
+				{text: "SPAMTON: W0AH!!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: ARE YOU TRYING TO [Arm] THOSE THINGS?!", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: TAKE A [Chill Pills - 60% off!]", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: BESIDES...", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: IT>SNOT LIKE A LITTLE [Slime] LIKE YOU COULD EVER USE SOMEHTING AS [Big] AS THAT.", delay: camSecondsToMilliseconds(15), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: RIGHT???", delay: camSecondsToMilliseconds(24), sound: camSounds.spamton.talk1},
+			]);
 		}
 		else if (codeCount === 2) 
 		{
@@ -214,7 +238,7 @@ function eventResearched(research, structure, player)
 			enableResearch("R-Comp-Death04", CAM_HUMAN_PLAYER);
 			enableResearch("R-Comp-Death05", CAM_HUMAN_PLAYER);
 			enableResearch("R-Comp-Death06", CAM_HUMAN_PLAYER);
-			camPlayVideos({video: "MB3_B_MSG5", type: CAMP_MSG});
+			camPlayVideos({video: "MB3_B_MSG4", type: CAMP_MSG});
 			// Ground wave come at the same rate, but are a bit tougher
 			// Start sending Anvils
 			const normList = [cTempl.spmanvilnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw];
@@ -222,6 +246,18 @@ function eventResearched(research, structure, player)
 				minVTOLs: 8,
 				maxRandomVTOLs: 0,
 			});
+
+			camQueueDialogues([
+				{text: "SPAMTON: HOLD ON, K1D.", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: PUT THE [[NuClear Missile]] DOWN.", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: WE CAN [Talk] THIS OUT LIKE [Big Shots] !!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: AFTER ALL...", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: U R_STILL [Esteemed Customer]!", delay: camSecondsToMilliseconds(15), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: JUST GIVE ME ALL YOU\"RE[Money]", delay: camSecondsToMilliseconds(18), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: AND WE CAN [Go Back] TO BEING [Friend Request Accepted]!!!", delay: camSecondsToMilliseconds(21), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: ...NO?!?!", delay: camSecondsToMilliseconds(30), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: THEN GET [Pinned] TO A [Billboard] YOU [Achievement Earned: Targeted Advertising]!1!1", delay: camSecondsToMilliseconds(33), sound: camSounds.spamton.talk2},
+			]);
 		}
 		else if (codeCount === 3) 
 		{
@@ -246,7 +282,7 @@ function eventResearched(research, structure, player)
 		}
 		else if (codeCount === 4)
 		{
-			camPlayVideos({video: "MB3_B_MSG6", type: CAMP_MSG}); // Missile launch video
+			camPlayVideos({video: "MB3_B_MSG5", type: CAMP_MSG}); // Missile launch video
 		}
 	}
 }
@@ -485,6 +521,34 @@ function advanceBlasterZone()
 		blasterX++;
 		markTiles(blasterX - 1, 48, blasterX, 112);
 	}
+	if (blasterX > 20)
+	{
+		camCallOnce("spamtonTaunt1");
+	}
+	if (blasterX > 40)
+	{
+		camCallOnce("spamtonTaunt2");
+	}
+}
+
+function spamtonTaunt1()
+{
+	camQueueDialogues([
+		{text: "SPAMTON: WHAT\"S THEMATTER?!", delay: 0, sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: AM I [Hazardous Material: DO NOT TOUCH] ?!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: WELL [2] BAD!!", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: HAEAHAEAHAEAHAEAH!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.laugh},
+	]);
+}
+
+function spamtonTaunt2()
+{
+	camQueueDialogues([
+		{text: "SPAMTON: [Birbs] DO IT, [Beebs] DO IT,", delay: 0, sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: EVEN [Financed Fleabs] DO IT,", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: SO YOU SHOULD DoIT.", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: GO [hurdle into a sliding glass door] AND [[Die]]!!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+	]);
 }
 
 // See if any player object is within the blaster zone. If there is, set up an attack pattern
@@ -755,6 +819,14 @@ function blastLZ()
 	setBlasterTarget(camMakePos(x + 0, y + 0), 10 + (0.1 * 2) + 2);
 	setBlasterTarget(camMakePos(x + 2, y - 2), 10 + (0.1 * 3) + 2);
 	// setBlasterTarget(camMakePos(x + 4, y - 4), 10 + (0.1 * 4) + 2);
+
+	queue("blastMessage", camSecondsToMilliseconds(10));
+}
+
+// Play a message from spamton and show the blaster firing
+function blastMessage()
+{
+	camPlayVideos({video: "MB3_B_MSG2", type: CAMP_MSG});
 }
 
 // If the player runs out of time during the attack segment
@@ -916,7 +988,7 @@ function eventStartLevel()
 				repair: 40,
 				count: -1,
 			},
-			templates: [ cTempl.spscybflame ] // Super Flamer Cyborgs only
+			templates: [ cTempl.spscybflame ] // Super Excessive Flamer Cyborgs only
 		},
 		"spamCybFactory2": {
 			assembly: "spamCybAssembly2",
@@ -975,11 +1047,10 @@ function eventStartLevel()
 
 	setTimer("placePipis", camSecondsToMilliseconds(3));
 
-	camQueueDialogue("New research options are available!", camSecondsToMilliseconds(10), camSounds.spamton.laugh);
-	enableResearch("R-Comp-Death01", CAM_HUMAN_PLAYER);
+	queue("spamtonDeathResearch", camSecondsToMilliseconds(30));
 
 	hackAddMessage("CM3B_SILOS", PROX_MSG, CAM_HUMAN_PLAYER, false);
-	// camPlayVideos([{video: "MB3_B_MSG", type: CAMP_MSG}, {video: "MB3_B_MSG2", type: MISS_MSG}]);
+	camPlayVideos({video: "MB3_B_MSG", type: CAMP_MSG});
 
 	changePlayerColour(SILOS, playerData[CAM_SPAMTON].colour);
 

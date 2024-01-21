@@ -188,6 +188,7 @@ const camSounds = {
 		talk2: "pcv452.ogg",
 		laugh: "pcv446.ogg",
 		deepLaugh: "pcv447.ogg",
+		badumtiss: "badumtiss.ogg",
 	},
 	bonzi: {
 		// Beta 4 / Colosseum stuff:

@@ -9,6 +9,16 @@ const mis_spamtonRes = [
 ];
 var pipisRoute1;
 var pipisRoute2;
+var escaping;
+
+function eventTransporterLanded(transport)
+{
+	camQueueDialogues([
+		{text: "SPAMTON: HAEAHAEAHAEAHAEAH!!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.laugh},
+		{text: "SPAMTON: WELCOME TO [[The Hole]] !!", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: I\"MSURE YOU'LL [Have a Blast!] BEFORE YOU REACH THE", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+	]);
+}
 
 // Remember the route the player takes towards the artifact
 camAreaEvent("routeTrigger1", function(droid)
@@ -16,6 +26,14 @@ camAreaEvent("routeTrigger1", function(droid)
 	if (droid.player === CAM_HUMAN_PLAYER && !isVTOL(droid) && !(droid.droidType === DROID_SUPERTRANSPORTER))
 	{
 		if (pipisRoute1 == null) pipisRoute1 = "left";
+		if (!escaping)
+		{
+			camCallOnce("spamtonHalfWayDialogue");
+		}
+		else
+		{
+			camCallOnce("spamtonEscapeDialogue");
+		}
 	}
 	else
 	{
@@ -27,7 +45,15 @@ camAreaEvent("routeTrigger2", function(droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER && !isVTOL(droid) && !(droid.droidType === DROID_SUPERTRANSPORTER))
 	{
-		if (pipisRoute1 == null) pipisRoute1 = "right"
+		if (pipisRoute1 == null) pipisRoute1 = "right";
+		if (!escaping)
+		{
+			camCallOnce("spamtonHalfWayDialogue");
+		}
+		else
+		{
+			camCallOnce("spamtonEscapeDialogue");
+		}
 	}
 	else
 	{
@@ -39,7 +65,7 @@ camAreaEvent("routeTrigger3", function(droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER && !isVTOL(droid) && !(droid.droidType === DROID_SUPERTRANSPORTER))
 	{
-		if (pipisRoute2 == null) pipisRoute2 = "right"
+		if (pipisRoute2 == null) pipisRoute2 = "right";
 	}
 	else
 	{
@@ -51,7 +77,7 @@ camAreaEvent("routeTrigger4", function(droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER && !isVTOL(droid) && !(droid.droidType === DROID_SUPERTRANSPORTER))
 	{
-		if (pipisRoute2 == null) pipisRoute2 = "left"
+		if (pipisRoute2 == null) pipisRoute2 = "left";
 	}
 	else
 	{
@@ -59,11 +85,31 @@ camAreaEvent("routeTrigger4", function(droid)
 	}
 });
 
+function spamtonHalfWayDialogue()
+{
+	camQueueDialogues([
+		{text: "SPAMTON: [Did you know?]", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: THIS [Hole] HAS ENOUGH [[Hyperlink Blocked]]", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: TO [Blow up Nebraska 7 times] !!!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+	]);
+}
+
+function spamtonEscapeDialogue()
+{
+	camQueueDialogues([
+		{text: "SPAMTON: HEY!!!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: YOU\"RE SUPP0SED TO [Have a Blast!]", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: DON't LE4VE !!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: G3T BACK AND [Boogie]", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk2},
+	]);
+}
+
 // Block the route the player took with Pipis
 function eventPickup(feature, droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER && feature.stattype === ARTIFACT)
 	{
+		escaping = true;
 		hackRemoveMessage("C3-1_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER);
 		playSound(camSounds.spamton.deepLaugh); // Spamton creepy laugh
 
@@ -115,6 +161,7 @@ function eventStartLevel()
 {
 	const startpos = camMakePos("landingZone");
 	const lz = getObject("landingZone");
+	escaping = false;
 
 	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "WELCOME_TO_THE", {
 		area: "compromiseZone",

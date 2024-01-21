@@ -4,6 +4,7 @@ include("script/campaign/templates.js");
 
 var transporterIndex; //Number of bonus transports that have flown in.
 var startedFromMenu;
+var dialogueIndex;
 
 // Changing the player's colour only updates playerData after save-loading or level progression.
 var playerColour;
@@ -60,6 +61,78 @@ var playerColour;
 // 		resetLabel("spamBase4", CAM_HUMAN_PLAYER);
 // 	}
 // });
+
+// Play dialogue when bases are eradicated...
+function camEnemyBaseEliminated_spamNBase()
+{
+	spamtonDialogue();
+}
+
+function camEnemyBaseEliminated_spamEBase()
+{
+	spamtonDialogue();
+}
+
+function camEnemyBaseEliminated_spamSEBase()
+{
+	spamtonDialogue();
+}
+
+function camEnemyBaseEliminated_spamSWBase()
+{
+	spamtonDialogue();
+}
+
+function camEnemyBaseEliminated_spamNEBase()
+{
+	spamtonDialogue();
+}
+
+function camEnemyBaseEliminated_spamAABase()
+{
+	spamtonDialogue();
+}
+
+function spamtonDialogue()
+{
+	dialogueIndex++;
+	switch (dialogueIndex)
+	{
+		case 1:
+			camQueueDialogues([
+				{text: "SPAMTON: DID YOU COME 4LL THIS WAY JUST FOR AN [Autograph] ???", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: WOW!!!", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: YOU COULD HAVE JUST [[ClIck HERe fOR FrEe m0ney!!!]]", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: AND I WOULD HAVE [Accept the Terms of Service?]", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk2},
+			]);
+			break;
+		case 2:
+			camQueueDialogues([
+				{text: "SPAMTON: WHAT HAPPENED?!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: YOU WERE MY [Esteemed Customer],", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: AND I W4S YOUR [[person who gets all the money]]", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: I TH0UGHT WEHAD SOMETHING [Specil]!!!", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk2},
+			]);
+			break;
+		case 3:
+			camQueueDialogues([
+				{text: "SPAMTON: WAIT!!!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: IF YOU [Go Back] RIGHT NOW", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: I CAN GIVE YOU [[Machinegun 2]] FOr [[A LimiTed Time Only!]]!!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: AND IF YOU [Order Now], I'LL ALSO INCLUDE A [Commemorative] P4IR OF", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk2},
+				{text: "[Big Shot Glasses] AND [Big Shot Face Paint]!", delay: camSecondsToMilliseconds(12.1)},
+			]);
+			break;
+		case 4:
+			camQueueDialogues([
+				{text: "SPAMTON: HEY!1!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk1},
+				{text: "SPAMTON: WHY ARE YOU STILL [BreaKing] MY [Furniture]?!?", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: I ALREADY [Offered] YOU [[Hyperlink Blocked]]", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+				{text: "SPAMTON: SO STOP [Eating us out of house and home!]!!", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk2},
+			]);
+			break;
+	}
+}
 
 function setUnitRank(transport)
 {
@@ -169,6 +242,11 @@ function spamAmbush1()
 function spamAmbush2()
 {
 	camManageGroup(camMakeGroup("spamAmbushGroup2"), CAM_ORDER_ATTACK);
+
+	camQueueDialogues([
+		{text: "SPAMTON: CAN'T YOU [Respect] [Squatter's Rights] ???", delay: camSecondsToMilliseconds(30), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: THAT\"S NOT VERY [Big Shot] OF YOU, COMMANDER", delay: camSecondsToMilliseconds(33), sound: camSounds.spamton.talk2},
+	]);
 }
 
 // Activate the north cyborg factory, and the central factory
@@ -298,6 +376,8 @@ function eventStartLevel()
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "NO_DONT_STEAL_MY_");
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.25)));
 
+	dialogueIndex = 0;
+
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 	startTransporterEntry(5, 73, CAM_HUMAN_PLAYER);
@@ -346,6 +426,8 @@ function eventStartLevel()
 	}
 	setPower(playerPower, CAM_HUMAN_PLAYER);
 	cam3Setup();
+
+	camPlayVideos({video: "GAMMA_INTRO", type: CAMP_MSG});
 
 	camSetEnemyBases({
 		"spamNBase": {
@@ -512,7 +594,13 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", CAM_SPAMTON);
 
 	queue("spamAmbush1", camSecondsToMilliseconds(35)); // Also sets up patrols
-	queue("spamAmbush2", camSecondsToMilliseconds(65)); // Also activates the first two factories
+	camQueueDialogues([
+		{text: "SPAMTON: HEY !!!!", delay: camSecondsToMilliseconds(26), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: [Water] YOU DOING HERE !?!", delay: camSecondsToMilliseconds(29), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: [Attention Customers! Clean up on Aisle 3!]", delay: camSecondsToMilliseconds(32), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: SOMEONE LET [The Dogs] IN !!!", delay: camSecondsToMilliseconds(35), sound: camSounds.spamton.talk1},
+	]);
+	queue("spamAmbush2", camSecondsToMilliseconds(65));
 	queue("activateFirstFactories", camChangeOnDiff(camMinutesToMilliseconds(3))); // North cyborgs and central factory
 	queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(7))); // Drift wheels, normal wheels and more cyborgs
 	queue("activateFinalFactories", camChangeOnDiff(camMinutesToMilliseconds(11))); // Everything else
