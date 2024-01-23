@@ -382,7 +382,7 @@ function beginWave()
 			spawnCoreUnits();
 			spawnSupportUnits();
 			setTimer("spawnCoreUnits", camChangeOnDiff(camSecondsToMilliseconds(25)));
-			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(20)));
+			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(30)));
 			break;
 		case 11: // This wave is just a bunch of VTOLs
 			camSetVtolData(CAM_BONZI_BUDDY, undefined, camMakePos("vtolRemoveZone"), [cTempl.colatv],
@@ -700,7 +700,7 @@ function spawnCoreUnits()
 			}
 			break;
 		}
-		case 10: // Spawn a total of 4 Endermen, 80 Fungible Cannons, 20 Many-Rocket Pods, and 20 Realistic MGs
+		case 10: // Spawn a total of 4 Endermen, 50 Fungible Cannons, 20 Many-Rocket Pods, and 20 Realistic MGs
 		{
 			if (coreIndex === 1)
 			{
@@ -720,8 +720,8 @@ function spawnCoreUnits()
 				const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
 				if (coreIndex % 2 === 0)
 				{
-					// Spawn 8 Fungible Cannons on even indexes
-					for (let i = 0; i < 8; i++)
+					// Spawn 5 Fungible Cannons on even indexes
+					for (let i = 0; i < 5; i++)
 					{
 						const pos = camRandPosInArea(SPAWN_AREA);
 						groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
