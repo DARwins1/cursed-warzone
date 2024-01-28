@@ -23,9 +23,12 @@ camAreaEvent("spamBase1", function(droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER)
 	{
-		camEnableFactory("spamFactory1");
-		camEnableFactory("spamCybFactory1");
-		camEnableFactory("spamCybFactory2");
+		if (difficulty >= HARD)
+		{
+			camEnableFactory("spamFactory1");
+			camEnableFactory("spamCybFactory1");
+			camEnableFactory("spamCybFactory2");
+		}	
 	}
 	else
 	{
@@ -37,7 +40,10 @@ camAreaEvent("spamBase2", function(droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER)
 	{
-		camEnableFactory("spamNormFactory1");
+		if (difficulty >= HARD)
+		{
+			camEnableFactory("spamNormFactory1");
+		}
 	}
 	else
 	{
@@ -49,8 +55,11 @@ camAreaEvent("spamBase3", function(droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER)
 	{
-		camEnableFactory("spamFactory2");
-		camEnableFactory("spamCybFactory3");
+		if (difficulty >= HARD)
+		{
+			camEnableFactory("spamFactory2");
+			camEnableFactory("spamCybFactory3");
+		}
 	}
 	else
 	{
@@ -62,7 +71,10 @@ camAreaEvent("spamBase4", function(droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER)
 	{
-		camEnableFactory("spamFactory3");
+		if (difficulty >= HARD)
+		{
+			camEnableFactory("spamFactory3");
+		}
 	}
 	else
 	{
@@ -74,8 +86,11 @@ camAreaEvent("spamBase5", function(droid)
 {
 	if (droid.player === CAM_HUMAN_PLAYER)
 	{
-		camEnableFactory("spamFactory4");
-		camEnableFactory("spamCybFactory4");
+		if (difficulty >= HARD)
+		{
+			camEnableFactory("spamFactory4");
+			camEnableFactory("spamCybFactory4");
+		}
 	}
 	else
 	{
@@ -872,7 +887,7 @@ function eventStartLevel()
 	camSetStandardWinLossConditions(CAM_VICTORY_SCRIPTED, "BIG_SHOT", {
 		callback: "victoryCallback"
 	});
-	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.25))); // For the attack phase.
+	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.5))); // For the attack phase.
 
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
@@ -935,10 +950,10 @@ function eventStartLevel()
 			assembly: "spamAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(90)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(120)),
 			data: {
 				regroup: true,
-				repair: 75,
+				repair: 65,
 				count: -1,
 			},
 			templates: [ cTempl.sphlinkht, cTempl.sptwinlcanhmght, cTempl.sphhflamht, cTempl.sphmcanht, cTempl.sphhbb3ht ] // Tough stuff
@@ -982,7 +997,7 @@ function eventStartLevel()
 			assembly: "spamCybAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(90)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(120)),
 			data: {
 				regroup: false,
 				repair: 40,
@@ -1060,9 +1075,9 @@ function eventStartLevel()
 
 	queue("blastLZ", camSecondsToMilliseconds(5));
 	queue("setupMapGroups", camSecondsToMilliseconds(5));
-	queue("activateFirstFactories", camChangeOnDiff(camMinutesToMilliseconds(0.5)));
-	queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(8)));
-	queue("activateFinalFactories", camChangeOnDiff(camMinutesToMilliseconds(16)));
+	queue("activateFirstFactories", camChangeOnDiff(camMinutesToMilliseconds(1.5)));
+	queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(10)));
+	queue("activateFinalFactories", camChangeOnDiff(camMinutesToMilliseconds(18)));
 
 	// Replace all boulders with explosives
 	camUpgradeOnMapFeatures("Boulder1", "ExplosiveDrum");

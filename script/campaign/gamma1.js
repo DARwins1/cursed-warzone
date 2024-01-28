@@ -244,8 +244,8 @@ function spamAmbush2()
 	camManageGroup(camMakeGroup("spamAmbushGroup2"), CAM_ORDER_ATTACK);
 
 	camQueueDialogues([
-		{text: "SPAMTON: CAN'T YOU [Respect] [Squatter's Rights] ???", delay: camSecondsToMilliseconds(30), sound: camSounds.spamton.talk2},
-		{text: "SPAMTON: THAT\"S NOT VERY [Big Shot] OF YOU, COMMANDER", delay: camSecondsToMilliseconds(33), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: CAN'T YOU [Respect] [Squatter's Rights] ???", delay: camSecondsToMilliseconds(40), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: THAT\"S NOT VERY [Big Shot] OF YOU, COMMANDER", delay: camSecondsToMilliseconds(43), sound: camSounds.spamton.talk2},
 	]);
 }
 

@@ -67,11 +67,7 @@ function eventDestroyed(obj)
 
 function eventGameLoaded()
 {
-	// Make sure the billboard texture is correct
-	if (waveIndex > 0 && waveIndex < 13)
-	{
-		replaceTexture("page-506-cursedsignsarena1.png", mis_billboardTextures[waveIndex]);
-	}
+	updateBillboardTexture(true);
 }
 
 // Clear anything left of this wave and prepare for the next one
@@ -101,11 +97,7 @@ function advanceWave()
 	doneSpawning = true;
 	setupTime = true;
 
-	// Change the billboard texture
-	if (waveIndex > 0 && waveIndex < 13)
-	{
-		replaceTexture(mis_billboardTextures[waveIndex - 1], mis_billboardTextures[waveIndex]);
-	}
+	updateBillboardTexture(false);
 
 	// Play dialogue scenes...
 	let dialogue = [];
@@ -259,6 +251,30 @@ function advanceWave()
 	}
 }
 
+function updateBillboardTexture(gameLoad)
+{
+	if (waveIndex > 0 && waveIndex < 13)
+	{
+		const OLD_TEXTURE = (gameLoad) ? "page-506-cursedsignsarena1.png" : mis_billboardTextures[waveIndex - 1];
+		let newTexture = mis_billboardTextures[waveIndex];
+		// These waves have varying unit compositions depending on the difficulty
+		if (waveIndex === 4 || waveIndex === 7 || waveIndex === 8
+			|| waveIndex === 9 || waveIndex === 10 || waveIndex === 12)
+		{
+			if (difficulty <= EASY)
+			{
+				newTexture = newTexture.concat(newTexture.substring(0, newTexture.length() - 4, "easy.png");
+			}
+			else if (difficulty >= HARD)
+			{
+				newTexture = newTexture.concat(newTexture.substring(0, newTexture.length() - 4, "hard.png");
+			}
+		}
+
+		replaceTexture(OLD_TEXTURE, newTexture);
+	}
+}
+
 // WAVE LIST
 // WAVE 0
 // 2 spawners pre-placed in the arena.
@@ -297,7 +313,7 @@ function advanceWave()
 // Core Units: 400 Defective Lancer VTOLs, the wave automatically ends once they leave.
 // WAVE 12 (BOSS)
 // Core Units: Giant Freddy Fazbear
-// Support Units: Defective Lancer VTOLs, Mini MGVs, BB Cyborgs, Many-Rocket Pod (half-track), and Transporter (Explosive Drums)
+// Support Units: Cooler MG Cyborgs, BB Cyborgs, Many-Rocket Pod (half-track), Peppersprays (half-track), and Transporter (Explosive Drums)
 // Notes: A "Blackout" event will be triggered on the start of the round (might be reserved for higher difficulties).
 
 // Start the wave!
@@ -345,7 +361,7 @@ function beginWave()
 			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(5)));
 			break;
 		case 6: // Boss wave: Core unit are spawned shortly after the start
-			queue("spawnCoreUnits", camSecondsToMilliseconds(10));
+			queue("spawnCoreUnits", camSecondsToMilliseconds(20));
 			spawnSupportUnits();
 			setMissionTime(camMinutesToSeconds(2));
 			queue("detonateArena", camMinutesToMilliseconds(2)); // Gameover if the wave isn't cleared within 2 minutes
@@ -395,9 +411,9 @@ function beginWave()
 			spawnCoreUnits();
 			spawnSupportUnits();
 			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(10)));
-			camSetVtolData(CAM_BONZI_BUDDY, undefined, camMakePos("vtolRemoveZone"), [cTempl.colatv],
-				camSecondsToMilliseconds(10), undefined, {minVTOLs: 20, maxRandomVTOLs: 0}
-			);
+			// camSetVtolData(CAM_BONZI_BUDDY, undefined, camMakePos("vtolRemoveZone"), [cTempl.colatv],
+			// 	camSecondsToMilliseconds(10), undefined, {minVTOLs: 20, maxRandomVTOLs: 0}
+			// );
 			break;
 		default:
 			break;
@@ -539,8 +555,12 @@ function spawnCoreUnits()
 			}
 			break;
 		}
-		case 4: // Spawn a total of 12 Twin BBs, 42 Realistic MGs, and 42 Sawed-Off Lancers
+		case 4:
 		{
+			// Spawn a total of:
+			// (Easy-) 8 Twin BBs, 20 Realistic MGs, and 20 Sawed-Off Lancers
+			// (Normal) 12 Twin BBs, 30 Realistic MGs, and 30 Sawed-Off Lancers
+			// (Hard+) 12 Twin BBs, 42 Realistic MGs, and 42 Sawed-Off Lancers
 			const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
 			let weapon;
 			let name;
@@ -556,7 +576,8 @@ function spawnCoreUnits()
 				weapon = "MG3Mk1";
 				name = "Realistic Heavy Machinegun Viper Drift Wheels";
 			}
-			for (let i = 0; i < 7; i++) // Spawn 7 of the chosen vehicle
+			const NUM_UNITS = (difficulty <= MEDIUM) ? 5 : 7;
+			for (let i = 0; i < NUM_UNITS; i++) // Spawn the chosen vehicles
 			{
 				const pos = camRandPosInArea(SPAWN_AREA);
 				groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
@@ -566,7 +587,7 @@ function spawnCoreUnits()
 			groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 				_("Bunker Buster II Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Rocket-BB2"
 			));
-			if (coreIndex >= 12)
+			if ((coreIndex >= 12) || (difficulty <= EASY && coreIndex >= 8))
 			{
 				// Spawning is done
 				doneSpawning = true;
@@ -602,8 +623,11 @@ function spawnCoreUnits()
 			doneSpawning = true;
 			break;
 		}
-		case 7: // Spawn a total of 64 Sword Cyborgs and 64 Archer Cyborgs
+		case 7: // Spawn a total of: 
 		{
+			// (Easy-) 32 Sword Cyborgs and 32 Archer Cyborgs
+			// (Normal) 48 Sword Cyborgs and 48 Archer Cyborgs
+			// (Hard+) 64 Sword Cyborgs and 64 Archer Cyborgs
 			const SPAWN_AREA1 = mis_spawnZones[camRand(mis_spawnZones.length)];
 			for (let i = 0; i < 8; i++)
 			{
@@ -622,7 +646,7 @@ function spawnCoreUnits()
 					_("Archer Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Bow"
 				));
 			}
-			if (coreIndex >= 8)
+			if ((difficulty >= HARD && coreIndex >= 8) || (difficulty === MEDIUM && coreIndex >= 6) || (difficulty <= EASY && coreIndex >= 4))
 			{
 				// Spawning is done
 				doneSpawning = true;
@@ -630,12 +654,14 @@ function spawnCoreUnits()
 			}
 			break;
 		}
-		case 8: // Spawn a total of 20 Sensors and 40 "Light" Cannons
+		case 8: // Spawn a total of:
 		{
+			// (Normal-) 16 Sensors and 32 "Light" Cannons
+			// (Hard+) 20 Sensors and 40 "Light" Cannons
 			const SPAWN_AREA1 = mis_spawnZones[camRand(mis_spawnZones.length)];
 			for (let i = 0; i < 4; i++)
 			{
-				// Spawn 5 "Light" Cannons
+				// Spawn 4 "Light" Cannons
 				const pos = camRandPosInArea(SPAWN_AREA1);
 				groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 					_("\"Light\" Cannon Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "Cannon1Mk1"
@@ -652,7 +678,7 @@ function spawnCoreUnits()
 			groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos2.x, pos2.y, 	
 				_("Sensor Viper II Thick Wheels"), "Body5REC", "tracked01", "", "", "SensorTurret1Mk1"
 			));
-			if (coreIndex >= 10)
+			if (coreIndex >= 10 || (difficulty <= EASY && coreIndex >= 8))
 			{
 				// Spawning is done
 				doneSpawning = true;
@@ -660,8 +686,10 @@ function spawnCoreUnits()
 			}
 			break;
 		}
-		case 9: // Spawn a total of 64 Zombies, 32 Baby Zombies, 48 Sword Cyborgs, and 48 Cool Cyborgs
+		case 9: // Spawn a total of:
 		{
+			// (Normal-) 48 Zombies, 24 Baby Zombies, 36 Sword Cyborgs, and 36 Cool Cyborgs
+			// (Hard+) 64 Zombies, 32 Baby Zombies, 48 Sword Cyborgs, and 48 Cool Cyborgs
 			// Mobs spawn from the left, BB's units spawn from the right.
 			const SPAWN_AREA1 = mis_leftSpawnZones[camRand(mis_leftSpawnZones.length)];
 			for (let i = 0; i < 4; i++)
@@ -692,7 +720,7 @@ function spawnCoreUnits()
 					_("Cooler Machinegunner Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "NX-CyborgChaingun"
 				));
 			}
-			if (coreIndex >= 16)
+			if (coreIndex >= 16 || (difficulty <= MEDIUM && coreIndex >= 12))
 			{
 				// Spawning is done
 				doneSpawning = true;
@@ -700,8 +728,11 @@ function spawnCoreUnits()
 			}
 			break;
 		}
-		case 10: // Spawn a total of 4 Endermen, 50 Fungible Cannons, 20 Many-Rocket Pods, and 20 Realistic MGs
+		case 10: // Spawn a total of:
 		{
+			// (Easy-) 4 Endermen, 32 Fungible Cannons, 16 Many-Rocket Pods, and 16 Realistic MGs
+			// (Normal) 4 Endermen, 40 Fungible Cannons, 20 Many-Rocket Pods, and 20 Realistic MGs
+			// (Hard+) 4 Endermen, 80 Fungible Cannons, 20 Many-Rocket Pods, and 20 Realistic MGs
 			if (coreIndex === 1)
 			{
 				// Spawn 4 Endermen from 4 different directions
@@ -720,19 +751,19 @@ function spawnCoreUnits()
 				const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
 				if (coreIndex % 2 === 0)
 				{
-					// Spawn 5 Fungible Cannons on even indexes
-					for (let i = 0; i < 5; i++)
+					// Spawn Fungible Cannons on even indexes
+					const NUM_UNITS = (difficulty <= MEDIUM) ? 4 : 8;
+					for (let i = 0; i < NUM_UNITS; i++)
 					{
 						const pos = camRandPosInArea(SPAWN_AREA);
 						groupAdd(coreGroup, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 							_("Fungible Cannon Viper II Thick Wheels"), "Body5REC", "tracked01", "", "", camRandomFungibleCannon()
 						));
 					}
-					
 				}
 				else
 				{
-					// Spawn 5 Many-Rocket Pods and 5 Realistic MGs on odd indexes
+					// Spawn 2 Many-Rocket Pods and 2 Realistic MGs on odd indexes
 					for (let i = 0; i < 4; i++)
 					{
 						let weapon;
@@ -745,7 +776,7 @@ function spawnCoreUnits()
 						}
 						else
 						{
-							// Spawn Realistic MGs on even indexes
+							// Spawn a Realistic MG
 							weapon = "MG3Mk1";
 							name = "Realistic Heavy Machinegun Viper Thick Wheels";
 						}
@@ -754,7 +785,7 @@ function spawnCoreUnits()
 							_(name), "Body1REC", "tracked01", "", "", weapon));
 					}
 				}
-				if (coreIndex >= 23)
+				if (coreIndex >= 23 || (difficulty <= EASY && coreIndex >= 19))
 				{
 					// Spawning is done
 					doneSpawning = true;
@@ -883,16 +914,29 @@ function spawnSupportUnits()
 			camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 			break;
 		}
-		case 7: // Send transports carrying "Light" Cannons
+		case 7:
 		{
+			// Send transports carrying "Light" Cannons
+			// If on Hard+, instead send BB 2's
 			if (!camTransporterOnMap(CAM_BONZI_BUDDY))
 			{
 				// Send a transport every third index
 				const pos = camGenerateRandomMapCoordinate(camMakePos("landingZone"), 5);
 				const list = [];
-				for (let i = 0; i < difficulty + 6; i++)
+				if (difficulty <= MEDIUM)
 				{
-					list.push(cTempl.crlcanht);
+					for (let i = 0; i < difficulty + 6; i++)
+					{
+						list.push(cTempl.crlcanht);
+					}
+				}
+				else
+				{
+					for (let i = 0; i < difficulty - 1; i++)
+					{
+						// 2 on Hard, 3 on Insane
+						list.push(cTempl.crmbb2ht);
+					}
 				}
 				camSendReinforcement(CAM_BONZI_BUDDY, pos, list, CAM_REINFORCE_TRANSPORT, {
 					entry: camGenerateRandomMapEdgeCoordinate(),
@@ -901,19 +945,22 @@ function spawnSupportUnits()
 			}
 			break;
 		}
-		case 8: // Spawn Catapults
+		case 8: // Spawn Catapults (except on Easy-)
 		{
-			const NEW_GROUP = camNewGroup();
-			const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
-			const NUM_UNITS = 1 + difficulty;
-			for (let i = 0; i < NUM_UNITS; i++)
+			if (difficulty >= MEDIUM)
 			{
-				const pos = camRandPosInArea(SPAWN_AREA);
-				groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
-					_("Catapult Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Mortar1Mk1"
-				));
+				const NEW_GROUP = camNewGroup();
+				const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
+				const NUM_UNITS = 1 + difficulty;
+				for (let i = 0; i < NUM_UNITS; i++)
+				{
+					const pos = camRandPosInArea(SPAWN_AREA);
+					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
+						_("Catapult Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Mortar1Mk1"
+					));
+				}
+				camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 			}
-			camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 			break;
 		}
 		case 9: // Spawn Creepers, Skeletons, Archer Cyborgs, Twin BBs, and transports carrying Many-Rocket Pods
@@ -963,11 +1010,14 @@ function spawnSupportUnits()
 							_("Archer Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Bow"
 						));
 					}
-					// Add a Twin BB
-					const pos = camRandPosInArea(SPAWN_AREA);
-					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
-						_("Bunker Buster II Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Rocket-BB2"
-					));
+					// Add a Twin BB (if Normal+)
+					if (difficulty >= MEDIUM)
+					{
+						const pos = camRandPosInArea(SPAWN_AREA);
+						groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
+							_("Bunker Buster II Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Rocket-BB2"
+						));
+					}
 					camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 				}
 				else if (!camTransporterOnMap(CAM_BONZI_BUDDY))
@@ -995,7 +1045,7 @@ function spawnSupportUnits()
 			{
 				// Spawn a Sensor + group of Catapults every third index
 				
-				for (let i = 0; i < 2 + difficulty; i++)
+				for (let i = 0; i < 1 + difficulty; i++)
 				{
 					const pos = camRandPosInArea(SPAWN_AREA);
 					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
@@ -1031,39 +1081,55 @@ function spawnSupportUnits()
 			camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 			break;
 		}
-		case 12: // Spawn Mini MGV's, BB Cyborgs, Many-Rocket Pods, and send transports which place Explosive Drums where it lands
+		case 12: // Spawn:
 		{
+			// Cool Cyborgs, MRP Half-wheels, and an Explosive Drum Transport
+			// (Normal+) Also Bunker Buster Cyborgs
+			// (Hard+) Also Pepperspray Half-wheels
 			const NEW_GROUP = camNewGroup();
-			const SPAWN_AREA1 = mis_spawnZones[camRand(mis_spawnZones.length)];
-			const SPAWN_AREA2 = mis_spawnZones[camRand(mis_spawnZones.length)];
+			const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
 			if (supportIndex % 2 === 0)
 			{
-				// Spawn 2 groups of Mini MGV's on even indexes
-				for (let i = 0; i < difficulty + 8; i++)
-				{
-					const pos1 = camRandPosInArea(SPAWN_AREA1);
-					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos1.x, pos1.y, 
-						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
-					));
-					const pos2 = camRandPosInArea(SPAWN_AREA2);
-					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos2.x, pos2.y, 
-						_("Mini Machinegun Viper Wheels"), "Body1Mini", "wheeled01", "", "", "MGMini"
-					));
-				}
-			}
-			else
-			{
-				// Spawn BB Cyborgs and Many-Rocket Pods on odd indexes
+				// Spawn Cool Cyborgs
 				for (let i = 0; i < difficulty + 2; i++)
 				{
-					const pos1 = camRandPosInArea(SPAWN_AREA1);
-					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos1.x, pos1.y, 
+					const pos = camRandPosInArea(SPAWN_AREA);
+					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
+						_("Cooler Machinegunner Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "NX-CyborgChaingun"
+					));
+				}
+				// Spawn BB Cyborgs (if Normal+)
+				if (difficulty >= MEDIUM)
+				{
+					for (let i = 0; i < difficulty - 1; i++)
+					{
+						const pos = camRandPosInArea(SPAWN_AREA);
+						groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
+							_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
+						));
+					}
+				}
+			}
+			else // Spawn Many-Rocket Pods and Peppersprays on odd indexes
+			{
+				// Spawn Many-Rocket Pods
+				for (let i = 0; i < difficulty + 2; i++)
+				{
+					const pos = camRandPosInArea(SPAWN_AREA);
+					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
 						_("Many-Rocket Pod Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "Rocket-Pod"
 					));
-					const pos2 = camRandPosInArea(SPAWN_AREA2);
-					groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos2.x, pos2.y, 
-						_("Bunker Buster Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "CyborgBB"
-					));
+				}
+				// Spawn Peppersprays (if Hard+)
+				if (difficulty >= HARD)
+				{
+					for (let i = 0; i < difficulty - 2; i++)
+					{
+						const pos = camRandPosInArea(SPAWN_AREA);
+						groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
+							_("Pepperspray Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Mortar3ROTARYMk1"
+						));
+					}
 				}
 			}
 			camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);

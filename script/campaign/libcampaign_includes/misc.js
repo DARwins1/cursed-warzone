@@ -713,6 +713,11 @@ function camRandomEffect(pos)
 		// Allow Lancer Jumper artifact if any Lancer is researched
 		effects.push("lancerJumperArti");
 	}
+	if (camIsResearched("R-Sys-Engineering03") && !camIsResearched("R-Defense-TowerMEGA") && camRand(2) === 0)
+	{
+		// 50% chance to allow Tower Of Babel artifact if Engineering Mk3 is researched
+		effects.push("babelArti");
+	}
 	if (camIsResearched("R-Vehicle-Body05"))
 	{
 		// Allow Towering Pillar Of Lancers if Viper II is researched
@@ -1278,7 +1283,7 @@ function camRandomEffect(pos)
 				// 20% chance for the bunker to be hostile
 				player = CAM_MOBS;
 			}
-			addStructure("Pillbox-Big", player, (pos.x + i) * 128, (pos.y + j) * 128);
+			addStructure("Pillbox-Big", player, (pos.x) * 128, (pos.y) * 128);
 			break;
 		case "nukeDrumArti":
 			// Spawn an artifact for the Nuclear Drum
@@ -1324,6 +1329,15 @@ function camRandomEffect(pos)
 			}
 			addLabel(addFeature("Crate", pos.x, pos.y), "lancerJumperCrate");
 			__camArtifacts["lancerJumperCrate"] = {tech: "R-Wpn-Rocket01-LtATJump", placed: true };
+			break;
+		case "babelArti":
+			// Spawn an artifact for the Machinegun Fortress
+			if (camDef(__camArtifacts["babelCrate"]))
+			{
+				break; // Don't place if an artifact was already placed
+			}
+			addLabel(addFeature("Crate", pos.x, pos.y), "babelCrate");
+			__camArtifacts["babelCrate"] = {tech: "R-Defense-TowerMEGA", placed: true };
 			break;
 		case "blackOut":
 			// Make the whole map go dark
@@ -1531,7 +1545,7 @@ function camNameTemplate(weapon, body, propulsion)
 
 //;; ## camGetCompNameFromId(compId, compType)
 //;; Returns the external name of a component from it's internal ID name.
-//;; For example, `camGetCompNameFromId("Rocket-LtA-T", "Weapon")` returns "Lancer".
+//;; For example, `camGetCompNameFromId("MG1Mk1", "Weapon")` returns "Machinegun".
 //;;
 //;; @param {string} compId
 //;; @param {string} compType
@@ -2128,7 +2142,7 @@ function __camSpyFeignDeath(spy, attacker)
 	// Store Spy Cyborg stats
 	if (spy.player !== CAM_HUMAN_PLAYER)
 	{
-		// Store ID, XP, group, attacker, feign position, player owner, and "death" time
+		// Store ID, XP, group, attacker, spy position, player owner, and "death" time
 		__camSpyFeigns.push({id: spy.id, xp: spy.experience, group: spy.group,
 			attacker: attacker, pos: camMakePos(spy), player: spy.player,
 			time: gameTime});
@@ -2166,7 +2180,7 @@ function __camSpyFeignTick()
 					// Pick somewhere near the HQ
 					pos = camGenerateRandomMapCoordinateWithinRadius(camMakePos(hqs[0]), 3, 1);
 				}
-				else if (pos === null) // No HQ or HQ is saturated
+				if (pos === null) // No HQ or HQ is saturated
 				{
 					// Pick somehwere at the LZ
 					const lzNames = ["landingZone", "LZ"]; // Bit of a brain-dead solution but oh well
@@ -2266,13 +2280,13 @@ function __camUpdateSwappableUnits()
 		const droid = droidList[i];
 		if ((camDef(droid.weapons[0]) && droid.weapons[0].name === "Cannon2A-TMk1") 
 			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Cannon2A-TMk1")
-			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Cannon2A-TMk1")
+			|| (camDef(droid.weapons[2]) && droid.weapons[2].name === "Cannon2A-TMk1")
 			|| (camDef(droid.weapons[0]) && droid.weapons[0].name === "Rocket-LtA-TWarr") 
 			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-LtA-TWarr")
-			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-LtA-TWarr")
+			|| (camDef(droid.weapons[2]) && droid.weapons[2].name === "Rocket-LtA-TWarr")
 			|| (camDef(droid.weapons[0]) && droid.weapons[0].name === "Rocket-VTOL-LtA-TWarr") 
 			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr")
-			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr"))
+			|| (camDef(droid.weapons[2]) && droid.weapons[2].name === "Rocket-VTOL-LtA-TWarr"))
 		{
 			queue("__camTempDonate", donateDelay, droid.id + "");
 			donateDelay += __CAM_TICKS_PER_FRAME;
@@ -2282,45 +2296,82 @@ function __camUpdateSwappableUnits()
 
 // Replaces structures and components with Spamton-themed ones.
 // Called at the start of the level and when something is absorbed by Spamton.
-function __camSpamtonize()
+// If a specific object is absorbed, it should be passed as an argument.
+function __camSpamtonize(obj)
 {
-	completeResearch("Script-Spamtonize", CAM_SPAMTON, true);
+	if (!camDef(obj))
+	{
+		// No specific object, spamtonize EVERYTHING!
+		completeResearch("Script-Spamtonize", CAM_SPAMTON, true);
 
-	camUpgradeOnMapStructures("GuardTower-MEGA", "GuardTower-MEGASpam", CAM_SPAMTON); // Tower Of Babel
-	camUpgradeOnMapStructures("Spawner-Zombie", "Spawner-ZombieSpam", CAM_SPAMTON); // Zombie Spawner
-	camUpgradeOnMapStructures("Spawner-Skeleton", "Spawner-SkeletonSpam", CAM_SPAMTON); // Skeleton Spawner
-	camUpgradeOnMapStructures("Spawner-Creeper", "Spawner-CreeperSpam", CAM_SPAMTON); // Creeper Spawner
-	camUpgradeOnMapStructures("A0HardcreteMk1CWall", "CollectiveCWall", CAM_SPAMTON); // Hardcrete Corner Wall
-	camUpgradeOnMapStructures("A0HardcreteMk1Wall", "CollectiveWall", CAM_SPAMTON); // Hardcrete Wall
-	camUpgradeOnMapStructures("Tower-Projector", "CO-Tower-HvFlame", CAM_SPAMTON); // Excessive Flamer Bunker
-	camUpgradeOnMapStructures("WallTower04", "WallTower04Spam", CAM_SPAMTON); // Very Heavy Cannon Hardpoint
-	camUpgradeOnMapStructures("Sys-SensoTower02", "Sys-CO-SensoTower", CAM_SPAMTON); // Hardened Sensor Tower
-	camUpgradeOnMapStructures("GuardTowerEH", "GuardTowerEHSpam", CAM_SPAMTON); // Extended Flamer Tower
-	camUpgradeOnMapStructures("GuardTower6", "GuardTower6Spam", CAM_SPAMTON); // Many-Rocket Tower
-	camUpgradeOnMapStructures("PillBox1", "PillBox1Spam", CAM_SPAMTON); // Realistic Heavy Machinegun Bunker
-	camUpgradeOnMapStructures("PillBox4", "PillBox4Spam", CAM_SPAMTON); // "Light" Cannon Bunker
-	camUpgradeOnMapStructures("PillBox-BB3", "PillBox-BB3Spam", CAM_SPAMTON); // Bunker Buster Bunker III
-	camUpgradeOnMapStructures("PillBoxBison", "PillBoxBisonSpam", CAM_SPAMTON); // Righteous Bison Bunker
-	camUpgradeOnMapStructures("Pillbox-Big", "Pillbox-BigSpam", CAM_SPAMTON); // Big Machinegun Bunker
-	camUpgradeOnMapStructures("Sys-SensoTower03", "Sys-SensoTower03Spam", CAM_SPAMTON); // Sensor Hardpoint
-	camUpgradeOnMapStructures("Tower-VulcanCan", "Tower-VulcanCanSpam", CAM_SPAMTON); // Righteous Bison Tower
-	camUpgradeOnMapStructures("WallTower-HPVcannon", "WallTower-HPVcannonSpam", CAM_SPAMTON); // Righteous Bison Hardpoint
-	camUpgradeOnMapStructures("GuardTower-Rail1", "GuardTower-Rail1Spam", CAM_SPAMTON); // Needler Tower
+		camUpgradeOnMapStructures("GuardTower-MEGA", "GuardTower-MEGASpam", CAM_SPAMTON); // Tower Of Babel
+		camUpgradeOnMapStructures("Spawner-Zombie", "Spawner-ZombieSpam", CAM_SPAMTON); // Zombie Spawner
+		camUpgradeOnMapStructures("Spawner-Skeleton", "Spawner-SkeletonSpam", CAM_SPAMTON); // Skeleton Spawner
+		camUpgradeOnMapStructures("Spawner-Creeper", "Spawner-CreeperSpam", CAM_SPAMTON); // Creeper Spawner
+		camUpgradeOnMapStructures("A0HardcreteMk1CWall", "CollectiveCWall", CAM_SPAMTON); // Hardcrete Corner Wall
+		camUpgradeOnMapStructures("A0HardcreteMk1Wall", "CollectiveWall", CAM_SPAMTON); // Hardcrete Wall
+		camUpgradeOnMapStructures("Tower-Projector", "CO-Tower-HvFlame", CAM_SPAMTON); // Excessive Flamer Bunker
+		camUpgradeOnMapStructures("WallTower04", "WallTower04Spam", CAM_SPAMTON); // Very Heavy Cannon Hardpoint
+		camUpgradeOnMapStructures("Sys-SensoTower02", "Sys-CO-SensoTower", CAM_SPAMTON); // Hardened Sensor Tower
+		camUpgradeOnMapStructures("GuardTowerEH", "GuardTowerEHSpam", CAM_SPAMTON); // Extended Flamer Tower
+		camUpgradeOnMapStructures("GuardTower6", "GuardTower6Spam", CAM_SPAMTON); // Many-Rocket Tower
+		camUpgradeOnMapStructures("PillBox1", "PillBox1Spam", CAM_SPAMTON); // Realistic Heavy Machinegun Bunker
+		camUpgradeOnMapStructures("PillBox4", "PillBox4Spam", CAM_SPAMTON); // "Light" Cannon Bunker
+		camUpgradeOnMapStructures("PillBoxBison", "PillBoxBisonSpam", CAM_SPAMTON); // Righteous Bison Bunker
+		camUpgradeOnMapStructures("Pillbox-Big", "Pillbox-BigSpam", CAM_SPAMTON); // Big Machinegun Bunker
+		camUpgradeOnMapStructures("Sys-SensoTower03", "Sys-SensoTower03Spam", CAM_SPAMTON); // Sensor Hardpoint
+		camUpgradeOnMapStructures("Tower-VulcanCan", "Tower-VulcanCanSpam", CAM_SPAMTON); // Righteous Bison Tower
+		camUpgradeOnMapStructures("WallTower-HPVcannon", "WallTower-HPVcannonSpam", CAM_SPAMTON); // Righteous Bison Hardpoint
+		camUpgradeOnMapStructures("GuardTower-Rail1", "GuardTower-Rail1Spam", CAM_SPAMTON); // Needler Tower
+		camUpgradeOnMapStructures("GuardTower5", "GuardTower5Spam", CAM_SPAMTON); // Sawed-Off Lancer Tower
+		camUpgradeOnMapStructures("GuardTower3", "GuardTower3Spam", CAM_SPAMTON); // Realistic Heavy Machinegun Tower
+		camUpgradeOnMapStructures("GuardTower4H", "GuardTower4HSpam", CAM_SPAMTON); // Scorch Shot Tower
+		camUpgradeOnMapStructures("PillBox-BB", "PillBox-BBSpam", CAM_SPAMTON); // Bunker Buster Bunker
+		camUpgradeOnMapStructures("PillBox-BB2", "PillBox-BB2Spam", CAM_SPAMTON); // Bunker Buster II
+		camUpgradeOnMapStructures("PillBox-BB3", "PillBox-BB3Spam", CAM_SPAMTON); // Bunker Buster Bunker III
+		camUpgradeOnMapStructures("WallTower02", "WallTower02Spam", CAM_SPAMTON); // "Light" Cannon Hardpoint
+		camUpgradeOnMapStructures("PillBox6", "PillBox6Spam", CAM_SPAMTON); // Sawed-Off Lancer Bunker
+		camUpgradeOnMapStructures("X-Super-MG", "X-Super-MGSpam", CAM_SPAMTON); // Machinegun Fortress
+		camUpgradeOnMapStructures("WallTower06", "WallTower06Spam", CAM_SPAMTON); // Sawed-Off Lancer Hardpoint
+		camUpgradeOnMapStructures("WallTowerMG", "WallTowerMGSpam", CAM_SPAMTON); // Machinegun Hardpoint
 
-	camUpgradeOnMapStructures("WallTower03Mk2", "WallTower03Mk2Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 2
-	camUpgradeOnMapStructures("WallTower03Mk3", "WallTower03Mk3Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 3
-	camUpgradeOnMapStructures("WallTower03Mk4", "WallTower03Mk4Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 4
-	camUpgradeOnMapStructures("WallTower03Mk5", "WallTower03Mk5Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 5
-	camUpgradeOnMapStructures("WallTower03Mk6", "WallTower03Mk6Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 6
-	camUpgradeOnMapStructures("WallTower03Mk7", "WallTower03Mk7Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 7
-	camUpgradeOnMapStructures("WallTower03Mk8", "WallTower03Mk8Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 8
-	camUpgradeOnMapStructures("WallTower03Mk9", "WallTower03Mk9Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 9
-	camUpgradeOnMapStructures("WallTower03Mk10", "WallTower03Mk10Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 10
-	camUpgradeOnMapStructures("WallTower03Mk11", "WallTower03Mk11Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 11
-	camUpgradeOnMapStructures("WallTower03Mk12", "WallTower03Mk12Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 12
-	camUpgradeOnMapStructures("WallTower03Mk13", "WallTower03Mk13Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 13
-	camUpgradeOnMapStructures("WallTower03Mk14", "WallTower03Mk14Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 14
-	camUpgradeOnMapStructures("WallTower03Mk15", "WallTower03Mk15Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 15
+		camUpgradeOnMapStructures("WallTower03Mk2", "WallTower03Mk2Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 2
+		camUpgradeOnMapStructures("WallTower03Mk3", "WallTower03Mk3Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 3
+		camUpgradeOnMapStructures("WallTower03Mk4", "WallTower03Mk4Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 4
+		camUpgradeOnMapStructures("WallTower03Mk5", "WallTower03Mk5Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 5
+		camUpgradeOnMapStructures("WallTower03Mk6", "WallTower03Mk6Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 6
+		camUpgradeOnMapStructures("WallTower03Mk7", "WallTower03Mk7Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 7
+		camUpgradeOnMapStructures("WallTower03Mk8", "WallTower03Mk8Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 8
+		camUpgradeOnMapStructures("WallTower03Mk9", "WallTower03Mk9Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 9
+		camUpgradeOnMapStructures("WallTower03Mk10", "WallTower03Mk10Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 10
+		camUpgradeOnMapStructures("WallTower03Mk11", "WallTower03Mk11Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 11
+		camUpgradeOnMapStructures("WallTower03Mk12", "WallTower03Mk12Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 12
+		camUpgradeOnMapStructures("WallTower03Mk13", "WallTower03Mk13Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 13
+		camUpgradeOnMapStructures("WallTower03Mk14", "WallTower03Mk14Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 14
+		camUpgradeOnMapStructures("WallTower03Mk15", "WallTower03Mk15Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 15
+	}
+	else
+	{
+		if (obj.type === DROID)
+		{
+			// Droid absorbed; let the research handle its components
+			completeResearch("Script-Spamtonize", CAM_SPAMTON, true);
+		}
+		else if (obj.type === STRUCTURE)
+		{
+			// Structure absorbed; replace it with a spamton variant if applicable
+			for (let i = 0; i < __camSpamtonReplacableStructs.length; i++)
+			{
+				if (camGetCompNameFromId(__camSpamtonReplacableStructs[i], "Building") === obj.name)
+				{
+					// We found a suitable spamton variant, replace it.
+					const pos = {x: obj.x * 128, y: obj.y * 128};
+					camSafeRemoveObject(obj, false);
+					addStructure(__camSpamtonReplacementStructs[i], CAM_SPAMTON, pos.x, pos.y);
+				}
+			}
+		}
+	}
 }
 
 // Allows Silverfish to spawn out of destroyed structures

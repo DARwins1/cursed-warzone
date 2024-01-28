@@ -198,4 +198,10 @@ function __camRemoveIncomingTransporter(player)
 	{
 		delete __camIncomingTransports[player];
 	}
+
+	// Also place the no-build area in the corner of the map where it won't annoy anybody
+	if (player !== CAM_HUMAN_PLAYER)
+	{
+		setNoGoArea(0, 0, 3, 3, player);
+	}
 }

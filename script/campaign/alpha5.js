@@ -95,6 +95,8 @@ function openDoors()
 		camSafeRemoveObject(door, true);
 	}
 
+	console(_("The doors have been unlocked!"));
+
 	// Activate remaining factories
 	camEnableFactory("clipFact3");
 	camEnableFactory("clipFact4");
@@ -237,7 +239,7 @@ function eventStartLevel()
 				repair: 30,
 				count: -1,
 			},
-			templates: [ cTempl.crlpodw, cTempl.crlcanw, cTempl.crlscorchw, cTempl.crlscorchw ] // Drift units
+			templates: [ cTempl.crlpoddw, cTempl.crlcandw, cTempl.crlscorchdw, cTempl.crlscorchdw ] // Drift units
 		},
 		"clipCybFact1": {
 			assembly: "clipCybAssembly1",
@@ -284,7 +286,7 @@ function eventStartLevel()
 				repair: 50,
 				count: -1,
 			},
-			templates: [ cTempl.crcybcool, cTempl.crcybcool, cTempl.crcybscorch ]
+			templates: [ cTempl.crcybcool, cTempl.crcybcool, cTempl.crcybpyro ]
 		},
 	});
 

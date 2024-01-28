@@ -261,7 +261,15 @@
 			"CyborgFlamer01:CyborgFlamer01Spam",
 			"CyborgMiniRocket:CyborgMiniRocketSpam",
 			"CyborgBB:CyborgBBSpam",
-			"Cannon2A-TMk3:Cannon2A-TMk3Spam"
+			"CyborgRocket:CyborgRocketSpam",
+			"Cyb-Wpn-Bow:Cyb-Wpn-BowSpam",
+			"Cyb-Wpn-Sword:Cyb-Wpn-SwordSpam",
+			"NX-CyborgChaingun:NX-CyborgChaingunSpam",
+			"Cyb-Hvywpn-Hcannon:Cyb-Hvywpn-HcannonSpam",
+			"Cyb-Hvywpn-Axe:Cyb-Hvywpn-AxeSpam",
+			"Cannon2A-TMk3:Cannon2A-TMk3Spam",
+			"Spade1Mk1:Spade1Mk1Spam",
+			"CyborgSpade:CyborgSpadeSpam"
 		],
 		"statID": "CyborgChaingunSpam"
 	},
@@ -294,7 +302,15 @@
 			"CyborgFlamer01Spam:CyborgFlamer01",
 			"CyborgMiniRocketSpam:CyborgMiniRocket",
 			"CyborgBBSpam:CyborgBB",
-			"Cannon2A-TMk3Spam:Cannon2A-TMk3"
+			"CyborgRocketSpam:CyborgRocket",
+			"Cyb-Wpn-BowSpam:Cyb-Wpn-Bow",
+			"Cyb-Wpn-SwordSpam:Cyb-Wpn-Sword",
+			"NX-CyborgChaingunSpam:NX-CyborgChaingun",
+			"Cyb-Hvywpn-HcannonSpam:Cyb-Hvywpn-Hcannon",
+			"Cyb-Hvywpn-AxeSpam:Cyb-Hvywpn-Axe",
+			"Cannon2A-TMk3Spam:Cannon2A-TMk3",
+			"Spade1Mk1Spam:Spade1Mk1",
+			"CyborgSpadeSpam:CyborgSpade"
 		],
 		"statID": "CyborgChaingun"
 	},
@@ -2337,6 +2353,19 @@
 			"GuardTower4H"
 		],
 		"statID": "GuardTower4H"
+	},
+	"R-Defense-TowerMEGA": {
+		"iconID": "IMAGE_RES_DEFENCE",
+		"id": "R-Defense-TowerMEGA",
+		"keyTopic": 1,
+		"msgName": "RES_TOWERMEGA",
+		"name": "Tower Of Babel",
+		"researchPoints": 1800,
+		"researchPower": 450,
+		"resultStructures": [
+			"GuardTower-MEGA"
+		],
+		"statID": "GuardTower-MEGA"
 	},
 	"R-Wpn-Flamer-Damage01": {
 		"iconID": "IMAGE_RES_WEAPONTECH",

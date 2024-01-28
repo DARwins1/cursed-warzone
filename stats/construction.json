@@ -31,7 +31,19 @@
         "hitpoints": 35,
         "id": "CyborgSpade",
         "mountModel": "cybody.pie",
-        "name": "Combat Engineer Cyborg",
+        "name": "Engineer Cyborg",
+        "sensorModel": "cy_con.pie",
+        "weight": 150
+    },
+    "CyborgSpadeSpam": {
+        "buildPoints": 65,
+        "buildPower": 10,
+        "constructPoints": 5,
+        "droidType": "CYBORG_CONSTRUCT",
+        "hitpoints": 35,
+        "id": "CyborgSpadeSpam",
+        "mountModel": "cybodyspam.pie",
+        "name": "Spamton Engineer Cyborg",
         "sensorModel": "cy_con.pie",
         "weight": 150
     },

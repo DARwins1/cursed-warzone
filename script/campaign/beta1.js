@@ -65,7 +65,7 @@ function getDroidsForBBLZ()
 	{
 		case "drift": // All drifty boys
 			list = [
-				cTempl.crmmbb2dw, cTempl.crmmbb2dw, cTempl.crlhmgdw, cTempl.crlslancedw, cTempl.crlhmgdw,
+				cTempl.crmbb2dw, cTempl.crmbb2dw, cTempl.crlhmgdw, cTempl.crlslancedw, cTempl.crlhmgdw,
 				cTempl.crlslancedw, cTempl.crlhmgdw, cTempl.crlslancedw, cTempl.crlhmgdw, cTempl.crlslancedw,
 			];
 			break;

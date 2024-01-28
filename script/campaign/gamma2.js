@@ -20,6 +20,21 @@ function eventTransporterLanded(transport)
 	]);
 }
 
+function eventDestroyed(obj)
+{
+	if (obj.type === FEATURE && obj.name === _("Nuclear Drum"))
+	{
+		// Destroy all the player's air units, since they would otherwise avoid the blast while airborne
+		let vtols = enumDroid(CAM_HUMAN_PLAYER).filter((obj) => (
+			isVTOL(obj) && (obj.droidType !== DROID_SUPERTRANSPORTER)
+		));
+		for (let i = 0; i < vtols.length; i++)
+		{
+			camSafeRemoveObject(vtols[i], true);
+		}
+	}
+}
+
 // Remember the route the player takes towards the artifact
 camAreaEvent("routeTrigger1", function(droid)
 {

@@ -168,7 +168,7 @@ function cam_eventStartLevel()
 	camManageGroup(__camMobGlobalGroup, CAM_ORDER_ATTACK, {removable: false});
 	
 	setAlliance(CAM_HUMAN_PLAYER, 10, true);
-	__camUpdateSwappableUnits();
+	queue("__camUpdateSwappableUnits", camSecondsToMilliseconds(0.5));
 
 	queue("__camSpamtonize", camSecondsToMilliseconds(0.5));
 	queue("__camEnableSilverfishSpawn", camSecondsToMilliseconds(2));
@@ -470,6 +470,16 @@ function cam_eventDestroyed(obj)
 					_("Silverfish"), "SilverfishBody", "CyborgLegs", "", "", "Cyb-Wpn-SilvFishMelee"
 				));
 			}
+		}
+		if (obj.name === _("Tower Of Babel"))
+		{
+			addFeature("BabelTowerDestructionDummy", obj.x, obj.y);
+			fireWeaponAtLoc("Mortar1Mk1", obj.x, obj.y);
+		}
+		else if (obj.name === _("Tower Of Spamton"))
+		{
+			addFeature("SpamtonTowerDestructionDummy", obj.x, obj.y);
+			fireWeaponAtLoc("Mortar1Mk1", obj.x, obj.y);
 		}
 	}
 }
@@ -788,7 +798,7 @@ function cam_eventObjectTransfer(obj, from)
 	}
 	else if (obj.player === CAM_SPAMTON)
 	{
-		__camSpamtonize();
+		__camSpamtonize(obj);
 	}
 }
 

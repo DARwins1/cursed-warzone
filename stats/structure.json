@@ -1954,6 +1954,29 @@
         ],
         "width": 1
     },
+    "GuardTower3Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "GuardTower3Spam",
+        "name": "Spamton Realistic Heavy Machinegun Tower",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "BLGUARDRspam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "MG3Mk1"
+        ],
+        "width": 1
+    },
     "GuardTower4": {
         "armour": 8,
         "breadth": 1,
@@ -2069,6 +2092,29 @@
 		],
 		"width": 1
 	},
+    "GuardTower4HSpam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 350,
+        "buildPower": 140,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "GuardTower4HSpam",
+        "name": "Spamton Scorch Shot Tower",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "BLGUARDRspam.PIE"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "BabaFlame"
+        ],
+        "width": 1
+    },
     "GuardTower5": {
         "armour": 15,
         "breadth": 1,
@@ -2084,6 +2130,29 @@
         "strength": "MEDIUM",
         "structureModel": [
             "BLGUARDR.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Rocket-LtA-T"
+        ],
+        "width": 1
+    },
+    "GuardTower5Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 350,
+        "buildPower": 150,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 600,
+        "id": "GuardTower5Spam",
+        "name": "Spamton Sawed-Off Lancer Tower",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "BLGUARDRspam.pie"
         ],
         "thermal": 15,
         "type": "DEFENSE",
@@ -2666,6 +2735,29 @@
         ],
         "width": 1
     },
+    "PillBox6Spam": {
+        "armour": 20,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 150,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 700,
+        "id": "PillBox6Spam",
+        "name": "Spamton Sawed-Off Lancer Bunker",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "BUNKER",
+        "structureModel": [
+            "Blcanpilspam.pie"
+        ],
+        "thermal": 20,
+        "type": "DEFENSE",
+        "weapons": [
+            "Rocket-LtA-T"
+        ],
+        "width": 1
+    },
     "PillBox-BB": {
         "armour": 20,
         "breadth": 1,
@@ -2681,6 +2773,29 @@
         "strength": "BUNKER",
         "structureModel": [
             "Blcanpil.pie"
+        ],
+        "thermal": 20,
+        "type": "DEFENSE",
+        "weapons": [
+            "Rocket-BB"
+        ],
+        "width": 1
+    },
+    "PillBox-BBSpam": {
+        "armour": 20,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 125,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 700,
+        "id": "PillBox-BBSpam",
+        "name": "Spamton Bunker Buster Bunker",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "BUNKER",
+        "structureModel": [
+            "Blcanpilspam.pie"
         ],
         "thermal": 20,
         "type": "DEFENSE",
@@ -2712,6 +2827,29 @@
         ],
         "width": 1
     },
+    "PillBox-BB2Spam": {
+        "armour": 20,
+        "breadth": 1,
+        "buildPoints": 450,
+        "buildPower": 150,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 700,
+        "id": "PillBox-BB2Spam",
+        "name": "Spamton Bunker Buster Bunker II",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "BUNKER",
+        "structureModel": [
+            "Blcanpilspam.pie"
+        ],
+        "thermal": 20,
+        "type": "DEFENSE",
+        "weapons": [
+            "Rocket-BB2"
+        ],
+        "width": 1
+    },
     "PillBox-BB3": {
         "armour": 20,
         "breadth": 1,
@@ -2727,6 +2865,29 @@
         "strength": "BUNKER",
         "structureModel": [
             "Blcanpil.pie"
+        ],
+        "thermal": 20,
+        "type": "DEFENSE",
+        "weapons": [
+            "Rocket-BB3"
+        ],
+        "width": 1
+    },
+    "PillBox-BB3Spam": {
+        "armour": 20,
+        "breadth": 1,
+        "buildPoints": 500,
+        "buildPower": 175,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 700,
+        "id": "PillBox-BB3Spam",
+        "name": "Spamton Bunker Buster Bunker III",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "BUNKER",
+        "structureModel": [
+            "Blcanpilspam.pie"
         ],
         "thermal": 20,
         "type": "DEFENSE",
@@ -2847,29 +3008,6 @@
         "type": "DEFENSE",
         "weapons": [
             "Cannon1Mk1"
-        ],
-        "width": 1
-    },
-    "PillBox-BB3Spam": {
-        "armour": 20,
-        "breadth": 1,
-        "buildPoints": 500,
-        "buildPower": 175,
-        "ecmID": "ZNULLECM",
-        "height": 1,
-        "hitpoints": 700,
-        "id": "PillBox-BB3Spam",
-        "name": "Spamton Bunker Buster Bunker III",
-        "resistance": 150,
-        "sensorID": "DefaultSensor1Mk1",
-        "strength": "BUNKER",
-        "structureModel": [
-            "Blcanpilspam.pie"
-        ],
-        "thermal": 20,
-        "type": "DEFENSE",
-        "weapons": [
-            "Rocket-BB3"
         ],
         "width": 1
     },
@@ -3549,6 +3687,30 @@
         "strength": "HARD",
         "structureModel": [
             "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon1Mk1"
+        ],
+        "width": 1
+    },
+    "WallTower02Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 125,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower02Spam",
+        "name": "Spamton \"Light\" Cannon Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
         ],
         "thermal": 15,
         "type": "DEFENSE",
@@ -4349,6 +4511,30 @@
         ],
         "width": 1
     },
+    "WallTower06Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 175,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower06Spam",
+        "name": "Spamton Sawed-Off Lancer Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Rocket-LtA-T"
+        ],
+        "width": 1
+    },
     "WallTowerMG": {
         "armour": 15,
         "breadth": 1,
@@ -4373,6 +4559,30 @@
         ],
         "width": 1
     },
+    "WallTowerMGSpam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTowerMGSpam",
+        "name": "Spamton Machinegun Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "MG1Mk1"
+        ],
+        "width": 1
+    },
     "X-Super-MG": {
         "armour": 15,
         "breadth": 2,
@@ -4389,6 +4599,30 @@
         "strength": "HARD",
         "structureModel": [
             "STWPFCAN.pie"
+        ],
+        "thermal": 15,
+        "type": "GENERIC",
+        "weapons": [
+            "MG1Mk1"
+        ],
+        "width": 2
+    },
+    "X-Super-MGSpam": {
+        "armour": 15,
+        "breadth": 2,
+        "buildPoints": 800,
+        "buildPower": 250,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 3200,
+        "id": "X-Super-MGSpam",
+        "name": "Spamton Machinegun Fortress",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "STWPFCANspam.pie"
         ],
         "thermal": 15,
         "type": "GENERIC",
@@ -4465,14 +4699,14 @@
     "GuardTower-MEGA": {
         "armour": 30,
         "breadth": 4,
-        "buildPoints": 4000,
-        "buildPower": 1000,
+        "buildPoints": 24000,
+        "buildPower": 5000,
         "ecmID": "ZNULLECM",
         "height": 3,
         "hitpoints": 6000,
         "id": "GuardTower-MEGA",
         "name": "Tower Of Babel",
-        "resistance": 1500,
+        "resistance": 3000,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "MEDIUM",
         "structureModel": [
@@ -4488,14 +4722,14 @@
     "GuardTower-MEGASpam": {
         "armour": 30,
         "breadth": 4,
-        "buildPoints": 4000,
-        "buildPower": 1000,
+        "buildPoints": 24000,
+        "buildPower": 5000,
         "ecmID": "ZNULLECM",
         "height": 3,
         "hitpoints": 6000,
         "id": "GuardTower-MEGASpam",
         "name": "Tower Of Spamton",
-        "resistance": 1500,
+        "resistance": 3000,
         "sensorID": "DefaultSensor1Mk1",
         "strength": "MEDIUM",
         "structureModel": [

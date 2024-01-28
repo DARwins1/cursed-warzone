@@ -8,4 +8,6 @@ function eventStartLevel()
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.75)));
 	camPlayVideos({video: "BETA_5_MSG", type: CAMP_MSG});
 	camSetStandardWinLossConditions(CAM_VICTORY_PRE_OFFWORLD, "BONZI_BUDDY");
+	setPower(playerPower(CAM_HUMAN_PLAYER) + 5); // Reward for completing the arena;
+	playSound(camSounds.project.pwrTrans);
 }

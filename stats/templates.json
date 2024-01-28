@@ -616,7 +616,7 @@
         "type": "CONSTRUCT"
     },
     "Cyb-Atmiss-GROUND": {
-        "available": true,
+        "available": false,
         "body": "CyborgLightBody",
         "id": "Cyb-Atmiss-GROUND",
         "name": "Scourge Cyborg",
@@ -735,7 +735,7 @@
         ]
     },
     "Cyb-Gren": {
-        "available": true,
+        "available": false,
         "body": "CyborgLightBody",
         "id": "Cyb-Gren",
         "name": "Grenadier Cyborg",
@@ -791,7 +791,7 @@
         ]
     },
     "Cyb-ZmbiSpam": {
-        "available": true,
+        "available": false,
         "body": "ZombieBodySpam",
         "id": "Cyb-ZmbieSpam",
         "name": "Spamton Zombie",
@@ -813,7 +813,7 @@
         ]
     },
     "Cyb-BabyZmbieSpam": {
-        "available": true,
+        "available": false,
         "body": "BabyZombieBodySpam",
         "id": "Cyb-BabyZmbieSpam",
         "name": "Spamton Baby Zombie",
@@ -835,7 +835,7 @@
         ]
     },
     "Cyb-CreepSpam": {
-        "available": true,
+        "available": false,
         "body": "CreeperBodySpam",
         "id": "Cyb-CreepSpam",
         "name": "Spamton Creeper",
@@ -857,7 +857,7 @@
         ]
     },
     "Cyb-SkelSpam": {
-        "available": true,
+        "available": false,
         "body": "SkeletonBodySpam",
         "id": "Cyb-SkelSpam",
         "name": "Spamton Skeleton",
@@ -901,7 +901,7 @@
         ]
     },
     "Cyb-Hvy-A-T": {
-        "available": true,
+        "available": false,
         "body": "CyborgHeavyBody",
         "id": "Cyb-Hvy-A-T",
         "name": "Super Scourge Cyborg",
@@ -912,7 +912,7 @@
         ]
     },
     "Cyb-Hvy-Acannon": {
-        "available": true,
+        "available": false,
         "body": "CyborgHeavyBody",
         "id": "Cyb-Hvy-Acannon",
         "name": "Super Auto-Cannon Cyborg",
@@ -923,7 +923,7 @@
         ]
     },
     "Cyb-Hvy-HPV": {
-        "available": true,
+        "available": false,
         "body": "CyborgHeavyBody",
         "id": "Cyb-Hvy-HPV",
         "name": "Super HPC Cyborg",
@@ -945,7 +945,7 @@
         ]
     },
     "Cyb-Hvy-Mcannon": {
-        "available": true,
+        "available": false,
         "body": "CyborgHeavyBody",
         "id": "Cyb-Hvy-Mcannon",
         "name": "Super Heavy-Gunner Cyborg",
@@ -978,7 +978,7 @@
         ]
     },
     "Cyb-Hvy-PulseLsr": {
-        "available": true,
+        "available": false,
         "body": "CyborgHeavyBody",
         "id": "Cyb-Hvy-PulseLsr",
         "name": "Super Pulse Laser Cyborg",
@@ -989,7 +989,7 @@
         ]
     },
     "Cyb-Hvy-RailGunner": {
-        "available": true,
+        "available": false,
         "body": "CyborgHeavyBody",
         "id": "Cyb-Hvy-RailGunner",
         "name": "Super Rail-Gunner Cyborg",
@@ -1000,7 +1000,7 @@
         ]
     },
     "Cyb-Hvy-TK": {
-        "available": true,
+        "available": false,
         "body": "CyborgHeavyBody",
         "id": "Cyb-Hvy-TK",
         "name": "Super Tank-Killer Cyborg",
@@ -1011,7 +1011,7 @@
         ]
     },
     "Cyb-Laser1-GROUND": {
-        "available": true,
+        "available": false,
         "body": "CyborgLightBody",
         "id": "Cyb-Laser1-GROUND",
         "name": "Flashlight Gunner Cyborg",
@@ -1022,7 +1022,7 @@
         ]
     },
     "Cyb-Mechanic": {
-        "available": true,
+        "available": false,
         "body": "CyborgLightBody",
         "id": "Cyb-Mechanic",
         "name": "Mechanic Cyborg",
@@ -1075,7 +1075,7 @@
         ]
    },
     "Cyb-RotMG-GROUND": {
-        "available": true,
+        "available": false,
         "body": "CyborgLightBody",
         "id": "Cyb-RotMG-GROUND",
         "name": "Assault Gunner Cyborg",
@@ -1086,7 +1086,7 @@
         ]
     },
     "Cyb-Thermite": {
-        "available": true,
+        "available": false,
         "body": "CyborgLightBody",
         "id": "Cyb-Thermite",
         "name": "Thermite Flamer Cyborg",

@@ -139,7 +139,7 @@ const __cam_gammaLevels = [
 	"BIG_SHOT" // Gamma 5
 ];
 
-// Structure for accessing the game's sounds
+// Structure for accessing the game's sounds (mostly dialogue-related)
 const camSounds = {
 	sfx: {
 		barrelExpl1: "pcv331.ogg",
@@ -182,6 +182,7 @@ const camSounds = {
 		incomTrans: "pcv395.ogg", // Incoming Enemy Transport
 		reinforceAvail: "pcv440.ogg", // Reinforcements Are Available
 		artiRecovered: "pcv352.ogg", // Artifact Recovered
+		pwrTrans: "power-transferred.ogg", // Power Transferred
 	},
 	spamton: {
 		talk1: "pcv451.ogg",
@@ -340,6 +341,40 @@ var __camSunPosition; // The xyz position of the sun
 var __camSunIntensity; // The lighting intensity of the sun
 var __camBlackOut; // Whether a "black out" effect is active
 var __camExpLevel;
+const __camSpamtonReplacableStructs = [
+	"GuardTower-MEGA", "Spawner-Zombie", "Spawner-Skeleton",
+	"Spawner-Creeper", "A0HardcreteMk1CWall", "A0HardcreteMk1Wall",
+	"Tower-Projector", "WallTower04", "Sys-SensoTower02",
+	"GuardTowerEH", "GuardTower6", "PillBox1",
+	"PillBox4", "PillBoxBison", "Pillbox-Big",
+	"Sys-SensoTower03", "Tower-VulcanCan", "WallTower-HPVcannon",
+	"GuardTower-Rail1", "GuardTower5", "GuardTower3",
+	"GuardTower4H", "PillBox-BB", "PillBox-BB2",
+	"PillBox-BB3", "WallTower02", "PillBox6",
+	"X-Super-MG", "WallTower06", "WallTowerMG",
+	"WallTower03Mk2","WallTower03Mk3","WallTower03Mk4",
+	"WallTower03Mk5","WallTower03Mk6","WallTower03Mk7",
+	"WallTower03Mk8","WallTower03Mk9","WallTower03Mk10",
+	"WallTower03Mk11","WallTower03Mk12","WallTower03Mk13",
+	"WallTower03Mk14","WallTower03Mk15",
+];
+const __camSpamtonReplacementStructs = [
+	"GuardTower-MEGASpam", "Spawner-ZombieSpam", "Spawner-SkeletonSpam",
+	"Spawner-CreeperSpam", "CollectiveCWall", "CollectiveWall",
+	"CO-Tower-HvFlame", "WallTower04Spam", "Sys-CO-SensoTower",
+	"GuardTowerEHSpam", "GuardTower6Spam", "PillBox1Spam",
+	"PillBox4Spam", "PillBoxBisonSpam", "Pillbox-BigSpam",
+	"Sys-SensoTower03Spam", "Tower-VulcanCanSpam", "WallTower-HPVcannonSpam",
+	"GuardTower-Rail1Spam", "GuardTower5Spam", "GuardTower3Spam",
+	"GuardTower4HSpam", "PillBox-BBSpam", "PillBox-BB2Spam",
+	"PillBox-BB3Spam", "WallTower02Spam", "PillBox6Spam",
+	"X-Super-MGSpam", "WallTower06Spam", "WallTowerMGSpam",
+	"WallTower03Mk2Spam","WallTower03Mk3Spam","WallTower03Mk4Spam",
+	"WallTower03Mk5Spam","WallTower03Mk6Spam","WallTower03Mk7Spam",
+	"WallTower03Mk8Spam","WallTower03Mk9Spam","WallTower03Mk10Spam",
+	"WallTower03Mk11Spam","WallTower03Mk12Spam","WallTower03Mk13Spam",
+	"WallTower03Mk14Spam","WallTower03Mk15Spam",
+];
 
 //nexus
 const CAM_DEFENSE_ABSORBED_SND = "defabsrd.ogg";

@@ -424,6 +424,19 @@
 		"type": "TREE",
 		"width": 1
 	},
+	"PatternDummy": {
+		"armour": 5,
+		"breadth": 1,
+		"damageable": 0,
+		"hitpoints": 25,
+		"id": "PatternDummy",
+		"model": "FXMETHIT.pie",
+		"name": "Pattern Filler",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "BOULDER",
+		"width": 1
+	},
 	"OilResource": {
 		"armour": 0,
 		"breadth": 1,
@@ -839,6 +852,32 @@
 		"tileDraw": 1,
 		"type": "SKYSCRAPER",
 		"width": 3
+	},
+	"BabelTowerDestructionDummy": {
+		"armour": 5,
+		"breadth": 4,
+		"damageable": 1,
+		"hitpoints": 0,
+		"id": "BabelTowerDestructionDummy",
+		"lineOfSight": 1,
+		"model": "BLGUARDMEGA.PIE",
+		"name": "Tower Of Babel Destruction",
+		"tileDraw": 1,
+		"type": "SKYSCRAPER",
+		"width": 4
+	},
+	"SpamtonTowerDestructionDummy": {
+		"armour": 5,
+		"breadth": 4,
+		"damageable": 1,
+		"hitpoints": 0,
+		"id": "SpamtonTowerDestructionDummy",
+		"lineOfSight": 1,
+		"model": "BLGUARDMEGAspam.PIE",
+		"name": "Tower Of Spamton Destruction",
+		"tileDraw": 1,
+		"type": "SKYSCRAPER",
+		"width": 4
 	},
 	"SignArena": {
 		"armour": 3,

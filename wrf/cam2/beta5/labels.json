@@ -138,8 +138,8 @@
         "label": "bbPatrolGroup3"
     },
     "area_13": {
-        "pos1": [3328, 10880],
-        "pos2": [4864, 11904],
+        "pos1": [2816, 10880],
+        "pos2": [4864, 12160],
         "label": "compromiseZone"
     },
     "area_14": {

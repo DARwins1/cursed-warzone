@@ -590,5 +590,14 @@
 			"Perfect for practicing your skills",
 			"And for imagining how much damage you could be doing if you were using a different weapon"
 		]
+	},
+	"RES_TOWERMEGA": {
+		"id": "RES_TOWERMEGA",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"Do you have what it takes to build this monstrosity and reach the heavens?",
+			"WARNING: Might be an affront to God."
+		]
 	}
 }
