@@ -2,143 +2,6 @@ include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
 const startpos = {x: 92, y: 99};
-const mis_hardPatterns = [
-	// "Heart"
-	// . . . . . . . . . . . .
-	// . . # # . . . . # # . .
-	// . # # # # . . # # # # .
-	// . # # # # # # # # # # .
-	// . # # # # # # # # # # .
-	// . # # # # # # # # # # .
-	// . . # # # # # # # # . .
-	// . . # # # # # # # # . .
-	// . . . # # # # # # . . .
-	// . . . . # # # # . . . .
-	// . . . . . # # . . . . .
-	// . . . . . . . . . . . .
-	[
-		[0,0,0,0,0,0,0,0,0,0,0,0],
-		[0,0,1,1,0,0,0,0,1,1,0,0],
-		[0,1,1,1,1,0,0,1,1,1,1,0],
-		[0,1,1,1,1,1,1,1,1,1,1,0],
-		[0,1,1,1,1,1,1,1,1,1,1,0],
-		[0,1,1,1,1,1,1,1,1,1,1,0],
-		[0,0,1,1,1,1,1,1,1,1,0,0],
-		[0,0,1,1,1,1,1,1,1,1,0,0],
-		[0,0,0,1,1,1,1,1,1,0,0,0],
-		[0,0,0,0,1,1,1,1,0,0,0,0],
-		[0,0,0,0,0,1,1,0,0,0,0,0],
-		[0,0,0,0,0,0,0,0,0,0,0,0],
-	],
-	// "Sans"
-	// . . . . . . . . . . . .
-	// . . . . . . . . . . . .
-	// # # # . . . . . # # # .
-	// # # # . . . . . # # # .
-	// # # # . . # . . # # # .
-	// . . . . # # # . . . . .
-	// # . . . . . . . . . # .
-	// # # # # # # # # # # # .
-	// . # . # . # . # . # . .
-	// . . # # # # # # # . . .
-	// . . . . . . . . . . . .
-	// . . . . . . . . . . . .
-	[
-		[0,0,0,0,0,0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0,0,0,0,0,0],
-		[1,1,1,0,0,0,0,0,1,1,1,0],
-		[1,1,1,0,0,0,0,0,1,1,1,0],
-		[1,1,1,0,0,1,0,0,1,1,1,0],
-		[0,0,0,0,1,1,1,0,0,0,0,0],
-		[1,0,0,0,0,0,0,0,0,0,1,0],
-		[1,1,1,1,1,1,1,1,1,1,1,0],
-		[0,1,0,1,0,1,0,1,0,1,0,0],
-		[0,0,1,1,1,1,1,1,1,0,0,0],
-		[0,0,0,0,0,0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0,0,0,0,0,0],
-	],
-	// "Creeper"
-	// # # # # . . . . # # # #
-	// # # # # . . . . # # # #
-	// # # # # . . . . # # # #
-	// # # # # . . . . # # # #
-	// . . . . # # # # . . . .
-	// . . . . # # # # . . . .
-	// . . # # # # # # # # . .
-	// . . # # # # # # # # . .
-	// . . # # # # # # # # . .
-	// . . # # # # # # # # . .
-	// . . # # . . . . # # . .
-	// . . # # . . . . # # . .
-	[
-		[1,1,1,1,0,0,0,0,1,1,1,1],
-		[1,1,1,1,0,0,0,0,1,1,1,1],
-		[1,1,1,1,0,0,0,0,1,1,1,1],
-		[1,1,1,1,0,0,0,0,1,1,1,1],
-		[0,0,0,0,1,1,1,1,0,0,0,0],
-		[0,0,0,0,1,1,1,1,0,0,0,0],
-		[0,0,1,1,1,1,1,1,1,1,0,0],
-		[0,0,1,1,1,1,1,1,1,1,0,0],
-		[0,0,1,1,1,1,1,1,1,1,0,0],
-		[0,0,1,1,1,1,1,1,1,1,0,0],
-		[0,0,1,1,0,0,0,0,1,1,0,0],
-		[0,0,1,1,0,0,0,0,1,1,0,0],
-	],
-	// "Eye"
-	// . . . . # # # # . . . .
-	// . . # # . . . . # # . .
-	// . # . . . # # . . . # .
-	// . # . . # # . # . . # .
-	// # . . . # . # # . . . #
-	// # . . . # # . # . . . #
-	// # . . . # . # # . . . #
-	// # . . . # # . # . . . #
-	// . # . . # . # # . . # .
-	// . # . . . # # . . . # .
-	// . . # # . . . . # # . .
-	// . . . . # # # # . . . .
-	[
-		[0,0,0,0,1,1,1,1,0,0,0,0],
-		[0,0,1,1,0,0,0,0,1,1,0,0],
-		[0,1,0,0,0,1,1,0,0,0,1,0],
-		[0,1,0,0,1,1,0,1,0,0,1,0],
-		[1,0,0,0,1,0,1,1,0,0,0,1],
-		[1,0,0,0,1,1,0,1,0,0,0,1],
-		[1,0,0,0,1,0,1,1,0,0,0,1],
-		[1,0,0,0,1,1,0,1,0,0,0,1],
-		[0,1,0,0,1,0,1,1,0,0,1,0],
-		[0,1,0,0,0,1,1,0,0,0,1,0],
-		[0,0,1,1,0,0,0,0,1,1,0,0],
-		[0,0,0,0,1,1,1,1,0,0,0,0],
-	],
-	// "Spamton"
-	// . # # # # . . # # # # .
-	// # . . . . # # . . . . #
-	// # . . . . # # . . . . #
-	// # . . . . # # . . . . #
-	// . # # # # . . # # # # .
-	// # # # # . . . . . . . .
-	// . . . . . . . . . # # .
-	// . . . . . . . . . # # .
-	// # # # # # # # # # # . .
-	// . . . # . . . . # . . .
-	// . . . . # # # # . . . .
-	// . . . . # . . # . . . .
-	[
-		[0,1,1,1,1,0,0,1,1,1,1,0],
-		[1,0,0,0,0,1,1,0,0,0,0,1],
-		[1,0,0,0,0,1,1,0,0,0,0,1],
-		[1,0,0,0,0,1,1,0,0,0,0,1],
-		[0,1,1,1,1,0,0,1,1,1,1,0],
-		[1,1,1,1,0,0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0,0,0,1,1,0],
-		[0,0,0,0,0,0,0,0,0,1,1,0],
-		[1,1,1,1,1,1,1,1,1,1,0,0],
-		[0,0,0,1,0,0,0,0,1,0,0,0],
-		[0,0,0,0,1,1,1,1,0,0,0,0],
-		[0,0,0,0,1,0,0,1,0,0,0,0],
-	],
-];
 var nextbotGroup;
 
 // See if the player has completed the (correct) pattern
@@ -148,23 +11,23 @@ function checkPattern()
 	let pattern = [];
 	if (camIsResearched("Script-Labyrinth-Puzzle-1"))
 	{
-		pattern = mis_hardPatterns[0]; // Heart
+		pattern = camHardPatterns[0]; // Heart
 	}
 	else if (camIsResearched("Script-Labyrinth-Puzzle-2"))
 	{
-		pattern = mis_hardPatterns[1]; // Sans
+		pattern = camHardPatterns[1]; // Sans
 	}
 	else if (camIsResearched("Script-Labyrinth-Puzzle-3"))
 	{
-		pattern = mis_hardPatterns[2]; // Creeper
+		pattern = camHardPatterns[2]; // Creeper
 	}
 	else if (camIsResearched("Script-Labyrinth-Puzzle-4"))
 	{
-		pattern = mis_hardPatterns[3]; // Eye
+		pattern = camHardPatterns[3]; // Eye
 	}
 	else if (camIsResearched("Script-Labyrinth-Puzzle-5"))
 	{
-		pattern = mis_hardPatterns[4]; // Spamton
+		pattern = camHardPatterns[4]; // Spamton
 	}
 	else
 	{
@@ -177,8 +40,8 @@ function checkPattern()
 	// 2: The number of player structures on the grid equals the total amount of "1"s in the pattern template.
 
 	// Count the number of structures on the grid
-	const PATTERN_STRUCT_COUNT = enumArea(pZone.x, pZone.y, pZone.x2, pZone.y2, CAM_HUMAN_PLAYER, false).filter((obj) => (
-		obj.type === STRUCTURE
+	const PATTERN_STRUCT_COUNT = enumArea(pZone.x, pZone.y, pZone.x2, pZone.y2, ALL_PLAYERS, false).filter((obj) => (
+		obj.type === STRUCTURE || (obj.type === FEATURE && obj.name === _("Explosive Drum"))
 	)).length;
 
 	// Run through the pattern template...
@@ -191,7 +54,9 @@ function checkPattern()
 			{
 				patternCount++;
 				const object = getObject(pZone.x + x, pZone.y + y);
-				if (object === null || !(object.type === STRUCTURE && object.player === CAM_HUMAN_PLAYER))
+				if (object === null 
+					|| !(object.type === STRUCTURE && object.player === CAM_HUMAN_PLAYER)
+					|| !(obj.type === FEATURE && obj.name === _("Explosive Drum")))
 				{
 					// Didn't find a structure where one should have been, no need to check further
 					return;

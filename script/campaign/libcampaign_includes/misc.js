@@ -2174,7 +2174,7 @@ function __camSpyFeignTick()
 			if (__camSpyFeigns[i].player === CAM_HUMAN_PLAYER)
 			{
 				// ...At the player's HQ / LZ
-				let hqs = enumStruct(CAM_HUMAN_PLAYER, HQ);
+				const hqs = enumStruct(CAM_HUMAN_PLAYER, HQ);
 				if (camDef(hqs[0]))
 				{
 					// Pick somewhere near the HQ

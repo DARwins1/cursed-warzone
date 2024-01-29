@@ -546,6 +546,7 @@ function advanceBlasterZone()
 	}
 }
 
+// Also starts blasting random spots within the blaster zone
 function spamtonTaunt1()
 {
 	camQueueDialogues([
@@ -554,8 +555,11 @@ function spamtonTaunt1()
 		{text: "SPAMTON: WELL [2] BAD!!", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk1},
 		{text: "SPAMTON: HAEAHAEAHAEAHAEAH!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.laugh},
 	]);
+
+	setTimer("randomBlast", camSecondsToMilliseconds(3.5));
 }
 
+// Also starts blasting MORE random spots within the blaster zone
 function spamtonTaunt2()
 {
 	camQueueDialogues([
@@ -564,6 +568,15 @@ function spamtonTaunt2()
 		{text: "SPAMTON: SO YOU SHOULD DoIT.", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk1},
 		{text: "SPAMTON: GO [hurdle into a sliding glass door] AND [[Die]]!!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
 	]);
+
+	setTimer("randomBlast", camSecondsToMilliseconds(1));
+}
+
+// Blast a random position within the blaster zone
+function randomBlast()
+{
+	const randPos = camRandPosInArea({x: 0, y:48, x2: blasterX, y2: 112 });
+	setBlasterTarget(randPos, camChangeOnDiff(4));
 }
 
 // See if any player object is within the blaster zone. If there is, set up an attack pattern
@@ -714,8 +727,8 @@ function blasterFrenzy()
 	const pos2 = camRandPosInArea("spamBase1");
 
 	// Relatively long delay to give the player a chance to react
-	setBlasterTarget(pos1, camChangeOnDiff(10));
-	setBlasterTarget(pos2, camChangeOnDiff(10));
+	setBlasterTarget(pos1, camChangeOnDiff(16));
+	setBlasterTarget(pos2, camChangeOnDiff(16));
 }
 
 // Visually mark positions or areas
@@ -814,26 +827,34 @@ function placePipis()
 	}
 }
 
-// Fire a blaster cross centered on the player's LZ
-function blastLZ()
+// Fire a blaster cross centered on the player's HQ
+function blastHQ()
 {
-	const lzPos = camMakePos(getObject("landingZone1"));
-	const x = lzPos.x;
-	const y = lzPos.y;
+	let targetPos;
+	const hqs = enumStruct(CAM_HUMAN_PLAYER, HQ);
+	if (camDef(hqs[0]))
+	{
+		targetPos = camMakePos(hqs[0]);
+	}
+	else
+	{
+		// Default position if the player has no HQ
+		targetPos = {x: 16, y: 78};
+	}
 
-	// 'X' shaped pattern
-	// Top-left to bottom-right line
-	// setBlasterTarget(camMakePos(x - 4, y - 4), 10);
-	setBlasterTarget(camMakePos(x - 2, y - 2), 10 + (0.1 * 1));
-	setBlasterTarget(camMakePos(x + 0, y + 0), 10 + (0.1 * 2));
-	setBlasterTarget(camMakePos(x + 2, y + 2), 10 + (0.1 * 3));
-	// setBlasterTarget(camMakePos(x + 4, y + 4), 10 + (0.1 * 4));
-	// Bottom-right to top-left line
-	// setBlasterTarget(camMakePos(x - 4, y + 4), 10 + 2);
-	setBlasterTarget(camMakePos(x - 2, y + 2), 10 + (0.1 * 1) + 2);
-	setBlasterTarget(camMakePos(x + 0, y + 0), 10 + (0.1 * 2) + 2);
-	setBlasterTarget(camMakePos(x + 2, y - 2), 10 + (0.1 * 3) + 2);
-	// setBlasterTarget(camMakePos(x + 4, y - 4), 10 + (0.1 * 4) + 2);
+	const X_COORD = targetPos.x;
+	const Y_COORD = targetPos.y;
+
+	// '+' shaped pattern (sort of)
+	// Fire in the center once
+	setBlasterTarget(camMakePos(X_COORD - 2, Y_COORD + 0), 10);
+	// Fire around the center clockwise
+	setBlasterTarget(camMakePos(X_COORD - 2, Y_COORD + 0), 11);
+	setBlasterTarget(camMakePos(X_COORD + 0, Y_COORD - 2), 11 + (0.1 * 1));
+	setBlasterTarget(camMakePos(X_COORD + 2, Y_COORD + 0), 11 + (0.1 * 2));
+	setBlasterTarget(camMakePos(X_COORD + 0, Y_COORD + 2), 11 + (0.1 * 3));
+	// Fire in the center again
+	setBlasterTarget(camMakePos(X_COORD - 2, Y_COORD + 0), 12);
 
 	queue("blastMessage", camSecondsToMilliseconds(10));
 }
@@ -1073,7 +1094,7 @@ function eventStartLevel()
 	setTimer("advanceBlasterZone", camChangeOnDiff(camSecondsToMilliseconds(45)));
 	setTimer("fireBlaster", camSecondsToMilliseconds(0.1));
 
-	queue("blastLZ", camSecondsToMilliseconds(5));
+	queue("blastHQ", camSecondsToMilliseconds(5));
 	queue("setupMapGroups", camSecondsToMilliseconds(5));
 	queue("activateFirstFactories", camChangeOnDiff(camMinutesToMilliseconds(1.5)));
 	queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(10)));
