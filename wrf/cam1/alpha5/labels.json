@@ -86,8 +86,8 @@
         "label": "attackGroup1"
     },
     "area_5": {
-        "pos1": [17792, 3456],
-        "pos2": [18432, 3712],
+        "pos1": [17792, 3712],
+        "pos2": [18432, 3968],
         "label": "patrolGroup1"
     },
     "area_6": {
