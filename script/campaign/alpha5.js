@@ -76,6 +76,21 @@ camAreaEvent("attackTrigger4", function(droid)
 	}
 });
 
+camAreaEvent("doorTrigger", function(droid)
+{
+	// Only trigger if the player moves a droid in
+	if (droid.player === CAM_HUMAN_PLAYER)
+	{
+		// Play a message from Clippy
+		camPlayVideos({video: "CLIP_ALPHA5_MSG2", type: MISS_MSG});
+		camSetExtraObjectiveMessage(["Find a way to open the inconvenient doors", "Defeat Clippy"]);
+	}
+	else
+	{
+		resetLabel("doorTrigger", CAM_HUMAN_PLAYER);
+	}
+});
+
 function eventDestroyed(obj)
 {
 	if (camDef(obj) && obj !== null && getLabel(obj) === "clipCC")
@@ -115,18 +130,21 @@ function openDoors()
 		regroup: true,
 		count: -1
 	});
+
+	camSetExtraObjectiveMessage("Defeat Clippy");
 }
 
 function eventStartLevel()
 {
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "BYE_BYE");
+	camSetExtraObjectiveMessage("Defeat Clippy");
 	const startpos = getObject("startPosition");
 	const lz = getObject("landingZone");
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.25)));
-	// camPlayVideos({video: "MB1CA_MSG", type: CAMP_MSG});
+	camPlayVideos({video: "CLIP_ALPHA5_MSG1", type: MISS_MSG});
 
 	camCompleteRequiredResearch(mis_clippyRes, CAM_CLIPPY);
 

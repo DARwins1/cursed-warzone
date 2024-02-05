@@ -11,6 +11,10 @@ const mis_bonziRes = [
 	"R-Struc-RprFac-Upgrade01",
 ];
 
+var tonySpawned;
+var tonyGroup;
+var tonyMourned;
+
 // Sword Zone event
 function eventDestroyed(obj)
 {
@@ -33,6 +37,33 @@ function eventDestroyed(obj)
   			camSafeRemoveObject(doorList[i], true);
 		}
 	}
+
+	if (tonySpawned && !tonyMourned && obj.type === DROID && groupSize(tonyGroup) < 1)
+	{
+		// Mourn the loss of Tony
+		queue("tonyDeathMessage", camSecondsToMilliseconds(1));
+		tonyMourned = true;
+	}
+}
+
+function eventTransporterLanded(transport)
+{
+	camCallOnce("activateTony");
+}
+
+// OMG Tony!!!
+function activateTony()
+{
+	camPlayVideos({video: "TONY_ENCOUNTER", type: MISS_MSG});
+
+	// Tell Tony to attack
+	camManageGroup(tonyGroup, CAM_ORDER_ATTACK);
+}
+
+// RIP Tony :(
+function tonyDeathMessage()
+{
+	camPlayVideos({video: "TONY_DEATH", type: MISS_MSG});
 }
 
 function activateTempleFactories()
@@ -69,6 +100,25 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CAM_BONZI_BUDDY);
 	//fix wacky walls
 	camUpgradeOnMapStructures("A0HardcreteMk1Wall", "A0HardcreteMk1Wall", CAM_BONZI_BUDDY);
+
+	tonyGroup = camNewGroup();
+	tonyMourned = false;
+	setAlliance(CAM_BONZI_BUDDY, CAM_SCAV_7, true);
+	if (camRand(2) === 0 && !camIsResearched("Script-Tony-Encountered"))
+	{
+		// 50% chance of Tony being encountered on this level (if not encountered yet)
+		completeResearch("Script-Tony-Encountered");
+		// Spawn Tony
+		const pos = camMakePos("tonyGroup");
+		groupAdd(tonyGroup, addDroid(CAM_SCAV_7, pos.x, pos.y, 
+			_("Tony"), "B1BaBaPerson01", "BaBaLegs", "", "", "BabaMG"
+		));
+		tonySpawned = true;
+	}
+	else
+	{
+		tonySpawned = false;
+	}
 
 	// Add a funny sign and the giant door for the Sword area
 	camUpgradeOnMapFeatures("Pylon", "Sign5");

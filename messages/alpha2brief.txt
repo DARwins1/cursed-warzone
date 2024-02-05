@@ -1,1 +1,3 @@
 MB1B_MSG,0,3,2,cam1/cam1b_p.ogg,1,3,CAM1B_MSG1,CAM1B_MSG2,CAM1B_MSG3,0,0000,cam1/spam_intro.ogv,0,0,0,0000
+CLIP_ALPHA2_MSG1,0,1,1,cam1/clip_alpha2.ogv,0,0,0000
+CLIP_ALPHA2_MSG2,0,1,1,cam1/clip_alpha2post.ogv,0,0,0000

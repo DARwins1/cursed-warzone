@@ -1,4 +1,5 @@
 SPAM_ALPHA4_MSG,0,3,1,cam1/spam_alpha4.ogv,0,0,0,0000
-MB1C2_MSG,0,3,3,incomtns.ogg,1,1,NP_MSG1,0,0000,cam1/cam1cnp.ogg,0,1,NP_MSG2,0,0000,cam1/map1c.ogg,0,3,CAM1C_MSG4,CAM1C_MSG5,CAM1C_MSG6,0,0000
-MB1C3_MSG,0,3,2,prjupdat.ogg,1,1,P1-3A_MSG1,0,0000,cam1/cam1ccf.ogg,0,3,CAM1C_MSG7,CAM1C_MSG8,CAM1C_MSG9,0,0000
-MB1C4_MSG,0,3,2,prjupdat.ogg,1,1,P1-3A_MSG1,0,0000,cam1/cam1clz.ogg,0,2,CAM1C_MSG10,CAM1C_MSG11,0,0000
+CLIP_ALPHA4_MSG1,0,1,1,cam1/clip_alpha4door.ogv,0,0,0000
+CLIP_ALPHA4_MSG2,0,1,1,cam1/clip_alpha4pattern.ogv,0,0,0000
+TONY_ENCOUNTER,0,1,1,tony_encounter.ogv,0,0,0000
+TONY_DEATH,0,1,1,tony_death.ogv,0,0,0000

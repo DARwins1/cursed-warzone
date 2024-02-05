@@ -16,12 +16,49 @@ var door1Open;
 var door2Open;
 var door3Open;
 
+var tonySpawned;
+var tonyGroup;
+var tonyMourned;
+
 // True if Clippy has started launching transports
 var clippyTransportsActive;
 
 camAreaEvent("RemoveBeacon", function()
 {
 	hackRemoveMessage("C1C_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER);
+});
+
+camAreaEvent("tonyTrigger", function(droid)
+{
+	// Only trigger if the player moves a droid in
+	if (droid.player === CAM_HUMAN_PLAYER)
+	{
+		if (tonySpawned)
+		{
+			camPlayVideos({video: "TONY_ENCOUNTER", type: MISS_MSG});
+
+			// Tell Tony to attack
+			camManageGroup(tonyGroup, CAM_ORDER_ATTACK);
+		}
+	}
+	else
+	{
+		resetLabel("tonyTrigger", CAM_HUMAN_PLAYER);
+	}
+});
+
+camAreaEvent("patternZone1", function(droid)
+{
+	// Only trigger if the player moves a droid in
+	if (droid.player === CAM_HUMAN_PLAYER)
+	{
+		camPlayVideos({video: "CLIP_ALPHA4_MSG1", type: MISS_MSG});
+	}
+	else
+	{
+		resetLabel("patternZone1", CAM_HUMAN_PLAYER);
+	}
+
 });
 
 function eventStructureBuilt(structure, droid)
@@ -37,9 +74,12 @@ function eventStructureBuilt(structure, droid)
 		// The player has started working on the second pattern puzzle
 		// Clippy can help with that :)
 		clippyTransportsActive = true;
-		// TODO: Funny message from Clippy
+
 		setTimer("sendClippyTransport", camChangeOnDiff(camMinutesToMilliseconds(2)));
 		queue("sendClippyTransport", camSecondsToMilliseconds(10)); // Send one right away
+
+		// Funny message from Clippy
+		camPlayVideos({video: "CLIP_ALPHA4_MSG2", type: MISS_MSG});
 	}
 }
 
@@ -50,6 +90,19 @@ function eventDestroyed(obj)
 		// Make sure the isn't destroyed before the door is opened (in case the player forgets what to do)
 		addFeature("Sign2", obj.x, obj.y);
 	}
+	
+	if (tonySpawned && !tonyMourned && obj.type === DROID && groupSize(tonyGroup) < 1)
+	{
+		// Mourn the loss of Tony
+		queue("tonyDeathMessage", camSecondsToMilliseconds(1));
+		tonyMourned = true;
+	}
+}
+
+// RIP Tony :(
+function tonyDeathMessage()
+{
+	camPlayVideos({video: "TONY_DEATH", type: MISS_MSG});
 }
 
 // Send a transport to harrass the player as they try to do a puzzle
@@ -328,6 +381,24 @@ function eventStartLevel()
 	setAlliance(CAM_CLIPPY, CAM_SCAV_7, true);
 	camCompleteRequiredResearch(mis_enemyRes, CAM_CLIPPY);
 	camCompleteRequiredResearch(mis_enemyRes, CAM_SCAV_7);
+
+	tonyGroup = camNewGroup();
+	tonyMourned = false;
+	if (camRand(3) === 0)
+	{
+		// 33% chance of Tony being encountered on this level
+		completeResearch("Script-Tony-Encountered");
+		// Spawn Tony
+		const pos = camMakePos("tonyGroup");
+		groupAdd(tonyGroup, addDroid(CAM_SCAV_7, pos.x, pos.y, 
+			_("Tony"), "B1BaBaPerson01", "BaBaLegs", "", "", "BabaMG"
+		));
+		tonySpawned = true;
+	}
+	else
+	{
+		tonySpawned = false;
+	}
 
 	camSetEnemyBases({
 		"scavBase1": {

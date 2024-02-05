@@ -49,6 +49,17 @@
         "pos2": [7040, 1664],
         "label": "compromiseZone"
     },
+    "area_6": {
+        "pos1": [6144, 3200],
+        "pos2": [6400, 3456],
+        "label": "tonyGroup"
+    },
+    "area_7": {
+        "pos1": [3328, 1792],
+        "pos2": [8191, 2048],
+        "label": "tonyTrigger"
+    },
+
     "object_71": {
         "id": 1,
         "type": 2,

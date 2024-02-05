@@ -11,6 +11,10 @@ var pipisRoute1;
 var pipisRoute2;
 var escaping;
 
+var tonySpawned;
+var tonyGroup;
+var tonyMourned;
+
 function eventTransporterLanded(transport)
 {
 	camQueueDialogues([
@@ -18,6 +22,47 @@ function eventTransporterLanded(transport)
 		{text: "SPAMTON: WELCOME TO [[The Hole]] !!", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk1},
 		{text: "SPAMTON: I\"MSURE YOU'LL [Have a Blast!] BEFORE YOU REACH THE", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
 	]);
+
+	// Set up Tony
+	tonyGroup = camNewGroup();
+	tonyMourned = false;
+	setAlliance(CAM_SPAMTON, CAM_SCAV_7, true);
+	if (!camIsResearched("Script-Tony-Encountered"))
+	{
+		// 100% chance of Tony being encountered on this level (if not encountered yet)
+		completeResearch("Script-Tony-Encountered");
+		// Spawn Tony
+		const pos = camMakePos("tonyGroup");
+		groupAdd(tonyGroup, addDroid(CAM_SCAV_7, pos.x, pos.y, 
+			_("Tony"), "B1BaBaPerson01", "BaBaLegs", "", "", "BabaMG"
+		));
+		tonySpawned = true;
+	}
+	else
+	{
+		tonySpawned = false;
+	}
+}
+
+camAreaEvent("tonyTrigger", function(droid)
+{
+	if (droid.player === CAM_HUMAN_PLAYER && tonySpawned && !tonyMourned)
+	{
+		camPlayVideos({video: "TONY_ENCOUNTER", type: MISS_MSG});
+
+		// Tell Tony to attack
+		camManageGroup(tonyGroup, CAM_ORDER_ATTACK);
+	}
+	else
+	{
+		resetLabel("tonyTrigger", CAM_HUMAN_PLAYER);
+	}
+});
+
+// RIP Tony :(
+function tonyDeathMessage()
+{
+	camPlayVideos({video: "TONY_DEATH", type: MISS_MSG});
 }
 
 function eventDestroyed(obj)
@@ -32,6 +77,13 @@ function eventDestroyed(obj)
 		{
 			camSafeRemoveObject(vtols[i], true);
 		}
+	}
+
+	if (tonySpawned && !tonyMourned && obj.type === DROID && groupSize(tonyGroup) < 1)
+	{
+		// Mourn the loss of Tony
+		queue("tonyDeathMessage", camSecondsToMilliseconds(1));
+		tonyMourned = true;
 	}
 }
 

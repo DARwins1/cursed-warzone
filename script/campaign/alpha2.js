@@ -47,6 +47,9 @@ function doClippyRetreat()
 	{
 		camTrace("Sensor droid died before retreating.");
 	}
+
+	// Make Clippy say hi
+	camPlayVideos({video: "CLIP_ALPHA2_MSG1", type: MISS_MSG});
 }
 
 function eventDestroyed(obj)
@@ -82,9 +85,29 @@ function spamtonCheck()
 	}
 }
 
+function enemyCheck()
+{
+	if (!enumArea(0, 0, mapWidth, mapHeight, ENEMIES, false).length)
+	{
+		// if no more enemies, play a message from Clippy (and also let the player win)
+		camCallOnce("clippyPostMessage");
+		return true;
+	}
+	else
+	{
+		return undefined;
+	}
+}
+
+// Message from Clippy promising that he will continue to be """helpful"""
+function clippyPostMessage()
+{
+	camPlayVideos({video: "CLIP_ALPHA2_MSG2", type: MISS_MSG});
+}
+
 function eventStartLevel()
 {
-	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "SUB_1_1S");
+	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "SUB_1_1S", {callback: "enemyCheck"});
 	const startpos = getObject("startPosition");
 	const lz = getObject("landingZone");
 	centreView(startpos.x, startpos.y);

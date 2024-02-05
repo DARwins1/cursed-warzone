@@ -21,6 +21,11 @@ function scavAttack()
 	camManageGroup(AMBUSH_GROUP, CAM_ORDER_ATTACK);
 }
 
+function eventTransporterLanded(transport)
+{
+	camPlayVideos({video: "CLIP_ALPHA3_MSG", type: MISS_MSG});
+}
+
 //Mission setup stuff
 function eventStartLevel()
 {

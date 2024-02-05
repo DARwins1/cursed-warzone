@@ -49,6 +49,11 @@
         "pos2": [4480, 7424],
         "label": "compromiseZone"
     },
+    "area_6": {
+        "pos1": [4096, 4864],
+        "pos2": [4352, 5120],
+        "label": "tonyGroup"
+    },
     "object_30": {
         "id": 917,
         "type": 1,

@@ -62,7 +62,7 @@ function cam_eventChat(from, to, message)
 		return;
 	}
 	camTrace(from, to, message);
-	if (message === "let me win" && __camNextLevel !== "SURFACE_TENSION")
+	if (message === "let me win")
 	{
 		__camLetMeWin();
 	}

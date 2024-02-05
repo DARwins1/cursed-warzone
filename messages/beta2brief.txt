@@ -1,2 +1,3 @@
 SPAM_BETA2_MSG,0,1,1,cam2/spam_beta2.ogv,0,0,0000
-MB2_1_MSG2,0,1,1,cam2/cam2_1.ogg,3,CAM2_1_MSG3,CAM2_1_MSG4,CAM2_1_MSG5,0,0000
+TONY_ENCOUNTER,0,1,1,tony_encounter.ogv,0,0,0000
+TONY_DEATH,0,1,1,tony_death.ogv,0,0,0000

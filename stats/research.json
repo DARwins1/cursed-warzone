@@ -314,6 +314,12 @@
 		],
 		"statID": "CyborgChaingun"
 	},
+	"Script-Tony-Encountered": {
+		"iconID": "IMAGE_RES_COMPUTERTECH",
+		"id": "Script-Tony-Encountered",
+		"imdName": "exbloke.pie",
+		"name": "Tony Encountered"
+	},
 	"R-Wpn-TUTMG": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
 		"id": "R-Wpn-TUTMG",
