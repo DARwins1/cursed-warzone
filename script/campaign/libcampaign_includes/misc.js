@@ -422,36 +422,36 @@ function camGenerateRandomMapEdgeCoordinate(reachPosition)
 		if (camRand(100) < 50)
 		{
 			location.x = camRand(limits.x2 + 1);
-			if (location.x < (limits.x + 2))
+			if (location.x < (limits.x + 3))
 			{
-				location.x = limits.x + 2;
+				location.x = limits.x + 3;
 			}
-			else if (location.x > (limits.x2 - 2))
+			else if (location.x > (limits.x2 - 3))
 			{
-				location.x = limits.x2 - 2;
+				location.x = limits.x2 - 3;
 			}
 			xWasRandom = true;
 		}
 		else
 		{
-			location.x = (camRand(100) < 50) ? (limits.x2 - 2) : (limits.x + 2);
+			location.x = (camRand(100) < 50) ? (limits.x2 - 3) : (limits.x + 3);
 		}
 
 		if (!xWasRandom && (camRand(100) < 50))
 		{
 			location.y = camRand(limits.y2 + 1);
-			if (location.y < (limits.y + 2))
+			if (location.y < (limits.y + 3))
 			{
-				location.y = limits.y + 2;
+				location.y = limits.y + 3;
 			}
-			else if (location.y > (limits.y2 - 2))
+			else if (location.y > (limits.y2 - 3))
 			{
-				location.y = limits.y2 - 2;
+				location.y = limits.y2 - 3;
 			}
 		}
 		else
 		{
-			location.y = (camRand(100) < 50) ? (limits.y2 - 2) : (limits.y + 2);
+			location.y = (camRand(100) < 50) ? (limits.y2 - 3) : (limits.y + 3);
 		}
 
 		loc = location;
@@ -460,12 +460,13 @@ function camGenerateRandomMapEdgeCoordinate(reachPosition)
 	return loc;
 }
 
-//;; ## camGenerateRandomMapCoordinate(reachPosition)
+//;; ## camGenerateRandomMapCoordinate(reachPosition[, distFromReach[, scanObjectRadius]])
 //;;
 //;; Returns a random coordinate anywhere on the map
 //;;
 //;; @param {Object} reachPosition
-//;; @returns {Object}
+//;; @param {number} distFromReach
+//;; @param {number} scanObjectRadius
 //;;
 function camGenerateRandomMapCoordinate(reachPosition, distFromReach, scanObjectRadius)
 {
@@ -522,7 +523,7 @@ function camGenerateRandomMapCoordinate(reachPosition, distFromReach, scanObject
 //;;
 //;; @param {Object} center
 //;; @param {number} radius
-//;; @param {number} radius
+//;; @param {number} scanObjectRadius
 //;; @returns {Object}
 //;;
 function camGenerateRandomMapCoordinateWithinRadius(center, radius, scanObjectRadius)
@@ -1340,13 +1341,13 @@ function camRandomEffect(pos)
 			__camArtifacts["babelCrate"] = {tech: "R-Defense-TowerMEGA", placed: true };
 			break;
 		case "blackOut":
-			// Make the whole map go dark
-			__camBlackOut = true;
-			camSetSunPosition(0, 0, 0);
-			camSetSunIntensity(0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4);
-			playSound(camSounds.sfx.powerDown);
-			setTimer("__camPlayCaveSounds", camSecondsToMilliseconds(30));
-			queue("__camEndBlackOut", camMinutesToMilliseconds(4));
+			if (!__camBlackOut)
+			{
+				// Make the whole map go dark
+				camStartBlackOut();
+			}
+			// Lasts for about 4 minutes
+			queue("camEndBlackOut", camChangeOnDiff(camMinutesToMilliseconds(4)));
 			break;
 		default:
 			return;
@@ -1357,6 +1358,35 @@ function camRandomEffect(pos)
 		// If we spawned hostile units, order them to attack
 		camManageGroup(__NEW_GROUP, CAM_ORDER_ATTACK);
 	}
+}
+
+//;; ## camStartBlackOut()
+//;;
+//;; Make the map really, really dark.
+//;; Also start playing eerie noises.
+//;;
+//;; @returns {void}
+//;;
+function camStartBlackOut()
+{
+	__camBlackOut = true;
+	camSetSunPosition(0, 0, 0);
+	camSetSunIntensity(0.2, 0.2, 0.2, 0.4, 0.4, 0.4, 0.4, 0.4, 0.4);
+	playSound(camSounds.sfx.powerDown);
+	setTimer("__camPlayCaveSounds", camSecondsToMilliseconds(30));
+}
+
+//;; ## camEndBlackOut()
+//;;
+//;; Reset the sun back to its standard position and intensity, and end all black out effects
+//;;
+//;; @returns {void}
+//;;
+function camEndBlackOut()
+{
+	camResetSun();
+	removeTimer("__camPlayCaveSounds");
+	__camBlackOut = false;
 }
 
 //;; ## camSetSunPosition(x, y, z)
@@ -1622,6 +1652,28 @@ function __camTick()
 		__camGlobalContext()[__camWinLossCallback]();
 	}
 	__camBasesTick();
+}
+
+// Check for any transports that are stuck on cliff/water tiles
+// If we find one, manually call __camLandTransporter
+function __camCheckStuckTransports()
+{
+	for (let player = 0; player < __CAM_MAX_PLAYERS; player++)
+	{
+		const transports = enumDroid(player, DROID_SUPERTRANSPORTER);
+		for (let i = 0; i < transports.length; i++)
+		{
+			const pos = camMakePos(transports[i]);
+			// Check the position below the transport (if idle)
+			if (transports[i].order === 0 // DORDER_NONE
+				&& (terrainType(pos.x, pos.y) === TER_CLIFFFACE || terrainType(pos.x, pos.y) === TER_WATER))
+			{
+				// Manually "land" the transporter
+				// eventTransporterLanded is not called if the transporter lands on a cliff
+				__camLandTransporter(player, pos);
+			}
+		}
+	}	
 }
 
 //Reset AI power back to highest storage possible.
@@ -2117,14 +2169,6 @@ function __camPlayCaveSounds()
 	];
 
 	playSound(caveSounds[camRand(caveSounds.length)]);
-}
-
-// Reset the sun back to its standard position and intensity, and end all black out effects
-function __camEndBlackOut()
-{
-	camResetSun();
-	removeTimer("__camPlayCaveSounds");
-	__camBlackOut = false;
 }
 
 // Fake a Spy Cyborg's demise

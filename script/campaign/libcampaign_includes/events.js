@@ -159,7 +159,8 @@ function cam_eventStartLevel()
 	setTimer("__updateNeedlerLog", camSecondsToMilliseconds(8));
 	setTimer("__camSpyFeignTick", camSecondsToMilliseconds(0.5));
 	setTimer("__camMonsterSpawnerTick", camSecondsToMilliseconds(16));
-	setTimer("__camPlayScheduledDialogues", camSecondsToMilliseconds(.1))
+	setTimer("__camPlayScheduledDialogues", camSecondsToMilliseconds(.1));
+	setTimer("__camCheckStuckTransports", camSecondsToMilliseconds(1));
 	queue("__camShowBetaHintEarly", camSecondsToMilliseconds(4));
 	queue("__camGrantSpecialResearch", camSecondsToMilliseconds(6));
 	queue("camResetSun", camSecondsToMilliseconds(0.1)); // Set the sun correctly for the current campaign

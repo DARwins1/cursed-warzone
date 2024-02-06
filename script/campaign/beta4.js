@@ -30,6 +30,7 @@ var setupTime; // True when it is currently the setup period between waves.
 var coreGroup; // Group of "core" wave units. Wave ends when group is empty and spawning is done.
 var spectatorGroup; // Group containing all spectator units. Made so they don't get automatically regrouped.
 var winFlag; // Whether the player has won.
+var blackOut; // Whether the arena has been blacked out.
 
 camAreaEvent("vtolRemoveZone", function(droid)
 {
@@ -223,6 +224,7 @@ function advanceWave()
 				{text: "ARENA ANNOUNCER: 5$ have been wired to your account.", delay: camSecondsToMilliseconds(24), sound: camSounds.announcer.end_4},
 			];
 			queue("allowVictory", camSecondsToMilliseconds(29));
+			if (blackOut) camEndBlackOut();
 			break;
 	}
 	camQueueDialogues(dialogue);
@@ -255,7 +257,7 @@ function updateBillboardTexture(gameLoad)
 {
 	if (waveIndex > 0 && waveIndex < 13)
 	{
-		const OLD_TEXTURE = (gameLoad) ? "page-506-cursedsignsarena1.png" : mis_billboardTextures[waveIndex - 1];
+		let oldTexture = (gameLoad) ? "page-506-cursedsignsarena1.png" : mis_billboardTextures[waveIndex - 1];
 		let newTexture = mis_billboardTextures[waveIndex];
 		// These waves have varying unit compositions depending on the difficulty
 		if (waveIndex === 4 || waveIndex === 7 || waveIndex === 8
@@ -263,15 +265,29 @@ function updateBillboardTexture(gameLoad)
 		{
 			if (difficulty <= EASY)
 			{
-				newTexture = newTexture.concat(newTexture.substring(0, newTexture.length() - 4, "easy.png");
+				newTexture = newTexture.substring(0, newTexture.length - 4).concat("easy.png");
 			}
 			else if (difficulty >= HARD)
 			{
-				newTexture = newTexture.concat(newTexture.substring(0, newTexture.length() - 4, "hard.png");
+				newTexture = newTexture.substring(0, newTexture.length - 4).concat("hard.png");
+			}
+		}
+		// Also check the previous wave
+		const PREV_WAVE_INDEX = waveIndex - 1;
+		if (!gameLoad && (PREV_WAVE_INDEX === 4 || PREV_WAVE_INDEX === 7 || PREV_WAVE_INDEX === 8
+			|| PREV_WAVE_INDEX === 9 || PREV_WAVE_INDEX === 10 || PREV_WAVE_INDEX === 12))
+		{
+			if (difficulty <= EASY)
+			{
+				oldTexture = oldTexture.substring(0, oldTexture.length - 4).concat("easy.png");
+			}
+			else if (difficulty >= HARD)
+			{
+				oldTexture = oldTexture.substring(0, oldTexture.length - 4).concat("hard.png");
 			}
 		}
 
-		replaceTexture(OLD_TEXTURE, newTexture);
+		replaceTexture(oldTexture, newTexture);
 	}
 }
 
@@ -314,7 +330,7 @@ function updateBillboardTexture(gameLoad)
 // WAVE 12 (BOSS)
 // Core Units: Giant Freddy Fazbear
 // Support Units: Cooler MG Cyborgs, BB Cyborgs, Many-Rocket Pod (half-track), Peppersprays (half-track), and Transporter (Explosive Drums)
-// Notes: A "Blackout" event will be triggered on the start of the round (might be reserved for higher difficulties).
+// Notes: A "Blackout" event will be triggered when Freddy reaches half health (might be reserved for higher difficulties).
 
 // Start the wave!
 function beginWave()
@@ -411,9 +427,7 @@ function beginWave()
 			spawnCoreUnits();
 			spawnSupportUnits();
 			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(10)));
-			// camSetVtolData(CAM_BONZI_BUDDY, undefined, camMakePos("vtolRemoveZone"), [cTempl.colatv],
-			// 	camSecondsToMilliseconds(10), undefined, {minVTOLs: 20, maxRandomVTOLs: 0}
-			// );
+			setTimer("checkFreddyHP", camSecondsToMilliseconds(2));
 			break;
 		default:
 			break;
@@ -426,12 +440,13 @@ function beginWave()
 function spawnCoreUnits()
 {
 	coreIndex++;
+	clearSpawnZones();
 
 	switch (waveIndex)
 	{
 		case 1: // Spawn a total of 10 Zombies, 10 Skeletons, and 2 Creepers
 		{
-			let SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];;
+			let SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
 			switch (coreIndex)
 			{
 				case 1: 
@@ -1151,6 +1166,19 @@ function spawnSupportUnits()
 	}
 }
 
+// Remove any features from spawn zones
+function clearSpawnZones()
+{
+	for (let i = 0; i < mis_spawnZones.length; i++)
+	{
+		const features = enumArea(mis_spawnZones[i]).filter((obj) => (obj.type === FEATURE));
+		for (let j = 0; j < features.length; j++)
+		{
+			camSafeRemoveObject(features[j], true);
+		}
+	}
+}
+
 // Blows up the arena if wave 6 isn't completed in time
 function detonateArena()
 {
@@ -1245,6 +1273,33 @@ function eventTransporterLanded(transport)
 function stopVtols()
 {
 	camSetVtolSpawnStateAll(false);
+}
+
+// Perform events based on the bear's current health
+function checkFreddyHP()
+{
+	if (groupSize(coreGroup) > 0 && camDef(enumGroup(coreGroup)[0]))
+	{
+		// Freddy should be the only unit in this group
+		const freddy = enumGroup(coreGroup)[0];
+		if (freddy.health < 50 && difficulty >= MEDIUM)
+		{
+			// Turn off the lights
+			camCallOnce("arenaBlackOut");
+		}
+		if (freddy.health < 1)
+		{
+			// Fix weird bug where Freddy doesn't die :/
+			camSafeRemoveObject(freddy, true);
+		}
+	}
+}
+
+// Cut the lights
+function arenaBlackOut()
+{
+	camStartBlackOut();
+	blackOut = true;
 }
 
 // Deal damage to any player object too close to the edge of the arena (marked by polished deepslate)
@@ -1408,6 +1463,7 @@ function eventStartLevel()
 	doneSpawning = true;
 	setupTime = false;
 	winFlag = false;
+	blackOut = false;
 
 	// Create a persistent group to put core wave units into.
 	// The wave will end when all of the units in this group die.

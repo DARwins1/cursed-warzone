@@ -199,6 +199,10 @@ function eventStartLevel()
 
 	camPlayVideos({video: "BETA6_MSG", type: CAMP_MSG});
 
+	// Hack to prevent spamtonized mob units
+	// TODO: Figure out why units are getting spamtonized in the first place
+	camCompleteRequiredResearch(["Script-Spamtonize-Undo"], CAM_MOBS);
+
 	// Add Endermen
 	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.enderman, CAM_MOBS);
 	// Choose a random Nextbot type

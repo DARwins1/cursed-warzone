@@ -197,7 +197,7 @@ function eventAttacked(victim, attacker)
 		}
 
 		if ((victim.group === bossGroup || attacker.group === bossGroup) 
-			&& bonziBossStatus() === true && lastTauntTime <= gameTime - camSecondsToMilliseconds(10))
+			&& bonziBossStatus() !== true && lastTauntTime <= gameTime - camSecondsToMilliseconds(10))
 		{
 			// Play a random taunt
 			lastTauntTime = gameTime;
@@ -409,6 +409,11 @@ function eventStartLevel()
 	setPattern();
 	playerDetected = false;
 	lastTauntTime = gameTime;
+
+	// Hack to prevent spamtonized bonzi/mob units
+	// TODO: Figure out why units are getting spamtonized in the first place
+	camCompleteRequiredResearch(["Script-Spamtonize-Undo"], CAM_BONZI_BUDDY);
+	camCompleteRequiredResearch(["Script-Spamtonize-Undo"], CAM_MOBS);
 
 	// Replace all snowy trees with funny explosive barrels
 	camUpgradeOnMapFeatures("TreeSnow3", "ExplosiveDrum");
