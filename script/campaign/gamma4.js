@@ -847,14 +847,14 @@ function blastHQ()
 
 	// '+' shaped pattern (sort of)
 	// Fire in the center once
-	setBlasterTarget(camMakePos(X_COORD - 2, Y_COORD + 0), 10);
+	setBlasterTarget(camMakePos(X_COORD + 0, Y_COORD + 0), 10);
 	// Fire around the center clockwise
 	setBlasterTarget(camMakePos(X_COORD - 2, Y_COORD + 0), 11);
 	setBlasterTarget(camMakePos(X_COORD + 0, Y_COORD - 2), 11 + (0.1 * 1));
 	setBlasterTarget(camMakePos(X_COORD + 2, Y_COORD + 0), 11 + (0.1 * 2));
 	setBlasterTarget(camMakePos(X_COORD + 0, Y_COORD + 2), 11 + (0.1 * 3));
 	// Fire in the center again
-	setBlasterTarget(camMakePos(X_COORD - 2, Y_COORD + 0), 12);
+	setBlasterTarget(camMakePos(X_COORD + 0, Y_COORD + 0), 12);
 
 	queue("blastMessage", camSecondsToMilliseconds(10));
 }
