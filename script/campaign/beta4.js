@@ -1282,7 +1282,7 @@ function checkFreddyHP()
 	{
 		// Freddy should be the only unit in this group
 		const freddy = enumGroup(coreGroup)[0];
-		if (freddy.health < 50 && difficulty >= MEDIUM)
+		if (freddy.health < 50 && difficulty >= HARD)
 		{
 			// Turn off the lights
 			camCallOnce("arenaBlackOut");
