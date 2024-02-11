@@ -1,6 +1,11 @@
-PIE 3
-TYPE 10200
-TEXTURE 0 page-34-buildings.png 0 0
+PIE 4
+TYPE 200
+TEXTURE 0 page-34-buildings.png
+TCMASK 0 page-34_tcmask.png
+TEXTURE 1 page-512-buildings-alt.png
+TCMASK 1 page-512_tcmask.png
+TEXTURE 2 page-512-buildings-alt.png
+TCMASK 2 page-512_tcmask.png
 LEVELS 1
 LEVEL 1
 POINTS 31
