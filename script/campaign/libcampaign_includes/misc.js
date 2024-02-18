@@ -2229,7 +2229,7 @@ function __camSpyFeignTick()
 					// Pick somehwere at the LZ
 					const lzNames = ["landingZone", "LZ"]; // Bit of a brain-dead solution but oh well
 					// Special case for Gamma 4 since it has two LZ's
-					if (__camNextLevel === "BIG_SHOT" && getMissionTime() < 7200)
+					if (__camNextLevel === "BIG_SHOT" && getMissionTime() < 86400)
 					{
 						lzNames.push("landingZone1");
 					}
