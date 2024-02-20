@@ -717,7 +717,7 @@ const __camSpamtonReplacableStructs = [
 	"WallTower03Mk5","WallTower03Mk6","WallTower03Mk7",
 	"WallTower03Mk8","WallTower03Mk9","WallTower03Mk10",
 	"WallTower03Mk11","WallTower03Mk12","WallTower03Mk13",
-	"WallTower03Mk14","WallTower03Mk15",
+	"WallTower03Mk14","WallTower03Mk15", "WallTower01",
 ];
 const __camSpamtonReplacementStructs = [
 	"GuardTower-MEGASpam", "Spawner-ZombieSpam", "Spawner-SkeletonSpam",
@@ -734,7 +734,7 @@ const __camSpamtonReplacementStructs = [
 	"WallTower03Mk5Spam","WallTower03Mk6Spam","WallTower03Mk7Spam",
 	"WallTower03Mk8Spam","WallTower03Mk9Spam","WallTower03Mk10Spam",
 	"WallTower03Mk11Spam","WallTower03Mk12Spam","WallTower03Mk13Spam",
-	"WallTower03Mk14Spam","WallTower03Mk15Spam",
+	"WallTower03Mk14Spam","WallTower03Mk15Spam", "WallTower01Spam",
 ];
 
 //nexus

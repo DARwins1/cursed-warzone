@@ -48,7 +48,10 @@ function eventDestroyed(obj)
 
 function eventTransporterLanded(transport)
 {
-	camCallOnce("activateTony");
+	if (tonySpawned)
+	{
+		camCallOnce("activateTony");
+	}
 }
 
 // OMG Tony!!!

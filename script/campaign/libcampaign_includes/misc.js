@@ -2378,6 +2378,7 @@ function __camSpamtonize(obj)
 		camUpgradeOnMapStructures("X-Super-MG", "X-Super-MGSpam", CAM_SPAMTON); // Machinegun Fortress
 		camUpgradeOnMapStructures("WallTower06", "WallTower06Spam", CAM_SPAMTON); // Sawed-Off Lancer Hardpoint
 		camUpgradeOnMapStructures("WallTowerMG", "WallTowerMGSpam", CAM_SPAMTON); // Machinegun Hardpoint
+		camUpgradeOnMapStructures("WallTower01", "WallTower01Spam", CAM_SPAMTON); // Realistic Heavy Machinegun Hardpoint
 
 		camUpgradeOnMapStructures("WallTower03Mk2", "WallTower03Mk2Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 2
 		camUpgradeOnMapStructures("WallTower03Mk3", "WallTower03Mk3Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 3

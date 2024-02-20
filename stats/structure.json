@@ -3671,6 +3671,30 @@
         ],
         "width": 1
     },
+    "WallTower01Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 100,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower01Spam",
+        "name": "Spamton Realistic Heavy Machinegun Hardpoint",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "MG3Mk1"
+        ],
+        "width": 1
+    },
     "WallTower02": {
         "armour": 15,
         "breadth": 1,
