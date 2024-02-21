@@ -225,7 +225,7 @@ function eventStartLevel()
 	camEnableFactory("castleFactory2");
 
 	// set up timers for other bases
-	queue("activateTempleFactories", camChangeOnDiff(camMinutesToMilliseconds(2)));
-	queue("activateFarmFactories", camChangeOnDiff(camMinutesToMilliseconds(1.5)));
+	queue("activateTempleFactories", camChangeOnDiff(camMinutesToMilliseconds(8)));
+	queue("activateFarmFactories", camChangeOnDiff(camMinutesToMilliseconds(4)));
 
 }
