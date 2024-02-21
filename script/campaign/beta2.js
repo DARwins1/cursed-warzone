@@ -161,7 +161,7 @@ function eventStartLevel()
 			assembly: "tankAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(55)),
 			data: {
 				regroup: false,
 				repair: 20,
@@ -173,7 +173,7 @@ function eventStartLevel()
 			assembly: "tankAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 5,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(40)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(50)),
 			data: {
 				regroup: false,
 				repair: 60,
@@ -185,7 +185,7 @@ function eventStartLevel()
 			assembly: "tankAssembly3",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 5,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(55)),
 			data: {
 				regroup: true,
 				repair: 40,
@@ -197,7 +197,7 @@ function eventStartLevel()
 			assembly: "cybAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 5,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(40)),
 			data: {
 				regroup: false,
 				repair: 40,
@@ -209,7 +209,7 @@ function eventStartLevel()
 			assembly: "cybAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 7,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(30)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(40)),
 			data: {
 				regroup: true,
 				repair: 40,
