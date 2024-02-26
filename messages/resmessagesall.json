@@ -599,5 +599,13 @@
 			"Do you have what it takes to build this monstrosity and reach the heavens?",
 			"WARNING: Might be an affront to God."
 		]
+	},
+	"RES_DEATH": {
+		"id": "RES_DEATH",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_spamton.ogv",
+		"text": [
+			"how are you reading this"
+		]
 	}
 }

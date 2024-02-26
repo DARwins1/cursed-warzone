@@ -1013,145 +1013,145 @@
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death01",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-Death02": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death02",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-Death03": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death03",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-Death04": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death04",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-Death05": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death05",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-Death06": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death06",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-Death07": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death07",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-Death08": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death08",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-Death09": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death09",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-Death10": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death10",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-Death11": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death11",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-Death12": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Comp-Death12",
 		"imdName": "drnextbot3.PIE",
+		"msgName": "RES_DEATH",
 		"name": "[Research] THIS POST TO INSTANTLY [[Die]]",
 		"requiredResearch": [
 			"CAM3RESEARCH"
 		],
 		"researchPoints": 10,
-		"researchPower": 1997,
-		"techCode": 1
+		"researchPower": 1997
 	},
 	"R-Comp-MissileCodes01": {
 		"iconID": "IMAGE_RES_SYSTEMTECH",

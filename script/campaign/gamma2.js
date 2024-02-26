@@ -93,6 +93,7 @@ camAreaEvent("routeTrigger1", function(droid)
 	if (droid.player === CAM_HUMAN_PLAYER && !isVTOL(droid) && !(droid.droidType === DROID_SUPERTRANSPORTER))
 	{
 		if (pipisRoute1 == null) pipisRoute1 = "left";
+
 		if (!escaping)
 		{
 			camCallOnce("spamtonHalfWayDialogue");
@@ -113,6 +114,7 @@ camAreaEvent("routeTrigger2", function(droid)
 	if (droid.player === CAM_HUMAN_PLAYER && !isVTOL(droid) && !(droid.droidType === DROID_SUPERTRANSPORTER))
 	{
 		if (pipisRoute1 == null) pipisRoute1 = "right";
+
 		if (!escaping)
 		{
 			camCallOnce("spamtonHalfWayDialogue");
@@ -263,7 +265,7 @@ function eventStartLevel()
 			assembly: "spamAssembly",
 			order: CAM_ORDER_COMPROMISE,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(8)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(12)),
 			data: {
 				regroup: false,
 				pos: camMakePos("landingZone")
