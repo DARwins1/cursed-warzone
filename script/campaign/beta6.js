@@ -55,8 +55,7 @@ function checkPattern()
 				patternCount++;
 				const object = getObject(pZone.x + x, pZone.y + y);
 				if (object === null 
-					|| !(object.type === STRUCTURE && object.player === CAM_HUMAN_PLAYER)
-					|| !(obj.type === FEATURE && obj.name === _("Explosive Drum")))
+					|| !((object.type === STRUCTURE && object.player === CAM_HUMAN_PLAYER) || (object.type === FEATURE && object.name === _("Explosive Drum"))))
 				{
 					// Didn't find a structure where one should have been, no need to check further
 					return;
