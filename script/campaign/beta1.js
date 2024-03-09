@@ -482,7 +482,7 @@ function eventStartLevel()
 			assembly: "bbAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 5,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(40)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(70)),
 			data: {
 				regroup: true,
 				count: -1,
@@ -493,7 +493,7 @@ function eventStartLevel()
 			assembly: "bbCybAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 8,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(55)),
 			data: {
 				regroup: true,
 				count: -1,
@@ -504,7 +504,7 @@ function eventStartLevel()
 			assembly: "bbCybAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(35)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
 			data: {
 				regroup: true,
 				repair: 40,
@@ -516,7 +516,7 @@ function eventStartLevel()
 			assembly: "bbCybAssembly3",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(45)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(60)),
 			data: {
 				regroup: false,
 				count: -1,

@@ -2336,6 +2336,20 @@ function __camUpdateSwappableUnits()
 			donateDelay += __CAM_TICKS_PER_FRAME;
 		}
 	}
+	queue("__camSwappableFailsafe", camSecondsToMilliseconds(donateDelay += __CAM_TICKS_PER_FRAME));
+}
+
+// Sometimes when changing level units that have their weapons swapped don't get returned to the player.
+// Instead of actually figuring out what's causing this, this function just forces them to be donated back to the player.
+function __camSwappableFailsafe()
+{
+	// Check for any Fungible Cannons or Warranty-Expired Lancers
+	const droidList = enumDroid(10, DROID_WEAPON);
+	let donateDelay = __CAM_TICKS_PER_FRAME;
+	for (let i = 0; i < droidList.length; i++)
+	{
+		donateObject(droidList[i], CAM_HUMAN_PLAYER);
+	}
 }
 
 // Replaces structures and components with Spamton-themed ones.

@@ -1119,4 +1119,5 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("Sys-NX-SensorTower", "Spawner-ZombieSpamton", CAM_SPAMTON);
 	camUpgradeOnMapStructures("Sys-NX-CBTower", "Spawner-SkeletonSpamton", CAM_SPAMTON);
 	camUpgradeOnMapStructures("Sys-NX-VTOL-RadTow", "Spawner-CreeperSpamton", CAM_SPAMTON);
+	camUpgradeOnMapStructures("A0CommandCentre", "A0CommandCentreNE", CAM_SPAMTON);
 }

@@ -5554,7 +5554,7 @@
         "shortRange": 1024,
         "waterGfx": "FXSFlms.PIE",
         "weaponClass": "KINETIC",
-        "weaponEffect": "ANTI PERSONNEL",
+        "weaponEffect": "ALL ROUNDER",
         "weaponSubClass": "ELECTRONIC",
         "weaponWav": "nxstower.ogg"
     },

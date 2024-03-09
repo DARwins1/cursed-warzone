@@ -592,6 +592,7 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", CAM_SPAMTON);
 	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre2", CAM_SPAMTON);
 	camUpgradeOnMapStructures("X-Super-Cannon", "Pillbox-Big", CAM_SPAMTON);
+	camUpgradeOnMapStructures("A0CommandCentre", "A0CommandCentreNE", CAM_SPAMTON);
 
 	queue("spamAmbush1", camSecondsToMilliseconds(35)); // Also sets up patrols
 	camQueueDialogues([

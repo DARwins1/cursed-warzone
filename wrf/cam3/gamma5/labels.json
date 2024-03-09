@@ -1,268 +1,376 @@
 {
-    "position_0": {
-        "pos": [23286, 16558],
-        "label": "spamPatrolPos1"
-    },
-    "position_1": {
-        "pos": [19139, 15715],
-        "label": "spamPatrolPos2"
-    },
-    "position_2": {
-        "pos": [15252, 17856],
-        "label": "spamPatrolPos3"
-    },
-    "position_3": {
-        "pos": [16098, 15967],
-        "label": "spamPatrolPos4"
-    },
-    "position_4": {
-        "pos": [29401, 13963],
-        "label": "spamPatrolPos5"
-    },
-    "position_5": {
-        "pos": [27443, 10312],
-        "label": "spamPatrolPos6"
-    },
-    "position_6": {
-        "pos": [30072, 10359],
-        "label": "spamPatrolPos7"
-    },
-    "position_7": {
-        "pos": [28575, 7312],
-        "label": "spamPatrolPos8"
-    },
-    "position_8": {
-        "pos": [13799, 4508],
-        "label": "spamPatrolPos9"
-    },
-    "position_9": {
-        "pos": [18605, 2783],
-        "label": "spamPatrolPos10"
-    },
-    "position_10": {
-        "pos": [23397, 2986],
-        "label": "spamPatrolPos11"
-    },
-    "position_11": {
-        "pos": [19406, 4659],
-        "label": "spamPatrolPos12"
-    },
-    "position_12": {
-        "pos": [16935, 1653],
-        "label": "spamPatrolPos13"
-    },
-    "position_13": {
-        "pos": [11595, 18393],
-        "label": "spamAssembly1"
-    },
-    "position_14": {
-        "pos": [18625, 15289],
-        "label": "spamAssembly2"
-    },
-    "position_15": {
-        "pos": [27582, 19130],
-        "label": "spamAssembly3"
-    },
-    "position_16": {
-        "pos": [28992, 1235],
-        "label": "spamAssembly4"
-    },
-    "position_17": {
-        "pos": [27688, 1224],
-        "label": "spamAssembly5"
-    },
-    "position_18": {
-        "pos": [20921, 1736],
-        "label": "spamAssembly6"
-    },
-    "position_19": {
-        "pos": [12845, 19632],
-        "label": "spamCybAssembly1"
-    },
-    "position_20": {
-        "pos": [30268, 18757],
-        "label": "spamCybAssembly2"
-    },
-    "position_21": {
-        "pos": [30274, 18218],
-        "label": "spamCybAssembly3"
-    },
-    "position_22": {
-        "pos": [28482, 946],
-        "label": "spamCybAssembly4"
-    },
-    "position_23": {
-        "pos": [11730, 839],
-        "label": "spamCybAssembly5"
-    },
-    "position_24": {
-        "pos": [26304, 15683],
-        "label": "spamNormAssembly1"
-    },
-    "position_25": {
-        "pos": [11582, 1088],
-        "label": "spamNormAssembly2"
-    },
-    "position_26": {
-        "pos": [11583, 1853],
-        "label": "spamNormAssembly3"
-    },
-    "position_27": {
-        "pos": [29626, 17048],
-        "label": "spamMiniPatrolPos1"
-    },
-    "position_28": {
-        "pos": [29547, 18360],
-        "label": "spamMiniPatrolPos2"
-    },
-    "position_29": {
-        "pos": [26087, 18853],
-        "label": "spamMiniPatrolPos3"
-    },
+	"position_0": {
+		"label": "spamPatrolPos1",
+		"pos": [23286, 16558]
+	},
 
-    "area_0": {
-        "pos1": [17536, 16640],
-        "pos2": [18176, 17152],
-        "label": "spamPatrolGroup1"
-    },
-    "area_1": {
-        "pos1": [23296, 7424],
-        "pos2": [23680, 7808],
-        "label": "landingZone"
-    },
-    "area_2": {
-        "pos1": [28672, 8192],
-        "pos2": [29696, 8832],
-        "label": "spamPatrolGroup2"
-    },
-    "area_3": {
-        "pos1": [18176, 2816],
-        "pos2": [18560, 3200],
-        "label": "spamPatrolGroup3"
-    },
-    "area_4": {
-        "pos1": [11136, 16000],
-        "pos2": [17664, 20224],
-        "label": "spamBase1"
-    },
-    "area_5": {
-        "pos1": [29056, 17152],
-        "pos2": [29952, 18688],
-        "label": "spamMiniPatrolGroup"
-    },
-    "area_6": {
-        "pos1": [17152, 14848],
-        "pos2": [21248, 16768],
-        "label": "spamBase2"
-    },
-    "area_7": {
-        "pos1": [24448, 15488],
-        "pos2": [30464, 19712],
-        "label": "spamBase3"
-    },
-    "area_8": {
-        "pos1": [28544, 8704],
-        "pos2": [30720, 11904],
-        "label": "spamBase4"
-    },
-    "area_9": {
-        "pos1": [25088, 768],
-        "pos2": [30592, 6656],
-        "label": "spamBase5"
-    },
-    "area_10": {
-        "pos1": [19200, 1280],
-        "pos2": [21504, 3072],
-        "label": "spamBase6"
-    },
-    "area_11": {
-        "pos1": [10624, 512],
-        "pos2": [16640, 5888],
-        "label": "spamBase7"
-    },
 
-    "object_1": {
-        "id": 42,
-        "type": 1,
-        "player": 3,
-        "label": "spamNormFactory1"
-    },
-    "object_4": {
-        "id": 3,
-        "type": 1,
-        "player": 3,
-        "label": "spamNormFactory2"
-    },
-    "object_25": {
-        "id": 35,
-        "type": 1,
-        "player": 3,
-        "label": "spamFactory5"
-    },
-    "object_28": {
-        "id": 39,
-        "type": 1,
-        "player": 3,
-        "label": "spamCybFactory4"
-    },
-    "object_33": {
-        "id": 38,
-        "type": 1,
-        "player": 3,
-        "label": "spamFactory4"
-    },
-    "object_36": {
-        "id": 47,
-        "type": 1,
-        "player": 3,
-        "label": "spamFactory3"
-    },
-    "object_38": {
-        "id": 1329,
-        "type": 1,
-        "player": 3,
-        "label": "spamCybFactory3"
-    },
-    "object_39": {
-        "id": 25,
-        "type": 1,
-        "player": 3,
-        "label": "spamCybFactory5"
-    },
-    "object_45": {
-        "id": 1328,
-        "type": 1,
-        "player": 3,
-        "label": "spamCybFactory2"
-    },
-    "object_48": {
-        "id": 28,
-        "type": 1,
-        "player": 3,
-        "label": "spamFactory6"
-    },
-    "object_1070": {
-        "id": 51,
-        "type": 1,
-        "player": 3,
-        "label": "spamCybFactory1"
-    },
-    "object_1173": {
-        "id": 1763,
-        "type": 1,
-        "player": 3,
-        "label": "spamFactory2"
-    },
-    "object_1557": {
-        "id": 50,
-        "type": 1,
-        "player": 3,
-        "label": "spamFactory1"
-    },
-    "object_1628": {
-        "id": 6,
-        "type": 1,
-        "player": 3,
-        "label": "spamNormFactory3"
-    }
+	"position_1": {
+		"label": "spamPatrolPos2",
+		"pos": [19139, 15715]
+	},
+
+
+	"position_2": {
+		"label": "spamPatrolPos3",
+		"pos": [15252, 17856]
+	},
+
+
+	"position_3": {
+		"label": "spamPatrolPos4",
+		"pos": [16098, 15967]
+	},
+
+
+	"position_4": {
+		"label": "spamPatrolPos5",
+		"pos": [29401, 13963]
+	},
+
+
+	"position_5": {
+		"label": "spamPatrolPos6",
+		"pos": [27443, 10312]
+	},
+
+
+	"position_6": {
+		"label": "spamPatrolPos7",
+		"pos": [30072, 10359]
+	},
+
+
+	"position_7": {
+		"label": "spamPatrolPos8",
+		"pos": [28575, 7312]
+	},
+
+
+	"position_8": {
+		"label": "spamPatrolPos9",
+		"pos": [13799, 4508]
+	},
+
+
+	"position_9": {
+		"label": "spamPatrolPos10",
+		"pos": [18605, 2783]
+	},
+
+
+	"position_10": {
+		"label": "spamPatrolPos11",
+		"pos": [23397, 2986]
+	},
+
+
+	"position_11": {
+		"label": "spamPatrolPos12",
+		"pos": [19406, 4659]
+	},
+
+
+	"position_12": {
+		"label": "spamPatrolPos13",
+		"pos": [16935, 1653]
+	},
+
+
+	"position_13": {
+		"label": "spamAssembly1",
+		"pos": [11595, 18393]
+	},
+
+
+	"position_14": {
+		"label": "spamAssembly2",
+		"pos": [18625, 15289]
+	},
+
+
+	"position_15": {
+		"label": "spamAssembly3",
+		"pos": [27582, 19130]
+	},
+
+
+	"position_16": {
+		"label": "spamAssembly4",
+		"pos": [28992, 1235]
+	},
+
+
+	"position_17": {
+		"label": "spamAssembly5",
+		"pos": [27688, 1224]
+	},
+
+
+	"position_18": {
+		"label": "spamAssembly6",
+		"pos": [20921, 1736]
+	},
+
+
+	"position_19": {
+		"label": "spamCybAssembly1",
+		"pos": [12845, 19632]
+	},
+
+
+	"position_20": {
+		"label": "spamCybAssembly2",
+		"pos": [30268, 18757]
+	},
+
+
+	"position_21": {
+		"label": "spamCybAssembly3",
+		"pos": [30274, 18218]
+	},
+
+
+	"position_22": {
+		"label": "spamCybAssembly4",
+		"pos": [28482, 946]
+	},
+
+
+	"position_23": {
+		"label": "spamCybAssembly5",
+		"pos": [11730, 839]
+	},
+
+
+	"position_24": {
+		"label": "spamNormAssembly1",
+		"pos": [26304, 15683]
+	},
+
+
+	"position_25": {
+		"label": "spamNormAssembly2",
+		"pos": [11582, 1088]
+	},
+
+
+	"position_26": {
+		"label": "spamNormAssembly3",
+		"pos": [11583, 1853]
+	},
+
+
+	"position_27": {
+		"label": "spamMiniPatrolPos1",
+		"pos": [29626, 17048]
+	},
+
+
+	"position_28": {
+		"label": "spamMiniPatrolPos2",
+		"pos": [29547, 18360]
+	},
+
+
+	"position_29": {
+		"label": "spamMiniPatrolPos3",
+		"pos": [26087, 18853]
+	},
+
+
+	"area_0": {
+		"label": "spamPatrolGroup1",
+		"pos1": [17536, 16640],
+		"pos2": [18176, 17152]
+	},
+
+
+	"area_1": {
+		"label": "landingZone",
+		"pos1": [23296, 7424],
+		"pos2": [23680, 7808]
+	},
+
+
+	"area_2": {
+		"label": "spamPatrolGroup2",
+		"pos1": [28672, 8192],
+		"pos2": [29696, 8832]
+	},
+
+
+	"area_3": {
+		"label": "spamPatrolGroup3",
+		"pos1": [18176, 2816],
+		"pos2": [18560, 3200]
+	},
+
+
+	"area_4": {
+		"label": "spamBase1",
+		"pos1": [11136, 16000],
+		"pos2": [17664, 20224]
+	},
+
+
+	"area_5": {
+		"label": "spamMiniPatrolGroup",
+		"pos1": [29056, 17152],
+		"pos2": [29952, 18688]
+	},
+
+
+	"area_6": {
+		"label": "spamBase2",
+		"pos1": [17152, 14848],
+		"pos2": [21248, 16768]
+	},
+
+
+	"area_7": {
+		"label": "spamBase3",
+		"pos1": [24448, 15488],
+		"pos2": [30464, 19712]
+	},
+
+
+	"area_8": {
+		"label": "spamBase4",
+		"pos1": [28544, 8704],
+		"pos2": [30720, 11904]
+	},
+
+
+	"area_9": {
+		"label": "spamBase5",
+		"pos1": [25088, 768],
+		"pos2": [30592, 6656]
+	},
+
+
+	"area_10": {
+		"label": "spamBase6",
+		"pos1": [19200, 1280],
+		"pos2": [21504, 3072]
+	},
+
+
+	"area_11": {
+		"label": "spamBase7",
+		"pos1": [10624, 512],
+		"pos2": [16640, 5888]
+	},
+
+
+	"object_0": {
+		"label": "spamCybFactory4",
+		"id": 39,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_1": {
+		"label": "spamFactory4",
+		"id": 36,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_2": {
+		"label": "spamFactory3",
+		"id": 45,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_3": {
+		"label": "spamFactory5",
+		"id": 33,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_4": {
+		"label": "spamCybFactory3",
+		"id": 1329,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_5": {
+		"label": "spamFactory2",
+		"id": 1761,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_6": {
+		"label": "spamNormFactory1",
+		"id": 40,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_7": {
+		"label": "spamCybFactory1",
+		"id": 51,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_8": {
+		"label": "spamFactory6",
+		"id": 26,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_9": {
+		"label": "spamCybFactory2",
+		"id": 1328,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_10": {
+		"label": "spamCybFactory5",
+		"id": 25,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_11": {
+		"label": "spamFactory1",
+		"id": 48,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_12": {
+		"label": "spamNormFactory2",
+		"id": 1,
+		"player": 3,
+		"type": 1
+	},
+
+
+	"object_13": {
+		"label": "spamNormFactory3",
+		"id": 4,
+		"player": 3,
+		"type": 1
+	}
 }

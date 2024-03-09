@@ -723,7 +723,7 @@
 		"keyTopic": 1,
 		"msgName": "RES_W_RK_IDF",
 		"name": "Rain Rockets",
-		"researchPoints": 5200,
+		"researchPoints": 4400,
 		"researchPower": 225,
 		"resultComponents": [
 			"Rocket-IDF"
@@ -749,7 +749,7 @@
 		"keyTopic": 1,
 		"msgName": "RES_W_MS_LtSAM1",
 		"name": "Sansburst AA",
-		"researchPoints": 4400,
+		"researchPoints": 2400,
 		"researchPower": 140,
 		"resultComponents": [
 			"Rocket-Sunburst"
@@ -2955,7 +2955,7 @@
 		"requiredResearch": [
 			"R-Wpn-Missile-LtSAM"
 		],
-		"researchPoints": 2400,
+		"researchPoints": 1400,
 		"researchPower": 100,
 		"resultStructures": [
 			"P0-AASite-SAM1"
