@@ -441,6 +441,7 @@ function checkHqs()
 
 	if (hqs === 0)
 	{
+		camCallOnce("spamtonDeathScene");
 		return true; // All HQs are destroyed
 	}
 }
@@ -473,6 +474,12 @@ function spamton1HQDialogue()
 		{text: "SPAMTON: GO SPEND YOUR [[Ant-sized]] LIFE [Frolicking] IN THE FIELDS OF [Burning acid]", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
 		{text: "SPAMTON: AND LEAVE MY [[Rapidly-shrinking]] BASE ALONE!!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
 	]);
+}
+
+function spamtonDeathScene()
+{
+	// Kill Spamton
+	camPlayVideos({video: "SPAMTON_DEATH", type: MISS_MSG});
 }
 
 function eventStartLevel()

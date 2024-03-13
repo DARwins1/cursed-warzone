@@ -777,6 +777,26 @@
         "type": "VTOL FACTORY",
         "width": 3
     },
+    "ClippyMonitor": {
+        "armour": 10,
+        "breadth": 3,
+        "buildPoints": 500,
+        "buildPower": 100,
+        "ecmID": "ZNULLECM",
+        "height": 3,
+        "hitpoints": 500,
+        "id": "ClippyMonitor",
+        "name": "Clippy Monitor",
+        "resistance": 150,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "blclippy.pie"
+        ],
+        "thermal": 10,
+        "type": "GENERIC",
+        "width": 3
+    },
     "A0VtolPad": {
         "armour": 10,
         "baseModel": "blbgen.pie",

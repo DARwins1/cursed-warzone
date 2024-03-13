@@ -168,6 +168,7 @@ function bonziBossStatus()
 	if (!camDef(boss) || boss === null)
 	{
 		camSetExtraObjectiveMessage(["Defeat Bonzi Buddy", "...And his various goons"]);
+		camCallOnce("bonziDeathScene");
 		return true; // Boss is destroyed
 	}
 	else
@@ -183,6 +184,12 @@ function camEnemyBaseDetected_bbGateBase()
 		{text: "BONZI BUDDY: That sense of impending doom?", delay: camSecondsToMilliseconds(3), sound: camSounds.bonzi.gate2},
 		{text: "BONZI BUDDY: Every step you take brings you closer to your own demise.", delay: camSecondsToMilliseconds(7), sound: camSounds.bonzi.gate3},
 	]);
+}
+
+function bonziDeathScene()
+{
+	// Kill Bonzi Buddy
+	camPlayVideos({video: "BONZI_DEATH", type: MISS_MSG});
 }
 
 // Used to trigger dialogue

@@ -209,7 +209,7 @@ function __camGameWon()
 		camTrace(__camNextLevel);
 		if (__camNextLevel === CAM_GAMMA_OUT)
 		{
-			gameOverMessage(true, false, true);
+			gameOverMessage(true, false, false);
 			return;
 		}
 		camNextLevel(__camNextLevel);

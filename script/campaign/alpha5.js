@@ -93,10 +93,21 @@ camAreaEvent("doorTrigger", function(droid)
 
 function eventDestroyed(obj)
 {
-	if (camDef(obj) && obj !== null && getLabel(obj) === "clipCC")
+	if (!camDef(obj) || obj === null)
+	{
+		return;
+	}
+
+	if (getLabel(obj) === "clipCC")
 	{
 		// The Command Center has been destroyed
 		camCallOnce("openDoors");
+	}
+	else if (getLabel(obj) === "clippyComputer")
+	{
+		// Kill Clippy
+		camPlayVideos({video: "CLIPPY_DEATH", type: MISS_MSG});
+		camSetExtraObjectiveMessage(["Destroy the rest of Clippy's stuff"]);
 	}
 }
 
@@ -342,7 +353,7 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("WallTower05", "WallTowerMG", CAM_CLIPPY);
 	camUpgradeOnMapStructures("GuardTower4", "GuardTower4H", CAM_CLIPPY);
 	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CAM_CLIPPY);
-	// camUpgradeOnMapStructures("A0VTolFactory1", "", CAM_CLIPPY); // TODO: Clippy's Computer
+	camUpgradeOnMapStructures("A0VTolFactory1", "ClippyMonitor", CAM_CLIPPY);
 
 	// Make Clippy's units funny
 	camUpgradeOnMapTemplates(cTempl.crlmght, cTempl.crlmgdw, CAM_CLIPPY);

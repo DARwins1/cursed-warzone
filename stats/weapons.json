@@ -4733,7 +4733,7 @@
         "weaponClass": "KINETIC",
         "weaponEffect": "ANTI PERSONNEL",
         "weaponSubClass": "MACHINE GUN",
-        "weaponWav": "mgheavy.ogg",
+        "weaponWav": "pcv472.ogg",
         "weight": 6000
     },
     "MG3Mk2-Pillbox": {
@@ -4769,7 +4769,7 @@
         "weaponClass": "KINETIC",
         "weaponEffect": "ANTI PERSONNEL",
         "weaponSubClass": "MACHINE GUN",
-        "weaponWav": "mgheavy.ogg",
+        "weaponWav": "pcv472.ogg",
         "weight": 6000
     },
     "MG3Mk3": {
