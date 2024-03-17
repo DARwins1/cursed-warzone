@@ -244,7 +244,7 @@
 		"text": [
 			"CONGRULATIONS!!!!",
 			"YOU ARE NOW OFFICIALLY [Esteemed Customer]!",
-			"AS A [[Commemorative Ring]], TAKE THIS [piece of garbage] [By the Classics You've Come To Expect] FOR THE [Discounted] PRICE OF !!!",
+			"AS A [[Commemorative Ring]], TAKE THIS [piece of garbage] [By The Classics You've Come To Expect] FOR THE [Discounted] PRICE OF !!!",
 			"THIS [Beautiful Baby Boy]'S SO [Old and Senile] THAT WE",
 			"THAT WE",
 			"THAT WE",
@@ -610,6 +610,17 @@
 		"sequenceName": "res_spamton.ogv",
 		"text": [
 			"how are you reading this"
+		]
+	},
+	"RES_W_MG_TWO": {
+		"id": "RES_W_MG_TWO",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_spamton.ogv",
+		"text": [
+			"HAEAHAEAHAEAHAEAH!!",
+			"THANK YOU 4 YOURE [Genorisity]!!",
+			"IF YOU WANTMORE [Quality Software] LIKE THIS, PLEASE [Install] [[Hyperlink Blocked]] INTO YOUR [[Frontal Lobe]]!",
+			"SO THAT I CAN ALWAYS [Find You] !"
 		]
 	}
 }

@@ -342,6 +342,23 @@
 		],
 		"statID": "MG1Mk1"
 	},
+	"R-Wpn-MG1Mk1-Two": {
+		"iconID": "IMAGE_RES_POWERTECH",
+		"id": "R-Wpn-MG1Mk1-Two",
+		"msgName": "RES_W_MG_TWO",
+		"name": "FRESH FROM [[The Classics You've Come To Expect!]]",
+		"keyTopic": 1,
+		"requiredResearch": [
+			"R-Wpn-MG1Mk1"
+		],
+		"researchPoints": 10,
+		"researchPower": 1997,
+		"resultComponents": [
+			"MG1Mk1-Two",
+			"MG1-VTOL-Two"
+		],
+		"statID": "MG1Mk1-Two"
+	},
 	"R-Wpn-MG2Mk1": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
 		"id": "R-Wpn-MG2Mk1",

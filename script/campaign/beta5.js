@@ -214,6 +214,7 @@ function eventAttacked(victim, attacker)
 				{text: "BONZI BUDDY: Feel my wrath!", delay: 0, sound: camSounds.bonzi.taunt3},
 				{text: "BONZI BUDDY: Become paste!", delay: 0, sound: camSounds.bonzi.taunt4},
 				{text: "BONZI BUDDY: Become nothing!", delay: 0, sound: camSounds.bonzi.taunt5},
+				{text: "BONZI BUDDY: Be gone!", delay: 0, sound: camSounds.bonzi.taunt6},
 			];
 
 			// Choose a taunt from the array

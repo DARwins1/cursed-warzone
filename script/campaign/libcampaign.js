@@ -230,6 +230,7 @@ const camSounds = {
 		taunt3: "B5-taunt3.ogg", // Feel my wrath!
 		taunt4: "B5-taunt4.ogg", // Become paste!
 		taunt5: "B5-taunt5.ogg", // Become nothing!
+		taunt6: "B5-taunt6.ogg", // Be gone!
 	},
 	announcer: {
 		// Wave 1

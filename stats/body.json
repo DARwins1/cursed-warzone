@@ -28,6 +28,21 @@
         "weaponSlots": 1,
         "weight": 100
     },
+    "SpamtonBody": {
+        "armourHeat": 1,
+        "armourKinetic": 1,
+        "buildPoints": 20,
+        "buildPower": 1,
+        "droidType": "PERSON",
+        "hitpoints": 1,
+        "id": "SpamtonBody",
+        "model": "spamton.pie",
+        "name": "Spamton's Body",
+        "powerOutput": 400,
+        "size": "LIGHT",
+        "weaponSlots": 1,
+        "weight": 100
+    },
     "B2JeepBody": {
         "armourHeat": 1,
         "armourKinetic": 4,

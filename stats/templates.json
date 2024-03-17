@@ -615,6 +615,17 @@
         "propulsion": "wheeled01",
         "type": "CONSTRUCT"
     },
+    "Spamton": {
+        "available": false,
+        "body": "SpamtonBody",
+        "id": "Spamton",
+        "name": "Spamton",
+        "propulsion": "CyborgLegs",
+        "type": "CYBORG",
+        "weapons": [
+            "Cyb-Wpn-CreeperDudSpam"
+        ]
+    },
     "Cyb-Atmiss-GROUND": {
         "available": false,
         "body": "CyborgLightBody",

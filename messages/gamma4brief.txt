@@ -1,5 +1,6 @@
 MB3_B_MSG,0,1,1,cam3/spam_gamma4.ogv,0,0,0000
 MB3_B_MSG2,0,1,2,cam3/spam_preblast.ogv,0,0,0000,cam3/spam_blaster.ogv,0,0,0000
+MB3_B_MSGRES,0,1,1,cam3/missile_silos.ogv,0,0,0000
 MB3_B_MSG3,0,1,1,cam3/c3ad2_12.ogg,3,CAM3A_D2_MSG14,CAM3A_D2_MSG15,CAM3A_D2_MSG16,0,0000
 MB3_B_MSG4,0,1,1,cam3/c3ad2_14.ogg,3,CAM3A_D2_MSG17,CAM3A_D2_MSG18,CAM3A_D2_MSG19,0,0000
 MB3_B_MSG5,0,1,1,cam3/spam_blaster_explode.ogv,0,0,0000

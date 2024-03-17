@@ -9,32 +9,82 @@ const mis_spamtonRes = [
 	"R-Wpn-RocketSlow-Damage01", "R-Wpn-Flamer-ROF01", "R-Wpn-Rocket-ROF01",
 	"R-Struc-VTOLPad-Upgrade01",
 ];
-var enabledFactoryGroups; // Increases as groups of factories are activated
+const MIS_SPAMTON_REAL = 5;
 // Default throttles for Spamton's factories
-const mis_fact1throttle = camChangeOnDiff(camSecondsToMilliseconds(90)); // Scary factory
-const mis_fact2throttle = camChangeOnDiff(camSecondsToMilliseconds(45)); // Drift factory
-const mis_fact3throttle = camChangeOnDiff(camSecondsToMilliseconds(6)); // Mini swarm factory
-const mis_fact4throttle = camChangeOnDiff(camSecondsToMilliseconds(30)); // Bison factory
-const mis_fact5throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Bison drift factory
-const mis_fact6throttle = camChangeOnDiff(camSecondsToMilliseconds(45)); // Misc. factory
-const mis_cyb1throttle = camChangeOnDiff(camSecondsToMilliseconds(90)); // Super Excessive Flamers
-const mis_cyb2throttle = camChangeOnDiff(camSecondsToMilliseconds(50)); // Cannons and needlers
-const mis_cyb3throttle = camChangeOnDiff(camSecondsToMilliseconds(40)); // Spies
-const mis_cyb4throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Bisons
-const mis_cyb5throttle = camChangeOnDiff(camSecondsToMilliseconds(35)); // Many rockets
-const mis_norm1throttle = camChangeOnDiff(camSecondsToMilliseconds(8)); // Minis
-const mis_norm2throttle = camChangeOnDiff(camSecondsToMilliseconds(50)); // Anvils
-const mis_norm3throttle = camChangeOnDiff(camSecondsToMilliseconds(60)); // Misc.
 const mis_defaultThrottles = [
-	mis_fact1throttle, mis_fact2throttle, mis_fact3throttle, mis_fact4throttle, mis_fact5throttle, mis_fact6throttle,
-	mis_cyb1throttle, mis_cyb2throttle, mis_cyb3throttle, mis_cyb4throttle, mis_cyb5throttle,
-	mis_norm1throttle, mis_norm2throttle, mis_norm3throttle,
-];;
+	camChangeOnDiff(camSecondsToMilliseconds(90)), // Scary factory
+	camChangeOnDiff(camSecondsToMilliseconds(45)), // Drift factory
+	camChangeOnDiff(camSecondsToMilliseconds(6)), // Mini swarm factory
+	camChangeOnDiff(camSecondsToMilliseconds(30)), // Bison factory
+	camChangeOnDiff(camSecondsToMilliseconds(35)), // Bison drift factory
+	camChangeOnDiff(camSecondsToMilliseconds(45)), // Misc. factory
+	camChangeOnDiff(camSecondsToMilliseconds(90)), // Super Excessive Flamers
+	camChangeOnDiff(camSecondsToMilliseconds(50)), // Cannons and needlers
+	camChangeOnDiff(camSecondsToMilliseconds(40)), // Spies
+	camChangeOnDiff(camSecondsToMilliseconds(35)), // Bisons
+	camChangeOnDiff(camSecondsToMilliseconds(35)), // Many rockets
+	camChangeOnDiff(camSecondsToMilliseconds(8)), // Minis
+	camChangeOnDiff(camSecondsToMilliseconds(50)), // Anvils
+	camChangeOnDiff(camSecondsToMilliseconds(60)), // Misc.
+];
+
+var enabledFactoryGroups; // Increases as groups of factories are activated
+var altEndScene; // Whether to use an alternate ending scene
+var endSceneComplete; // True when the level can end
 
 // If a Spamton factory is destroyed, make the remaining ones run faster
 function eventDestroyed(obj)
 {
-	if (obj.player === CAM_SPAMTON && obj.type === STRUCTURE 
+	const hqs = enumStruct(CAM_SPAMTON, HQ).length;
+
+	if (obj.type === FEATURE && obj.name === _("Nuclear Drum"))
+	{
+		const NUKE_RADIUS = 40;
+		const pos = camMakePos(obj);
+		const HQ_IN_RANGE = enumRange(pos.x, pos.y, NUKE_RADIUS, ALL_PLAYERS, false).filter((object) => (
+				object.type === STRUCTURE && object.player === CAM_SPAMTON && object.stattype === HQ)).length > 0;
+
+		if (HQ_IN_RANGE && hqs === 1)
+		{
+			// Spamton's HQ is about to get nuked, play a special cutscene instead.
+			altEndScene == true; // Don't try to start the normal end sequence
+			camCallOnce("spamtonNukeScene");
+		}
+	}
+	else if (obj.type === STRUCTURE && obj.stattype === HQ)
+	{
+		switch (hqs)
+		{
+			case 3:
+				camCallOnce("spamton3HQDialogue");
+				break;
+			case 2:
+				camCallOnce("spamton2HQDialogue");
+				break;
+			case 1:
+				camCallOnce("spamton1HQDialogue");
+				break;
+			case 0:
+				if (!altEndScene)
+				{
+					const pos = camMakePos(obj);
+
+					// Place Spamton at the destroyed HQ
+					addLabel(addDroid(MIS_SPAMTON_REAL, pos.x, pos.y, 
+						_("Spamton"), "SpamtonBody", "CyborgLegs", "", "", "Cyb-Wpn-CreeperDudSpam"
+					), "spamton");
+
+					camCallOnce("spamtonEndSequence");
+				}
+				break;
+		}
+	}
+	else if (obj.type === DROID && obj.player === MIS_SPAMTON_REAL && obj.body === "SpamtonBody")
+	{
+		// Spamton is die :(
+		camCallOnce("spamtonDeathScene");
+	}
+	else if (obj.player === CAM_SPAMTON && obj.type === STRUCTURE 
 		&& (obj.stattype === FACTORY || obj.stattype === CYBORG_FACTORY || obj.stattype === VTOL_FACTORY))
 	{
 		// Count how many factories are left
@@ -339,7 +389,7 @@ function destroyVtolSwarm()
 
 	camQueueDialogues([
 		{text: "SPAMTON: GODD4MMIT", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk1},
-		{text: "SPAMTON: LOOKS L1KE WE'R3 DOING THIS THE[[Old Fashion Cowboy]] WAY...", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: LOOKS L1KE WE'R3 DOING THIS [[Classic Style]]...", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
 	]);
 }
 
@@ -423,26 +473,22 @@ function placePipis()
 	}
 }
 
-function checkHqs()
+function eventAttacked(victim, attacker)
 {
-	const hqs = enumStruct(CAM_SPAMTON, HQ).length;
-	if (hqs === 3)
+	if (camDef(victim) && victim)
 	{
-		camCallOnce("spamton3HQDialogue");
-	}
-	else if (hqs === 2)
-	{
-		camCallOnce("spamton2HQDialogue");
-	}
-	else if (hqs === 1)
-	{
-		camCallOnce("spamton1HQDialogue");
-	}
-
-	if (hqs === 0)
-	{
-		camCallOnce("spamtonDeathScene");
-		return true; // All HQs are destroyed
+		// Check if Spamton was hit by the Remover Tool
+		if (attacker.weapons[0].id === "SpyTurret01")
+		{
+			if (victim.type === DROID && victim.player === MIS_SPAMTON_REAL && victim.body === "SpamtonBody")
+			{
+				// Skip directly to the credits
+				// Don't play any other cutscenes
+				// camPlayVideos({video: "END_CREDITS", type: MISS_MSG});
+				altEndScene = true;
+				endSceneComplete = true;
+			}
+		}
 	}
 }
 
@@ -452,7 +498,7 @@ function spamton3HQDialogue()
 		{text: "SPAMTON: HAEAHAEAHAEAHAEAH!!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.laugh},
 		{text: "SPAMTON: DON\"TYA KNOW I NEVER PUT ALL MY", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
 		{text: "SPAMTON: IN ONE [[BeutiFAl HAndmaDe bASKet]]???", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
-		{text: "SPAMTON: NOW HOLD STILL WHILE I [Demolish] YOU", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: NOW H0LD STILL WHILE I [Demolish] YOU", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk2},
 	]);
 }
 
@@ -471,15 +517,127 @@ function spamton1HQDialogue()
 {
 	camQueueDialogues([
 		{text: "SPAMTON: DON'T YOU HAVE ANYTHING [[Better for your SOUL]] TO DO???", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk2},
-		{text: "SPAMTON: GO SPEND YOUR [[Ant-sized]] LIFE [Frolicking] IN THE FIELDS OF [Burning acid]", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
-		{text: "SPAMTON: AND LEAVE MY [[Rapidly-shrinking]] BASE ALONE!!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: GO SPEND YOUR [[Ant-sized]] LIFE [Frolicking] IN TH3 FIELDS OF [Burning acid]", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: AND LE4VE MY [[Rapidly-shrinking]] BASE ALONE!!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
 	]);
 }
 
+function spamtonEndSequence()
+{
+	setAlliance(CAM_SPAMTON, CAM_HUMAN_PLAYER, true);
+	setAlliance(MIS_SPAMTON_REAL, CAM_HUMAN_PLAYER, true);
+
+	// Destroy all of Spamton's units, factories, and spawners
+	const units = enumDroid(CAM_SPAMTON);
+	const structs = enumStruct(CAM_SPAMTON).filter((struct) => (
+		struct.stattype === FACTORY || struct.stattype === CYBORG_FACTORY 
+		|| struct.stattype === VTOL_FACTORY || struct.name === "Spamton Creeper Spawner"
+		|| struct.name === "Spamton Skeleton Spawner" || struct.name === "Spamton Zombie Spawner"));
+	const toDestroy = units.concat(structs);
+	for (let i = 0; i < toDestroy.length; i++)
+	{
+		camSafeRemoveObject(toDestroy[i], true);
+	}
+
+	// Start talking
+	camQueueDialogues([
+		{text: "SPAMTON: H-HEY!!!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: WAIT! [Officer, I can explain!]!!!", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: I D1DN\"T MEAN TO [Kill] YOU! I JUST NEEDED YOU TO [Die]!!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: BESIDES,,, YOU WERE [so mean to me :( ]!", delay: camSecondsToMilliseconds(12), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: ALL THE [Hard Work] THAT I [Steal]", delay: camSecondsToMilliseconds(15), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: ALL THE [Money] THAT I [Steal]", delay: camSecondsToMilliseconds(18), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: I COULDN'T JUST L3T YOU TAKE ALL MY [[Hyperlink Blocked]]!!!", delay: camSecondsToMilliseconds(21), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: BUT WAIT!!! THIS DOESN\"T [Needs to end NOW!]!!", delay: camSecondsToMilliseconds(24), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: I JUST RECE1VE A NEW [Fresh Item] [ From The Source] !", delay: camSecondsToMilliseconds(27), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: AND ITS 4LL YOURS FOR [The Low Low Price Of]", delay: camSecondsToMilliseconds(30), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: JUST CHECK YOURE[Search History]!!", delay: camSecondsToMilliseconds(33), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: THEN YOU CAN [Relapse] BACK TO [Esteemed Customer]!!", delay: camSecondsToMilliseconds(36), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: THINK OF ALL YOU [Des1re]...", delay: camSecondsToMilliseconds(39), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: W1LD PR1ZES, HOTSINGLE, 100 CUSTOMER, AND MOST OF ALL...", delay: camSecondsToMilliseconds(42), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: ME!!!!", delay: camSecondsToMilliseconds(45), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: HAEAHAEAHAEAHAEAH!!", delay: camSecondsToMilliseconds(47), sound: camSounds.spamton.laugh},
+		// Delay here
+		{text: "SPAMTON: ...", delay: camSecondsToMilliseconds(56), sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: PLEASE", delay: camSecondsToMilliseconds(58), sound: camSounds.spamton.talk1},
+		// Bigger delay here
+		{text: "SPAMTON: ...DID YOU [Buy] YET???", delay: camSecondsToMilliseconds(72), sound: camSounds.spamton.talk2},
+	]);
+
+	queue("grantMachinegunTwo", camSecondsToMilliseconds(33));
+	queue("allowSpamtonAttack", camSecondsToMilliseconds(60));
+	queue("startSpamtonWalk", camSecondsToMilliseconds(70));
+}
+
+// Allow the player to research Spamton's offering
+function grantMachinegunTwo()
+{
+	enableResearch("R-Wpn-MG1Mk1-Two");
+}
+
+// Allow the player to target Spamton
+function allowSpamtonAttack()
+{
+	setAlliance(CAM_HUMAN_PLAYER, MIS_SPAMTON_REAL, false);
+}
+
+// Start moving Spamton towards the player's base
+function startSpamtonWalk()
+{
+	setTimer("moveSpamton", camSecondsToMilliseconds(6));
+}
+
+// Order spamton to go to the player's LZ and say a random funny line
+function moveSpamton()
+{
+	const spamton = getObject("spamton");
+	const pos = camMakePos("landingZone");
+
+	orderDroidLoc(spamton, DORDER_MOVE, pos.x, pos.y);
+
+	const dialogues = [
+		{text: "SPAMTON: HOW ABOUT NOW?", delay: 0, sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: [Pretty Please]", delay: 0, sound: camSounds.spamton.talk1},
+		{text: "SPAMTON: ARE WE [Friend Request Accepted] YET???", delay: 0, sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: COMMANDER?/??", delay: 0, sound: camSounds.spamton.talk1},
+	];
+
+	// Choose a dialogue from the array and play it
+	const rDialogue = dialogues[camRand(dialogues.length)];
+	camQueueDialogue(rDialogue.text, rDialogue.delay, rDialogue.sound);
+}
+
+// Play Spamton's defeat cutscene
 function spamtonDeathScene()
 {
-	// Kill Spamton
-	camPlayVideos({video: "SPAMTON_DEATH", type: MISS_MSG});
+	if (!altEndScene)
+	{
+		camPlayVideos({video: "SPAMTON_DEATH", type: MISS_MSG});
+		// Play the credits
+		// camPlayVideos({video: "END_CREDITS", type: MISS_MSG});
+		endSceneComplete = true; // Allow this mod to end
+	}
+}
+
+// Play Spamton's alternate defeat cutscene
+function spamtonNukeScene()
+{
+	camPlayVideos({video: "SPAMTON_NUKE", type: MISS_MSG});
+	// Play the credits
+	// camPlayVideos({video: "END_CREDITS", type: MISS_MSG});
+	endSceneComplete = true;
+}
+
+function allowVictory()
+{
+	if (endSceneComplete === true)
+	{
+		return true; // The mod now ends. Thanks for playing!
+	}
+	else
+	{
+		return undefined;
+	}
 }
 
 function eventStartLevel()
@@ -492,12 +650,14 @@ function eventStartLevel()
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 
 	camSetStandardWinLossConditions(CAM_VICTORY_SCRIPTED, "GAMMA_OUT", {
-		callback: "checkHqs" // Player wins if all 4 HQs are destroyed
+		callback: "allowVictory" // Player wins if all 4 HQs are destroyed
 	});
 
 	centreView(startpos.x, startpos.y);
 
 	camCompleteRequiredResearch(mis_spamtonRes, CAM_SPAMTON);
+	setAlliance(CAM_SPAMTON, MIS_SPAMTON_REAL, true);
+	changePlayerColour(MIS_SPAMTON_REAL, playerData[CAM_SPAMTON].colour);
 
 	camSetEnemyBases({
 		"spamSWBase": {
@@ -564,6 +724,8 @@ function eventStartLevel()
 
 	enabledFactoryGroups = 0;
 	setSpamtonFactoryData(mis_defaultThrottles);
+	altEndScene = false;
+	endSceneComplete = false;
 
 	let body = "Body1RECSpam"; // Spamaconda
 	if (difficulty >= HARD) body = "Body5RECSpam"; // Upgrade to Spamaconda II

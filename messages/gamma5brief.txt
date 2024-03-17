@@ -1,3 +1,5 @@
 SPAM_GAMMA5,0,1,1,cam3/spam_gamma5.ogv,0,0,0000
 MB3_C_MSG2,0,1,4,cam3/cam3cbet.ogg,3,CAM3_C_MSG5,CAM3_C_MSG6,CAM3_C_MSG7,0,0000,cam3/cam3cpl3.ogg,2,CAM3_C_MSG8,CAM3_C_MSG9,0,0000,incomtns.ogg,1,CAM3_C_MSG10,0,0000,cam3/cam3_cg.ogg,3,CAM3_C_MSG11,CAM3_C_MSG12,CAM3_C_MSG13,0,0000
 SPAMTON_DEATH,0,1,1,cam3/spamton_death.ogv,0,0,0000
+SPAMTON_NUKE,0,1,1,cam3/spamton_nuke.ogv,0,0,0000
+END_CREDITS,0,1,1,credits.ogv,0,0,0000

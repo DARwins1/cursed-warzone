@@ -173,6 +173,7 @@ spamzombie: { body: "ZombieBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-ZmbieMe
 spambabyzombie: { body: "BabyZombieBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-BabyZmbieMeleeSpam" }, // Spamton Baby Zombie
 spamskeleton: { body: "SkeletonBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-SkelBowSpam" }, // Spamton Skeleton
 spamenderman: { body: "EndermanBodySpam", prop: "CyborgLegs", weap: "Cyb-Wpn-EnderMeleeSpam" }, // Spamton Enderman
+spamton: { body: "SpamtonBody", prop: "CyborgLegs", weap: "Cyb-Wpn-CreeperDudSpam" }, // Spamton
 
 // Nextbots
 crnextbot1: { body: "NextbotBody1", prop: "hover01", weap: "Cyb-Wpn-SilvFishMelee" }, // Nextbot (Sans)

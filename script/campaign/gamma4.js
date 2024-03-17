@@ -186,6 +186,9 @@ function startDefensePhase()
 	defenseTime = gameTime;
 	camAbsorbPlayer(SILOS, CAM_HUMAN_PLAYER); // Give silos to the player
 
+	// Tell the player to start researching missile codes
+	camPlayVideos({video: "MB3_B_MSGRES", type: CAMP_MSG});
+
 	const lz2 = getObject("landingZone2");
 	setNoGoArea(lz2.x, lz2.y, lz2.x2, lz2.y2, CAM_HUMAN_PLAYER);
 
