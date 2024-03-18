@@ -161,7 +161,7 @@ function eventStartLevel()
 			assembly: "tankAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(55)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(65)),
 			data: {
 				regroup: false,
 				repair: 20,
@@ -173,7 +173,7 @@ function eventStartLevel()
 			assembly: "tankAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 5,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(50)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(70)),
 			data: {
 				regroup: false,
 				repair: 60,
@@ -203,7 +203,7 @@ function eventStartLevel()
 				repair: 40,
 				count: -1,
 			},
-			templates: [ cTempl.crcybbb, cTempl.crcybsword, cTempl.crcybbow ]
+			templates: [ cTempl.crcybsword, cTempl.crcybbow ]
 		},
 		"farmFactory2": {
 			assembly: "cybAssembly2",
