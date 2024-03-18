@@ -1062,6 +1062,45 @@
 		"type": "BUILDING",
 		"width": 1
 	},
+	"SpamSign9": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "SpamSign9",
+		"lineOfSight": 0,
+		"model": "spamsign9.PIE",
+		"name": "Spamton Sign 9",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "BUILDING",
+		"width": 1
+	},
+	"SpamSign10": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "SpamSign10",
+		"lineOfSight": 0,
+		"model": "spamsign10.PIE",
+		"name": "Spamton Sign 10",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "BUILDING",
+		"width": 1
+	},
+	"SpamSign11": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "SpamSign11",
+		"lineOfSight": 0,
+		"model": "spamsign11.PIE",
+		"name": "Spamton Sign 11",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "BUILDING",
+		"width": 1
+	},
 	"WaterBuilding": {
 		"armour": 5,
 		"breadth": 2,
