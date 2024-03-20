@@ -737,6 +737,12 @@ const __camSpamtonReplacementStructs = [
 	"WallTower03Mk11Spam","WallTower03Mk12Spam","WallTower03Mk13Spam",
 	"WallTower03Mk14Spam","WallTower03Mk15Spam", "WallTower01Spam",
 ];
+const __camSpamtonSigns = [
+	"SpamSign1", "SpamSign2", "SpamSign3",
+	"SpamSign4", "SpamSign5", "SpamSign6",
+	"SpamSign7", "SpamSign8", "SpamSign9",
+	"SpamSign11",
+];
 
 //nexus
 const CAM_DEFENSE_ABSORBED_SND = "defabsrd.ogg";

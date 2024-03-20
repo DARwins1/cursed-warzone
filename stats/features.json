@@ -968,7 +968,7 @@
 		"name": "Spamton Sign 1",
 		"startVisible": 0,
 		"tileDraw": 1,
-		"type": "BUILDING",
+		"type": "TREE",
 		"width": 1
 	},
 	"SpamSign2": {
@@ -981,7 +981,7 @@
 		"name": "Spamton Sign 2",
 		"startVisible": 0,
 		"tileDraw": 1,
-		"type": "BUILDING",
+		"type": "TREE",
 		"width": 1
 	},
 	"SpamSign3": {
@@ -994,7 +994,7 @@
 		"name": "Spamton Sign 3",
 		"startVisible": 0,
 		"tileDraw": 1,
-		"type": "BUILDING",
+		"type": "TREE",
 		"width": 1
 	},
 	"SpamSign4": {
@@ -1007,7 +1007,7 @@
 		"name": "Spamton Sign 4",
 		"startVisible": 0,
 		"tileDraw": 1,
-		"type": "BUILDING",
+		"type": "TREE",
 		"width": 1
 	},
 	"SpamSign5": {
@@ -1020,7 +1020,7 @@
 		"name": "Spamton Sign 5",
 		"startVisible": 0,
 		"tileDraw": 1,
-		"type": "BUILDING",
+		"type": "TREE",
 		"width": 1
 	},
 	"SpamSign6": {
@@ -1033,7 +1033,7 @@
 		"name": "Spamton Sign 6",
 		"startVisible": 0,
 		"tileDraw": 1,
-		"type": "BUILDING",
+		"type": "TREE",
 		"width": 1
 	},
 	"SpamSign7": {
@@ -1046,7 +1046,7 @@
 		"name": "Spamton Sign 7",
 		"startVisible": 0,
 		"tileDraw": 1,
-		"type": "BUILDING",
+		"type": "TREE",
 		"width": 1
 	},
 	"SpamSign8": {
@@ -1059,7 +1059,7 @@
 		"name": "Spamton Sign 8",
 		"startVisible": 0,
 		"tileDraw": 1,
-		"type": "BUILDING",
+		"type": "TREE",
 		"width": 1
 	},
 	"SpamSign9": {
@@ -1072,7 +1072,7 @@
 		"name": "Spamton Sign 9",
 		"startVisible": 0,
 		"tileDraw": 1,
-		"type": "BUILDING",
+		"type": "TREE",
 		"width": 1
 	},
 	"SpamSign10": {
@@ -1085,7 +1085,7 @@
 		"name": "Spamton Sign 10",
 		"startVisible": 0,
 		"tileDraw": 1,
-		"type": "BUILDING",
+		"type": "TREE",
 		"width": 1
 	},
 	"SpamSign11": {
@@ -1098,7 +1098,7 @@
 		"name": "Spamton Sign 11",
 		"startVisible": 0,
 		"tileDraw": 1,
-		"type": "BUILDING",
+		"type": "TREE",
 		"width": 1
 	},
 	"WaterBuilding": {

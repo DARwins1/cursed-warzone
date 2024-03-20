@@ -39,14 +39,24 @@ function camSendReinforcement(playerId, position, templates, kind, data)
 			order_data = data.data;
 		}
 	}
+
+	// Swap the Fungible Cannon for any of its variants
 	for (let i = 0, l = templates.length; i < l; ++i)
 	{
-		if (templates[i].weap === "Cannon2A-TMk1")
+		if (templates[i].weap[0] === "Cannon2A-TMk1")
 		{
-			// Swap the Fungible Cannon for any of its varients
-			templates[i].weap = __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
+			templates[i].weap[0] = __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
+		}
+		if (camDef(template.weap[1]) && templates[i].weap[1] === "Cannon2A-TMk1")
+		{
+			templates[i].weap[1] = __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
+		}
+		if (camDef(template.weap[2]) && templates[i].weap[2] === "Cannon2A-TMk1")
+		{
+			templates[i].weap[2] = __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
 		}
 	}
+
 	switch (kind)
 	{
 		case CAM_REINFORCE_GROUND:

@@ -411,6 +411,11 @@ function camUpgradeOnMapFeatures(feat1, feat2, excluded)
 			// 1/100 chance to place a Ms. Pipis Dummy instead of a normal Pipis Dummy
 			newFeat = addFeature("PipisMDummy", featInfo.x, featInfo.y);
 		}
+		else if (feat2 === "SpamSign")
+		{
+			// Choose a random Spamton Sign from the list
+			newFeat = addFeature(__camSpamtonSigns[camRand(__camSpamtonSigns.length)], featInfo.x, featInfo.y);
+		}
 		else
 		{
 			newFeat = addFeature(feat2, featInfo.x, featInfo.y);

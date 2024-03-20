@@ -22,6 +22,24 @@ function eventTransporterLanded(transport)
 	camCallOnce("entryDialogue");
 }
 
+function eventAttacked(victim, attacker)
+{
+	if ((attacker.type === STRUCTURE && attacker.name === _("Tower Of Spamton")))
+	{
+		camCallOnce("towerEncounterDialogue")
+	}
+}
+
+// Called when the player is zapped by one of Spamton's towers
+function towerEncounterDialogue()
+{
+	camQueueDialogues([
+		{text: "SPAMTON: HAEAHAEAHAEAHAEAH!!", delay: camSecondsToMilliseconds(3), sound: camSounds.spamton.laugh},
+		{text: "SPAMTON: HOW'S [The Smooth Taste Of]", delay: camSecondsToMilliseconds(6), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: S3VEN [Spamtillion] VOLTS?!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+	]);
+}
+
 function entryDialogue()
 {
 	camQueueDialogues([
@@ -445,8 +463,11 @@ function eventStartLevel()
 		setTimer("placePipis", camSecondsToMilliseconds(3));
 	}
 
-	// Replace all boulders with explosives
+	// Make features funny
 	camUpgradeOnMapFeatures("Boulder1", "Pipis");
+	camUpgradeOnMapFeatures("Boulder2", "ExplosiveDrum");
+	camUpgradeOnMapFeatures("WallCorner", "SpamSign");
+	camUpgradeOnMapFeatures("WallCornerSmashed", "SpamSign10");
 	camUpgradeOnMapFeatures("Wreck1", "Wreck1"); // I know this looks stupid but it's to align the pile positions better
 
 	// Make units funny
