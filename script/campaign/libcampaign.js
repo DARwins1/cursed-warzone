@@ -826,6 +826,12 @@ var __camLastAttackTriggered;
 var __camLevelEnded;
 var __camExtraObjectiveMessage;
 var __camAllowVictoryMsgClear;
+var __camGameOverPool; // List of possible random game over screens (chosen by level script)
+// Full list of all game over screens (because this should at least be documented somewhere)
+// "GAMEOVER_CRASH": CGI car crash scene
+// "GAMEOVER_UK": ULTRAKILL game over screen
+// "GAMEOVER_UT": Undertale game over screen
+// "GAMEOVER_EXPLODE": Deltarune explosion
 
 //video
 var __camVideoSequences;

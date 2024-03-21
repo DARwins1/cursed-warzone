@@ -223,6 +223,11 @@ function eventStartLevel()
 
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CAM_1B");
 
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE",
+		]);
+
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 

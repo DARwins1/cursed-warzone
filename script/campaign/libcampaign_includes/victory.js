@@ -184,11 +184,35 @@ function camClearConsoleOnVictoryMessage(clear)
 	__camAllowVictoryMsgClear = clear;
 }
 
+//;; ## camSetGameOverScenePool(scenes)
+//;;
+//;; Choose a selection of game over cutscenes to randomly choose if the player dies.
+//;; If none are chosen, then none will play.
+//;;
+//;; @param {string[]} scenes
+//;; @returns {void}
+//;;
+function camSetGameOverScenePool(scenes)
+{
+	__camGameOverPool = scenes;
+}
+
 //////////// privates
+
+function __camGameLostDelayed()
+{
+	// Delayed slightly to allow the custom game over video to play
+	gameOverMessage(false, false);
+}
 
 function __camGameLostCB()
 {
-	gameOverMessage(false, false);
+	if (__camGameOverPool.length > 0)
+	{
+		// Play a custom game over video if there is at least one in the pool
+		hackAddMessage(__camGameOverPool[camRand(__camGameOverPool.length)], MISS_MSG, CAM_HUMAN_PLAYER, true);
+	}
+	queue("__camGameLostDelayed", __CAM_TICKS_PER_FRAME);
 }
 
 function __camGameLost()

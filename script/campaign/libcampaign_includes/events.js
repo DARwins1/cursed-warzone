@@ -142,6 +142,7 @@ function cam_eventStartLevel()
 	__camAllowSilverfishSpawn = false;
 	__camExpLevel = 0;
 	__camQueuedDialogue = [];
+	__camGameOverPool = [];
 	camSetPropulsionTypeLimit(); //disable the propulsion changer by default
 	__camAiPowerReset(); //grant power to the AI
 	setTimer("__camSpawnVtols", camSecondsToMilliseconds(0.5));
