@@ -832,6 +832,10 @@ var __camGameOverPool; // List of possible random game over screens (chosen by l
 // "GAMEOVER_UK": ULTRAKILL game over screen
 // "GAMEOVER_UT": Undertale game over screen
 // "GAMEOVER_EXPLODE": Deltarune explosion
+// "GAMEOVER_MICROWAVE": Spamton puts you in the microwave
+// "GAMEOVER_JET": Jet crash scene
+// "GAMEOVER_MISSILE": Missile bombardment scene
+// "GAMEOVER_UTALT": Alternate Undertale game over where Spamton informs you that you suck
 
 //video
 var __camVideoSequences;

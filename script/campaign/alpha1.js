@@ -225,7 +225,7 @@ function eventStartLevel()
 
 	camSetGameOverScenePool([
 		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
-		"GAMEOVER_EXPLODE",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
 		]);
 
 	centreView(startpos.x, startpos.y);
