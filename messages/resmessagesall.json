@@ -622,5 +622,26 @@
 			"IF YOU WANTMORE [Quality Software] LIKE THIS, PLEASE [Install] [[Hyperlink Blocked]] INTO YOUR [[Frontal Lobe]]!",
 			"SO THAT I CAN ALWAYS [Find You] !"
 		]
+	},
+	"RES_ST_LANDMINE": {
+		"id": "RES_ST_LANDMINE",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_struttech.ogg",
+		"text": [
+			"New Structure Available",
+			"Explosive defensive structure",
+			"Will self-detonate when enemies pass too close",
+			"WARNING: Cannot be demolished un-explosively once built!"
+		]
+	},
+	"RES_W_OGFLAME": {
+		"id": "RES_W_OGFLAME",
+		"imdName": "MICAPSUL.pie",
+		"sequenceName": "res_weapons.ogg",
+		"text": [
+			"New Weapon Turret Available",
+			"Flame-thrower firing Propylene Oxide gel",
+			"Experience \"Flamer\" the way Pumpkin Studios intended!"
+		]
 	}
 }

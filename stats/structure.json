@@ -4805,6 +4805,25 @@
         "type": "WALL",
         "width": 1
     },
+    "A0Landmine": {
+        "armour": 5,
+        "breadth": 1,
+        "buildPoints": 100,
+        "buildPower": 150,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 25,
+        "id": "A0Landmine",
+        "name": "Landmine",
+        "sensorID": "ZNULLSENSOR",
+        "strength": "SOFT",
+        "structureModel": [
+            "mimine.PIE"
+        ],
+        "thermal": 5,
+        "type": "WALL",
+        "width": 1
+    },
     "A0Pipis": {
         "armour": 5,
         "breadth": 1,

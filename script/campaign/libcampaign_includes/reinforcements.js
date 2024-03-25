@@ -47,11 +47,11 @@ function camSendReinforcement(playerId, position, templates, kind, data)
 		{
 			templates[i].weap[0] = __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
 		}
-		if (camDef(template.weap[1]) && templates[i].weap[1] === "Cannon2A-TMk1")
+		if (camDef(templates[i].weap[1]) && templates[i].weap[1] === "Cannon2A-TMk1")
 		{
 			templates[i].weap[1] = __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
 		}
-		if (camDef(template.weap[2]) && templates[i].weap[2] === "Cannon2A-TMk1")
+		if (camDef(templates[i].weap[2]) && templates[i].weap[2] === "Cannon2A-TMk1")
 		{
 			templates[i].weap[2] = __camFungibleCannonList[camRand(__camFungibleCannonList.length)];
 		}

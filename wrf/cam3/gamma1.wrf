@@ -6,7 +6,6 @@
 /* Directory for Proximity messages and mission briefs */
 directory	"messages"
 file		SMSG		"gamma1brief.txt"
-file		SMSG		"brief3intro.txt"
 file		SMSG		"gamma1prox.txt"
 
 directory "script"

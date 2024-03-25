@@ -504,6 +504,19 @@
 		],
 		"statID": "Flame1Mk1"
 	},
+	"R-Wpn-FlamerOG": {
+		"iconID": "IMAGE_RES_WEAPONTECH",
+		"id": "R-Wpn-FlamerOG",
+		"keyTopic": 1,
+		"msgName": "RES_W_OGFLAME",
+		"name": "Classic Flamer",
+		"researchPoints": 600,
+		"researchPower": 18,
+		"resultComponents": [
+			"Flame1OG"
+		],
+		"statID": "Flame1OG"
+	},
 	"R-Wpn-Flamer01Extended": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Wpn-Flamer01Extended",
@@ -1825,6 +1838,21 @@
 			"A0ExplosiveDrum"
 		],
 		"statID": "A0ExplosiveDrum"
+	},
+	"R-Struc-Landmine": {
+		"iconID": "IMAGE_RES_STRUCTURETECH",
+		"id": "R-Struc-Landmine",
+		"msgName": "RES_ST_LANDMINE",
+		"name": "Landmine",
+		"requiredResearch": [
+			"R-Sys-Engineering03"
+		],
+		"researchPoints": 1200,
+		"researchPower": 143,
+		"resultStructures": [
+			"A0Landmine"
+		],
+		"statID": "A0Landmine"
 	},
 	"R-Struc-NuclearDrum": {
 		"iconID": "IMAGE_RES_STRUCTURETECH",

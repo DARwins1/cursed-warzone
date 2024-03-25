@@ -1,5 +1,5 @@
 /* General Script Strings */
-BLANK		_("")
+BLANK		_(" ")
 
 /* TONY OUR BELOVED */
 TONY_MSG1			_("In this episode, we welcome special guest Tony Scavenger.")

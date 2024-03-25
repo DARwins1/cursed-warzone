@@ -156,6 +156,7 @@ function cam_eventStartLevel()
 	setTimer("__camTacticsTick", camSecondsToMilliseconds(0.1));
 	setTimer("__camScanCreeperRadii", camSecondsToMilliseconds(0.2));
 	setTimer("__camScanPipisRadii", camSecondsToMilliseconds(0.5));
+	setTimer("__camScanLandmineRadii", camSecondsToMilliseconds(0.5));
 	setTimer("__camScanWreckRadii", camSecondsToMilliseconds(1));
 	setTimer("__updateNeedlerLog", camSecondsToMilliseconds(8));
 	setTimer("__camSpyFeignTick", camSecondsToMilliseconds(0.5));
@@ -290,6 +291,13 @@ function cam_eventStructureBuilt(structure, droid)
 			addFeature("Pipis", pos.x, pos.y);
 		}
 	}
+	if (structure.name === _("Landmine"))
+	{
+		// Swap out the structure for the feature object
+		const pos = {x: structure.x, y: structure.y};
+		camSafeRemoveObject(structure);
+		addFeature("Landmine", pos.x, pos.y);
+	}
 	else if (structure.name === _("Fungible Cannon Hardpoint"))
 	{
 		// Check if this structure has a label and/or group assigned to it
@@ -376,6 +384,12 @@ function cam_eventDestroyed(obj)
 			const __BOOM_BAIT_ID = addDroid(10, obj.x, obj.y, "Boom Bait",
 				"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
 			queue("__camDetonatePipis", __CAM_TICKS_PER_FRAME, __BOOM_BAIT_ID + ""); // ...then blow it up
+		}
+		if (obj.name === _("Landmine"))
+		{
+			const __BOOM_BAIT_ID = addDroid(10, obj.x, obj.y, "Boom Bait",
+				"BaitBody", "BaBaProp", "", "", "BabaMG").id; // Spawn a bloke...
+			queue("__camDetonateMine", __CAM_TICKS_PER_FRAME, __BOOM_BAIT_ID + ""); // ...then blow it up
 		}
 		else if (obj.name === _("*Wreck0*") || obj.name === _("*Wreck1*"))
 		{

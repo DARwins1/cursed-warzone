@@ -10,7 +10,7 @@ GAMMA_1_MSG2		_("WELCOME TO [Hell]!")
 /* Gamma 2 */
 GAMMA_2_MSG1		_("In this episode, the Commander is exiled for failing to respect squatter's rights.")
 GAMMA_2_MSG2		_("They aren't following the code of conduct.")
-GAMMA_2_MSG3		_("\"A good pirate never takes another person's property.\"")
+GAMMA_2_MSG3		_("A good pirate never takes another person's property.")
 
 /* Gamma 3 */
 GAMMA_3_MSG1		_("In this episode, you learn Spamton is heavily armed.")
@@ -24,7 +24,7 @@ GAMMA_4_MSG2		_("What does he mean by cooked?")
 GAMMA_4_MSG3		_("You may be up against Extended Flamer 2.")
 
 /* blaster1 */
-GAMMA_4_MSG4		_("In this episode, Spamton reveals his \"special attack\".")
+GAMMA_4_MSG4		_("In this episode, Spamton reveals his special attack.")
 GAMMA_4_MSG5		_("Now is probably a good time to start running.")
 GAMMA_4_MSG6		_("Maybe you can find something useful in his base?")
 

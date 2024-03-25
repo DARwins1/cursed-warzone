@@ -359,6 +359,19 @@
 		"type": "TREE",
 		"width": 1
 	},
+	"Landmine": {
+		"armour": 5,
+		"breadth": 1,
+		"damageable": 1,
+		"hitpoints": 25,
+		"id": "Landmine",
+		"model": "mimine.pie",
+		"name": "Landmine",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "TREE",
+		"width": 1
+	},
 	"NuclearDrum": {
 		"armour": 5,
 		"breadth": 3,

@@ -684,6 +684,11 @@ function camRandomEffect(pos)
 		// Allow Pipis after beta campaign
 		effects.push("pipis");
 	}
+	if (!camIsResearched("R-Wpn-FlamerOG"))
+	{
+		// Allow Classic Flamer Artifact if Classic Flamer isn't researched
+		effects.push("classicFlamerArti");
+	}
 	if (camIsResearched("R-Struc-ExplosiveDrum") && !camIsResearched("R-Struc-NuclearDrum"))
 	{
 		// Allow Nuclear Drum Artifact if Explosive Drum is researched
@@ -1340,6 +1345,15 @@ function camRandomEffect(pos)
 			addLabel(addFeature("Crate", pos.x, pos.y), "babelCrate");
 			__camArtifacts["babelCrate"] = {tech: "R-Defense-TowerMEGA", placed: true };
 			break;
+		case "classicFlamerArti":
+			// Spawn an artifact for the Machinegun Fortress
+			if (camDef(__camArtifacts["classicCrate"]))
+			{
+				break; // Don't place if an artifact was already placed
+			}
+			addLabel(addFeature("Crate", pos.x, pos.y), "classicCrate");
+			__camArtifacts["classicCrate"] = {tech: "R-Wpn-FlamerOG", placed: true };
+			break;
 		case "blackOut":
 			if (!__camBlackOut)
 			{
@@ -1756,6 +1770,29 @@ function __camDetonateDrum(boomBaitId)
 	}
 }
 
+// Cause an explosion after a Landmine is destroyed
+function __camDetonateMine(boomBaitId)
+{
+	const bait = getObject(DROID, 10, boomBaitId);
+	if (!camDef(bait))
+	{
+		return;
+	}
+	else
+	{
+		fireWeaponAtObj("LandmineBlast", bait);
+		queue("__camRemoveBoomBait", __CAM_TICKS_PER_FRAME * 10, boomBaitId + "");
+	}
+}
+
+// Destroy this Landmine (if it still exits)
+// Called momentarily after a Landmine self-triggers
+function __camDestroyLandmine(landmineId)
+{
+	const mine = getObject(FEATURE, 10, landmineId);
+	camSafeRemoveObject(mine, true);
+}
+
 // Cause an explosion after Pipis is destroyed
 function __camDetonatePipis(boomBaitId)
 {
@@ -1943,7 +1980,7 @@ function __camScanCreeperRadii()
 // Check if any Pipis should detonate themselves
 function __camScanPipisRadii()
 {
-	const pipisList = enumFeature(ALL_PLAYERS, "Pipis").concat(enumFeature(ALL_PLAYERS, "PipisM"))
+	const pipisList = enumFeature(ALL_PLAYERS, "Pipis").concat(enumFeature(ALL_PLAYERS, "PipisM"));
 	for (let i = 0; i < pipisList.length; i++)
 	{
 		let scanNum = 0; // Scan 4 times (since the scan range is centered around the top left corner of the Pipis)
@@ -1977,7 +2014,47 @@ function __camScanPipisRadii()
 			}
 
 		} while (!detonated && scanNum < 4)
-		
+	}
+}
+
+// Check if any Landmines should detonate themselves
+function __camScanLandmineRadii()
+{
+	const mineList = enumFeature(ALL_PLAYERS, "Landmine");
+	for (let i = 0; i < mineList.length; i++)
+	{
+		let scanNum = 0; // Scan 4 times (since the scan range is centered around the top left corner of the Landmine)
+		let detonated = false;
+		const minePos = camMakePos(mineList[i]);
+
+		// Check if any enemies are within 1 tile
+		do 
+		{
+			scanNum++;
+			if (enumRange(minePos.x, minePos.y, 1, ALL_PLAYERS, false).filter((obj) => (
+				obj.type !== FEATURE && !allianceExistsBetween(CAM_HUMAN_PLAYER, obj.player) && 
+				!(obj.type === DROID && (isVTOL(obj) || obj.droidType === DROID_SUPERTRANSPORTER))
+			)).length > 0)
+			{
+				// Enemy in range, detonate!
+				fireWeaponAtObj("LandmineTrigger", mineList[i]); // Play a sound
+				queue("__camDestroyLandmine", camSecondsToMilliseconds(0.4), mineList[i].id + ""); // Detonate after a brief delay
+				detonated = true;
+			}
+			if (scanNum === 1)
+			{
+				minePos.x++;
+			}
+			else if (scanNum === 2)
+			{
+				minePos.y++;
+			}
+			else if (scanNum === 3)
+			{
+				minePos.x--;
+			}
+
+		} while (!detonated && scanNum < 4)
 	}
 }
 
