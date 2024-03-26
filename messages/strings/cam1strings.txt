@@ -10,6 +10,9 @@ CAM1A_MSG2			_("Scavenger raiders are approaching our base.")
 CAM1A_MSG3			_("Defend the base then destroy the Scavenger camps.")
 
 /* Alpha 2 */
+CAM1B_MSG1			_("ALPHA BASE MISSION: Power Surge Detected")
+CAM1B_MSG2			_("A power surge has been detected to the south of our position.")
+CAM1B_MSG3			_("Investigate and secure the area.")
 /* spam scene */
 ALPHA_2_MSG1			_("In this episode, a shady salesman introduces himself.")
 ALPHA_2_MSG2			_("Seems like he'll sell you some new technology, if you've got the cash.")
