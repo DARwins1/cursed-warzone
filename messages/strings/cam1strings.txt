@@ -11,63 +11,69 @@ CAM1A_MSG3			_("Defend the base then destroy the Scavenger camps.")
 
 /* Alpha 2 */
 /* spam scene */
-ALPHA_2_MSG1			_("In this episode, a shady salesman offers you technology.")
-ALPHA_2_MSG2			_("If you're not short on money, you can accept his outrageous deals.")
-ALPHA_2_MSG3			_("...We're definitely not sponsored.")
+ALPHA_2_MSG1			_("In this episode, a shady salesman introduces himself.")
+ALPHA_2_MSG2			_("Seems like he'll sell you some new technology, if you've got the cash.")
+ALPHA_2_MSG3			_("...")
+ALPHA_2_MSG4			_("(You do.)")
 /* Clip scene 1 */
-ALPHA_2_MSG4			_("In this episode, a familiar face brings you some water.")
-ALPHA_2_MSG5			_("Well, isn't that nice?")
-ALPHA_2_MSG6			_("Make sure to stay hydrated, folks!")
+ALPHA_2_MSG5			_("In this episode, a familiar face offers his services.")
+ALPHA_2_MSG6			_("Well, isn't that nice?")
+ALPHA_2_MSG7			_("He seems very considerate.")
 /* Clip scene 2 */
-ALPHA_2_MSG7			_("In this episode, a familiar face talks about his plans.")
-ALPHA_2_MSG8			_("He only wants to help you.")
-ALPHA_2_MSG9			_("I'm sure you're in great hands.")
+ALPHA_2_MSG8			_("In this episode, Clippy informs you that he's here to stay.")
+ALPHA_2_MSG9			_("But that shouldn't be a problem.")
+ALPHA_2_MSG10			_("Right?")
+ALPHA_2_MSG11			_("He only wants to help you.")
 
 /* Alpha 3 */
 /* Legend stuff */
-ALPHA_3_MSG1			_("In this episode, you experience the exposition.")
+ALPHA_3_MSG1			_("In this episode, you learn the very deep and complex lore.")
 ALPHA_3_MSG2			_("Every great story needs it.")
-ALPHA_3_MSG3			_("Why, I could go in great detail on how this works and how to easily beat the Guardians.")
-ALPHA_3_MSG4			_("But I won't.")
+ALPHA_3_MSG3			_("It's so considerate that Spamton showed you that, with him being-")
+ALPHA_3_MSG4			_("...")
+ALPHA_3_MSG5			_("Hey wait a minute.")
 
 /* Clippy oil */
-ALPHA_3_MSG5			_("In this episode, you get to see more oil than ever before.")
-ALPHA_3_MSG6			_("Finally, you can afford that shiny coat of paint.")
-ALPHA_3_MSG7			_("There aren't any good stores around here though.")
+ALPHA_3_MSG6			_("In this episode, Clippy once again demonstrates his benevolence.")
+ALPHA_3_MSG7			_("Look around, drums as far as the eye can see!")
+ALPHA_3_MSG8			_("Surely, they wouldn't happen to be EXPLOSIVES instead of normal Oil Drums.")
+ALPHA_3_MSG9			_("Because that would be mean :(")
 
 /* Alpha 4 */
 /* spam1 */
-ALPHA_4_MSG1			_("In this episode, you get a new main story mission.")
-ALPHA_4_MSG2			_("The reward is probably something the average person wouldn't want.")
-ALPHA_4_MSG3			_("We love collectibles here.")
+ALPHA_4_MSG1			_("In this episode, Spamton tells you to go kill people so he can sell you more stuff.")
+ALPHA_4_MSG2			_("This is clearly in your best interest.")
+ALPHA_4_MSG3			_("After all, how else are you going to defeat the first Guardian?")
 /* clip1 */
-ALPHA_4_MSG4			_("In this episode, you experience a new challenge.")
-ALPHA_4_MSG5			_("You might be thinking it's a tough fight, a true test of strategic skill.")
-ALPHA_4_MSG6			_("Of course not.")
-ALPHA_4_MSG7			_("It's not like this is an RTS or anything like that.")
+ALPHA_4_MSG4			_("In this episode, a new challenge is laid before you.")
+ALPHA_4_MSG5			_("Is it a fortress? Some sort of dangerous new enemy? Maybe some kind of-")
+ALPHA_4_MSG6			_("Oh.")
+ALPHA_4_MSG7			_("It's a puzzle.")
 /* clip2 */
 ALPHA_4_MSG8			_("In this episode, Clippy sends some manpower.")
-ALPHA_4_MSG9			_("It would be great to have more help on your puzzle.")
-ALPHA_4_MSG10			_("If two heads are better than zero, ten more should be solely helpful with no downsides.")
+ALPHA_4_MSG9			_("How thoughtful of him. This is sure to help you with that puzzle.")
+ALPHA_4_MSG10			_("If two heads are better than one, then ten heads is like, super ultra good or something.")
 
 /* Alpha 5 */
 /* clip1 */
-ALPHA_5_MSG1			_("In this episode, The Project witnesses what the ideal male body looks like.")
-ALPHA_5_MSG2			_("You cannot copy it, but this is what peak perfection looks like.")
-ALPHA_5_MSG3			_("Your head is too round to get that authentic look.")
+ALPHA_5_MSG1			_("In this episode, you witnesses true physical perfection.")
+ALPHA_5_MSG2			_("You cannot copy it, you cannot attain it. ")
+ALPHA_5_MSG3			_("The best you can do is work towards a mere fraction of its elegance.")
+ALPHA_5_MSG4			_("...Oh yeah and Clippy wants to fight you or something.")
 
 /* clip2 */
-ALPHA_5_MSG4			_("In this episode, Clippy decides to be unhelpful.")
-ALPHA_5_MSG5			_("I am shocked. Astounded. Stunned. Appalled.")
-ALPHA_5_MSG6			_("He has gone against the core of his programming.")
-ALPHA_5_MSG7			_("I think you're gonna have to kill this guy, Commander.")
+ALPHA_5_MSG5			_("In this episode, Clippy decides to be unhelpful.")
+ALPHA_5_MSG6			_("How shocking. How appalling.")
+ALPHA_5_MSG7			_("How dare he turn on you now! Even after everything he's done for you!?")
+ALPHA_5_MSG8			_("Who could have predicted this?!")
+ALPHA_5_MSG9			_("You're gonna have to kill this guy, Commander.")
 
 /* kill */
-ALPHA_5_MSG8			_("In this episode, Clippy dies.")
-ALPHA_5_MSG9			_("That one moment of hypocrisy was his undoing.")
-ALPHA_5_MSG10			_("There was no excuse to what he'd done.")
+ALPHA_5_MSG10			_("In this episode, Clippy dies.")
+ALPHA_5_MSG11			_("Deserved.")
 
 /* Alpha 6 */
-ALPHA_6_MSG1			_("In this episode, you leave your hard-earned base behind.")
-ALPHA_6_MSG2			_("It will be donated to a good cause.")
-ALPHA_6_MSG3			_("There may be enough space here to build a single parking lot.")
+ALPHA_6_MSG1			_("In this episode, Spamton congratulates you on your hard-earned victory.")
+ALPHA_6_MSG2			_("He also wants you to continue on your quest, so that he can keep selling you stuff.")
+ALPHA_6_MSG3			_("After all, there's still two Guardians left.")
+ALPHA_6_MSG4			_("But one must wonder what he wants all that money for...")

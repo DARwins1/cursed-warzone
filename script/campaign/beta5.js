@@ -190,6 +190,13 @@ function bonziDeathScene()
 {
 	// Kill Bonzi Buddy
 	camPlayVideos({video: "BONZI_DEATH", type: MISS_MSG});
+
+	// Make Spamton (un)mourn his demise
+	camQueueDialogues([
+		{text: "SPAMTON: HAEAHAEAHAEAHAEAH!!", delay: camSecondsToMilliseconds(5), sound: camSounds.spamton.laugh},
+		{text: "SPAMTON: [Suck]S 2 [Suck], YOU PURPLE [[ Guy]] !!!", delay: camSecondsToMilliseconds(7), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: H0W\"S[The Smooth Taste Of] THE GROUND?!?!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+	]);
 }
 
 // Used to trigger dialogue

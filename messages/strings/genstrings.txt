@@ -2,15 +2,8 @@
 BLANK		_(" ")
 
 /* TONY OUR BELOVED */
-TONY_MSG1			_("In this episode, we welcome special guest Tony Scavenger.")
-TONY_MSG2			_("His presence delights many and he is loved by all.")
-TONY_MSG3			_("Get ready to see how his talents make him stand out!")
-
-
-TONY_MSG4			_("In this episode, we mourn the loss of Tony.")
-TONY_MSG5			_("He was the finest mind of our generation.")
-TONY_MSG6			_("He could solve what 1 + 1 equals!")
-TONY_MSG7			_("Not even I can do that!")
+TONY_MSG1			_("OMG TONY!!!!")
+TONY_MSG2			_(":(")
 
 
 /* Generic Briefing Stuff */

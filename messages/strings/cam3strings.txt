@@ -3,49 +3,55 @@
 /* Cam3 Intro - player ident */
 
 /* Gamma 1 */
-CAM3_MSG1		_("TRANSPORT MISSION: Northern Sector")
-GAMMA_1_MSG1		_("In this episode, you ")
-GAMMA_1_MSG2		_("WELCOME TO [Hell]!")
+CAM3_MSG1			_("TRANSPORT MISSION: Northern Sector")
+GAMMA_1_MSG1		_("WELCOME TO [Hell]!")
 
 /* Gamma 2 */
-GAMMA_2_MSG1		_("In this episode, the Commander is exiled for failing to respect squatter's rights.")
-GAMMA_2_MSG2		_("They aren't following the code of conduct.")
-GAMMA_2_MSG3		_("A good pirate never takes another person's property.")
+GAMMA_2_MSG1		_("In this episode, Spamton tells you that he has an artifact ready for you.")
+GAMMA_2_MSG2		_("All you have to do is go to a pre-designated remote location.")
+GAMMA_2_MSG3		_("There's no way this could be a trap.")
+GAMMA_2_MSG4		_("After all, how could you not trust a man with that beautiful smile?")
 
 /* Gamma 3 */
-GAMMA_3_MSG1		_("In this episode, you learn Spamton is heavily armed.")
-GAMMA_3_MSG2		_("Do you have any idea how durable those things are?")
-GAMMA_3_MSG3		_("A good throw with that and you're gone.")
+GAMMA_3_MSG1		_("In this episode, Spamton learns the importance of internet safety.")
+GAMMA_3_MSG2		_("Stay safe out there, everyone.")
+GAMMA_3_MSG3		_("...")
+GAMMA_3_MSG4		_("In the meantime, you should go pay Spamton a visit.")
+GAMMA_3_MSG5		_("It's his turn to 'have a blast'.")
 
 /* Gamma 4 */
 /* spam1 */
-GAMMA_4_MSG1		_("In this episode, Spamton gives a foreboding message.")
-GAMMA_4_MSG2		_("What does he mean by cooked?")
-GAMMA_4_MSG3		_("You may be up against Extended Flamer 2.")
+GAMMA_4_MSG1		_("In this episode, Spamton is definitely not mad.")
+GAMMA_4_MSG2		_("Nope. Totally not mad.")
+GAMMA_4_MSG3		_("But it looks like he might have something up his sleeves...")
 
 /* blaster1 */
-GAMMA_4_MSG4		_("In this episode, Spamton reveals his special attack.")
-GAMMA_4_MSG5		_("Now is probably a good time to start running.")
-GAMMA_4_MSG6		_("Maybe you can find something useful in his base?")
+GAMMA_4_MSG4		_("In this episode, Spamton reveals HIS [Specil] ATTACK.")
+GAMMA_4_MSG5		_("HAEAHAEAHAEAHAEAH!!")
+GAMMA_4_MSG6		_("B3TTER START [Run]ING, KID !")
+GAMMA_4_MSG7		_("...")
+GAMMA_4_MSG8		_("You can't harm that thing from down here.")
+GAMMA_4_MSG9		_("But maybe you can find something useful in Spamton's base?")
 
 /* go research codes */
-GAMMA_4_MSG7		_("In this episode, you forgot the password.")
-GAMMA_4_MSG8		_("Better get a research facility working on that soon...")
+GAMMA_4_MSG10		_("NORTHERN SECTOR MISSION: Missile Codes")
+GAMMA_4_MSG11		_("A research facility is required to crack the code. Allocate one immediately.")
+GAMMA_4_MSG12		_("Protect the missile silos from Spamton's attacks.")
 
 /* codes 1 researched */
-GAMMA_4_MSG9		_("PROJECT UPDATE: 1st Level Missile Code Cracked.")
-GAMMA_4_MSG10		_("Missiles are now a little armed.")
-GAMMA_4_MSG11		_("Research more codes to arm the missiles faster.")
+GAMMA_4_MSG13		_("PROJECT UPDATE: 1st Level Missile Code Cracked.")
+GAMMA_4_MSG14		_("Missiles are now a little armed.")
+GAMMA_4_MSG15		_("Research more codes to arm the missiles faster.")
 
 /* codes 2 researched */
-GAMMA_4_MSG12		_("PROJECT UPDATE: 2nd Level Missile Code Cracked.")
-GAMMA_4_MSG13		_("Missile are almost armed.")
-GAMMA_4_MSG14		_("Once the 3rd level codes are cracked, we can finally destroy that stupid blaster.")
+GAMMA_4_MSG16		_("PROJECT UPDATE: 2nd Level Missile Code Cracked.")
+GAMMA_4_MSG17		_("Missiles are almost armed.")
+GAMMA_4_MSG18		_("Once the 3rd level codes are cracked, we can finally destroy that stupid blaster thing.")
 
 /* Gamma 5 */
-GAMMA_5_MSG1		_("In this episode, you finally anger Spamton.")
-GAMMA_5_MSG2		_("He's a little ")
-GAMMA_5_MSG3		_("[Big Shot]!")
-GAMMA_5_MSG4		_("I'M NOT A [Small Shock] YET!")
-GAMMA_5_MSG5		_("ONCE YOURE GONE")
-GAMMA_5_MSG6		_("I'LL BE THE [Bigger, better than ever]EST ONE OF ALL!")
+GAMMA_5_MSG1		_("In this episode, Spamton gets mad.")
+GAMMA_5_MSG2		_("Very, very mad.")
+GAMMA_5_MSG3		_("...")
+GAMMA_5_MSG4		_("Looks like this is the end of the line.")
+GAMMA_5_MSG5		_("Show Spamton what a real [Big Shot] looks like!")
+GAMMA_5_MSG6		_("End this insanity here and now!")

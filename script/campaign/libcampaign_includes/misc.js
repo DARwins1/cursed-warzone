@@ -704,11 +704,6 @@ function camRandomEffect(pos)
 		// Allow Triple Viper Artifact if Twin Viper and Viper III is researched
 		effects.push("tripleViperArti");
 	}
-	if (camIsResearched("R-Defense-WallTowerMG") && !camIsResearched("R-Defense-MGSuper"))
-	{
-		// Allow Machinegun Fortress Artifact if Machinegun Hardpoint is researched
-		effects.push("mgFortArti");
-	}
 	if (camIsResearched("R-Vehicle-Prop-VTOL") && !camIsResearched("R-Wpn-AAGun03"))
 	{
 		// Allow Hurricane AAA artifact if Normal Wheels is researched
@@ -1328,7 +1323,7 @@ function camRandomEffect(pos)
 			__camArtifacts["mgFortCrate"] = {tech: "R-Defense-MGSuper", placed: true };
 			break;
 		case "lancerJumperArti":
-			// Spawn an artifact for the Machinegun Fortress
+			// Spawn an artifact for the Lancer Jumper
 			if (camDef(__camArtifacts["lancerJumperCrate"]))
 			{
 				break; // Don't place if an artifact was already placed
@@ -1337,7 +1332,7 @@ function camRandomEffect(pos)
 			__camArtifacts["lancerJumperCrate"] = {tech: "R-Wpn-Rocket01-LtATJump", placed: true };
 			break;
 		case "babelArti":
-			// Spawn an artifact for the Machinegun Fortress
+			// Spawn an artifact for the Tower of Babel
 			if (camDef(__camArtifacts["babelCrate"]))
 			{
 				break; // Don't place if an artifact was already placed
@@ -1346,7 +1341,7 @@ function camRandomEffect(pos)
 			__camArtifacts["babelCrate"] = {tech: "R-Defense-TowerMEGA", placed: true };
 			break;
 		case "classicFlamerArti":
-			// Spawn an artifact for the Machinegun Fortress
+			// Spawn an artifact for the Classic Flamer
 			if (camDef(__camArtifacts["classicCrate"]))
 			{
 				break; // Don't place if an artifact was already placed

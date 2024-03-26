@@ -2,44 +2,60 @@
 
 /* Beta 1 */
 /* intro */
-BETA_1_MSG1			_("In this episode, we witness the Commander's fall from grace.")
-BETA_1_MSG2			_("Why didn't they dodge the Physgun?")
-BETA_1_MSG3			_("Are they stupid?")
+CAM2A_MSG1			_("BETA BASE MISSION: Eastern Sector")
+BETA_1_MSG1			_("In this episode, you fall down a really big hole.")
+BETA_1_MSG2			_("Dummy.")
 /* BB1 */
-BETA_1_MSG4			_("In this episode, you get a brief glimpse of Lord BB.")
-BETA_1_MSG5			_("He knows lords are below kings, right?")
-BETA_1_MSG6			_("At least go with xXLord_BBXx to stand out!")
+BETA_1_MSG3			_("You shouldn't have done that.")
 /* BB2 */
-BETA_1_MSG7			_("In this episode, the purple guy appears again.")
-BETA_1_MSG8			_("He has edge so sharp he could cut you with it.")
-BETA_1_MSG9			_("If you're not careful, he will be the man behind your slaughter.")
+BETA_1_MSG4			_("In this episode, you receive a warning.")
+BETA_1_MSG5			_("Who could this mysterious figure be?")
+BETA_1_MSG6			_("Seems like you'll need to investigate this further (and also completely ignore their warning).")
 
 /* Beta 2 */
-BETA_2_MSG1			_("In this episode, the Spamton is injured.")
-BETA_2_MSG2			_("Doesn't he know doxxing is illegal?")
-BETA_2_MSG3			_("In other news; Spamton lives in Spamtopia, Utah, United States, Earth.")
+BETA_2_MSG1			_("In this episode, Spamton is prevented from spoiling the plot.")
+BETA_2_MSG2			_("Looks like you'll have to track down this 'Lord BB' on your own...")
 
 /* Beta 3 */
-BETA_3_MSG1			_("In this episode, we contemplate the weather.")
-BETA_3_MSG2			_("Do rockets count as rain or hail, and does the answer depend on the amount?")
-BETA_3_MSG3			_("Tune in for details at 27:00!")
+BETA_3_MSG1			_("We interrupt this episode for an hourly weather report.")
+BETA_3_MSG2			_("Seems like there's a case of unusual weather nearby.")
+BETA_3_MSG3			_("Might be worth investigating for clues on Lord BB's identity.")
+BETA_3_MSG4			_("...")
+BETA_3_MSG5			_("We interrupt this weather report for an hourly philosophy report.")
+BETA_3_MSG6			_("Do rockets count as rain or hail?")
+BETA_3_MSG7			_("It probably depends on the amount. Right?")
+BETA_3_MSG8			_("But unlike either rain or hail, rockets have no connection to humidity, or really any form of precipitation.")
+BETA_3_MSG9			_("A rocket storm would not be formed from an overhead water cloud.")
+BETA_3_MSG10		_("...But the rockets themselves might leave behind clouds of fumes or particles through their exhaust.")
+BETA_3_MSG11		_("And these might be considered as clouds.")
+BETA_3_MSG12		_("Of course, the contents and forms of these clouds (or if they exist at all) would depend on the fuel being used by the rockets.")
+BETA_3_MSG13		_("Yet these pseudo-clouds may be able to interact with water vapor in the air, and produce proper water clouds containing water droplets and ice crystals via condensation around the particles released by the rockets.")
+BETA_3_MSG14		_("And then these new clouds could then in potentially produce rain or hail later on.")
+BETA_3_MSG15		_("So would the rockets themselves be a part of the weather system, or simply a catalyst for it?")
+BETA_3_MSG16		_("...")
+BETA_3_MSG17		_("...More on this at 11:00.")
 
 /* Beta 4 */
-BETA_4_MSG1			_("In this episode, we learn the true identity of Lord BB.")
-BETA_4_MSG2			_("He doesn't look like much...")
-BETA_4_MSG3			_("...but he has a better gaming chair than you.")
+BETA_4_MSG1			_("In this episode, Lord BB's true identity is revealed.")
+BETA_4_MSG2			_("He also promises to grant you his location, but only if you can survive the trials in his arena.")
+BETA_4_MSG3			_("You've already come this far, surely whatever awaits you in the Colosseum can't be that bad.")
+BETA_4_MSG4			_("What's the worst that could happen?")
 
 /* Beta 5 */
 /* start */
-BETA_5_MSG1			_("In this episode, you are challenged by the god complex monkey.")
-BETA_5_MSG2			_("Fighing a god on your 3rd boss fight?")
-BETA_5_MSG3			_("The genre has changed to JRPG.")
+BETA_5_MSG1			_("In this episode, Bonzi Buddy fulfills his promise and reveals his location.")
+BETA_5_MSG2			_("You can finally confront the second Guardian.")
+BETA_5_MSG3			_("But tread carefully, Commander.")
+BETA_5_MSG4			_("Bonzi Buddy knows you're coming. He's likely prepared himself well.")
 /* kill */
-BETA_5_MSG4			_("In this episode, you killed the giant robot.")
-BETA_5_MSG5			_("This is what all those sci-fi novels have been warning us about.")
-BETA_5_MSG6			_("We never should have trusted the monkeys.")
+BETA_5_MSG5			_("In this episode, Bonzi Buddy dies.")
+BETA_5_MSG6			_("Finally.")
 
 /* Beta 6 */
-BETA_6_MSG1			_("In this episode, you vacate your property again.")
-BETA_6_MSG2			_("You could stay here and ignore Spamton...")
-BETA_6_MSG3			_("But I NEED this for my shopping mall, so GET OUT!!!")
+BETA_6_MSG1			_("In this episode, Spamton remembers that he's the last Guardian.")
+BETA_6_MSG2			_("He's also the last thing in the way of you reaching your goal.")
+BETA_6_MSG3			_("Looks like it's time to move out and track him down.")
+BETA_6_MSG4			_("Don't worry about your base, it'll be in good hands.")
+BETA_6_MSG5			_("After all, it's the perfect spot for an automobile-based supermarket.")
+BETA_6_MSG6			_("Imagine all the extra parking spaces you could fit down there!")
+BETA_6_MSG7			_("The only thing that would be missing would be an 18-lane superhighway that divides the entire district with an impenetrable pedestrian-killing force field.")
