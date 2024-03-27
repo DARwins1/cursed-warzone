@@ -554,6 +554,7 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("TreeSnow2", "GiantDoorVert");
 	camUpgradeOnMapFeatures("Pylon", "Sign2");
 	camUpgradeOnMapFeatures("OilTower", "Sign3");
+	camUpgradeOnMapFeatures("Pipe1A", "Sign7");
 
 	// HACK: Automatic label transfer doesn't seem to work for features...
 	addLabel(getObject(87, 86), "door1");
@@ -565,6 +566,7 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("WallTower05", "WallTowerMG", CAM_CLIPPY);
 	camUpgradeOnMapStructures("PillBox6", "PillBox-BB", CAM_CLIPPY);
 	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CAM_CLIPPY);
+	camUpgradeOnMapStructures("A0CommandCentre", "A0CommandCentreNP", CAM_CLIPPY);
 
 	setTimer("checkPatterns", camSecondsToMilliseconds(1));
 

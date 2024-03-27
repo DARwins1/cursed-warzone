@@ -279,6 +279,8 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("Boulder2", "Pipis");
 	camUpgradeOnMapFeatures("Boulder3", "PipisDummy"); // Pipis that doesn't scan for enemies (to reduce script lag)
 	camUpgradeOnMapFeatures("Advmaterialslab", "NuclearDrum");
+	camUpgradeOnMapFeatures("Pylon", "Sign9");
+	camUpgradeOnMapFeatures("Pipe1A", "Sign14");
 
 	// Extend the flamer tower
 	camUpgradeOnMapStructures("GuardTower4", "GuardTowerEH", CAM_SPAMTON);

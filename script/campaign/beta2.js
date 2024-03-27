@@ -84,7 +84,7 @@ function eventStartLevel()
 {
 	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "BRING_AN_UMBRELLA", {
 		area: "compromiseZone",
-  		reinforcements: camMinutesToSeconds(2),
+  		reinforcements: camMinutesToSeconds(1),
 		eliminateBases: true
 	});
 

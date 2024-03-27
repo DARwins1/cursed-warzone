@@ -1106,6 +1106,7 @@ function eventStartLevel()
 	// Replace all boulders with explosives
 	camUpgradeOnMapFeatures("Boulder1", "ExplosiveDrum");
 	camUpgradeOnMapFeatures("Boulder2", "Pipis");
+	camUpgradeOnMapFeatures("Pylon", "Sign10");
 
 	// Make units funny
 	camUpgradeOnMapTemplates(cTempl.crlmgw, cTempl.sphlinkht, CAM_SPAMTON);

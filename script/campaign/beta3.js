@@ -12,7 +12,7 @@ camAreaEvent("bbFactoryTrigger", function(droid)
 	if (droid.player === CAM_HUMAN_PLAYER)
 	{
 		// Start calling in transports
-		setTimer("sendBBTransporter", camChangeOnDiff(camMinutesToMilliseconds(4.5)));
+		setTimer("sendBBTransporter", camChangeOnDiff(camMinutesToMilliseconds(5)));
 		queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(2.5)));
 	}
 	else
@@ -100,7 +100,7 @@ function eventStartLevel()
 	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "GET_READY_TO_RUMBLE", {
 		area: "compromiseZone",
 		message: "C22_LZ",
-		reinforcements: camMinutesToSeconds(2),
+		reinforcements: camMinutesToSeconds(1.5),
 		eliminateBases: true
 	});
 

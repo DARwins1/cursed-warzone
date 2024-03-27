@@ -432,6 +432,9 @@ function eventStartLevel()
 
 	// Replace all snowy trees with funny explosive barrels
 	camUpgradeOnMapFeatures("TreeSnow3", "ExplosiveDrum");
+	camUpgradeOnMapFeatures("Pylon", "Sign13");
+	camUpgradeOnMapFeatures("Pipe1A", "Sign15");
+	camUpgradeOnMapFeatures("barrier", "Sign16");
 
 	// Make units funny
 	camUpgradeOnMapTemplates(cTempl.npsbb, cTempl.crmbb2ht, CAM_BONZI_BUDDY);

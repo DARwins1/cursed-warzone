@@ -347,6 +347,8 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("TreeSnow1", "GiantDoorHoriz");
 	camUpgradeOnMapFeatures("TreeSnow2", "GiantDoorVert");
 	camUpgradeOnMapFeatures("Pylon", "Sign1");
+	camUpgradeOnMapFeatures("barrier", "Sign6");
+	camUpgradeOnMapFeatures("Pipe1A", "Sign8");
 
 	// Make Clippy's structures funny
 	camUpgradeOnMapStructures("GuardTower1", "GuardTower1MG", CAM_CLIPPY);
@@ -354,6 +356,7 @@ function eventStartLevel()
 	camUpgradeOnMapStructures("GuardTower4", "GuardTower4H", CAM_CLIPPY);
 	camUpgradeOnMapStructures("A0RepairCentre3", "A0RepairCentre1", CAM_CLIPPY);
 	camUpgradeOnMapStructures("A0VTolFactory1", "ClippyMonitor", CAM_CLIPPY);
+	camUpgradeOnMapStructures("A0CommandCentre", "A0CommandCentreNP", CAM_CLIPPY);
 
 	// Make Clippy's units funny
 	camUpgradeOnMapTemplates(cTempl.crlmght, cTempl.crlmgdw, CAM_CLIPPY);

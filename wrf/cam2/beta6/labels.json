@@ -1,35 +1,46 @@
 {
-    "position_0": {
-        "pos": [1595, 1983],
-        "label": "waypoint1"
-    },
-    "position_1": {
-        "pos": [6722, 965],
-        "label": "waypoint2"
-    },
-    "position_2": {
-        "pos": [6845, 15423],
-        "label": "waypoint3"
-    },
-    "position_3": {
-        "pos": [959, 15425],
-        "label": "waypoint4"
-    },
-    "position_4": {
-        "pos": [3775, 11968],
-        "label": "waypoint5"
-    },
+	"position_0": {
+		"label": "waypoint1",
+		"pos": [1595, 1983]
+	},
 
-    "object_0": {
-        "id": 5196,
-        "type": 0,
-        "player": 4,
-        "label": "nextbot"
-    },
-    "object_1": {
-        "id": 5197,
-        "type": 1,
-        "player": 4,
-        "label": "labyrinthChest"
-    }
+
+	"position_1": {
+		"label": "waypoint2",
+		"pos": [6722, 965]
+	},
+
+
+	"position_2": {
+		"label": "waypoint3",
+		"pos": [6845, 15423]
+	},
+
+
+	"position_3": {
+		"label": "waypoint4",
+		"pos": [959, 15425]
+	},
+
+
+	"position_4": {
+		"label": "waypoint5",
+		"pos": [3775, 11968]
+	},
+
+
+	"object_0": {
+		"label": "labyrinthChest",
+		"id": 5197,
+		"player": 4,
+		"type": 1
+	},
+
+
+	"object_1": {
+		"label": "nextbot",
+		"id": 5196,
+		"player": 4,
+		"type": 0
+	}
 }

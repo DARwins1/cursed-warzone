@@ -220,6 +220,9 @@ function eventStartLevel()
 		camUpgradeOnMapTemplates(cTempl.crcybmg, cTempl.crnextbot3, CAM_MOBS); // "Trollface" Nextbot
 	}
 
+	// Add a funny sign
+	camUpgradeOnMapFeatures("Pylon", "Sign17");
+
 	// Make structures funny
 	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", CAM_MOBS);
 	camUpgradeOnMapStructures("Sys-SensoTower02", "Spawner-Skeleton", CAM_MOBS);

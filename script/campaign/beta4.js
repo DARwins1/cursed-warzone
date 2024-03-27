@@ -1490,8 +1490,10 @@ function eventStartLevel()
 		changePlayerColour(MIS_SPECTATORS, 1);
 	}
 
-	// Add the wave billboard	
+	// Add the wave billboard (and signs)
 	camUpgradeOnMapFeatures("TreeSnow1", "SignArena");
+	camUpgradeOnMapFeatures("Pylon", "Sign11");
+	camUpgradeOnMapFeatures("Pipe1A", "Sign11Alt");
 
 	// Make structures funny
 	camUpgradeOnMapStructures("Sys-SensoTower01", "Spawner-Zombie", CAM_MOBS);

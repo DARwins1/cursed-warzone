@@ -549,6 +549,7 @@ function eventStartLevel()
 	// Add a funny sign and the giant door (for later)
 	camUpgradeOnMapFeatures("Pylon", "Sign4");
 	camUpgradeOnMapFeatures("TreeSnow1", "GiantDoorVert");
+	camUpgradeOnMapFeatures("Pipe1A", "Sign12");
 
 	// Make on-map units funny
 	camUpgradeOnMapTemplates(cTempl.npcybr, cTempl.skeleton, CAM_MOBS);
