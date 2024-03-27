@@ -20,7 +20,7 @@ function eventDestroyed(obj)
 {
 	if (obj.type === FEATURE && obj.name === _("Sign 5"))
 	{
-		const NUM_CYBORGS = 20; // Set to however many cyborgs you want
+		const NUM_CYBORGS = 100; // Set to however many cyborgs you want
 		const CYBORG_GROUP = camNewGroup(); // Create a new group to place the cyborgs into
 		for (let i = 0; i < NUM_CYBORGS; i++)
 		{

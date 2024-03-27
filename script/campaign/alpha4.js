@@ -6,6 +6,8 @@ const mis_enemyRes = [
 	"R-Wpn-MG-Damage02",
 ];
 
+const MIS_PUZZLE_TIME_THRESHOLD = camChangeOnDiff(camMinutesToSeconds(30));
+
 // Keep track of the number of structures required to complete each pattern
 var pattern1Count;
 var pattern2Count;
@@ -308,6 +310,12 @@ function openFirstDoor()
 	});
 
 	camSetExtraObjectiveMessage("Open the second inconvenient door");
+
+	// Grant the player more time if they're about to run out
+	if (getMissionTime() < MIS_PUZZLE_TIME_THRESHOLD)
+	{
+		setMissionTime(MIS_PUZZLE_TIME_THRESHOLD);
+	}
 }
 
 // Delayed effects for the first door
@@ -336,6 +344,12 @@ function openSecondDoor()
 		pos: [ "patrolPos9", "patrolPos10", "patrolPos11" ],
 		interval: camSecondsToMilliseconds(20)
 	});
+
+	// Grant the player more time if they're about to run out
+	if (getMissionTime() < MIS_PUZZLE_TIME_THRESHOLD)
+	{
+		setMissionTime(MIS_PUZZLE_TIME_THRESHOLD);
+	}
 
 	camSetExtraObjectiveMessage("Open the final inconvenient door");
 }

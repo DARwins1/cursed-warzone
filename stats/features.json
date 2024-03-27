@@ -1114,6 +1114,19 @@
 		"type": "TREE",
 		"width": 1
 	},
+	"SpamSign12": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "SpamSign12",
+		"lineOfSight": 0,
+		"model": "spamsign12.PIE",
+		"name": "Spamton Sign 12",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "TREE",
+		"width": 1
+	},
 	"WaterBuilding": {
 		"armour": 5,
 		"breadth": 2,

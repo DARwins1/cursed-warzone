@@ -741,7 +741,7 @@ const __camSpamtonSigns = [
 	"SpamSign1", "SpamSign2", "SpamSign3",
 	"SpamSign4", "SpamSign5", "SpamSign6",
 	"SpamSign7", "SpamSign8", "SpamSign9",
-	"SpamSign11",
+	"SpamSign11", "SpamSign12",
 ];
 
 //nexus

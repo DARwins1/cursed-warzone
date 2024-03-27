@@ -948,8 +948,17 @@ function camRandomEffect(pos)
 			);
 			break;
 		case "superAxe":
-			// Spawn a Super Axe Cyborg for the player
-			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y, 
+			// Spawn 4 Super Axe Cyborgs for the player
+			addDroid(CAM_HUMAN_PLAYER, pos.x + 1, pos.y, 
+				_("Super Axe Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-Axe"
+			);
+			addDroid(CAM_HUMAN_PLAYER, pos.x - 1, pos.y, 
+				_("Super Axe Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-Axe"
+			);
+			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y - 1, 
+				_("Super Axe Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-Axe"
+			);
+			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y + 1, 
 				_("Super Axe Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-Axe"
 			);
 			break;

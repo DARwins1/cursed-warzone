@@ -192,6 +192,7 @@ function eventStartLevel()
 	setScrollLimits(64, 0, 128, 128);
 
 	camSetStandardWinLossConditions(CAM_VICTORY_PRE_OFFWORLD, "HOLY_CUNGADERO");
+	camSetExtraObjectiveMessage(["Move out to find the next Guardian", "Bring at least one truck"]);
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 	camSetupTransporter(tCoords.xStart, tCoords.yStart, tCoords.xOut, tCoords.yOut);

@@ -154,7 +154,7 @@ function eventStartLevel()
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 
-	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.25)));
+	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.75)));
 	camPlayVideos({video: "CLIP_ALPHA5_MSG1", type: MISS_MSG});
 
 	camCompleteRequiredResearch(mis_clippyRes, CAM_CLIPPY);

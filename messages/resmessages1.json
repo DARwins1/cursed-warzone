@@ -77,7 +77,7 @@
 		"sequenceName": "res_droid.ogg",
 		"text": [
 			"New Cyborg Available",
-			"Armed with Cyborg Cannon",
+			"Armed with Cyborg \"Light\" Cannon",
 			"Body Points: Medium",
 			"Requires Cyborg factory to produce"
 		]
@@ -88,7 +88,7 @@
 		"sequenceName": "res_droid.ogg",
 		"text": [
 			"New Cyborg Available",
-			"Armed with Cyborg Flamer",
+			"Armed with Cyborg Scorch Shot",
 			"Body Points: Medium",
 			"Requires Cyborg factory to produce"
 		]
@@ -253,7 +253,7 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"New Defensive Structure Available",
-			"Armored bunker with Light Cannon",
+			"Armored bunker with \"Light\" Cannon",
 			"Automatically targets enemies within sensor range",
 			"Defensive Strength: High"
 		]
@@ -562,7 +562,7 @@
 		"sequenceName": "res_struttech.ogg",
 		"text": [
 			"New Defensive Structure Available",
-			"Armored hardpoint with Light Cannon",
+			"Armored hardpoint with \"Light\" Cannon",
 			"Automatically targets enemies within sensor range",
 			"Defensive Strength: High"
 		]
