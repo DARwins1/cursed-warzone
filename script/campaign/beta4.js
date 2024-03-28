@@ -395,14 +395,6 @@ function beginWave()
 			placeRainRockets();
 			setTimer("spawnCoreUnits", camChangeOnDiff(camSecondsToMilliseconds(15)));
 			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(30)));
-			// HACK: For some reason, the sensor units can't pathfind through the arena gates, so just remove them so they don't get stuck.
-			// This should be fixed in 4.4.0
-			// const gateList = enumStruct(MIS_SPECTATORS);
-			// for (let i = 0; i < gateList.length; i++)
-			// {
-			// 	const gate = gateList[i];
-			// 	camSafeRemoveObject(gate, false);
-			// }
 			break;
 		case 9:
 			spawnCoreUnits();

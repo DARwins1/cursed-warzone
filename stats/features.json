@@ -1296,6 +1296,32 @@
 		"type": "TREE",
 		"width": 1
 	},
+	"SpamSign13": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "SpamSign13",
+		"lineOfSight": 0,
+		"model": "spamsign13.PIE",
+		"name": "Spamton Sign 13",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "TREE",
+		"width": 1
+	},
+	"SpamSign14": {
+		"armour": 3,
+		"breadth": 1,
+		"hitpoints": 250,
+		"id": "SpamSign14",
+		"lineOfSight": 0,
+		"model": "spamsign14.PIE",
+		"name": "Spamton Sign 14",
+		"startVisible": 0,
+		"tileDraw": 1,
+		"type": "TREE",
+		"width": 1
+	},
 	"WaterBuilding": {
 		"armour": 5,
 		"breadth": 2,
