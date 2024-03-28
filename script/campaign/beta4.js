@@ -394,7 +394,7 @@ function beginWave()
 			spawnSupportUnits();
 			placeRainRockets();
 			setTimer("spawnCoreUnits", camChangeOnDiff(camSecondsToMilliseconds(15)));
-			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(25)));
+			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(30)));
 			// HACK: For some reason, the sensor units can't pathfind through the arena gates, so just remove them so they don't get stuck.
 			// This should be fixed in 4.4.0
 			// const gateList = enumStruct(MIS_SPECTATORS);
@@ -965,7 +965,7 @@ function spawnSupportUnits()
 			{
 				const NEW_GROUP = camNewGroup();
 				const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
-				const NUM_UNITS = 1 + difficulty;
+				const NUM_UNITS = difficulty;
 				for (let i = 0; i < NUM_UNITS; i++)
 				{
 					const pos = camRandPosInArea(SPAWN_AREA);
