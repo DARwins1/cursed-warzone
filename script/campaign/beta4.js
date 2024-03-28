@@ -405,8 +405,8 @@ function beginWave()
 		case 10:
 			spawnCoreUnits();
 			spawnSupportUnits();
-			setTimer("spawnCoreUnits", camChangeOnDiff(camSecondsToMilliseconds(25)));
-			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(30)));
+			setTimer("spawnCoreUnits", camSecondsToMilliseconds(25));
+			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(40)));
 			break;
 		case 11: // This wave is just a bunch of VTOLs
 			camSetVtolData(CAM_BONZI_BUDDY, undefined, camMakePos("vtolRemoveZone"), [cTempl.colatv],
