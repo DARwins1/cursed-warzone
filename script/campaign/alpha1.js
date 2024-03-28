@@ -226,7 +226,7 @@ function eventStartLevel()
 	camSetGameOverScenePool([
 		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
 		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
-		]);
+	]);
 
 	centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);

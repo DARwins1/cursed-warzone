@@ -238,6 +238,8 @@ function eventStartLevel()
 		reinforcements: -1, //No reinforcements
 		retlz: true
 	});
+	// NOTE: No game over cutscenes for this level
+	// For the same reasons as on Alpha 3
 
 	// centreView(startpos.x, startpos.y);
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);

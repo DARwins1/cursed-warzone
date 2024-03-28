@@ -87,6 +87,10 @@ function eventStartLevel()
   		reinforcements: camMinutesToSeconds(1),
 		eliminateBases: true
 	});
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+	]);
 
 	const startpos = camMakePos(getObject("landingZone"));
 	const lz = getObject("landingZone"); //player lz

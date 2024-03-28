@@ -379,6 +379,10 @@ function doorCheck()
 function eventStartLevel()
 {
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CTF_2FORT", {callback: "doorCheck"});
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+	]);
 	const startpos = getObject("startPosition");
 	const lz = getObject("landingZone");
 	centreView(startpos.x, startpos.y);

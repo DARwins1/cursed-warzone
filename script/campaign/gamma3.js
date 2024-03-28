@@ -272,6 +272,11 @@ function eventStartLevel()
 		reinforcements: camMinutesToSeconds(1),
 		callback: "checkTowers"
 	});
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UTALT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+		"GAMEOVER_MICROWAVE",
+	]);
 
 	camSetArtifacts({
 		"spamCC": { tech: "R-Sys-Engineering03" }, // what nerds call "Advanced Engineering"

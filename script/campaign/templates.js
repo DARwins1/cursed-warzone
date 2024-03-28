@@ -152,7 +152,7 @@ splneedlenw: { body: "Body1RECSpam", prop: "wheelednormal", weap: "RailGun1-VTOL
 splhmgnw: { body: "Body1RECSpam", prop: "wheelednormal", weap: "MG3-VTOL" }, // Realistic Heavy Machinegun Spamaconda Normal Wheels
 splbisonnw: { body: "Body1RECSpam", prop: "wheelednormal", weap: "CannonBison-VTOL" }, // Righteous Bison Spamaconda Normal Wheels
 splcannw: { body: "Body1RECSpam", prop: "wheelednormal", weap: "Cannon1-VTOL" }, // Righteous Bison Spamaconda Normal Wheels
-spmanvilnw: { body: "Body5RECSpam", prop: "wheelednormal", weap: "Bomb-VTOL-Anvil" }, // Anvil Spamaconda II Normal Wheels
+spmanvilnw: { body: "Body5RECSpam", prop: "wheelednormal", weap: "Bomb-VTOL-AnvilSpam" }, // Spamvil Spamaconda II Normal Wheels
 spmhmgnw: { body: "Body5RECSpam", prop: "wheelednormal", weap: "MG3-VTOL" }, // Realistic Heavy Machinegun Spamaconda II Normal Wheels
 sptwin2lcannw: { body: "Body1RECTwinSpam", prop: "wheelednormal", weap: ["Cannon1-VTOL", "Cannon1-VTOL"] }, // "Light" Cannon Hydra Twin Spamaconda Normal Wheels
 sptwin2podnw: { body: "Body1RECTwinSpam", prop: "wheelednormal", weap: ["Rocket-VTOL-Pod", "Rocket-VTOL-Pod"] }, // Many-Rocket Pod Hydra Twin Spamaconda Normal Wheels

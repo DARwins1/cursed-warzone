@@ -8,4 +8,9 @@ function eventStartLevel()
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(2)));
 	camPlayVideos({video: "SPAM_GAMMA3", type: CAMP_MSG});
 	camSetStandardWinLossConditions(CAM_VICTORY_PRE_OFFWORLD, "SPAMTOPIA");
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UTALT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+		"GAMEOVER_MICROWAVE",
+	]);
 }

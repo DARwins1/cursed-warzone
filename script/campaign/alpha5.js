@@ -148,6 +148,10 @@ function openDoors()
 function eventStartLevel()
 {
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "BYE_BYE");
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+	]);
 	camSetExtraObjectiveMessage("Defeat Clippy");
 	const startpos = getObject("startPosition");
 	const lz = getObject("landingZone");

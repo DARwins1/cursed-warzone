@@ -8,6 +8,10 @@ function eventStartLevel()
 	setMissionTime(camChangeOnDiff(camMinutesToSeconds(20)));
 	camPlayVideos({video: "BETA_4_MSG", type: CAMP_MSG});
 	camSetStandardWinLossConditions(CAM_VICTORY_PRE_OFFWORLD, "THE_COLOSSEUM");
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+	]);
 
 	// Spamton items
 	camQueueDialogue("New research options are available!", camSecondsToMilliseconds(1), camSounds.spamton.laugh);

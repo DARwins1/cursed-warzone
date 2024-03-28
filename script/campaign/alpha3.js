@@ -35,6 +35,9 @@ function eventStartLevel()
 		reinforcements: -1, //No reinforcements
 		retlz: true
 	});
+	// NOTE: No game over cutscenes for this level
+	// They could get annoying quickly, since it's 
+	// very easy to die here!
 
 	const startpos = getObject("startPosition");
 	const lz = getObject("landingZone"); //player lz

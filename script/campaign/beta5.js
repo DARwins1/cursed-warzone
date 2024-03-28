@@ -250,6 +250,10 @@ function eventStartLevel()
 		reinforcements: camMinutesToSeconds(2),
 		callback: "bonziBossStatus"
 	});
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+	]);
 	camSetExtraObjectiveMessage("Defeat Bonzi Buddy");
 
 	const startpos = camMakePos(getObject("landingZone"));

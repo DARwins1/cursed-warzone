@@ -374,6 +374,11 @@ function eventStartLevel()
 	const lz = getObject("landingZone");
 
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "NO_DONT_STEAL_MY_");
+	camSetGameOverScenePool([ // Notice the new (Spamton-related) cutscenes here!
+		"GAMEOVER_CRASH", "GAMEOVER_UTALT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+		"GAMEOVER_MICROWAVE",
+	]);
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.25)));
 
 	dialogueIndex = 0;

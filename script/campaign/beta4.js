@@ -641,8 +641,7 @@ function spawnCoreUnits()
 		case 7: // Spawn a total of: 
 		{
 			// (Easy-) 32 Sword Cyborgs and 32 Archer Cyborgs
-			// (Normal) 48 Sword Cyborgs and 48 Archer Cyborgs
-			// (Hard+) 64 Sword Cyborgs and 64 Archer Cyborgs
+			// (Normal+) 48 Sword Cyborgs and 48 Archer Cyborgs
 			const SPAWN_AREA1 = mis_spawnZones[camRand(mis_spawnZones.length)];
 			for (let i = 0; i < 8; i++)
 			{
@@ -661,7 +660,7 @@ function spawnCoreUnits()
 					_("Archer Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Bow"
 				));
 			}
-			if ((difficulty >= HARD && coreIndex >= 8) || (difficulty === MEDIUM && coreIndex >= 6) || (difficulty <= EASY && coreIndex >= 4))
+			if ((difficulty >= MEDIUM && coreIndex >= 6) || (difficulty <= EASY && coreIndex >= 4))
 			{
 				// Spawning is done
 				doneSpawning = true;
@@ -747,7 +746,7 @@ function spawnCoreUnits()
 		{
 			// (Easy-) 4 Endermen, 32 Fungible Cannons, 16 Many-Rocket Pods, and 16 Realistic MGs
 			// (Normal) 4 Endermen, 40 Fungible Cannons, 20 Many-Rocket Pods, and 20 Realistic MGs
-			// (Hard+) 4 Endermen, 80 Fungible Cannons, 20 Many-Rocket Pods, and 20 Realistic MGs
+			// (Hard+) 4 Endermen, 60 Fungible Cannons, 20 Many-Rocket Pods, and 20 Realistic MGs
 			if (coreIndex === 1)
 			{
 				// Spawn 4 Endermen from 4 different directions
@@ -767,7 +766,7 @@ function spawnCoreUnits()
 				if (coreIndex % 2 === 0)
 				{
 					// Spawn Fungible Cannons on even indexes
-					const NUM_UNITS = (difficulty <= MEDIUM) ? 4 : 8;
+					const NUM_UNITS = (difficulty <= MEDIUM) ? 4 : 6;
 					for (let i = 0; i < NUM_UNITS; i++)
 					{
 						const pos = camRandPosInArea(SPAWN_AREA);
@@ -1445,6 +1444,10 @@ function eventStartLevel()
 	camSetStandardWinLossConditions(CAM_VICTORY_SCRIPTED, "HOW_2_UNINSTALL",{
 		callback: "victoryCheck"
 	});
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+	]);
 
 	const startpos = camMakePos(getObject("landingZone"));
 	const lz = getObject("landingZone"); //player lz

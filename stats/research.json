@@ -269,7 +269,8 @@
 			"Cyb-Hvywpn-Axe:Cyb-Hvywpn-AxeSpam",
 			"Cannon2A-TMk3:Cannon2A-TMk3Spam",
 			"Spade1Mk1:Spade1Mk1Spam",
-			"CyborgSpade:CyborgSpadeSpam"
+			"CyborgSpade:CyborgSpadeSpam",
+			"Bomb-VTOL-Anvil:Bomb-VTOL-AnvilSpam"
 		],
 		"statID": "CyborgChaingunSpam"
 	},
@@ -310,7 +311,8 @@
 			"Cyb-Hvywpn-AxeSpam:Cyb-Hvywpn-Axe",
 			"Cannon2A-TMk3Spam:Cannon2A-TMk3",
 			"Spade1Mk1Spam:Spade1Mk1",
-			"CyborgSpadeSpam:CyborgSpade"
+			"CyborgSpadeSpam:CyborgSpade",
+			"Bomb-VTOL-AnvilSpam:Bomb-VTOL-Anvil"
 		],
 		"statID": "CyborgChaingun"
 	},

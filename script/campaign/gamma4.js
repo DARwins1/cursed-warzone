@@ -220,6 +220,8 @@ function eventResearched(research, structure, player)
 		{
 			fireWeaponAtObj("LasSat", objects[i], CAM_SPAMTON);
 		}
+		// Disable custom game over cutscenes
+		camSetGameOverScenePool([]);
 		failure = true;
 	}
 	else if (research.name.substring(0, 19) === "R-Comp-MissileCodes") // e.g. "R-Comp-MissileCodes01"
@@ -911,6 +913,11 @@ function eventStartLevel()
 	camSetStandardWinLossConditions(CAM_VICTORY_SCRIPTED, "BIG_SHOT", {
 		callback: "victoryCallback"
 	});
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UTALT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+		"GAMEOVER_MICROWAVE",
+	]);
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.5))); // For the attack phase.
 
 	centreView(startpos.x, startpos.y);

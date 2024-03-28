@@ -484,7 +484,7 @@ function eventAttacked(victim, attacker)
 			{
 				// Skip directly to the credits
 				// Don't play any other cutscenes
-				// camPlayVideos({video: "END_CREDITS", type: MISS_MSG});
+				camPlayVideos({video: "END_CREDITS", type: MISS_MSG});
 				altEndScene = true;
 				endSceneComplete = true;
 			}
@@ -612,9 +612,8 @@ function spamtonDeathScene()
 {
 	if (!altEndScene)
 	{
-		camPlayVideos({video: "SPAMTON_DEATH", type: MISS_MSG});
-		// Play the credits
-		// camPlayVideos({video: "END_CREDITS", type: MISS_MSG});
+		// Play the ending and credits
+		camPlayVideos([{video: "SPAMTON_DEATH", type: MISS_MSG}, {video: "END_CREDITS", type: MISS_MSG}]);
 		endSceneComplete = true; // Allow this mod to end
 	}
 }
@@ -622,9 +621,8 @@ function spamtonDeathScene()
 // Play Spamton's alternate defeat cutscene
 function spamtonNukeScene()
 {
-	camPlayVideos({video: "SPAMTON_NUKE", type: MISS_MSG});
-	// Play the credits
-	// camPlayVideos({video: "END_CREDITS", type: MISS_MSG});
+	// Play the ending and credits
+	camPlayVideos([{video: "SPAMTON_NUKE", type: MISS_MSG}, {video: "END_CREDITS", type: MISS_MSG}]);
 	endSceneComplete = true;
 }
 
@@ -652,6 +650,11 @@ function eventStartLevel()
 	camSetStandardWinLossConditions(CAM_VICTORY_SCRIPTED, "GAMMA_OUT", {
 		callback: "allowVictory" // Player wins if all 4 HQs are destroyed
 	});
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UTALT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+		"GAMEOVER_MICROWAVE",
+	]);
 
 	centreView(startpos.x, startpos.y);
 

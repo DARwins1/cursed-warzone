@@ -403,6 +403,10 @@ function eventStartLevel()
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CAVE_UPDATE_PART_4", {
 		callback: "bonziEndMessage"
 	});
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+	]);
 	setReinforcementTime(LZ_COMPROMISED_TIME);
 
 	centreView(startpos.x, startpos.y);

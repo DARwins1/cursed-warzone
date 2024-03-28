@@ -10,6 +10,10 @@ function eventStartLevel()
 	setNoGoArea(86, 99, 88, 101, CAM_HUMAN_PLAYER);
 	setMissionTime(camChangeOnDiff(camMinutesToSeconds(70)));
 	camSetStandardWinLossConditions(CAM_VICTORY_PRE_OFFWORLD, "XBOX_LIVE");
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+	]);
 	camPlayVideos({video: "SPAM_BETA2_MSG", type: CAMP_MSG});
 
 	// Spamton items

@@ -108,6 +108,10 @@ function clippyPostMessage()
 function eventStartLevel()
 {
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "SUB_1_1S", {callback: "enemyCheck"});
+	camSetGameOverScenePool([
+		"GAMEOVER_CRASH", "GAMEOVER_UT", "GAMEOVER_UK",
+		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
+	]);
 	const startpos = getObject("startPosition");
 	const lz = getObject("landingZone");
 	centreView(startpos.x, startpos.y);
