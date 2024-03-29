@@ -125,6 +125,7 @@ function advanceWave()
 				{text: "ARENA ANNOUNCER: *crowdcheer.ogg*", delay: camSecondsToMilliseconds(2), sound: camSounds.announcer.cCheer},
 				{text: "ARENA ANNOUNCER: Very good. You are still alive.", delay: camSecondsToMilliseconds(6), sound: camSounds.announcer.w2_1},
 				{text: "ARENA ANNOUNCER: You may begin preparing for the second wave.", delay: camSecondsToMilliseconds(9), sound: camSounds.announcer.w2_2},
+				{text: "ARENA ANNOUNCER: Remember that you can use trucks to build as many defenses as you see fit.", delay: camSecondsToMilliseconds(14), sound: camSounds.announcer.w2_3},
 			];
 			break;
 		case 3:
@@ -1427,6 +1428,10 @@ function victoryCheck()
 	if (winFlag)
 	{
 		return true;
+	}
+	if (waveIndex === 0 && getMissionTime() === 0)
+	{
+		return false;
 	}
 	return undefined;
 }

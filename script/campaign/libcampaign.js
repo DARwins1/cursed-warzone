@@ -246,6 +246,7 @@ const camSounds = {
 		// Wave 2
 		w2_1: "W2A1.ogg", // Very good. You are still alive.
 		w2_2: "W2A2.ogg", // You may begin preparing for the second wave.
+		w2_3: "W2A3.ogg", // Remember that you can use trucks to build as many defenses as you see fit.
 		// Wave 4
 		w4_1: "W4A1.ogg", // Congratulations. You are not dead.
 		w4_2: "W4A2.ogg", // You should keep doing that.
