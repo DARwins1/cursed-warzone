@@ -2097,11 +2097,11 @@ function __camMonsterSpawnerTick()
 		{
 			const spawnerPos = camMakePos(spawnerList[j]);
 
-			// Check if any enemies are within range
+			// Check if any player objects are within range
 			if (enumRange(spawnerPos.x, spawnerPos.y, __CAM_SPAWNER_RANGE, CAM_HUMAN_PLAYER, false).filter((obj) => (
-				obj.type !== FEATURE && !allianceExistsBetween(spawnerList[j].player, obj.player &&
+				obj.type !== FEATURE && !allianceExistsBetween(spawnerList[j].player, obj.player) &&
 				!(obj.type === DROID && obj.droidType === DROID_SUPERTRANSPORTER))
-			)).length > 0)
+			).length > 0)
 			{
 				// Enemy in range, try to spawn some mobs
 				const numMobs = difficulty + camRand(2); // 2-3 on Normal
