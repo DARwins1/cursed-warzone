@@ -1274,6 +1274,7 @@ function checkFreddyHP()
 	{
 		// Freddy should be the only unit in this group
 		const freddy = enumGroup(coreGroup)[0];
+		camSetExtraObjectiveMessage(["Freddy HP: " + freddy.health + "%"]);
 		if (freddy.health < 50 && difficulty >= HARD)
 		{
 			// Turn off the lights
@@ -1284,6 +1285,10 @@ function checkFreddyHP()
 			// Fix weird bug where Freddy doesn't die :/
 			camSafeRemoveObject(freddy, true);
 		}
+	}
+	else
+	{
+		camSetExtraObjectiveMessage(undefined);
 	}
 }
 
