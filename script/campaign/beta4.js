@@ -939,9 +939,9 @@ function spawnSupportUnits()
 				}
 				else
 				{
-					for (let i = 0; i < difficulty - 1; i++)
+					for (let i = 0; i < difficulty - 2; i++)
 					{
-						// 2 on Hard, 3 on Insane
+						// 1 on Hard, 2 on Insane
 						list.push(cTempl.crmbb2ht);
 					}
 				}
