@@ -5,6 +5,7 @@ include("script/campaign/templates.js");
 const mis_scavengerRes = [
 	"R-Wpn-MG-Damage01",
 ];
+var tipGiven; // Whether the player has been told that they can skip this level (EASY or below only)
 
 function eventPickup(feature, droid)
 {
@@ -24,6 +25,16 @@ function scavAttack()
 function eventTransporterLanded(transport)
 {
 	camPlayVideos({video: "CLIP_ALPHA3_MSG", type: MISS_MSG});
+}
+
+function eventGameLoaded()
+{
+	if (difficulty <= EASY && !tipGiven)
+	{
+		playSound("beep7.ogg");
+		console("TIP: This level can be skipped on EASY or below by typing \"let me win\"");
+		tipGiven = true;
+	}
 }
 
 //Mission setup stuff
@@ -56,6 +67,8 @@ function eventStartLevel()
 
 	camPlayVideos({video: "FLIGHT", type: CAMP_MSG});
 	hackAddMessage("C1-1_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER, false);
+
+	tipGiven = false;
 
 	// Replace all snowy trees with funny explosive barrels
 	camUpgradeOnMapFeatures("TreeSnow3", "ExplosiveDrum");

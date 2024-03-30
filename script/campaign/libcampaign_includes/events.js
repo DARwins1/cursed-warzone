@@ -57,15 +57,20 @@ function cam_eventChat(from, to, message)
 	{
 		camSetPropulsionTypeLimit(Number(message.substring(5)));
 	}
+	if (message === "let me win")
+	{
+		// Allow if we're in debug mode
+		// Or we're on Alpha 3/Gamma 2 and the difficulty is low enough
+		if (camIsCheating() || (difficulty <= EASY && (__camNextLevel === "CP_DUSTBOWL" || __camNextLevel === "WELCOME_TO_THE")))
+		{
+			__camLetMeWin();
+		}
+	}
 	if (!camIsCheating())
 	{
 		return;
 	}
 	camTrace(from, to, message);
-	if (message === "let me win")
-	{
-		__camLetMeWin();
-	}
 	if (message === "make cc")
 	{
 		setMiniMap(true);

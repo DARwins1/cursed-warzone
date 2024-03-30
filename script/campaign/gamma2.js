@@ -15,6 +15,18 @@ var tonySpawned;
 var tonyGroup;
 var tonyMourned;
 
+var tipGiven; // Whether the player has been told that they can skip this level (EASY or below only)
+
+function eventGameLoaded()
+{
+	if (difficulty <= EASY && !tipGiven)
+	{
+		playSound("beep7.ogg");
+		console("TIP: This level can be skipped on EASY or below by typing \"let me win\"");
+		tipGiven = true;
+	}
+}
+
 function eventTransporterLanded(transport)
 {
 	camQueueDialogues([
@@ -259,6 +271,8 @@ function eventStartLevel()
 
 	pipisRoute1 = null;
 	pipisRoute2 = null;
+
+	tipGiven = false;
 
 	hackAddMessage("C3-1_OBJ1", PROX_MSG, CAM_HUMAN_PLAYER, false);
 
