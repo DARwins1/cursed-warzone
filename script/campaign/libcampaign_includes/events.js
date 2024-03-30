@@ -224,15 +224,15 @@ function cam_eventDroidBuilt(droid, structure)
 		else
 		{
 			// Swap the Warranty-Expired Lancer for a either a standard or Defective variant
-			if (camRand(2) === 0) // 50% chance
-			{
-				// Swap with Lancer
-				completeResearch("Script-Lancer-FunctionalSwap", droid.player, true);
-			}
-			else
+			if (camRand(3) === 0) // 33% chance of being defective
 			{
 				// Swap with Defective Lancer
 				completeResearch("Script-Lancer-DefectiveSwap", droid.player, true);
+			}
+			else
+			{
+				// Swap with Lancer
+				completeResearch("Script-Lancer-FunctionalSwap", droid.player, true);
 			}
 		}
 	}
@@ -805,15 +805,15 @@ function cam_eventObjectTransfer(obj, from)
 		// modified, then returned to the player.
 		// This is all done just so building these units from multiple factories doesn't break.
 		completeResearch(__camFungibleCanSwapList[camRand(__camFungibleCanSwapList.length)], 10, true);
-		if (camRand(2) === 0) // 50% chance
-		{
-			// Swap with Lancer
-			completeResearch("Script-Lancer-FunctionalSwap", 10, true);
-		}
-		else
+		if (camRand(3) === 0) // 33% chance of being defective
 		{
 			// Swap with Defective Lancer
 			completeResearch("Script-Lancer-DefectiveSwap", 10, true);
+		}
+		else
+		{
+			// Swap with Lancer
+			completeResearch("Script-Lancer-FunctionalSwap", 10, true);
 		}
 		donateObject(obj, CAM_HUMAN_PLAYER);
 	}
