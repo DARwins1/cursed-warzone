@@ -368,7 +368,7 @@ function beginWave()
 		case 4:
 			spawnCoreUnits();
 			spawnSupportUnits();
-			setTimer("spawnCoreUnits", camChangeOnDiff(camSecondsToMilliseconds(15)));
+			setTimer("spawnCoreUnits", camChangeOnDiff(camSecondsToMilliseconds(20)));
 			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(45)));
 			break;
 		case 5:
@@ -400,7 +400,7 @@ function beginWave()
 		case 9:
 			spawnCoreUnits();
 			spawnSupportUnits();
-			setTimer("spawnCoreUnits", camChangeOnDiff(camSecondsToMilliseconds(15)));
+			setTimer("spawnCoreUnits", camChangeOnDiff(camSecondsToMilliseconds(25)));
 			setTimer("spawnSupportUnits", camChangeOnDiff(camSecondsToMilliseconds(10)));
 			break;
 		case 10:
