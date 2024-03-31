@@ -456,7 +456,7 @@ function eventStartLevel()
 	setTimer("nukeDrumCheck", camSecondsToMilliseconds(2));
 
 	// Set up queues for factory/LZ activation
-	queue("activateFirstFactories", camChangeOnDiff(camMinutesToMilliseconds(2.5)));
+	queue("activateFirstFactories", camChangeOnDiff(camMinutesToMilliseconds(4.5)));
 	queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(12)));
-	setTimer("sendBBTransporter", camChangeOnDiff(camMinutesToMilliseconds(5)));
+	setTimer("sendBBTransporter", camChangeOnDiff(camMinutesToMilliseconds(6)));
 }
