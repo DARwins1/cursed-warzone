@@ -90,7 +90,7 @@ function getDroidsForBBLZ()
 {
 	const droids = [];
 	const COUNT = 6 + difficulty; // 6 to 10 units
-	const list = [cTempl.crmpepht, cTempl.crlslanceht, cTempl.crmbb2ht];
+	const list = [cTempl.crmhmght, cTempl.crlslanceht, cTempl.crmbb2ht];
 
 	for (let i = 0; i < COUNT; ++i)
 	{
