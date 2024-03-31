@@ -236,7 +236,7 @@ function eventResearched(research, structure, player)
 			enableResearch("R-Comp-Death03", CAM_HUMAN_PLAYER);
 			camPlayVideos({video: "MB3_B_MSG3", type: CAMP_MSG});
 			removeTimer("sendSpamtonGroundWave");
-			setTimer("sendSpamtonGroundWave", camChangeOnDiff(camSecondsToMilliseconds(40)));
+			setTimer("sendSpamtonGroundWave", camChangeOnDiff(camSecondsToMilliseconds(60)));
 			const normList = [cTempl.splbisonnw, cTempl.sptwin2lcannw, cTempl.spmhmgnw, cTempl.splbisonnw, cTempl.sptwin2podnw];
 			camSetVtolData(CAM_SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camSecondsToMilliseconds(45)), {
 				minVTOLs: 3,
@@ -262,7 +262,7 @@ function eventResearched(research, structure, player)
 			// Ground wave come at the same rate, but are a bit tougher
 			// Start sending Anvils
 			const normList = [cTempl.spmanvilnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw, cTempl.spminimgnw];
-			camSetVtolData(CAM_SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camSecondsToMilliseconds(60)), {
+			camSetVtolData(CAM_SPAMTON, ["normalSpawn1", "normalSpawn2"], "normalRemovePos", normList, camChangeOnDiff(camSecondsToMilliseconds(80)), {
 				minVTOLs: 8,
 				maxRandomVTOLs: 0,
 			});
