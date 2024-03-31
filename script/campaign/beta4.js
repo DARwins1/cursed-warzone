@@ -232,13 +232,15 @@ function advanceWave()
 
 	if (waveIndex > 1)
 	{
-		// Enable player reinforcements
-		setReinforcementTime(10);
-		// playSound(camSounds.project.reinforceAvail); // "Reinforcements are available"
 
 		// Setup phase is 119 seconds (~2 minutes)
 		const PREP_PHASE_DURATION = 119;
-		setMissionTime(PREP_PHASE_DURATION);
+		if (waveIndex < 13)
+		{
+			setMissionTime(PREP_PHASE_DURATION);
+			// Enable player reinforcements
+			setReinforcementTime(10);
+		}
 
 		// Grant the player temporary full visibility
 		addSpotter(48, 38, 0, 8192, false, gameTime + camSecondsToMilliseconds(PREP_PHASE_DURATION));
@@ -268,7 +270,7 @@ function updateBillboardTexture(gameLoad)
 			{
 				newTexture = newTexture.substring(0, newTexture.length - 4).concat("easy.png");
 			}
-			else if (difficulty >= HARD)
+			else if (difficulty >= HARD && waveIndex !== 12)
 			{
 				newTexture = newTexture.substring(0, newTexture.length - 4).concat("hard.png");
 			}
@@ -276,7 +278,7 @@ function updateBillboardTexture(gameLoad)
 		// Also check the previous wave
 		const PREV_WAVE_INDEX = waveIndex - 1;
 		if (!gameLoad && (PREV_WAVE_INDEX === 4 || PREV_WAVE_INDEX === 7 || PREV_WAVE_INDEX === 8
-			|| PREV_WAVE_INDEX === 9 || PREV_WAVE_INDEX === 10 || PREV_WAVE_INDEX === 12))
+			|| PREV_WAVE_INDEX === 9 || PREV_WAVE_INDEX === 10))
 		{
 			if (difficulty <= EASY)
 			{
@@ -338,6 +340,10 @@ function beginWave()
 {
 	// Make sure the player can't call in reinforcements during the wave (if they didn't call any during the setup)
 	setReinforcementTime(-1);
+	if (waveIndex !== 6)
+	{
+		setMissionTime(-1);
+	}
 
 	setupTime = false;
 	doneSpawning = false;
@@ -1092,7 +1098,6 @@ function spawnSupportUnits()
 		{
 			// Cool Cyborgs, MRP Half-wheels, and an Explosive Drum Transport
 			// (Normal+) Also Bunker Buster Cyborgs
-			// (Hard+) Also Pepperspray Half-wheels
 			const NEW_GROUP = camNewGroup();
 			const SPAWN_AREA = mis_spawnZones[camRand(mis_spawnZones.length)];
 			if (supportIndex % 2 === 0)
@@ -1117,7 +1122,7 @@ function spawnSupportUnits()
 					}
 				}
 			}
-			else // Spawn Many-Rocket Pods and Peppersprays on odd indexes
+			else // Spawn Many-Rocket Pods on odd indexes
 			{
 				// Spawn Many-Rocket Pods
 				for (let i = 0; i < difficulty + 2; i++)
@@ -1127,17 +1132,17 @@ function spawnSupportUnits()
 						_("Many-Rocket Pod Viper Half-wheels"), "Body1REC", "HalfTrack", "", "", "Rocket-Pod"
 					));
 				}
-				// Spawn Peppersprays (if Hard+)
-				if (difficulty >= HARD)
-				{
-					for (let i = 0; i < difficulty - 2; i++)
-					{
-						const pos = camRandPosInArea(SPAWN_AREA);
-						groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
-							_("Pepperspray Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Mortar3ROTARYMk1"
-						));
-					}
-				}
+				// // Spawn Peppersprays (if Hard+)
+				// if (difficulty >= HARD)
+				// {
+				// 	for (let i = 0; i < difficulty - 2; i++)
+				// 	{
+				// 		const pos = camRandPosInArea(SPAWN_AREA);
+				// 		groupAdd(NEW_GROUP, addDroid(CAM_BONZI_BUDDY, pos.x, pos.y, 
+				// 			_("Pepperspray Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Mortar3ROTARYMk1"
+				// 		));
+				// 	}
+				// }
 			}
 			camManageGroup(NEW_GROUP, CAM_ORDER_ATTACK);
 			if (supportIndex % 4 === 0 && !camTransporterOnMap(CAM_BONZI_BUDDY))
@@ -1274,7 +1279,8 @@ function checkFreddyHP()
 	{
 		// Freddy should be the only unit in this group
 		const freddy = enumGroup(coreGroup)[0];
-		camSetExtraObjectiveMessage(["Freddy HP: " + freddy.health + "%"]);
+		const DISPLAY_HEALTH = Math.trunc(freddy.health * 10) / 10;
+		camSetExtraObjectiveMessage(["Freddy HP: " + DISPLAY_HEALTH + "%"]);
 		if (freddy.health < 50 && difficulty >= HARD)
 		{
 			// Turn off the lights
