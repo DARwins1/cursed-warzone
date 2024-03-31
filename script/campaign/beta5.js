@@ -403,7 +403,7 @@ function eventStartLevel()
 			assembly: "bbNormAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(40)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(80)),
 			data: {
 				regroup: false,
 				repair: 20,
