@@ -195,7 +195,7 @@ function bonziDeathScene()
 	camQueueDialogues([
 		{text: "SPAMTON: HAEAHAEAHAEAHAEAH!!", delay: camSecondsToMilliseconds(5), sound: camSounds.spamton.laugh},
 		{text: "SPAMTON: [Suck]S 2 [Suck], YOU PURPLE [[ Guy]] !!!", delay: camSecondsToMilliseconds(7), sound: camSounds.spamton.talk2},
-		{text: "SPAMTON: H0W\"S[The Smooth Taste Of] THE GROUND?!?!", delay: camSecondsToMilliseconds(9), sound: camSounds.spamton.talk2},
+		{text: "SPAMTON: H0W\"S[The Smooth Taste Of] THE GROUND?!?!", delay: camSecondsToMilliseconds(10), sound: camSounds.spamton.talk2},
 	]);
 }
 
@@ -247,7 +247,7 @@ function eventStartLevel()
 	camSetStandardWinLossConditions(CAM_VICTORY_OFFWORLD, "KILL_YOUR_TV", {
 		area: "compromiseZone",
 		message: "C26_LZ",
-		reinforcements: camMinutesToSeconds(2),
+		reinforcements: camMinutesToSeconds(1.5),
 		callback: "bonziBossStatus"
 	});
 	camSetGameOverScenePool([
@@ -356,7 +356,7 @@ function eventStartLevel()
 			assembly: "bbAssembly4",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(40)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(80)),
 			data: {
 				regroup: false,
 				count: -1,
@@ -458,5 +458,5 @@ function eventStartLevel()
 	// Set up queues for factory/LZ activation
 	queue("activateFirstFactories", camChangeOnDiff(camMinutesToMilliseconds(2.5)));
 	queue("activateSecondFactories", camChangeOnDiff(camMinutesToMilliseconds(12)));
-	setTimer("sendBBTransporter", camChangeOnDiff(camMinutesToMilliseconds(4)));
+	setTimer("sendBBTransporter", camChangeOnDiff(camMinutesToMilliseconds(5)));
 }
