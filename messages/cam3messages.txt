@@ -6,5 +6,5 @@ GAMEOVER_UK,0,1,1,uk_gameover.ogv,0,0,0000
 GAMEOVER_EXPLODE,0,1,1,deltarune_explode_gameover.ogv,0,0,0000
 GAMEOVER_MICROWAVE,0,1,1,spamton_execution.ogv,0,0,0000
 GAMEOVER_JET,0,1,1,jet_gameover.ogv,0,0,0000
-GAMEOVER_MISSILE,0,1,1,missile_gameover.ogv.ogv,0,0,0000
+GAMEOVER_MISSILE,0,1,1,missile_gameover.ogv,0,0,0000
 GAMEOVER_UTALT,0,1,1,ut_alt_gameover.ogv,0,0,0000
