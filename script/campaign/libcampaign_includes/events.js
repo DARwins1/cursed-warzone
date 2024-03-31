@@ -303,7 +303,7 @@ function cam_eventStructureBuilt(structure, droid)
 		camSafeRemoveObject(structure);
 		addFeature("Landmine", pos.x, pos.y);
 	}
-	else if (structure.name === _("Fungible Cannon Hardpoint"))
+	else if (structure.name === _("Fungible Cannon Hardpoint") && structure.player === CAM_HUMAN_PLAYER)
 	{
 		// Check if this structure has a label and/or group assigned to it
 		// FIXME: O(n) lookup here

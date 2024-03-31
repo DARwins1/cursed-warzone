@@ -2500,14 +2500,34 @@ function __camSpamtonize(obj)
 		else if (obj.type === STRUCTURE)
 		{
 			// Structure absorbed; replace it with a spamton variant if applicable
-			for (let i = 0; i < __camSpamtonReplacableStructs.length; i++)
+			if (obj.name === _("Fungible Cannon Hardpoint"))
 			{
-				if (camGetCompNameFromId(__camSpamtonReplacableStructs[i], "Building") === obj.name)
+				camUpgradeOnMapStructures("WallTower03Mk2", "WallTower03Mk2Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 2
+				camUpgradeOnMapStructures("WallTower03Mk3", "WallTower03Mk3Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 3
+				camUpgradeOnMapStructures("WallTower03Mk4", "WallTower03Mk4Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 4
+				camUpgradeOnMapStructures("WallTower03Mk5", "WallTower03Mk5Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 5
+				camUpgradeOnMapStructures("WallTower03Mk6", "WallTower03Mk6Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 6
+				camUpgradeOnMapStructures("WallTower03Mk7", "WallTower03Mk7Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 7
+				camUpgradeOnMapStructures("WallTower03Mk8", "WallTower03Mk8Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 8
+				camUpgradeOnMapStructures("WallTower03Mk9", "WallTower03Mk9Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 9
+				camUpgradeOnMapStructures("WallTower03Mk10", "WallTower03Mk10Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 10
+				camUpgradeOnMapStructures("WallTower03Mk11", "WallTower03Mk11Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 11
+				camUpgradeOnMapStructures("WallTower03Mk12", "WallTower03Mk12Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 12
+				camUpgradeOnMapStructures("WallTower03Mk13", "WallTower03Mk13Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 13
+				camUpgradeOnMapStructures("WallTower03Mk14", "WallTower03Mk14Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 14
+				camUpgradeOnMapStructures("WallTower03Mk15", "WallTower03Mk15Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 15
+			}
+			else
+			{
+				for (let i = 0; i < __camSpamtonReplacableStructs.length; i++)
 				{
-					// We found a suitable spamton variant, replace it.
-					const pos = {x: obj.x * 128, y: obj.y * 128};
-					camSafeRemoveObject(obj, false);
-					addStructure(__camSpamtonReplacementStructs[i], CAM_SPAMTON, pos.x, pos.y);
+					if (camGetCompNameFromId(__camSpamtonReplacableStructs[i], "Building") === obj.name)
+					{
+						// We found a suitable spamton variant, replace it.
+						const pos = {x: obj.x * 128, y: obj.y * 128};
+						camSafeRemoveObject(obj, false);
+						addStructure(__camSpamtonReplacementStructs[i], CAM_SPAMTON, pos.x, pos.y);
+					}
 				}
 			}
 		}
