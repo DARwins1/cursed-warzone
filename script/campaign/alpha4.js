@@ -3,7 +3,7 @@ include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
 const mis_enemyRes = [
-	"R-Wpn-MG-Damage02",
+	"R-Wpn-MG-Damage01",
 ];
 
 const MIS_PUZZLE_TIME_THRESHOLD = camChangeOnDiff(camMinutesToSeconds(30));

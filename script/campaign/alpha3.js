@@ -2,9 +2,6 @@
 include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
-const mis_scavengerRes = [
-	"R-Wpn-MG-Damage01",
-];
 var tipGiven; // Whether the player has been told that they can skip this level (EASY or below only)
 
 function eventPickup(feature, droid)
@@ -58,8 +55,6 @@ function eventStartLevel()
 	setNoGoArea(lz.x, lz.y, lz.x2, lz.y2, CAM_HUMAN_PLAYER);
 	startTransporterEntry(tent.x, tent.y, CAM_HUMAN_PLAYER);
 	setTransporterExit(text.x, text.y, CAM_HUMAN_PLAYER);
-
-	camCompleteRequiredResearch(mis_scavengerRes, CAM_SCAV_7);
 
 	camSetArtifacts({
 		"drumCrate": { tech: "R-Struc-ExplosiveDrum" }, // Explosive Drum

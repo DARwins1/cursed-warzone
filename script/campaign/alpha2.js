@@ -3,9 +3,6 @@ include("script/campaign/libcampaign.js");
 include("script/campaign/templates.js");
 
 var CScout; // Sensor scout
-const mis_scavengerRes = [
-	"R-Wpn-MG-Damage01",
-];
 
 camAreaEvent("AttackArea1", function(droid)
 {
@@ -131,12 +128,6 @@ function eventStartLevel()
 	else
 	{
 		changePlayerColour(CAM_CLIPPY, 2); // Set Clippy to gray
-	}
-
-	if (difficulty === INSANE)
-	{
-		camCompleteRequiredResearch(mis_scavengerRes, 6);
-		camCompleteRequiredResearch(mis_scavengerRes, 7);
 	}
 
 	camSetArtifacts({
