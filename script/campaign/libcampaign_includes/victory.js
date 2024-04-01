@@ -554,7 +554,7 @@ function __camShowVictoryConditions()
 		return; // fastplay / tutorial. Should be a better identifier for this.
 	}
 
-	if (__camWinLossCallback === CAM_VICTORY_PRE_OFFWORLD)
+	if (__camWinLossCallback === CAM_VICTORY_PRE_OFFWORLD && (__camNextLevel !== "how_was_the_fall" && __camNextLevel !== "HOLY_CUNGADERO"))
 	{
 		return;
 	}
