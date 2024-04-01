@@ -1,5 +1,6 @@
 # Cursed Warzone
-A mod that adds a new custom campaign to Warzone 2100, with a self-contained story barely related to the main campaign.
+A campaign mod for Warzone 2100 that completely ruins the story and adds a whole bunch of stupid funny stuff.<br>
+**WARNING**: FLASHING LIGHTS AND LOUD(er) SOUNDS
 
 ------------------
 Spoiler Warning!!!
@@ -14,7 +15,7 @@ After downloading the cursed.wz file, place it into your `mods/autoload` folder 
 --------------------
 Playing With The Mod
 --------------------
-To get started, simply click Single Player -> New Campaign and then pick one of the three campaigns. It is recommended to start with Alpha for a first playthrough, so one can understand the story. Also feel free to change your player color and difficulty in Options -> Game Options. Enabling Shadows and Fog in Options -> Graphics Options is highly recommended, because it looks really cool.
-This mod DOES NOT support Skirmish/Multiplayer games! Please disable the mod before trying to play those or else your computer will be set on fire or something.
+To get started, simply click Single Player -> New Campaign and then pick one of the three campaigns. It is highly recommended to start with the first of the three campaigns (or else everything will make even less sense).<br>
+This mod DOES NOT support Skirmish/Multiplayer games! Please disable the mod before trying to play those or else your computer will be banished to the void or something.
 
 With that out of the way, I hope you will enjoy / have enjoyed Cursed Warzone!
