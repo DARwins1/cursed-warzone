@@ -2176,7 +2176,7 @@ function __camRandomizeFungibleCannons()
 			const dr = drList[j];
 
 			// Check if the droid has a Fungible Cannon
-			if (camDef(dr.weapons[0]) && dr.weapons[0].name === "Cannon2A-TMk1")
+			if (camDef(dr.weapons[0]) && dr.weapons[0].name === "Cannon2A-TMk1" && dr.player !== CAM_HUMAN_PLAYER)
 			{
 				// Check if this droid has a label and/or group assigned to it
 				// FIXME: O(n) lookup here
@@ -2417,16 +2417,17 @@ function __camUpdateSwappableUnits()
 			donateDelay += __CAM_TICKS_PER_FRAME;
 		}
 	}
-	queue("__camSwappableFailsafe", camSecondsToMilliseconds(donateDelay += __CAM_TICKS_PER_FRAME));
+	queue("__camSwappableFailsafe", camSecondsToMilliseconds(donateDelay + __CAM_TICKS_PER_FRAME));
 }
 
 // Sometimes when changing level units that have their weapons swapped don't get returned to the player.
 // Instead of actually figuring out what's causing this, this function just forces them to be donated back to the player.
 function __camSwappableFailsafe()
 {
-	// Check for any Fungible Cannons or Warranty-Expired Lancers
+	// Get every unit player 10 owns
 	const droidList = enumDroid(10, DROID_WEAPON);
 	let donateDelay = __CAM_TICKS_PER_FRAME;
+	// Donate them all
 	for (let i = 0; i < droidList.length; i++)
 	{
 		donateObject(droidList[i], CAM_HUMAN_PLAYER);
