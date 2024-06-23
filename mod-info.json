@@ -1,0 +1,42 @@
+{
+  "name": "Cursed Warzone",
+  "version": "1.1.0",
+  "author": "DARwins",
+  "type": "alternateCampaign",
+  "license": "GPL-2.0-or-later",
+  "minVersionSupported": "4.5.0",
+  "maxVersionTested": "4.5.0",
+  "description": {
+     "en": "A campaign mod for Warzone 2100 that completely ruins the story and adds a whole bunch of stupid funny stuff."
+  },
+  "updatesUrl": "https://github.com/DARwins1/cursed-warzone/releases/latest",
+  "campaigns": [
+    "alpha.json",
+    "beta.json",
+    "gamma.json"
+  ],
+  "universe": "unique",
+  "difficultyLevels": "default",
+  "camTweakOptions": [
+    {
+      "id": "timerPowerBonus",
+      "default": true,
+      "userEditable": false
+    },
+    {
+      "id": "classicTimers",
+      "default": false,
+      "userEditable": false
+    },
+    {
+      "id": "playerUnitCap40",
+      "default": false,
+      "userEditable": false
+    },
+    {
+      "id": "autosavesOnly",
+      "default": false,
+      "userEditable": false
+    }
+  ]
+}

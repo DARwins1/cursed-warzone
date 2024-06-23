@@ -321,22 +321,21 @@ function camUpgradeOnMapStructures(struct1, struct2, playerId, excluded)
 
 		//Check if this object has a label and/or group assigned to it
 		// FIXME: O(n) lookup here
-		const __STRUCT_LABEL = getLabel(structure);
-		const __STRUCT_GROUP = structure.group;
-
-		//Replace it
-		const structInfo = {x: structure.x * 128, y: structure.y * 128};
+		let label = (getLabel(structure));
+		let group = (structure.group);		
+		let structInfo = {x: structure.x * 128, y: structure.y * 128};
 		camSafeRemoveObject(structure, false);
-		const newStruct = addStructure(struct2, playerId, structInfo.x, structInfo.y);
-
-		if (camDef(__STRUCT_LABEL)) 
-		{
-			addLabel(newStruct, __STRUCT_LABEL);
-		}
-		if (__STRUCT_GROUP !== null)
-		{
-			groupAdd(__STRUCT_GROUP, newStruct);
-		}
+		
+		// Compile all the needed information into a string
+		let infoString = 
+			"__STRUCTNAME" + struct2
+			+ "__PLAYER" + playerId
+			+ "__XPOS" + structInfo.x
+			+ "__YPOS" + structInfo.y;
+		if (camDef(label)) infoString += "__LABEL" + label;
+		if (group !== null) infoString += "__GROUP" + group;
+		// Queue up a replacement
+		queue("__camQueueReplacementStruct", __CAM_TICKS_PER_FRAME, infoString);
 	}
 }
 
@@ -395,36 +394,39 @@ function camUpgradeOnMapFeatures(feat1, feat2, excluded)
 
 		//Check if this object has a label assigned to it
 		// FIXME: O(n) lookup here
-		const __FEATURE_LABEL = getLabel(feature);
+		const label = getLabel(feature);
 
 		//Replace it
-		const featInfo = {x: feature.x, y: feature.y};
 		camSafeRemoveObject(feature, false);
-		let newFeat;
+		let featName;
 		if (feat2 === "Pipis" && camRand(100) < 1)
 		{
 			// 1/100 chance to place a Ms. Pipis instead of a normal Pipis
-			newFeat = addFeature("PipisM", featInfo.x, featInfo.y);
+			featName = "PipisM";
 		}
 		else if (feat2 === "PipisDummy" && camRand(100) < 1)
 		{
 			// 1/100 chance to place a Ms. Pipis Dummy instead of a normal Pipis Dummy
-			newFeat = addFeature("PipisMDummy", featInfo.x, featInfo.y);
+			featName = "PipisMDummy";
 		}
 		else if (feat2 === "SpamSign")
 		{
 			// Choose a random Spamton Sign from the list
-			newFeat = addFeature(__camSpamtonSigns[camRand(__camSpamtonSigns.length)], featInfo.x, featInfo.y);
+			featName = __camSpamtonSigns[camRand(__camSpamtonSigns.length)];
 		}
 		else
 		{
-			newFeat = addFeature(feat2, featInfo.x, featInfo.y);
+			featName = feat2;
 		}
-		
-		if (camDef(__FEATURE_LABEL)) 
-		{
-			addLabel(newFeat, __FEATURE_LABEL);
-		}
+
+		// Compile all the needed information into a string
+		let infoString = 
+			"__FEATNAME" + featName
+			+ "__XPOS" + feature.x
+			+ "__YPOS" + feature.y;
+		if (camDef(label)) infoString += "__LABEL" + label;
+		// Queue up a replacement
+		queue("__camQueueReplacementFeat", __CAM_TICKS_PER_FRAME, infoString);
 	}
 }
 
@@ -530,19 +532,24 @@ function __camBuildDroid(template, structure)
 	const __PROP = __camChangePropulsion(template.prop, structure.player);
 	makeComponentAvailable(template.body, structure.player);
 	makeComponentAvailable(__PROP, structure.player);
-	makeComponentAvailable(template.weap, structure.player);
 	const __NAME = camNameTemplate(template.weap, template.body, __PROP);
 	// multi-turret templates are NOW supported :)
 	if (typeof template.weap === "object" && camDef(template.weap[2]))
 	{
+		makeComponentAvailable(template.weap[0], structure.player);
+		makeComponentAvailable(template.weap[1], structure.player);
+		makeComponentAvailable(template.weap[2], structure.player);
 		return buildDroid(structure, __NAME, template.body, __PROP, "", "", template.weap[0], template.weap[1], template.weap[2]);
 	}
 	else if (typeof template.weap === "object" && camDef(template.weap[1]))
 	{
+		makeComponentAvailable(template.weap[0], structure.player);
+		makeComponentAvailable(template.weap[1], structure.player);
 		return buildDroid(structure, __NAME, template.body, __PROP, "", "", template.weap[0], template.weap[1]);
 	}
 	else
 	{
+		makeComponentAvailable(template.weap, structure.player);
 		return buildDroid(structure, __NAME, template.body, __PROP, "", "", template.weap);
 	}
 }
@@ -626,4 +633,70 @@ function __camContinueProduction(structure)
 		fi.state = -1;
 	}
 	fi.lastprod = gameTime;
+}
+
+// Add a structure with the information given in the string
+function __camQueueReplacementStruct(infoString)
+{
+	// console("parsing \"" + infoString + "\"!")
+	// Parse the info string
+	const nameMarker = "__STRUCTNAME";
+	const playerMarker = "__PLAYER";
+	const xMarker = "__XPOS";
+	const yMarker = "__YPOS";
+	const labelMarker = "__LABEL";
+	const groupMarker = "__GROUP";
+	const __NAMEINDEX = infoString.indexOf(nameMarker);
+	const __PLAYERINDEX = infoString.indexOf(playerMarker);
+	const __XINDEX = infoString.indexOf(xMarker);
+	const __YINDEX = infoString.indexOf(yMarker);
+	const __LABELINDEX = infoString.indexOf(labelMarker);
+	const __GROUPINDEX = infoString.indexOf(groupMarker);
+
+	const structName = infoString.substring(__NAMEINDEX + nameMarker.length, __PLAYERINDEX);
+	const __PLAYER = parseInt(infoString.substring(__PLAYERINDEX + playerMarker.length, __XINDEX));
+	const __XPOS = parseInt(infoString.substring(__XINDEX + xMarker.length, __YINDEX));
+	const __YPOS = parseInt(infoString.substring(__YINDEX + yMarker.length, ((__LABELINDEX > 0) ? __LABELINDEX : ((__GROUPINDEX > 0) ? __GROUPINDEX : undefined))));
+	const label = (__LABELINDEX > 0) ? infoString.substring(__LABELINDEX + labelMarker.length, ((__GROUPINDEX > 0) ? __GROUPINDEX : undefined)) : undefined;
+	const group = (__GROUPINDEX > 0) ? infoString.substring(__GROUPINDEX + groupMarker.length) : undefined;
+
+	// Add the structure
+	const newStruct = addStructure(structName, __PLAYER, __XPOS, __YPOS);
+	// Apply label/group
+	if (camDef(label)) 
+	{
+		addLabel(newStruct, label);
+	}
+	if (camDef(group)) 
+	{
+		groupAdd(group, newStruct);
+	}
+}
+
+// Add a feature with the information given in the string
+function __camQueueReplacementFeat(infoString)
+{
+	// console("parsing \"" + infoString + "\"!")
+	// Parse the info string
+	const nameMarker = "__FEATNAME";
+	const xMarker = "__XPOS";
+	const yMarker = "__YPOS";
+	const labelMarker = "__LABEL";
+	const __NAMEINDEX = infoString.indexOf(nameMarker);
+	const __XINDEX = infoString.indexOf(xMarker);
+	const __YINDEX = infoString.indexOf(yMarker);
+	const __LABELINDEX = infoString.indexOf(labelMarker);
+
+	const featName = infoString.substring(__NAMEINDEX + nameMarker.length, __XINDEX);
+	const __XPOS = parseInt(infoString.substring(__XINDEX + xMarker.length, __YINDEX));
+	const __YPOS = parseInt(infoString.substring(__YINDEX + yMarker.length, ((__LABELINDEX > 0) ? __LABELINDEX : undefined)));
+	const label = (__LABELINDEX > 0) ? infoString.substring(__LABELINDEX + labelMarker.length) : undefined;
+
+	// Add the feature
+	const newFeat = addFeature(featName, __XPOS, __YPOS);
+	// Apply label/group
+	if (camDef(label)) 
+	{
+		addLabel(newFeat, label);
+	}
 }

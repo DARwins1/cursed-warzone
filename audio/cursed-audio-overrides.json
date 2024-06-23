@@ -1,0 +1,181 @@
+{
+    "_Format": {
+        "_comment": "fileName: [file.ogg], loop: [false/true], range: [world units, 128 = 1 tile], volume: [0-100]"
+    },
+    "DesignSequences": {
+        "_name": "Design sequence sounds",
+        "data": [
+            { "fileName": "pcv331.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Barrel Explosion 1" },
+            { "fileName": "pcv332.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Barrel Explosion 2" },
+            { "fileName": "pcv333.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Barrel Explosion 3" }
+        ]
+    },
+    "Research": {
+        "_name": "Research sounds",
+        "data": [
+            { "fileName": "pcv354.ogg", "loop": false, "range": 1800, "volume": 150, "z_comment": "Landmine Detonate" },
+            { "fileName": "pcv355.ogg", "loop": false, "range": 1800, "volume": 125, "z_comment": "Landmine Explode" }
+        ]
+    },
+    "CommandConsole": {
+        "_name": "Command console sounds",
+        "data": [
+            { "fileName": "pcv413.ogg", "loop": false, "range": 1800, "volume": 70, "z_comment": "Needler Fire" },
+            { "fileName": "pcv414.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Needler Supercombine Explosion" },
+            { "fileName": "pcv415.ogg", "loop": false, "range": 1800, "volume": 30, "z_comment": "Needler Impact" },
+            { "fileName": "pcv416.ogg", "loop": false, "range": 1800, "volume": 70, "z_comment": "Scorch Shot" },
+            { "fileName": "pcv417.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Arrow fire" },
+            { "fileName": "pcv418.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Arrow Impact" },
+            { "fileName": "pcv419.ogg", "loop": false, "range": 1800, "volume": 200, "z_comment": "TNT Explosion 1" },
+            { "fileName": "pcv420.ogg", "loop": false, "range": 1800, "volume": 200, "z_comment": "TNT Explosion 2" },
+            { "fileName": "pcv421.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Tool Gun Fire" },
+            { "fileName": "pcv422.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Nuclear Blast" },
+            { "fileName": "pcv423.ogg", "loop": false, "range": 1800, "volume": 225, "z_comment": "Very Heavy Cannon Fire" },
+            { "fileName": "pcv424.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Sword Sweep" },
+            { "fileName": "pcv425.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Metal Hit" },
+            { "fileName": "pcv426.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Enderman Teleport" },
+            { "fileName": "pcv429.ogg", "loop": false, "range": 1800, "volume": 20, "z_comment": "Flare Impact" },
+            { "fileName": "pcv420.ogg", "loop": false, "range": 1800, "volume": 200, "z_comment": "Blaster Charge" }
+        ]
+    },
+    "TutorialStuff": {
+        "_name": "Tutorial sounds",
+        "data": [
+            { "fileName": "pcv430.ogg", "loop": false, "range": 1800, "volume": 200, "z_comment": "Blaster Fire" },
+            { "fileName": "pcv431.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Anvil Impact" },
+            { "fileName": "pcv432.ogg", "loop": false, "range": 1800, "volume": 35, "z_comment": "Bison Fire" },
+            { "fileName": "pcv433.ogg", "loop": false, "range": 1800, "volume": 300, "z_comment": "Iron Door Open" },
+            { "fileName": "pcv434.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Vanish" }
+        ]
+    },
+    "GroupAndCommanderAssignment": {
+        "_name": "Group and commander assignment sounds",
+        "data": [
+            { "fileName": "pcv435.ogg", "loop": false, "range": 1800, "volume": 110, "z_comment": "Sansburst Fire" },
+            { "fileName": "pcv436.ogg", "loop": false, "range": 1800, "volume": 50, "z_comment": "Sansburst Impact" },
+            { "fileName": "pcv437.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Mini MG Fire" }
+        ]
+    },
+    "Routing": {
+        "_name": "Routing sounds",
+        "data": [
+            { "fileName": "pcv438.ogg", "loop": false, "range": 1800, "volume": 250, "z_comment": "Creeper Hiss" },
+            { "fileName": "pcv439.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Dead Ringer Decloak" }
+        ]
+    },
+    "TransportsAndLZs": {
+        "_name": "Transport and LZ sounds",
+        "data": [
+            { "fileName": "pcv441.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Dead Ringer Ready" },
+            { "fileName": "pcv444.ogg", "loop": false, "range": 1800, "volume": 10, "z_comment": "VTOL Realistic Machinegun Fire" },
+            { "fileName": "pcv446.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Spamton Laugh" },
+            { "fileName": "pcv447.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Spamton Deep Laugh" }
+        ]
+    },
+    "MissionMessages": {
+        "_name": "Mission message sounds",
+        "data": [
+            { "fileName": "pcv450.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Pipis Explode" },
+            { "fileName": "pcv451.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Spamton Talk 1" },
+            { "fileName": "pcv452.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Spamton Talk 2" },
+            { "fileName": "pcv453.ogg", "loop": false, "range": 1800, "volume": 250, "z_comment": "Mono-Rocket fire" },
+            { "fileName": "pcv454.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Firework Crossbow fire" },
+            { "fileName": "pcv468.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Sawed-Off Lancer fire" },
+            { "fileName": "pcv469.ogg", "loop": false, "range": 1800, "volume": 80, "z_comment": "Lancer Jumper fire" },
+            { "fileName": "pcv471.ogg", "loop": false, "range": 1800, "volume": 80, "z_comment": "Lancer Jumper explode" },
+            { "fileName": "pcv472.ogg", "loop": false, "range": 1800, "volume": 175, "z_comment": "Big Machinegun fire" }
+        ]
+    },
+    "Miscellaneous": {
+        "_name": "Miscellaneous sounds",
+        "data": [
+            { "fileName": "Cave1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 1" },
+            { "fileName": "Cave2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 2" },
+            { "fileName": "Cave3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 3" },
+            { "fileName": "Cave4.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 4" },
+            { "fileName": "Cave5.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 5" },
+            { "fileName": "Cave6.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 6" },
+            { "fileName": "Cave7.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 7" },
+            { "fileName": "Cave8.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 8" },
+            { "fileName": "Cave9.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 9" },
+            { "fileName": "Cave10.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 10" },
+            { "fileName": "Cave11.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 11" },
+            { "fileName": "Cave12.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 12" },
+            { "fileName": "Cave13.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 13" },
+            { "fileName": "Cave14.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 14" },
+            { "fileName": "Cave15.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 15" },
+            { "fileName": "Cave16.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 16" },
+            { "fileName": "Cave17.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 17" },
+            { "fileName": "Cave18.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 18" },
+            { "fileName": "Cave19.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Cave Noise 19" },
+            { "fileName": "Powerdown.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Powerdown" },
+            { "fileName": "W1A1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 1 Announcer Dialogue 1" },
+            { "fileName": "W1A2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 1 Announcer Dialogue 2" },
+            { "fileName": "W1A3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 1 Announcer Dialogue 3" },
+            { "fileName": "W1A4.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 1 Announcer Dialogue 4" },
+            { "fileName": "W1A5.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 1 Announcer Dialogue 5" },
+            { "fileName": "W1A6.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 1 Announcer Dialogue 6" },
+            { "fileName": "W1A7.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 1 Announcer Dialogue 7" },
+            { "fileName": "W1A8.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 1 Announcer Dialogue 8" },
+            { "fileName": "W1A9.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 1 Announcer Dialogue 9" },
+            { "fileName": "W2A1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 2 Announcer Dialogue 1" },
+            { "fileName": "W2A2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 2 Announcer Dialogue 2" },
+            { "fileName": "W2A3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 2 Announcer Dialogue 3" },
+            { "fileName": "W4A1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 4 Announcer Dialogue 1" },
+            { "fileName": "W4A2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 4 Announcer Dialogue 2" },
+            { "fileName": "W5A1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 5 Announcer Dialogue 1" },
+            { "fileName": "W5A2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 5 Announcer Dialogue 2" },
+            { "fileName": "W5A3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 5 Announcer Dialogue 3" },
+            { "fileName": "W6A1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 6 Announcer Dialogue 1" },
+            { "fileName": "W6A2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 6 Announcer Dialogue 2" },
+            { "fileName": "W7A1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 7 Announcer Dialogue 1" },
+            { "fileName": "W7A2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 7 Announcer Dialogue 2" },
+            { "fileName": "W8A1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 8 Announcer Dialogue 1" },
+            { "fileName": "W9A1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 9 Announcer Dialogue 1" },
+            { "fileName": "W9A2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 9 Announcer Dialogue 2" },
+            { "fileName": "W9A3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 9 Announcer Dialogue 3" },
+            { "fileName": "W9A4.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 9 Announcer Dialogue 4" },
+            { "fileName": "W9A5.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 9 Announcer Dialogue 5" },
+            { "fileName": "W10A1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 10 Announcer Dialogue 1" },
+            { "fileName": "W10A2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 10 Announcer Dialogue 2" },
+            { "fileName": "W10A3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 10 Announcer Dialogue 3" },
+            { "fileName": "ENDA1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Ending Announcer Dialogue 1" },
+            { "fileName": "ENDA2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Ending Announcer Dialogue 2" },
+            { "fileName": "ENDA3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Ending Announcer Dialogue 3" },
+            { "fileName": "ENDA4.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Ending Announcer Dialogue 4" },
+            { "fileName": "W3B1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 3 Bonzi Dialogue 1" },
+            { "fileName": "W3B2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 3 Bonzi Dialogue 2" },
+            { "fileName": "W6B1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 6 Bonzi Dialogue 1" },
+            { "fileName": "W6B2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 6 Bonzi Dialogue 2" },
+            { "fileName": "W10B1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 10 Bonzi Dialogue 1" },
+            { "fileName": "W10B2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 10 Bonzi Dialogue 2" },
+            { "fileName": "W11B1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 10 Bonzi Dialogue 3" },
+            { "fileName": "W11B2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 11 Bonzi Dialogue 1" },
+            { "fileName": "W12B1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 12 Bonzi Dialogue 2" },
+            { "fileName": "W12B2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 12 Bonzi Dialogue 3" },
+            { "fileName": "W12B3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 12 Bonzi Dialogue 4" },
+            { "fileName": "W12B4.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Wave 12 Bonzi Dialogue 5" },
+            { "fileName": "ENDB1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Ending Bonzi Dialogue 1" },
+            { "fileName": "ENDB2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Ending Bonzi Dialogue 2" },
+            { "fileName": "crowd_cheer.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Crowd Cheer" },
+            { "fileName": "crowd_gasp.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Crowd Gasp" },
+            { "fileName": "B5-wlcm1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Welcome Dialogue 1" },
+            { "fileName": "B5-wlcm2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Welcome Dialogue 2" },
+            { "fileName": "B5-wlcm3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Welcome Dialogue 3" },
+            { "fileName": "B5-gate1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Gate Dialogue 1" },
+            { "fileName": "B5-gate2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Gate Dialogue 2" },
+            { "fileName": "B5-gate3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Gate Dialogue 3" },
+            { "fileName": "B5-aggro1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Aggro Dialogue 1" },
+            { "fileName": "B5-aggro2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Aggro Dialogue 2" },
+            { "fileName": "B5-aggro3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Aggro Dialogue 3" },
+            { "fileName": "B5-aggro4.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Aggro Dialogue 4" },
+            { "fileName": "B5-taunt1.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Taunt 1" },
+            { "fileName": "B5-taunt2.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Taunt 2" },
+            { "fileName": "B5-taunt3.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Taunt 3" },
+            { "fileName": "B5-taunt4.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Taunt 4" },
+            { "fileName": "B5-taunt5.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Taunt 5" },
+            { "fileName": "B5-taunt6.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Bonzi Taunt 6" },
+            { "fileName": "badumtiss.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Badum-Tiss!" }
+        ]
+    }
+}
