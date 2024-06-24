@@ -403,7 +403,7 @@ function eventStartLevel()
 			assembly: "bbNormAssembly1",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 3,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(80)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(90)),
 			data: {
 				regroup: false,
 				repair: 20,
@@ -415,7 +415,7 @@ function eventStartLevel()
 			assembly: "bbNormAssembly2",
 			order: CAM_ORDER_ATTACK,
 			groupSize: 4,
-			throttle: camChangeOnDiff(camSecondsToMilliseconds(90)),
+			throttle: camChangeOnDiff(camSecondsToMilliseconds(120)),
 			data: {
 				regroup: false,
 				repair: 20,

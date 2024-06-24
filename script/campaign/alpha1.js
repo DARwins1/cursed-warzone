@@ -304,12 +304,24 @@ function eventStartLevel()
 		},
 	});
 
-	camSetArtifacts({
-		"base1ArtifactPos": { tech: "R-Wpn-MG-Damage01" }, // Hardened MG Bullets
-		"base2Factory": { tech: "R-Sys-Engineering01" }, // Engineering
-		"base3Factory": { tech: "R-Defense-Tower01" }, // MG Guard Tower
-		"base4Factory": { tech: "R-Struc-BlackBox" }, // Black Box
-	});
+	if (tweakOptions.cw_noSelfControl)
+	{
+		camSetArtifacts({
+			"base1ArtifactPos": { tech: "R-Wpn-MG-Damage01" }, // Hardened MG Bullets
+			"base2Factory": { tech: "R-Sys-Engineering01" }, // Engineering
+			"base3Factory": { tech: "R-Defense-Tower01" }, // MG Guard Tower
+			// Mystery box not included
+		});
+	}
+	else
+	{
+		camSetArtifacts({
+			"base1ArtifactPos": { tech: "R-Wpn-MG-Damage01" }, // Hardened MG Bullets
+			"base2Factory": { tech: "R-Sys-Engineering01" }, // Engineering
+			"base3Factory": { tech: "R-Defense-Tower01" }, // MG Guard Tower
+			"base4Factory": { tech: "R-Struc-BlackBox" }, // Mystery Box
+		});
+	}
 
 	camSetFactories({
 		"base2Factory": {
@@ -340,4 +352,7 @@ function eventStartLevel()
 			templates: [ cTempl.bjeep, cTempl.bloke, cTempl.trike, cTempl.bloke ]
 		},
 	});
+
+	// Add the shortcut door for Alpha 4
+	camUpgradeOnMapFeatures("TreeSnow2", "GiantDoorVert");
 }

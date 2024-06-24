@@ -938,9 +938,10 @@ function eventStartLevel()
 	markedTiles = [];
 
 	camSetArtifacts({
-		"spamFactory1": { tech: "R-Wpn-Rocket03-HvAT3" }, // Bunker Buster III
+		"spamFactory1": { tech: "R-Wpn-Flame2" }, // Excessive Flamer
 		"spamMonoEmp": { tech: "R-Wpn-Rocket02-MRL" }, // Mono-Rocket Array
 		"spamFactory2": { tech: "R-Wpn-Rocket-ROF01" }, // Moar Rockets
+		"spamCC": { tech: "R-Vehicle-BodyTriple" }, // Triple Viper
 	});
 
 	camSetEnemyBases({

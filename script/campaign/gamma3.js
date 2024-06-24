@@ -281,7 +281,7 @@ function eventStartLevel()
 	camSetArtifacts({
 		"spamCC": { tech: "R-Sys-Engineering03" }, // what nerds call "Advanced Engineering"
 		"spamFactory1": { tech: "R-Wpn-CannonBison" }, // Righteous Bison
-		"spamFactory2": { tech: "R-Wpn-Flame2" }, // Excessive Flamer
+		"spamFactory2": { tech: "R-Wpn-Rocket03-HvAT3" }, // Bunker Buster III
 	});
 
 	camSetFactories({

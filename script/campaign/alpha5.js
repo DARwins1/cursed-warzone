@@ -341,7 +341,11 @@ function eventStartLevel()
 	// If there's any doors from the previous mission (if the player cheated), remove them
 	for (const door of enumFeature(ALL_PLAYERS, "GiantDoorHoriz").concat(enumFeature(ALL_PLAYERS, "GiantDoorVert")))
 	{
-		camSafeRemoveObject(door, true);
+		// ...Except for the bottom-most door
+		if (door.y < 100)
+		{
+			camSafeRemoveObject(door, true);
+		}
 	}
 
 	// Replace all snowy trees with funny explosive barrels

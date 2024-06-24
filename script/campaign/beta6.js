@@ -96,9 +96,20 @@ function doorEffects()
 	setMissionTime(getMissionTime() + camChangeOnDiff(camMinutesToSeconds(30)));
 
 	// Add the Remover artifact
-	camSetArtifacts({
-		"labyrinthChest": { tech: "R-Wpn-SpyTurret" }, // Remover Tool
-	});
+	if (difficulty < INSANE)
+	{
+		camSetArtifacts({
+			"labyrinthChest": { tech: "R-Wpn-SpyTurret" }, // Remover Tool
+		});
+	}
+	else
+	{
+		// ...Except on Insane
+		camSetArtifacts({
+			"labyrinthChest": { tech: "R-Comp-Deny" }, // Nuh Uh
+		});
+	}
+	
 }
 
 // Check if the Nextbot is near any waypoints, and send it to the next one if so

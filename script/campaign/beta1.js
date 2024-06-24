@@ -212,6 +212,7 @@ function cam2Setup()
 
 	camCompleteRequiredResearch(bonziRes, CAM_BONZI_BUDDY);
 	camCompleteRequiredResearch(mis_alphaResearchNew, CAM_HUMAN_PLAYER);
+	if (!tweakOptions.cw_noSelfControl) camCompleteRequiredResearch(["R-Struc-BlackBox"], CAM_HUMAN_PLAYER);
 }
 
 //Get some higher rank droids.

@@ -673,7 +673,8 @@ var __camFungibleCanSwapList = [
 	"Script-FungibleCannon-Swap5", "Script-FungibleCannon-Swap6", "Script-FungibleCannon-Swap7",
 	"Script-FungibleCannon-Swap8", "Script-FungibleCannon-Swap9", "Script-FungibleCannon-Swap10",
 	"Script-FungibleCannon-Swap11", "Script-FungibleCannon-Swap12", "Script-FungibleCannon-Swap13",
-	"Script-FungibleCannon-Swap14", "Script-FungibleCannon-Swap15"
+	"Script-FungibleCannon-Swap14", "Script-FungibleCannon-Swap15", "Script-FungibleCannon-Swap16",
+	"Script-FungibleCannon-Swap17"
 ];
 var __camMobGlobalGroup; // Default group for Silverfish and enraged Endermen
 var __camAllowSilverfishSpawn; // Whether Silverfish can spawn randomly out of destroyed buildings
@@ -719,7 +720,8 @@ const __camSpamtonReplacableStructs = [
 	"WallTower03Mk5","WallTower03Mk6","WallTower03Mk7",
 	"WallTower03Mk8","WallTower03Mk9","WallTower03Mk10",
 	"WallTower03Mk11","WallTower03Mk12","WallTower03Mk13",
-	"WallTower03Mk14","WallTower03Mk15", "WallTower01",
+	"WallTower03Mk14","WallTower03Mk15","WallTower03Mk16",
+	"WallTower03Mk17", "WallTower01",
 ];
 const __camSpamtonReplacementStructs = [
 	"GuardTower-MEGASpam", "Spawner-ZombieSpam", "Spawner-SkeletonSpam",
@@ -736,7 +738,8 @@ const __camSpamtonReplacementStructs = [
 	"WallTower03Mk5Spam","WallTower03Mk6Spam","WallTower03Mk7Spam",
 	"WallTower03Mk8Spam","WallTower03Mk9Spam","WallTower03Mk10Spam",
 	"WallTower03Mk11Spam","WallTower03Mk12Spam","WallTower03Mk13Spam",
-	"WallTower03Mk14Spam","WallTower03Mk15Spam", "WallTower01Spam",
+	"WallTower03Mk14Spam","WallTower03Mk15Spam","WallTower03Mk16Spam",
+	"WallTower03Mk17Spam", "WallTower01Spam",
 ];
 const __camSpamtonSigns = [
 	"SpamSign1", "SpamSign2", "SpamSign3",
@@ -771,14 +774,16 @@ var __camFungibleCannonList = [ // List of Fungible Cannon variants
 	"Cannon2A-TMk5", "Cannon2A-TMk6", "Cannon2A-TMk7",
 	"Cannon2A-TMk8", "Cannon2A-TMk9", "Cannon2A-TMk10",
 	"Cannon2A-TMk11", "Cannon2A-TMk12", "Cannon2A-TMk13",
-	"Cannon2A-TMk14", "Cannon2A-TMk15",
+	"Cannon2A-TMk14", "Cannon2A-TMk15", "Cannon2A-TMk16",
+	"Cannon2A-TMk17",
 ];
 var __camFungibleCanHardList = [ // List of Fungible Cannon Hardpoint variants
 	"WallTower03Mk2", "WallTower03Mk3", "WallTower03Mk4",
 	"WallTower03Mk5", "WallTower03Mk6", "WallTower03Mk7",
 	"WallTower03Mk8", "WallTower03Mk9", "WallTower03Mk10",
 	"WallTower03Mk11", "WallTower03Mk12", "WallTower03Mk13",
-	"WallTower03Mk14", "WallTower03Mk15",
+	"WallTower03Mk14", "WallTower03Mk15", "WallTower03Mk16",
+	"WallTower03Mk17",
 ];
 
 //tactics

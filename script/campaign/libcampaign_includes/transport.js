@@ -96,10 +96,12 @@ function __camDispatchTransporterUnsafe()
 	__camTransporterQueue.shift(); // what could possibly go wrong?
 	if (!camDef(__camPlayerTransports[__PLAYER]))
 	{
+		// 1/8 chance for flappy body
+		const __TRANSPORT_BODY = (camRand(8) === 0) ? "TransporterBodyFlappy" : "TransporterBody";
 		camTrace("Creating a transporter for player", __PLAYER);
 		__camPlayerTransports[__PLAYER] = addDroid(__PLAYER, -1, -1,
 		                                         "Transporter",
-		                                         "TransporterBody",
+		                                         __TRANSPORT_BODY,
 		                                         "V-Tol", "", "",
 		                                         "MG3-VTOL");
 	}

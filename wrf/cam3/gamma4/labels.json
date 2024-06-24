@@ -275,6 +275,13 @@
 		"type": 1
 	},
 
+	"object_10": {
+		"label": "spamCC",
+		"id": 771,
+		"player": 3,
+		"type": 1
+	},
+
 	"radius_0": {
         "label": "normalRemoveZone",
         "subscriber": 3,

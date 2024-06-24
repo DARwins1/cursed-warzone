@@ -38,5 +38,18 @@
       "default": false,
       "userEditable": false
     }
+  ],
+  "customTweakOptions": [
+    {
+      "id": "cw_noSelfControl",
+      "type": "bool",
+      "default": false,
+      "displayName": {
+        "en": "No Self-Control"
+      },
+      "description": {
+        "en": "Makes the Mystery Box unobtainable. For people with a severe gambling addiction."
+      }
+    }
   ]
 }

@@ -648,7 +648,7 @@ function camSetOnMapEnemyUnitExp()
 //;;
 function camRandomEffect(pos)
 {
-	const effects = [
+	let effects = [
 		"oilDrum", "oilDrum", "oilDrums",
 		"explosiveDrum", "twinHostile", "explode",
 		"miniVipers", "manyPodTower", "scavScorchShot",
@@ -689,6 +689,11 @@ function camRandomEffect(pos)
 		// Allow Classic Flamer Artifact if Classic Flamer isn't researched
 		effects.push("classicFlamerArti");
 	}
+	if (!camIsResearched("R-Comp-CommandTurret01"))
+	{
+		// Allow Commando Turret Artifact if Commando Turret isn't researched
+		effects.push("commandoArti");
+	}
 	if (camIsResearched("R-Struc-ExplosiveDrum") && !camIsResearched("R-Struc-NuclearDrum"))
 	{
 		// Allow Nuclear Drum Artifact if Explosive Drum is researched
@@ -698,11 +703,6 @@ function camRandomEffect(pos)
 	{
 		// Allow Machinegun Fortress Artifact if Machinegun Hardpoint is researched
 		effects.push("mgFortArti");
-	}
-	if (camIsResearched("R-Vehicle-BodyTwin") && camIsResearched("R-Vehicle-Body11") && !camIsResearched("R-Vehicle-BodyTriple"))
-	{
-		// Allow Triple Viper Artifact if Twin Viper and Viper III is researched
-		effects.push("tripleViperArti");
 	}
 	if (camIsResearched("R-Vehicle-Prop-VTOL") && !camIsResearched("R-Wpn-AAGun03"))
 	{
@@ -805,6 +805,14 @@ function camRandomEffect(pos)
 	{
 		// 10% chance to allow Ultra-Heavy Gunner if Very Heavy Cannon is researched
 		effects.push("ultraCyb");
+	}
+
+	if (!camIsResearched("Script-Box-Freebie"))
+	{
+		// Ensure that the first-time use ALWAYS gives Mini Vipers
+		effects = ["miniVipers"];
+		enableResearch("Script-Box-Freebie", CAM_HUMAN_PLAYER);
+		completeResearch("Script-Box-Freebie", CAM_HUMAN_PLAYER);
 	}
 
 	// Choose an effect
@@ -1304,15 +1312,6 @@ function camRandomEffect(pos)
 			addLabel(addFeature("Crate", pos.x, pos.y), "nukeDrumCrate");
 			__camArtifacts["nukeDrumCrate"] = {tech: "R-Struc-NuclearDrum", placed: true };
 			break;
-		case "tripleViperArti":
-			// Spawn an artifact for the Triple Viper
-			if (camDef(__camArtifacts["tripleViperCrate"]))
-			{
-				break; // Don't place if an artifact was already placed
-			}
-			addLabel(addFeature("Crate", pos.x, pos.y), "tripleViperCrate");
-			__camArtifacts["tripleViperCrate"] = {tech: "R-Vehicle-BodyTriple", placed: true };
-			break;
 		case "hurricaneArti":
 			// Spawn an artifact for the Hurricane AAA
 			if (camDef(__camArtifacts["hurricaneCrate"]))
@@ -1357,6 +1356,15 @@ function camRandomEffect(pos)
 			}
 			addLabel(addFeature("Crate", pos.x, pos.y), "classicCrate");
 			__camArtifacts["classicCrate"] = {tech: "R-Wpn-FlamerOG", placed: true };
+			break;
+		case "commandoArti":
+			// Spawn an artifact for the Commando Turret
+			if (camDef(__camArtifacts["commandoCrate"]))
+			{
+				break; // Don't place if an artifact was already placed
+			}
+			addLabel(addFeature("Crate", pos.x, pos.y), "commandoCrate");
+			__camArtifacts["commandoCrate"] = {tech: "R-Comp-CommandTurret01", placed: true };
 			break;
 		case "blackOut":
 			if (!__camBlackOut)
@@ -2490,6 +2498,8 @@ function __camSpamtonize(obj)
 		camUpgradeOnMapStructures("WallTower03Mk13", "WallTower03Mk13Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 13
 		camUpgradeOnMapStructures("WallTower03Mk14", "WallTower03Mk14Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 14
 		camUpgradeOnMapStructures("WallTower03Mk15", "WallTower03Mk15Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 15
+		camUpgradeOnMapStructures("WallTower03Mk16", "WallTower03Mk16Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 16
+		camUpgradeOnMapStructures("WallTower03Mk17", "WallTower03Mk17Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 17
 	}
 	else
 	{
@@ -2517,6 +2527,8 @@ function __camSpamtonize(obj)
 				camUpgradeOnMapStructures("WallTower03Mk13", "WallTower03Mk13Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 13
 				camUpgradeOnMapStructures("WallTower03Mk14", "WallTower03Mk14Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 14
 				camUpgradeOnMapStructures("WallTower03Mk15", "WallTower03Mk15Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 15
+				camUpgradeOnMapStructures("WallTower03Mk16", "WallTower03Mk16Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 16
+				camUpgradeOnMapStructures("WallTower03Mk17", "WallTower03Mk17Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 17
 			}
 			else
 			{

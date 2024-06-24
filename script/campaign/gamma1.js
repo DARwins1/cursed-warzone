@@ -222,6 +222,7 @@ function cam3Setup()
 
 	camCompleteRequiredResearch(mis_alphaResearchNew, CAM_HUMAN_PLAYER);
 	camCompleteRequiredResearch(mis_betaResearchNew, CAM_HUMAN_PLAYER);
+	if (!tweakOptions.cw_noSelfControl) camCompleteRequiredResearch(["R-Struc-BlackBox"], CAM_HUMAN_PLAYER);
 	camCompleteRequiredResearch(mis_spamtonRes, CAM_SPAMTON);
 }
 

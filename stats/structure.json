@@ -4123,6 +4123,54 @@
         ],
         "width": 1
     },
+    "WallTower03Mk16": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk16",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 750,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk16"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk17": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk17",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 750,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk17"
+        ],
+        "width": 1
+    },
     "WallTower03Mk2Spam": {
         "armour": 15,
         "breadth": 1,
@@ -4456,6 +4504,54 @@
         "type": "DEFENSE",
         "weapons": [
             "Cannon2A-TMk15"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk16Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk16Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 750,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk16"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk17Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk17Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 750,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk17"
         ],
         "width": 1
     },

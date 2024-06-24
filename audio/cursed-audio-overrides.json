@@ -23,7 +23,7 @@
             { "fileName": "pcv413.ogg", "loop": false, "range": 1800, "volume": 70, "z_comment": "Needler Fire" },
             { "fileName": "pcv414.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Needler Supercombine Explosion" },
             { "fileName": "pcv415.ogg", "loop": false, "range": 1800, "volume": 30, "z_comment": "Needler Impact" },
-            { "fileName": "pcv416.ogg", "loop": false, "range": 1800, "volume": 70, "z_comment": "Scorch Shot" },
+            { "fileName": "pcv416.ogg", "loop": false, "range": 1800, "volume": 70, "z_comment": "Scorch Shot Fire" },
             { "fileName": "pcv417.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Arrow fire" },
             { "fileName": "pcv418.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Arrow Impact" },
             { "fileName": "pcv419.ogg", "loop": false, "range": 1800, "volume": 200, "z_comment": "TNT Explosion 1" },
@@ -34,8 +34,8 @@
             { "fileName": "pcv424.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Sword Sweep" },
             { "fileName": "pcv425.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Metal Hit" },
             { "fileName": "pcv426.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Enderman Teleport" },
-            { "fileName": "pcv429.ogg", "loop": false, "range": 1800, "volume": 20, "z_comment": "Flare Impact" },
-            { "fileName": "pcv420.ogg", "loop": false, "range": 1800, "volume": 200, "z_comment": "Blaster Charge" }
+            { "fileName": "pcv428.ogg", "loop": false, "range": 1800, "volume": 20, "z_comment": "Flare Impact" },
+            { "fileName": "pcv429.ogg", "loop": false, "range": 1800, "volume": 200, "z_comment": "Blaster Charge" }
         ]
     },
     "TutorialStuff": {

@@ -321,21 +321,23 @@ function camUpgradeOnMapStructures(struct1, struct2, playerId, excluded)
 
 		//Check if this object has a label and/or group assigned to it
 		// FIXME: O(n) lookup here
-		let label = (getLabel(structure));
-		let group = (structure.group);		
-		let structInfo = {x: structure.x * 128, y: structure.y * 128};
+		const label = getLabel(structure);
+		const group = structure.group;
+
+		//Replace it
+		const structInfo = {x: structure.x * 128, y: structure.y * 128};
 		camSafeRemoveObject(structure, false);
-		
-		// Compile all the needed information into a string
-		let infoString = 
-			"__STRUCTNAME" + struct2
-			+ "__PLAYER" + playerId
-			+ "__XPOS" + structInfo.x
-			+ "__YPOS" + structInfo.y;
-		if (camDef(label)) infoString += "__LABEL" + label;
-		if (group !== null) infoString += "__GROUP" + group;
-		// Queue up a replacement
-		queue("__camQueueReplacementStruct", __CAM_TICKS_PER_FRAME, infoString);
+		const newStruct = addStructure(struct2, playerId, structInfo.x, structInfo.y);
+
+		// Re-add label/group if applicable
+		if (camDef(label)) 
+		{
+			addLabel(newStruct, label);
+		}
+		if (group !== null)
+		{
+			groupAdd(group, newStruct);
+		}
 	}
 }
 
@@ -635,48 +637,9 @@ function __camContinueProduction(structure)
 	fi.lastprod = gameTime;
 }
 
-// Add a structure with the information given in the string
-function __camQueueReplacementStruct(infoString)
-{
-	// console("parsing \"" + infoString + "\"!")
-	// Parse the info string
-	const nameMarker = "__STRUCTNAME";
-	const playerMarker = "__PLAYER";
-	const xMarker = "__XPOS";
-	const yMarker = "__YPOS";
-	const labelMarker = "__LABEL";
-	const groupMarker = "__GROUP";
-	const __NAMEINDEX = infoString.indexOf(nameMarker);
-	const __PLAYERINDEX = infoString.indexOf(playerMarker);
-	const __XINDEX = infoString.indexOf(xMarker);
-	const __YINDEX = infoString.indexOf(yMarker);
-	const __LABELINDEX = infoString.indexOf(labelMarker);
-	const __GROUPINDEX = infoString.indexOf(groupMarker);
-
-	const structName = infoString.substring(__NAMEINDEX + nameMarker.length, __PLAYERINDEX);
-	const __PLAYER = parseInt(infoString.substring(__PLAYERINDEX + playerMarker.length, __XINDEX));
-	const __XPOS = parseInt(infoString.substring(__XINDEX + xMarker.length, __YINDEX));
-	const __YPOS = parseInt(infoString.substring(__YINDEX + yMarker.length, ((__LABELINDEX > 0) ? __LABELINDEX : ((__GROUPINDEX > 0) ? __GROUPINDEX : undefined))));
-	const label = (__LABELINDEX > 0) ? infoString.substring(__LABELINDEX + labelMarker.length, ((__GROUPINDEX > 0) ? __GROUPINDEX : undefined)) : undefined;
-	const group = (__GROUPINDEX > 0) ? infoString.substring(__GROUPINDEX + groupMarker.length) : undefined;
-
-	// Add the structure
-	const newStruct = addStructure(structName, __PLAYER, __XPOS, __YPOS);
-	// Apply label/group
-	if (camDef(label)) 
-	{
-		addLabel(newStruct, label);
-	}
-	if (camDef(group)) 
-	{
-		groupAdd(group, newStruct);
-	}
-}
-
 // Add a feature with the information given in the string
 function __camQueueReplacementFeat(infoString)
 {
-	// console("parsing \"" + infoString + "\"!")
 	// Parse the info string
 	const nameMarker = "__FEATNAME";
 	const xMarker = "__XPOS";
