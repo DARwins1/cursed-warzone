@@ -10,7 +10,7 @@ It is HIGHLY recommended that you play through the mod's campaign fully at least
 ------------
 Installation
 ------------
-After downloading the cursed.wz file, place it into your `mods/autoload` folder in your main warzone directory (If you can't find the main directory, click "Open Configuration Directory" in the Options menu). After moving cursed.wz into the autoload folder, launch the game. If you see "Mod: cursed.wz" in the upper left of the main menu, then you've probably done it correctly. To play without the mod, simply move the cursed.wz file out of the `autoload` folder.
+After downloading the cursed.wz file, place it into your `mods/campaign` folder in your main warzone directory (If you can't find the main directory, click "Open Configuration Directory" in the Options menu). After moving cursed.wz into the campaign folder, launch the game. You should now see a "Cursed Warzone" campaign in the campaign selector.
 
 --------------------
 Playing With The Mod
