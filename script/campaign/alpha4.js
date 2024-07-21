@@ -376,6 +376,14 @@ function doorCheck()
 	}
 }
 
+function addDoorLabels()
+{
+	// HACK: Automatic label transfer doesn't seem to work for features...
+	addLabel(getObject(87, 86), "door1");
+	addLabel(getObject(98, 50), "door2");
+	addLabel(getObject(106, 18), "door3");
+}
+
 function eventStartLevel()
 {
 	camSetStandardWinLossConditions(CAM_VICTORY_STANDARD, "CTF_2FORT", {callback: "doorCheck"});
@@ -560,10 +568,7 @@ function eventStartLevel()
 	camUpgradeOnMapFeatures("OilTower", "Sign3");
 	camUpgradeOnMapFeatures("Pipe1A", "Sign7");
 
-	// HACK: Automatic label transfer doesn't seem to work for features...
-	addLabel(getObject(87, 86), "door1");
-	addLabel(getObject(98, 50), "door2");
-	addLabel(getObject(106, 18), "door3");
+	queue("addDoorLabels", camSecondsToMilliseconds(5));
 
 	// Make Clippy's structures funny
 	camUpgradeOnMapStructures("GuardTower1", "GuardTower1MG", CAM_CLIPPY);
