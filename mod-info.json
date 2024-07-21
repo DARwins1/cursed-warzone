@@ -5,7 +5,7 @@
   "type": "alternateCampaign",
   "license": "GPL-2.0-or-later",
   "minVersionSupported": "4.5.0",
-  "maxVersionTested": "4.5.0",
+  "maxVersionTested": "4.5.1",
   "description": {
      "en": "A campaign mod for Warzone 2100 that completely ruins the story and adds a whole bunch of stupid funny stuff."
   },
