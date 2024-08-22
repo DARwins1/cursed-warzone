@@ -448,7 +448,7 @@ function cam_eventDestroyed(obj)
 						_("Spamton Needler Cyborg"), "CyborgLightBody", "CyborgLegs", "", "", "Cyb-Wpn-Rail1Spam"
 					));
 					break;
-				case "needler":
+				case "superFlamer":
 					// Spawn a Super Excessive Flamer Cyborg (Hard+ only)
 					groupAdd(__camMobGlobalGroup, addDroid(CAM_SPAMTON, obj.x - camRand(2), obj.y - camRand(2), 
 						_("Spamton Super Excessive Flamer Cyborg"), "CyborgHeavyBody", "CyborgLegs", "", "", "Cyb-Hvywpn-HFlamerSpam"
