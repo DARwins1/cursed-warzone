@@ -4905,7 +4905,7 @@
         "flightSpeed": 1800,
         "hitGfx": "FXMETHIT.PIE",
         "hitpoints": 95,
-        "id": "MG3-VTOL",
+        "flags": ["ShootAir", "AllowedOnTransporter"],
         "longRange": 1152,
         "longHit": 75,
         "maxElevation": 15,
