@@ -22,7 +22,7 @@
         "data": [
             { "fileName": "pcv413.ogg", "loop": false, "range": 1800, "volume": 70, "z_comment": "Needler Fire" },
             { "fileName": "pcv414.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Needler Supercombine Explosion" },
-            { "fileName": "pcv415.ogg", "loop": false, "range": 1800, "volume": 30, "z_comment": "Needler Impact" },
+            { "fileName": "pcv415.ogg", "loop": false, "range": 1800, "volume": 10, "z_comment": "Needler Impact" },
             { "fileName": "pcv416.ogg", "loop": false, "range": 1800, "volume": 70, "z_comment": "Scorch Shot Fire" },
             { "fileName": "pcv417.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Arrow fire" },
             { "fileName": "pcv418.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "Arrow Impact" },
@@ -84,6 +84,7 @@
             { "fileName": "pcv469.ogg", "loop": false, "range": 1800, "volume": 80, "z_comment": "Lancer Jumper fire" },
             { "fileName": "pcv471.ogg", "loop": false, "range": 1800, "volume": 80, "z_comment": "Lancer Jumper explode" },
             { "fileName": "pcv472.ogg", "loop": false, "range": 1800, "volume": 175, "z_comment": "Big Machinegun fire" }
+            { "fileName": "pcv473.ogg", "loop": false, "range": 1800, "volume": 100, "z_comment": "SC Avenger fire" }
         ]
     },
     "Miscellaneous": {

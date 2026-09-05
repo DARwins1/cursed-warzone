@@ -270,6 +270,7 @@ function eventStartLevel()
 
 	camSetArtifacts({
 		"bbFactory1": { tech: "R-Wpn-Rocket03-HvAT2" }, // Bunker Buster 2
+		"bbFactory3": { tech: "R-Wpn-Rocket01-LtATPile3" }, // Towering Pillar Of Lancers
 		"bbNormFactory1": { tech: "R-Vehicle-Prop-VTOL" }, // Normal Wheels
 		"bbFactory4": { tech: "R-Wpn-Mortar3" }, // Pepperspray
 		"bbChest": { tech: "R-Cyborg-Wpn-Rocket" }, // Firework Cyborg

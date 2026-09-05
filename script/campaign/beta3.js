@@ -123,6 +123,7 @@ function eventStartLevel()
 		"bbFactory1": { tech: "R-Vehicle-Prop-Tracks" }, // Thick Wheels
 		"chest": { tech: "R-Wpn-Mortar02Hvy" }, // TNT Cannon
 		"bbRocketEmp": { tech: "R-Wpn-Rocket06-IDF" }, // Rain Rockets
+		"bbFactory2": { tech: "R-Wpn-Rocket01-LtATPile2" }, // Noble Amassment Of Lancers
 	});
 
 	camCompleteRequiredResearch(mis_bonziRes, CAM_BONZI_BUDDY);

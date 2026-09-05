@@ -149,6 +149,37 @@
 			"You might need to get extra close to actually hit anything"
 		]
 	},
+	"RES_W_RK_LTPILE1": {
+		"id": "RES_W_RK_LTPILE1",
+		"imdName": "MICAPSUL.PIE",
+		"sequenceName": "res_weapons.ogg",
+		"text": [
+			"New Rocket Available",
+			"For the Commander who believes even their weapons deserve a weapon.",
+			"Best Targets: Vehicles"
+		]
+	},
+	"RES_W_RK_LTPILE2": {
+		"id": "RES_W_RK_LTPILE2",
+		"imdName": "MICAPSUL.PIE",
+		"sequenceName": "res_weapons.ogg",
+		"text": [
+			"New Rocket Available",
+			"For the Commander who believes even their weapons' weapons deserves a weapon's weapon.",
+			"Best Targets: Vehicles"
+		]
+	},
+	"RES_W_RK_LTPILE3": {
+		"id": "RES_W_RK_LTPILE3",
+		"imdName": "MICAPSUL.PIE",
+		"sequenceName": "res_weapons.ogg",
+		"text": [
+			"New Rocket Available",
+			"For the Commander who, uhhh...",
+			"likes... rockets???",
+			"Best Targets: Vehicles"
+		]
+	},
 	"RES_W_SRK_AC3": {
 		"id": "RES_W_SRK_AC3",
 		"imdName": "MICAPSUL.PIE",
@@ -237,8 +268,8 @@
 			"[Road Safety] HAS NEVER BEEN MORE [[violation of our Terms Of Service]]!!!"
 		]
 	},
-	"RES_W_RK_LTATWARR": {
-		"id": "RES_W_RK_LTATWARR",
+	"RES_W_RK_LTATDEF": {
+		"id": "RES_W_RK_LTATDEF",
 		"imdName": "MICAPSUL.PIE",
 		"sequenceName": "res_spamton.ogv",
 		"text": [

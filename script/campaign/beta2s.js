@@ -15,8 +15,4 @@ function eventStartLevel()
 		"GAMEOVER_EXPLODE", "GAMEOVER_JET", "GAMEOVER_MISSILE",
 	]);
 	camPlayVideos({video: "SPAM_BETA2_MSG", type: CAMP_MSG});
-
-	// Spamton items
-	camQueueDialogue("New research options are available!", camSecondsToMilliseconds(1), camSounds.spamton.laugh);
-	enableResearch("R-Wpn-MG3Mk1", CAM_HUMAN_PLAYER); // Realistic Heavy Machinegun (from Spamton)
 }

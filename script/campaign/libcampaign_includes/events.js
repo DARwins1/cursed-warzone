@@ -206,37 +206,6 @@ function cam_eventDroidBuilt(droid, structure)
 		}
 	}
 
-	if ((camDef(droid.weapons[0]) && droid.weapons[0].name === "Rocket-LtA-TWarr") 
-		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-LtA-TWarr")
-		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-LtA-TWarr")
-		|| (camDef(droid.weapons[0]) && droid.weapons[0].name === "Rocket-VTOL-LtA-TWarr") 
-		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr")
-		|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr"))
-	{
-		if (droid.player === CAM_HUMAN_PLAYER)
-		{
-			if (getObject(DROID, CAM_HUMAN_PLAYER, droid.id) !== null) // Make sure it's not off-world
-			{
-				// Temporarily donate the object to player 10
-				donateObject(droid, 10);
-			}
-		}
-		else
-		{
-			// Swap the Warranty-Expired Lancer for a either a standard or Defective variant
-			if (camRand(3) === 0) // 33% chance of being defective
-			{
-				// Swap with Defective Lancer
-				completeResearch("Script-Lancer-DefectiveSwap", droid.player, true);
-			}
-			else
-			{
-				// Swap with Lancer
-				completeResearch("Script-Lancer-FunctionalSwap", droid.player, true);
-			}
-		}
-	}
-
 	if (!camDef(structure)) // "clone wars" cheat
 	{
 		return;
@@ -571,7 +540,7 @@ function cam_eventTransporterLanded(transport)
 	}
 	else
 	{
-		// Swap any Fungible Cannons or Warranty-Expired Lancers that arrived on the transport
+		// Swap any Fungible Cannons that arrived on the transport
 		__camUpdateSwappableUnits();
 
 		// Make the transporter timer on Beta End disappear, since the transporter has arrived.
@@ -805,20 +774,10 @@ function cam_eventObjectTransfer(obj, from)
 	}
 	else if (from === CAM_HUMAN_PLAYER && obj.player === 10 && obj.type === DROID)
 	{
-		// The player's Fungible Cannons and Warranty-Expired Lancers are donated to player 10, 
+		// The player's Fungible Cannons are donated to player 10, 
 		// modified, then returned to the player.
 		// This is all done just so building these units from multiple factories doesn't break.
 		completeResearch(__camFungibleCanSwapList[camRand(__camFungibleCanSwapList.length)], 10, true);
-		if (camRand(3) === 0) // 33% chance of being defective
-		{
-			// Swap with Defective Lancer
-			completeResearch("Script-Lancer-DefectiveSwap", 10, true);
-		}
-		else
-		{
-			// Swap with Lancer
-			completeResearch("Script-Lancer-FunctionalSwap", 10, true);
-		}
 		donateObject(obj, CAM_HUMAN_PLAYER);
 	}
 	else if (obj.player === CAM_SPAMTON)

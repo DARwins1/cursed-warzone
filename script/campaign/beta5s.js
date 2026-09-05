@@ -14,4 +14,8 @@ function eventStartLevel()
 	]);
 	setPower(playerPower(CAM_HUMAN_PLAYER) + 5); // Reward for completing the arena;
 	playSound(camSounds.project.pwrTrans);
+
+	// Spamton items
+	camQueueDialogue("New research options are available!", camSecondsToMilliseconds(1), camSounds.spamton.laugh);
+	enableResearch("R-Defense-SamSite2", CAM_HUMAN_PLAYER); // SC Avenger Tower
 }

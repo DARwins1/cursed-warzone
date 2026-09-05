@@ -783,7 +783,7 @@ function camRandomEffect(pos)
 	}
 	if (camIsResearched("R-Wpn-Rocket01-LtAT-Def"))
 	{
-		// Allow Defective Lancers if Warranty-Expired Lancer is researched
+		// Allow Defective Lancers if researched
 		effects.push("defLancers");
 	}
 	if (camIsResearched("R-Wpn-Cannon2Mk1")) 
@@ -952,7 +952,7 @@ function camRandomEffect(pos)
 		case "lancerPillar":
 			// Spawn a Towering Pillar Of Lancers for the player
 			addDroid(CAM_HUMAN_PLAYER, pos.x, pos.y, 
-				_("Towering Pillar Of Lancers Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Rocket-LtA-TPillar"
+				_("Towering Pillar Of Lancers Viper II Half-wheels"), "Body5REC", "HalfTrack", "", "", "Rocket-LtA-TPile3"
 			);
 			break;
 		case "superAxe":
@@ -2402,24 +2402,17 @@ function __camSpyFeignTick()
 	}
 }
 
-// Switch any Fungible Cannon or Warranty-Expired Lancer unit on the map to its proper variant
+// Switch any Fungible Cannon unit on the map to its proper variant
 function __camUpdateSwappableUnits()
 {
-	// Check for any Fungible Cannons or Warranty-Expired Lancers
+	// Check for any Fungible Cannons
 	const droidList = enumDroid(CAM_HUMAN_PLAYER, DROID_WEAPON);
 	let donateDelay = __CAM_TICKS_PER_FRAME;
 	for (let i = 0; i < droidList.length; i++)
 	{
 		const droid = droidList[i];
-		if ((camDef(droid.weapons[0]) && droid.weapons[0].name === "Cannon2A-TMk1") 
-			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Cannon2A-TMk1")
-			|| (camDef(droid.weapons[2]) && droid.weapons[2].name === "Cannon2A-TMk1")
-			|| (camDef(droid.weapons[0]) && droid.weapons[0].name === "Rocket-LtA-TWarr") 
-			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-LtA-TWarr")
-			|| (camDef(droid.weapons[2]) && droid.weapons[2].name === "Rocket-LtA-TWarr")
-			|| (camDef(droid.weapons[0]) && droid.weapons[0].name === "Rocket-VTOL-LtA-TWarr") 
-			|| (camDef(droid.weapons[1]) && droid.weapons[1].name === "Rocket-VTOL-LtA-TWarr")
-			|| (camDef(droid.weapons[2]) && droid.weapons[2].name === "Rocket-VTOL-LtA-TWarr"))
+		// NOTE: The research swapping only affects the primary weapon slot, so we only check that slot here
+		if ((camDef(droid.weapons[0]) && droid.weapons[0].name === "Cannon2A-TMk1"))
 		{
 			queue("__camTempDonate", donateDelay, droid.id + "");
 			donateDelay += __CAM_TICKS_PER_FRAME;
@@ -2500,6 +2493,7 @@ function __camSpamtonize(obj)
 		camUpgradeOnMapStructures("WallTower03Mk15", "WallTower03Mk15Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 15
 		camUpgradeOnMapStructures("WallTower03Mk16", "WallTower03Mk16Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 16
 		camUpgradeOnMapStructures("WallTower03Mk17", "WallTower03Mk17Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 17
+		camUpgradeOnMapStructures("WallTower03Mk18", "WallTower03Mk18Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 18
 	}
 	else
 	{
@@ -2529,6 +2523,7 @@ function __camSpamtonize(obj)
 				camUpgradeOnMapStructures("WallTower03Mk15", "WallTower03Mk15Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 15
 				camUpgradeOnMapStructures("WallTower03Mk16", "WallTower03Mk16Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 16
 				camUpgradeOnMapStructures("WallTower03Mk17", "WallTower03Mk17Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 17
+				camUpgradeOnMapStructures("WallTower03Mk18", "WallTower03Mk18Spam", CAM_SPAMTON); // Fungible Cannon Hardpoint 18
 			}
 			else
 			{

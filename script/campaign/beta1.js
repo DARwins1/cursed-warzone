@@ -420,8 +420,9 @@ function eventStartLevel()
 		"chest1": { tech: "R-Cyborg-Wpn-Bow" }, // Archer Cyborg
 		"chest2": { tech: "R-Cyborg-Wpn-Sword" }, // Sword Cyborg
 		"bbHQ": { tech: "R-Sys-Engineering02" }, // Engineer Gaming
-		"bbFactory1": { tech: "R-Vehicle-Prop-Halftracks" }, // Half-wheels
 		"bbResearch": { tech: "R-Wpn-Mortar-Damage01" }, // Improved Rocks
+		"bbFactory1": { tech: "R-Wpn-Rocket01-LtAT" }, // Sawed-Off Lancer
+		"bbFactory2": { tech: "R-Vehicle-Prop-Halftracks" }, // Half-wheels
 	});
 
 	setMissionTime(camChangeOnDiff(camHoursToSeconds(1.5)));
@@ -578,5 +579,6 @@ function eventStartLevel()
 
 	// Spamton items
 	camQueueDialogue("New research options are available!", camSecondsToMilliseconds(20), camSounds.spamton.laugh);
+	enableResearch("R-Wpn-MG3Mk1", CAM_HUMAN_PLAYER); // Realistic Heavy Machinegun
 	enableResearch("R-Wpn-Rocket01-LtAT-Def", CAM_HUMAN_PLAYER); // Defective Lancer
 }

@@ -708,6 +708,17 @@
 			"All Many-Rocket Pods and Lancers upgraded automatically"
 		]
 	},
+	"RES_W_RK_IDF_ROF1": {
+		"id": "RES_W_RK_IDF_ROF1",
+		"imdName": "MICAPSUL.PIE",
+		"sequenceName": "res_weapons.ogg",
+		"text": [
+			"Rocket Upgrade",
+			"Rain Rockets no longer need to reload",
+			"I don't know how it works",
+			"All Rain Rockets upgraded automatically"
+		]
+	},
 	"RES_W_SRK_AC1": {
 		"id": "RES_W_SRK_AC1",
 		"imdName": "MICAPSUL.PIE",

@@ -198,33 +198,17 @@
 		],
 		"statID": "Cannon2A-TMk17"
 	},
-	"Script-Lancer-FunctionalSwap": {
+	"Script-FungibleCannon-Swap18": {
 		"iconID": "IMAGE_RES_COMPUTERTECH",
-		"id": "Script-Lancer-FunctionalSwap",
-		"name": "Lancer Functional Swap",
+		"id": "Script-FungibleCannon-Swap18",
+		"name": "Fungible Swap 18",
 		"replacedComponents": [
-			"Rocket-LtA-TWarr:Rocket-LtA-TUnDef",
-			"Rocket-VTOL-LtA-TWarr:Rocket-VTOL-LtA-TUnDef"
+			"Cannon2A-TMk1:Cannon2A-TMk18"
 		],
 		"resultComponents": [
-			"Rocket-LtA-TWarr",
-			"Rocket-VTOL-LtA-TWarr"
+			"Cannon2A-TMk1"
 		],
-		"statID": "Rocket-LtA-TUnDef"
-	},
-	"Script-Lancer-DefectiveSwap": {
-		"iconID": "IMAGE_RES_COMPUTERTECH",
-		"id": "Script-Lancer-DefectiveSwap",
-		"name": "Lancer Defective Swap",
-		"replacedComponents": [
-			"Rocket-LtA-TWarr:Rocket-LtA-TDef",
-			"Rocket-VTOL-LtA-TWarr:Rocket-VTOL-LtA-TDef"
-		],
-		"resultComponents": [
-			"Rocket-LtA-TWarr",
-			"Rocket-VTOL-LtA-TWarr"
-		],
-		"statID": "Rocket-LtA-TDef"
+		"statID": "Cannon2A-TMk18"
 	},
 	"Script-Labyrinth-Puzzle-1": {
 		"iconID": "IMAGE_RES_COMPUTERTECH",
@@ -471,7 +455,8 @@
 			"Cannon2A-TMk14",
 			"Cannon2A-TMk15",
 			"Cannon2A-TMk16",
-			"Cannon2A-TMk17"
+			"Cannon2A-TMk17",
+			"Cannon2A-TMk18"
 		],
 		"resultStructures": [
 			"WallTower03"
@@ -659,6 +644,57 @@
 		],
 		"statID": "Rocket-LtA-T"
 	},
+	"R-Wpn-Rocket01-LtATPile1": {
+		"iconID": "IMAGE_RES_WEAPONTECH",
+		"id": "R-Wpn-Rocket01-LtATPile1",
+		"msgName": "RES_W_RK_LTPILE1",
+		"name": "Modest Pile Of Lancers",
+		"keyTopic": 1,
+		"requiredResearch": [
+			"R-Wpn-Rocket05-MiniPod"
+		],
+		"researchPoints": 3600,
+		"researchPower": 112,
+		"resultComponents": [
+			"Rocket-LtA-TPile1",
+			"Rocket-VTOL-LtA-TPile1"
+		],
+		"statID": "Rocket-LtA-TPile1"
+	},
+	"R-Wpn-Rocket01-LtATPile2": {
+		"iconID": "IMAGE_RES_WEAPONTECH",
+		"id": "R-Wpn-Rocket01-LtATPile2",
+		"msgName": "RES_W_RK_LTPILE2",
+		"name": "Noble Amassment Of Lancers",
+		"keyTopic": 1,
+		"requiredResearch": [
+			"R-Wpn-Rocket01-LtATPile1"
+		],
+		"researchPoints": 3600,
+		"researchPower": 112,
+		"resultComponents": [
+			"Rocket-LtA-TPile2",
+			"Rocket-VTOL-LtA-TPile2"
+		],
+		"statID": "Rocket-LtA-TPile2"
+	},
+	"R-Wpn-Rocket01-LtATPile3": {
+		"iconID": "IMAGE_RES_WEAPONTECH",
+		"id": "R-Wpn-Rocket01-LtATPile3",
+		"msgName": "RES_W_RK_LTPILE3",
+		"name": "Towering Pillar Of Lancers",
+		"keyTopic": 1,
+		"requiredResearch": [
+			"R-Wpn-Rocket01-LtATPile2"
+		],
+		"researchPoints": 3600,
+		"researchPower": 112,
+		"resultComponents": [
+			"Rocket-LtA-TPile3",
+			"Rocket-VTOL-LtA-TPile3"
+		],
+		"statID": "Rocket-LtA-TPile3"
+	},
 	"R-Wpn-Rocket01-LtATJump": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
 		"id": "R-Wpn-Rocket01-LtATJump",
@@ -679,7 +715,7 @@
 	"R-Wpn-Rocket01-LtAT-Def": {
 		"iconID": "IMAGE_RES_POWERTECH",
 		"id": "R-Wpn-Rocket01-LtAT-Def",
-		"msgName": "RES_W_RK_LTATWARR",
+		"msgName": "RES_W_RK_LTATDEF",
 		"name": "[10000th Customer] SPECIL DEAL HUGE DISCOUNT BUY NOW",
 		"keyTopic": 1,
 		"requiredResearch": [
@@ -688,14 +724,10 @@
 		"researchPoints": 10,
 		"researchPower": 1996,
 		"resultComponents": [
-			"Rocket-LtA-TWarr",
 			"Rocket-LtA-TDef",
-			"Rocket-LtA-TUnDef",
-			"Rocket-VTOL-LtA-TWarr",
-			"Rocket-VTOL-LtA-TDef",
-			"Rocket-VTOL-LtA-TUnDef"
+			"Rocket-VTOL-LtA-TDef"
 		],
-		"statID": "Rocket-LtA-TWarr"
+		"statID": "Rocket-LtA-TDef"
 	},
 	"R-Wpn-Rocket02-MRL": {
 		"iconID": "IMAGE_RES_WEAPONTECH",
@@ -2717,13 +2749,6 @@
 			{
 				"class": "Weapon",
 				"filterParameter": "Id",
-				"filterValue": "Rocket-LtA-TUnDef",
-				"parameter": "ReloadTime",
-				"value": -50
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "Id",
 				"filterValue": "Rocket-LtA-TJump",
 				"parameter": "ReloadTime",
 				"value": -50
@@ -2731,14 +2756,7 @@
 			{
 				"class": "Weapon",
 				"filterParameter": "Id",
-				"filterValue": "Rocket-LtA-TWarr",
-				"parameter": "ReloadTime",
-				"value": -50
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "Id",
-				"filterValue": "Rocket-LtA-TPillar",
+				"filterValue": "Rocket-LtA-TPile3",
 				"parameter": "ReloadTime",
 				"value": -50
 			},
@@ -2759,26 +2777,34 @@
 			{
 				"class": "Weapon",
 				"filterParameter": "Id",
-				"filterValue": "Rocket-VTOL-LtA-TUnDef",
-				"parameter": "ReloadTime",
-				"value": -50
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "Id",
 				"filterValue": "Rocket-VTOL-LtA-TJump",
-				"parameter": "ReloadTime",
-				"value": -50
-			},
-			{
-				"class": "Weapon",
-				"filterParameter": "Id",
-				"filterValue": "Rocket-VTOL-LtA-TWarr",
 				"parameter": "ReloadTime",
 				"value": -50
 			}
 		],
 		"statID": "Rocket-Pod",
+		"subgroupIconID": "IMAGE_RES_GRPROF"
+	},
+	"R-Wpn-Rocket-IDF-ROF01": {
+		"iconID": "IMAGE_RES_WEAPONTECH",
+		"id": "R-Wpn-Rocket-IDF-ROF01",
+		"msgName": "RES_W_RK_IDF_ROF1",
+		"name": "Infinite Rocket Glitch",
+		"requiredResearch": [
+			"R-Wpn-Rocket-ROF01"
+		],
+		"researchPoints": 2400,
+		"researchPower": 75,
+		"results": [
+			{
+				"class": "Weapon",
+				"filterParameter": "Id",
+				"filterValue": "Rocket-IDF",
+				"parameter": "ReloadTime",
+				"value": -100
+			}
+		],
+		"statID": "Rocket-IDF",
 		"subgroupIconID": "IMAGE_RES_GRPROF"
 	},
 	"R-Wpn-RocketSlow-Damage01": {
@@ -3046,6 +3072,18 @@
 			"P0-AASite-SAM1"
 		],
 		"statID": "P0-AASite-SAM1"
+	},
+	"R-Defense-SamSite2": {
+		"iconID": "IMAGE_RES_POWERTECH",
+		"id": "R-Defense-SamSite2",
+		"msgName": "RES_EMP_SAM2",
+		"name": "[For The Fans]",
+		"researchPoints": 10,
+		"researchPower": 1997,
+		"resultStructures": [
+			"P0-AASite-SAM2"
+		],
+		"statID": "P0-AASite-SAM2"
 	},
 	"R-Sys-NEXUSrepair": {
 		"id": "R-Sys-NEXUSrepair",

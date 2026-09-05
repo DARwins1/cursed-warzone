@@ -133,8 +133,8 @@ function eventStartLevel()
 	
 	camSetArtifacts({
 		"templeFactory": { tech: "R-Struc-Factory-Module" }, // Factory Module
-		"shotgun": { tech: "R-Wpn-Rocket01-LtAT" }, // Sawed-Off Lancer
-		"castleFactory1": { tech: "R-Wpn-Cannon-Damage01" }, // Brighter Cannons
+		// "shotgun": { tech: "R-Wpn-Rocket01-LtAT" }, // Sawed-Off Lancer
+		"castleFactory1": { tech: "R-Wpn-Rocket01-LtATPile1" }, // Modest Pile Of Lancers
 	});
 
 	camCompleteRequiredResearch(mis_bonziRes, CAM_BONZI_BUDDY);

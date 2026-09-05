@@ -483,6 +483,7 @@ function eventStartLevel()
 	camPlayVideos({video: "SPAM_ALPHA4_MSG", type: CAMP_MSG});
 
 	camSetArtifacts({
+		"scavFactory1": { tech: "R-Wpn-Cannon1Mk1" }, // "Light" Cannon
 		"synapticCrate": { tech: "R-Comp-SynapticLink" }, // Synaptic Link
 		"clipFactory1": { tech: "R-Wpn-Rocket03-HvAT" }, // Bunker Buster
 		"clipResearch1": { tech: "R-Struc-Research-Module" }, // Research Module

@@ -2193,7 +2193,7 @@
         "name": "Many-Rocket Tower",
         "resistance": 750,
         "sensorID": "DefaultSensor1Mk1",
-        "strength": "MEDIUM",
+        "strength": "HARD",
         "structureModel": [
             "BLGUARDR.pie"
         ],
@@ -2571,6 +2571,29 @@
         ],
         "width": 1
     },
+    "P0-AASite-SAM1Spam": {
+        "armour": 10,
+        "breadth": 1,
+        "buildPoints": 250,
+        "buildPower": 225,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 400,
+        "id": "P0-AASite-SAM1Spam",
+        "name": "Spamton Sansburst AA Site",
+        "resistance": 750,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "MEDIUM",
+        "structureModel": [
+            "Blaamnt1spam.PIE"
+        ],
+        "thermal": 10,
+        "type": "DEFENSE",
+        "weapons": [
+            "Rocket-Sunburst"
+        ],
+        "width": 1
+    },
     "P0-AASite-Sunburst": {
         "armour": 10,
         "breadth": 1,
@@ -2595,22 +2618,45 @@
         "width": 1
     },
     "P0-AASite-SAM2": {
-        "armour": 10,
+        "armour": 15,
         "breadth": 1,
-        "buildPoints": 550,
-        "buildPower": 350,
+        "buildPoints": 150,
+        "buildPower": 75,
         "ecmID": "ZNULLECM",
         "height": 1,
         "hitpoints": 600,
         "id": "P0-AASite-SAM2",
-        "name": "Vindicator SAM Site",
+        "name": "SC Avenger Tower",
         "resistance": 750,
-        "sensorID": "NavGunSensor",
+        "sensorID": "DefaultSensor1Mk1",
         "strength": "HARD",
         "structureModel": [
-            "Blaamnt2.PIE"
+            "BLGUARDR.PIE"
         ],
-        "thermal": 10,
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Missile-HvySAM"
+        ],
+        "width": 1
+    },
+    "P0-AASite-SAM2Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 150,
+        "buildPower": 75,
+        "ecmID": "ZNULLECM",
+        "height": 1,
+        "hitpoints": 600,
+        "id": "P0-AASite-SAM2",
+        "name": "Spamton SC Avenger Tower",
+        "resistance": 750,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARDRspam.PIE"
+        ],
+        "thermal": 15,
         "type": "DEFENSE",
         "weapons": [
             "Missile-HvySAM"
@@ -4171,6 +4217,30 @@
         ],
         "width": 1
     },
+    "WallTower03Mk18": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk18",
+        "name": "Fungible Cannon Hardpoint",
+        "resistance": 750,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk18"
+        ],
+        "width": 1
+    },
     "WallTower03Mk2Spam": {
         "armour": 15,
         "breadth": 1,
@@ -4552,6 +4622,30 @@
         "type": "DEFENSE",
         "weapons": [
             "Cannon2A-TMk17"
+        ],
+        "width": 1
+    },
+    "WallTower03Mk18Spam": {
+        "armour": 15,
+        "breadth": 1,
+        "buildPoints": 400,
+        "buildPower": 200,
+        "combinesWithWall": true,
+        "ecmID": "ZNULLECM",
+        "height": 2,
+        "hitpoints": 800,
+        "id": "WallTower03Mk18Spam",
+        "name": "Spamton Fungible Cannon Hardpoint",
+        "resistance": 750,
+        "sensorID": "DefaultSensor1Mk1",
+        "strength": "HARD",
+        "structureModel": [
+            "BLGUARD1spam.pie"
+        ],
+        "thermal": 15,
+        "type": "DEFENSE",
+        "weapons": [
+            "Cannon2A-TMk18"
         ],
         "width": 1
     },

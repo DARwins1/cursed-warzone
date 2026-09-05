@@ -221,7 +221,7 @@ function eventStartLevel()
 	});
 
 	camSetArtifacts({
-		"clipPillBox": { tech: "R-Wpn-Cannon1Mk1" }, // Light Cannon
+		"clipPillBox": { tech: "R-Wpn-Cannon-Damage01" }, // Brighter Cannons
 		"clipCatapult": { tech: "R-Wpn-Mortar01Lt" }, // Catapult
 		"clipResearch": { tech: "R-Vehicle-Metals01" }, // Composite Alloys
 		"clipFact2": { tech: "R-Wpn-ScorchShot" }, // Scorch Shot
